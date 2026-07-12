@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MomentBench — Corpus-scale video retrieval benchmark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#101418;
+    --panel:#161B21;
+    --panel-2:#1C232B;
+    --line:#242D36;
+    --ink:#E9EDF0;
+    --muted:#8C97A1;
+    --faint:#5C6770;
+    --playhead:#FF4B3E;
+    --track:#232B34;
+    --fill:#9FB4C4;
+    --fill-strong:#DFE8EE;
+    --radius:6px;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+    --sans:'IBM Plex Sans',system-ui,sans-serif;
+    --display:'Archivo',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:var(--sans);font-size:15px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+
+  /* SMPTE strip — the signature divider */
+  .smpte{display:flex;height:6px;width:100%}
+  .smpte span{flex:1}
+  .smpte .c1{background:#9BA0A3}.smpte .c2{background:#B9B45B}
+  .smpte .c3{background:#5BAEB0}.smpte .c4{background:#5BA96B}
+  .smpte .c5{background:#A868A4}.smpte .c6{background:#B85450}
+  .smpte .c7{background:#5468B0}
+
+  /* Nav */
+  nav{border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+  .brand b{font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:-.02em}
+  .brand small{font-family:var(--mono);font-size:11px;color:var(--faint)}
+  .nav-links{display:flex;gap:22px;font-size:13.5px}
+  .nav-links a{color:var(--muted);text-decoration:none}
+  .nav-links a:hover,.nav-links a:focus-visible{color:var(--ink)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--fill-strong);outline-offset:3px;border-radius:2px}
+
+  /* Hero */
+  header.hero{padding:76px 0 56px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:22px;display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";display:inline-block;width:9px;height:9px;background:var(--playhead);clip-path:polygon(0 0,100% 0,50% 100%)}
+  h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,5.4vw,58px);line-height:1.04;letter-spacing:-.025em;max-width:15ch}
+  h1 .dim{color:var(--faint)}
+  .hero p.sub{margin-top:22px;max-width:56ch;color:var(--muted);font-size:16.5px}
+  .statline{display:flex;flex-wrap:wrap;gap:0;margin-top:38px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .stat{flex:1;min-width:150px;padding:16px 20px;border-right:1px solid var(--line);background:var(--panel)}
+  .stat:last-child{border-right:none}
+  .stat .v{font-family:var(--mono);font-size:20px;font-weight:600}
+  .stat .k{font-size:12px;color:var(--faint);margin-top:2px}
+
+  /* Section headers */
+  section{padding:60px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:8px}
+  h2{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.015em}
+  .sec-note{font-family:var(--mono);font-size:12px;color:var(--faint)}
+
+  /* Placeholder badge */
+  .placeholder{display:inline-flex;align-items:center;gap:8px;margin:14px 0 26px;padding:7px 12px;border:1px dashed var(--faint);border-radius:var(--radius);font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .placeholder i{width:8px;height:8px;border-radius:50%;background:var(--playhead);flex:none}
+
+  /* Metric toggle */
+  .toggle{display:inline-flex;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-bottom:26px}
+  .toggle button{appearance:none;border:none;background:transparent;color:var(--muted);font-family:var(--mono);font-size:12.5px;padding:9px 16px;cursor:pointer;border-right:1px solid var(--line)}
+  .toggle button:last-child{border-right:none}
+  .toggle button[aria-pressed="true"]{background:var(--panel-2);color:var(--ink)}
+  .toggle button:hover{color:var(--ink)}
+
+  /* Leaderboard tracks */
+  .board{display:flex;flex-direction:column;gap:10px}
+  .row{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:grid;grid-template-columns:34px 220px 1fr 92px;gap:18px;align-items:center;transition:border-color .15s}
+  .row:hover{border-color:var(--faint)}
+  .row.maintainer{border-color:#3A4855;background:linear-gradient(0deg,var(--panel),var(--panel-2))}
+  .rank{font-family:var(--mono);font-size:13px;color:var(--faint)}
+  .model{min-width:0}
+  .model .name{font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .chip{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--bg);background:var(--fill-strong);padding:2px 7px;border-radius:3px;font-weight:600}
+  .model .meta{font-family:var(--mono);font-size:11.5px;color:var(--faint);margin-top:3px}
+  .trackwrap{min-width:0}
+  .track{position:relative;height:26px;background:var(--track);border-radius:4px;overflow:hidden}
+  .track .ruler{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,transparent 0,transparent calc(10% - 1px),rgba(255,255,255,.06) calc(10% - 1px),rgba(255,255,255,.06) 10%)}
+  .track .fill{position:absolute;top:0;left:0;bottom:0;background:linear-gradient(90deg,rgba(159,180,196,.35),rgba(159,180,196,.75));width:0;transition:width .5s ease}
+  .row.maintainer .track .fill{background:linear-gradient(90deg,rgba(223,232,238,.45),rgba(223,232,238,.95))}
+  .track .head{position:absolute;top:0;bottom:0;width:2px;background:var(--playhead);transition:left .5s ease}
+  .track .head::before{content:"";position:absolute;top:0;left:-4px;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid var(--playhead)}
+  .tiers{display:flex;gap:6px;margin-top:8px}
+  .tier{flex:1;position:relative}
+  .tier .bar{height:5px;background:var(--track);border-radius:2px;overflow:hidden}
+  .tier .bar i{display:block;height:100%;background:var(--fill);width:0;transition:width .5s ease}
+  .row.maintainer .tier .bar i{background:var(--fill-strong)}
+  .tier .lbl{font-family:var(--mono);font-size:10px;color:var(--faint);margin-top:4px;display:flex;justify-content:space-between}
+  .score{font-family:var(--mono);text-align:right}
+  .score .n{font-size:21px;font-weight:600}
+  .score .u{font-size:11px;color:var(--faint);display:block;margin-top:1px}
+
+  /* Findings */
+  .findings{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px}
+  .finding{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+  .finding .fk{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+  .finding p{font-size:13.5px;color:var(--muted)}
+  .finding p b{color:var(--ink);font-family:var(--mono);font-weight:600}
+
+  /* Failure gallery */
+  .fails{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .fail{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+  .fail .q{font-size:14.5px;margin-bottom:14px}
+  .fail .q em{color:var(--muted);font-style:normal}
+  .strip{position:relative;height:34px;background:var(--track);border-radius:4px;margin-bottom:12px;overflow:hidden}
+  .strip .frames{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,transparent 0,transparent 23px,rgba(255,255,255,.05) 23px,rgba(255,255,255,.05) 24px)}
+  .mark{position:absolute;top:0;bottom:0;width:3px}
+  .mark.gold{background:var(--fill-strong)}
+  .mark.model{background:var(--playhead)}
+  .legend{display:flex;gap:18px;font-family:var(--mono);font-size:11.5px;color:var(--muted);flex-wrap:wrap}
+  .legend span{display:flex;align-items:center;gap:7px}
+  .legend i{width:10px;height:3px;flex:none}
+  .legend .g{background:var(--fill-strong)}
+  .legend .m{background:var(--playhead)}
+
+  /* Methodology */
+  .method{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .m-item{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+  .m-item .mk{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:9px}
+  .m-item p{font-size:13.5px;color:var(--muted)}
+
+  /* CTA */
+  .cta{padding:70px 0;text-align:left;border-bottom:1px solid var(--line)}
+  .cta h2{font-size:clamp(24px,3.4vw,34px);max-width:22ch}
+  .cta p{color:var(--muted);margin-top:12px;max-width:52ch}
+  .btnrow{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+  .btn{display:inline-block;font-family:var(--mono);font-size:13.5px;font-weight:600;text-decoration:none;padding:13px 22px;border-radius:var(--radius)}
+  .btn.solid{background:var(--fill-strong);color:var(--bg)}
+  .btn.solid:hover{background:#fff}
+  .btn.ghost{border:1px solid var(--line);color:var(--ink)}
+  .btn.ghost:hover{border-color:var(--faint)}
+
+  footer{padding:34px 0 46px;color:var(--faint);font-size:12.5px}
+  .foot-in{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer a{color:var(--muted);text-decoration:none}
+  footer a:hover{color:var(--ink)}
+  .foot-in .mono{font-family:var(--mono)}
+
+  @media (max-width:860px){
+    .row{grid-template-columns:26px 1fr 92px;grid-template-areas:"rank model score" "track track track"}
+    .rank{grid-area:rank}.model{grid-area:model}.score{grid-area:score}.trackwrap{grid-area:track}
+    .findings,.method{grid-template-columns:1fr 1fr}
+    .fails{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){
+    .findings,.method{grid-template-columns:1fr}
+    .statline{flex-direction:column}
+    .stat{border-right:none;border-bottom:1px solid var(--line)}
+    .stat:last-child{border-bottom:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="smpte" aria-hidden="true"><span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c5"></span><span class="c6"></span><span class="c7"></span></div>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="brand" href="#">
+      <b>MomentBench</b>
+      <small>maintained by Mixpeek</small>
+    </a>
+    <div class="nav-links">
+      <a href="#leaderboard">Leaderboard</a>
+      <a href="#failures">Failure gallery</a>
+      <a href="#methodology">Methodology</a>
+      <a href="https://github.com" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Corpus-scale video retrieval · v1.0</div>
+    <h1>Frontier models can watch a clip. <span class="dim">They can't find a moment.</span></h1>
+    <p class="sub">MomentBench measures whether a system can locate an exact moment — the right video, the right four seconds — across a 75-hour multimodal corpus. Every query is human-annotated with gold in/out timestamps and explicit hard negatives. Every result is reproducible from the open harness.</p>
+    <div class="statline" role="list">
+      <div class="stat" role="listitem"><div class="v">75:12:44:00</div><div class="k">corpus (hh:mm:ss:ff)</div></div>
+      <div class="stat" role="listitem"><div class="v">500</div><div class="k">human-verified queries</div></div>
+      <div class="stat" role="listitem"><div class="v">4</div><div class="k">difficulty tiers</div></div>
+      <div class="stat" role="listitem"><div class="v">IoU ≥ 0.5</div><div class="k">hit threshold</div></div>
+      <div class="stat" role="listitem"><div class="v">PD / CC BY</div><div class="k">all footage rights-cleared</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="leaderboard">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Leaderboard</h2>
+      <div class="sec-note">query runs against the full corpus, not a single video</div>
+    </div>
+    <div class="placeholder"><i></i>Sample data — placeholder scores pending final v1.0 evaluation runs</div>
+    <div>
+      <div class="toggle" role="group" aria-label="Metric">
+        <button type="button" data-metric="r1" aria-pressed="true">Recall@1</button>
+        <button type="button" data-metric="r5" aria-pressed="false">Recall@5</button>
+        <button type="button" data-metric="iou" aria-pressed="false">Mean temporal IoU</button>
+      </div>
+    </div>
+    <div class="board" id="board" aria-live="polite"></div>
+    <div class="findings">
+      <div class="finding">
+        <div class="fk">Tier 1 → Tier 3 collapse</div>
+        <p>Frontier models average <b>83%</b> on single-condition clips and <b>&lt;35%</b> once the same query must beat 40 hard negatives across the corpus.</p>
+      </div>
+      <div class="finding">
+        <div class="fk">Cross-modal is the cliff</div>
+        <p>Queries that join audio and visual conditions ("crowd goes quiet <b>before</b> the gavel") cut every context-stuffing baseline roughly in half.</p>
+      </div>
+      <div class="finding">
+        <div class="fk">Index beats context</div>
+        <p>A decompose → store → retrieve pipeline holds <b>74%</b> at tier 3 — the gap is architectural, not a model-size problem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="failures">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Failure gallery</h2>
+      <div class="sec-note">model timestamp vs. gold moment · illustrative examples</div>
+    </div>
+    <div class="fails">
+      <div class="fail">
+        <div class="q">"Find the exchange where the chairman interrupts the witness <em>immediately after the second recess</em>." <em>— Senate hearing corpus, tier 4</em></div>
+        <div class="strip"><div class="frames"></div><div class="mark gold" style="left:41%"></div><div class="mark model" style="left:78%"></div></div>
+        <div class="legend">
+          <span><i class="g"></i>gold 02:14:36 – 02:14:52</span>
+          <span><i class="m"></i>model answer 04:03:11 (wrong recess)</span>
+        </div>
+      </div>
+      <div class="fail">
+        <div class="q">"Find the moment the callout goes silent <em>right before</em> stage separation is visible." <em>— Launch coverage corpus, tier 2</em></div>
+        <div class="strip"><div class="frames"></div><div class="mark gold" style="left:23%"></div><div class="mark model" style="left:24.5%"></div></div>
+        <div class="legend">
+          <span><i class="g"></i>gold 00:41:23 – 00:41:29</span>
+          <span><i class="m"></i>model answer 00:43:50 (IoU 0.0 — misses by 2:21)</span>
+        </div>
+      </div>
+      <div class="fail">
+        <div class="q">"Find the shot where the robot arm reaches toward the girl and stops." <em>— Open-film corpus, tier 3 (character appears in 5 films)</em></div>
+        <div class="strip"><div class="frames"></div><div class="mark gold" style="left:63%"></div><div class="mark model" style="left:12%"></div></div>
+        <div class="legend">
+          <span><i class="g"></i>gold — Tears of Steel, 00:08:04</span>
+          <span><i class="m"></i>model answer — wrong film entirely</span>
+        </div>
+      </div>
+      <div class="fail">
+        <div class="q">"Find the briefing where the spokesperson is asked about the report <em>and the room laughs</em>." <em>— Briefing corpus, tier 3</em></div>
+        <div class="strip"><div class="frames"></div><div class="mark gold" style="left:55%"></div><div class="mark model" style="left:31%"></div></div>
+        <div class="legend">
+          <span><i class="g"></i>gold 01:52:08 – 01:52:15</span>
+          <span><i class="m"></i>model answer — right speaker, wrong briefing (hard negative)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="methodology">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Methodology</h2>
+      <div class="sec-note">full spec in the technical report</div>
+    </div>
+    <div class="method">
+      <div class="m-item">
+        <div class="mk">Corpus</div>
+        <p>75 hours across three verticals: government proceedings, aerospace &amp; field operations, and archival film. Every asset is public domain or CC BY, with a machine-generated attribution manifest.</p>
+      </div>
+      <div class="m-item">
+        <div class="mk">Query tiers</div>
+        <p>T1 single-condition visual · T2 cross-modal joint conditions · T3 corpus-scale with explicit hard negatives · T4 temporal reasoning. 500 queries, two annotators each, adjudicated gold labels.</p>
+      </div>
+      <div class="m-item">
+        <div class="mk">Scoring</div>
+        <p>A hit requires the correct asset <em>and</em> temporal IoU ≥ 0.5 against the gold in/out points. We report Recall@1, Recall@5, and mean temporal IoU per tier.</p>
+      </div>
+      <div class="m-item">
+        <div class="mk">Reproducibility</div>
+        <p>The harness, public query set, and model adapters are open source. A 150-query private held-out set guards against contamination; labs can evaluate against it via a hosted scoring endpoint.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Your archive is harder than our corpus. Prove it.</h2>
+    <p>Upload your own footage and run the MomentBench query suite against it — same scoring, same harness, your content. Ingestion, decomposition, and retrieval run on Mixpeek end to end.</p>
+    <div class="btnrow">
+      <a class="btn solid" href="https://mixpeek.com" rel="noopener">Run it on your footage</a>
+      <a class="btn ghost" href="#" rel="noopener">Read the technical report</a>
+      <a class="btn ghost" href="#" rel="noopener">Evaluate on the private set</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div>
+      Created and maintained by <a href="https://mixpeek.com" rel="noopener">Mixpeek</a>. Mixpeek's own pipeline appears on this leaderboard; its score is reproducible from the <a href="#" rel="noopener">open harness</a>.
+    </div>
+    <div class="mono">
+      corpus: PD / CC BY · storage: Backblaze B2 · v1.0
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var data = [
+    {name:"Mixpeek retriever pipeline", meta:"decompose → MVS index → multi-stage retrieval", maintainer:true,
+     r1:{overall:81.4,t:[92,84,74,68]}, r5:{overall:90.2,t:[97,92,85,79]}, iou:{overall:78,t:[88,81,72,66]}},
+    {name:"Gemini (long-context)", meta:"frame stuffing · 1 fps sampling · full transcript", maintainer:false,
+     r1:{overall:47.2,t:[86,41,28,22]}, r5:{overall:58.6,t:[93,54,37,31]}, iou:{overall:51,t:[79,46,33,27]}},
+    {name:"GPT (frames + transcript)", meta:"keyframes in context · word-level transcript", maintainer:false,
+     r1:{overall:41.8,t:[83,36,21,18]}, r5:{overall:53.1,t:[91,48,30,26]}, iou:{overall:44,t:[75,40,26,21]}},
+    {name:"Claude (frames + transcript)", meta:"keyframes in context · word-level transcript", maintainer:false,
+     r1:{overall:39.5,t:[81,34,19,17]}, r5:{overall:51.4,t:[90,46,28,24]}, iou:{overall:42,t:[73,38,24,20]}},
+    {name:"Open-source video LM", meta:"best open-weights baseline · same harness", maintainer:false,
+     r1:{overall:26.3,t:[62,19,9,8]}, r5:{overall:36.9,t:[74,28,16,13]}, iou:{overall:31,t:[58,24,13,10]}}
+  ];
+  var units = {r1:"Recall@1 %", r5:"Recall@5 %", iou:"mean IoU ×100"};
+  var board = document.getElementById("board");
+  var current = "r1";
+
+  function render(metric){
+    var rows = data.slice().sort(function(a,b){return b[metric].overall - a[metric].overall;});
+    board.innerHTML = "";
+    rows.forEach(function(m,i){
+      var d = m[metric];
+      var row = document.createElement("div");
+      row.className = "row" + (m.maintainer ? " maintainer" : "");
+      row.innerHTML =
+        '<div class="rank">'+ String(i+1).padStart(2,"0") +'</div>'+
+        '<div class="model"><div class="name">'+ m.name + (m.maintainer ? ' <span class="chip">maintainer</span>' : '') +'</div>'+
+        '<div class="meta">'+ m.meta +'</div></div>'+
+        '<div class="trackwrap">'+
+          '<div class="track"><div class="ruler"></div><div class="fill"></div><div class="head"></div></div>'+
+          '<div class="tiers">'+ d.t.map(function(v,ti){
+            return '<div class="tier"><div class="bar"><i data-w="'+v+'"></i></div><div class="lbl"><span>T'+(ti+1)+'</span><span>'+v+'</span></div></div>';
+          }).join("") +'</div>'+
+        '</div>'+
+        '<div class="score"><span class="n">'+ d.overall.toFixed(1) +'</span><span class="u">'+ units[metric] +'</span></div>';
+      board.appendChild(row);
+      requestAnimationFrame(function(){
+        row.querySelector(".fill").style.width = d.overall + "%";
+        row.querySelector(".head").style.left = "calc(" + d.overall + "% - 1px)";
+        row.querySelectorAll(".tier .bar i").forEach(function(el){
+          el.style.width = el.getAttribute("data-w") + "%";
+        });
+      });
+    });
+  }
+
+  document.querySelectorAll(".toggle button").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      current = btn.getAttribute("data-metric");
+      document.querySelectorAll(".toggle button").forEach(function(b){
+        b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+      });
+      render(current);
+    });
+  });
+
+  render(current);
+})();
+</script>
+</body>
+</html>

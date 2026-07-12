@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+title: "MomentBench: Corpus-Scale Video Moment Retrieval Benchmark"
+message: "If you use MomentBench in your research, please cite it as below."
+type: software
+authors:
+  - name: Mixpeek
+    website: https://mixpeek.com
+repository-code: https://github.com/mixpeek/momentbench
+url: https://momentbench.com
+license: Apache-2.0
+version: "0.1.0"
+date-released: "2025-07-12"
+keywords:
+  - video retrieval
+  - temporal grounding
+  - benchmark
+  - multimodal
+  - moment localization
+abstract: >-
+  MomentBench is a corpus-scale video moment retrieval benchmark comprising
+  75 hours of rights-cleared video across three verticals (civic proceedings,
+  aerospace operations, archival film) with 500 human-annotated queries
+  spanning four difficulty tiers. All footage is public domain or CC BY.
+  The benchmark measures whether systems can locate an exact moment — the
+  correct video and the correct sub-5-second window — across the full corpus.

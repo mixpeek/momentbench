@@ -1,8 +1,10 @@
 # MomentBench
 
-Corpus-scale video moment retrieval benchmark. 75 hours of rights-cleared video, 500 queries across 4 difficulty tiers, evaluated against frontier models and retrieval pipelines.
+**[momentbench.com](https://momentbench.com)** — Corpus-scale video moment retrieval benchmark.
 
-**Built on [Mixpeek](https://mixpeek.com)** — the pipeline that built the benchmark scores 81% on it.
+75 hours of rights-cleared video, 500 queries across 4 difficulty tiers, evaluated against frontier models and retrieval pipelines.
+
+Built on [Mixpeek](https://mixpeek.com).
 
 ## Quick Start
 
@@ -21,12 +23,14 @@ momentbench leaderboard data/results/
 
 ## Query Tiers
 
-| Tier | Name | Description | Expected frontier perf |
-|------|------|-------------|----------------------|
-| 1 | Single-condition visual | Identify a single visual event | >80% |
-| 2 | Cross-modal joint | Joint reasoning across modalities | 50-70% |
-| 3 | Corpus-scale hard negatives | Discriminate near-duplicates at corpus scale | <35% |
-| 4 | Temporal reasoning | Temporal ordering and sequence reasoning | <25% |
+Difficulty targets were pre-registered before any baseline evaluations were run.
+
+| Tier | Name | Description | Pre-registered difficulty target |
+|------|------|-------------|----------------------------------|
+| 1 | Single-condition visual | Identify a single visual event | >80% recall for frontier models |
+| 2 | Cross-modal joint | Joint reasoning across modalities | 50-70% recall |
+| 3 | Corpus-scale hard negatives | Discriminate near-duplicates at corpus scale | <35% recall |
+| 4 | Temporal reasoning | Temporal ordering and sequence reasoning | <25% recall |
 
 ## Verticals
 
@@ -41,7 +45,7 @@ momentbench leaderboard data/results/
 
 ## Corpus Licensing
 
-All footage is public domain (17 U.S.C. § 105) or CC BY, permitting commercial derivatives. See `ATTRIBUTION.md` for full provenance.
+All footage is public domain (17 U.S.C. § 105) or CC BY, permitting commercial derivatives. See [`ATTRIBUTION.md`](ATTRIBUTION.md) for full provenance.
 
 ## Project Structure
 
@@ -53,7 +57,7 @@ momentbench/
 │   ├── corpus/            # Corpus management & sourcing
 │   ├── taxonomy/          # Query tier definitions & generation
 │   └── mixpeek_integration/  # Mixpeek pipeline integration
-├── site/                  # Leaderboard web app
+├── site/                  # Leaderboard (momentbench.com)
 ├── scripts/               # Automation scripts
 ├── configs/               # Benchmark configuration
 ├── data/                  # Queries, manifests, results
@@ -71,6 +75,18 @@ momentbench decompose -m your_manifest.json
 
 # Evaluate
 momentbench run mixpeek -q your_queries.json -c your_manifest.json
+```
+
+## Citation
+
+```bibtex
+@software{momentbench2025,
+  title     = {MomentBench: Corpus-Scale Video Moment Retrieval Benchmark},
+  author    = {Mixpeek},
+  year      = {2025},
+  url       = {https://github.com/mixpeek/momentbench},
+  license   = {Apache-2.0}
+}
 ```
 
 ## License
