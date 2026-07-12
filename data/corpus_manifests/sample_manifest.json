@@ -1,0 +1,72 @@
+[
+  {
+    "asset_id": "senate-hearing-2024-03-15",
+    "source_id": "senate-gov-hearing",
+    "title": "Senate Judiciary Committee Hearing - March 15, 2024",
+    "vertical": "civic",
+    "license": "public_domain",
+    "attribution": "U.S. Senate (public domain, 17 U.S.C. § 105)",
+    "duration_s": 7200,
+    "source_url": "https://www.senate.gov/committees/video/2024-03-15",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {"speakers": ["Senator Johnson", "Senator Smith"], "topic": "budget allocation"}
+  },
+  {
+    "asset_id": "nasa-artemis-i-launch",
+    "source_id": "nasa-launch",
+    "title": "NASA Artemis I Launch Coverage",
+    "vertical": "aerospace",
+    "license": "public_domain",
+    "attribution": "NASA (public domain)",
+    "duration_s": 14400,
+    "source_url": "https://www.nasa.gov/multimedia/artemis-i-launch",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {"mission": "Artemis I", "date": "2022-11-16"}
+  },
+  {
+    "asset_id": "big-buck-bunny",
+    "source_id": "blender-open-movies",
+    "title": "Big Buck Bunny",
+    "vertical": "film",
+    "license": "cc_by",
+    "attribution": "Blender Foundation (CC BY 3.0)",
+    "duration_s": 596,
+    "source_url": "https://peach.blender.org/download/",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {"year": 2008, "director": "Sacha Goedegebure"}
+  },
+  {
+    "asset_id": "sintel",
+    "source_id": "blender-open-movies",
+    "title": "Sintel",
+    "vertical": "film",
+    "license": "cc_by",
+    "attribution": "Blender Foundation (CC BY 3.0)",
+    "duration_s": 888,
+    "source_url": "https://durian.blender.org/download/",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {"year": 2010, "director": "Colin Levy"}
+  },
+  {
+    "asset_id": "tears-of-steel",
+    "source_id": "blender-open-movies",
+    "title": "Tears of Steel",
+    "vertical": "film",
+    "license": "cc_by",
+    "attribution": "Blender Foundation (CC BY 3.0)",
+    "duration_s": 734,
+    "source_url": "https://mango.blender.org/download/",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {"year": 2012, "director": "Ian Hubert"}
+  }
+]

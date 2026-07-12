@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MomentBench — Video Moment Retrieval Leaderboard</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --border: #1e1e2e;
+            --text: #e4e4e7;
+            --text-muted: #71717a;
+            --accent: #6366f1;
+            --accent-dim: #4f46e5;
+            --green: #22c55e;
+            --red: #ef4444;
+            --yellow: #eab308;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        header { text-align: center; margin-bottom: 3rem; }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .subtitle { color: var(--text-muted); font-size: 1.1rem; }
+        .stats-row {
+            display: flex; gap: 2rem; justify-content: center;
+            margin: 2rem 0; flex-wrap: wrap;
+        }
+        .stat {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 8px; padding: 1rem 1.5rem; text-align: center;
+        }
+        .stat-value { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+        .stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; }
+        table {
+            width: 100%; border-collapse: collapse;
+            background: var(--surface); border-radius: 8px;
+            overflow: hidden; border: 1px solid var(--border);
+        }
+        th { background: var(--border); padding: 0.75rem 1rem;
+             text-align: left; font-size: 0.8rem;
+             text-transform: uppercase; color: var(--text-muted); }
+        td { padding: 0.75rem 1rem; border-top: 1px solid var(--border); }
+        tr:hover td { background: rgba(99, 102, 241, 0.05); }
+        .rank { font-weight: 700; color: var(--accent); }
+        .model-name { font-weight: 600; }
+        .metric { font-variant-numeric: tabular-nums; }
+        .good { color: var(--green); }
+        .mid { color: var(--yellow); }
+        .bad { color: var(--red); }
+        footer {
+            text-align: center; margin-top: 3rem; padding-top: 2rem;
+            border-top: 1px solid var(--border); color: var(--text-muted);
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+        .tier-badge {
+            display: inline-block; padding: 0.15rem 0.5rem;
+            border-radius: 4px; font-size: 0.7rem; font-weight: 600;
+            background: var(--border); margin-right: 0.25rem;
+        }
+        .empty-state { text-align: center; padding: 4rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MomentBench</h1>
+            <p class="subtitle">Corpus-scale video moment retrieval benchmark</p>
+            <p class="subtitle" style="margin-top: 0.5rem; font-size: 0.9rem;">
+                75 hours of video &middot; 500 queries &middot; 4 difficulty tiers
+            </p>
+        </header>
+
+        <div class="stats-row">
+            <div class="stat">
+                <div class="stat-value">75h</div>
+                <div class="stat-label">Video corpus</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">500</div>
+                <div class="stat-label">Queries</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">3</div>
+                <div class="stat-label">Verticals</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">{{ leaderboard|length }}</div>
+                <div class="stat-label">Models evaluated</div>
+            </div>
+        </div>
+
+        {% if leaderboard %}
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Model</th>
+                    <th>Recall@1</th>
+                    <th>Recall@5</th>
+                    <th>Mean tIoU</th>
+                    <th>T1</th>
+                    <th>T2</th>
+                    <th>T3</th>
+                    <th>T4</th>
+                    <th>Queries</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in leaderboard %}
+                <tr>
+                    <td class="rank">{{ loop.index }}</td>
+                    <td class="model-name">{{ entry.model_id }}</td>
+                    <td class="metric">{{ "%.1f"|format(entry.recall_at_1 * 100) }}%</td>
+                    <td class="metric">{{ "%.1f"|format(entry.recall_at_5 * 100) }}%</td>
+                    <td class="metric">{{ "%.3f"|format(entry.mean_tiou) }}</td>
+                    {% for tier in ['1','2','3','4'] %}
+                    <td class="metric">
+                        {% if tier in entry.tier_breakdown %}
+                            {{ "%.0f"|format(entry.tier_breakdown[tier].recall_at_1 * 100) }}%
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    {% endfor %}
+                    <td class="metric">{{ entry.num_queries }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="empty-state">
+            <p>No evaluation results yet.</p>
+            <p style="margin-top: 0.5rem;">Run <code>momentbench run &lt;model&gt;</code> to generate results.</p>
+        </div>
+        {% endif %}
+
+        <footer>
+            <p>Built on <a href="https://mixpeek.com">Mixpeek</a> &middot;
+               <a href="https://github.com/mixpeek/momentbench">GitHub</a></p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{
+  "benchmark": {
+    "name": "MomentBench v0.1",
+    "iou_threshold": 0.5,
+    "max_results_per_query": 5,
+    "target_queries": 500,
+    "tier_distribution": {
+      "1": 0.40,
+      "2": 0.35,
+      "3": 0.15,
+      "4": 0.10
+    }
+  },
+  "corpus": {
+    "target_hours": 75,
+    "verticals": {
+      "civic": {"target_hours": 30, "bucket": "momentbench-civic"},
+      "aerospace": {"target_hours": 25, "bucket": "momentbench-aerospace"},
+      "film": {"target_hours": 20, "bucket": "momentbench-film"}
+    }
+  },
+  "mixpeek": {
+    "namespace": "momentbench",
+    "decomposition": {
+      "scene_max_duration_s": 5.0,
+      "transcription": true,
+      "speaker_diarization": true,
+      "visual_embeddings": true,
+      "ocr": true,
+      "audio_events": true,
+      "object_detection": true,
+      "face_reid": true
+    }
+  },
+  "models": {
+    "gemini": {"model": "gemini-2.5-pro"},
+    "openai": {"model": "gpt-4.1"},
+    "claude": {"model": "claude-sonnet-4-20250514"},
+    "mixpeek": {"collection": null}
+  },
+  "evaluation": {
+    "max_concurrency": 5,
+    "timeout_per_query_s": 120
+  }
+}
