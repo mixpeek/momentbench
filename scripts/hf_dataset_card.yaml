@@ -1,0 +1,96 @@
+---
+annotations_creators:
+  - expert-generated
+language:
+  - en
+license: apache-2.0
+multilinguality: monolingual
+pretty_name: MomentBench
+size_categories:
+  - n<1K
+source_datasets:
+  - original
+tags:
+  - video-retrieval
+  - temporal-grounding
+  - moment-localization
+  - benchmark
+  - multimodal
+task_categories:
+  - video-text-to-text
+task_ids: []
+---
+
+# MomentBench
+
+**Corpus-scale video moment retrieval benchmark.**
+
+75 hours of rights-cleared video across three verticals, 500 human-annotated queries spanning four difficulty tiers. All footage is public domain (17 U.S.C. § 105) or CC BY.
+
+## Task
+
+Given a natural language query and a corpus of video assets, identify the specific moment (correct asset, correct temporal window) that matches the query. A prediction is a **hit** if it selects the correct asset AND achieves temporal IoU ≥ 0.5 against the gold in/out timestamps.
+
+## Query Tiers
+
+| Tier | Name | Target difficulty |
+|------|------|-------------------|
+| 1 | Single-condition visual | >80% recall for frontier models |
+| 2 | Cross-modal joint | 50-70% recall |
+| 3 | Corpus-scale hard negatives | <35% recall |
+| 4 | Temporal reasoning | <25% recall |
+
+Difficulty targets were pre-registered before any baseline evaluations were run.
+
+## Verticals
+
+- **Civic** (~30h): U.S. congressional hearings, federal agency briefings
+- **Aerospace** (~25h): NASA missions, NOAA field operations
+- **Film** (~20h): Blender open movies, Prelinger Archives, National Archives
+
+## Metrics
+
+- Recall@1, Recall@5, mean temporal IoU
+- Per-tier and per-vertical breakdowns
+
+## Corpus Licensing
+
+All footage is public domain or CC BY, permitting commercial derivatives. Full provenance manifest included.
+
+## Usage
+
+```python
+from datasets import load_dataset
+
+ds = load_dataset("mixpeek/momentbench")
+```
+
+Or via the CLI:
+
+```bash
+pip install momentbench
+momentbench run <your-model> -q queries.json -c corpus.json
+momentbench submit --results data/results/your-run.json
+```
+
+## Submission
+
+External submissions are welcome. See the [submission guide](https://github.com/mixpeek/momentbench/blob/main/SUBMISSION.md) for details.
+
+## Links
+
+- [Leaderboard](https://momentbench.com)
+- [GitHub](https://github.com/mixpeek/momentbench)
+- [Paper (coming soon)](#)
+
+## Citation
+
+```bibtex
+@software{momentbench2025,
+  title     = {MomentBench: Corpus-Scale Video Moment Retrieval Benchmark},
+  author    = {Mixpeek},
+  year      = {2025},
+  url       = {https://github.com/mixpeek/momentbench},
+  license   = {Apache-2.0}
+}
+```

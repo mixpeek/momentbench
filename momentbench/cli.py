@@ -126,5 +126,71 @@ def attribution(manifest: str, output: str):
     console.print(f"Written to {output}")
 
 
+@main.command()
+@click.option("--results", "-r", type=click.Path(exists=True), required=True)
+@click.option("--model-name", required=True, help="Display name for the leaderboard")
+@click.option("--model-description", default="", help="Brief description of approach")
+@click.option("--contact", default="", help="Contact email for verification")
+@click.option("--output-dir", "-o", type=click.Path(), default="submissions")
+def submit(results: str, model_name: str, model_description: str, contact: str, output_dir: str):
+    """Package a benchmark run for leaderboard submission."""
+    import json
+    import shutil
+
+    from momentbench.eval.metrics import compute_aggregate, compute_by_tier
+    from momentbench.runner import load_run
+
+    run = load_run(Path(results))
+    overall = compute_aggregate(run)
+    by_tier = compute_by_tier(run)
+
+    if overall.num_queries == 0:
+        console.print("[red]No results found in the run file.[/red]")
+        return
+
+    out = Path(output_dir)
+    out.mkdir(parents=True, exist_ok=True)
+
+    slug = model_name.lower().replace(" ", "-").replace("/", "-")
+    submission_dir = out / slug
+    submission_dir.mkdir(parents=True, exist_ok=True)
+
+    shutil.copy(results, submission_dir / "results.json")
+
+    meta = {
+        "model_name": model_name,
+        "model_description": model_description,
+        "contact": contact,
+        "run_id": run.run_id,
+        "model_id": run.model_id,
+        "num_queries": overall.num_queries,
+        "recall_at_1": round(overall.recall_at_1, 4),
+        "recall_at_5": round(overall.recall_at_5, 4),
+        "mean_temporal_iou": round(overall.mean_temporal_iou, 4),
+        "by_tier": {
+            f"tier_{k.value}": {
+                "recall_at_1": round(v.recall_at_1, 4),
+                "recall_at_5": round(v.recall_at_5, 4),
+                "mean_temporal_iou": round(v.mean_temporal_iou, 4),
+                "num_queries": v.num_queries,
+            }
+            for k, v in by_tier.items()
+        },
+        "timestamp": run.timestamp,
+    }
+    (submission_dir / "submission.json").write_text(json.dumps(meta, indent=2))
+
+    console.print(f"\n[bold]Submission packaged:[/bold] {submission_dir}/")
+    console.print(f"  Model: {model_name}")
+    console.print(f"  Recall@1: {overall.recall_at_1:.1%}")
+    console.print(f"  Recall@5: {overall.recall_at_5:.1%}")
+    console.print(f"  Mean tIoU: {overall.mean_temporal_iou:.3f}")
+    console.print(f"  Queries: {overall.num_queries}")
+    console.print(
+        "\nTo submit: open a PR adding this directory to the repo, "
+        "or email the submission.json to team@mixpeek.com"
+    )
+
+
 if __name__ == "__main__":
     main()
