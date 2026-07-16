@@ -31,30 +31,11 @@ def main():
     parser.add_argument("--dry-run", action="store_true", help="Show what would be uploaded")
     args = parser.parse_args()
 
-    api = HfApi()
-
-    api.create_repo(
-        repo_id=REPO_ID,
-        repo_type=REPO_TYPE,
-        private=args.private,
-        exist_ok=True,
-    )
+    uploads = []
 
     card_path = Path(args.dataset_card)
     if card_path.exists():
-        readme_content = card_path.read_text()
-        if args.dry_run:
-            print(f"Would upload README.md from {card_path}")
-        else:
-            api.upload_file(
-                path_or_fileobj=readme_content.encode(),
-                path_in_repo="README.md",
-                repo_id=REPO_ID,
-                repo_type=REPO_TYPE,
-            )
-            print("Uploaded README.md (dataset card)")
-
-    uploads = []
+        uploads.append((card_path, "README.md"))
 
     queries_dir = Path(args.queries)
     if queries_dir.exists():
@@ -76,10 +57,19 @@ def main():
         return
 
     if args.dry_run:
-        print(f"\nWould upload {len(uploads)} files to {REPO_ID}:")
+        print(f"Would upload {len(uploads)} files to {REPO_ID}:")
         for local, remote in uploads:
             print(f"  {local} -> {remote}")
         return
+
+    api = HfApi()
+
+    api.create_repo(
+        repo_id=REPO_ID,
+        repo_type=REPO_TYPE,
+        private=args.private,
+        exist_ok=True,
+    )
 
     for local_path, repo_path in uploads:
         api.upload_file(
