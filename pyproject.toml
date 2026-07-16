@@ -38,6 +38,9 @@ site = [
     "uvicorn>=0.30",
     "jinja2>=3.1",
 ]
+hf = [
+    "huggingface_hub>=0.23",
+]
 dev = [
     "pytest>=8.0",
     "pytest-asyncio>=0.23",

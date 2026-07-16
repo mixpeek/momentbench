@@ -64,6 +64,19 @@ momentbench/
 └── tests/                 # Test suite
 ```
 
+## Submit Results
+
+We welcome external submissions. See [`SUBMISSION.md`](SUBMISSION.md) for details.
+
+```bash
+momentbench submit \
+  --results data/results/your-run.json \
+  --model-name "Your Model" \
+  --contact you@example.com
+```
+
+Or open a PR adding your results to [`submissions/`](submissions/).
+
 ## Run Your Own Footage
 
 ```bash
