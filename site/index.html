@@ -25,6 +25,19 @@
     --sans:'IBM Plex Sans',system-ui,sans-serif;
     --display:'Archivo',system-ui,sans-serif;
   }
+  [data-theme="light"]{
+    --bg:#FAFBFC;
+    --panel:#FFFFFF;
+    --panel-2:#F3F5F7;
+    --line:#E2E6EA;
+    --ink:#1A1F25;
+    --muted:#5A6370;
+    --faint:#8C95A0;
+    --playhead:#E03E32;
+    --track:#E8ECF0;
+    --fill:#5A7A90;
+    --fill-strong:#2A4A5E;
+  }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion: reduce){
@@ -57,6 +70,21 @@
   .nav-links a{color:var(--muted);text-decoration:none}
   .nav-links a:hover,.nav-links a:focus-visible{color:var(--ink)}
   a:focus-visible,button:focus-visible{outline:2px solid var(--fill-strong);outline-offset:3px;border-radius:2px}
+
+  /* Theme toggle */
+  .theme-toggle{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:var(--radius);width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .15s,color .15s}
+  .theme-toggle:hover{color:var(--ink);border-color:var(--faint)}
+  .icon-moon{display:none}
+  [data-theme="light"] .icon-sun{display:none}
+  [data-theme="light"] .icon-moon{display:block}
+
+  /* Light mode adjustments */
+  [data-theme="light"] .row.maintainer{border-color:#C0CDD8;background:linear-gradient(0deg,var(--panel),var(--panel-2))}
+  [data-theme="light"] .row.maintainer .track .fill{background:linear-gradient(90deg,rgba(42,74,94,.45),rgba(42,74,94,.85))}
+  [data-theme="light"] .row.maintainer .tier .bar i{background:var(--fill-strong)}
+  [data-theme="light"] .chip{color:var(--panel);background:var(--fill-strong)}
+  [data-theme="light"] .track .ruler{background-image:repeating-linear-gradient(90deg,transparent 0,transparent calc(10% - 1px),rgba(0,0,0,.06) calc(10% - 1px),rgba(0,0,0,.06) 10%)}
+  [data-theme="light"] .strip .frames{background-image:repeating-linear-gradient(90deg,transparent 0,transparent 23px,rgba(0,0,0,.05) 23px,rgba(0,0,0,.05) 24px)}
 
   /* Hero */
   header.hero{padding:76px 0 56px;border-bottom:1px solid var(--line)}
@@ -189,7 +217,11 @@
       <a href="#leaderboard">Leaderboard</a>
       <a href="#failures">Failure gallery</a>
       <a href="#methodology">Methodology</a>
-      <a href="https://github.com" rel="noopener">GitHub</a>
+      <a href="https://github.com/mixpeek/momentbench" rel="noopener">GitHub</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
     </div>
   </div>
 </nav>
@@ -392,6 +424,23 @@
   });
 
   render(current);
+})();
+
+(function(){
+  var toggle = document.getElementById("themeToggle");
+  var html = document.documentElement;
+  var stored = localStorage.getItem("momentbench-theme");
+  if(stored){
+    html.setAttribute("data-theme", stored);
+  } else if(window.matchMedia("(prefers-color-scheme: light)").matches){
+    html.setAttribute("data-theme", "light");
+  }
+  toggle.addEventListener("click", function(){
+    var current = html.getAttribute("data-theme") || "dark";
+    var next = current === "dark" ? "light" : "dark";
+    html.setAttribute("data-theme", next);
+    localStorage.setItem("momentbench-theme", next);
+  });
 })();
 </script>
 </body>
