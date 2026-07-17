@@ -33,6 +33,12 @@ models = [
     "anthropic>=0.30",
     "google-genai>=1.0",
 ]
+oss = [
+    "openai>=1.30",
+    "transformers>=4.45",
+    "torch>=2.0",
+    "numpy>=1.24",
+]
 site = [
     "fastapi>=0.111",
     "uvicorn>=0.30",

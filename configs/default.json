@@ -36,7 +36,10 @@
     "gemini": {"model": "gemini-2.5-pro"},
     "openai": {"model": "gpt-4.1"},
     "claude": {"model": "claude-sonnet-4-20250514"},
-    "mixpeek": {"collection": null}
+    "mixpeek": {"collection": null},
+    "qwen-vl": {"model": "Qwen/Qwen3-VL-4B", "base_url": "http://localhost:8000/v1"},
+    "e5-omni": {"model": "intfloat/e5-omni"},
+    "hf-vlm": {"model": "self-hosted-vlm", "base_url": "http://localhost:8000/v1"}
   },
   "evaluation": {
     "max_concurrency": 5,

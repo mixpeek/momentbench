@@ -12,7 +12,18 @@ echo "Corpus:  $CORPUS"
 echo "Output:  $OUTPUT"
 echo ""
 
-for model in gemini openai claude mixpeek; do
+CLOSED_MODELS="gemini openai claude mixpeek"
+OSS_MODELS="qwen-vl e5-omni hf-vlm"
+
+if [ "${OSS_ONLY:-}" = "1" ]; then
+    MODELS="$OSS_MODELS"
+elif [ "${CLOSED_ONLY:-}" = "1" ]; then
+    MODELS="$CLOSED_MODELS"
+else
+    MODELS="$CLOSED_MODELS $OSS_MODELS"
+fi
+
+for model in $MODELS; do
     echo "--- Running $model ---"
     momentbench run "$model" -q "$QUERIES" -c "$CORPUS" -o "$OUTPUT" || \
         echo "WARN: $model failed, continuing..."

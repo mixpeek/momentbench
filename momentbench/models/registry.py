@@ -36,6 +36,9 @@ def _load_builtin(name: str) -> None:
         "openai": "momentbench.models.openai_adapter",
         "claude": "momentbench.models.claude",
         "mixpeek": "momentbench.models.mixpeek_adapter",
+        "qwen-vl": "momentbench.models.qwen_vl",
+        "e5-omni": "momentbench.models.e5_omni",
+        "hf-vlm": "momentbench.models.hf_vlm",
     }
     if name in builtins:
         import importlib

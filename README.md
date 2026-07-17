@@ -64,6 +64,40 @@ momentbench/
 └── tests/                 # Test suite
 ```
 
+## Model Adapters
+
+MomentBench ships adapters for both closed and open-source models.
+
+### Closed-source (API-based)
+
+| Adapter | Model | Notes |
+|---------|-------|-------|
+| `gemini` | Gemini 2.5 Pro | Native multimodal, long-context |
+| `openai` | GPT-4.1 | Frames + transcript in context |
+| `claude` | Claude Sonnet 4 | Frames + transcript in context |
+| `mixpeek` | Mixpeek pipeline | Decompose→embed→search |
+
+### Open-source (self-hosted)
+
+| Adapter | Model | Modalities | Notes |
+|---------|-------|------------|-------|
+| `qwen-vl` | Qwen3-VL / Qwen2.5-VL | Text, image, video | Closest OSS analog to Gemini for video understanding. Serve via vLLM or SGLang. |
+| `e5-omni` | E5-Omni (Microsoft) | Text, image, audio, video | Closest to Gemini Embedding 2 — shared 3584-dim space, MIT license. |
+| `hf-vlm` | Any OpenAI-compatible VLM | Varies | Generic adapter for InternVL3, MiniCPM-V, Llama 4, Phi-4, etc. |
+
+```bash
+# Run OSS models (requires a local inference server)
+QWEN_API_BASE=http://localhost:8000/v1 momentbench run qwen-vl -q data/queries/sample.json -c data/corpus_manifests/sample_manifest.json
+
+# Run only OSS baselines
+OSS_ONLY=1 ./scripts/run_all_baselines.sh
+
+# Run only closed-source baselines
+CLOSED_ONLY=1 ./scripts/run_all_baselines.sh
+```
+
+Install OSS dependencies: `pip install -e ".[oss]"`
+
 ## Submit Results
 
 We welcome external submissions. See [`SUBMISSION.md`](SUBMISSION.md) for details.
