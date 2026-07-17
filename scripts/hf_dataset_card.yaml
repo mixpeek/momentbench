@@ -62,7 +62,7 @@ All footage is public domain or CC BY, permitting commercial derivatives. Full p
 ```python
 from datasets import load_dataset
 
-ds = load_dataset("mixpeek/momentbench")
+ds = load_dataset("Mixpeek/momentbench")
 ```
 
 Or via the CLI:

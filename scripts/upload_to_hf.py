@@ -5,7 +5,7 @@ from pathlib import Path
 
 from huggingface_hub import HfApi
 
-REPO_ID = "mixpeek/momentbench"
+REPO_ID = "Mixpeek/momentbench"
 REPO_TYPE = "dataset"
 
 
