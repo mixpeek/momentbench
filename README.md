@@ -76,6 +76,9 @@ MomentBench ships adapters for both closed and open-source models.
 | `openai` | GPT-4.1 | Frames + transcript in context |
 | `claude` | Claude Sonnet 4 | Frames + transcript in context |
 | `mixpeek` | Mixpeek pipeline | Decompose→embed→search |
+| `twelvelabs` | TwelveLabs Marengo | Video search API with temporal segments |
+| `mixedbread` | mxbai-embed-large | Text embedding retrieval via MixedBread API |
+| `jina-clip` | Jina CLIP v2 | Multilingual multimodal embeddings |
 
 ### Open-source (self-hosted)
 
@@ -83,11 +86,17 @@ MomentBench ships adapters for both closed and open-source models.
 |---------|-------|------------|-------|
 | `qwen-vl` | Qwen3-VL / Qwen2.5-VL | Text, image, video | Closest OSS analog to Gemini for video understanding. Serve via vLLM or SGLang. |
 | `e5-omni` | E5-Omni (Microsoft) | Text, image, audio, video | Closest to Gemini Embedding 2 — shared 3584-dim space, MIT license. |
+| `clip` | OpenAI CLIP (ViT-L/14) | Text, image | Zero-shot image-text retrieval via OpenCLIP. Ranks by cosine similarity. |
 | `hf-vlm` | Any OpenAI-compatible VLM | Varies | Generic adapter for InternVL3, MiniCPM-V, Llama 4, Phi-4, etc. |
 
 ```bash
-# Run OSS models (requires a local inference server)
+# Run API-based models
+TWELVELABS_API_KEY=... momentbench run twelvelabs -q data/queries/sample.json -c data/corpus_manifests/sample_manifest.json
+MIXEDBREAD_API_KEY=... momentbench run mixedbread -q data/queries/sample.json -c data/corpus_manifests/sample_manifest.json
+
+# Run OSS models (requires a local inference server or GPU)
 QWEN_API_BASE=http://localhost:8000/v1 momentbench run qwen-vl -q data/queries/sample.json -c data/corpus_manifests/sample_manifest.json
+momentbench run clip -q data/queries/sample.json -c data/corpus_manifests/sample_manifest.json
 
 # Run only OSS baselines
 OSS_ONLY=1 ./scripts/run_all_baselines.sh

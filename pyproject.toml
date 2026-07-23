@@ -38,6 +38,7 @@ oss = [
     "transformers>=4.45",
     "torch>=2.0",
     "numpy>=1.24",
+    "open_clip_torch>=2.24",
 ]
 site = [
     "fastapi>=0.111",

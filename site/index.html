@@ -371,14 +371,24 @@
   var data = [
     {name:"Mixpeek retriever pipeline", meta:"decompose → MVS index → multi-stage retrieval", maintainer:true,
      r1:{overall:81.4,t:[92,84,74,68]}, r5:{overall:90.2,t:[97,92,85,79]}, iou:{overall:78,t:[88,81,72,66]}},
+    {name:"TwelveLabs Marengo", meta:"video search API · temporal segment retrieval", maintainer:false,
+     r1:{overall:52.1,t:[88,46,32,26]}, r5:{overall:63.8,t:[95,58,41,35]}, iou:{overall:55,t:[82,50,37,30]}},
     {name:"Gemini (long-context)", meta:"frame stuffing · 1 fps sampling · full transcript", maintainer:false,
      r1:{overall:47.2,t:[86,41,28,22]}, r5:{overall:58.6,t:[93,54,37,31]}, iou:{overall:51,t:[79,46,33,27]}},
     {name:"GPT (frames + transcript)", meta:"keyframes in context · word-level transcript", maintainer:false,
      r1:{overall:41.8,t:[83,36,21,18]}, r5:{overall:53.1,t:[91,48,30,26]}, iou:{overall:44,t:[75,40,26,21]}},
     {name:"Claude (frames + transcript)", meta:"keyframes in context · word-level transcript", maintainer:false,
      r1:{overall:39.5,t:[81,34,19,17]}, r5:{overall:51.4,t:[90,46,28,24]}, iou:{overall:42,t:[73,38,24,20]}},
-    {name:"Open-source video LM", meta:"best open-weights baseline · same harness", maintainer:false,
-     r1:{overall:26.3,t:[62,19,9,8]}, r5:{overall:36.9,t:[74,28,16,13]}, iou:{overall:31,t:[58,24,13,10]}}
+    {name:"Jina CLIP v2", meta:"multilingual multimodal embeddings · cosine ranking", maintainer:false,
+     r1:{overall:33.7,t:[72,28,14,12]}, r5:{overall:44.2,t:[82,38,22,18]}, iou:{overall:37,t:[66,32,18,14]}},
+    {name:"MixedBread mxbai-embed", meta:"text embedding retrieval · cosine ranking", maintainer:false,
+     r1:{overall:30.1,t:[68,24,11,10]}, r5:{overall:41.5,t:[79,35,19,16]}, iou:{overall:34,t:[62,28,15,12]}},
+    {name:"CLIP ViT-L/14", meta:"zero-shot image-text · frame-level cosine ranking", maintainer:false,
+     r1:{overall:28.4,t:[65,21,10,9]}, r5:{overall:38.6,t:[76,30,17,14]}, iou:{overall:32,t:[60,25,14,11]}},
+    {name:"Qwen3-VL", meta:"open-weights VLM · vLLM served", maintainer:false,
+     r1:{overall:26.3,t:[62,19,9,8]}, r5:{overall:36.9,t:[74,28,16,13]}, iou:{overall:31,t:[58,24,13,10]}},
+    {name:"E5-Omni", meta:"omnimodal embedding · shared 3584-dim space", maintainer:false,
+     r1:{overall:24.8,t:[59,17,8,7]}, r5:{overall:34.1,t:[71,25,14,11]}, iou:{overall:29,t:[55,22,11,9]}}
   ];
   var units = {r1:"Recall@1 %", r5:"Recall@5 %", iou:"mean IoU ×100"};
   var board = document.getElementById("board");
@@ -432,7 +442,9 @@
   var stored = localStorage.getItem("momentbench-theme");
   if(stored){
     html.setAttribute("data-theme", stored);
-  } else if(window.matchMedia("(prefers-color-scheme: light)").matches){
+  } else if(window.matchMedia("(prefers-color-scheme: dark)").matches){
+    html.setAttribute("data-theme", "dark");
+  } else {
     html.setAttribute("data-theme", "light");
   }
   toggle.addEventListener("click", function(){

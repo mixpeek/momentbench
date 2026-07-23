@@ -39,6 +39,10 @@ def _load_builtin(name: str) -> None:
         "qwen-vl": "momentbench.models.qwen_vl",
         "e5-omni": "momentbench.models.e5_omni",
         "hf-vlm": "momentbench.models.hf_vlm",
+        "twelvelabs": "momentbench.models.twelvelabs_adapter",
+        "clip": "momentbench.models.clip_adapter",
+        "mixedbread": "momentbench.models.mixedbread_adapter",
+        "jina-clip": "momentbench.models.jina_clip_adapter",
     }
     if name in builtins:
         import importlib

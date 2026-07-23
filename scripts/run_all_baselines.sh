@@ -12,8 +12,8 @@ echo "Corpus:  $CORPUS"
 echo "Output:  $OUTPUT"
 echo ""
 
-CLOSED_MODELS="gemini openai claude mixpeek"
-OSS_MODELS="qwen-vl e5-omni hf-vlm"
+CLOSED_MODELS="gemini openai claude mixpeek twelvelabs mixedbread jina-clip"
+OSS_MODELS="qwen-vl e5-omni hf-vlm clip"
 
 if [ "${OSS_ONLY:-}" = "1" ]; then
     MODELS="$OSS_MODELS"

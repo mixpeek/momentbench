@@ -39,7 +39,11 @@
     "mixpeek": {"collection": null},
     "qwen-vl": {"model": "Qwen/Qwen3-VL-4B", "base_url": "http://localhost:8000/v1"},
     "e5-omni": {"model": "intfloat/e5-omni"},
-    "hf-vlm": {"model": "self-hosted-vlm", "base_url": "http://localhost:8000/v1"}
+    "hf-vlm": {"model": "self-hosted-vlm", "base_url": "http://localhost:8000/v1"},
+    "twelvelabs": {"model": "marengo-retrieval-2.7"},
+    "clip": {"model": "ViT-L-14", "pretrained": "openai"},
+    "mixedbread": {"model": "mxbai-embed-large-v1"},
+    "jina-clip": {"model": "jina-clip-v2"}
   },
   "evaluation": {
     "max_concurrency": 5,
