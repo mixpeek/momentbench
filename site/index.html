@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
     --line:#242D36;
     --ink:#E9EDF0;
     --muted:#8C97A1;
-    --faint:#5C6770;
+    --faint:#7A8590;
     --playhead:#FF4B3E;
     --track:#232B34;
     --fill:#9FB4C4;
@@ -29,11 +29,11 @@
     --bg:#FAFBFC;
     --panel:#FFFFFF;
     --panel-2:#F3F5F7;
-    --line:#E2E6EA;
+    --line:#D0D5DA;
     --ink:#1A1F25;
-    --muted:#5A6370;
-    --faint:#8C95A0;
-    --playhead:#E03E32;
+    --muted:#4A5260;
+    --faint:#656E78;
+    --playhead:#C8342A;
     --track:#E8ECF0;
     --fill:#5A7A90;
     --fill-strong:#2A4A5E;
@@ -74,14 +74,15 @@
   /* Theme toggle */
   .theme-toggle{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:var(--radius);width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .15s,color .15s}
   .theme-toggle:hover{color:var(--ink);border-color:var(--faint)}
-  .icon-moon{display:none}
-  [data-theme="light"] .icon-sun{display:none}
-  [data-theme="light"] .icon-moon{display:block}
+  .icon-sun{display:none}
+  .icon-moon{display:block}
+  [data-theme="dark"] .icon-sun{display:block}
+  [data-theme="dark"] .icon-moon{display:none}
 
   /* Light mode adjustments */
   [data-theme="light"] .row.maintainer{border-color:#C0CDD8;background:linear-gradient(0deg,var(--panel),var(--panel-2))}
   [data-theme="light"] .row.maintainer .track .fill{background:linear-gradient(90deg,rgba(42,74,94,.45),rgba(42,74,94,.85))}
-  [data-theme="light"] .row.maintainer .tier .bar i{background:var(--fill-strong)}
+  [data-theme="light"] .row.maintainer .tier .bar span{background:var(--fill-strong)}
   [data-theme="light"] .chip{color:var(--panel);background:var(--fill-strong)}
   [data-theme="light"] .track .ruler{background-image:repeating-linear-gradient(90deg,transparent 0,transparent calc(10% - 1px),rgba(0,0,0,.06) calc(10% - 1px),rgba(0,0,0,.06) 10%)}
   [data-theme="light"] .strip .frames{background-image:repeating-linear-gradient(90deg,transparent 0,transparent 23px,rgba(0,0,0,.05) 23px,rgba(0,0,0,.05) 24px)}
@@ -107,7 +108,7 @@
 
   /* Placeholder badge */
   .placeholder{display:inline-flex;align-items:center;gap:8px;margin:14px 0 26px;padding:7px 12px;border:1px dashed var(--faint);border-radius:var(--radius);font-family:var(--mono);font-size:12px;color:var(--muted)}
-  .placeholder i{width:8px;height:8px;border-radius:50%;background:var(--playhead);flex:none}
+  .placeholder .dot{width:8px;height:8px;border-radius:50%;background:var(--playhead);flex:none}
 
   /* Metric toggle */
   .toggle{display:inline-flex;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-bottom:26px}
@@ -136,8 +137,8 @@
   .tiers{display:flex;gap:6px;margin-top:8px}
   .tier{flex:1;position:relative}
   .tier .bar{height:5px;background:var(--track);border-radius:2px;overflow:hidden}
-  .tier .bar i{display:block;height:100%;background:var(--fill);width:0;transition:width .5s ease}
-  .row.maintainer .tier .bar i{background:var(--fill-strong)}
+  .tier .bar span{display:block;height:100%;background:var(--fill);width:0;transition:width .5s ease}
+  .row.maintainer .tier .bar span{background:var(--fill-strong)}
   .tier .lbl{font-family:var(--mono);font-size:10px;color:var(--faint);margin-top:4px;display:flex;justify-content:space-between}
   .score{font-family:var(--mono);text-align:right}
   .score .n{font-size:21px;font-weight:600}
@@ -162,7 +163,7 @@
   .mark.model{background:var(--playhead)}
   .legend{display:flex;gap:18px;font-family:var(--mono);font-size:11.5px;color:var(--muted);flex-wrap:wrap}
   .legend span{display:flex;align-items:center;gap:7px}
-  .legend i{width:10px;height:3px;flex:none}
+  .legend .g,.legend .m{width:10px;height:3px;flex:none;display:inline-block}
   .legend .g{background:var(--fill-strong)}
   .legend .m{background:var(--playhead)}
 
@@ -182,6 +183,10 @@
   .btn.solid:hover{background:#fff}
   .btn.ghost{border:1px solid var(--line);color:var(--ink)}
   .btn.ghost:hover{border-color:var(--faint)}
+
+  /* Skip nav */
+  .skip-link{position:absolute;left:-9999px;top:0;z-index:999;padding:8px 16px;background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:13px;text-decoration:none;border-radius:0 0 var(--radius) 0}
+  .skip-link:focus{left:0}
 
   footer{padding:34px 0 46px;color:var(--faint);font-size:12.5px}
   .foot-in{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
@@ -205,9 +210,11 @@
 </head>
 <body>
 
-<div class="smpte" aria-hidden="true"><span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c5"></span><span class="c6"></span><span class="c7"></span></div>
+<a class="skip-link" href="#leaderboard">Skip to leaderboard</a>
 
-<nav>
+<div class="smpte" role="presentation" aria-hidden="true"><span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c5"></span><span class="c6"></span><span class="c7"></span></div>
+
+<nav aria-label="Main">
   <div class="wrap nav-in">
     <a class="brand" href="#">
       <b>MomentBench</b>
@@ -225,6 +232,8 @@
     </div>
   </div>
 </nav>
+
+<main>
 
 <header class="hero">
   <div class="wrap">
@@ -247,7 +256,7 @@
       <h2>Leaderboard</h2>
       <div class="sec-note">query runs against the full corpus, not a single video</div>
     </div>
-    <div class="placeholder"><i></i>Sample data — placeholder scores pending final v1.0 evaluation runs</div>
+    <div class="placeholder"><span class="dot" aria-hidden="true"></span>Sample data — placeholder scores pending final v1.0 evaluation runs</div>
     <div>
       <div class="toggle" role="group" aria-label="Metric">
         <button type="button" data-metric="r1" aria-pressed="true">Recall@1</button>
@@ -282,34 +291,34 @@
     <div class="fails">
       <div class="fail">
         <div class="q">"Find the exchange where the chairman interrupts the witness <em>immediately after the second recess</em>." <em>— Senate hearing corpus, tier 4</em></div>
-        <div class="strip"><div class="frames"></div><div class="mark gold" style="left:41%"></div><div class="mark model" style="left:78%"></div></div>
+        <div class="strip" role="img" aria-label="Timeline showing gold moment at 41% and model answer at 78%"><div class="frames"></div><div class="mark gold" style="left:41%" aria-hidden="true"></div><div class="mark model" style="left:78%" aria-hidden="true"></div></div>
         <div class="legend">
-          <span><i class="g"></i>gold 02:14:36 – 02:14:52</span>
-          <span><i class="m"></i>model answer 04:03:11 (wrong recess)</span>
+          <span><span class="g" aria-hidden="true"></span>gold 02:14:36 – 02:14:52</span>
+          <span><span class="m" aria-hidden="true"></span>model answer 04:03:11 (wrong recess)</span>
         </div>
       </div>
       <div class="fail">
         <div class="q">"Find the moment the callout goes silent <em>right before</em> stage separation is visible." <em>— Launch coverage corpus, tier 2</em></div>
-        <div class="strip"><div class="frames"></div><div class="mark gold" style="left:23%"></div><div class="mark model" style="left:24.5%"></div></div>
+        <div class="strip" role="img" aria-label="Timeline showing gold moment at 23% and model answer at 24.5%, nearly overlapping"><div class="frames"></div><div class="mark gold" style="left:23%" aria-hidden="true"></div><div class="mark model" style="left:24.5%" aria-hidden="true"></div></div>
         <div class="legend">
-          <span><i class="g"></i>gold 00:41:23 – 00:41:29</span>
-          <span><i class="m"></i>model answer 00:43:50 (IoU 0.0 — misses by 2:21)</span>
+          <span><span class="g" aria-hidden="true"></span>gold 00:41:23 – 00:41:29</span>
+          <span><span class="m" aria-hidden="true"></span>model answer 00:43:50 (IoU 0.0 — misses by 2:21)</span>
         </div>
       </div>
       <div class="fail">
         <div class="q">"Find the shot where the robot arm reaches toward the girl and stops." <em>— Open-film corpus, tier 3 (character appears in 5 films)</em></div>
-        <div class="strip"><div class="frames"></div><div class="mark gold" style="left:63%"></div><div class="mark model" style="left:12%"></div></div>
+        <div class="strip" role="img" aria-label="Timeline showing gold moment at 63% and model answer at 12%, wrong film"><div class="frames"></div><div class="mark gold" style="left:63%" aria-hidden="true"></div><div class="mark model" style="left:12%" aria-hidden="true"></div></div>
         <div class="legend">
-          <span><i class="g"></i>gold — Tears of Steel, 00:08:04</span>
-          <span><i class="m"></i>model answer — wrong film entirely</span>
+          <span><span class="g" aria-hidden="true"></span>gold — Tears of Steel, 00:08:04</span>
+          <span><span class="m" aria-hidden="true"></span>model answer — wrong film entirely</span>
         </div>
       </div>
       <div class="fail">
         <div class="q">"Find the briefing where the spokesperson is asked about the report <em>and the room laughs</em>." <em>— Briefing corpus, tier 3</em></div>
-        <div class="strip"><div class="frames"></div><div class="mark gold" style="left:55%"></div><div class="mark model" style="left:31%"></div></div>
+        <div class="strip" role="img" aria-label="Timeline showing gold moment at 55% and model answer at 31%, wrong briefing"><div class="frames"></div><div class="mark gold" style="left:55%" aria-hidden="true"></div><div class="mark model" style="left:31%" aria-hidden="true"></div></div>
         <div class="legend">
-          <span><i class="g"></i>gold 01:52:08 – 01:52:15</span>
-          <span><i class="m"></i>model answer — right speaker, wrong briefing (hard negative)</span>
+          <span><span class="g" aria-hidden="true"></span>gold 01:52:08 – 01:52:15</span>
+          <span><span class="m" aria-hidden="true"></span>model answer — right speaker, wrong briefing (hard negative)</span>
         </div>
       </div>
     </div>
@@ -342,6 +351,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <section class="cta">
   <div class="wrap">
@@ -408,7 +419,7 @@
         '<div class="trackwrap">'+
           '<div class="track"><div class="ruler"></div><div class="fill"></div><div class="head"></div></div>'+
           '<div class="tiers">'+ d.t.map(function(v,ti){
-            return '<div class="tier"><div class="bar"><i data-w="'+v+'"></i></div><div class="lbl"><span>T'+(ti+1)+'</span><span>'+v+'</span></div></div>';
+            return '<div class="tier"><div class="bar"><span data-w="'+v+'" aria-hidden="true"></span></div><div class="lbl"><span>T'+(ti+1)+'</span><span>'+v+'</span></div></div>';
           }).join("") +'</div>'+
         '</div>'+
         '<div class="score"><span class="n">'+ d.overall.toFixed(1) +'</span><span class="u">'+ units[metric] +'</span></div>';
@@ -416,7 +427,7 @@
       requestAnimationFrame(function(){
         row.querySelector(".fill").style.width = d.overall + "%";
         row.querySelector(".head").style.left = "calc(" + d.overall + "% - 1px)";
-        row.querySelectorAll(".tier .bar i").forEach(function(el){
+        row.querySelectorAll(".tier .bar span").forEach(function(el){
           el.style.width = el.getAttribute("data-w") + "%";
         });
       });
@@ -444,12 +455,10 @@
     html.setAttribute("data-theme", stored);
   } else if(window.matchMedia("(prefers-color-scheme: dark)").matches){
     html.setAttribute("data-theme", "dark");
-  } else {
-    html.setAttribute("data-theme", "light");
   }
   toggle.addEventListener("click", function(){
-    var current = html.getAttribute("data-theme") || "dark";
-    var next = current === "dark" ? "light" : "dark";
+    var current = html.getAttribute("data-theme") || "light";
+    var next = current === "light" ? "dark" : "light";
     html.setAttribute("data-theme", next);
     localStorage.setItem("momentbench-theme", next);
   });
