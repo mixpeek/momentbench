@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="640" fill="#101418"/>
+
+  <!-- SMPTE strip top -->
+  <rect x="0" y="0" width="183" height="6" fill="#9BA0A3"/>
+  <rect x="183" y="0" width="183" height="6" fill="#B9B45B"/>
+  <rect x="366" y="0" width="183" height="6" fill="#5BAEB0"/>
+  <rect x="549" y="0" width="182" height="6" fill="#5BA96B"/>
+  <rect x="731" y="0" width="183" height="6" fill="#A868A4"/>
+  <rect x="914" y="0" width="183" height="6" fill="#B85450"/>
+  <rect x="1097" y="0" width="183" height="6" fill="#5468B0"/>
+
+  <!-- Decorative timeline tracks -->
+  <g opacity="0.12">
+    <rect x="80" y="380" width="1120" height="28" rx="4" fill="#232B34"/>
+    <rect x="80" y="380" width="560" height="28" rx="4" fill="#9FB4C4" opacity="0.5"/>
+    <rect x="80" y="420" width="1120" height="28" rx="4" fill="#232B34"/>
+    <rect x="80" y="420" width="380" height="28" rx="4" fill="#9FB4C4" opacity="0.4"/>
+    <rect x="80" y="460" width="1120" height="28" rx="4" fill="#232B34"/>
+    <rect x="80" y="460" width="720" height="28" rx="4" fill="#9FB4C4" opacity="0.35"/>
+    <rect x="80" y="500" width="1120" height="28" rx="4" fill="#232B34"/>
+    <rect x="80" y="500" width="280" height="28" rx="4" fill="#9FB4C4" opacity="0.3"/>
+    <rect x="80" y="540" width="1120" height="28" rx="4" fill="#232B34"/>
+    <rect x="80" y="540" width="180" height="28" rx="4" fill="#9FB4C4" opacity="0.25"/>
+  </g>
+
+  <!-- Playhead markers -->
+  <rect x="638" y="370" width="2" height="208" fill="#FF4B3E" opacity="0.6"/>
+  <polygon points="633,370 643,370 638,363" fill="#FF4B3E" opacity="0.6"/>
+
+  <rect x="458" y="410" width="2" height="48" fill="#FF4B3E" opacity="0.4"/>
+  <rect x="798" y="450" width="2" height="48" fill="#FF4B3E" opacity="0.4"/>
+
+  <!-- Eyebrow -->
+  <polygon points="80,140 89,140 84.5,149" fill="#FF4B3E"/>
+  <text x="98" y="148" fill="#5C6770" font-family="'IBM Plex Mono', monospace" font-size="13" letter-spacing="2" text-transform="uppercase">CORPUS-SCALE VIDEO RETRIEVAL</text>
+
+  <!-- Title -->
+  <text x="80" y="210" fill="#E9EDF0" font-family="'Archivo', sans-serif" font-weight="800" font-size="62" letter-spacing="-1.5">MomentBench</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="260" fill="#8C97A1" font-family="'IBM Plex Sans', sans-serif" font-size="22">75 hours of video. 500 queries. 4 difficulty tiers.</text>
+  <text x="80" y="290" fill="#8C97A1" font-family="'IBM Plex Sans', sans-serif" font-size="22">Can your model find the right 4 seconds?</text>
+
+  <!-- Stats row -->
+  <g>
+    <rect x="80" y="320" width="180" height="42" rx="6" fill="#161B21" stroke="#242D36" stroke-width="1"/>
+    <text x="96" y="347" fill="#E9EDF0" font-family="'IBM Plex Mono', monospace" font-weight="600" font-size="16">75h corpus</text>
+
+    <rect x="272" y="320" width="180" height="42" rx="6" fill="#161B21" stroke="#242D36" stroke-width="1"/>
+    <text x="288" y="347" fill="#E9EDF0" font-family="'IBM Plex Mono', monospace" font-weight="600" font-size="16">500 queries</text>
+
+    <rect x="464" y="320" width="180" height="42" rx="6" fill="#161B21" stroke="#242D36" stroke-width="1"/>
+    <text x="480" y="347" fill="#E9EDF0" font-family="'IBM Plex Mono', monospace" font-weight="600" font-size="16">IoU &gt;= 0.5</text>
+
+    <rect x="656" y="320" width="180" height="42" rx="6" fill="#161B21" stroke="#242D36" stroke-width="1"/>
+    <text x="672" y="347" fill="#E9EDF0" font-family="'IBM Plex Mono', monospace" font-weight="600" font-size="16">PD / CC BY</text>
+  </g>
+
+  <!-- Built by Mixpeek -->
+  <text x="80" y="618" fill="#5C6770" font-family="'IBM Plex Mono', monospace" font-size="13">Built on Mixpeek</text>
+  <text x="1200" y="618" fill="#5C6770" font-family="'IBM Plex Mono', monospace" font-size="13" text-anchor="end">github.com/mixpeek/momentbench</text>
+
+  <!-- SMPTE strip bottom -->
+  <rect x="0" y="634" width="183" height="6" fill="#9BA0A3"/>
+  <rect x="183" y="634" width="183" height="6" fill="#B9B45B"/>
+  <rect x="366" y="634" width="183" height="6" fill="#5BAEB0"/>
+  <rect x="549" y="634" width="182" height="6" fill="#5BA96B"/>
+  <rect x="731" y="634" width="183" height="6" fill="#A868A4"/>
+  <rect x="914" y="634" width="183" height="6" fill="#B85450"/>
+  <rect x="1097" y="634" width="183" height="6" fill="#5468B0"/>
+</svg>

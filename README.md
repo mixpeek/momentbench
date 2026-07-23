@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="site/assets/banner.svg" alt="MomentBench — Corpus-scale video retrieval benchmark" width="100%">
+</p>
+
 # MomentBench
 
 **[momentbench.com](https://momentbench.com)** — Corpus-scale video moment retrieval benchmark.

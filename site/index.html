@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MomentBench — Corpus-scale video retrieval benchmark</title>
+<meta name="description" content="75 hours of rights-cleared video, 500 queries across 4 difficulty tiers. Can your model find the right 4 seconds?">
+<meta property="og:title" content="MomentBench — Corpus-scale video retrieval benchmark">
+<meta property="og:description" content="75 hours of video. 500 queries. 4 difficulty tiers. Can your model find the right 4 seconds?">
+<meta property="og:image" content="https://momentbench.com/assets/banner.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MomentBench">
+<meta name="twitter:description" content="Corpus-scale video moment retrieval benchmark">
+<meta name="twitter:image" content="https://momentbench.com/assets/banner.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -167,6 +176,15 @@
   .legend .g{background:var(--fill-strong)}
   .legend .m{background:var(--playhead)}
 
+  /* Verticals */
+  .verticals{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px}
+  .vertical{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .vertical img{width:100%;height:140px;object-fit:cover;display:block}
+  .vertical .v-body{padding:16px 18px}
+  .vertical .v-label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:6px}
+  .vertical .v-title{font-weight:600;font-size:15px;margin-bottom:6px}
+  .vertical .v-desc{font-size:13px;color:var(--muted)}
+
   /* Methodology */
   .method{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
   .m-item{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
@@ -198,10 +216,11 @@
     .row{grid-template-columns:26px 1fr 92px;grid-template-areas:"rank model score" "track track track"}
     .rank{grid-area:rank}.model{grid-area:model}.score{grid-area:score}.trackwrap{grid-area:track}
     .findings,.method{grid-template-columns:1fr 1fr}
+    .verticals{grid-template-columns:1fr 1fr}
     .fails{grid-template-columns:1fr}
   }
   @media (max-width:560px){
-    .findings,.method{grid-template-columns:1fr}
+    .findings,.method,.verticals{grid-template-columns:1fr}
     .statline{flex-direction:column}
     .stat{border-right:none;border-bottom:1px solid var(--line)}
     .stat:last-child{border-bottom:none}
@@ -331,7 +350,33 @@
       <h2>Methodology</h2>
       <div class="sec-note">full spec in the technical report</div>
     </div>
-    <div class="method">
+    <div class="verticals">
+      <div class="vertical">
+        <img src="assets/civic.jpg" alt="U.S. Capitol building representing the civic vertical" loading="lazy" width="600" height="400">
+        <div class="v-body">
+          <div class="v-label">Civic</div>
+          <div class="v-title">~30 hours</div>
+          <div class="v-desc">Congressional hearings, federal agency briefings, and government proceedings.</div>
+        </div>
+      </div>
+      <div class="vertical">
+        <img src="assets/aerospace.jpg" alt="Rocket launch representing the aerospace vertical" loading="lazy" width="600" height="400">
+        <div class="v-body">
+          <div class="v-label">Aerospace</div>
+          <div class="v-title">~25 hours</div>
+          <div class="v-desc">NASA missions, NOAA field operations, and launch coverage footage.</div>
+        </div>
+      </div>
+      <div class="vertical">
+        <img src="assets/film.jpg" alt="Video editing timeline representing the film vertical" loading="lazy" width="600" height="400">
+        <div class="v-body">
+          <div class="v-label">Film</div>
+          <div class="v-title">~20 hours</div>
+          <div class="v-desc">Blender open movies, Prelinger Archives, and National Archives footage.</div>
+        </div>
+      </div>
+    </div>
+    <div class="method" style="margin-top:26px">
       <div class="m-item">
         <div class="mk">Corpus</div>
         <p>75 hours across three verticals: government proceedings, aerospace &amp; field operations, and archival film. Every asset is public domain or CC BY, with a machine-generated attribution manifest.</p>
@@ -372,7 +417,7 @@
       Created and maintained by <a href="https://mixpeek.com" rel="noopener">Mixpeek</a>. Mixpeek's own pipeline appears on this leaderboard; its score is reproducible from the <a href="#" rel="noopener">open harness</a>.
     </div>
     <div class="mono">
-      corpus: PD / CC BY · storage: Backblaze B2 · v1.0
+      corpus: PD / CC BY · storage: Backblaze B2 · photos: <a href="https://www.pexels.com" rel="noopener">Pexels</a> · v1.0
     </div>
   </div>
 </footer>
