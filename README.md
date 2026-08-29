@@ -6,7 +6,9 @@
 
 **[momentbench.com](https://momentbench.com)** — Corpus-scale video moment retrieval benchmark.
 
-75 hours of rights-cleared video, 500 queries across 4 difficulty tiers, evaluated against frontier models and retrieval pipelines.
+**Design target:** 75 hours of rights-cleared video, 500 queries across 4 difficulty tiers, evaluated against frontier models and retrieval pipelines.
+
+**Current seed release (v0.1):** 5 corpus assets, 6 queries, spanning all 3 verticals and 4 tiers — see [`data/`](data/). The corpus and query set are actively growing toward the full target; PRs adding rights-cleared footage or queries are welcome (see [`SUBMISSION.md`](SUBMISSION.md)).
 
 Built on [Mixpeek](https://mixpeek.com).
 
@@ -38,9 +40,11 @@ Difficulty targets were pre-registered before any baseline evaluations were run.
 
 ## Verticals
 
-- **Civic** (~30h): U.S. congressional hearings, federal agency briefings
-- **Aerospace** (~25h): NASA missions, NOAA field operations
-- **Film** (~20h): Blender open movies, Prelinger Archives, National Archives
+Target scope per vertical, with current seed-release asset count:
+
+- **Civic** (target ~30h, seed: 1 asset): U.S. congressional hearings, federal agency briefings
+- **Aerospace** (target ~25h, seed: 1 asset): NASA missions, NOAA field operations
+- **Film** (target ~20h, seed: 3 assets): Blender open movies, Prelinger Archives, National Archives
 
 ## Scoring
 

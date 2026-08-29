@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MomentBench — Corpus-scale video retrieval benchmark</title>
-<meta name="description" content="75 hours of rights-cleared video, 500 queries across 4 difficulty tiers. Can your model find the right 4 seconds?">
+<meta name="description" content="Corpus-scale video moment retrieval benchmark. Target: 75 hours of rights-cleared video, 500 queries across 4 difficulty tiers. Can your model find the right 4 seconds?">
 <meta property="og:title" content="MomentBench — Corpus-scale video retrieval benchmark">
-<meta property="og:description" content="75 hours of video. 500 queries. 4 difficulty tiers. Can your model find the right 4 seconds?">
+<meta property="og:description" content="Corpus-scale video retrieval benchmark. Target: 75 hours of video, 500 queries, 4 difficulty tiers.">
 <meta property="og:image" content="https://momentbench.com/assets/banner.svg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -258,7 +258,7 @@
   <div class="wrap">
     <div class="eyebrow">Corpus-scale video retrieval · v1.0</div>
     <h1>Frontier models can watch a clip. <span class="dim">They can't find a moment.</span></h1>
-    <p class="sub">MomentBench measures whether a system can locate an exact moment — the right video, the right four seconds — across a 75-hour multimodal corpus. Every query is human-annotated with gold in/out timestamps and explicit hard negatives. Every result is reproducible from the open harness.</p>
+    <p class="sub">MomentBench measures whether a system can locate an exact moment — the right video, the right four seconds — across a growing multimodal corpus (target: 75 hours). Each query has an author-authored gold in/out timestamp; some include explicit hard negatives. Every result is reproducible from the open harness.</p>
     <div class="statline" role="list">
       <div class="stat" role="listitem"><div class="v">75:12:44:00</div><div class="k">corpus (hh:mm:ss:ff)</div></div>
       <div class="stat" role="listitem"><div class="v">500</div><div class="k">human-verified queries</div></div>
@@ -379,11 +379,11 @@
     <div class="method" style="margin-top:26px">
       <div class="m-item">
         <div class="mk">Corpus</div>
-        <p>75 hours across three verticals: government proceedings, aerospace &amp; field operations, and archival film. Every asset is public domain or CC BY, with a machine-generated attribution manifest.</p>
+        <p>Target: 75 hours across three verticals — government proceedings, aerospace &amp; field operations, and archival film. Current seed release: 5 assets. Every asset is public domain or CC BY, with a machine-generated attribution manifest. Corpus is actively growing — see <a href="https://github.com/mixpeek/momentbench">the repo</a>.</p>
       </div>
       <div class="m-item">
         <div class="mk">Query tiers</div>
-        <p>T1 single-condition visual · T2 cross-modal joint conditions · T3 corpus-scale with explicit hard negatives · T4 temporal reasoning. 500 queries, two annotators each, adjudicated gold labels.</p>
+        <p>T1 single-condition visual · T2 cross-modal joint conditions · T3 corpus-scale with explicit hard negatives · T4 temporal reasoning. Target: 500 queries. Current seed release: 6 queries with author-authored gold labels, growing.</p>
       </div>
       <div class="m-item">
         <div class="mk">Scoring</div>
@@ -391,7 +391,7 @@
       </div>
       <div class="m-item">
         <div class="mk">Reproducibility</div>
-        <p>The harness, public query set, and model adapters are open source. A 150-query private held-out set guards against contamination; labs can evaluate against it via a hosted scoring endpoint.</p>
+        <p>The harness, public query set, and model adapters are open source. A private held-out contamination-guard set is planned for a future release, not yet live.</p>
       </div>
     </div>
   </div>
@@ -414,7 +414,7 @@
 <footer>
   <div class="wrap foot-in">
     <div>
-      Created and maintained by <a href="https://mixpeek.com" rel="noopener">Mixpeek</a>. Mixpeek's own pipeline appears on this leaderboard; its score is reproducible from the <a href="#" rel="noopener">open harness</a>.
+      Created and maintained by <a href="https://mixpeek.com" rel="noopener">Mixpeek</a>. Mixpeek's own pipeline appears on this leaderboard; its score is reproducible from the <a href="https://github.com/mixpeek/momentbench" rel="noopener">open harness</a>.
     </div>
     <div class="mono">
       corpus: PD / CC BY · storage: Backblaze B2 · photos: <a href="https://www.pexels.com" rel="noopener">Pexels</a> · v1.0
