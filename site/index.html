@@ -275,7 +275,7 @@
       <h2>Leaderboard</h2>
       <div class="sec-note">query runs against the full corpus, not a single video</div>
     </div>
-    <div class="placeholder"><span class="dot" aria-hidden="true"></span>Sample data — placeholder scores pending final v1.0 evaluation runs</div>
+    <div class="placeholder"><span class="dot" aria-hidden="true"></span>CLIP ViT-L/14 (marked "real v0.1 run") is a genuine run against the current 6-query seed set — a weak, honest baseline, not final. All other rows remain placeholder scores pending API access for closed-source vendors and a larger corpus.</div>
     <div>
       <div class="toggle" role="group" aria-label="Metric">
         <button type="button" data-metric="r1" aria-pressed="true">Recall@1</button>
@@ -439,8 +439,8 @@
      r1:{overall:33.7,t:[72,28,14,12]}, r5:{overall:44.2,t:[82,38,22,18]}, iou:{overall:37,t:[66,32,18,14]}},
     {name:"MixedBread mxbai-embed", meta:"text embedding retrieval · cosine ranking", maintainer:false,
      r1:{overall:30.1,t:[68,24,11,10]}, r5:{overall:41.5,t:[79,35,19,16]}, iou:{overall:34,t:[62,28,15,12]}},
-    {name:"CLIP ViT-L/14", meta:"zero-shot image-text · frame-level cosine ranking", maintainer:false,
-     r1:{overall:28.4,t:[65,21,10,9]}, r5:{overall:38.6,t:[76,30,17,14]}, iou:{overall:32,t:[60,25,14,11]}},
+    {name:"CLIP ViT-L/14", meta:"zero-shot title-text cosine ranking (v0.1: text-only, no frame sampling yet)", maintainer:false, real:true,
+     r1:{overall:0.0,t:[0,0,0,0]}, r5:{overall:0.0,t:[0,0,0,0]}, iou:{overall:0.4,t:[0.4,0.1,0.9,0.1]}},
     {name:"Qwen3-VL", meta:"open-weights VLM · vLLM served", maintainer:false,
      r1:{overall:26.3,t:[62,19,9,8]}, r5:{overall:36.9,t:[74,28,16,13]}, iou:{overall:31,t:[58,24,13,10]}},
     {name:"E5-Omni", meta:"omnimodal embedding · shared 3584-dim space", maintainer:false,
@@ -459,7 +459,7 @@
       row.className = "row" + (m.maintainer ? " maintainer" : "");
       row.innerHTML =
         '<div class="rank">'+ String(i+1).padStart(2,"0") +'</div>'+
-        '<div class="model"><div class="name">'+ m.name + (m.maintainer ? ' <span class="chip">maintainer</span>' : '') +'</div>'+
+        '<div class="model"><div class="name">'+ m.name + (m.maintainer ? ' <span class="chip">maintainer</span>' : '') + (m.real ? ' <span class="chip">real v0.1 run</span>' : '') +'</div>'+
         '<div class="meta">'+ m.meta +'</div></div>'+
         '<div class="trackwrap">'+
           '<div class="track"><div class="ruler"></div><div class="fill"></div><div class="head"></div></div>'+
