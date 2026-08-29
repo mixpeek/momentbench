@@ -68,5 +68,61 @@
     "storage_path": null,
     "mixpeek_asset_id": null,
     "metadata": {"year": 2012, "director": "Ian Hubert"}
+  },
+  {
+    "asset_id": "elephants-dream",
+    "source_id": "blender-open-movies",
+    "title": "Elephants Dream",
+    "vertical": "film",
+    "license": "cc_by",
+    "attribution": "Blender Foundation / Orange Open Movie Project (CC BY 2.5)",
+    "duration_s": 540,
+    "source_url": "https://orange.blender.org/download/",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {"year": 2006, "director": "Bassam Kurdali", "notes": "World's first open movie. duration_s rounded from Wikipedia's stated 9 min; verify exact frame count when the file is actually ingested."}
+  },
+  {
+    "asset_id": "cosmos-laundromat",
+    "source_id": "blender-open-movies",
+    "title": "Cosmos Laundromat: First Cycle",
+    "vertical": "film",
+    "license": "cc_by",
+    "attribution": "Blender Foundation / Gooseberry Project (CC BY 4.0)",
+    "duration_s": 720,
+    "source_url": "https://studio.blender.org/films/cosmos-laundromat/",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {"year": 2015, "director": "Mathieu Auvray", "notes": "duration_s rounded from stated 12 min; verify exact frame count when the file is actually ingested."}
+  },
+  {
+    "asset_id": "spring",
+    "source_id": "blender-open-movies",
+    "title": "Spring",
+    "vertical": "film",
+    "license": "cc_by",
+    "attribution": "Blender Foundation / Blender Animation Studio (CC BY 4.0)",
+    "duration_s": 464,
+    "source_url": "https://studio.blender.org/films/spring/",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {"year": 2019, "director": "Andy Goralczyk"}
+  },
+  {
+    "asset_id": "agent-327-operation-barbershop",
+    "source_id": "blender-open-movies",
+    "title": "Agent 327: Operation Barbershop",
+    "vertical": "film",
+    "license": "cc_by",
+    "attribution": "Blender Foundation / Blender Animation Studio (CC BY 4.0)",
+    "duration_s": 231,
+    "source_url": "https://studio.blender.org/films/agent-327/",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {"year": 2017, "director": "Colin Levy"}
   }
 ]

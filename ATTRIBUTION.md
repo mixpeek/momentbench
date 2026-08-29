@@ -4,35 +4,41 @@ All video content in MomentBench is sourced from works that are either in the pu
 
 This manifest is auto-generated from asset metadata in the corpus. Each entry includes the source, license, and attribution string required for redistribution.
 
-## Public Domain (17 U.S.C. § 105 — U.S. Government Works)
+## In the corpus today (v0.1 seed release)
 
-- **Senate Judiciary Committee Hearings** (civic): U.S. Senate (public domain, 17 U.S.C. § 105)
-  Source: https://www.senate.gov/committees
-- **House Committee Hearings** (civic): U.S. House of Representatives (public domain, 17 U.S.C. § 105)
-  Source: https://www.house.gov
-- **DoD Press Briefings** (civic): Defense Visual Information Distribution Service (DVIDS)
-  Source: https://www.dvidshub.net
+### Public Domain (17 U.S.C. § 105 — U.S. Government Works)
+
+- **Senate Judiciary Committee Hearing, March 15 2024** (civic): U.S. Senate (public domain, 17 U.S.C. § 105)
+  Source: https://www.senate.gov/committees/video/2024-03-15
 - **NASA Artemis I Launch Coverage** (aerospace): NASA (public domain)
-  Source: https://www.nasa.gov/multimedia
-- **NOAA Field Operations Footage** (aerospace): NOAA (public domain)
-  Source: https://www.noaa.gov
-- **Prelinger Archives Ephemeral Films** (film): Public domain
-  Source: https://archive.org/details/prelinger
-- **U.S. National Archives Newsreels** (film): Public domain
-  Source: https://www.archives.gov/research/catalog
+  Source: https://www.nasa.gov/multimedia/artemis-i-launch
 
-## Creative Commons Attribution (CC BY)
+### Creative Commons Attribution (CC BY)
 
-- **Big Buck Bunny** (film): Blender Foundation (CC BY 3.0)
-  Source: https://peach.blender.org
-- **Sintel** (film): Blender Foundation (CC BY 3.0)
-  Source: https://durian.blender.org
-- **Tears of Steel** (film): Blender Foundation (CC BY 3.0)
-  Source: https://mango.blender.org
-- **Cosmos Laundromat** (film): Blender Foundation (CC BY 4.0)
-  Source: https://gooseberry.blender.org
-- **Spring** (film): Blender Foundation (CC BY 4.0)
-  Source: https://studio.blender.org/films/spring
+- **Big Buck Bunny** (film, 2008): Blender Foundation (CC BY 3.0)
+  Source: https://peach.blender.org/download/
+- **Sintel** (film, 2010): Blender Foundation (CC BY 3.0)
+  Source: https://durian.blender.org/download/
+- **Tears of Steel** (film, 2012): Blender Foundation (CC BY 3.0)
+  Source: https://mango.blender.org/download/
+- **Elephants Dream** (film, 2006): Blender Foundation / Orange Open Movie Project (CC BY 2.5)
+  Source: https://orange.blender.org/download/
+- **Cosmos Laundromat: First Cycle** (film, 2015): Blender Foundation / Gooseberry Project (CC BY 4.0)
+  Source: https://studio.blender.org/films/cosmos-laundromat/
+- **Spring** (film, 2019): Blender Foundation / Blender Animation Studio (CC BY 4.0)
+  Source: https://studio.blender.org/films/spring/
+- **Agent 327: Operation Barbershop** (film, 2017): Blender Foundation / Blender Animation Studio (CC BY 4.0)
+  Source: https://studio.blender.org/films/agent-327/
+
+## Planned sources (not yet in the corpus — target scope, see README)
+
+These are the source classes MomentBench intends to draw on to reach its 75-hour target. None of these have been ingested yet; do not cite them as already part of the benchmark.
+
+- House Committee Hearings (civic): U.S. House of Representatives — https://www.house.gov
+- DoD Press Briefings (civic): Defense Visual Information Distribution Service (DVIDS) — https://www.dvidshub.net
+- NOAA Field Operations Footage (aerospace): NOAA — https://www.noaa.gov
+- Prelinger Archives Ephemeral Films (film): Public domain — https://archive.org/details/prelinger
+- U.S. National Archives Newsreels (film): Public domain — https://www.archives.gov/research/catalog
 
 ## Excluded License Types
 
