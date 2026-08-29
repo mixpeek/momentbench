@@ -72,5 +72,41 @@
     ],
     "is_public": true,
     "metadata": {"source": "manual"}
+  },
+  {
+    "query_id": "q-film-003",
+    "text": "A hinged wooden mechanical head opens to reveal three red switches inside, while a man recoils in alarm",
+    "tier": 1,
+    "vertical": "film",
+    "gold_moments": [
+      {"asset_id": "agent-327-operation-barbershop", "t_in": 100.0, "t_out": 103.5}
+    ],
+    "hard_negatives": [],
+    "is_public": true,
+    "metadata": {"source": "model-annotated, single-pass (downloaded the real file, extracted frames at 1s resolution, visually inspected) — pending human review"}
+  },
+  {
+    "query_id": "q-film-004",
+    "text": "The man fires a makeshift flamethrower, flames erupting from the nozzle as he grits his teeth",
+    "tier": 1,
+    "vertical": "film",
+    "gold_moments": [
+      {"asset_id": "agent-327-operation-barbershop", "t_in": 199.5, "t_out": 205.0}
+    ],
+    "hard_negatives": [],
+    "is_public": true,
+    "metadata": {"source": "model-annotated, single-pass (downloaded the real file, extracted frames at 1s resolution, visually inspected) — pending human review"}
+  },
+  {
+    "query_id": "q-film-005",
+    "text": "In the protagonist's nightmare, a blood-spattered masked barber threatens him with a straight razor while he sits gagged in the chair",
+    "tier": 1,
+    "vertical": "film",
+    "gold_moments": [
+      {"asset_id": "agent-327-operation-barbershop", "t_in": 174.5, "t_out": 180.0}
+    ],
+    "hard_negatives": [],
+    "is_public": true,
+    "metadata": {"source": "model-annotated, single-pass (downloaded the real file, extracted frames at 1s resolution, visually inspected) — pending human review", "notes": "spans a fast-cut nightmare-montage vignette (multiple brief shots of the same threat), not one static camera setup — boundary precision is approximate (~1-2s)."}
   }
 ]

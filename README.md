@@ -8,7 +8,7 @@
 
 **Design target:** 75 hours of rights-cleared video, 500 queries across 4 difficulty tiers, evaluated against frontier models and retrieval pipelines.
 
-**Current seed release (v0.1):** 9 corpus assets, 6 queries, spanning all 3 verticals and 4 tiers — see [`data/`](data/). The corpus and query set are actively growing toward the full target; PRs adding rights-cleared footage or queries are welcome (see [`SUBMISSION.md`](SUBMISSION.md)).
+**Current seed release (v0.1):** 9 corpus assets, 9 queries, spanning all 3 verticals and 4 tiers — see [`data/`](data/). 3 of the queries are model-annotated (downloaded the real footage, extracted frames, verified timestamps by inspection) rather than human-authored — flagged as such in their `metadata.source` field, pending human review. The corpus and query set are actively growing toward the full target; PRs adding rights-cleared footage or queries are welcome (see [`SUBMISSION.md`](SUBMISSION.md)).
 
 Built on [Mixpeek](https://mixpeek.com).
 

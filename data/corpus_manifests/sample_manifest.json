@@ -5,13 +5,19 @@
     "title": "Senate Judiciary Committee Hearing - March 15, 2024",
     "vertical": "civic",
     "license": "public_domain",
-    "attribution": "U.S. Senate (public domain, 17 U.S.C. § 105)",
+    "attribution": "U.S. Senate (public domain, 17 U.S.C. \u00a7 105)",
     "duration_s": 7200,
     "source_url": "https://www.senate.gov/committees/video/2024-03-15",
     "is_sellable": true,
     "storage_path": null,
     "mixpeek_asset_id": null,
-    "metadata": {"speakers": ["Senator Johnson", "Senator Smith"], "topic": "budget allocation"}
+    "metadata": {
+      "speakers": [
+        "Senator Johnson",
+        "Senator Smith"
+      ],
+      "topic": "budget allocation"
+    }
   },
   {
     "asset_id": "nasa-artemis-i-launch",
@@ -25,7 +31,10 @@
     "is_sellable": true,
     "storage_path": null,
     "mixpeek_asset_id": null,
-    "metadata": {"mission": "Artemis I", "date": "2022-11-16"}
+    "metadata": {
+      "mission": "Artemis I",
+      "date": "2022-11-16"
+    }
   },
   {
     "asset_id": "big-buck-bunny",
@@ -39,7 +48,10 @@
     "is_sellable": true,
     "storage_path": null,
     "mixpeek_asset_id": null,
-    "metadata": {"year": 2008, "director": "Sacha Goedegebure"}
+    "metadata": {
+      "year": 2008,
+      "director": "Sacha Goedegebure"
+    }
   },
   {
     "asset_id": "sintel",
@@ -53,7 +65,10 @@
     "is_sellable": true,
     "storage_path": null,
     "mixpeek_asset_id": null,
-    "metadata": {"year": 2010, "director": "Colin Levy"}
+    "metadata": {
+      "year": 2010,
+      "director": "Colin Levy"
+    }
   },
   {
     "asset_id": "tears-of-steel",
@@ -67,7 +82,10 @@
     "is_sellable": true,
     "storage_path": null,
     "mixpeek_asset_id": null,
-    "metadata": {"year": 2012, "director": "Ian Hubert"}
+    "metadata": {
+      "year": 2012,
+      "director": "Ian Hubert"
+    }
   },
   {
     "asset_id": "elephants-dream",
@@ -81,7 +99,11 @@
     "is_sellable": true,
     "storage_path": null,
     "mixpeek_asset_id": null,
-    "metadata": {"year": 2006, "director": "Bassam Kurdali", "notes": "World's first open movie. duration_s rounded from Wikipedia's stated 9 min; verify exact frame count when the file is actually ingested."}
+    "metadata": {
+      "year": 2006,
+      "director": "Bassam Kurdali",
+      "notes": "World's first open movie. duration_s rounded from Wikipedia's stated 9 min; verify exact frame count when the file is actually ingested."
+    }
   },
   {
     "asset_id": "cosmos-laundromat",
@@ -95,7 +117,11 @@
     "is_sellable": true,
     "storage_path": null,
     "mixpeek_asset_id": null,
-    "metadata": {"year": 2015, "director": "Mathieu Auvray", "notes": "duration_s rounded from stated 12 min; verify exact frame count when the file is actually ingested."}
+    "metadata": {
+      "year": 2015,
+      "director": "Mathieu Auvray",
+      "notes": "duration_s rounded from stated 12 min; verify exact frame count when the file is actually ingested."
+    }
   },
   {
     "asset_id": "spring",
@@ -109,7 +135,10 @@
     "is_sellable": true,
     "storage_path": null,
     "mixpeek_asset_id": null,
-    "metadata": {"year": 2019, "director": "Andy Goralczyk"}
+    "metadata": {
+      "year": 2019,
+      "director": "Andy Goralczyk"
+    }
   },
   {
     "asset_id": "agent-327-operation-barbershop",
@@ -118,11 +147,15 @@
     "vertical": "film",
     "license": "cc_by",
     "attribution": "Blender Foundation / Blender Animation Studio (CC BY 4.0)",
-    "duration_s": 231,
+    "duration_s": 231.53,
     "source_url": "https://studio.blender.org/films/agent-327/",
     "is_sellable": true,
     "storage_path": null,
     "mixpeek_asset_id": null,
-    "metadata": {"year": 2017, "director": "Colin Levy"}
+    "metadata": {
+      "year": 2017,
+      "director": "Colin Levy",
+      "notes": "duration_s verified exactly via ffprobe against the real archive.org mirror (2026-08-29)."
+    }
   }
 ]

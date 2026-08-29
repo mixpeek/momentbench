@@ -383,7 +383,7 @@
       </div>
       <div class="m-item">
         <div class="mk">Query tiers</div>
-        <p>T1 single-condition visual · T2 cross-modal joint conditions · T3 corpus-scale with explicit hard negatives · T4 temporal reasoning. Target: 500 queries. Current seed release: 6 queries with author-authored gold labels, growing.</p>
+        <p>T1 single-condition visual · T2 cross-modal joint conditions · T3 corpus-scale with explicit hard negatives · T4 temporal reasoning. Target: 500 queries. Current seed release: 9 queries (6 author-authored, 3 model-annotated pending human review), growing.</p>
       </div>
       <div class="m-item">
         <div class="mk">Scoring</div>
@@ -440,7 +440,7 @@
     {name:"MixedBread mxbai-embed", meta:"text embedding retrieval · cosine ranking", maintainer:false,
      r1:{overall:30.1,t:[68,24,11,10]}, r5:{overall:41.5,t:[79,35,19,16]}, iou:{overall:34,t:[62,28,15,12]}},
     {name:"CLIP ViT-L/14", meta:"zero-shot title-text cosine ranking (v0.1: text-only, no frame sampling yet)", maintainer:false, real:true,
-     r1:{overall:0.0,t:[0,0,0,0]}, r5:{overall:0.0,t:[0,0,0,0]}, iou:{overall:0.4,t:[0.4,0.1,0.9,0.1]}},
+     r1:{overall:0.0,t:[0,0,0,0]}, r5:{overall:0.0,t:[0,0,0,0]}, iou:{overall:0.5,t:[0.6,0.1,0.9,0.1]}},
     {name:"Qwen3-VL", meta:"open-weights VLM · vLLM served", maintainer:false,
      r1:{overall:26.3,t:[62,19,9,8]}, r5:{overall:36.9,t:[74,28,16,13]}, iou:{overall:31,t:[58,24,13,10]}},
     {name:"E5-Omni", meta:"omnimodal embedding · shared 3584-dim space", maintainer:false,
