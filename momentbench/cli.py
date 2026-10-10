@@ -119,6 +119,28 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, provider: st
         console.print(f"  [yellow]{s.failed_trials} trials ended without a submission[/yellow]")
 
 
+@main.command("corpus-verify")
+@click.option("--manifest", "-m", type=click.Path(exists=True), required=True)
+@click.option("--corpus-dir", type=click.Path(exists=True, file_okay=False), required=True)
+def corpus_verify(manifest: str, corpus_dir: str):
+    """Check corpus files against the manifest: presence, sha256 and duration."""
+    import json
+
+    from momentbench.corpus.verify import check_asset
+
+    assets = json.loads(Path(manifest).read_text())
+    checks = [check_asset(a, Path(corpus_dir)) for a in assets]
+    for c in checks:
+        if c.ok:
+            console.print(f"[green]ok[/green]   {c.asset_id}  {c.duration_s:.2f}s  {c.sha256[:12]}")
+        else:
+            console.print(f"[red]FAIL[/red] {c.asset_id}: {'; '.join(c.problems)}")
+    bad = sum(1 for c in checks if not c.ok)
+    console.print(f"{len(checks) - bad} of {len(checks)} assets verified")
+    if bad:
+        raise SystemExit(1)
+
+
 @main.command()
 @click.argument("results_dir", type=click.Path(exists=True))
 def leaderboard(results_dir: str):
