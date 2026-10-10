@@ -53,9 +53,14 @@ def run(model: str, queries: str, corpus: str, output: str, concurrency: int):
 @click.option("--transcripts-dir", type=click.Path(file_okay=False), default="data/transcripts",
               help="Directory of <asset_id>.vtt transcripts, used when --corpus-dir has none")
 @click.option("--provider", default="anthropic",
-              type=click.Choice(["anthropic", "claude-code", "openai", "gemini"]),
+              type=click.Choice(["anthropic", "claude-code", "openai", "gemini",
+                                 "openai-compatible", "baseline"]),
               help="anthropic, openai, gemini: provider API key and our loop. "
-              "claude-code: the local claude CLI login")
+              "claude-code: the local claude CLI login. openai-compatible: any "
+              "/v1/chat/completions server (vLLM, SGLang, Ollama), with --base-url. "
+              "baseline: reference floors, MODEL is random or abstain")
+@click.option("--base-url", default=None,
+              help="openai-compatible only: server URL, e.g. http://localhost:8000/v1")
 @click.option("--effort", type=str, default=None, help="Provider effort level, e.g. low, high")
 @click.option("--trials", type=int, default=5)
 @click.option("--max-steps", type=int, default=30)
@@ -65,15 +70,17 @@ def run(model: str, queries: str, corpus: str, output: str, concurrency: int):
 @click.option("--output", "-o", type=click.Path(), default="data/results/agentic")
 @click.option("--concurrency", type=int, default=4)
 def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_dir: str,
-            provider: str,
+            provider: str, base_url: str | None,
             effort: str | None, trials: int, max_steps: int, max_frames: int,
             max_tool_calls: int, pricing: str, output: str, concurrency: int):
     """Run the agentic track: a tool-using model searches the corpus for each moment."""
     from momentbench.agentic.anthropic_model import AnthropicAgent
+    from momentbench.agentic.baselines import BaselineAgent
     from momentbench.agentic.budget import Budget, load_pricing
     from momentbench.agentic.claude_code_model import ClaudeCodeAgent
     from momentbench.agentic.environment import LocalCorpus
     from momentbench.agentic.gemini_model import GeminiAgent
+    from momentbench.agentic.openai_compat_model import OpenAICompatAgent
     from momentbench.agentic.openai_model import OpenAIAgent
     from momentbench.agentic.run import run_agentic_benchmark
     from momentbench.runner import load_corpus_assets, load_queries
@@ -101,12 +108,16 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_
         result = asyncio.run(
             run_agentic_benchmark(
                 queries=runnable,
-                model={
-                    "anthropic": AnthropicAgent,
-                    "claude-code": ClaudeCodeAgent,
-                    "openai": OpenAIAgent,
-                    "gemini": GeminiAgent,
-                }[provider](model=model, effort=effort),
+                model=(
+                    OpenAICompatAgent(model=model, effort=effort, base_url=base_url)
+                    if provider == "openai-compatible" else {
+                        "anthropic": AnthropicAgent,
+                        "claude-code": ClaudeCodeAgent,
+                        "openai": OpenAIAgent,
+                        "gemini": GeminiAgent,
+                        "baseline": BaselineAgent,
+                    }[provider](model=model, effort=effort)
+                ),
                 corpus=local,
                 trials=trials,
                 budget=Budget(max_steps=max_steps, max_frames=max_frames,

@@ -20,18 +20,16 @@ Built on [Mixpeek](https://mixpeek.com).
 
 ## Quick Start
 
+Evaluate a model on the v0.2 agentic track in three commands:
+
 ```bash
-pip install -e ".[models]"
-
-# Run a single model
-momentbench run gemini -q data/queries/sample.json -c data/corpus_manifests/sample_manifest.json
-
-# Run all baselines
-./scripts/run_all_baselines.sh
-
-# View leaderboard
-momentbench leaderboard data/results/
+pip install -e ".[openai]"   # or .[gemini], .[claude-code], .[inspect]
+momentbench corpus-download -m data/corpus_manifests/sample_manifest.json --corpus-dir corpus/   # 2.4 GB
+momentbench agentic <model> --provider openai-compatible --base-url http://localhost:8000/v1 \
+  -q data/queries/film_v0.2.json -c data/corpus_manifests/sample_manifest.json --corpus-dir corpus/
 ```
+
+`--provider` is one of `openai-compatible` (vLLM, SGLang, Ollama and other `/v1/chat/completions` servers), `openai`, `gemini`, `anthropic`, `claude-code` or `baseline`. [`docs/integrating.md`](docs/integrating.md) covers each route, including a runnable template for your own agent ([`examples/custom_agent.py`](examples/custom_agent.py)) and the Inspect AI task. Scores so far are in [`docs/results.md`](docs/results.md); compare yours against the `baseline-random` and `baseline-abstain` floors there.
 
 ## Query Tiers
 

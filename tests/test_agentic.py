@@ -290,3 +290,24 @@ class TestContaminationControls:
         )
         dumped = run.model_dump_json()
         assert "11.25" not in dumped and "19.75" not in dumped
+
+
+class TestBaselines:
+    async def test_abstain_scores_only_no_answer_queries(self, tmp_path):
+        from momentbench.agentic.baselines import BaselineAgent
+
+        no_answer = Query(query_id="na", text="nothing", vertical="film",
+                          tier=QueryTier.CORPUS_HARD_NEGATIVE, gold_moments=[])
+        run = await run_agentic_benchmark([make_query(), no_answer], BaselineAgent("abstain"),
+                                          make_corpus(tmp_path), trials=2)
+        assert run.summary.recall_at_1 == 0.5
+        assert run.summary.by_tier["3"]["recall_at_1"] == 1.0
+
+    async def test_random_submits_a_real_asset_and_span(self, tmp_path):
+        from momentbench.agentic.baselines import BaselineAgent
+
+        run = await run_agentic_benchmark([make_query()], BaselineAgent("random"),
+                                          make_corpus(tmp_path), trials=5)
+        for t in run.trials:
+            [m] = t.moments
+            assert m.asset_id in {"v1", "v2"} and 0 <= m.t_in < m.t_out

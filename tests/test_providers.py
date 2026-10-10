@@ -121,3 +121,54 @@ async def test_gemini_waits_out_a_rate_limit(monkeypatch):
     session = gemini_model.GeminiSession(client, "gemma", None, "sys", "task", TOOLS)
     turn = await session.step(None)
     assert len(calls) == 2 and turn.text == "done"
+
+
+async def test_openai_compatible_round_trip_through_the_real_sdk(tmp_path):
+    """A vLLM-style server, scripted: the real openai SDK serialises every request."""
+    openai = pytest.importorskip("openai")
+    httpx = pytest.importorskip("httpx")
+
+    from momentbench.agentic.budget import Budget
+    from momentbench.agentic.environment import LocalCorpus
+    from momentbench.agentic.episode import run_episode
+    from momentbench.agentic.openai_compat_model import OpenAICompatAgent
+    from momentbench.types import Moment, Query, QueryTier
+
+    requests = []
+
+    def reply(tool_name, args, call_id):
+        return {"id": "r", "object": "chat.completion", "created": 0, "model": "qwen-vl",
+                "choices": [{"index": 0, "finish_reason": "tool_calls", "message": {
+                    "role": "assistant", "content": None, "tool_calls": [{
+                        "id": call_id, "type": "function",
+                        "function": {"name": tool_name, "arguments": json.dumps(args)}}]}}],
+                "usage": {"prompt_tokens": 50, "completion_tokens": 5, "total_tokens": 55}}
+
+    def handler(request):
+        body = json.loads(request.content)
+        requests.append(body)
+        if len(requests) == 1:
+            out = reply("sample_frames", {"asset_id": "v1", "t_start": 0, "t_end": 10,
+                                          "num_frames": 2}, "c1")
+        else:
+            out = reply("submit_answer", {"moments": [{"asset_id": "v1", "t_in": 10,
+                                                       "t_out": 20}]}, "c2")
+        return httpx.Response(200, json=out)
+
+    client = openai.AsyncOpenAI(base_url="http://vllm.test/v1", api_key="none",
+                                http_client=httpx.AsyncClient(transport=httpx.MockTransport(handler)))
+    (tmp_path / "v1.mp4").write_bytes(b"")
+    corpus = LocalCorpus([{"asset_id": "v1", "title": "t", "duration_s": 100}], tmp_path,
+                         frame_extractor=lambda video, t: b"jpeg", transcripts={})
+    query = Query(query_id="q", text="x", tier=QueryTier.SINGLE_VISUAL, vertical="film",
+                  gold_moments=[Moment(asset_id="v1", t_in=10, t_out=20)])
+    agent = OpenAICompatAgent(model="qwen-vl", client=client)
+    episode = await run_episode(agent, corpus, query, Budget())
+
+    assert episode.outcome == "submitted" and episode.usage.frames == 2
+    assert requests[0]["tools"][0]["type"] == "function"
+    second = requests[1]["messages"]
+    assert second[-2]["role"] == "tool" and second[-2]["tool_call_id"] == "c1"
+    frames = second[-1]["content"]
+    assert second[-1]["role"] == "user"
+    assert sum(p["type"] == "image_url" for p in frames) == 2

@@ -48,7 +48,10 @@ def table(paths: list[str]) -> str:
             cells.append(f"{pct(row['recall_at_1'])} (n={row['num_queries']})" if row else "")
         cost = s.mean_cost_usd_per_query
         note = " notional" if run.harness == "claude-code" else ""
-        cells.append(f"${cost:.3f}{note}" if cost is not None else "not priced")
+        if run.model_id.startswith("baseline-"):
+            cells.append("none (no model)")
+        else:
+            cells.append(f"${cost:.3f}{note}" if cost is not None else "not priced")
         errored = sum(1 for t in run.trials if t.outcome == "error")
         cells.append(f"`{path.name}`" + (f" ({errored} errored trials)" if errored else ""))
         lines.append("| " + " | ".join(cells) + " |")
