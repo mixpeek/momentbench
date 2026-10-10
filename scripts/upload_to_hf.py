@@ -20,7 +20,7 @@ def main():
         help="Path to corpus manifests directory",
     )
     parser.add_argument(
-        "--results", type=str, default="data/results",
+        "--results", type=str, default="data/results/agentic-v0.2/record",
         help="Path to results directory (baseline runs)",
     )
     parser.add_argument(
@@ -46,6 +46,10 @@ def main():
     if manifests_dir.exists():
         for f in manifests_dir.glob("*.json"):
             uploads.append((f, f"corpus_manifests/{f.name}"))
+
+    # Every entrant's transcript tools read these, so they ship with the queries.
+    for f in sorted(Path("data/transcripts").glob("*")):
+        uploads.append((f, f"transcripts/{f.name}"))
 
     results_dir = Path(args.results)
     if results_dir.exists():
