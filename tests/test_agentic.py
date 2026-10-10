@@ -184,3 +184,24 @@ class TestStatsAndWire:
         assert block["tool_use_id"] == "toolu_1"
         assert [c["type"] for c in block["content"]] == ["text", "image"]
         assert block["content"][1]["source"]["media_type"] == "image/jpeg"
+
+
+class TestContaminationControls:
+    def test_every_shipped_query_carries_the_canary(self):
+        from momentbench.canary import CANARY
+        from momentbench.runner import load_queries
+
+        files = sorted(Path("data/queries").glob("*.json"))
+        assert files
+        for f in files:
+            for q in load_queries(f):
+                assert q.metadata.get("canary") == CANARY, f"{f}:{q.query_id}"
+
+    async def test_run_files_do_not_contain_gold_moments(self, tmp_path):
+        query = make_query(t_in=11.25, t_out=19.75)
+        wrong = ("submit_answer", {"moments": [{"asset_id": "v1", "t_in": 60, "t_out": 70}]})
+        run = await run_agentic_benchmark(
+            [query], ScriptedModel([[wrong]]), make_corpus(tmp_path), trials=1
+        )
+        dumped = run.model_dump_json()
+        assert "11.25" not in dumped and "19.75" not in dumped

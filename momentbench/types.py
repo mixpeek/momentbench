@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from enum import IntEnum
-from typing import Any
+from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
@@ -40,6 +40,9 @@ class Query(BaseModel):
     gold_moments: list[Moment] = Field(min_length=1)
     hard_negatives: list[Moment] = Field(default_factory=list)
     is_public: bool = True
+    # public: gold is published. held_out: gold is kept by the maintainers and
+    # scored server-side. rolling: footage published after current model cutoffs.
+    split: Literal["public", "held_out", "rolling"] = "public"
     metadata: dict[str, Any] = Field(default_factory=dict)
 
 

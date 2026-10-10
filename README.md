@@ -69,6 +69,10 @@ momentbench agentic claude-opus-5-5 \
 
 Requires `ffmpeg` on the PATH. Only an Anthropic provider ships today. Other providers implement `momentbench.agentic.model.AgentModel`. No agentic results are published yet.
 
+## Contamination Control
+
+Every query carries a canary string, and queries are assigned to a `public`, `held_out` or `rolling` split. The v0.1 seed set is all `public`, so no v0.1 number is contamination-controlled. See [`docs/contamination.md`](docs/contamination.md).
+
 ## Corpus Licensing
 
 All footage is public domain (17 U.S.C. § 105) or CC BY, permitting commercial derivatives. See [`ATTRIBUTION.md`](ATTRIBUTION.md) for full provenance.
