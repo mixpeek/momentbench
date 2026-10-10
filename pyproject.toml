@@ -54,6 +54,12 @@ inspect = [
 claude-code = [
     "claude-agent-sdk>=0.2",
 ]
+openai = [
+    "openai>=2.0",
+]
+gemini = [
+    "google-genai>=1.50",
+]
 dev = [
     "pytest>=8.0",
     "pytest-asyncio>=0.23",

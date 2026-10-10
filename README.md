@@ -87,7 +87,9 @@ inspect eval momentbench/agentic/inspect_task.py --model anthropic/claude-opus-5
 
 To run through a local Claude Code install instead of an API key, add `--provider claude-code` (and `pip install -e ".[claude-code]"`). The Claude Agent SDK runs the tool loop with Claude Code's built-in tools, settings and other MCP servers switched off and the benchmark's system prompt in place of Claude Code's. The corpus tools charge the same budget. Each run records `harness: "claude-code"` or `harness: "api"`, so results from the two are never mixed silently.
 
-Requires `ffmpeg` on the PATH. Two Anthropic providers ship today. Other providers implement `momentbench.agentic.model.AgentModel`. No agentic results are published yet.
+GPT and Gemini run with `--provider openai` (needs `OPENAI_API_KEY`, `pip install -e ".[openai]"`) and `--provider gemini` (needs `GEMINI_API_KEY`, `pip install -e ".[gemini]"`). Every provider gets the same tools and budget, and frames go back inside the tool result at the same resolution. OpenAI frames are sent at `detail: high` so they are not downscaled.
+
+Requires `ffmpeg` on the PATH. Other providers implement `momentbench.agentic.model.AgentModel`. No agentic results are published yet.
 
 ## Contamination Control
 

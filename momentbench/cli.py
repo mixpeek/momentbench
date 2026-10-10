@@ -50,8 +50,10 @@ def run(model: str, queries: str, corpus: str, output: str, concurrency: int):
 @click.option("--corpus", "-c", type=click.Path(exists=True), required=True)
 @click.option("--corpus-dir", type=click.Path(exists=True, file_okay=False), required=True,
               help="Directory holding <asset_id>.mp4 and optional transcripts")
-@click.option("--provider", type=click.Choice(["anthropic", "claude-code"]), default="anthropic",
-              help="anthropic: API key and our loop. claude-code: the local claude CLI login")
+@click.option("--provider", default="anthropic",
+              type=click.Choice(["anthropic", "claude-code", "openai", "gemini"]),
+              help="anthropic, openai, gemini: provider API key and our loop. "
+              "claude-code: the local claude CLI login")
 @click.option("--effort", type=str, default=None, help="Provider effort level, e.g. low, high")
 @click.option("--trials", type=int, default=5)
 @click.option("--max-steps", type=int, default=30)
@@ -68,6 +70,8 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, provider: st
     from momentbench.agentic.budget import Budget, load_pricing
     from momentbench.agentic.claude_code_model import ClaudeCodeAgent
     from momentbench.agentic.environment import LocalCorpus
+    from momentbench.agentic.gemini_model import GeminiAgent
+    from momentbench.agentic.openai_model import OpenAIAgent
     from momentbench.agentic.run import run_agentic_benchmark
     from momentbench.runner import load_corpus_assets, load_queries
 
@@ -90,9 +94,12 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, provider: st
     result = asyncio.run(
         run_agentic_benchmark(
             queries=runnable,
-            model=(ClaudeCodeAgent if provider == "claude-code" else AnthropicAgent)(
-                model=model, effort=effort
-            ),
+            model={
+                "anthropic": AnthropicAgent,
+                "claude-code": ClaudeCodeAgent,
+                "openai": OpenAIAgent,
+                "gemini": GeminiAgent,
+            }[provider](model=model, effort=effort),
             corpus=local,
             trials=trials,
             budget=Budget(max_steps=max_steps, max_frames=max_frames,
