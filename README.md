@@ -8,7 +8,7 @@
 
 **Design target:** 75 hours of rights-cleared video, 500 queries across 4 difficulty tiers, evaluated against frontier models and retrieval pipelines.
 
-**Current seed release (v0.1):** 9 corpus assets, 9 queries, spanning all 3 verticals and 4 tiers — see [`data/`](data/). 3 of the queries are model-annotated (downloaded the real footage, extracted frames, verified timestamps by inspection) rather than human-authored — flagged as such in their `metadata.source` field, pending human review. The corpus and query set are actively growing toward the full target; PRs adding rights-cleared footage or queries are welcome (see [`SUBMISSION.md`](SUBMISSION.md)).
+**Current seed release (v0.1):** 9 corpus assets and 8 queries across 3 verticals and tiers 1, 2 and 4 (see [`data/`](data/)). The 7 film assets are downloaded and hash-verified against the manifest (`momentbench corpus-verify`). The civic and aerospace assets have no working source link, so their 4 queries have never been checked against footage and are marked unverified in `metadata.verification`. The 4 film queries were annotated by a model from extracted frames and are pending human review. A fifth film query (Sintel, tier 3) was removed on 2026-10-10 because the moment it described does not exist in the film. PRs adding rights-cleared footage or queries are welcome (see [`SUBMISSION.md`](SUBMISSION.md)).
 
 Built on [Mixpeek](https://mixpeek.com).
 

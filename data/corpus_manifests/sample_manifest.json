@@ -5,7 +5,7 @@
     "title": "Senate Judiciary Committee Hearing - March 15, 2024",
     "vertical": "civic",
     "license": "public_domain",
-    "attribution": "U.S. Senate (public domain, 17 U.S.C. \u00a7 105)",
+    "attribution": "U.S. Senate (public domain, 17 U.S.C. § 105)",
     "duration_s": 7200,
     "source_url": "https://www.senate.gov/committees/video/2024-03-15",
     "is_sellable": true,
@@ -43,7 +43,7 @@
     "vertical": "film",
     "license": "cc_by",
     "attribution": "Blender Foundation (CC BY 3.0)",
-    "duration_s": 596,
+    "duration_s": 596.46,
     "source_url": "https://peach.blender.org/download/",
     "is_sellable": true,
     "storage_path": null,
@@ -51,6 +51,14 @@
     "metadata": {
       "year": 2008,
       "director": "Sacha Goedegebure"
+    },
+    "file": {
+      "name": "big-buck-bunny.mov",
+      "sha256": "b2acb9bddcb384f9762f919af8f6d8b4be781e40ad2f35a37cc12beef55b9a27",
+      "bytes": 249229883,
+      "download_url": "https://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_h264.mov.zip",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
     }
   },
   {
@@ -60,7 +68,7 @@
     "vertical": "film",
     "license": "cc_by",
     "attribution": "Blender Foundation (CC BY 3.0)",
-    "duration_s": 888,
+    "duration_s": 888.03,
     "source_url": "https://durian.blender.org/download/",
     "is_sellable": true,
     "storage_path": null,
@@ -68,6 +76,14 @@
     "metadata": {
       "year": 2010,
       "director": "Colin Levy"
+    },
+    "file": {
+      "name": "sintel.mkv",
+      "sha256": "f12c070e295b38cfc94ebd61ac3357c3bac82d1015985f1e8da93a4c6496c46d",
+      "bytes": 681285280,
+      "download_url": "https://download.blender.org/durian/movies/Sintel.2010.720p.mkv.zip",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
     }
   },
   {
@@ -77,7 +93,7 @@
     "vertical": "film",
     "license": "cc_by",
     "attribution": "Blender Foundation (CC BY 3.0)",
-    "duration_s": 734,
+    "duration_s": 734.17,
     "source_url": "https://mango.blender.org/download/",
     "is_sellable": true,
     "storage_path": null,
@@ -85,6 +101,14 @@
     "metadata": {
       "year": 2012,
       "director": "Ian Hubert"
+    },
+    "file": {
+      "name": "tears-of-steel.mov",
+      "sha256": "efa9062d9cdb7a338e40ad530dfdf234806743f29ae6a1a136b97ece4e588e8f",
+      "bytes": 372178639,
+      "download_url": "https://download.blender.org/demo/movies/ToS/tears_of_steel_720p.mov",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
     }
   },
   {
@@ -94,7 +118,7 @@
     "vertical": "film",
     "license": "cc_by",
     "attribution": "Blender Foundation / Orange Open Movie Project (CC BY 2.5)",
-    "duration_s": 540,
+    "duration_s": 658.32,
     "source_url": "https://orange.blender.org/download/",
     "is_sellable": true,
     "storage_path": null,
@@ -103,6 +127,14 @@
       "year": 2006,
       "director": "Bassam Kurdali",
       "notes": "World's first open movie. duration_s rounded from Wikipedia's stated 9 min; verify exact frame count when the file is actually ingested."
+    },
+    "file": {
+      "name": "elephants-dream.mov",
+      "sha256": "6fc295e0e92835316ec95929ccfc664b05ed2434f673e6f5e684f98f7558a547",
+      "bytes": 152496338,
+      "download_url": "https://download.blender.org/ED/elephantsdream-720-h264-st-aac.mov",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
     }
   },
   {
@@ -112,7 +144,7 @@
     "vertical": "film",
     "license": "cc_by",
     "attribution": "Blender Foundation / Gooseberry Project (CC BY 4.0)",
-    "duration_s": 720,
+    "duration_s": 730.62,
     "source_url": "https://studio.blender.org/films/cosmos-laundromat/",
     "is_sellable": true,
     "storage_path": null,
@@ -121,6 +153,14 @@
       "year": 2015,
       "director": "Mathieu Auvray",
       "notes": "duration_s rounded from stated 12 min; verify exact frame count when the file is actually ingested."
+    },
+    "file": {
+      "name": "cosmos-laundromat.mp4",
+      "sha256": "ed4f43b895920072f8e995520d85f8470708a2909258ab5b6d102e7a3f5fca0f",
+      "bytes": 220087570,
+      "download_url": "https://archive.org/download/CosmosLaundromatFirstCycle/Cosmos%20Laundromat%20-%20First%20Cycle%20%281080p%29.mp4",
+      "provenance": "archive.org mirror",
+      "retrieved": "2026-10-10"
     }
   },
   {
@@ -130,7 +170,7 @@
     "vertical": "film",
     "license": "cc_by",
     "attribution": "Blender Foundation / Blender Animation Studio (CC BY 4.0)",
-    "duration_s": 464,
+    "duration_s": 464.14,
     "source_url": "https://studio.blender.org/films/spring/",
     "is_sellable": true,
     "storage_path": null,
@@ -138,6 +178,14 @@
     "metadata": {
       "year": 2019,
       "director": "Andy Goralczyk"
+    },
+    "file": {
+      "name": "spring.mkv",
+      "sha256": "916523651f3d6a38ec98a9f35e48daf7591e21baba473e1d1cf9a7c5dac42031",
+      "bytes": 81782463,
+      "download_url": "https://archive.org/download/spring_blenderopenmovie/Spring%20-%20Blender%20Open%20Movie%20-%20YouTube.mkv",
+      "provenance": "archive.org third-party upload (YouTube rip)",
+      "retrieved": "2026-10-10"
     }
   },
   {
@@ -156,6 +204,14 @@
       "year": 2017,
       "director": "Colin Levy",
       "notes": "duration_s verified exactly via ffprobe against the real archive.org mirror (2026-08-29)."
+    },
+    "file": {
+      "name": "agent-327-operation-barbershop.mp4",
+      "sha256": "83a28babdec6f16930232176254f8da2b4ccdd379811371dbdcf928308a6166f",
+      "bytes": 47545128,
+      "download_url": "https://archive.org/download/agent327operationbarbershop/agent327-1080.mp4",
+      "provenance": "archive.org third-party upload",
+      "retrieved": "2026-10-10"
     }
   }
 ]

@@ -73,7 +73,7 @@ def test_parse_answer_ignores_prose_and_garbage():
 
 
 def test_seed_task_loads_without_a_corpus_dir():
-    assert len(momentbench_agentic().dataset) == 9
+    assert len(momentbench_agentic().dataset) == 8
 
 
 NO_ANSWER = Query(query_id="na", text="a moment that is not in the corpus",
