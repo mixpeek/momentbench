@@ -19,19 +19,17 @@ def pct(x: float) -> str:
     return f"{100 * x:.1f}"
 
 
-def main() -> None:
-    p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    p.add_argument("runs", nargs="+")
-    args = p.parse_args()
-
+def table(paths: list[str]) -> str:
+    """One markdown table, a row per run, best Recall@1 first."""
     # .partial.json files are runs a provider cut off; they are never results.
-    files = [Path(f) for f in args.runs if not f.endswith(".partial.json")]
+    files = [Path(f) for f in paths if not str(f).endswith(".partial.json")]
     runs = [(f, AgenticRun.model_validate_json(f.read_text())) for f in files]
+    lines = []
     tiers = sorted({str(t.tier) for _, r in runs for t in r.trials})
     head = ["Model", "Harness", "Queries x trials", "Recall@1 (95% CI)", "R@1 tIoU 0.3 / 0.7"]
     head += [f"Tier {t}" for t in tiers] + ["Cost per query", "Run"]
-    print("| " + " | ".join(head) + " |")
-    print("|" + "---|" * len(head))
+    lines.append("| " + " | ".join(head) + " |")
+    lines.append("|" + "---|" * len(head))
     for path, run in sorted(runs, key=lambda x: -summarize(x[1].trials, x[1].summary.num_trials)
                             .recall_at_1):
         s = summarize(run.trials, run.summary.num_trials)
@@ -53,7 +51,14 @@ def main() -> None:
         cells.append(f"${cost:.3f}{note}" if cost is not None else "not priced")
         errored = sum(1 for t in run.trials if t.outcome == "error")
         cells.append(f"`{path.name}`" + (f" ({errored} errored trials)" if errored else ""))
-        print("| " + " | ".join(cells) + " |")
+        lines.append("| " + " | ".join(cells) + " |")
+    return "\n".join(lines)
+
+
+def main() -> None:
+    p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    p.add_argument("runs", nargs="+")
+    print(table(p.parse_args().runs))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,2687 @@
+{
+  "run_id": "agentic-gemini-3.1-pro-preview-a6ff462c",
+  "track": "agentic",
+  "model_id": "gemini-3.1-pro-preview",
+  "effort": null,
+  "harness": "api",
+  "budget": {
+    "max_steps": 30,
+    "max_frames": 64,
+    "max_tool_calls": 60
+  },
+  "pricing": {
+    "input_per_mtok": 2.5,
+    "output_per_mtok": 15.0,
+    "cache_read_per_mtok": 0.25,
+    "cache_write_per_mtok": null
+  },
+  "timestamp": "2026-10-10T20:13:03Z",
+  "summary": {
+    "num_queries": 4,
+    "num_trials": 5,
+    "recall_at_1": 0.35,
+    "recall_at_1_ci95": [
+      0.1,
+      0.55
+    ],
+    "recall_at_5": 0.35,
+    "mean_temporal_iou": 0.29321059605342326,
+    "mean_cost_usd_per_query": 0.2559177125,
+    "mean_input_tokens_per_query": 64963.85,
+    "mean_output_tokens_per_query": 3120.75,
+    "mean_frames_per_query": 51.2,
+    "mean_steps_per_query": 8.8,
+    "failed_trials": 0
+  },
+  "trials": [
+    {
+      "query_id": "q-film-001",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.1875,
+      "usage": {
+        "steps": 6,
+        "tool_calls": 5,
+        "frames": 32,
+        "input_tokens": 39309,
+        "output_tokens": 1317,
+        "cache_read_tokens": 57665,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.13244375,
+      "latency_s": 49.16239633297664,
+      "moments": [
+        {
+          "asset_id": "big-buck-bunny",
+          "t_in": 32.0,
+          "t_out": 36.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "num_frames": 8,
+            "t_start": 0,
+            "t_end": 60
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_end": 26,
+            "t_start": 17,
+            "asset_id": "big-buck-bunny"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_end": 34,
+            "t_start": 26,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "asset_id": "big-buck-bunny",
+            "t_end": 35,
+            "t_start": 31
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "t_out": 36,
+                "asset_id": "big-buck-bunny",
+                "t_in": 32
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-001",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0308641975308642,
+      "usage": {
+        "steps": 9,
+        "tool_calls": 9,
+        "frames": 56,
+        "input_tokens": 67029,
+        "output_tokens": 2904,
+        "cache_read_tokens": 198233,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.26069075,
+      "latency_s": 97.00497616699431,
+      "moments": [
+        {
+          "asset_id": "big-buck-bunny",
+          "t_in": 31.8,
+          "t_out": 33.5,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "rabbit"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_start": 0,
+            "t_end": 60,
+            "asset_id": "big-buck-bunny"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_start": 17,
+            "t_end": 26,
+            "asset_id": "big-buck-bunny"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 26,
+            "asset_id": "big-buck-bunny",
+            "t_end": 35,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 31,
+            "t_end": 34,
+            "num_frames": 8,
+            "asset_id": "big-buck-bunny"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_start": 32,
+            "asset_id": "big-buck-bunny",
+            "t_end": 33.2
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 32,
+            "t_start": 31,
+            "num_frames": 8,
+            "asset_id": "big-buck-bunny"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_end": 17,
+            "t_start": 0,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "big-buck-bunny",
+                "t_in": 31.8,
+                "t_out": 33.5
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-001",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.012658227848101448,
+      "usage": {
+        "steps": 6,
+        "tool_calls": 5,
+        "frames": 32,
+        "input_tokens": 39304,
+        "output_tokens": 1291,
+        "cache_read_tokens": 58001,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.13212525,
+      "latency_s": 38.15599320799811,
+      "moments": [
+        {
+          "asset_id": "big-buck-bunny",
+          "t_in": 32.2,
+          "t_out": 33.2,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_start": 0,
+            "t_end": 100,
+            "asset_id": "big-buck-bunny"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 45,
+            "num_frames": 8,
+            "t_start": 28,
+            "asset_id": "big-buck-bunny"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 30,
+            "num_frames": 8,
+            "asset_id": "big-buck-bunny",
+            "t_end": 34
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 33.43,
+            "asset_id": "big-buck-bunny",
+            "num_frames": 8,
+            "t_start": 31.71
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "t_in": 32.2,
+                "t_out": 33.2,
+                "asset_id": "big-buck-bunny"
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-001",
+      "trial": 3,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.1875,
+      "usage": {
+        "steps": 9,
+        "tool_calls": 8,
+        "frames": 56,
+        "input_tokens": 66417,
+        "output_tokens": 1581,
+        "cache_read_tokens": 196862,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.238973,
+      "latency_s": 59.90375149997999,
+      "moments": [
+        {
+          "asset_id": "big-buck-bunny",
+          "t_in": 32.0,
+          "t_out": 36.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_end": 60,
+            "asset_id": "big-buck-bunny",
+            "t_start": 0
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_start": 25,
+            "asset_id": "big-buck-bunny",
+            "t_end": 35
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 29,
+            "num_frames": 8,
+            "t_end": 33,
+            "asset_id": "big-buck-bunny"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_start": 31,
+            "t_end": 33,
+            "asset_id": "big-buck-bunny"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_end": 25,
+            "num_frames": 8,
+            "t_start": 0
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "num_frames": 8,
+            "t_end": 38,
+            "t_start": 32
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 38,
+            "num_frames": 8,
+            "t_end": 45
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "t_in": 32,
+                "asset_id": "big-buck-bunny",
+                "t_out": 36
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-001",
+      "trial": 4,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.21212121212121213,
+      "usage": {
+        "steps": 5,
+        "tool_calls": 4,
+        "frames": 24,
+        "input_tokens": 30377,
+        "output_tokens": 1393,
+        "cache_read_tokens": 29544,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.1042235,
+      "latency_s": 34.78249741700711,
+      "moments": [
+        {
+          "asset_id": "big-buck-bunny",
+          "t_in": 31.5,
+          "t_out": 36.5,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 0,
+            "t_end": 60,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 28,
+            "asset_id": "big-buck-bunny",
+            "num_frames": 8,
+            "t_end": 35
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 34,
+            "num_frames": 8,
+            "t_start": 30,
+            "asset_id": "big-buck-bunny"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "big-buck-bunny",
+                "t_out": 36.5,
+                "t_in": 31.5
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-003",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.7,
+      "usage": {
+        "steps": 9,
+        "tool_calls": 8,
+        "frames": 56,
+        "input_tokens": 119771,
+        "output_tokens": 2051,
+        "cache_read_tokens": 139962,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.365183,
+      "latency_s": 88.42250708301435,
+      "moments": [
+        {
+          "asset_id": "agent-327-operation-barbershop",
+          "t_in": 99.0,
+          "t_out": 104.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 0,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8,
+            "t_end": 231
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_start": 35,
+            "t_end": 65,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 47,
+            "t_start": 41,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 48,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8,
+            "t_end": 58
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 130,
+            "num_frames": 8,
+            "t_start": 100,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 105,
+            "t_start": 95,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 103,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8,
+            "t_start": 98
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "t_in": 99,
+                "t_out": 104,
+                "asset_id": "agent-327-operation-barbershop"
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-003",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.5142857142857135,
+      "usage": {
+        "steps": 7,
+        "tool_calls": 6,
+        "frames": 40,
+        "input_tokens": 48008,
+        "output_tokens": 2150,
+        "cache_read_tokens": 95092,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.176043,
+      "latency_s": 66.28672175001702,
+      "moments": [
+        {
+          "asset_id": "agent-327-operation-barbershop",
+          "t_in": 100.7,
+          "t_out": 102.5,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 231,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 0,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 99,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8,
+            "t_end": 132
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 101,
+            "t_end": 106
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_end": 102,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 99
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 100.5,
+            "t_end": 102.5,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "t_in": 100.7,
+                "t_out": 102.5,
+                "asset_id": "agent-327-operation-barbershop"
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-003",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "usage": {
+        "steps": 9,
+        "tool_calls": 8,
+        "frames": 56,
+        "input_tokens": 66310,
+        "output_tokens": 3857,
+        "cache_read_tokens": 193675,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.27204875,
+      "latency_s": 106.82587812500424,
+      "moments": [
+        {
+          "asset_id": "agent-327-operation-barbershop",
+          "t_in": 156.2,
+          "t_out": 157.3,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_end": 231,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 0
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 180,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 120
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 140,
+            "t_end": 150,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 155,
+            "t_start": 145,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 160,
+            "t_start": 155
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 155,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8,
+            "t_end": 159
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 156,
+            "t_end": 158,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "t_in": 156.2,
+                "asset_id": "agent-327-operation-barbershop",
+                "t_out": 157.3
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-003",
+      "trial": 3,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "usage": {
+        "steps": 10,
+        "tool_calls": 9,
+        "frames": 56,
+        "input_tokens": 67398,
+        "output_tokens": 3016,
+        "cache_read_tokens": 197115,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.26301375,
+      "latency_s": 115.80220254100277,
+      "moments": [
+        {
+          "asset_id": "agent-327-operation-barbershop",
+          "t_in": 154.0,
+          "t_out": 161.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_end": 231.53,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 0
+          },
+          "is_error": true,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 0,
+            "t_end": 231,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 150,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 130
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 120,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 135
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 133,
+            "t_start": 131,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 150,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8,
+            "t_end": 170
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 150,
+            "t_end": 160,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 159,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8,
+            "t_start": 153
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "t_out": 161,
+                "asset_id": "agent-327-operation-barbershop",
+                "t_in": 154
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-003",
+      "trial": 4,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.75,
+      "usage": {
+        "steps": 8,
+        "tool_calls": 9,
+        "frames": 50,
+        "input_tokens": 58740,
+        "output_tokens": 1707,
+        "cache_read_tokens": 184463,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.21857075,
+      "latency_s": 83.40028962498764,
+      "moments": [
+        {
+          "asset_id": "agent-327-operation-barbershop",
+          "t_in": 99.5,
+          "t_out": 103.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_end": 231,
+            "t_start": 0,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "num_frames": 8,
+            "t_end": 658,
+            "t_start": 0
+          },
+          "is_error": true,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 730,
+            "asset_id": "cosmos-laundromat",
+            "t_start": 0,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 100,
+            "num_frames": 8,
+            "t_end": 150
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_end": 105,
+            "t_start": 95,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 101,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 96
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 105,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 102,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 99,
+            "t_end": 99.5,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 2
+          },
+          "is_error": false,
+          "frames": 2
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "t_out": 103,
+                "t_in": 99.5,
+                "asset_id": "agent-327-operation-barbershop"
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-004",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.6545454545454535,
+      "usage": {
+        "steps": 11,
+        "tool_calls": 10,
+        "frames": 54,
+        "input_tokens": 65198,
+        "output_tokens": 2124,
+        "cache_read_tokens": 241726,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.2552865,
+      "latency_s": 103.34263945798739,
+      "moments": [
+        {
+          "asset_id": "agent-327-operation-barbershop",
+          "t_in": 201.0,
+          "t_out": 204.6,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8,
+            "t_start": 0,
+            "t_end": 231.53
+          },
+          "is_error": true,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 230,
+            "num_frames": 8,
+            "t_start": 0,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 210,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8,
+            "t_start": 170
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 190,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 210,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 205,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 198,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 5,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 208,
+            "t_start": 204
+          },
+          "is_error": false,
+          "frames": 5
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 200,
+            "num_frames": 5,
+            "t_end": 201.5,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 5
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 201.5,
+            "num_frames": 7,
+            "t_start": 200.5
+          },
+          "is_error": false,
+          "frames": 7
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 204,
+            "t_end": 205,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 5
+          },
+          "is_error": false,
+          "frames": 5
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "agent-327-operation-barbershop",
+                "t_out": 204.6,
+                "t_in": 201
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-004",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.7272727272727273,
+      "usage": {
+        "steps": 11,
+        "tool_calls": 13,
+        "frames": 64,
+        "input_tokens": 75796,
+        "output_tokens": 2236,
+        "cache_read_tokens": 258560,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.28767,
+      "latency_s": 122.56076933300938,
+      "moments": [
+        {
+          "asset_id": "agent-327-operation-barbershop",
+          "t_in": 201.0,
+          "t_out": 205.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "flamethrower"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "flame"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "fire"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 0,
+            "t_end": 231.53
+          },
+          "is_error": true,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 230,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8,
+            "t_start": 0
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_end": 160,
+            "t_start": 110,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 110,
+            "t_start": 70,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_start": 110,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 124
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 138,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8,
+            "t_start": 124
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 160,
+            "num_frames": 8,
+            "t_end": 200
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 200,
+            "t_end": 216,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 205,
+            "num_frames": 8,
+            "t_start": 200,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "t_in": 201,
+                "t_out": 205,
+                "asset_id": "agent-327-operation-barbershop"
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-004",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "usage": {
+        "steps": 11,
+        "tool_calls": 13,
+        "frames": 64,
+        "input_tokens": 76730,
+        "output_tokens": 6630,
+        "cache_read_tokens": 329609,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.37367725,
+      "latency_s": 126.68875183400814,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "flamethrower"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "flames"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "fire"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 0,
+            "num_frames": 8,
+            "t_end": 231
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 66,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 132
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 165,
+            "t_start": 132,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_end": 135,
+            "t_start": 120,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 145,
+            "t_start": 135,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 110,
+            "t_end": 125
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 100,
+            "t_end": 110,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_end": 118,
+            "t_start": 111,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 165,
+            "t_start": 150,
+            "num_frames": 8
+          },
+          "is_error": true,
+          "frames": 0
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-004",
+      "trial": 3,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "usage": {
+        "steps": 10,
+        "tool_calls": 10,
+        "frames": 64,
+        "input_tokens": 76960,
+        "output_tokens": 12820,
+        "cache_read_tokens": 318903,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.46442575,
+      "latency_s": 199.83896475000074,
+      "moments": [
+        {
+          "asset_id": "tears-of-steel",
+          "t_in": 270.0,
+          "t_out": 280.0,
+          "metadata": {}
+        },
+        {
+          "asset_id": "tears-of-steel",
+          "t_in": 290.0,
+          "t_out": 300.0,
+          "metadata": {}
+        },
+        {
+          "asset_id": "tears-of-steel",
+          "t_in": 410.0,
+          "t_out": 420.0,
+          "metadata": {}
+        },
+        {
+          "asset_id": "tears-of-steel",
+          "t_in": 425.0,
+          "t_out": 435.0,
+          "metadata": {}
+        },
+        {
+          "asset_id": "tears-of-steel",
+          "t_in": 440.0,
+          "t_out": 450.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_start": 60,
+            "t_end": 120,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 180,
+            "t_start": 120,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 125,
+            "num_frames": 8,
+            "t_start": 110,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 150,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 170,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 100,
+            "num_frames": 8,
+            "t_start": 80,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 175,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 160,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 125,
+            "t_end": 140,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_end": 400,
+            "t_start": 300,
+            "asset_id": "tears-of-steel"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_end": 550,
+            "t_start": 450,
+            "num_frames": 8
+          },
+          "is_error": true,
+          "frames": 0
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "t_out": 280,
+                "t_in": 270,
+                "asset_id": "tears-of-steel"
+              },
+              {
+                "asset_id": "tears-of-steel",
+                "t_in": 290,
+                "t_out": 300
+              },
+              {
+                "asset_id": "tears-of-steel",
+                "t_in": 410,
+                "t_out": 420
+              },
+              {
+                "t_out": 435,
+                "asset_id": "tears-of-steel",
+                "t_in": 425
+              },
+              {
+                "t_out": 450,
+                "asset_id": "tears-of-steel",
+                "t_in": 440
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-004",
+      "trial": 4,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "usage": {
+        "steps": 12,
+        "tool_calls": 11,
+        "frames": 64,
+        "input_tokens": 78561,
+        "output_tokens": 7438,
+        "cache_read_tokens": 373098,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.401247,
+      "latency_s": 141.8545522080094,
+      "moments": [
+        {
+          "asset_id": "agent-327-operation-barbershop",
+          "t_in": 97.0,
+          "t_out": 102.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8,
+            "t_start": 0,
+            "t_end": 231
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 80,
+            "num_frames": 8,
+            "t_end": 120,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 135,
+            "t_start": 115
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 0,
+            "t_end": 734,
+            "asset_id": "tears-of-steel",
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 115,
+            "t_start": 105,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "num_frames": 8,
+            "t_end": 658,
+            "t_start": 0
+          },
+          "is_error": true,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "num_frames": 8,
+            "t_end": 650,
+            "t_start": 0
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 150,
+            "num_frames": 8,
+            "t_end": 550
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 135,
+            "t_end": 165,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 730,
+            "num_frames": 8,
+            "t_start": 0,
+            "asset_id": "cosmos-laundromat"
+          },
+          "is_error": true,
+          "frames": 0
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "t_in": 97,
+                "t_out": 102,
+                "asset_id": "agent-327-operation-barbershop"
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-005",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "usage": {
+        "steps": 8,
+        "tool_calls": 7,
+        "frames": 48,
+        "input_tokens": 75674,
+        "output_tokens": 2358,
+        "cache_read_tokens": 120765,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.25474625,
+      "latency_s": 79.87858087499626,
+      "moments": [
+        {
+          "asset_id": "agent-327-operation-barbershop",
+          "t_in": 167.0,
+          "t_out": 168.5,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 0,
+            "t_end": 231,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 180,
+            "t_start": 150
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 158,
+            "num_frames": 8,
+            "t_end": 166
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8,
+            "t_end": 164,
+            "t_start": 162
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 170,
+            "t_start": 165,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 166.5,
+            "t_end": 169.5
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "t_out": 168.5,
+                "t_in": 167,
+                "asset_id": "agent-327-operation-barbershop"
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-005",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "usage": {
+        "steps": 7,
+        "tool_calls": 6,
+        "frames": 40,
+        "input_tokens": 47069,
+        "output_tokens": 1187,
+        "cache_read_tokens": 92725,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.15865875,
+      "latency_s": 70.90280295800767,
+      "moments": [
+        {
+          "asset_id": "agent-327-operation-barbershop",
+          "t_in": 167.0,
+          "t_out": 168.5,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 0,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8,
+            "t_end": 231
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 100,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 165
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 190,
+            "num_frames": 8,
+            "t_start": 160,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8,
+            "t_end": 172,
+            "t_start": 165
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_start": 167,
+            "t_end": 169,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "agent-327-operation-barbershop",
+                "t_in": 167,
+                "t_out": 168.5
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-005",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "usage": {
+        "steps": 12,
+        "tool_calls": 11,
+        "frames": 64,
+        "input_tokens": 78115,
+        "output_tokens": 2909,
+        "cache_read_tokens": 328921,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.32115275,
+      "latency_s": 134.73914945899742,
+      "moments": [
+        {
+          "asset_id": "agent-327-operation-barbershop",
+          "t_in": 167.0,
+          "t_out": 169.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 0,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8,
+            "t_end": 231.53
+          },
+          "is_error": true,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 231,
+            "t_start": 0,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 120,
+            "t_end": 150,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 10,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 33,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 130,
+            "num_frames": 8,
+            "t_end": 140,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_end": 180,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 160
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 172,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 165
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 167,
+            "t_end": 169,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 167.5,
+            "num_frames": 8,
+            "t_start": 166.5
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "t_start": 165.5,
+            "t_end": 167,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": true,
+          "frames": 0
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "t_out": 169,
+                "asset_id": "agent-327-operation-barbershop",
+                "t_in": 167
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-005",
+      "trial": 3,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.9259259259259298,
+      "usage": {
+        "steps": 8,
+        "tool_calls": 10,
+        "frames": 64,
+        "input_tokens": 73881,
+        "output_tokens": 1903,
+        "cache_read_tokens": 226992,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.2699955,
+      "latency_s": 92.91954758297652,
+      "moments": [
+        {
+          "asset_id": "agent-327-operation-barbershop",
+          "t_in": 177.4,
+          "t_out": 180.1,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 60,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 0,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 60,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 120
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 120,
+            "t_end": 180,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8,
+            "t_start": 180,
+            "t_end": 231.53
+          },
+          "is_error": true,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 175,
+            "t_end": 190,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 177,
+            "t_end": 182,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 177,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 180.5
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 177,
+            "t_end": 178,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 180.5,
+            "num_frames": 8,
+            "t_start": 180
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "t_out": 180.1,
+                "asset_id": "agent-327-operation-barbershop",
+                "t_in": 177.4
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-005",
+      "trial": 4,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.9615384615384637,
+      "usage": {
+        "steps": 8,
+        "tool_calls": 7,
+        "frames": 40,
+        "input_tokens": 48630,
+        "output_tokens": 1543,
+        "cache_read_tokens": 93836,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": 0.168179,
+      "latency_s": 43.71327566698892,
+      "moments": [
+        {
+          "asset_id": "agent-327-operation-barbershop",
+          "t_in": 177.5,
+          "t_out": 180.1,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 231.53,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 0
+          },
+          "is_error": true,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_end": 230,
+            "t_start": 0,
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop"
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 131.43,
+            "t_end": 197.14,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 183,
+            "t_start": 173
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "t_start": 177,
+            "t_end": 179,
+            "asset_id": "agent-327-operation-barbershop",
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "num_frames": 8,
+            "asset_id": "agent-327-operation-barbershop",
+            "t_end": 181,
+            "t_start": 179
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "t_in": 177.5,
+                "asset_id": "agent-327-operation-barbershop",
+                "t_out": 180.1
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    }
+  ]
+}
