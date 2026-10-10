@@ -216,6 +216,13 @@ class Film:
         self.lines = load_transcript(transcript) if transcript and transcript.exists() else []
         self.dir = work / self.id
         self.dir.mkdir(parents=True, exist_ok=True)
+        # The picture can end before the audio (Elephants Dream: 653.79 s vs 658.32 s).
+        probe = subprocess.run(
+            ["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+             "stream=duration", "-of", "csv=p=0", str(video)],
+            capture_output=True, text=True,
+        ).stdout.strip()
+        self.video_end = float(probe) if probe.replace(".", "", 1).isdigit() else self.duration
         cache = self.dir / "shots.json"
         if cache.exists():
             self.shots = [tuple(s) for s in json.loads(cache.read_text())]
@@ -223,22 +230,26 @@ class Film:
             self.shots = detect_shots(video, self.duration)
             cache.write_text(json.dumps(self.shots))
 
+    def at(self, t: float) -> float:
+        return min(t, self.video_end - 0.2)
+
     def mid_frame(self, i: int) -> Path:
         a, b = self.shots[i]
-        return frame(self.video, (a + b) / 2, self.dir / f"s{i:04d}_mid.jpg")
+        return frame(self.video, self.at((a + b) / 2), self.dir / f"s{i:04d}_mid.jpg")
 
     def tiles(self, i: int) -> list[tuple[Path, str]]:
         a, b = self.shots[i]
         label = f"S{i} {a:.1f}-{b:.1f}s"
         if b - a <= 4:
             return [(self.mid_frame(i), label)]
-        return [(frame(self.video, a + (b - a) * f, self.dir / f"s{i:04d}_{k}.jpg"), f"{label} {k}")
+        return [(frame(self.video, self.at(a + (b - a) * f), self.dir / f"s{i:04d}_{k}.jpg"),
+                 f"{label} {k}")
                 for f, k in ((0.25, "early"), (0.75, "late"))]
 
     def strip(self, span: tuple[float, float], key: str) -> list[Path]:
         a, b = span
         pad = min(0.3, (b - a) / 4)
-        return [frame(self.video, t, self.dir / f"c_{key}_{n}.jpg")
+        return [frame(self.video, self.at(t), self.dir / f"c_{key}_{n}.jpg")
                 for n, t in enumerate((a + pad, (a + b) / 2, b - pad))]
 
     def dialogue(self, a: float, b: float) -> str:
@@ -308,7 +319,7 @@ def lookalikes(films: dict[str, Film], sigs: dict, d: dict, k: int = 3) -> list[
         if fid == film.id and i in near:
             continue
         a, b = films[fid].shots[i]
-        if b - a < MIN_GOLD_S:
+        if not MIN_GOLD_S <= b - a <= 2 * MAX_GOLD_S or a >= films[fid].video_end:
             continue
         scored.append((sum((x - y) ** 2 for x, y in zip(target, sig)), fid, i))
     scored.sort()
