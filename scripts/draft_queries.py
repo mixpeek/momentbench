@@ -52,14 +52,14 @@ HELD_OUT_FRACTION = 0.25
 
 DRAFT_SYSTEM = (
     "You write evaluation queries for a video moment retrieval benchmark. A system "
-    "must find the exact moment from your text alone, among many films. Write what a "
+    "must find the exact moment from your text alone, among many videos. Write what a "
     "viewer can see or hear, specific enough that only the cited shots match. Never "
-    "use character names unless a name is spoken in the dialogue shown, never cite "
-    "timestamps, titles, credits or film names, and never describe anything you "
+    "use character or people's names unless the name is spoken in the dialogue shown, "
+    "never cite timestamps, credits or the video's title, and never describe anything you "
     "cannot see in the frames. Reply with JSON only."
 )
 
-DRAFT_PROMPT = """Read the image {sheet}. It shows shots {first} to {last} of one film.
+DRAFT_PROMPT = """Read the image {sheet}. It shows shots {first} to {last} of one video.
 Each tile is labelled with its shot id and time range; shots longer than 4 s have two
 tiles (early and late).
 
@@ -85,7 +85,7 @@ Write up to 6 queries as a JSON list. Each item:
 
 Skip shots shorter than 1.5 s for tiers 1 and 2. Each query is one or two sentences."""
 
-DIALOGUE_PROMPT = """Read the image {sheet}. It shows shots {first} to {last} of one film.
+DIALOGUE_PROMPT = """Read the image {sheet}. It shows shots {first} to {last} of one video.
 Each tile is labelled with its shot id and time range; shots longer than 4 s have two
 tiles (early and late).
 
@@ -211,6 +211,9 @@ def parse_json(text: str):
 class Film:
     def __init__(self, asset: dict, video: Path, transcript: Path | None, work: Path):
         self.id = asset["asset_id"]
+        self.vertical = asset.get("vertical", "film")
+        # Footage published after current model training cutoffs goes to the rolling split.
+        self.rolling = bool(asset.get("metadata", {}).get("rolling"))
         self.duration = float(asset["duration_s"])
         self.video = video
         self.lines = load_transcript(transcript) if transcript and transcript.exists() else []
@@ -378,7 +381,7 @@ async def verify(films, sigs, d: dict, sem) -> dict:
 
 def to_query(film: Film, d: dict, v: dict, n: int) -> dict:
     a, b = span_of(film, d["shots"])
-    qid = f"q-film-{n:04d}"
+    qid = f"q-{film.vertical}-{n:04d}"
     held = int(hashlib.sha256(qid.encode()).hexdigest(), 16) % 100 < HELD_OUT_FRACTION * 100
     meta = {
         "source": f"model-annotated: drafted and independently verified by {MODEL} via Claude "
@@ -398,11 +401,11 @@ def to_query(film: Film, d: dict, v: dict, n: int) -> dict:
         "query_id": qid,
         "text": d["text"],
         "tier": d["tier"],
-        "vertical": "film",
+        "vertical": film.vertical,
         "gold_moments": [] if d["tier"] == 3 else [{"asset_id": film.id, "t_in": a, "t_out": b}],
         "hard_negatives": v.get("negatives", []),
         "is_public": not held,
-        "split": "held_out" if held else "public",
+        "split": "held_out" if held else ("rolling" if film.rolling else "public"),
         "metadata": meta,
     }
 
@@ -418,6 +421,7 @@ async def main() -> None:
     p.add_argument("--assets", nargs="*", help="limit to these asset ids")
     p.add_argument("--max-windows", type=int, default=None, help="per film, for a trial run")
     p.add_argument("--concurrency", type=int, default=4)
+    p.add_argument("--vertical", default="film", help='draft for this vertical, or "all"')
     p.add_argument("--dialogue-only", action="store_true",
                    help="draft only tier 2 (dialogue plus picture) queries")
     p.add_argument("--offset", type=int, default=0,
@@ -434,7 +438,7 @@ async def main() -> None:
     films: dict[str, Film] = {}
     for asset in assets:
         wanted = not args.assets or asset["asset_id"] in args.assets
-        if asset.get("vertical") != "film" or not wanted:
+        if args.vertical not in ("all", asset.get("vertical")) or not wanted:
             continue
         video = next(corpus.glob(f"{asset['asset_id']}.*"), None)
         if video is None:

@@ -1,5 +1,6 @@
 """The Inspect AI wrapper, run end to end with Inspect's mock model."""
 
+import json
 from pathlib import Path
 
 import pytest
@@ -12,6 +13,7 @@ from inspect_ai.model import ModelOutput, get_model  # noqa: E402
 from momentbench.agentic.budget import Budget  # noqa: E402
 from momentbench.agentic.environment import LocalCorpus  # noqa: E402
 from momentbench.agentic.inspect_task import (  # noqa: E402
+    REPO_ROOT,
     build_task_from,
     momentbench_agentic,
     parse_answer,
@@ -73,7 +75,8 @@ def test_parse_answer_ignores_prose_and_garbage():
 
 
 def test_seed_task_loads_without_a_corpus_dir():
-    assert len(momentbench_agentic().dataset) == 8
+    seed = json.loads((REPO_ROOT / "data/queries/sample.json").read_text())
+    assert len(momentbench_agentic().dataset) == len(seed)
 
 
 NO_ANSWER = Query(query_id="na", text="a moment that is not in the corpus",

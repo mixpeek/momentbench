@@ -51,13 +51,13 @@ Your results JSON must follow the `BenchmarkRun` schema:
   "model_id": "your-model-name",
   "results": [
     {
-      "query_id": "q-civic-001",
+      "query_id": "q-film-001",
       "model_id": "your-model-name",
       "hit_at_1": true,
       "hit_at_5": true,
       "best_temporal_iou": 0.82,
       "tier": 1,
-      "vertical": "civic"
+      "vertical": "film"
     }
   ],
   "config": {},

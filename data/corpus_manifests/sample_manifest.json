@@ -1,42 +1,5 @@
 [
   {
-    "asset_id": "senate-hearing-2024-03-15",
-    "source_id": "senate-gov-hearing",
-    "title": "Senate Judiciary Committee Hearing - March 15, 2024",
-    "vertical": "civic",
-    "license": "public_domain",
-    "attribution": "U.S. Senate (public domain, 17 U.S.C. § 105)",
-    "duration_s": 7200,
-    "source_url": "https://www.senate.gov/committees/video/2024-03-15",
-    "is_sellable": true,
-    "storage_path": null,
-    "mixpeek_asset_id": null,
-    "metadata": {
-      "speakers": [
-        "Senator Johnson",
-        "Senator Smith"
-      ],
-      "topic": "budget allocation"
-    }
-  },
-  {
-    "asset_id": "nasa-artemis-i-launch",
-    "source_id": "nasa-launch",
-    "title": "NASA Artemis I Launch Coverage",
-    "vertical": "aerospace",
-    "license": "public_domain",
-    "attribution": "NASA (public domain)",
-    "duration_s": 14400,
-    "source_url": "https://www.nasa.gov/multimedia/artemis-i-launch",
-    "is_sellable": true,
-    "storage_path": null,
-    "mixpeek_asset_id": null,
-    "metadata": {
-      "mission": "Artemis I",
-      "date": "2022-11-16"
-    }
-  },
-  {
     "asset_id": "big-buck-bunny",
     "source_id": "blender-open-movies",
     "title": "Big Buck Bunny",
@@ -211,6 +174,188 @@
       "bytes": 47545128,
       "download_url": "https://archive.org/download/agent327operationbarbershop/agent327-1080.mp4",
       "provenance": "archive.org third-party upload",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-artemis-ii-launch-recap",
+    "source_id": "nasa-image-and-video-library",
+    "title": "Artemis II Launches Astronauts to the Moon (Official NASA Recap)",
+    "vertical": "aerospace",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 125.7,
+    "source_url": "https://images.nasa.gov/details/Artemis%20II%20Launches%20Astronauts%20to%20the%20Moon%20%28Official%20NASA%20Recap%29",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "Artemis II Launches Astronauts to the Moon (Official NASA Recap)",
+      "published": "2026-04-02",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-artemis-ii-launch-recap.mp4",
+      "sha256": "dc8d66b5fdf2998bfef58c6044e31985104e97f8b1405607813d2ccd41149ad6",
+      "bytes": 37165912,
+      "download_url": "http://images-assets.nasa.gov/video/Artemis%20II%20Launches%20Astronauts%20to%20the%20Moon%20(Official%20NASA%20Recap)/Artemis%20II%20Launches%20Astronauts%20to%20the%20Moon%20(Official%20NASA%20Recap)~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-artemis-ii-welcome-home",
+    "source_id": "nasa-image-and-video-library",
+    "title": "Welcome Home, Artemis II (Official NASA Recap)",
+    "vertical": "aerospace",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 99.93,
+    "source_url": "https://images.nasa.gov/details/Welcome%20Home%2C%20Artemis%20II%20%28Official%20NASA%20Recap%29",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "Welcome Home, Artemis II (Official NASA Recap)",
+      "published": "2026-04-20",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-artemis-ii-welcome-home.mp4",
+      "sha256": "2583bd5b2d6782e0ec060acf5af24f3ed237eb6782c0f3fc3a6a46278a7df8e1",
+      "bytes": 29756772,
+      "download_url": "http://images-assets.nasa.gov/video/Welcome%20Home,%20Artemis%20II%20(Official%20NASA%20Recap)/Welcome%20Home,%20Artemis%20II%20(Official%20NASA%20Recap)~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-artemis-ii-mission-recap",
+    "source_id": "nasa-image-and-video-library",
+    "title": "Artemis II Mission Recap",
+    "vertical": "aerospace",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 212.5,
+    "source_url": "https://images.nasa.gov/details/ARTEMIS%20II%20Mission%20Recap_ANB_V3",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "ARTEMIS II Mission Recap_ANB_V3",
+      "published": "2026-04-12",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-artemis-ii-mission-recap.mp4",
+      "sha256": "7aa1e2380756db5458bf248edfc380e9db4829febf434508d36de38d00fd58d8",
+      "bytes": 62867352,
+      "download_url": "http://images-assets.nasa.gov/video/ARTEMIS%20II%20Mission%20Recap_ANB_V3/ARTEMIS%20II%20Mission%20Recap_ANB_V3~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-artemis-i-launch-recap",
+    "source_id": "nasa-image-and-video-library",
+    "title": "Artemis I Launches to the Moon (Official NASA Recap)",
+    "vertical": "aerospace",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 151.57,
+    "source_url": "https://images.nasa.gov/details/Artemis%20I%20Launches%20to%20the%20Moon%20%28Official%20NASA%20Recap%29",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "Artemis I Launches to the Moon (Official NASA Recap)",
+      "published": "2022-11-16",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-artemis-i-launch-recap.mp4",
+      "sha256": "18935adac9d2a1f99894a5b3291eceaec04ac1b9f6eace01afd233f0c939c0ca",
+      "bytes": 43512060,
+      "download_url": "http://images-assets.nasa.gov/video/Artemis%20I%20Launches%20to%20the%20Moon%20(Official%20NASA%20Recap)/Artemis%20I%20Launches%20to%20the%20Moon%20(Official%20NASA%20Recap)~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-how-to-recover-a-spacecraft",
+    "source_id": "nasa-image-and-video-library",
+    "title": "How to Recover a Spacecraft",
+    "vertical": "aerospace",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 267.9,
+    "source_url": "https://images.nasa.gov/details/jsc2026m000090_How_To_Recover_A_Spacecraft_260415",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "jsc2026m000090_How_To_Recover_A_Spacecraft_260415",
+      "published": "2026-04-15",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-how-to-recover-a-spacecraft.mp4",
+      "sha256": "b4b43f5c48ecef9694f64036e35063b7521a061b92ba53aa4883ca80ac8ed39b",
+      "bytes": 79270882,
+      "download_url": "http://images-assets.nasa.gov/video/jsc2026m000090_How_To_Recover_A_Spacecraft_260415/jsc2026m000090_How_To_Recover_A_Spacecraft_260415~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-minute-2026-10-02",
+    "source_id": "nasa-image-and-video-library",
+    "title": "NASA Minute Oct. 2, 2026",
+    "vertical": "aerospace",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 136.67,
+    "source_url": "https://images.nasa.gov/details/NASA%20Minute%20Oct.%202%2C%202026",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "NASA Minute Oct. 2, 2026",
+      "published": "2026-10-02",
+      "rolling": true
+    },
+    "file": {
+      "name": "nasa-minute-2026-10-02.mp4",
+      "sha256": "e0ec6f1db55ef3e700bd368212ce253e06ffd509314323d1ba49588fba502d4a",
+      "bytes": 40623709,
+      "download_url": "http://images-assets.nasa.gov/video/NASA%20Minute%20Oct.%202,%202026/NASA%20Minute%20Oct.%202,%202026~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-minute-2026-09-04",
+    "source_id": "nasa-image-and-video-library",
+    "title": "NASA Minute September 4, 2026",
+    "vertical": "aerospace",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 101.97,
+    "source_url": "https://images.nasa.gov/details/NASA%20Minute%20September%204%2C%202026",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "NASA Minute September 4, 2026",
+      "published": "2026-09-04",
+      "rolling": true
+    },
+    "file": {
+      "name": "nasa-minute-2026-09-04.mp4",
+      "sha256": "5360beae61eec38e70b7b604d840174110e7bc758ab479c8c3ea654ddd296ab8",
+      "bytes": 30168982,
+      "download_url": "http://images-assets.nasa.gov/video/NASA%20Minute%20September%204,%202026/NASA%20Minute%20September%204,%202026~medium.mp4",
+      "provenance": "official",
       "retrieved": "2026-10-10"
     }
   }
