@@ -188,7 +188,22 @@ class TestRun:
         )
         assert not (tmp_path / "out").exists()
         assert run.summary.failed_trials == 2 and run.summary.recall_at_1 == 0.0
+        assert run.summary.error_trials == 2
         assert run.trials[0].error == "RuntimeError: boom"
+
+    async def test_a_billing_failure_stops_the_run_and_saves_nothing(self, tmp_path):
+        from momentbench.agentic.run import ProviderUnavailableError
+
+        class Inactive(AgentModel):
+            model_id = "inactive"
+
+            def start(self, system, task, tools):
+                raise RuntimeError("Error code: 429 - Your account is not active")
+
+        with pytest.raises(ProviderUnavailableError):
+            await run_agentic_benchmark([make_query()], Inactive(), make_corpus(tmp_path),
+                                        trials=3, output_dir=tmp_path / "out")
+        assert not (tmp_path / "out").exists()
 
     async def test_an_entrant_with_its_own_loop_is_scored_the_same_way(self, tmp_path):
         from momentbench.agentic.episode import Episode

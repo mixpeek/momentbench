@@ -49,7 +49,8 @@ def main() -> None:
         cost = s.mean_cost_usd_per_query
         note = " notional" if run.harness == "claude-code" else ""
         cells.append(f"${cost:.3f}{note}" if cost is not None else "not priced")
-        cells.append(f"`{path.name}`")
+        errored = sum(1 for t in run.trials if t.outcome == "error")
+        cells.append(f"`{path.name}`" + (f" ({errored} errored trials)" if errored else ""))
         print("| " + " | ".join(cells) + " |")
 
 

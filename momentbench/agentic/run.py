@@ -20,6 +20,21 @@ from momentbench.eval.scoring import compute_temporal_iou, evaluate_prediction
 from momentbench.types import Moment, Prediction, Query
 
 
+class ProviderUnavailableError(RuntimeError):
+    """The provider refused the account itself (billing, quota, auth). No trial can succeed."""
+
+
+# Plain "billing" is not a marker: Gemini's per-minute quota 429 mentions billing too.
+_FATAL_MARKERS = ("insufficient_quota", "account is not active", "invalid api key",
+                  "incorrect api key", "permission denied", "api key not valid")
+
+
+def is_fatal_provider_error(error: Exception) -> bool:
+    status = getattr(error, "status_code", None) or getattr(error, "code", None)
+    text = str(error).lower()
+    return status in (401, 403) or any(m in text for m in _FATAL_MARKERS)
+
+
 class AgenticTrial(BaseModel):
     query_id: str
     trial: int
@@ -53,6 +68,9 @@ class AgenticSummary(BaseModel):
     mean_frames_per_query: float
     mean_steps_per_query: float
     failed_trials: int
+    # Trials that raised (provider or harness errors), a subset of failed_trials. A run of
+    # record should have none; a nonzero count means the score understates the model.
+    error_trials: int = 0
     # Recall@1 at tIoU 0.3, 0.5 and 0.7, keyed by the threshold as a string.
     recall_at_1_by_iou: dict[str, float] = Field(default_factory=dict)
     # Per tier: number of queries, Recall@1 and its 95% CI.
@@ -100,6 +118,7 @@ def summarize(trials: list[AgenticTrial], num_trials: int) -> AgenticSummary:
         mean_frames_per_query=avg([t.usage.frames for t in trials]),
         mean_steps_per_query=avg([t.usage.steps for t in trials]),
         failed_trials=sum(1 for t in trials if t.outcome != "submitted"),
+        error_trials=sum(1 for t in trials if t.outcome == "error"),
         recall_at_1_by_iou={
             str(th): avg([mean(t.top1_iou >= th for t in ts) for ts in by_query.values()])
             for th in IOU_THRESHOLDS
@@ -145,6 +164,8 @@ async def run_agentic_benchmark(
                     episode.moments, episode.usage, episode.outcome, episode.trace
                 )
             except Exception as e:  # a failed trial scores zero and is counted, never dropped
+                if is_fatal_provider_error(e):
+                    raise ProviderUnavailableError(f"{type(e).__name__}: {e}") from e
                 moments, usage, outcome, trace = [], Usage(), "error", []
                 error = f"{type(e).__name__}: {e}"
             latency = time.perf_counter() - start
@@ -179,7 +200,15 @@ async def run_agentic_benchmark(
             error=error,
         )
 
-    results = await asyncio.gather(*(one(q, t) for q in queries for t in range(trials)))
+    tasks = [asyncio.ensure_future(one(q, t)) for q in queries for t in range(trials)]
+    try:
+        results = await asyncio.gather(*tasks)
+    except ProviderUnavailableError:
+        # Nothing further can succeed; stop spending and save nothing.
+        for task in tasks:
+            task.cancel()
+        await asyncio.gather(*tasks, return_exceptions=True)
+        raise
     run = AgenticRun(
         run_id=f"agentic-{model.model_id}-{uuid.uuid4().hex[:8]}",
         model_id=model.model_id,

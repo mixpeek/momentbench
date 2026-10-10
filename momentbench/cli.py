@@ -95,24 +95,31 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_
     if prices is None:
         console.print(f"[yellow]No price for {model} in {pricing}; cost will be omitted.[/yellow]")
 
-    result = asyncio.run(
-        run_agentic_benchmark(
-            queries=runnable,
-            model={
-                "anthropic": AnthropicAgent,
-                "claude-code": ClaudeCodeAgent,
-                "openai": OpenAIAgent,
-                "gemini": GeminiAgent,
-            }[provider](model=model, effort=effort),
-            corpus=local,
-            trials=trials,
-            budget=Budget(max_steps=max_steps, max_frames=max_frames,
-                          max_tool_calls=max_tool_calls),
-            pricing=prices,
-            max_concurrency=concurrency,
-            output_dir=Path(output),
+    from momentbench.agentic.run import ProviderUnavailableError
+
+    try:
+        result = asyncio.run(
+            run_agentic_benchmark(
+                queries=runnable,
+                model={
+                    "anthropic": AnthropicAgent,
+                    "claude-code": ClaudeCodeAgent,
+                    "openai": OpenAIAgent,
+                    "gemini": GeminiAgent,
+                }[provider](model=model, effort=effort),
+                corpus=local,
+                trials=trials,
+                budget=Budget(max_steps=max_steps, max_frames=max_frames,
+                              max_tool_calls=max_tool_calls),
+                pricing=prices,
+                max_concurrency=concurrency,
+                output_dir=Path(output),
+            )
         )
-    )
+    except ProviderUnavailableError as e:
+        raise click.ClickException(
+            f"the provider refused the account, run stopped and nothing saved: {e}"
+        ) from e
     errors = [t.error for t in result.trials if t.error]
     if len(errors) == len(result.trials):
         raise click.ClickException(f"every trial errored, nothing saved. First error: {errors[0]}")
