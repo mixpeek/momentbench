@@ -140,7 +140,9 @@ def load_transcript(path: Path) -> list[dict[str, Any]]:
     if path.suffix == ".json":
         return json.loads(path.read_text())
     segments = []
-    cue = re.compile(r"(\d+):(\d\d):(\d\d)[.,](\d{3}) --> (\d+):(\d\d):(\d\d)[.,](\d{3})")
+    # WebVTT allows the hours field to be omitted (mm:ss.ttt), and whisper writes it that way.
+    stamp = r"(?:(\d+):)?(\d\d):(\d\d)[.,](\d{3})"
+    cue = re.compile(stamp + r" --> " + stamp)
     lines = path.read_text().splitlines()
     i = 0
     while i < len(lines):
@@ -148,7 +150,7 @@ def load_transcript(path: Path) -> list[dict[str, Any]]:
         if not m:
             i += 1
             continue
-        h1, m1, s1, ms1, h2, m2, s2, ms2 = (int(g) for g in m.groups())
+        h1, m1, s1, ms1, h2, m2, s2, ms2 = (int(g or 0) for g in m.groups())
         text = []
         i += 1
         while i < len(lines) and lines[i].strip():

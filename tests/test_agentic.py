@@ -109,6 +109,11 @@ class TestEnvironment:
         p.write_text("WEBVTT\n\n00:00:01.000 --> 00:00:03.500\nhello\nworld\n")
         assert load_transcript(p) == [{"t_in": 1.0, "t_out": 3.5, "text": "hello world"}]
 
+    def test_load_vtt_without_hours(self, tmp_path):
+        p = tmp_path / "a.vtt"
+        p.write_text("WEBVTT\n\n01:17.000 --> 01:30.250\nhello\n")
+        assert load_transcript(p) == [{"t_in": 77.0, "t_out": 90.25, "text": "hello"}]
+
 
 class TestEpisode:
     async def test_tool_results_reach_the_model_and_submission_ends_the_episode(self, tmp_path):
