@@ -65,3 +65,28 @@ def test_download_unzips_and_checks_hash(tmp_path):
     assert download_asset(asset, out) == "got  v1"
     assert (out / "v1.mov").read_bytes() == b"abc"
     assert download_asset(asset, out) == "have v1"
+
+
+def test_a_failed_fetch_is_reported_and_does_not_stop_the_run(tmp_path):
+    from momentbench.corpus.download import download_asset
+
+    asset = {"asset_id": "v1", "file": {"name": "v1.mp4", "sha256": "x",
+                                        "download_url": (tmp_path / "missing.mp4").as_uri()}}
+    result = download_asset(asset, tmp_path)
+    assert result.startswith("FAIL v1") and not (tmp_path / "v1.mp4.part").exists()
+
+
+def test_requests_send_a_user_agent(monkeypatch, tmp_path):
+    from momentbench.corpus import download
+
+    seen = {}
+
+    def fake_fetch(request, tmp):
+        seen["ua"] = request.get_header("User-agent")
+        raise OSError("stop")
+
+    monkeypatch.setattr(download, "_fetch", fake_fetch)
+    asset = {"asset_id": "v1", "file": {"name": "v1.mp4", "sha256": "x",
+                                        "download_url": "https://example.org/v1.mp4"}}
+    download.download_asset(asset, tmp_path)
+    assert seen["ua"] == download.USER_AGENT

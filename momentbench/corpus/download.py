@@ -10,6 +10,9 @@ from typing import Any
 
 from momentbench.corpus.verify import sha256_file
 
+# download.blender.org answers urllib's default User-Agent with 403.
+USER_AGENT = "momentbench-corpus-download/0.1 (+https://github.com/mixpeek/momentbench)"
+
 
 def download_asset(asset: dict[str, Any], corpus_dir: Path) -> str:
     """Download one asset to <corpus_dir>/<file.name>. Returns a one-line status."""
@@ -21,8 +24,22 @@ def download_asset(asset: dict[str, Any], corpus_dir: Path) -> str:
         return f"have {asset['asset_id']}"
     url = spec["download_url"]
     tmp = corpus_dir / (spec["name"] + ".part")
-    with urllib.request.urlopen(url) as resp, tmp.open("wb") as out:  # noqa: S310
+    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    try:
+        _fetch(request, tmp)
+    except OSError as e:  # URLError and HTTPError are OSError subclasses
+        tmp.unlink(missing_ok=True)
+        return f"FAIL {asset['asset_id']}: {url}: {e}"
+    return _finish(asset, spec, url, tmp, target)
+
+
+def _fetch(request: urllib.request.Request, tmp: Path) -> None:
+    with urllib.request.urlopen(request) as resp, tmp.open("wb") as out:  # noqa: S310
         shutil.copyfileobj(resp, out, length=1 << 20)
+
+
+def _finish(asset: dict[str, Any], spec: dict[str, Any], url: str, tmp: Path,
+            target: Path) -> str:
     if url.endswith(".zip"):
         with zipfile.ZipFile(tmp) as z:
             videos = [n for n in z.namelist() if not n.endswith("/")]
