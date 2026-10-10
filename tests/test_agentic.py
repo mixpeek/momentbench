@@ -169,6 +169,18 @@ class TestRun:
         assert run.trials[0].error == "RuntimeError: boom"
 
 
+    async def test_no_answer_query_needs_an_explicit_empty_submission(self, tmp_path):
+        query = Query(query_id="na", text="not in the corpus", vertical="civic",
+                      tier=QueryTier.CORPUS_HARD_NEGATIVE, gold_moments=[])
+        corpus = make_corpus(tmp_path)
+        abstain = await run_agentic_benchmark(
+            [query], ScriptedModel([[("submit_answer", {"moments": []})]]), corpus, trials=1
+        )
+        silent = await run_agentic_benchmark([query], ScriptedModel([[]]), corpus, trials=1)
+        assert abstain.summary.recall_at_1 == 1.0
+        assert silent.summary.recall_at_1 == 0.0 and silent.trials[0].best_temporal_iou == 0.0
+
+
 class TestStatsAndWire:
     def test_bootstrap_ci_brackets_the_mean_and_is_deterministic(self):
         values = [1.0, 0.0, 1.0, 1.0, 0.0, 0.6, 0.2, 1.0]

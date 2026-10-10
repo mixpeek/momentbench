@@ -17,8 +17,9 @@ SYSTEM_PROMPT = (
     "video and the start and end time in seconds of the moment that matches the "
     "request. A submitted moment is correct when it is in the right video and "
     "overlaps the true moment with temporal IoU of at least 0.5, so make the "
-    "span tight. Frames and tool calls are limited by a budget. If the budget "
-    "runs out, submit your best answer."
+    "span tight. Some requests have no matching moment anywhere in the corpus. "
+    "For those, the correct answer is to submit an empty list. Frames and tool "
+    "calls are limited by a budget. If the budget runs out, submit your best answer."
 )
 
 

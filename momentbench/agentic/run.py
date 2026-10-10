@@ -121,15 +121,18 @@ async def run_agentic_benchmark(
             query,
             Prediction(query_id=query.query_id, ranked_moments=moments, model_id=model.model_id),
         )
+        # Only an explicit submission can be right. Without this, a refusal or a
+        # crash would score as a correct abstention on a no-answer query.
+        submitted = outcome == "submitted"
         return AgenticTrial(
             query_id=query.query_id,
             trial=trial,
             tier=int(query.tier),
             vertical=query.vertical,
             outcome=outcome,
-            hit_at_1=scored.hit_at_1,
-            hit_at_5=scored.hit_at_5,
-            best_temporal_iou=scored.best_temporal_iou,
+            hit_at_1=submitted and scored.hit_at_1,
+            hit_at_5=submitted and scored.hit_at_5,
+            best_temporal_iou=scored.best_temporal_iou if submitted else 0.0,
             usage=usage,
             cost_usd=pricing.cost_usd(usage) if pricing else None,
             latency_s=latency,

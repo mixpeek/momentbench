@@ -45,6 +45,18 @@ def evaluate_prediction(
 ) -> EvalResult:
     """Score a single prediction against a query's gold moments."""
     ranked = prediction.ranked_moments
+    if query.is_no_answer:
+        # Correct only by abstaining. Any returned moment is a false positive.
+        abstained = not ranked
+        return EvalResult(
+            query_id=query.query_id,
+            model_id=prediction.model_id,
+            hit_at_1=abstained,
+            hit_at_5=abstained,
+            best_temporal_iou=1.0 if abstained else 0.0,
+            tier=query.tier,
+            vertical=query.vertical,
+        )
     hit_1 = is_hit(ranked[0], query.gold_moments, iou_threshold) if ranked else False
     hit_5 = any(
         is_hit(m, query.gold_moments, iou_threshold) for m in ranked[:5]

@@ -25,7 +25,7 @@ from momentbench.agentic.environment import MAX_FRAMES_PER_CALL, LocalCorpus, pa
 from momentbench.agentic.episode import SYSTEM_PROMPT, build_task
 from momentbench.eval.scoring import evaluate_prediction
 from momentbench.runner import load_corpus_assets, load_queries
-from momentbench.types import Prediction, Query
+from momentbench.types import Moment, Prediction, Query
 
 SUBMIT_DESCRIPTION = (
     "Submit the final answer and end the task. The answer is a JSON array of up to 5 "
@@ -123,33 +123,38 @@ def corpus_tools(corpus: LocalCorpus, budget: Budget) -> list[Tool]:
     return [list_assets(), search_transcript(), read_transcript(), sample_frames()]
 
 
-def parse_answer(completion: str, known_assets: set[str]):
-    """Parse a submitted JSON array of moments. Anything unparseable is no answer."""
+def parse_answer(completion: str, known_assets: set[str]) -> list[Moment] | None:
+    """Parse a submitted JSON array of moments. Returns None when nothing valid was submitted."""
     start, end = completion.find("["), completion.rfind("]")
     if start == -1 or end <= start:
-        return []
+        return None
     try:
         items = json.loads(completion[start : end + 1])
     except json.JSONDecodeError:
-        return []
-    return parse_submission({"moments": items}, known_assets) if isinstance(items, list) else []
+        return None
+    return parse_submission({"moments": items}, known_assets) if isinstance(items, list) else None
 
 
 @scorer(metrics=[mean(), stderr()])
 def recall_at_1(known_assets: set[str]) -> Scorer:
     async def score(state: TaskState, target: Target) -> Score:
         query = Query.model_validate(state.metadata["query"])
-        moments = parse_answer(state.output.completion or "", known_assets)
+        parsed = parse_answer(state.output.completion or "", known_assets)
+        moments = parsed or []
         result = evaluate_prediction(
             query,
             Prediction(query_id=query.query_id, ranked_moments=moments, model_id=str(state.model)),
         )
+        # Only an explicit, parseable submission can be right. Otherwise running out
+        # of turns would score as a correct abstention on a no-answer query.
+        submitted = parsed is not None
         return Score(
-            value=1.0 if result.hit_at_1 else 0.0,
+            value=1.0 if submitted and result.hit_at_1 else 0.0,
             answer=json.dumps([m.model_dump(exclude={"metadata"}) for m in moments]),
             metadata={
-                "hit_at_5": result.hit_at_5,
-                "best_temporal_iou": result.best_temporal_iou,
+                "submitted": submitted,
+                "hit_at_5": submitted and result.hit_at_5,
+                "best_temporal_iou": result.best_temporal_iou if submitted else 0.0,
                 "tier": int(query.tier),
                 "vertical": query.vertical,
                 "frames": store().get("frames", 0),

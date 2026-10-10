@@ -25,10 +25,11 @@ QUERY = Query(
 )
 
 
-def run(tmp_path: Path, outputs, budget: Budget | None = None):
+def run(tmp_path: Path, outputs, budget: Budget | None = None, query: Query = QUERY):
+    tmp_path.mkdir(parents=True, exist_ok=True)
     (tmp_path / "v1.mp4").write_bytes(b"")
     corpus = LocalCorpus(ASSETS, tmp_path, frame_extractor=lambda video, t: b"\xff\xd8jpeg")
-    task = build_task_from([QUERY], corpus, budget or Budget())
+    task = build_task_from([query], corpus, budget or Budget())
     model = get_model("mockllm/model", custom_outputs=outputs)
     [log] = inspect_eval(task, model=model, log_dir=str(tmp_path / "logs"), display="none")
     assert log.status == "success", log.error
@@ -64,11 +65,21 @@ def test_frame_budget_is_enforced_across_calls(tmp_path):
 
 
 def test_parse_answer_ignores_prose_and_garbage():
-    assert parse_answer("no idea", {"v1"}) == []
-    assert parse_answer("[not json]", {"v1"}) == []
+    assert parse_answer("no idea", {"v1"}) is None
+    assert parse_answer("[not json]", {"v1"}) is None
+    assert parse_answer("[]", {"v1"}) == []
     got = parse_answer('Here: [{"asset_id": "v1", "t_in": 1, "t_out": 2}]', {"v1"})
     assert [(m.t_in, m.t_out) for m in got] == [(1.0, 2.0)]
 
 
 def test_seed_task_loads_without_a_corpus_dir():
     assert len(momentbench_agentic().dataset) == 9
+
+
+NO_ANSWER = Query(query_id="na", text="a moment that is not in the corpus",
+                  tier=QueryTier.CORPUS_HARD_NEGATIVE, vertical="civic", gold_moments=[])
+
+
+def test_no_answer_query_is_a_hit_only_on_an_explicit_empty_submission(tmp_path):
+    assert run(tmp_path / "a", [call("submit", answer="[]")], query=NO_ANSWER).value == 1.0
+    assert run(tmp_path / "b", [call("submit", answer="I give up")], query=NO_ANSWER).value == 0.0

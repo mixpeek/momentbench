@@ -37,13 +37,20 @@ class Query(BaseModel):
     text: str
     tier: QueryTier
     vertical: str
-    gold_moments: list[Moment] = Field(min_length=1)
+    # Empty means a no-answer query: nothing in the corpus matches, and the
+    # correct response is to return no moments.
+    gold_moments: list[Moment] = Field(default_factory=list)
     hard_negatives: list[Moment] = Field(default_factory=list)
     is_public: bool = True
     # public: gold is published. held_out: gold is kept by the maintainers and
     # scored server-side. rolling: footage published after current model cutoffs.
     split: Literal["public", "held_out", "rolling"] = "public"
     metadata: dict[str, Any] = Field(default_factory=dict)
+
+
+    @property
+    def is_no_answer(self) -> bool:
+        return not self.gold_moments
 
 
 class Prediction(BaseModel):

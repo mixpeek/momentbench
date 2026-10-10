@@ -116,3 +116,25 @@ class TestEvaluateRun:
         run = evaluate_run(queries, predictions)
         assert len(run.results) == 3
         assert all(r.hit_at_1 for r in run.results)
+
+
+class TestNoAnswerQueries:
+    def _query(self):
+        return Query(query_id="na", text="a moment that is not in the corpus",
+                     tier=QueryTier.CORPUS_HARD_NEGATIVE, vertical="film", gold_moments=[])
+
+    def test_abstaining_is_a_hit(self):
+        pred = Prediction(query_id="na", ranked_moments=[], model_id="m")
+        result = evaluate_prediction(self._query(), pred)
+        assert result.hit_at_1 and result.hit_at_5 and result.best_temporal_iou == 1.0
+
+    def test_returning_any_moment_is_a_miss(self):
+        pred = Prediction(query_id="na", ranked_moments=[make_moment()], model_id="m")
+        result = evaluate_prediction(self._query(), pred)
+        assert not result.hit_at_1 and not result.hit_at_5 and result.best_temporal_iou == 0.0
+
+    def test_abstaining_on_an_answerable_query_is_a_miss(self):
+        q = Query(query_id="a", text="t", tier=QueryTier.SINGLE_VISUAL, vertical="film",
+                  gold_moments=[make_moment()])
+        result = evaluate_prediction(q, Prediction(query_id="a", ranked_moments=[], model_id="m"))
+        assert not result.hit_at_1

@@ -50,6 +50,7 @@ Target scope per vertical, with current seed-release asset count:
 
 - **Hit**: correct asset AND temporal IoU ≥ 0.5 vs gold moment
 - **Metrics**: Recall@1, Recall@5, mean temporal IoU, per-tier breakdowns
+- **No-answer queries**: a query with an empty `gold_moments` list has no match in the corpus. It is a hit only when the system returns no moments. On the agentic track that takes an explicit empty submission; a refusal or a run that hits its limit is a miss. The seed set has none yet.
 
 ## Agentic Track
 
