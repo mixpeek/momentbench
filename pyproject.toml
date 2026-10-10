@@ -51,6 +51,9 @@ hf = [
 inspect = [
     "inspect_ai>=0.3.100",
 ]
+claude-code = [
+    "claude-agent-sdk>=0.2",
+]
 dev = [
     "pytest>=8.0",
     "pytest-asyncio>=0.23",

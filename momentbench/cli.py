@@ -50,7 +50,8 @@ def run(model: str, queries: str, corpus: str, output: str, concurrency: int):
 @click.option("--corpus", "-c", type=click.Path(exists=True), required=True)
 @click.option("--corpus-dir", type=click.Path(exists=True, file_okay=False), required=True,
               help="Directory holding <asset_id>.mp4 and optional transcripts")
-@click.option("--provider", type=click.Choice(["anthropic"]), default="anthropic")
+@click.option("--provider", type=click.Choice(["anthropic", "claude-code"]), default="anthropic",
+              help="anthropic: API key and our loop. claude-code: the local claude CLI login")
 @click.option("--effort", type=str, default=None, help="Provider effort level, e.g. low, high")
 @click.option("--trials", type=int, default=5)
 @click.option("--max-steps", type=int, default=30)
@@ -65,6 +66,7 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, provider: st
     """Run the agentic track: a tool-using model searches the corpus for each moment."""
     from momentbench.agentic.anthropic_model import AnthropicAgent
     from momentbench.agentic.budget import Budget, load_pricing
+    from momentbench.agentic.claude_code_model import ClaudeCodeAgent
     from momentbench.agentic.environment import LocalCorpus
     from momentbench.agentic.run import run_agentic_benchmark
     from momentbench.runner import load_corpus_assets, load_queries
@@ -88,7 +90,9 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, provider: st
     result = asyncio.run(
         run_agentic_benchmark(
             queries=runnable,
-            model=AnthropicAgent(model=model, effort=effort),
+            model=(ClaudeCodeAgent if provider == "claude-code" else AnthropicAgent)(
+                model=model, effort=effort
+            ),
             corpus=local,
             trials=trials,
             budget=Budget(max_steps=max_steps, max_frames=max_frames,
@@ -105,7 +109,10 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, provider: st
         console.print(f"[red]{len(errors)} trials errored. First: {errors[0]}[/red]")
     s = result.summary
     lo, hi = s.recall_at_1_ci95
-    console.print(f"\n[bold]{result.model_id}[/bold] effort={result.effort} run={result.run_id}")
+    console.print(
+        f"\n[bold]{result.model_id}[/bold] effort={result.effort} harness={result.harness} "
+        f"run={result.run_id}"
+    )
     console.print(f"  Queries: {s.num_queries} x {s.num_trials} trials")
     console.print(f"  Recall@1: {s.recall_at_1:.1%} (95% CI {lo:.1%} to {hi:.1%})")
     console.print(f"  Recall@5: {s.recall_at_5:.1%}   Mean tIoU: {s.mean_temporal_iou:.3f}")

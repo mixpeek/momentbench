@@ -168,6 +168,22 @@ class TestRun:
         assert run.summary.failed_trials == 2 and run.summary.recall_at_1 == 0.0
         assert run.trials[0].error == "RuntimeError: boom"
 
+    async def test_an_entrant_with_its_own_loop_is_scored_the_same_way(self, tmp_path):
+        from momentbench.agentic.episode import Episode
+
+        class OwnLoop(AgentModel):
+            model_id = "own-loop"
+            harness = "claude-code"
+
+            def start(self, system, task, tools):
+                raise AssertionError("the runner must call run_episode instead")
+
+            async def run_episode(self, corpus, query, budget):
+                return Episode(query.query_id, [Moment(asset_id="v1", t_in=10, t_out=20)],
+                               Usage(steps=1), "submitted")
+
+        run = await run_agentic_benchmark([make_query()], OwnLoop(), make_corpus(tmp_path))
+        assert run.harness == "claude-code" and run.summary.recall_at_1 == 1.0
 
     async def test_no_answer_query_needs_an_explicit_empty_submission(self, tmp_path):
         query = Query(query_id="na", text="not in the corpus", vertical="civic",

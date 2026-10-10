@@ -85,7 +85,9 @@ inspect eval momentbench/agentic/inspect_task.py --model anthropic/claude-opus-5
   -T corpus_dir=/path/to/videos --epochs 5
 ```
 
-Requires `ffmpeg` on the PATH. Only an Anthropic provider ships today. Other providers implement `momentbench.agentic.model.AgentModel`. No agentic results are published yet.
+To run through a local Claude Code install instead of an API key, add `--provider claude-code` (and `pip install -e ".[claude-code]"`). The Claude Agent SDK runs the tool loop with Claude Code's built-in tools, settings and other MCP servers switched off and the benchmark's system prompt in place of Claude Code's. The corpus tools charge the same budget. Each run records `harness: "claude-code"` or `harness: "api"`, so results from the two are never mixed silently.
+
+Requires `ffmpeg` on the PATH. Two Anthropic providers ship today. Other providers implement `momentbench.agentic.model.AgentModel`. No agentic results are published yet.
 
 ## Contamination Control
 

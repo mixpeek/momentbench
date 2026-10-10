@@ -57,6 +57,8 @@ class AgenticRun(BaseModel):
     track: str = "agentic"
     model_id: str
     effort: str | None
+    # How the model was driven: "api" (our loop) or "claude-code" (Agent SDK loop).
+    harness: str = "api"
     budget: Budget
     pricing: Pricing | None
     timestamp: str
@@ -109,7 +111,10 @@ async def run_agentic_benchmark(
             start = time.perf_counter()
             error = None
             try:
-                episode = await run_episode(model, corpus, query, budget)
+                if hasattr(model, "run_episode"):  # entrants that run their own tool loop
+                    episode = await model.run_episode(corpus, query, budget)
+                else:
+                    episode = await run_episode(model, corpus, query, budget)
                 moments, usage, outcome, trace = (
                     episode.moments, episode.usage, episode.outcome, episode.trace
                 )
@@ -146,6 +151,7 @@ async def run_agentic_benchmark(
         run_id=f"agentic-{model.model_id}-{uuid.uuid4().hex[:8]}",
         model_id=model.model_id,
         effort=model.effort,
+        harness=getattr(model, "harness", "api"),
         budget=budget,
         pricing=pricing,
         timestamp=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
