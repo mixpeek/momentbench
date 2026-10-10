@@ -1,0 +1,78 @@
+# Evaluation protocol (v0.2)
+
+This page specifies what a MomentBench number means. A result that departs from it should say how.
+
+## Task
+
+Given a text request and a corpus of videos, return the video and the start and end time, in seconds, of the one moment that matches. Some requests match nothing in the corpus. For those, the correct response is to return no moment.
+
+The system sees the whole corpus for every query. It is never told which video to search.
+
+## Corpus
+
+Every asset is listed in [`data/corpus_manifests/sample_manifest.json`](../data/corpus_manifests/sample_manifest.json) with its licence, source URL, duration and, for downloadable assets, a `file` block giving the exact file and its sha256. `momentbench corpus-download` fetches those files and `momentbench corpus-verify` checks presence, hash and duration. Run `corpus-verify` before any reported run. A run against different bytes is a different benchmark.
+
+## Queries
+
+| Tier | What it tests | How gold is defined |
+|---|---|---|
+| 1 | One shot, described visually | One scene-cut-bounded shot |
+| 2 | Dialogue or narration together with the picture | One shot whose transcript lines and visuals both match |
+| 3 | No-answer near miss: a real shot with one concrete detail changed | No gold. Only an explicit empty answer is correct |
+| 4 | An ordered event across two or three consecutive shots | The span from the first shot's start to the last shot's end |
+
+Each query file is checked in CI (`tests/test_query_validation.py`): unique ids, the canary string, a `metadata.source` saying who annotated it and how, known assets, and spans inside the video.
+
+**Provenance.** The v0.2 queries were drafted and verified by a model and are marked `pending human review` in `metadata.source`. See [Query construction](#query-construction) for the method and its measured error rate. Report results on them as model-annotated.
+
+**Splits.** `public` queries ship with their gold. `held_out` queries are kept by the maintainers and scored on request, so a score on them cannot come from training on the answers. `rolling` queries use footage published after the training cutoff of the current frontier models (after 2026-06-30 for v0.2). A large gap between a system's public and rolling scores suggests contamination.
+
+## Agentic track
+
+The model cannot watch video. It gets five tools, the same for every entrant:
+
+| Tool | Returns |
+|---|---|
+| `list_assets` | Every asset: id, title, duration, whether it has a transcript |
+| `search_transcript` | Keyword-overlap search over transcripts. No embeddings, so no entrant depends on a vendor's index |
+| `read_transcript` | Transcript lines between two times, at most 600 s per call |
+| `sample_frames` | Up to 8 evenly spaced JPEG frames, 512 px wide, between two times |
+| `submit_answer` | Ends the episode with a ranked list of moments, or an empty list |
+
+Transcripts are the files in [`data/transcripts`](../data/transcripts), machine transcribed once, so speech recognition is held constant across entrants.
+
+**Budget per query:** 30 turns, 64 frames, 60 tool calls. The harness enforces it and tells the model the limits in the task text. A tool call past the limit returns an error, and the model must then submit.
+
+**System prompt:** fixed, in `momentbench/agentic/episode.py` (`SYSTEM_PROMPT`). It states the scoring rule and that some requests have no match.
+
+**Failures count.** A refusal, a crash, hitting the turn limit or ending without `submit_answer` scores zero and stays in the denominator. A no-answer query is a hit only on an explicit empty submission, so a run that fails cannot score as a correct abstention.
+
+**No silent fallback.** If a provider refuses or routes to another model, the trial ends. A turn answered by a different model is never scored under the entrant's name.
+
+## Metrics
+
+- **Hit at 1:** the first submitted moment is in a gold video and its temporal IoU with a gold span is at least 0.5. For a no-answer query, an empty submission.
+- **Recall@1:** the mean over queries of the per-query hit rate across trials. Also reported at tIoU 0.3 and 0.7.
+- **Recall@5, mean tIoU:** secondary.
+- **Per tier:** Recall@1 for each tier with its own interval. Report it. An average over tiers hides that tier 3 measures abstention and tier 1 measures localisation.
+- **Interval:** 95% percentile bootstrap, resampling queries (2,000 resamples, seed 0), so the interval reflects how many queries there are as well as trial noise.
+- **Cost:** tokens per trial priced from [`configs/pricing.json`](../configs/pricing.json), which carries an `as_of` date and its sources. Report Recall@1 together with cost per query.
+
+**Trials.** Run each query at least once. Five trials per query is the default for small sets. With 300 queries the query-resampled interval dominates, and one to three trials is enough. State the number.
+
+**What to report:** model id and snapshot, provider, harness (`api` or `claude-code`), effort setting, budget, trials, query file and its commit, Recall@1 with interval overall and per tier, cost per query and the pricing `as_of` date. The run JSON written by `momentbench agentic` holds all of it plus every trial's tool trace.
+
+## Query construction
+
+`scripts/draft_queries.py` builds model-annotated queries from footage:
+
+1. Shots come from ffmpeg scene-cut detection (threshold 0.3), so gold boundaries are cuts rather than guesses.
+2. A drafting call sees a labelled sheet of about 16 shots, plus the transcript for that window, and writes queries of each tier pointing at shot ids.
+3. A separate verification call sees the gold candidate shuffled among the three corpus shots that look most like it (by thumbnail distance) and must pick the match, or "none". A positive survives only if the verifier picks its gold and reports no wrong detail. A no-answer query survives only if its altered text matches nothing while its unaltered original picks out the source shot cleanly.
+4. The three look-alikes are stored as `hard_negatives`.
+
+**Measured quality:** a random 20-query spot check against frames found 2 wrong queries (removed) and 1 gold span that starts with about 1.8 s of a missed soft cut. Expect roughly 10% of unreviewed queries to be wrong.
+
+**Known bias:** the drafter and verifier are Claude. Queries may suit Claude's way of describing images. Human review, or cross-model verification, is the remedy. Until then, compare Claude to other entrants with that caveat.
+
+**Known limitation:** scene detection misses some dissolves and dark cuts, mostly in Elephants Dream, so a few gold spans include a second or two of the neighbouring shot.

@@ -358,5 +358,161 @@
       "provenance": "official",
       "retrieved": "2026-10-10"
     }
+  },
+  {
+    "asset_id": "nasa-minute-2026-08-21",
+    "source_id": "nasa-image-and-video-library",
+    "title": "NASA Minute, 2026-08-21",
+    "vertical": "aerospace",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 72.8,
+    "source_url": "https://images.nasa.gov/details/NASA%20Minute%20Aug.%2021%2C%202026",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "NASA Minute Aug. 21, 2026",
+      "published": "2026-08-21",
+      "rolling": true
+    },
+    "file": {
+      "name": "nasa-minute-2026-08-21.mp4",
+      "sha256": "8cf0db6a14b4c7f3806a3ff9724de232fab18a2a510a68e894037eb1932cb122",
+      "bytes": 21502789,
+      "download_url": "http://images-assets.nasa.gov/video/NASA%20Minute%20Aug.%2021,%202026/NASA%20Minute%20Aug.%2021,%202026~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-minute-2026-05-08",
+    "source_id": "nasa-image-and-video-library",
+    "title": "NASA Minute, 2026-05-08",
+    "vertical": "aerospace",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 121.7,
+    "source_url": "https://images.nasa.gov/details/NASA%20Minute%20May%208%2C%202026",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "NASA Minute May 8, 2026",
+      "published": "2026-05-08",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-minute-2026-05-08.mp4",
+      "sha256": "0897ea812952789a178acc099bc73eacd093431b70df6751b23d08a04f31bd11",
+      "bytes": 35983077,
+      "download_url": "http://images-assets.nasa.gov/video/NASA%20Minute%20May%208,%202026/NASA%20Minute%20May%208,%202026~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-minute-2026-03-13",
+    "source_id": "nasa-image-and-video-library",
+    "title": "NASA Minute, 2026-03-13",
+    "vertical": "aerospace",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 87.4,
+    "source_url": "https://images.nasa.gov/details/NASA%20Minute%20March%2013%2C%202026",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "NASA Minute March 13, 2026",
+      "published": "2026-03-13",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-minute-2026-03-13.mp4",
+      "sha256": "533322e071ba6dec48bd1b232fc08a816bc5670e6ea91cb47fc07578c8905f25",
+      "bytes": 25825677,
+      "download_url": "http://images-assets.nasa.gov/video/NASA%20Minute%20March%2013,%202026/NASA%20Minute%20March%2013,%202026~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-minute-2026-02-20",
+    "source_id": "nasa-image-and-video-library",
+    "title": "NASA Minute, 2026-02-20",
+    "vertical": "aerospace",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 250.67,
+    "source_url": "https://images.nasa.gov/details/NASA%20Minute%20Feb.%2020%2C%202026",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "NASA Minute Feb. 20, 2026",
+      "published": "2026-02-20",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-minute-2026-02-20.mp4",
+      "sha256": "8d035866757d14d436ee2d581d6e6a6c2a14b50f857b7a353e33583643113dbb",
+      "bytes": 74169543,
+      "download_url": "http://images-assets.nasa.gov/video/NASA%20Minute%20Feb.%2020,%202026/NASA%20Minute%20Feb.%2020,%202026~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-minute-2026-01-23",
+    "source_id": "nasa-image-and-video-library",
+    "title": "NASA Minute, 2026-01-23",
+    "vertical": "aerospace",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 207.97,
+    "source_url": "https://images.nasa.gov/details/NASA%20Minute%20Jan.%2023%2C%202026",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "NASA Minute Jan. 23, 2026",
+      "published": "2026-01-23",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-minute-2026-01-23.mp4",
+      "sha256": "46be4c783b67863119fa21e0558090bb1c91efcd019077672440a6a510cb449c",
+      "bytes": 61524775,
+      "download_url": "http://images-assets.nasa.gov/video/NASA%20Minute%20Jan.%2023,%202026/NASA%20Minute%20Jan.%2023,%202026~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-minute-2026-05-22",
+    "source_id": "nasa-image-and-video-library",
+    "title": "NASA Minute, 2026-05-22",
+    "vertical": "aerospace",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 94.6,
+    "source_url": "https://images.nasa.gov/details/NHQ_2025_0522_NASA%20Minute%20May%2022%2C%202026",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "NHQ_2025_0522_NASA Minute May 22, 2026",
+      "published": "2026-05-22",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-minute-2026-05-22.mp4",
+      "sha256": "26417c23b52ba05ed0f7ab3d0e4dc13d57fdf094202aadacb1eab8b7d076352d",
+      "bytes": 27957896,
+      "download_url": "http://images-assets.nasa.gov/video/NHQ_2025_0522_NASA%20Minute%20May%2022,%202026/NHQ_2025_0522_NASA%20Minute%20May%2022,%202026~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
   }
 ]
