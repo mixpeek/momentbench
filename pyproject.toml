@@ -48,6 +48,9 @@ site = [
 hf = [
     "huggingface_hub>=0.23",
 ]
+inspect = [
+    "inspect_ai>=0.3.100",
+]
 dev = [
     "pytest>=8.0",
     "pytest-asyncio>=0.23",

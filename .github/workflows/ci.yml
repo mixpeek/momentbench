@@ -20,9 +20,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - run: pip install -e ".[dev,models]"
+      - run: pip install -e ".[dev,models,inspect]"
       - run: ruff check .
       - run: pytest -q
+      - name: inspect eval on the seed set with a mock model
+        run: inspect eval momentbench/agentic/inspect_task.py --model mockllm/model --display plain
 
   docker:
     runs-on: ubuntu-latest

@@ -67,6 +67,14 @@ momentbench agentic claude-opus-5-5 \
 - **Failures count:** a trial that refuses, hits the turn limit or never submits scores zero and stays in the denominator.
 - **No retrieval index:** transcript search is plain keyword overlap, so no entrant depends on a vendor's embeddings.
 
+The same track runs under [Inspect AI](https://inspect.aisi.org.uk/), with the same tools, budget and scoring rule:
+
+```bash
+pip install -e ".[inspect]"
+inspect eval momentbench/agentic/inspect_task.py --model anthropic/claude-opus-5-5 \
+  -T corpus_dir=/path/to/videos --epochs 5
+```
+
 Requires `ffmpeg` on the PATH. Only an Anthropic provider ships today. Other providers implement `momentbench.agentic.model.AgentModel`. No agentic results are published yet.
 
 ## Contamination Control
