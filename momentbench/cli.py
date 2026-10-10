@@ -45,6 +45,81 @@ def run(model: str, queries: str, corpus: str, output: str, concurrency: int):
 
 
 @main.command()
+@click.argument("model", type=str)
+@click.option("--queries", "-q", type=click.Path(exists=True), required=True)
+@click.option("--corpus", "-c", type=click.Path(exists=True), required=True)
+@click.option("--corpus-dir", type=click.Path(exists=True, file_okay=False), required=True,
+              help="Directory holding <asset_id>.mp4 and optional transcripts")
+@click.option("--provider", type=click.Choice(["anthropic"]), default="anthropic")
+@click.option("--effort", type=str, default=None, help="Provider effort level, e.g. low, high")
+@click.option("--trials", type=int, default=5)
+@click.option("--max-steps", type=int, default=30)
+@click.option("--max-frames", type=int, default=64)
+@click.option("--max-tool-calls", type=int, default=60)
+@click.option("--pricing", type=click.Path(exists=True), default="configs/pricing.json")
+@click.option("--output", "-o", type=click.Path(), default="data/results/agentic")
+@click.option("--concurrency", type=int, default=4)
+def agentic(model: str, queries: str, corpus: str, corpus_dir: str, provider: str,
+            effort: str | None, trials: int, max_steps: int, max_frames: int,
+            max_tool_calls: int, pricing: str, output: str, concurrency: int):
+    """Run the agentic track: a tool-using model searches the corpus for each moment."""
+    from momentbench.agentic.anthropic_model import AnthropicAgent
+    from momentbench.agentic.budget import Budget, load_pricing
+    from momentbench.agentic.environment import LocalCorpus
+    from momentbench.agentic.run import run_agentic_benchmark
+    from momentbench.runner import load_corpus_assets, load_queries
+
+    query_list = load_queries(Path(queries))
+    local = LocalCorpus(load_corpus_assets(Path(corpus)), Path(corpus_dir))
+    missing = set(local.missing_videos())
+    runnable = [q for q in query_list if not any(g.asset_id in missing for g in q.gold_moments)]
+    if missing:
+        console.print(
+            f"[yellow]{len(missing)} of {len(local.assets)} assets have no video file in "
+            f"{corpus_dir}; running {len(runnable)} of {len(query_list)} queries.[/yellow]"
+        )
+    if not runnable:
+        raise click.ClickException("no query has its gold video on disk")
+
+    prices = load_pricing(Path(pricing), model)
+    if prices is None:
+        console.print(f"[yellow]No price for {model} in {pricing}; cost will be omitted.[/yellow]")
+
+    result = asyncio.run(
+        run_agentic_benchmark(
+            queries=runnable,
+            model=AnthropicAgent(model=model, effort=effort),
+            corpus=local,
+            trials=trials,
+            budget=Budget(max_steps=max_steps, max_frames=max_frames,
+                          max_tool_calls=max_tool_calls),
+            pricing=prices,
+            max_concurrency=concurrency,
+            output_dir=Path(output),
+        )
+    )
+    errors = [t.error for t in result.trials if t.error]
+    if len(errors) == len(result.trials):
+        raise click.ClickException(f"every trial errored, nothing saved. First error: {errors[0]}")
+    if errors:
+        console.print(f"[red]{len(errors)} trials errored. First: {errors[0]}[/red]")
+    s = result.summary
+    lo, hi = s.recall_at_1_ci95
+    console.print(f"\n[bold]{result.model_id}[/bold] effort={result.effort} run={result.run_id}")
+    console.print(f"  Queries: {s.num_queries} x {s.num_trials} trials")
+    console.print(f"  Recall@1: {s.recall_at_1:.1%} (95% CI {lo:.1%} to {hi:.1%})")
+    console.print(f"  Recall@5: {s.recall_at_5:.1%}   Mean tIoU: {s.mean_temporal_iou:.3f}")
+    if s.mean_cost_usd_per_query is not None:
+        console.print(f"  Cost per query: ${s.mean_cost_usd_per_query:.4f}")
+    console.print(
+        f"  Per query: {s.mean_frames_per_query:.1f} frames, {s.mean_steps_per_query:.1f} turns, "
+        f"{s.mean_input_tokens_per_query:.0f} in / {s.mean_output_tokens_per_query:.0f} out tokens"
+    )
+    if s.failed_trials:
+        console.print(f"  [yellow]{s.failed_trials} trials ended without a submission[/yellow]")
+
+
+@main.command()
 @click.argument("results_dir", type=click.Path(exists=True))
 def leaderboard(results_dir: str):
     """Display leaderboard from saved results."""

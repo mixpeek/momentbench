@@ -51,6 +51,24 @@ Target scope per vertical, with current seed-release asset count:
 - **Hit**: correct asset AND temporal IoU ≥ 0.5 vs gold moment
 - **Metrics**: Recall@1, Recall@5, mean temporal IoU, per-tier breakdowns
 
+## Agentic Track
+
+The agentic track measures a tool-using model. The model cannot watch video. It gets five tools (`list_assets`, `search_transcript`, `read_transcript`, `sample_frames`, `submit_answer`) and a per-query budget of frames, tool calls and turns, and it must submit a video and a time span.
+
+```bash
+momentbench agentic claude-opus-5-5 \
+  -q data/queries/sample.json -c data/corpus_manifests/sample_manifest.json \
+  --corpus-dir /path/to/videos --effort high --trials 5
+```
+
+- **Corpus on disk:** `--corpus-dir` holds `<asset_id>.mp4`, plus an optional `<asset_id>.vtt` or `<asset_id>.transcript.json`. Queries whose gold video is missing are skipped, and the run says how many.
+- **Repeated trials:** each query runs `--trials` times. Recall@1 is the mean over trials, with a 95% bootstrap interval resampled over queries.
+- **Cost:** token usage is recorded per trial and priced from [`configs/pricing.json`](configs/pricing.json), which carries an as-of date. Report Recall@1 against cost per query at each effort level.
+- **Failures count:** a trial that refuses, hits the turn limit or never submits scores zero and stays in the denominator.
+- **No retrieval index:** transcript search is plain keyword overlap, so no entrant depends on a vendor's embeddings.
+
+Requires `ffmpeg` on the PATH. Only an Anthropic provider ships today. Other providers implement `momentbench.agentic.model.AgentModel`. No agentic results are published yet.
+
 ## Corpus Licensing
 
 All footage is public domain (17 U.S.C. § 105) or CC BY, permitting commercial derivatives. See [`ATTRIBUTION.md`](ATTRIBUTION.md) for full provenance.

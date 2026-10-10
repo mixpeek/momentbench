@@ -1,0 +1,11 @@
+{
+  "as_of": "2026-10-06",
+  "unit": "USD per million tokens",
+  "note": "First-party list prices. Check the provider's pricing page before publishing a cost figure, and record the as_of date with the result. Models without cache prices are costed at the input rate for cached tokens.",
+  "models": {
+    "claude-opus-5-5": {"input_per_mtok": 4.0, "output_per_mtok": 20.0, "cache_read_per_mtok": 0.2},
+    "claude-sonnet-5-5": {"input_per_mtok": 2.0, "output_per_mtok": 10.0, "cache_read_per_mtok": 0.2},
+    "claude-haiku-5-5": {"input_per_mtok": 0.1, "output_per_mtok": 0.5},
+    "claude-fable-5-1": {"input_per_mtok": 10.0, "output_per_mtok": 50.0, "cache_read_per_mtok": 0.25}
+  }
+}
