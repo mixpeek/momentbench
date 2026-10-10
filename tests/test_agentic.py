@@ -205,6 +205,26 @@ class TestRun:
                                         trials=3, output_dir=tmp_path / "out")
         assert not (tmp_path / "out").exists()
 
+    async def test_trials_finished_before_a_billing_failure_are_kept_as_partial(self, tmp_path):
+        from momentbench.agentic.run import ProviderUnavailableError
+
+        calls = []
+
+        class RunsOut(ScriptedModel):
+            def start(self, system, task, tools):
+                calls.append(1)
+                if len(calls) > 1:
+                    raise RuntimeError("403 Spend cap breached; account is not active")
+                return super().start(system, task, tools)
+
+        out = tmp_path / "out"
+        with pytest.raises(ProviderUnavailableError):
+            await run_agentic_benchmark([make_query()], RunsOut([[SUBMIT_GOLD]]),
+                                        make_corpus(tmp_path), trials=3, output_dir=out,
+                                        max_concurrency=1)
+        [partial] = out.glob("*.partial.json")
+        assert len(json.loads(partial.read_text())["trials"]) == 1
+
     async def test_an_entrant_with_its_own_loop_is_scored_the_same_way(self, tmp_path):
         from momentbench.agentic.episode import Episode
 

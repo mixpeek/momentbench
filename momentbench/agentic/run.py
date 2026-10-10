@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import asyncio
+import json
 import time
 import uuid
 from pathlib import Path
@@ -25,7 +26,7 @@ class ProviderUnavailableError(RuntimeError):
 
 
 # Plain "billing" is not a marker: Gemini's per-minute quota 429 mentions billing too.
-_FATAL_MARKERS = ("insufficient_quota", "account is not active", "invalid api key",
+_FATAL_MARKERS = ("insufficient_quota", "account is not active", "spend cap", "invalid api key",
                   "incorrect api key", "permission denied", "api key not valid")
 
 
@@ -204,10 +205,19 @@ async def run_agentic_benchmark(
     try:
         results = await asyncio.gather(*tasks)
     except ProviderUnavailableError:
-        # Nothing further can succeed; stop spending and save nothing.
+        # Nothing further can succeed, so stop spending. The run is not a result, but
+        # trials that finished were paid for: keep them in a .partial.json file, which
+        # no results table reads, so they can be inspected or resumed from.
         for task in tasks:
             task.cancel()
-        await asyncio.gather(*tasks, return_exceptions=True)
+        outcomes = await asyncio.gather(*tasks, return_exceptions=True)
+        done = [t for t in outcomes if isinstance(t, AgenticTrial)]
+        if output_dir and done:
+            output_dir.mkdir(parents=True, exist_ok=True)
+            partial = output_dir / f"agentic-{model.model_id}-{uuid.uuid4().hex[:8]}.partial.json"
+            partial.write_text(json.dumps(
+                {"model_id": model.model_id, "complete": False,
+                 "trials": [t.model_dump() for t in done]}, indent=2))
         raise
     run = AgenticRun(
         run_id=f"agentic-{model.model_id}-{uuid.uuid4().hex[:8]}",

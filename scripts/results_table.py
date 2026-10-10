@@ -24,7 +24,9 @@ def main() -> None:
     p.add_argument("runs", nargs="+")
     args = p.parse_args()
 
-    runs = [(Path(f), AgenticRun.model_validate_json(Path(f).read_text())) for f in args.runs]
+    # .partial.json files are runs a provider cut off; they are never results.
+    files = [Path(f) for f in args.runs if not f.endswith(".partial.json")]
+    runs = [(f, AgenticRun.model_validate_json(f.read_text())) for f in files]
     tiers = sorted({str(t.tier) for _, r in runs for t in r.trials})
     head = ["Model", "Harness", "Queries x trials", "Recall@1 (95% CI)", "R@1 tIoU 0.3 / 0.7"]
     head += [f"Tier {t}" for t in tiers] + ["Cost per query", "Run"]
