@@ -171,7 +171,8 @@ class LocalCorpus:
 
     Videos resolve from the manifest's `storage_path`, else
     `<corpus_dir>/<asset_id><suffix>`. Transcripts are optional and resolve from
-    `<corpus_dir>/<asset_id>.transcript.json` or `<corpus_dir>/<asset_id>.vtt`.
+    `<asset_id>.transcript.json` or `<asset_id>.vtt` in `corpus_dir`, then in
+    `transcripts_dir` (the repo ships one, data/transcripts).
     """
 
     def __init__(
@@ -180,17 +181,20 @@ class LocalCorpus:
         corpus_dir: Path | None = None,
         frame_extractor: FrameExtractor = ffmpeg_frame,
         transcripts: dict[str, list[dict[str, Any]]] | None = None,
+        transcripts_dir: Path | None = None,
     ):
         self.assets = {a["asset_id"]: a for a in assets}
         self.corpus_dir = corpus_dir
         self._extract = frame_extractor
         self._transcripts = dict(transcripts or {})
-        if corpus_dir and transcripts is None:
+        search = [d for d in (corpus_dir, transcripts_dir) if d]
+        if transcripts is None:
             for asset_id in self.assets:
-                for name in (f"{asset_id}.transcript.json", f"{asset_id}.vtt"):
-                    if (corpus_dir / name).exists():
-                        self._transcripts[asset_id] = load_transcript(corpus_dir / name)
-                        break
+                found = [d / f"{asset_id}{ext}" for d in search
+                         for ext in (".transcript.json", ".vtt")]
+                path = next((f for f in found if f.exists()), None)
+                if path:
+                    self._transcripts[asset_id] = load_transcript(path)
 
     def video_path(self, asset_id: str) -> Path | None:
         stored = self.assets[asset_id].get("storage_path")

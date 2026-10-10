@@ -203,13 +203,15 @@ def momentbench_agentic(
     queries: str = "data/queries/sample.json",
     corpus: str = "data/corpus_manifests/sample_manifest.json",
     corpus_dir: str | None = None,
+    transcripts_dir: str = "data/transcripts",
     max_steps: int = 30,
     max_frames: int = 64,
     max_tool_calls: int = 60,
 ) -> Task:
     """Corpus-scale video moment retrieval with tools. Use --epochs for repeated trials."""
     local = LocalCorpus(
-        load_corpus_assets(_resolve(corpus)), _resolve(corpus_dir) if corpus_dir else None
+        load_corpus_assets(_resolve(corpus)), _resolve(corpus_dir) if corpus_dir else None,
+        transcripts_dir=_resolve(transcripts_dir),
     )
     budget = Budget(max_steps=max_steps, max_frames=max_frames, max_tool_calls=max_tool_calls)
     return build_task_from(load_queries(_resolve(queries)), local, budget)

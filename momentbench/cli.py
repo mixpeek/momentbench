@@ -50,6 +50,8 @@ def run(model: str, queries: str, corpus: str, output: str, concurrency: int):
 @click.option("--corpus", "-c", type=click.Path(exists=True), required=True)
 @click.option("--corpus-dir", type=click.Path(exists=True, file_okay=False), required=True,
               help="Directory holding <asset_id>.mp4 and optional transcripts")
+@click.option("--transcripts-dir", type=click.Path(file_okay=False), default="data/transcripts",
+              help="Directory of <asset_id>.vtt transcripts, used when --corpus-dir has none")
 @click.option("--provider", default="anthropic",
               type=click.Choice(["anthropic", "claude-code", "openai", "gemini"]),
               help="anthropic, openai, gemini: provider API key and our loop. "
@@ -62,7 +64,8 @@ def run(model: str, queries: str, corpus: str, output: str, concurrency: int):
 @click.option("--pricing", type=click.Path(exists=True), default="configs/pricing.json")
 @click.option("--output", "-o", type=click.Path(), default="data/results/agentic")
 @click.option("--concurrency", type=int, default=4)
-def agentic(model: str, queries: str, corpus: str, corpus_dir: str, provider: str,
+def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_dir: str,
+            provider: str,
             effort: str | None, trials: int, max_steps: int, max_frames: int,
             max_tool_calls: int, pricing: str, output: str, concurrency: int):
     """Run the agentic track: a tool-using model searches the corpus for each moment."""
@@ -76,7 +79,8 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, provider: st
     from momentbench.runner import load_corpus_assets, load_queries
 
     query_list = load_queries(Path(queries))
-    local = LocalCorpus(load_corpus_assets(Path(corpus)), Path(corpus_dir))
+    local = LocalCorpus(load_corpus_assets(Path(corpus)), Path(corpus_dir),
+                        transcripts_dir=Path(transcripts_dir))
     missing = set(local.missing_videos())
     runnable = [q for q in query_list if not any(g.asset_id in missing for g in q.gold_moments)]
     if missing:

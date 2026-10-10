@@ -1,5 +1,6 @@
 """Tests for the agentic track, driven by a scripted model (no network, no ffmpeg)."""
 
+import json
 from pathlib import Path
 
 import pytest
@@ -108,6 +109,12 @@ class TestEnvironment:
         p = tmp_path / "a.vtt"
         p.write_text("WEBVTT\n\n00:00:01.000 --> 00:00:03.500\nhello\nworld\n")
         assert load_transcript(p) == [{"t_in": 1.0, "t_out": 3.5, "text": "hello world"}]
+
+    def test_transcripts_dir_is_searched_after_corpus_dir(self, tmp_path):
+        (tmp_path / "t").mkdir()
+        (tmp_path / "t" / "v1.vtt").write_text("WEBVTT\n\n00:01.000 --> 00:02.000\nhi\n")
+        corpus = LocalCorpus(ASSETS, tmp_path, transcripts_dir=tmp_path / "t")
+        assert json.loads(corpus.list_assets())[0]["has_transcript"] is True
 
     def test_load_vtt_without_hours(self, tmp_path):
         p = tmp_path / "a.vtt"
