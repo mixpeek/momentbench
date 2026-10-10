@@ -91,3 +91,33 @@ class TestGemini:
         fr = sent[1][-1].parts[0].function_response
         assert fr.name == "list_assets" and fr.id is None
         assert fr.parts[0].inline_data.mime_type == "image/jpeg"
+
+
+async def test_gemini_waits_out_a_rate_limit(monkeypatch):
+    pytest.importorskip("google.genai")
+    from google.genai import types
+
+    from momentbench.agentic import gemini_model
+
+    class QuotaError(Exception):
+        code = 429
+
+    calls = []
+    content = types.Content(role="model", parts=[types.Part(text="done")])
+    ok = Ns(candidates=[Ns(content=content, finish_reason=types.FinishReason.STOP)],
+            usage_metadata=None)
+
+    async def generate_content(model, contents, config):
+        calls.append(1)
+        if len(calls) == 1:
+            raise QuotaError("Please retry in 0.01s.")
+        return ok
+
+    async def no_sleep(_):
+        return None
+
+    monkeypatch.setattr(gemini_model.asyncio, "sleep", no_sleep)
+    client = Ns(aio=Ns(models=Ns(generate_content=generate_content)))
+    session = gemini_model.GeminiSession(client, "gemma", None, "sys", "task", TOOLS)
+    turn = await session.step(None)
+    assert len(calls) == 2 and turn.text == "done"

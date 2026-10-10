@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import asyncio
 import os
+import re
 from typing import Any
 
 from momentbench.agentic.budget import Usage
@@ -10,6 +12,7 @@ from momentbench.agentic.model import AgentModel, AgentSession, ModelTurn, ToolC
 
 DEFAULT_MODEL = "gemini-3.1-pro-preview"
 MAX_OUTPUT_TOKENS = 16000
+RATE_LIMIT_RETRIES = 8
 STOPS = {"SAFETY": "refusal", "PROHIBITED_CONTENT": "refusal", "BLOCKLIST": "refusal",
          "RECITATION": "refusal", "MAX_TOKENS": "max_tokens"}
 
@@ -55,9 +58,7 @@ class GeminiSession(AgentSession):
                 for r in tool_results
             ]
             self._contents.append(t.Content(role="user", parts=parts))
-        response = await self._client.aio.models.generate_content(
-            model=self._model, contents=self._contents, config=self._config
-        )
+        response = await self._generate()
         u = response.usage_metadata
         cached = (u.cached_content_token_count or 0) if u else 0
         usage = Usage(
@@ -89,6 +90,21 @@ class GeminiSession(AgentSession):
         text = "".join(p.text for p in parts if p.text and not p.thought)
         return ModelTurn(tool_calls=[] if stopped else calls, usage=usage, text=text,
                          stopped=stopped)
+
+
+    async def _generate(self) -> Any:
+        """Call the model, waiting out per-minute quota errors (429) rather than failing."""
+        for attempt in range(RATE_LIMIT_RETRIES + 1):
+            try:
+                return await self._client.aio.models.generate_content(
+                    model=self._model, contents=self._contents, config=self._config
+                )
+            except Exception as e:
+                if getattr(e, "code", None) != 429 or attempt == RATE_LIMIT_RETRIES:
+                    raise
+                hint = re.search(r"retry in ([\d.]+)s", str(e))
+                await asyncio.sleep(float(hint.group(1)) + 1 if hint else 30 * (attempt + 1))
+        raise AssertionError("unreachable")
 
 
 class GeminiAgent(AgentModel):
