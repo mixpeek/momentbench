@@ -88,7 +88,8 @@ The same track runs under [Inspect AI](https://inspect.aisi.org.uk/), with the s
 ```bash
 pip install -e ".[inspect]"
 inspect eval momentbench/agentic/inspect_task.py --model anthropic/claude-opus-5-5 \
-  -T corpus_dir=/path/to/videos --epochs 5
+  -T corpus_dir=/path/to/videos --epochs 1
+# defaults to film_v0.2.json and aerospace_v0.2.json; pass -T queries=a.json,b.json to change
 ```
 
 To run through a local Claude Code install instead of an API key, add `--provider claude-code` (and `pip install -e ".[claude-code]"`). The Claude Agent SDK runs the tool loop with Claude Code's built-in tools, settings and other MCP servers switched off and the benchmark's system prompt in place of Claude Code's. The corpus tools charge the same budget. Each run records `harness: "claude-code"` or `harness: "api"`, so results from the two are never mixed silently.

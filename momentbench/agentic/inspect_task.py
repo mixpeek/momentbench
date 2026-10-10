@@ -200,7 +200,7 @@ def _resolve(path: str) -> Path:
 
 @task
 def momentbench_agentic(
-    queries: str = "data/queries/sample.json",
+    queries: str = "data/queries/film_v0.2.json,data/queries/aerospace_v0.2.json",
     corpus: str = "data/corpus_manifests/sample_manifest.json",
     corpus_dir: str | None = None,
     transcripts_dir: str = "data/transcripts",
@@ -214,4 +214,6 @@ def momentbench_agentic(
         transcripts_dir=_resolve(transcripts_dir),
     )
     budget = Budget(max_steps=max_steps, max_frames=max_frames, max_tool_calls=max_tool_calls)
-    return build_task_from(load_queries(_resolve(queries)), local, budget)
+    # Comma-separated, so one eval can span several query files.
+    query_list = [q for path in queries.split(",") for q in load_queries(_resolve(path.strip()))]
+    return build_task_from(query_list, local, budget)

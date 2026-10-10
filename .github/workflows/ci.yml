@@ -24,7 +24,7 @@ jobs:
       - run: ruff check .
       - run: pytest -q
       - name: inspect eval on the seed set with a mock model
-        run: inspect eval momentbench/agentic/inspect_task.py --model mockllm/model --display plain
+        run: inspect eval momentbench/agentic/inspect_task.py --model mockllm/model --display plain -T queries=data/queries/sample.json
 
   docker:
     runs-on: ubuntu-latest

@@ -74,9 +74,15 @@ def test_parse_answer_ignores_prose_and_garbage():
     assert [(m.t_in, m.t_out) for m in got] == [(1.0, 2.0)]
 
 
-def test_seed_task_loads_without_a_corpus_dir():
+def test_default_task_spans_the_v0_2_query_files():
+    files = ("film_v0.2.json", "aerospace_v0.2.json")
+    expected = sum(len(json.loads((REPO_ROOT / "data/queries" / f).read_text())) for f in files)
+    assert len(momentbench_agentic().dataset) == expected
+
+
+def test_a_single_query_file_still_works():
     seed = json.loads((REPO_ROOT / "data/queries/sample.json").read_text())
-    assert len(momentbench_agentic().dataset) == len(seed)
+    assert len(momentbench_agentic(queries="data/queries/sample.json").dataset) == len(seed)
 
 
 NO_ANSWER = Query(query_id="na", text="a moment that is not in the corpus",
