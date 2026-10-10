@@ -129,6 +129,12 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, provider: st
         f"  Per query: {s.mean_frames_per_query:.1f} frames, {s.mean_steps_per_query:.1f} turns, "
         f"{s.mean_input_tokens_per_query:.0f} in / {s.mean_output_tokens_per_query:.0f} out tokens"
     )
+    by_iou = "  ".join(f"@{th} {r:.1%}" for th, r in s.recall_at_1_by_iou.items())
+    console.print(f"  Recall@1 by tIoU: {by_iou}")
+    for tier, row in s.by_tier.items():
+        t_lo, t_hi = row["recall_at_1_ci95"]
+        console.print(f"  Tier {tier}: {row['recall_at_1']:.1%} ({t_lo:.1%} to {t_hi:.1%}), "
+                      f"{row['num_queries']} queries")
     if s.failed_trials:
         console.print(f"  [yellow]{s.failed_trials} trials ended without a submission[/yellow]")
 

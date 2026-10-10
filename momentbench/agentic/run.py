@@ -16,7 +16,7 @@ from momentbench.agentic.environment import LocalCorpus
 from momentbench.agentic.episode import run_episode
 from momentbench.agentic.model import AgentModel
 from momentbench.agentic.stats import bootstrap_ci
-from momentbench.eval.scoring import evaluate_prediction
+from momentbench.eval.scoring import compute_temporal_iou, evaluate_prediction
 from momentbench.types import Moment, Prediction, Query
 
 
@@ -29,6 +29,9 @@ class AgenticTrial(BaseModel):
     hit_at_1: bool
     hit_at_5: bool
     best_temporal_iou: float
+    # tIoU of the first submitted moment against its best gold span; 1.0 for a correct
+    # abstention on a no-answer query. Drives Recall@1 at other thresholds.
+    top1_iou: float = 0.0
     usage: Usage
     cost_usd: float | None = None
     latency_s: float
@@ -50,6 +53,10 @@ class AgenticSummary(BaseModel):
     mean_frames_per_query: float
     mean_steps_per_query: float
     failed_trials: int
+    # Recall@1 at tIoU 0.3, 0.5 and 0.7, keyed by the threshold as a string.
+    recall_at_1_by_iou: dict[str, float] = Field(default_factory=dict)
+    # Per tier: number of queries, Recall@1 and its 95% CI.
+    by_tier: dict[str, dict[str, Any]] = Field(default_factory=dict)
 
 
 class AgenticRun(BaseModel):
@@ -64,6 +71,9 @@ class AgenticRun(BaseModel):
     timestamp: str
     summary: AgenticSummary
     trials: list[AgenticTrial]
+
+
+IOU_THRESHOLDS = (0.3, 0.5, 0.7)
 
 
 def summarize(trials: list[AgenticTrial], num_trials: int) -> AgenticSummary:
@@ -90,7 +100,23 @@ def summarize(trials: list[AgenticTrial], num_trials: int) -> AgenticSummary:
         mean_frames_per_query=avg([t.usage.frames for t in trials]),
         mean_steps_per_query=avg([t.usage.steps for t in trials]),
         failed_trials=sum(1 for t in trials if t.outcome != "submitted"),
+        recall_at_1_by_iou={
+            str(th): avg([mean(t.top1_iou >= th for t in ts) for ts in by_query.values()])
+            for th in IOU_THRESHOLDS
+        },
+        by_tier=_by_tier(by_query),
     )
+
+
+def _by_tier(by_query: dict[str, list[AgenticTrial]]) -> dict[str, dict[str, Any]]:
+    tiers: dict[int, list[float]] = {}
+    for ts in by_query.values():
+        tiers.setdefault(ts[0].tier, []).append(mean(t.hit_at_1 for t in ts))
+    return {
+        str(tier): {"num_queries": len(r1), "recall_at_1": mean(r1),
+                    "recall_at_1_ci95": bootstrap_ci(r1)}
+        for tier, r1 in sorted(tiers.items())
+    }
 
 
 async def run_agentic_benchmark(
@@ -129,6 +155,12 @@ async def run_agentic_benchmark(
         # Only an explicit submission can be right. Without this, a refusal or a
         # crash would score as a correct abstention on a no-answer query.
         submitted = outcome == "submitted"
+        if query.is_no_answer:
+            top1 = 1.0 if submitted and not moments else 0.0
+        elif submitted and moments:
+            top1 = max(compute_temporal_iou(moments[0], g) for g in query.gold_moments)
+        else:
+            top1 = 0.0
         return AgenticTrial(
             query_id=query.query_id,
             trial=trial,
@@ -138,6 +170,7 @@ async def run_agentic_benchmark(
             hit_at_1=submitted and scored.hit_at_1,
             hit_at_5=submitted and scored.hit_at_5,
             best_temporal_iou=scored.best_temporal_iou if submitted else 0.0,
+            top1_iou=top1,
             usage=usage,
             cost_usd=pricing.cost_usd(usage) if pricing else None,
             latency_s=latency,

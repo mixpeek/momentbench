@@ -152,6 +152,16 @@ class TestRun:
         assert run.summary.mean_cost_usd_per_query == pytest.approx((100 + 100) / 1e6)
         assert (tmp_path / "out" / f"{run.run_id}.json").exists()
 
+    async def test_summary_reports_tiers_and_iou_thresholds(self, tmp_path):
+        loose = ("submit_answer", {"moments": [{"asset_id": "v1", "t_in": 10, "t_out": 26}]})
+        run = await run_agentic_benchmark(
+            [make_query()], ScriptedModel([[loose]]), make_corpus(tmp_path), trials=2
+        )
+        # tIoU is 10/16 = 0.625: a hit at 0.3 and 0.5, a miss at 0.7.
+        assert run.summary.recall_at_1_by_iou == {"0.3": 1.0, "0.5": 1.0, "0.7": 0.0}
+        tier = str(int(make_query().tier))
+        assert run.summary.by_tier[tier]["num_queries"] == 1
+
     async def test_a_wrong_span_misses(self, tmp_path):
         wrong = ("submit_answer", {"moments": [{"asset_id": "v1", "t_in": 60, "t_out": 70}]})
         run = await run_agentic_benchmark(
