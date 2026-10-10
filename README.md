@@ -52,6 +52,15 @@ Target scope per vertical, with current seed-release asset count:
 - **Metrics**: Recall@1, Recall@5, mean temporal IoU, per-tier breakdowns
 - **No-answer queries**: a query with an empty `gold_moments` list has no match in the corpus. It is a hit only when the system returns no moments. On the agentic track that takes an explicit empty submission; a refusal or a run that hits its limit is a miss. The seed set has none yet.
 
+## Getting the Corpus
+
+```bash
+momentbench corpus-download -m data/corpus_manifests/sample_manifest.json --corpus-dir corpus/
+momentbench corpus-verify   -m data/corpus_manifests/sample_manifest.json --corpus-dir corpus/
+```
+
+`corpus-download` fetches every asset whose manifest entry has a `file` block (the 7 film assets today) and checks its sha256. `corpus-verify` checks presence, sha256 and duration for every asset and exits non-zero if any fails.
+
 ## Agentic Track
 
 The agentic track measures a tool-using model. The model cannot watch video. It gets five tools (`list_assets`, `search_transcript`, `read_transcript`, `sample_frames`, `submit_answer`) and a per-query budget of frames, tool calls and turns, and it must submit a video and a time span.

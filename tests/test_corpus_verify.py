@@ -41,3 +41,27 @@ def test_sha256_file_hashes_contents(tmp_path):
     p = tmp_path / "f"
     p.write_bytes(b"abc")
     assert sha256_file(p) == "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+
+
+def test_download_skips_assets_without_a_file_block(tmp_path):
+    from momentbench.corpus.download import download_asset
+
+    assert download_asset({"asset_id": "x"}, tmp_path).startswith("skip")
+
+
+def test_download_unzips_and_checks_hash(tmp_path):
+    import zipfile
+
+    from momentbench.corpus.download import download_asset
+
+    src = tmp_path / "src.zip"
+    with zipfile.ZipFile(src, "w") as z:
+        z.writestr("movie.mov", b"abc")
+    asset = {"asset_id": "v1", "file": {
+        "name": "v1.mov", "download_url": src.as_uri(),
+        "sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"}}
+    out = tmp_path / "out"
+    out.mkdir()
+    assert download_asset(asset, out) == "got  v1"
+    assert (out / "v1.mov").read_bytes() == b"abc"
+    assert download_asset(asset, out) == "have v1"

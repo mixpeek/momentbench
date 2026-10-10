@@ -119,6 +119,24 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, provider: st
         console.print(f"  [yellow]{s.failed_trials} trials ended without a submission[/yellow]")
 
 
+@main.command("corpus-download")
+@click.option("--manifest", "-m", type=click.Path(exists=True), required=True)
+@click.option("--corpus-dir", type=click.Path(file_okay=False), required=True)
+def corpus_download(manifest: str, corpus_dir: str):
+    """Download every manifest asset that has a source file, then check its sha256."""
+    import json
+
+    from momentbench.corpus.download import download_asset
+
+    out = Path(corpus_dir)
+    out.mkdir(parents=True, exist_ok=True)
+    lines = [download_asset(a, out) for a in json.loads(Path(manifest).read_text())]
+    for line in lines:
+        console.print(line)
+    if any(line.startswith("FAIL") for line in lines):
+        raise SystemExit(1)
+
+
 @main.command("corpus-verify")
 @click.option("--manifest", "-m", type=click.Path(exists=True), required=True)
 @click.option("--corpus-dir", type=click.Path(exists=True, file_okay=False), required=True)
