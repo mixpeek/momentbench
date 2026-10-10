@@ -77,6 +77,8 @@ Transcripts are the files in [`data/transcripts`](../data/transcripts), machine 
 
 **Human review:** `scripts/review_queries.py build` writes a static page that shows each query with five frames (one second before the span, its start, middle and end, one second after). A reviewer marks accept, fix or reject, and `review_queries.py apply` records the decision in `metadata.human_review`, removing rejected queries. Accepted queries say `human-reviewed by <reviewer>` in `metadata.source`.
 
+**Miss audit:** after the first Claude run on the film set, 8 randomly chosen tier 1 misses were compared against frames. 6 were genuine model errors. 1 query was not unique (another shot in the same film fits it) and 1 gold span contained a missed cut. Both are flagged in `metadata.review_flag` for human review rather than edited, because correcting only the queries a model missed would bias the set toward that model.
+
 **Known bias:** the drafter and verifier are Claude. Queries may suit Claude's way of describing images. Human review, or cross-model verification, is the remedy. Until then, compare Claude to other entrants with that caveat.
 
 **Known limitation:** scene detection misses some dissolves and dark cuts, mostly in Elephants Dream, so a few gold spans include a second or two of the neighbouring shot.

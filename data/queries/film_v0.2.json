@@ -2762,7 +2762,8 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
-      }
+      },
+      "review_flag": "miss audit 2026-10-10: a nearby shot (about 280-290 s) also shows the young man on the canal bridge with the robot behind him, so the text may not be unique"
     }
   },
   {
@@ -3715,7 +3716,8 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
-      }
+      },
+      "review_flag": "miss audit 2026-10-10: the gold span appears to contain a missed cut; only the first half shows the orange grid lines"
     }
   },
   {
