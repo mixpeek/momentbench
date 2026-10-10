@@ -81,4 +81,8 @@ Transcripts are the files in [`data/transcripts`](../data/transcripts), machine 
 
 **Known bias:** the drafter and verifier are Claude. Queries may suit Claude's way of describing images. Human review, or cross-model verification, is the remedy. Until then, compare Claude to other entrants with that caveat.
 
+**Captions:** the NASA Minute episodes burn their narration into the picture as captions, so some aerospace tier 2 queries can be answered by reading the frames alone. They are still correct, but on those assets tier 2 measures reading as much as listening.
+
+**Aerospace spot check:** 10 random aerospace queries were checked against frames before the cross-check. All 10 matched; one described a red-vested crew member as wearing a green flight suit.
+
 **Known limitation:** scene detection misses some dissolves and dark cuts, mostly in Elephants Dream, so a few gold spans include a second or two of the neighbouring shot.

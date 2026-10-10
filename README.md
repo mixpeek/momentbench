@@ -8,7 +8,13 @@
 
 **Design target:** 75 hours of rights-cleared video, 500 queries across 4 difficulty tiers, evaluated against frontier models and retrieval pipelines.
 
-**Current seed release (v0.1):** 9 corpus assets and 8 queries across 3 verticals and tiers 1, 2 and 4 (see [`data/`](data/)). The 7 film assets are downloaded and hash-verified against the manifest (`momentbench corpus-verify`). The civic and aerospace assets have no working source link, so their 4 queries have never been checked against footage and are marked unverified in `metadata.verification`. The 4 film queries were annotated by a model from extracted frames and are pending human review. A fifth film query (Sintel, tier 3) was removed on 2026-10-10 because the moment it described does not exist in the film. PRs adding rights-cleared footage or queries are welcome (see [`SUBMISSION.md`](SUBMISSION.md)).
+**Current release (v0.2):** 20 hash-verified assets in two domains, 7 Blender open movies (about 72 minutes) and 13 NASA videos (about 30 minutes, 2022 to 2026), with machine transcripts in [`data/transcripts`](data/transcripts). Queries:
+
+- [`data/queries/film_v0.2.json`](data/queries/film_v0.2.json): 185 public film queries across all four tiers; 82 more are held out.
+- [`data/queries/aerospace_v0.2.json`](data/queries/aerospace_v0.2.json): 167 NASA queries across all four tiers, 140 `public` and 27 `rolling` (footage published after current model training cutoffs); 59 more are held out.
+- [`data/queries/sample.json`](data/queries/sample.json): the 4-query v0.1 seed, kept for comparison with earlier runs.
+
+In total 493 queries, 352 in this repository. They were drafted and verified by Claude, then cross-checked by Gemini, and only queries both agreed on were kept (34 of 527 were dropped at that step). They have not had human review yet; a 20-query spot check put the error rate before cross-checking at about 10%. [`docs/protocol.md`](docs/protocol.md) defines the task, metrics and what a reported result must state, and describes how the queries were built. PRs adding rights-cleared footage or queries are welcome (see [`SUBMISSION.md`](SUBMISSION.md)).
 
 Built on [Mixpeek](https://mixpeek.com).
 
@@ -40,17 +46,17 @@ Difficulty targets were pre-registered before any baseline evaluations were run.
 
 ## Verticals
 
-Target scope per vertical, with current seed-release asset count:
+Target scope per vertical, with the v0.2 asset count:
 
-- **Civic** (target ~30h, seed: 1 asset): U.S. congressional hearings, federal agency briefings
-- **Aerospace** (target ~25h, seed: 1 asset): NASA missions, NOAA field operations
-- **Film** (target ~20h, seed: 7 assets): Blender open movies, Prelinger Archives, National Archives
+- **Film** (target ~20h, v0.2: 7 assets): Blender open movies; Prelinger Archives and National Archives planned
+- **Aerospace** (target ~25h, v0.2: 13 assets): NASA mission recaps, explainers and NASA Minute episodes
+- **Civic** (target ~30h, v0.2: none): congressional hearings and agency briefings are planned. The v0.1 Senate asset was dropped because its source link no longer resolves
 
 ## Scoring
 
 - **Hit**: correct asset AND temporal IoU ≥ 0.5 vs gold moment
 - **Metrics**: Recall@1, Recall@5, mean temporal IoU, per-tier breakdowns
-- **No-answer queries**: a query with an empty `gold_moments` list has no match in the corpus. It is a hit only when the system returns no moments. On the agentic track that takes an explicit empty submission; a refusal or a run that hits its limit is a miss. The seed set has none yet.
+- **No-answer queries**: a query with an empty `gold_moments` list has no match in the corpus. It is a hit only when the system returns no moments. On the agentic track that takes an explicit empty submission; a refusal or a run that hits its limit is a miss. Tier 3 in v0.2 is made of these: real shots with one concrete detail changed.
 
 ## Getting the Corpus
 
@@ -59,7 +65,7 @@ momentbench corpus-download -m data/corpus_manifests/sample_manifest.json --corp
 momentbench corpus-verify   -m data/corpus_manifests/sample_manifest.json --corpus-dir corpus/
 ```
 
-`corpus-download` fetches every asset whose manifest entry has a `file` block (the 7 film assets today) and checks its sha256. `corpus-verify` checks presence, sha256 and duration for every asset and exits non-zero if any fails.
+`corpus-download` fetches every asset whose manifest entry has a `file` block (all 20 in v0.2) and checks its sha256. `corpus-verify` checks presence, sha256 and duration for every asset and exits non-zero if any fails.
 
 ## Agentic Track
 
@@ -71,7 +77,7 @@ momentbench agentic claude-opus-5-5 \
   --corpus-dir /path/to/videos --effort high --trials 5
 ```
 
-- **Corpus on disk:** `--corpus-dir` holds `<asset_id>.mp4`, plus an optional `<asset_id>.vtt` or `<asset_id>.transcript.json`. Queries whose gold video is missing are skipped, and the run says how many.
+- **Corpus on disk:** `--corpus-dir` holds `<asset_id>.mp4` (or `.mov`, `.mkv`). Transcripts are read from `--transcripts-dir`, default `data/transcripts`. Queries whose gold video is missing are skipped, and the run says how many.
 - **Repeated trials:** each query runs `--trials` times. Recall@1 is the mean over trials, with a 95% bootstrap interval resampled over queries.
 - **Cost:** token usage is recorded per trial and priced from [`configs/pricing.json`](configs/pricing.json), which carries an as-of date. Report Recall@1 against cost per query at each effort level.
 - **Failures count:** a trial that refuses, hits the turn limit or never submits scores zero and stays in the denominator.
@@ -93,7 +99,7 @@ Requires `ffmpeg` on the PATH. Other providers implement `momentbench.agentic.mo
 
 ## Contamination Control
 
-Every query carries a canary string, and queries are assigned to a `public`, `held_out` or `rolling` split. The v0.1 seed set is all `public`, so no v0.1 number is contamination-controlled. See [`docs/contamination.md`](docs/contamination.md).
+Every query carries a canary string, and queries are assigned to a `public`, `held_out` or `rolling` split. Held-out queries are kept outside this repository and scored by the maintainers. Rolling queries use footage published after 2026-06-30. See [`docs/contamination.md`](docs/contamination.md).
 
 ## Corpus Licensing
 
