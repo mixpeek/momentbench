@@ -14,7 +14,7 @@
 - [`data/queries/aerospace_v0.2.json`](data/queries/aerospace_v0.2.json): 202 NASA queries across all four tiers, 164 `public` and 38 `rolling` (footage published after current model training cutoffs); 65 more are held out.
 - [`data/queries/sample.json`](data/queries/sample.json): the 4-query v0.1 seed, kept for comparison with earlier runs.
 
-In total 620 queries across film, aerospace and robotics, 457 in this repository. They were drafted and verified by Claude, then cross-checked by Gemini, and only queries both agreed on were kept (37 of 657 were dropped at that step). They have not had human review yet; a 20-query spot check put the error rate before cross-checking at about 10%. Current scores are in [`docs/results.md`](docs/results.md). [`docs/protocol.md`](docs/protocol.md) defines the task, metrics and what a reported result must state, and describes how the queries were built. PRs adding rights-cleared footage or queries are welcome (see [`SUBMISSION.md`](SUBMISSION.md)).
+In total 620 queries across film, aerospace and robotics, 457 in this repository. They were drafted and verified by Claude, then cross-checked by Gemini, and only queries both agreed on were kept (37 of 657 were dropped at that step). They have not had human review yet; a 20-query spot check put the error rate before cross-checking at about 10%. The technical report is [`docs/report.md`](docs/report.md); current scores are in [`docs/results.md`](docs/results.md). [`docs/protocol.md`](docs/protocol.md) defines the task, metrics and what a reported result must state, and describes how the queries were built. PRs adding rights-cleared footage or queries are welcome (see [`SUBMISSION.md`](SUBMISSION.md)).
 
 Built on [Mixpeek](https://mixpeek.com).
 
