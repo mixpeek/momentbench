@@ -26,8 +26,8 @@ would cost at API list prices, not money spent.
 | claude-opus-5-5 | claude-code | 185 x 1 | 56.2 (49.2 to 63.2) | 64.3 / 44.9 | 59.8 (n=87) | 81.2 (n=32) | 30.6 (n=36) | 50.0 (n=30) | $0.117 notional | `agentic-claude-opus-5-5-da54af61.json` |
 | claude-sonnet-5-5 | claude-code | 185 x 1 | 31.4 (24.9 to 37.8) | 43.8 / 10.8 | 25.3 (n=87) | 68.8 (n=32) | 16.7 (n=36) | 26.7 (n=30) | $0.064 notional | `agentic-claude-sonnet-5-5-2b162b09.json` |
 | claude-haiku-5-5 | claude-code | 185 x 1 | 30.8 (24.3 to 37.3) | 39.5 / 17.8 | 12.6 (n=87) | 81.2 (n=32) | 41.7 (n=36) | 16.7 (n=30) | $0.015 notional | `agentic-claude-haiku-5-5-2eb421f7.json` |
-| baseline-abstain | api | 185 x 3 | 19.5 (13.5 to 25.4) | 19.5 / 19.5 | 0.0 (n=87) | 0.0 (n=32) | 100.0 (n=36) | 0.0 (n=30) | none (no model) | `agentic-baseline-abstain-595b6c33.json` |
-| baseline-random | api | 185 x 3 | 0.2 (0.0 to 0.5) | 0.2 / 0.0 | 0.0 (n=87) | 1.0 (n=32) | 0.0 (n=36) | 0.0 (n=30) | none (no model) | `agentic-baseline-random-7ef04983.json` |
+| baseline-abstain | api | 185 x 3 | 19.5 (13.5 to 25.4) | 19.5 / 19.5 | 0.0 (n=87) | 0.0 (n=32) | 100.0 (n=36) | 0.0 (n=30) | none (no model) | `agentic-baseline-abstain-540fc4f7.json` |
+| baseline-random | api | 185 x 3 | 0.2 (0.0 to 0.5) | 0.2 / 0.0 | 0.0 (n=87) | 1.0 (n=32) | 0.0 (n=36) | 0.0 (n=30) | none (no model) | `agentic-baseline-random-e7eea7e0.json` |
 
 ## Aerospace (aerospace_v0.2.json)
 
@@ -38,8 +38,8 @@ Every row is computed on the 167 current queries that all of these runs covered 
 | claude-opus-5-5 | claude-code | 167 x 1 | 66.5 (59.3 to 73.7) | 71.3 / 52.7 | 67.1 (n=79) | 91.2 (n=34) | 42.9 (n=21) | 54.5 (n=33) | $0.142 notional | `agentic-claude-opus-5-5-519357e4.json` |
 | claude-haiku-5-5 | claude-code | 167 x 1 | 43.7 (35.9 to 50.9) | 52.1 / 28.1 | 31.6 (n=79) | 76.5 (n=34) | 38.1 (n=21) | 42.4 (n=33) | $0.018 notional | `agentic-claude-haiku-5-5-73f3e5ad.json` |
 | claude-sonnet-5-5 | claude-code | 167 x 1 | 37.1 (30.5 to 44.3) | 52.1 / 21.6 | 32.9 (n=79) | 61.8 (n=34) | 23.8 (n=21) | 30.3 (n=33) | $0.073 notional | `agentic-claude-sonnet-5-5-a44a1b82.json` |
-| baseline-abstain | api | 167 x 3 | 12.6 (7.8 to 18.0) | 12.6 / 12.6 | 0.0 (n=79) | 0.0 (n=34) | 100.0 (n=21) | 0.0 (n=33) | none (no model) | `agentic-baseline-abstain-465629a5.json` |
-| baseline-random | api | 167 x 3 | 0.0 (0.0 to 0.0) | 0.0 / 0.0 | 0.0 (n=79) | 0.0 (n=34) | 0.0 (n=21) | 0.0 (n=33) | none (no model) | `agentic-baseline-random-ea1c6b5e.json` |
+| baseline-abstain | api | 167 x 3 | 12.6 (7.8 to 18.0) | 12.6 / 12.6 | 0.0 (n=79) | 0.0 (n=34) | 100.0 (n=21) | 0.0 (n=33) | none (no model) | `agentic-baseline-abstain-cbb76cd7.json` |
+| baseline-random | api | 167 x 3 | 0.0 (0.0 to 0.0) | 0.0 / 0.0 | 0.0 (n=79) | 0.0 (n=34) | 0.0 (n=21) | 0.0 (n=33) | none (no model) | `agentic-baseline-random-0cd4a178.json` |
 
 ### Public vs rolling (aerospace)
 
@@ -52,8 +52,8 @@ evidence of anything by itself.
 
 | Model | Public R@1 (95% CI) | Rolling R@1 (95% CI) |
 |---|---|---|
-| baseline-abstain | 12.1 (7.1 to 17.9), n=140 | 14.8 (3.7 to 29.6), n=27 |
-| baseline-random | 0.0 (0.0 to 0.0), n=140 | 0.0 (0.0 to 0.0), n=27 |
+| baseline-abstain | 10.4 (5.5 to 15.2), n=164 | 10.5 (2.6 to 21.1), n=38 |
+| baseline-random | 0.0 (0.0 to 0.0), n=164 | 0.0 (0.0 to 0.0), n=38 |
 | claude-haiku-5-5 | 39.6 (32.3 to 47.0), n=164 | 50.0 (34.2 to 65.8), n=38 |
 | claude-opus-5-5 | 64.0 (56.7 to 70.7), n=164 | 60.5 (44.7 to 76.3), n=38 |
 | claude-sonnet-5-5 | 32.9 (25.0 to 40.7), n=140 | 59.3 (40.7 to 77.8), n=27 |
@@ -85,6 +85,8 @@ appear here.
 |---|---|---|---|
 | aerospace | claude-opus-5-5 | 48.6 (31.4 to 65.7), n=35 | `agentic-claude-opus-5-5-519357e4.json` |
 | aerospace | claude-haiku-5-5 | 31.4 (17.1 to 48.6), n=35 | `agentic-claude-haiku-5-5-73f3e5ad.json` |
+| aerospace | baseline-abstain | 0.0 (0.0 to 0.0), n=35 | `agentic-baseline-abstain-cbb76cd7.json` |
+| aerospace | baseline-random | 0.0 (0.0 to 0.0), n=35 | `agentic-baseline-random-0cd4a178.json` |
 | robotics | claude-opus-5-5 | 83.3 (66.7 to 100.0), n=18 | `agentic-claude-opus-5-5-e7ca7bd1.json` |
 | robotics | claude-opus-5-5 (frames only) | 77.8 (55.6 to 94.4), n=18 | `agentic-claude-opus-5-5-fe94c043.json` |
 | robotics | claude-sonnet-5-5 | 44.4 (22.2 to 66.7), n=18 | `agentic-claude-sonnet-5-5-4e1ecc2c.json` |
