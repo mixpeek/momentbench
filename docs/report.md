@@ -114,6 +114,7 @@ Every row is computed on the 167 current queries that all of these runs covered 
 |---|---|---|---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | 70 x 1 | 77.1 (67.1 to 87.1) | 81.4 / 68.6 | 83.3 (n=42) | 70.0 (n=10) | 50.0 (n=10) | 87.5 (n=8) | $0.111 notional | `agentic-claude-opus-5-5-e7ca7bd1.json` |
 | claude-opus-5-5 (frames only) | claude-code | 70 x 1 | 72.9 (61.4 to 82.9) | 77.1 / 52.9 | 76.2 (n=42) | 80.0 (n=10) | 50.0 (n=10) | 75.0 (n=8) | $0.123 notional | `agentic-claude-opus-5-5-fe94c043.json` |
+| gemini-3.1-pro-preview | api | 70 x 1 | 61.4 (50.0 to 72.9) | 68.6 / 54.3 | 59.5 (n=42) | 90.0 (n=10) | 40.0 (n=10) | 62.5 (n=8) | $0.328 | `agentic-gemini-3.1-pro-preview-cfaace12.json` |
 | claude-haiku-5-5 | claude-code | 70 x 1 | 42.9 (31.4 to 54.3) | 55.7 / 22.9 | 40.5 (n=42) | 60.0 (n=10) | 20.0 (n=10) | 62.5 (n=8) | $0.013 notional | `agentic-claude-haiku-5-5-59536b38.json` |
 | claude-sonnet-5-5 | claude-code | 70 x 1 | 38.6 (27.1 to 50.0) | 58.6 / 14.3 | 40.5 (n=42) | 60.0 (n=10) | 0.0 (n=10) | 50.0 (n=8) | $0.052 notional | `agentic-claude-sonnet-5-5-4e1ecc2c.json` |
 | baseline-abstain | api | 70 x 3 | 14.3 (7.1 to 22.9) | 14.3 / 14.3 | 0.0 (n=42) | 0.0 (n=10) | 100.0 (n=10) | 0.0 (n=8) | none (no model) | `agentic-baseline-abstain-b3a169c6.json` |
@@ -129,6 +130,7 @@ Every row is computed on the 167 current queries that all of these runs covered 
 | aerospace | baseline-random | 0.0 (0.0 to 0.0), n=35 | `agentic-baseline-random-0cd4a178.json` |
 | robotics | claude-opus-5-5 | 83.3 (66.7 to 100.0), n=18 | `agentic-claude-opus-5-5-e7ca7bd1.json` |
 | robotics | claude-opus-5-5 (frames only) | 72.2 (50.0 to 88.9), n=18 | `agentic-claude-opus-5-5-fe94c043.json` |
+| robotics | gemini-3.1-pro-preview | 55.6 (33.3 to 77.8), n=18 | `agentic-gemini-3.1-pro-preview-cfaace12.json` |
 | robotics | claude-sonnet-5-5 | 44.4 (22.2 to 66.7), n=18 | `agentic-claude-sonnet-5-5-4e1ecc2c.json` |
 | robotics | claude-haiku-5-5 | 33.3 (11.1 to 55.6), n=18 | `agentic-claude-haiku-5-5-59536b38.json` |
 | robotics | baseline-abstain | 0.0 (0.0 to 0.0), n=18 | `agentic-baseline-abstain-b3a169c6.json` |

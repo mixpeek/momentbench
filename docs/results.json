@@ -683,6 +683,46 @@
       "cost_usd_per_query": 0.051598194285714286,
       "error_trials": 0,
       "run_file": "agentic-claude-sonnet-5-5-4e1ecc2c.json"
+    },
+    {
+      "domain": "robotics",
+      "model": "gemini-3.1-pro-preview",
+      "harness": "api",
+      "modalities": "frames+transcripts",
+      "corpus_assets": 27,
+      "queries": 70,
+      "trials": 1,
+      "recall_at_1": 0.6143,
+      "recall_at_1_ci95": [
+        0.5,
+        0.7286
+      ],
+      "recall_at_1_by_iou": {
+        "0.3": 0.6857,
+        "0.5": 0.6143,
+        "0.7": 0.5429
+      },
+      "by_tier": {
+        "1": {
+          "queries": 42,
+          "recall_at_1": 0.5952
+        },
+        "2": {
+          "queries": 10,
+          "recall_at_1": 0.9
+        },
+        "3": {
+          "queries": 10,
+          "recall_at_1": 0.4
+        },
+        "4": {
+          "queries": 8,
+          "recall_at_1": 0.625
+        }
+      },
+      "cost_usd_per_query": 0.32785295,
+      "error_trials": 0,
+      "run_file": "agentic-gemini-3.1-pro-preview-cfaace12.json"
     }
   ]
 }
