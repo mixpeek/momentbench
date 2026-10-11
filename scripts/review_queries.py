@@ -9,7 +9,7 @@
 
     # 3. Apply: accepted queries get metadata.human_review, rejected ones are removed,
     #    queries marked fix are kept but flagged with the note.
-    python scripts/review_queries.py apply data/queries/film_v0.2.json decisions.json \\
+    python scripts/review_queries.py apply data/queries/film_v0.2.json decisions*.json \\
         --reviewer "name or handle"
 
 Each query shows five frames: one second before the gold span, its start, middle and
@@ -42,6 +42,10 @@ def frame(video: Path, t: float, out: Path) -> str:
 
 def build(args: argparse.Namespace) -> None:
     queries = json.loads(Path(args.queries).read_text())
+    pre = json.loads(Path(args.prereview).read_text()) if args.prereview else {}
+    # Flagged queries first, so a reviewer with limited time spends it where it counts.
+    order = {"reject": 0, "fix": 1}
+    queries.sort(key=lambda q: order.get(pre.get(q["query_id"], {}).get("decision"), 2))
     corpus, out = Path(args.corpus_dir), Path(args.out)
     (out / "frames").mkdir(parents=True, exist_ok=True)
     rows = []
@@ -70,6 +74,11 @@ def build(args: argparse.Namespace) -> None:
                     f"{b:.2f} s was altered: <i>{change}</i>. Accept only if nothing in the "
                     "corpus matches the text.")
         qid = html.escape(q["query_id"])
+        verdict = pre.get(q["query_id"])
+        if verdict:
+            what += (f'<br><span class="pre {html.escape(verdict["decision"])}">Model pre-review: '
+                     f'<b>{html.escape(verdict["decision"])}</b>. '
+                     f'{html.escape(verdict.get("reason", ""))}</span>')
         rows.append(f"""
 <section data-id="{qid}">
   <h3>{qid} <span class="tier">tier {q['tier']}</span></h3>
@@ -89,9 +98,11 @@ section{{border-top:1px solid #ccc;padding:12px 0}}
 .frames{{display:flex;gap:6px}} figure{{margin:0}} figcaption{{font-size:12px;color:#555}}
 figure.ctx img{{opacity:.55}} .note{{width:420px;margin-left:12px}}
 #bar{{position:sticky;top:0;background:#fff;padding:8px 0}}
+.pre{{font-size:13px}} .pre.reject{{color:#b00}} .pre.fix{{color:#a60}} .pre.accept{{color:#070}}
 </style>
 <div id="bar"><b>{len(rows)} queries</b> from {html.escape(Path(args.queries).name)}.
-Context frames (before, after) are faded. <span id="count"></span>
+Context frames (before, after) are faded. The model pre-review is a suggestion only;
+your choice is what gets recorded. Flagged queries come first. <span id="count"></span>
 <button onclick="save()">Download decisions</button></div>
 {''.join(rows)}
 <script>
@@ -125,7 +136,9 @@ count();
 def apply(args: argparse.Namespace) -> None:
     path = Path(args.queries)
     queries = json.loads(path.read_text())
-    decisions = json.loads(Path(args.decisions).read_text())
+    decisions: dict = {}
+    for f in args.decisions:  # one file per review page; query ids are unique across them
+        decisions.update(json.loads(Path(f).read_text()))
     today = datetime.date.today().isoformat()
     kept, counts = [], {"accept": 0, "fix": 0, "reject": 0, "unreviewed": 0}
     for q in queries:
@@ -157,9 +170,10 @@ def main() -> None:
     b.add_argument("queries")
     b.add_argument("--corpus-dir", required=True)
     b.add_argument("--out", required=True)
+    b.add_argument("--prereview", help="prereview_queries.py output to show beside each query")
     a = sub.add_parser("apply")
     a.add_argument("queries")
-    a.add_argument("decisions")
+    a.add_argument("decisions", nargs="+")
     a.add_argument("--reviewer", required=True)
     args = p.parse_args()
     (build if args.cmd == "build" else apply)(args)
