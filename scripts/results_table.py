@@ -19,11 +19,25 @@ def pct(x: float) -> str:
     return f"{100 * x:.1f}"
 
 
-def table(paths: list[str]) -> str:
-    """One markdown table, a row per run, best Recall@1 first."""
+def common_queries(paths: list[str]) -> set[str]:
+    """Query ids that every run in `paths` covered."""
+    sets = [{t.query_id for t in AgenticRun.model_validate_json(Path(f).read_text()).trials}
+            for f in paths if not str(f).endswith(".partial.json")]
+    return set.intersection(*sets) if sets else set()
+
+
+def table(paths: list[str], only: set[str] | None = None) -> str:
+    """One markdown table, a row per run, best Recall@1 first.
+
+    With `only`, every row is recomputed on just those query ids, so runs made on
+    different versions of a query file are still compared on the same questions.
+    """
     # .partial.json files are runs a provider cut off; they are never results.
     files = [Path(f) for f in paths if not str(f).endswith(".partial.json")]
     runs = [(f, AgenticRun.model_validate_json(f.read_text())) for f in files]
+    if only is not None:
+        for _, run in runs:
+            run.trials = [t for t in run.trials if t.query_id in only]
     lines = []
     tiers = sorted({str(t.tier) for _, r in runs for t in r.trials})
     head = ["Model", "Harness", "Queries x trials", "Recall@1 (95% CI)", "R@1 tIoU 0.3 / 0.7"]

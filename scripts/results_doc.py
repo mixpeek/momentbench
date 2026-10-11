@@ -15,7 +15,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from results_table import table  # noqa: E402
+from results_table import common_queries, table  # noqa: E402
 
 from momentbench.agentic.run import AgenticRun  # noqa: E402
 from momentbench.agentic.stats import bootstrap_ci  # noqa: E402
@@ -92,7 +92,8 @@ def physical_rows(paths: list[Path]) -> str:
         if f.exists():
             tagged |= {q["query_id"] for q in json.loads(f.read_text())
                        if q["metadata"].get("physical_event")}
-    lines = ["| Model | Run | Physical-event R@1 (95% CI) |", "|---|---|---|"]
+    lines = ["| Domain | Model | Physical-event R@1 (95% CI) | Run |", "|---|---|---|---|"]
+    rows = []
     for f in paths:
         run = AgenticRun.model_validate_json(f.read_text())
         per_query: dict[str, list[float]] = {}
@@ -103,9 +104,24 @@ def physical_rows(paths: list[Path]) -> str:
             continue
         hits = [sum(v) / len(v) for v in per_query.values()]
         lo, hi = bootstrap_ci(hits)
-        lines.append(f"| {run.model_id} | `{f.name}` | {100 * sum(hits) / len(hits):.1f} "
-                     f"({100 * lo:.1f} to {100 * hi:.1f}), n={len(hits)} |")
+        domain = run.trials[0].vertical
+        mean_hit = sum(hits) / len(hits)
+        rows.append((domain, -mean_hit, f"| {domain} | {run.model_id} | {100 * mean_hit:.1f} "
+                     f"({100 * lo:.1f} to {100 * hi:.1f}), n={len(hits)} | `{f.name}` |"))
+    lines += [r[2] for r in sorted(rows)]
     return "\n".join(lines) if len(lines) > 2 else ""
+
+
+def section(paths: list[Path]) -> str:
+    """A domain's table, every row computed on the queries all of its runs covered."""
+    files = [str(p) for p in paths]
+    common = common_queries(files)
+    covered = {len({t.query_id for t in AgenticRun.model_validate_json(p.read_text()).trials})
+               for p in paths}
+    note = ("" if len(covered) <= 1 else
+            f"Runs here covered different versions of the query file, so every row is "
+            f"computed on the {len(common)} queries all of them covered.\n\n")
+    return note + table(files, only=common)
 
 
 def main() -> None:
@@ -117,7 +133,7 @@ def main() -> None:
 NASA rover, free-flyer and helicopter footage. Queries target physical events: contact,
 wheels on slopes, lift-off and landing, cause then effect.
 
-{table([str(p) for p in robotics])}
+{section(robotics)}
 """ if robotics else "")
     seed = [SEED / f"{r}.json" for r in SEED_RUNS]
     phys = physical_rows(aero + robotics)
@@ -125,7 +141,9 @@ wheels on slopes, lift-off and landing, cause then effect.
 
 Queries tagged `metadata.physical_event`: a robot, vehicle or mechanism visibly moves or
 makes contact (a wheel onto a ramp, rotors spinning up, a rocket lifting off). This is the
-slice to report for physical understanding.
+slice to report for physical understanding. Compare rows within a domain: runs made
+before the aerospace physical-event queries were added cover none of them, so they do not
+appear here.
 
 {phys}
 
@@ -150,11 +168,11 @@ would cost at API list prices, not money spent.
 
 ## Film ({QUERY_FILES['film']})
 
-{table([str(p) for p in film])}
+{section(film)}
 
 ## Aerospace ({QUERY_FILES['aerospace']})
 
-{table([str(p) for p in aero])}
+{section(aero)}
 
 ### Public vs rolling (aerospace)
 

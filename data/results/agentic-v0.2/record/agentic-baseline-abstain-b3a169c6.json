@@ -1,0 +1,6986 @@
+{
+  "run_id": "agentic-baseline-abstain-b3a169c6",
+  "track": "agentic",
+  "model_id": "baseline-abstain",
+  "effort": null,
+  "harness": "api",
+  "modalities": "frames+transcripts",
+  "budget": {
+    "max_steps": 30,
+    "max_frames": 64,
+    "max_tool_calls": 60
+  },
+  "pricing": null,
+  "timestamp": "2026-10-11T00:58:40Z",
+  "summary": {
+    "num_queries": 72,
+    "num_trials": 3,
+    "recall_at_1": 0.1527777777777778,
+    "recall_at_1_ci95": [
+      0.06944444444444445,
+      0.2361111111111111
+    ],
+    "recall_at_5": 0.1527777777777778,
+    "mean_temporal_iou": 0.1527777777777778,
+    "mean_cost_usd_per_query": null,
+    "mean_input_tokens_per_query": 0.0,
+    "mean_output_tokens_per_query": 0.0,
+    "mean_frames_per_query": 0.0,
+    "mean_steps_per_query": 1.0,
+    "failed_trials": 0,
+    "error_trials": 0,
+    "recall_at_1_by_iou": {
+      "0.3": 0.1527777777777778,
+      "0.5": 0.1527777777777778,
+      "0.7": 0.1527777777777778
+    },
+    "by_tier": {
+      "1": {
+        "num_queries": 43,
+        "recall_at_1": 0,
+        "recall_at_1_ci95": [
+          0,
+          0
+        ]
+      },
+      "2": {
+        "num_queries": 10,
+        "recall_at_1": 0,
+        "recall_at_1_ci95": [
+          0,
+          0
+        ]
+      },
+      "3": {
+        "num_queries": 11,
+        "recall_at_1": 1,
+        "recall_at_1_ci95": [
+          1,
+          1
+        ]
+      },
+      "4": {
+        "num_queries": 8,
+        "recall_at_1": 0,
+        "recall_at_1_ci95": [
+          0,
+          0
+        ]
+      }
+    }
+  },
+  "trials": [
+    {
+      "query_id": "q-robotics-0100",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00025354098761454225,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0100",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000037582998629659414,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0100",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00002012500772252679,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0101",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000018667022231966257,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0101",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000018166989320889115,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0101",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00002125001628883183,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0102",
+      "trial": 0,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00002070798655040562,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0102",
+      "trial": 1,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00002762500662356615,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0102",
+      "trial": 2,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000019082974176853895,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0103",
+      "trial": 0,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000019500002963468432,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0103",
+      "trial": 1,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016916979802772403,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0103",
+      "trial": 2,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016207981389015913,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0104",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016583013348281384,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0104",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016125006368383765,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0104",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016082980437204242,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0105",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001833401620388031,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0105",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015874975360929966,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0105",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016708014300093055,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0106",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000017915997887030244,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0106",
+      "trial": 1,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016874982975423336,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0106",
+      "trial": 2,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.0000162090000230819,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0108",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015875004464760423,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0108",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015708006685599685,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0108",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001575000351294875,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0109",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.0000160830095410347,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0109",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016250007320195436,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0109",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016708014300093055,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0110",
+      "trial": 0,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000017915997887030244,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0110",
+      "trial": 1,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016499980119988322,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0110",
+      "trial": 2,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001575000351294875,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0111",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000019166996935382485,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0111",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001575000351294875,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0111",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015666999388486147,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0112",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016375008272007108,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0112",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001545899431221187,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0112",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015792000340297818,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0113",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001579101081006229,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0113",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016125006368383765,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0113",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001545899431221187,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0114",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000017292011762037873,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0114",
+      "trial": 1,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015666999388486147,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0114",
+      "trial": 2,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001550000160932541,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0116",
+      "trial": 0,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00006829202175140381,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0116",
+      "trial": 1,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016040983609855175,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0116",
+      "trial": 2,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015541998436674476,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0117",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000018999999156221747,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0117",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001566598075442016,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0117",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015958008589223027,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0118",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001704200985841453,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0118",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016250007320195436,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0118",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015583995264023542,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0119",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015875004464760423,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0119",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015707977581769228,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0119",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015375000657513738,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0120",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001704200985841453,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0120",
+      "trial": 1,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001591700129210949,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0120",
+      "trial": 2,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001545899431221187,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0121",
+      "trial": 0,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015958998119458556,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0121",
+      "trial": 1,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000017916987417265773,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0121",
+      "trial": 2,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001562500256113708,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0122",
+      "trial": 0,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001575000351294875,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0122",
+      "trial": 1,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015541008906438947,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0122",
+      "trial": 2,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001550000160932541,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0124",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000019500002963468432,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0124",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015792000340297818,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0124",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015583005733788013,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0125",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001566598075442016,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0125",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000017000013031065464,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0125",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016166974091902375,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0126",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001562500256113708,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0126",
+      "trial": 1,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016375008272007108,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0126",
+      "trial": 2,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015375000657513738,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0127",
+      "trial": 0,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000017833983292803168,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0127",
+      "trial": 1,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015708006685599685,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0127",
+      "trial": 2,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015583005733788013,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0128",
+      "trial": 0,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015792000340297818,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0128",
+      "trial": 1,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016792007954791188,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0128",
+      "trial": 2,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015792000340297818,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0130",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001766698551364243,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0130",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015708006685599685,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0130",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001550000160932541,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0131",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000017375015886500478,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0131",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001562500256113708,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0131",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015666999388486147,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0132",
+      "trial": 0,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015958998119458556,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0132",
+      "trial": 1,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016707985196262598,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0132",
+      "trial": 2,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001575000351294875,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0133",
+      "trial": 0,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016125006368383765,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0133",
+      "trial": 1,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001533300383016467,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0133",
+      "trial": 2,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015915982658043504,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0134",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000017207989003509283,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0134",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015666999388486147,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0134",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016000005416572094,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0135",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000017458020010963082,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0135",
+      "trial": 1,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015666009858250618,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0135",
+      "trial": 2,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001766698551364243,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0137",
+      "trial": 0,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015583995264023542,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0137",
+      "trial": 1,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015416997484862804,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0137",
+      "trial": 2,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015666009858250618,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0138",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000017167010810226202,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0138",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001550000160932541,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0138",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015583005733788013,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0139",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001541702658869326,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0139",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016792007954791188,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0139",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001575000351294875,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0141",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015708006685599685,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0141",
+      "trial": 1,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015291996533051133,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0141",
+      "trial": 2,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015416997484862804,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0142",
+      "trial": 0,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001754099503159523,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0142",
+      "trial": 1,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000017125013982877135,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0142",
+      "trial": 2,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015416007954627275,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0143",
+      "trial": 0,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015833997167646885,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0143",
+      "trial": 1,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00006320900865830481,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0143",
+      "trial": 2,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.0000162090000230819,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0144",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001575000351294875,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0144",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015790981706231833,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0144",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015708996215835214,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0145",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001724998583085835,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0145",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015458004781976342,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0145",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015666009858250618,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0146",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015874975360929966,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0146",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000017082988051697612,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0146",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015708006685599685,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0149",
+      "trial": 0,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015541998436674476,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0149",
+      "trial": 1,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015582976629957557,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0149",
+      "trial": 2,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015583005733788013,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0300",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001912500010803342,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0300",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00002025000867433846,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0300",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001604200224392116,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0301",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016082980437204242,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0301",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015541998436674476,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0301",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001575000351294875,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0302",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000022249994799494743,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0302",
+      "trial": 1,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000017417012713849545,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0302",
+      "trial": 2,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016000005416572094,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0304",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001704200985841453,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0304",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015749974409118295,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0304",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001562500256113708,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0305",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001562500256113708,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0305",
+      "trial": 1,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001704200985841453,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0305",
+      "trial": 2,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.0000158329785335809,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0306",
+      "trial": 0,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001604200224392116,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0306",
+      "trial": 1,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00011870899470523,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0306",
+      "trial": 2,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00004587500006891787,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0307",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00004237500252202153,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0307",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00003641701187007129,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0307",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000033666001399978995,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0309",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.0000457499991171062,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0309",
+      "trial": 1,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00004479201743379235,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0309",
+      "trial": 2,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00004070799332112074,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0310",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00003166700480505824,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0310",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00003095899592153728,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0310",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00003141697379760444,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0311",
+      "trial": 0,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000036083016311749816,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0311",
+      "trial": 1,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00003416699473746121,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0311",
+      "trial": 2,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.0000353749783243984,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0314",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00013050000416114926,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0314",
+      "trial": 1,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.0000797079992480576,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0314",
+      "trial": 2,
+      "tier": 2,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000044082989916205406,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0315",
+      "trial": 0,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000034249998861923814,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0315",
+      "trial": 1,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00003129098331555724,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0315",
+      "trial": 2,
+      "tier": 3,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 1.0,
+      "top1_iou": 1.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.0001232089998666197,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0500",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000028750015189871192,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0500",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000017999991541728377,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0500",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001666697789914906,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0501",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.0000185410026460886,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0501",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015958998119458556,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0501",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001824999344535172,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0503",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001650000922381878,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0503",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015833007637411356,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0503",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.0000158329785335809,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0504",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000019166996935382485,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0504",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015875004464760423,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0504",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016165984561666846,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0505",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016166013665497303,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0505",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001637497916817665,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0505",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000017707992810755968,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0506",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015958998119458556,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0506",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001562500256113708,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0506",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015583005733788013,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0507",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000018457998521625996,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0507",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001775001874193549,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0507",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00006683298852294683,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0509",
+      "trial": 0,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001650000922381878,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0509",
+      "trial": 1,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001604200224392116,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0509",
+      "trial": 2,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001754099503159523,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0510",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001595797948539257,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0510",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015792000340297818,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0510",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015749974409118295,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0511",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001737498678267002,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0511",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015958998119458556,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0511",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001591700129210949,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0512",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016125006368383765,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0512",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001591601176187396,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0512",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001691700890660286,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0513",
+      "trial": 0,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016083999071270227,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0513",
+      "trial": 1,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015875004464760423,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0513",
+      "trial": 2,
+      "tier": 4,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016291014617308974,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0514",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000018166989320889115,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0514",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015667028492316604,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0514",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015624973457306623,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0515",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000020583014702424407,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0515",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015582976629957557,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0515",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015708996215835214,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0517",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016292004147544503,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0517",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015792000340297818,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0517",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015541998436674476,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0601",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016958016203716397,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0601",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001575000351294875,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0601",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015915982658043504,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0602",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001575000351294875,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0602",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.00001550000160932541,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0602",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016792007954791188,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0603",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.0000160830095410347,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0603",
+      "trial": 1,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000015792000340297818,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0603",
+      "trial": 2,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 1,
+        "tool_calls": 0,
+        "frames": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "cost_usd": null,
+      "latency_s": 0.000016040983609855175,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    }
+  ]
+}

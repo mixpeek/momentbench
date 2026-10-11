@@ -28,10 +28,12 @@ would cost at API list prices, not money spent.
 
 ## Aerospace (aerospace_v0.2.json)
 
+Runs here covered different versions of the query file, so every row is computed on the 167 queries all of them covered.
+
 | Model | Harness | Queries x trials | Recall@1 (95% CI) | R@1 tIoU 0.3 / 0.7 | Tier 1 | Tier 2 | Tier 3 | Tier 4 | Cost per query | Run |
 |---|---|---|---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | 167 x 1 | 65.3 (58.1 to 72.5) | 72.5 / 56.9 | 63.3 (n=79) | 85.3 (n=34) | 52.4 (n=21) | 57.6 (n=33) | $0.140 notional | `agentic-claude-opus-5-5-2b5433a6.json` |
-| claude-haiku-5-5 | claude-code | 203 x 1 | 41.4 (35.0 to 48.3) | 48.8 / 26.6 | 32.4 (n=111) | 76.5 (n=34) | 38.1 (n=21) | 37.8 (n=37) | $0.017 notional | `agentic-claude-haiku-5-5-73f3e5ad.json` |
+| claude-haiku-5-5 | claude-code | 167 x 1 | 43.7 (35.9 to 50.9) | 52.1 / 28.1 | 31.6 (n=79) | 76.5 (n=34) | 38.1 (n=21) | 42.4 (n=33) | $0.018 notional | `agentic-claude-haiku-5-5-73f3e5ad.json` |
 | claude-sonnet-5-5 | claude-code | 167 x 1 | 37.1 (30.5 to 44.3) | 52.1 / 21.6 | 32.9 (n=79) | 61.8 (n=34) | 23.8 (n=21) | 30.3 (n=33) | $0.073 notional | `agentic-claude-sonnet-5-5-a44a1b82.json` |
 | baseline-abstain | api | 167 x 3 | 12.6 (7.8 to 18.0) | 12.6 / 12.6 | 0.0 (n=79) | 0.0 (n=34) | 100.0 (n=21) | 0.0 (n=33) | none (no model) | `agentic-baseline-abstain-465629a5.json` |
 | baseline-random | api | 167 x 3 | 0.0 (0.0 to 0.0) | 0.0 / 0.0 | 0.0 (n=79) | 0.0 (n=34) | 0.0 (n=21) | 0.0 (n=33) | none (no model) | `agentic-baseline-random-ea1c6b5e.json` |
@@ -61,16 +63,22 @@ wheels on slopes, lift-off and landing, cause then effect.
 | Model | Harness | Queries x trials | Recall@1 (95% CI) | R@1 tIoU 0.3 / 0.7 | Tier 1 | Tier 2 | Tier 3 | Tier 4 | Cost per query | Run |
 |---|---|---|---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | 72 x 1 | 76.4 (66.7 to 86.1) | 83.3 / 66.7 | 81.4 (n=43) | 70.0 (n=10) | 54.5 (n=11) | 87.5 (n=8) | $0.112 notional | `agentic-claude-opus-5-5-e7ca7bd1.json` |
+| baseline-abstain | api | 72 x 3 | 15.3 (6.9 to 23.6) | 15.3 / 15.3 | 0.0 (n=43) | 0.0 (n=10) | 100.0 (n=11) | 0.0 (n=8) | none (no model) | `agentic-baseline-abstain-b3a169c6.json` |
+| baseline-random | api | 72 x 3 | 0.0 (0.0 to 0.0) | 0.5 / 0.0 | 0.0 (n=43) | 0.0 (n=10) | 0.0 (n=11) | 0.0 (n=8) | none (no model) | `agentic-baseline-random-cfb1ec6f.json` |
 ## Physical-event subset
 
 Queries tagged `metadata.physical_event`: a robot, vehicle or mechanism visibly moves or
 makes contact (a wheel onto a ramp, rotors spinning up, a rocket lifting off). This is the
-slice to report for physical understanding.
+slice to report for physical understanding. Compare rows within a domain: runs made
+before the aerospace physical-event queries were added cover none of them, so they do not
+appear here.
 
-| Model | Run | Physical-event R@1 (95% CI) |
-|---|---|---|
-| claude-haiku-5-5 | `agentic-claude-haiku-5-5-73f3e5ad.json` | 30.6 (16.7 to 44.4), n=36 |
-| claude-opus-5-5 | `agentic-claude-opus-5-5-e7ca7bd1.json` | 83.3 (66.7 to 100.0), n=18 |
+| Domain | Model | Physical-event R@1 (95% CI) | Run |
+|---|---|---|---|
+| aerospace | claude-haiku-5-5 | 30.6 (16.7 to 44.4), n=36 | `agentic-claude-haiku-5-5-73f3e5ad.json` |
+| robotics | claude-opus-5-5 | 83.3 (66.7 to 100.0), n=18 | `agentic-claude-opus-5-5-e7ca7bd1.json` |
+| robotics | baseline-abstain | 0.0 (0.0 to 0.0), n=18 | `agentic-baseline-abstain-b3a169c6.json` |
+| robotics | baseline-random | 0.0 (0.0 to 0.0), n=18 | `agentic-baseline-random-cfb1ec6f.json` |
 
 ## Run-to-run stability
 
