@@ -63,6 +63,7 @@ wheels on slopes, lift-off and landing, cause then effect.
 | Model | Harness | Queries x trials | Recall@1 (95% CI) | R@1 tIoU 0.3 / 0.7 | Tier 1 | Tier 2 | Tier 3 | Tier 4 | Cost per query | Run |
 |---|---|---|---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | 72 x 1 | 76.4 (66.7 to 86.1) | 83.3 / 66.7 | 81.4 (n=43) | 70.0 (n=10) | 54.5 (n=11) | 87.5 (n=8) | $0.112 notional | `agentic-claude-opus-5-5-e7ca7bd1.json` |
+| claude-opus-5-5 (frames only) | claude-code | 72 x 1 | 70.8 (59.7 to 80.6) | 77.8 / 48.6 | 72.1 (n=43) | 80.0 (n=10) | 54.5 (n=11) | 75.0 (n=8) | $0.123 notional | `agentic-claude-opus-5-5-fe94c043.json` |
 | baseline-abstain | api | 72 x 3 | 15.3 (6.9 to 23.6) | 15.3 / 15.3 | 0.0 (n=43) | 0.0 (n=10) | 100.0 (n=11) | 0.0 (n=8) | none (no model) | `agentic-baseline-abstain-b3a169c6.json` |
 | baseline-random | api | 72 x 3 | 0.0 (0.0 to 0.0) | 0.5 / 0.0 | 0.0 (n=43) | 0.0 (n=10) | 0.0 (n=11) | 0.0 (n=8) | none (no model) | `agentic-baseline-random-cfb1ec6f.json` |
 ## Physical-event subset
@@ -78,8 +79,15 @@ appear here.
 | aerospace | claude-opus-5-5 | 50.0 (33.3 to 66.7), n=36 | `agentic-claude-opus-5-5-519357e4.json` |
 | aerospace | claude-haiku-5-5 | 30.6 (16.7 to 44.4), n=36 | `agentic-claude-haiku-5-5-73f3e5ad.json` |
 | robotics | claude-opus-5-5 | 83.3 (66.7 to 100.0), n=18 | `agentic-claude-opus-5-5-e7ca7bd1.json` |
+| robotics | claude-opus-5-5 (frames only) | 77.8 (55.6 to 94.4), n=18 | `agentic-claude-opus-5-5-fe94c043.json` |
 | robotics | baseline-abstain | 0.0 (0.0 to 0.0), n=18 | `agentic-baseline-abstain-b3a169c6.json` |
 | robotics | baseline-random | 0.0 (0.0 to 0.0), n=18 | `agentic-baseline-random-cfb1ec6f.json` |
+
+## Visual-only ablation
+
+`--no-transcripts` rows (marked frames only) had no speech available to any tool. The gap
+to the matching full run is how much of the score came from finding the moment through
+what was said rather than what was seen.
 
 ## Run-to-run stability
 

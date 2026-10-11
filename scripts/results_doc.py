@@ -114,7 +114,8 @@ def physical_rows(paths: list[Path]) -> str:
         lo, hi = bootstrap_ci(hits)
         domain = run.trials[0].vertical
         mean_hit = sum(hits) / len(hits)
-        rows.append((domain, -mean_hit, f"| {domain} | {run.model_id} | {100 * mean_hit:.1f} "
+        model = run.model_id + (" (frames only)" if run.modalities == "frames" else "")
+        rows.append((domain, -mean_hit, f"| {domain} | {model} | {100 * mean_hit:.1f} "
                      f"({100 * lo:.1f} to {100 * hi:.1f}), n={len(hits)} | `{f.name}` |"))
     lines += [r[2] for r in sorted(rows)]
     return "\n".join(lines) if len(lines) > 2 else ""
@@ -193,7 +194,13 @@ evidence of anything by itself.
 
 {split_rows(aero)}
 
-{robotics_section}{physical_section}## Run-to-run stability
+{robotics_section}{physical_section}## Visual-only ablation
+
+`--no-transcripts` rows (marked frames only) had no speech available to any tool. The gap
+to the matching full run is how much of the score came from finding the moment through
+what was said rather than what was seen.
+
+## Run-to-run stability
 
 {retest()}
 
