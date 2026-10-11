@@ -323,3 +323,17 @@ class TestBaselines:
         for t in run.trials:
             [m] = t.moments
             assert m.asset_id in {"v1", "v2"} and 0 <= m.t_in < m.t_out
+
+
+class TestRescore:
+    async def test_a_corrected_gold_span_changes_the_score_without_rerunning(self, tmp_path):
+        from momentbench.agentic.run import rescore
+
+        loose = ("submit_answer", {"moments": [{"asset_id": "v1", "t_in": 30, "t_out": 40}]})
+        run = await run_agentic_benchmark([make_query()], ScriptedModel([[loose]]),
+                                          make_corpus(tmp_path), trials=1)
+        assert run.summary.recall_at_1 == 0.0
+        fixed = make_query(t_in=30.0, t_out=40.0)
+        again = rescore(run, {fixed.query_id: fixed})
+        assert again.summary.recall_at_1 == 1.0 and again.trials[0].top1_iou == 1.0
+        assert rescore(run, {}).trials == []  # a removed query drops out

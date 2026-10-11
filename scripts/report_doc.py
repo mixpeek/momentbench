@@ -27,6 +27,7 @@ from results_doc import (  # noqa: E402
     section,
     split_rows,
 )
+from results_table import load_run  # noqa: E402
 
 from momentbench.agentic.run import AgenticRun  # noqa: E402
 from momentbench.agentic.stats import bootstrap_ci  # noqa: E402
@@ -83,17 +84,19 @@ def heldout_rows(heldout_runs: Path | None) -> str:
     lines = ["| Domain | Model | Public R@1 (95% CI) | Held-out R@1 (95% CI) |",
              "|---|---|---|---|"]
     for vertical in QUERY_FILES:
-        public_runs = {AgenticRun.model_validate_json(p.read_text()).model_id: p
+        public_runs = {load_run(p).model_id: p
                        for p in runs_for(vertical)}
         for f in sorted(heldout_runs.glob("*.json")):
             if f.name.endswith(".partial.json"):
                 continue
+            # Held-out gold is not in the published files, so this run keeps the scores it
+            # was saved with.
             run = AgenticRun.model_validate_json(f.read_text())
             if not run.trials or run.trials[0].vertical != vertical:
                 continue
             if run.model_id not in public_runs:
                 continue
-            pub = AgenticRun.model_validate_json(public_runs[run.model_id].read_text())
+            pub = load_run(public_runs[run.model_id])
 
             def cell(trials):
                 hits = [float(t.hit_at_1) for t in trials]
@@ -124,7 +127,7 @@ def main() -> None:
     best_r1, best_model, best_domain, best_t3 = 0.0, "", "", 0.0
     for vertical, paths in (("film", film), ("aerospace", aero), ("robotics", robotics)):
         for path in paths:
-            run = AgenticRun.model_validate_json(path.read_text())
+            run = load_run(path)
             if run.model_id.startswith("baseline-"):
                 continue
             trials = [t for t in run.trials if t.query_id in current]

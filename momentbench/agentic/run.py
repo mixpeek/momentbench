@@ -100,6 +100,44 @@ class AgenticRun(BaseModel):
 IOU_THRESHOLDS = (0.3, 0.5, 0.7)
 
 
+def score_trial(query: Query, moments: list[Moment], outcome: str
+                ) -> tuple[bool, bool, float, float]:
+    """(hit@1, hit@5, best tIoU, top-1 tIoU) for one trial's submission."""
+    scored = evaluate_prediction(
+        query, Prediction(query_id=query.query_id, ranked_moments=moments, model_id="")
+    )
+    # Only an explicit submission can be right. Without this, a refusal or a
+    # crash would score as a correct abstention on a no-answer query.
+    submitted = outcome == "submitted"
+    if query.is_no_answer:
+        top1 = 1.0 if submitted and not moments else 0.0
+    elif submitted and moments:
+        top1 = max(compute_temporal_iou(moments[0], g) for g in query.gold_moments)
+    else:
+        top1 = 0.0
+    return (submitted and scored.hit_at_1, submitted and scored.hit_at_5,
+            scored.best_temporal_iou if submitted else 0.0, top1)
+
+
+def rescore(run: AgenticRun, queries: dict[str, Query]) -> AgenticRun:
+    """Score a saved run against the current gold, dropping queries no longer in the set.
+
+    A run stores each trial's submitted moments, so a corrected label changes the score
+    without rerunning the model.
+    """
+    trials = []
+    for t in run.trials:
+        q = queries.get(t.query_id)
+        if q is None:
+            continue
+        hit1, hit5, best, top1 = score_trial(q, t.moments, t.outcome)
+        trials.append(t.model_copy(update={"hit_at_1": hit1, "hit_at_5": hit5,
+                                           "best_temporal_iou": best, "top1_iou": top1,
+                                           "tier": int(q.tier)}))
+    return run.model_copy(update={"trials": trials,
+                                  "summary": summarize(trials, run.summary.num_trials)})
+
+
 def summarize(trials: list[AgenticTrial], num_trials: int) -> AgenticSummary:
     by_query: dict[str, list[AgenticTrial]] = {}
     for t in trials:
@@ -175,28 +213,16 @@ async def run_agentic_benchmark(
                 moments, usage, outcome, trace = [], Usage(), "error", []
                 error = f"{type(e).__name__}: {e}"
             latency = time.perf_counter() - start
-        scored = evaluate_prediction(
-            query,
-            Prediction(query_id=query.query_id, ranked_moments=moments, model_id=model.model_id),
-        )
-        # Only an explicit submission can be right. Without this, a refusal or a
-        # crash would score as a correct abstention on a no-answer query.
-        submitted = outcome == "submitted"
-        if query.is_no_answer:
-            top1 = 1.0 if submitted and not moments else 0.0
-        elif submitted and moments:
-            top1 = max(compute_temporal_iou(moments[0], g) for g in query.gold_moments)
-        else:
-            top1 = 0.0
+        hit1, hit5, best, top1 = score_trial(query, moments, outcome)
         return AgenticTrial(
             query_id=query.query_id,
             trial=trial,
             tier=int(query.tier),
             vertical=query.vertical,
             outcome=outcome,
-            hit_at_1=submitted and scored.hit_at_1,
-            hit_at_5=submitted and scored.hit_at_5,
-            best_temporal_iou=scored.best_temporal_iou if submitted else 0.0,
+            hit_at_1=hit1,
+            hit_at_5=hit5,
+            best_temporal_iou=best,
             top1_iou=top1,
             usage=usage,
             cost_usd=pricing.cost_usd(usage) if pricing else None,

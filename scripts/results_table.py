@@ -10,9 +10,30 @@ each row names the run file it came from.
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
-from momentbench.agentic.run import AgenticRun, summarize
+from momentbench.agentic.run import AgenticRun, rescore, summarize
+from momentbench.types import Query
+
+QUERY_FILES = ("film_v0.2.json", "aerospace_v0.2.json", "robotics_v0.2.json", "sample.json")
+_QUERIES: dict[str, Query] = {}
+
+
+def current_queries() -> dict[str, Query]:
+    """Every published query, by id, as the files stand now."""
+    if not _QUERIES:
+        root = Path(__file__).resolve().parents[1] / "data/queries"
+        for name in QUERY_FILES:
+            if (root / name).exists():
+                for q in json.loads((root / name).read_text()):
+                    _QUERIES[q["query_id"]] = Query(**q)
+    return _QUERIES
+
+
+def load_run(path: Path | str) -> AgenticRun:
+    """A saved run, rescored against the current gold (see rescore)."""
+    return rescore(AgenticRun.model_validate_json(Path(path).read_text()), current_queries())
 
 
 def pct(x: float) -> str:
@@ -21,7 +42,7 @@ def pct(x: float) -> str:
 
 def common_queries(paths: list[str]) -> set[str]:
     """Query ids that every run in `paths` covered."""
-    sets = [{t.query_id for t in AgenticRun.model_validate_json(Path(f).read_text()).trials}
+    sets = [{t.query_id for t in load_run(f).trials}
             for f in paths if not str(f).endswith(".partial.json")]
     return set.intersection(*sets) if sets else set()
 
@@ -34,7 +55,7 @@ def table(paths: list[str], only: set[str] | None = None) -> str:
     """
     # .partial.json files are runs a provider cut off; they are never results.
     files = [Path(f) for f in paths if not str(f).endswith(".partial.json")]
-    runs = [(f, AgenticRun.model_validate_json(f.read_text())) for f in files]
+    runs = [(f, load_run(f)) for f in files]
     if only is not None:
         for _, run in runs:
             run.trials = [t for t in run.trials if t.query_id in only]

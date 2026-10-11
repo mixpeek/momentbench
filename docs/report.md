@@ -107,8 +107,6 @@ Every row is computed on the 167 current queries that all of these runs covered 
 
 ### Robotics
 
-Every row is computed on the 70 current queries that all of these runs covered (runs made on earlier versions of the file, or on queries since removed by review, are scored only on what remains).
-
 | Model | Harness | Queries x trials | Recall@1 (95% CI) | R@1 tIoU 0.3 / 0.7 | Tier 1 | Tier 2 | Tier 3 | Tier 4 | Cost per query | Run |
 |---|---|---|---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | 70 x 1 | 75.7 (65.7 to 85.7) | 82.9 / 65.7 | 81.0 (n=42) | 70.0 (n=10) | 50.0 (n=10) | 87.5 (n=8) | $0.111 notional | `agentic-claude-opus-5-5-e7ca7bd1.json` |

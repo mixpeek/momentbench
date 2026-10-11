@@ -63,8 +63,6 @@ evidence of anything by itself.
 NASA rover, free-flyer and helicopter footage. Queries target physical events: contact,
 wheels on slopes, lift-off and landing, cause then effect.
 
-Every row is computed on the 70 current queries that all of these runs covered (runs made on earlier versions of the file, or on queries since removed by review, are scored only on what remains).
-
 | Model | Harness | Queries x trials | Recall@1 (95% CI) | R@1 tIoU 0.3 / 0.7 | Tier 1 | Tier 2 | Tier 3 | Tier 4 | Cost per query | Run |
 |---|---|---|---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | 70 x 1 | 75.7 (65.7 to 85.7) | 82.9 / 65.7 | 81.0 (n=42) | 70.0 (n=10) | 50.0 (n=10) | 87.5 (n=8) | $0.111 notional | `agentic-claude-opus-5-5-e7ca7bd1.json` |
@@ -126,8 +124,8 @@ limit). Four queries cannot rank models: every interval overlaps.
 
 | Model | Harness | Queries x trials | Recall@1 (95% CI) | R@1 tIoU 0.3 / 0.7 | Tier 1 | Cost per query | Run |
 |---|---|---|---|---|---|---|---|
-| claude-opus-5-5 | claude-code | 4 x 5 | 65.0 (25.0 to 100.0) | n/a | 65.0 (n=4) | $0.103 notional | `agentic-claude-opus-5-5-e51b703b.json` |
-| gpt-5.5 | api | 4 x 5 | 35.0 (10.0 to 65.0) | n/a | 35.0 (n=4) | $0.152 | `agentic-gpt-5.5-b893d59f.json` |
-| gemini-3.1-pro-preview | api | 4 x 5 | 35.0 (10.0 to 55.0) | n/a | 35.0 (n=4) | $0.256 | `agentic-gemini-3.1-pro-preview-a6ff462c.json` |
-| gemma-4-31b-it | api | 4 x 5 | 25.0 (10.0 to 40.0) | n/a | 25.0 (n=4) | not priced | `agentic-gemma-4-31b-it-d23baa9c.json` |
+| claude-opus-5-5 | claude-code | 4 x 5 | 65.0 (25.0 to 100.0) | 65.0 / 60.0 | 65.0 (n=4) | $0.103 notional | `agentic-claude-opus-5-5-e51b703b.json` |
+| gpt-5.5 | api | 4 x 5 | 35.0 (10.0 to 65.0) | 40.0 / 20.0 | 35.0 (n=4) | $0.152 | `agentic-gpt-5.5-b893d59f.json` |
+| gemini-3.1-pro-preview | api | 4 x 5 | 35.0 (10.0 to 55.0) | 35.0 / 25.0 | 35.0 (n=4) | $0.256 | `agentic-gemini-3.1-pro-preview-a6ff462c.json` |
+| gemma-4-31b-it | api | 4 x 5 | 25.0 (10.0 to 40.0) | 25.0 / 15.0 | 25.0 (n=4) | not priced | `agentic-gemma-4-31b-it-d23baa9c.json` |
 

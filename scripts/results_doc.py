@@ -15,9 +15,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from results_table import common_queries, table  # noqa: E402
+from results_table import common_queries, load_run, table  # noqa: E402
 
-from momentbench.agentic.run import AgenticRun  # noqa: E402
 from momentbench.agentic.stats import bootstrap_ci  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -43,7 +42,7 @@ def retest() -> str:
              "| Cohen's kappa | Runs |", "|---|---|---|---|---|---|---|"]
     for domain, pa_path, pb_path in RETEST:
         a, b = ({t.query_id: t.hit_at_1
-                 for t in AgenticRun.model_validate_json(p.read_text()).trials}
+                 for t in load_run(p).trials}
                 for p in (pa_path, pb_path))
         ids = sorted(set(a) & set(b))
         agree = sum(a[i] == b[i] for i in ids) / len(ids)
@@ -65,7 +64,7 @@ def runs_for(vertical: str) -> list[Path]:
     for f in sorted(RECORD.glob("*.json")):
         if f.name.endswith(".partial.json"):
             continue
-        run = AgenticRun.model_validate_json(f.read_text())
+        run = load_run(f)
         ran = {t.query_id for t in run.trials}
         # A run belongs to this domain if nearly all of its queries are in the file;
         # queries removed later (review, cross-check) are then left out of its row.
@@ -79,7 +78,7 @@ def split_rows(paths: list[Path]) -> str:
         (ROOT / "data/queries" / QUERY_FILES["aerospace"]).read_text())}
     lines = ["| Model | Public R@1 (95% CI) | Rolling R@1 (95% CI) |", "|---|---|---|"]
     for f in paths:
-        run = AgenticRun.model_validate_json(f.read_text())
+        run = load_run(f)
         cells = [run.model_id]
         for split in ("public", "rolling"):
             per_query: dict[str, list[float]] = {}
@@ -106,7 +105,7 @@ def physical_rows(paths: list[Path]) -> str:
     lines = ["| Domain | Model | Physical-event R@1 (95% CI) | Run |", "|---|---|---|---|"]
     rows = []
     for f in paths:
-        run = AgenticRun.model_validate_json(f.read_text())
+        run = load_run(f)
         per_query: dict[str, list[float]] = {}
         for t in run.trials:
             if t.query_id in tagged:
@@ -133,7 +132,7 @@ def section(paths: list[Path]) -> str:
         if f.exists():
             current |= {q["query_id"] for q in json.loads(f.read_text())}
     common = common_queries(files) & current
-    covered = {len({t.query_id for t in AgenticRun.model_validate_json(p.read_text()).trials})
+    covered = {len({t.query_id for t in load_run(p).trials})
                for p in paths}
     note = ("" if len(covered) <= 1 and max(covered, default=0) == len(common) else
             f"Every row is computed on the {len(common)} current queries that all of these "
