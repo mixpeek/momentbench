@@ -71,8 +71,12 @@ def split_rows(paths: list[Path]) -> str:
         run = AgenticRun.model_validate_json(f.read_text())
         cells = [run.model_id]
         for split in ("public", "rolling"):
-            hits = [float(t.hit_at_1) for t in run.trials
-                    if queries[t.query_id]["split"] == split]
+            per_query: dict[str, list[float]] = {}
+            for t in run.trials:
+                if queries[t.query_id]["split"] == split:
+                    per_query.setdefault(t.query_id, []).append(float(t.hit_at_1))
+            # One value per query (mean over its trials): the interval resamples queries.
+            hits = [sum(v) / len(v) for v in per_query.values()]
             lo, hi = bootstrap_ci(hits)
             cells.append(f"{100 * sum(hits) / len(hits):.1f} ({100 * lo:.1f} to {100 * hi:.1f}),"
                          f" n={len(hits)}")
@@ -122,7 +126,10 @@ would cost at API list prices, not money spent.
 
 Rolling queries use NASA footage published after 2026-06-30, after current model
 training cutoffs. A model whose public score came from memorised footage would score
-lower on rolling. With 27 rolling queries the comparison can only catch a large gap.
+lower on rolling. With 27 rolling queries the comparison can only catch a large gap, and
+the rolling set is not matched for difficulty: much of it is NASA Minute footage with the
+narration burned in as captions, which makes it easier, so a higher rolling score is not
+evidence of anything by itself.
 
 {split_rows(aero)}
 

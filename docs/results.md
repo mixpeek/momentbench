@@ -38,12 +38,15 @@ would cost at API list prices, not money spent.
 
 Rolling queries use NASA footage published after 2026-06-30, after current model
 training cutoffs. A model whose public score came from memorised footage would score
-lower on rolling. With 27 rolling queries the comparison can only catch a large gap.
+lower on rolling. With 27 rolling queries the comparison can only catch a large gap, and
+the rolling set is not matched for difficulty: much of it is NASA Minute footage with the
+narration burned in as captions, which makes it easier, so a higher rolling score is not
+evidence of anything by itself.
 
 | Model | Public R@1 (95% CI) | Rolling R@1 (95% CI) |
 |---|---|---|
-| baseline-abstain | 12.1 (9.0 to 15.2), n=420 | 14.8 (7.4 to 23.5), n=81 |
-| baseline-random | 0.0 (0.0 to 0.0), n=420 | 0.0 (0.0 to 0.0), n=81 |
+| baseline-abstain | 12.1 (7.1 to 17.9), n=140 | 14.8 (3.7 to 29.6), n=27 |
+| baseline-random | 0.0 (0.0 to 0.0), n=140 | 0.0 (0.0 to 0.0), n=27 |
 | claude-opus-5-5 | 63.6 (55.7 to 71.4), n=140 | 74.1 (59.3 to 88.9), n=27 |
 | claude-sonnet-5-5 | 32.9 (25.0 to 40.7), n=140 | 59.3 (40.7 to 77.8), n=27 |
 
