@@ -34,7 +34,7 @@ would cost at API list prices, not money spent.
 | baseline-abstain | api | 167 x 3 | 12.6 (7.8 to 18.0) | 12.6 / 12.6 | 0.0 (n=79) | 0.0 (n=34) | 100.0 (n=21) | 0.0 (n=33) | none (no model) | `agentic-baseline-abstain-465629a5.json` |
 | baseline-random | api | 167 x 3 | 0.0 (0.0 to 0.0) | 0.0 / 0.0 | 0.0 (n=79) | 0.0 (n=34) | 0.0 (n=21) | 0.0 (n=33) | none (no model) | `agentic-baseline-random-ea1c6b5e.json` |
 
-### Public vs rolling
+### Public vs rolling (aerospace)
 
 Rolling queries use NASA footage published after 2026-06-30, after current model
 training cutoffs. A model whose public score came from memorised footage would score

@@ -23,7 +23,8 @@ from momentbench.agentic.stats import bootstrap_ci  # noqa: E402
 ROOT = Path(__file__).resolve().parents[1]
 RECORD = ROOT / "data/results/agentic-v0.2/record"
 SEED = ROOT / "data/results/agentic"
-QUERY_FILES = {"film": "film_v0.2.json", "aerospace": "aerospace_v0.2.json"}
+QUERY_FILES = {"film": "film_v0.2.json", "aerospace": "aerospace_v0.2.json",
+               "robotics": "robotics_v0.2.json"}
 # Seed runs on identical query text (after the q-film-005 fix, before the q-film-001 rewording).
 SEED_RUNS = ("agentic-claude-opus-5-5-e51b703b", "agentic-gpt-5.5-b893d59f",
              "agentic-gemini-3.1-pro-preview-a6ff462c", "agentic-gemma-4-31b-it-d23baa9c")
@@ -81,6 +82,15 @@ def split_rows(paths: list[Path]) -> str:
 
 def main() -> None:
     film, aero = runs_for("film"), runs_for("aerospace")
+    robotics_file = ROOT / "data/queries" / QUERY_FILES["robotics"]
+    robotics = runs_for("robotics") if robotics_file.exists() else []
+    robotics_section = (f"""## Robotics ({QUERY_FILES['robotics']})
+
+NASA rover, free-flyer and helicopter footage. Queries target physical events: contact,
+wheels on slopes, lift-off and landing, cause then effect.
+
+{table([str(p) for p in robotics])}
+""" if robotics else "")
     seed = [SEED / f"{r}.json" for r in SEED_RUNS]
     print(f"""# Results (v0.2)
 
@@ -108,7 +118,7 @@ would cost at API list prices, not money spent.
 
 {table([str(p) for p in aero])}
 
-### Public vs rolling
+### Public vs rolling (aerospace)
 
 Rolling queries use NASA footage published after 2026-06-30, after current model
 training cutoffs. A model whose public score came from memorised footage would score
@@ -116,7 +126,7 @@ lower on rolling. With 27 rolling queries the comparison can only catch a large 
 
 {split_rows(aero)}
 
-## Run-to-run stability
+{robotics_section}## Run-to-run stability
 
 {retest()}
 
