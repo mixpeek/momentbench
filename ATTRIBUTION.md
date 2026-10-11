@@ -35,6 +35,21 @@ This manifest is auto-generated from asset metadata in the corpus. Each entry in
 - **NASA Minute, 2026-05-22** (aerospace, published 2026-05-22): NASA (public domain)
   Source: https://images.nasa.gov/details/NHQ_2025_0522_NASA%20Minute%20May%2022%2C%202026
 
+- **How Perseverance Drives on Mars** (robotics, published 2022-04-11): NASA (public domain)
+  Source: https://images.nasa.gov/details/JPL-20220405-M2020f-0001-How%20Perseverance%20Drives%20on%20Mars-1080cc
+- **Twin of NASA's Perseverance Mars Rover Now on the Move** (robotics, published 2020-10-06): NASA (public domain)
+  Source: https://images.nasa.gov/details/JPL-20201006-M2020f-0001-Twin%20Rover%20Gets%20to%20Work
+- **NASA's Moon Rover Lunar Lander Exit Test** (robotics, published 2023-09-07): NASA (public domain)
+  Source: https://images.nasa.gov/details/VIPERMoonRoverEgressTest
+- **2021 VIPER Testing at GRC SLOPE Lab** (robotics, published 2021-05-03): NASA (public domain)
+  Source: https://images.nasa.gov/details/GRC-2022-CM-0102
+- **NASA's New Flying Robots Will Be Busy Bees** (robotics, published 2019-04-17): NASA (public domain)
+  Source: https://images.nasa.gov/details/ARC-20190417-AAV3189-AstrobeeLaunch-Shareable-NASAWeb
+- **Fourth Flight a Success for NASA's Ingenuity Mars Helicopter** (robotics, published 2021-04-30): NASA (public domain)
+  Source: https://images.nasa.gov/details/JPL-20210430-TECHs-0002-Ingenuity%204th%20Flight%20Recap
+- **VIPER Rover Egress Testing** (robotics, published 2022-06-01): NASA (public domain)
+  Source: https://images.nasa.gov/details/GRC-2023-CM-0119
+
 NASA material is not copyrighted, subject to NASA's [media usage guidelines](https://www.nasa.gov/nasa-brand-center/images-and-media/): no implied endorsement, and the NASA insignia is not used as a logo.
 
 ### Creative Commons Attribution (CC BY)

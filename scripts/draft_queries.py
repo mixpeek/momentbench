@@ -102,6 +102,19 @@ camera holds on her hands gripping a rail". Use only lines whose times fall insi
 cited shot, quote or closely paraphrase them, and describe something visible in that shot.
 One shot per query, at least 1.5 s long. Return [] if no line fits a shot."""
 
+# Extra instructions for footage of robots and machines, aimed at what physical-AI and
+# world-model teams need a system to find: interactions and changes of physical state.
+PHYSICAL_GUIDANCE = """
+
+This footage shows robots and machines acting in the physical world. Prefer moments
+defined by a physical event or a change of state over static description: a wheel
+leaving or touching a surface, a rover tilting on a slope, a robot arm or gripper
+contacting, lifting or releasing an object, a vehicle lifting off or landing, a
+part starting or stopping motion. Describe the event so it pins one moment (what
+moves, what it touches, which direction). For tier 4, prefer cause then effect
+("after the rover's front wheels reach the ramp edge, the body pitches down"). Do
+not describe computer animation as if it were real footage; say it is an animation."""
+
 VERIFY_SYSTEM = (
     "You check video retrieval queries against candidate clips. Be strict: a candidate "
     "matches only if every detail in the query is visible or audible in it. Reply with "
@@ -278,6 +291,8 @@ async def draft_window(film: Film, first: int, last: int, sem, dialogue_only=Fal
     template = DIALOGUE_PROMPT if dialogue_only else DRAFT_PROMPT
     prompt = template.format(sheet=sheet, first=f"S{first}", last=f"S{last}",
                              shots=shots, dialogue=said)
+    if film.vertical == "robotics" and not dialogue_only:
+        prompt += PHYSICAL_GUIDANCE
     try:
         drafts = parse_json(await ask(DRAFT_SYSTEM, prompt, film.dir, sem))
     except Exception as e:  # one bad window must not stop the run

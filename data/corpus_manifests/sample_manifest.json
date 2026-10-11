@@ -514,5 +514,187 @@
       "provenance": "official",
       "retrieved": "2026-10-10"
     }
+  },
+  {
+    "asset_id": "nasa-how-perseverance-drives",
+    "source_id": "nasa-image-and-video-library",
+    "title": "How Perseverance Drives on Mars",
+    "vertical": "robotics",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 160.77,
+    "source_url": "https://images.nasa.gov/details/JPL-20220405-M2020f-0001-How%20Perseverance%20Drives%20on%20Mars-1080cc",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "JPL-20220405-M2020f-0001-How Perseverance Drives on Mars-1080cc",
+      "published": "2022-04-11",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-how-perseverance-drives.mp4",
+      "sha256": "d8b3e0553b1606fdb304fcb93749cf20712627daf83e75ca215ba45eb734ea21",
+      "bytes": 48021779,
+      "download_url": "http://images-assets.nasa.gov/video/JPL-20220405-M2020f-0001-How%20Perseverance%20Drives%20on%20Mars-1080cc/JPL-20220405-M2020f-0001-How%20Perseverance%20Drives%20on%20Mars-1080cc~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-perseverance-twin-rover",
+    "source_id": "nasa-image-and-video-library",
+    "title": "Twin of NASA's Perseverance Mars Rover Now on the Move",
+    "vertical": "robotics",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 140.25,
+    "source_url": "https://images.nasa.gov/details/JPL-20201006-M2020f-0001-Twin%20Rover%20Gets%20to%20Work",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "JPL-20201006-M2020f-0001-Twin Rover Gets to Work",
+      "published": "2020-10-06",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-perseverance-twin-rover.mp4",
+      "sha256": "73555afafd411ca81c40d68fdd875f2ff59b6ddbec683357750a3ef30ee9ffb6",
+      "bytes": 40343479,
+      "download_url": "http://images-assets.nasa.gov/video/JPL-20201006-M2020f-0001-Twin%20Rover%20Gets%20to%20Work/JPL-20201006-M2020f-0001-Twin%20Rover%20Gets%20to%20Work~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-viper-lander-exit-test",
+    "source_id": "nasa-image-and-video-library",
+    "title": "NASA's Moon Rover Lunar Lander Exit Test",
+    "vertical": "robotics",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 41.22,
+    "source_url": "https://images.nasa.gov/details/VIPERMoonRoverEgressTest",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "VIPERMoonRoverEgressTest",
+      "published": "2023-09-07",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-viper-lander-exit-test.mp4",
+      "sha256": "3ec4b3a0c3123a0823329ee8a79f53197904a3084f22cc63ad21becf92707195",
+      "bytes": 11325661,
+      "download_url": "http://images-assets.nasa.gov/video/VIPERMoonRoverEgressTest/VIPERMoonRoverEgressTest~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-viper-slope-lab-testing",
+    "source_id": "nasa-image-and-video-library",
+    "title": "2021 VIPER Testing at GRC SLOPE Lab",
+    "vertical": "robotics",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 149.1,
+    "source_url": "https://images.nasa.gov/details/GRC-2022-CM-0102",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "GRC-2022-CM-0102",
+      "published": "2021-05-03",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-viper-slope-lab-testing.mp4",
+      "sha256": "99fcfe5261632ba0f67191b57ec82e90d90b659242856639e5b03a8d05f730d7",
+      "bytes": 41854495,
+      "download_url": "http://images-assets.nasa.gov/video/GRC-2022-CM-0102/GRC-2022-CM-0102~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-astrobee-flying-robots",
+    "source_id": "nasa-image-and-video-library",
+    "title": "NASA's New Flying Robots Will Be Busy Bees",
+    "vertical": "robotics",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 89.77,
+    "source_url": "https://images.nasa.gov/details/ARC-20190417-AAV3189-AstrobeeLaunch-Shareable-NASAWeb",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "ARC-20190417-AAV3189-AstrobeeLaunch-Shareable-NASAWeb",
+      "published": "2019-04-17",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-astrobee-flying-robots.mp4",
+      "sha256": "dc37b9530d77629d93dc85344fb3718b218afd7440d53a76872f5650af9521f4",
+      "bytes": 26436367,
+      "download_url": "http://images-assets.nasa.gov/video/ARC-20190417-AAV3189-AstrobeeLaunch-Shareable-NASAWeb/ARC-20190417-AAV3189-AstrobeeLaunch-Shareable-NASAWeb~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-ingenuity-fourth-flight",
+    "source_id": "nasa-image-and-video-library",
+    "title": "Fourth Flight a Success for NASA's Ingenuity Mars Helicopter",
+    "vertical": "robotics",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 34.41,
+    "source_url": "https://images.nasa.gov/details/JPL-20210430-TECHs-0002-Ingenuity%204th%20Flight%20Recap",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "JPL-20210430-TECHs-0002-Ingenuity 4th Flight Recap",
+      "published": "2021-04-30",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-ingenuity-fourth-flight.mp4",
+      "sha256": "7bdd5ed26c99771afb33b36a1bad45fee533f6892e54c35536b7d4a6745dc6c5",
+      "bytes": 11115737,
+      "download_url": "http://images-assets.nasa.gov/video/JPL-20210430-TECHs-0002-Ingenuity%204th%20Flight%20Recap/JPL-20210430-TECHs-0002-Ingenuity%204th%20Flight%20Recap~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-viper-egress-testing",
+    "source_id": "nasa-image-and-video-library",
+    "title": "VIPER Rover Egress Testing",
+    "vertical": "robotics",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 153.73,
+    "source_url": "https://images.nasa.gov/details/GRC-2023-CM-0119",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "GRC-2023-CM-0119",
+      "published": "2022-06-01",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-viper-egress-testing.mp4",
+      "sha256": "e3373d178d24730ac7e3a57503a0f0260f101b4bb6d5c0d83e1bea0093b3440d",
+      "bytes": 48260560,
+      "download_url": "http://images-assets.nasa.gov/video/GRC-2023-CM-0119/GRC-2023-CM-0119~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
   }
 ]

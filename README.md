@@ -48,6 +48,7 @@ Target scope per vertical, with the v0.2 asset count:
 
 - **Film** (target ~20h, v0.2: 7 assets): Blender open movies; Prelinger Archives and National Archives planned
 - **Aerospace** (target ~25h, v0.2: 13 assets): NASA mission recaps, explainers and NASA Minute episodes
+- **Robotics** (v0.2: 7 assets): NASA rover, free-flyer and helicopter footage, from flight and from test labs. Queries target physical events: contact, wheels on slopes, lift-off and landing, cause then effect
 - **Civic** (target ~30h, v0.2: none): congressional hearings and agency briefings are planned. The v0.1 Senate asset was dropped because its source link no longer resolves
 
 ## Scoring
