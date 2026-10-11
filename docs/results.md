@@ -64,6 +64,8 @@ wheels on slopes, lift-off and landing, cause then effect.
 |---|---|---|---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | 72 x 1 | 76.4 (66.7 to 86.1) | 83.3 / 66.7 | 81.4 (n=43) | 70.0 (n=10) | 54.5 (n=11) | 87.5 (n=8) | $0.112 notional | `agentic-claude-opus-5-5-e7ca7bd1.json` |
 | claude-opus-5-5 (frames only) | claude-code | 72 x 1 | 70.8 (59.7 to 80.6) | 77.8 / 48.6 | 72.1 (n=43) | 80.0 (n=10) | 54.5 (n=11) | 75.0 (n=8) | $0.123 notional | `agentic-claude-opus-5-5-fe94c043.json` |
+| claude-haiku-5-5 | claude-code | 72 x 1 | 40.3 (29.2 to 51.4) | 54.2 / 18.1 | 34.9 (n=43) | 60.0 (n=10) | 27.3 (n=11) | 62.5 (n=8) | $0.014 notional | `agentic-claude-haiku-5-5-59536b38.json` |
+| claude-sonnet-5-5 | claude-code | 72 x 1 | 37.5 (26.4 to 48.6) | 56.9 / 13.9 | 39.5 (n=43) | 60.0 (n=10) | 0.0 (n=11) | 50.0 (n=8) | $0.052 notional | `agentic-claude-sonnet-5-5-4e1ecc2c.json` |
 | baseline-abstain | api | 72 x 3 | 15.3 (6.9 to 23.6) | 15.3 / 15.3 | 0.0 (n=43) | 0.0 (n=10) | 100.0 (n=11) | 0.0 (n=8) | none (no model) | `agentic-baseline-abstain-b3a169c6.json` |
 | baseline-random | api | 72 x 3 | 0.0 (0.0 to 0.0) | 0.5 / 0.0 | 0.0 (n=43) | 0.0 (n=10) | 0.0 (n=11) | 0.0 (n=8) | none (no model) | `agentic-baseline-random-cfb1ec6f.json` |
 ## Physical-event subset
@@ -80,6 +82,8 @@ appear here.
 | aerospace | claude-haiku-5-5 | 30.6 (16.7 to 44.4), n=36 | `agentic-claude-haiku-5-5-73f3e5ad.json` |
 | robotics | claude-opus-5-5 | 83.3 (66.7 to 100.0), n=18 | `agentic-claude-opus-5-5-e7ca7bd1.json` |
 | robotics | claude-opus-5-5 (frames only) | 77.8 (55.6 to 94.4), n=18 | `agentic-claude-opus-5-5-fe94c043.json` |
+| robotics | claude-sonnet-5-5 | 44.4 (22.2 to 66.7), n=18 | `agentic-claude-sonnet-5-5-4e1ecc2c.json` |
+| robotics | claude-haiku-5-5 | 33.3 (11.1 to 55.6), n=18 | `agentic-claude-haiku-5-5-59536b38.json` |
 | robotics | baseline-abstain | 0.0 (0.0 to 0.0), n=18 | `agentic-baseline-abstain-b3a169c6.json` |
 | robotics | baseline-random | 0.0 (0.0 to 0.0), n=18 | `agentic-baseline-random-cfb1ec6f.json` |
 
