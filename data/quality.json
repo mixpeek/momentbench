@@ -1,0 +1,63 @@
+{
+  "as_of": "2026-10-11",
+  "source": "drafting and verification logs, cross-check reject logs and review artifacts kept by the maintainers (outside the repository); counts are over all splits unless noted",
+  "drafting": {
+    "drafted": 1272,
+    "well_formed": 797,
+    "passed_claude_verifier": 664
+  },
+  "cross_check": {
+    "model": "gemini-3.5-flash",
+    "checked": 664,
+    "disagreed_and_removed": 37
+  },
+  "prereview_published": {
+    "accept": 324,
+    "fix": 129,
+    "reject": 7
+  },
+  "refinement": {
+    "not_verified": 59,
+    "unfixable": 24,
+    "too_short": 1,
+    "accepted": 39,
+    "note": "film refinement is being rerun; its not_verified count is provisional"
+  },
+  "spot_checks": [
+    {
+      "set": "film, before cross-check",
+      "n": 20,
+      "wrong": 2,
+      "boundary_issue": 1
+    },
+    {
+      "set": "aerospace",
+      "n": 10,
+      "wrong": 0,
+      "loose": 1
+    },
+    {
+      "set": "robotics",
+      "n": 8,
+      "wrong": 0,
+      "note": "only 2 of 8 described a physical event"
+    },
+    {
+      "set": "physical-event",
+      "n": 6,
+      "wrong": 0,
+      "boundary_issue": 1
+    },
+    {
+      "set": "refined queries",
+      "n": 5,
+      "wrong": 0,
+      "loose": 2
+    }
+  ],
+  "after_verification": {
+    "duplicates_merged": 5,
+    "removed_after_spot_check": 2,
+    "note": "664 verified - 37 cross-check removals - 5 duplicates - 2 spot-check removals = 620 released"
+  }
+}

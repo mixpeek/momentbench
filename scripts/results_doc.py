@@ -141,8 +141,44 @@ def section(paths: list[Path]) -> str:
     return note + table(files, only=common)
 
 
+def results_json(domains: dict[str, list[Path]]) -> dict:
+    """Every row of the results tables as data, for leaderboards and model cards."""
+    from results_table import corpus_size
+
+    out = {"benchmark": "momentbench", "version": "0.2", "track": "agentic",
+           "metric": "recall_at_1_tiou_0.5", "rows": []}
+    for domain, paths in domains.items():
+        files = [str(p) for p in paths]
+        current = common_queries(files) & {
+            q["query_id"] for name in QUERY_FILES.values()
+            if (ROOT / "data/queries" / name).exists()
+            for q in json.loads((ROOT / "data/queries" / name).read_text())}
+        for f in paths:
+            run = load_run(f)
+            run.trials = [t for t in run.trials if t.query_id in current]
+            from momentbench.agentic.run import summarize
+
+            s = summarize(run.trials, run.summary.num_trials)
+            out["rows"].append({
+                "domain": domain, "model": run.model_id, "harness": run.harness,
+                "modalities": run.modalities, "corpus_assets": corpus_size(run),
+                "queries": s.num_queries, "trials": s.num_trials,
+                "recall_at_1": round(s.recall_at_1, 4),
+                "recall_at_1_ci95": [round(x, 4) for x in s.recall_at_1_ci95],
+                "recall_at_1_by_iou": {k: round(v, 4) for k, v in s.recall_at_1_by_iou.items()},
+                "by_tier": {k: {"queries": v["num_queries"],
+                                "recall_at_1": round(v["recall_at_1"], 4)}
+                            for k, v in s.by_tier.items()},
+                "cost_usd_per_query": s.mean_cost_usd_per_query,
+                "error_trials": s.error_trials, "run_file": Path(f).name})
+    return out
+
+
 def main() -> None:
     film, aero = runs_for("film"), runs_for("aerospace")
+    (ROOT / "docs/results.json").write_text(json.dumps(
+        results_json({"film": film, "aerospace": aero, "robotics": runs_for("robotics")}),
+        indent=2) + "\n")
     robotics_file = ROOT / "data/queries" / QUERY_FILES["robotics"]
     robotics = runs_for("robotics") if robotics_file.exists() else []
     robotics_section = (f"""## Robotics ({QUERY_FILES['robotics']})

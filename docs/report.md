@@ -63,6 +63,8 @@ re-checked every query against the same candidates, reshuffled, and only queries
 models agreed on were kept. Method and measured error rates are in
 [`protocol.md`](protocol.md).
 
+**Label reliability.** Of 1272 drafts, 797 were well formed and 664 passed the Claude verifier. The Gemini cross-check agreed on 94.4% of those (37 removed), the two-model analogue of inter-annotator agreement. A strict model pre-review accepted 324 of the 460 published queries as they stood and flagged 136, mostly for loose span boundaries. Hand spot checks against frames found 2 wrong of 49 sampled across five sets. Counts are in [`data/quality.json`](../data/quality.json) (as of 2026-10-11).
+
 **Quality.** Random spot checks against frames found about 10% of queries wrong before
 the cross-check. A model pre-review of all published queries, built to focus human
 review, flags mostly span boundaries that include part of a neighbouring shot. Human

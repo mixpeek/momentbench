@@ -109,6 +109,24 @@ def heldout_rows(heldout_runs: Path | None) -> str:
     return "\n".join(lines) if len(lines) > 2 else ""
 
 
+def reliability_text() -> str:
+    q = json.loads((ROOT / "data/quality.json").read_text())
+    d, x, pre = q["drafting"], q["cross_check"], q["prereview_published"]
+    agree = 1 - x["disagreed_and_removed"] / x["checked"]
+    n_pre = sum(pre.values())
+    spot = q["spot_checks"]
+    wrong = sum(s["wrong"] for s in spot)
+    checked = sum(s["n"] for s in spot)
+    return (f"Of {d['drafted']} drafts, {d['well_formed']} were well formed and "
+            f"{d['passed_claude_verifier']} passed the Claude verifier. The Gemini cross-check "
+            f"agreed on {100 * agree:.1f}% of those ({x['disagreed_and_removed']} removed), the "
+            f"two-model analogue of inter-annotator agreement. A strict model pre-review accepted "
+            f"{pre.get('accept', 0)} of the {n_pre} published queries as they stood and flagged "
+            f"{n_pre - pre.get('accept', 0)}, mostly for loose span boundaries. Hand spot checks "
+            f"against frames found {wrong} wrong of {checked} sampled across five sets. Counts "
+            f"are in [`data/quality.json`](../data/quality.json) (as of {q['as_of']}).")
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     p.add_argument("--heldout", type=Path, default=None,
@@ -118,6 +136,7 @@ def main() -> None:
     args = p.parse_args()
 
     corpus, ct = corpus_table()
+    reliability = reliability_text()
     queries, qt = query_table(args.heldout)
     film, aero = runs_for("film"), runs_for("aerospace")
     robotics = runs_for("robotics")
@@ -204,6 +223,8 @@ corpus, which are stored as hard negatives. A second model family (Gemini 3.5 Fl
 re-checked every query against the same candidates, reshuffled, and only queries both
 models agreed on were kept. Method and measured error rates are in
 [`protocol.md`](protocol.md).
+
+**Label reliability.** {reliability}
 
 **Quality.** Random spot checks against frames found about 10% of queries wrong before
 the cross-check. A model pre-review of all published queries, built to focus human
