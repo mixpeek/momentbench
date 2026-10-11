@@ -36,7 +36,7 @@ SYSTEM = (
 )
 PROMPT = """Read the image {sheet}. It shows five frames, left to right: one second BEFORE
 the gold span, the span's START, MIDDLE and END, and one second AFTER (the before and
-after frames are outside the span).
+after frames are outside the span; a black tile means the video starts or ends there).
 
 Query (tier {tier}): "{text}"
 Gold span: {asset} {t_in:.2f} to {t_out:.2f} s.
@@ -56,10 +56,13 @@ T3_RULE = ("This is a no-answer query: the frames show the real source shot, and
 
 def sheet_for(review_dir: Path, qid: str, out: Path) -> Path | None:
     frames = [review_dir / "frames" / f"{qid}_{label}.jpg" for label in LABELS]
-    if not all(f.exists() for f in frames):
+    # The span frames are required; before/after are missing when the span touches the
+    # start or end of the video, and show as a blank tile.
+    if not all(f.exists() for f in frames[1:4]):
         return None
-    tiles = [Image.open(f).convert("RGB") for f in frames]
-    w, h = tiles[0].size
+    w, h = Image.open(frames[2]).size
+    tiles = [Image.open(f).convert("RGB") if f.exists() else Image.new("RGB", (w, h), "black")
+             for f in frames]
     sheet = Image.new("RGB", (w * 5, h + 22), "black")
     draw = ImageDraw.Draw(sheet)
     font = ImageFont.load_default(size=16)
