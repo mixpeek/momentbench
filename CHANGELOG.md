@@ -4,9 +4,9 @@
 
 Corpus and queries
 
-- 20 hash-verified assets: 7 Blender open movies and 13 NASA videos (2022 to 2026). The two v0.1 assets with dead source links were removed.
-- 493 queries across four tiers and two domains, drafted and verified by Claude and cross-checked by Gemini. 352 are published (`data/queries/film_v0.2.json`, `data/queries/aerospace_v0.2.json`); 141 are held out.
-- Robotics domain: 7 NASA rover, free-flyer and helicopter videos, 72 public queries.
+- 27 hash-verified assets: 7 Blender open movies, 13 NASA aerospace videos and 7 NASA robotics videos (2019 to 2026). The two v0.1 assets with dead source links were removed.
+- 620 queries across four tiers and three domains, drafted and verified by Claude and cross-checked by Gemini. 457 are published (`data/queries/film_v0.2.json`, `data/queries/aerospace_v0.2.json`, `data/queries/robotics_v0.2.json`); 163 are held out.
+- Robotics domain: 7 NASA rover, free-flyer and helicopter videos, 70 public queries.
 - 64 physical-event queries (`metadata.physical_event`), runnable alone with `--physical-only`.
 - `rolling` split for footage published after 2026-06-30.
 - Whisper transcripts for every asset with speech, in `data/transcripts`.

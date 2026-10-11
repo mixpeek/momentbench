@@ -10,7 +10,7 @@ momentbench corpus-download -m data/corpus_manifests/sample_manifest.json --corp
 momentbench corpus-verify   -m data/corpus_manifests/sample_manifest.json --corpus-dir corpus/
 ```
 
-About 2.4 GB for the 20 assets. `corpus-verify` must pass before a reported run.
+About 2.6 GB for the 27 assets. `corpus-verify` must pass before a reported run.
 
 ## 1. A model behind an OpenAI-compatible endpoint (most open-weight VLMs)
 

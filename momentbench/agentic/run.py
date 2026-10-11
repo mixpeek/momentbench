@@ -87,6 +87,9 @@ class AgenticRun(BaseModel):
     harness: str = "api"
     # "frames+transcripts" (default) or "frames" for the visual-only ablation.
     modalities: str = "frames+transcripts"
+    # Number of assets the model could search (list_assets). 0 in runs saved before
+    # this field existed.
+    corpus_assets: int = 0
     budget: Budget
     pricing: Pricing | None
     timestamp: str
@@ -227,6 +230,7 @@ async def run_agentic_benchmark(
         effort=model.effort,
         harness=getattr(model, "harness", "api"),
         modalities="frames+transcripts" if corpus.has_transcripts() else "frames",
+        corpus_assets=len(corpus.assets),
         budget=budget,
         pricing=pricing,
         timestamp=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),

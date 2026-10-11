@@ -8,13 +8,13 @@
 
 **Design target:** 75 hours of rights-cleared video, 500 queries across 4 difficulty tiers, evaluated against frontier models and retrieval pipelines.
 
-**Current release (v0.2):** 20 hash-verified assets in two domains, 7 Blender open movies (about 72 minutes) and 13 NASA videos (about 30 minutes, 2022 to 2026), with machine transcripts in [`data/transcripts`](data/transcripts). Queries:
+**Current release (v0.2):** 27 hash-verified assets in three domains: 7 Blender open movies (about 72 minutes), 13 NASA aerospace videos (about 32 minutes, 2022 to 2026) and 7 NASA robotics videos (about 13 minutes, 2019 to 2023), with machine transcripts in [`data/transcripts`](data/transcripts). Queries:
 
 - [`data/queries/film_v0.2.json`](data/queries/film_v0.2.json): 185 public film queries across all four tiers; 82 more are held out.
-- [`data/queries/aerospace_v0.2.json`](data/queries/aerospace_v0.2.json): 167 NASA queries across all four tiers, 140 `public` and 27 `rolling` (footage published after current model training cutoffs); 59 more are held out.
+- [`data/queries/aerospace_v0.2.json`](data/queries/aerospace_v0.2.json): 202 NASA queries across all four tiers, 164 `public` and 38 `rolling` (footage published after current model training cutoffs); 65 more are held out.
 - [`data/queries/sample.json`](data/queries/sample.json): the 4-query v0.1 seed, kept for comparison with earlier runs.
 
-In total 493 queries, 352 in this repository. They were drafted and verified by Claude, then cross-checked by Gemini, and only queries both agreed on were kept (34 of 527 were dropped at that step). They have not had human review yet; a 20-query spot check put the error rate before cross-checking at about 10%. Current scores are in [`docs/results.md`](docs/results.md). [`docs/protocol.md`](docs/protocol.md) defines the task, metrics and what a reported result must state, and describes how the queries were built. PRs adding rights-cleared footage or queries are welcome (see [`SUBMISSION.md`](SUBMISSION.md)).
+In total 620 queries across film, aerospace and robotics, 457 in this repository. They were drafted and verified by Claude, then cross-checked by Gemini, and only queries both agreed on were kept (37 of 657 were dropped at that step). They have not had human review yet; a 20-query spot check put the error rate before cross-checking at about 10%. Current scores are in [`docs/results.md`](docs/results.md). [`docs/protocol.md`](docs/protocol.md) defines the task, metrics and what a reported result must state, and describes how the queries were built. PRs adding rights-cleared footage or queries are welcome (see [`SUBMISSION.md`](SUBMISSION.md)).
 
 Built on [Mixpeek](https://mixpeek.com).
 
@@ -24,7 +24,7 @@ Evaluate a model on the v0.2 agentic track in three commands:
 
 ```bash
 pip install -e ".[openai]"   # or .[gemini], .[claude-code], .[inspect]
-momentbench corpus-download -m data/corpus_manifests/sample_manifest.json --corpus-dir corpus/   # 2.4 GB
+momentbench corpus-download -m data/corpus_manifests/sample_manifest.json --corpus-dir corpus/   # 2.6 GB
 momentbench agentic <model> --provider openai-compatible --base-url http://localhost:8000/v1 \
   -q data/queries/film_v0.2.json -c data/corpus_manifests/sample_manifest.json --corpus-dir corpus/
 ```

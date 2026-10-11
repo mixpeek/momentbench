@@ -138,20 +138,27 @@ async def main() -> None:
     usage = {"in": 0, "out": 0}
     for path in map(Path, args.queries):
         queries = json.loads(path.read_text())
-        results = await asyncio.gather(
-            *(cross_check(films, drafts, q, sem, client, usage) for q in queries),
-            return_exceptions=True,
-        )
+        async def keep_or_check(q: dict):
+            # Already agreed: keep the recorded result rather than paying to check again.
+            done = q["metadata"].get("cross_check") or {}
+            if done.get("agreed"):
+                return done
+            return await cross_check(films, drafts, q, sem, client, usage)
+
+        results = await asyncio.gather(*(keep_or_check(q) for q in queries),
+                                       return_exceptions=True)
         kept, rejected = [], []
         for q, r in zip(queries, results):
             if isinstance(r, Exception):
                 r = {"model": MODEL, "agreed": False, "error": str(r)[:200]}
+            already = q["metadata"].get("cross_check") is r
             q["metadata"]["cross_check"] = r
-            if r["agreed"]:
-                q["metadata"]["source"] += f"; cross-checked by {MODEL}"
-                kept.append(q)
-            else:
+            if not r["agreed"]:
                 rejected.append(q)
+                continue
+            if not already:
+                q["metadata"]["source"] += f"; cross-checked by {MODEL}"
+            kept.append(q)
         path.write_text(json.dumps(kept, indent=2, ensure_ascii=False) + "\n")
         out = work / f"{path.stem}.rejected.json"
         old = json.loads(out.read_text()) if out.exists() else []

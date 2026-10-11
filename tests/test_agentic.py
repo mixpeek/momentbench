@@ -301,6 +301,7 @@ class TestModalities:
         without = await run_agentic_benchmark([make_query()], ScriptedModel([[SUBMIT_GOLD]]),
                                               frames_only, trials=1)
         assert with_text.modalities == "frames+transcripts" and without.modalities == "frames"
+        assert with_text.corpus_assets == len(ASSETS)
 
 
 class TestBaselines:
