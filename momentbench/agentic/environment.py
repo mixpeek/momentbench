@@ -207,6 +207,9 @@ class LocalCorpus:
                     return candidate
         return None
 
+    def has_transcripts(self) -> bool:
+        return bool(self._transcripts)
+
     def missing_videos(self) -> list[str]:
         return [a for a in self.assets if self.video_path(a) is None]
 

@@ -35,7 +35,8 @@ def table(paths: list[str]) -> str:
         s = summarize(run.trials, run.summary.num_trials)
         lo, hi = s.recall_at_1_ci95
         cells = [
-            run.model_id + (f" ({run.effort})" if run.effort else ""),
+            run.model_id + (f" ({run.effort})" if run.effort else "")
+            + (" (frames only)" if run.modalities == "frames" else ""),
             run.harness,
             f"{s.num_queries} x {s.num_trials}",
             f"{pct(s.recall_at_1)} ({pct(lo)} to {pct(hi)})",

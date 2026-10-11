@@ -41,6 +41,8 @@ The model cannot watch video. It gets five tools, the same for every entrant:
 
 Transcripts are the files in [`data/transcripts`](../data/transcripts), machine transcribed once, so speech recognition is held constant across entrants.
 
+**Visual-only ablation:** `momentbench agentic ... --no-transcripts` removes every transcript, so the model can only look. Runs record `modalities` (`frames+transcripts` or `frames`) and the results table marks frames-only rows. Use it to separate visual grounding from finding the moment through speech, which is what world-model and physical-AI evaluations usually need.
+
 **Budget per query:** 30 turns, 64 frames, 60 tool calls. The harness enforces it and tells the model the limits in the task text. A tool call past the limit returns an error, and the model must then submit.
 
 **System prompt:** fixed, in `momentbench/agentic/episode.py` (`SYSTEM_PROMPT`). It states the scoring rule and that some requests have no match.

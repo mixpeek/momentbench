@@ -85,6 +85,8 @@ class AgenticRun(BaseModel):
     effort: str | None
     # How the model was driven: "api" (our loop) or "claude-code" (Agent SDK loop).
     harness: str = "api"
+    # "frames+transcripts" (default) or "frames" for the visual-only ablation.
+    modalities: str = "frames+transcripts"
     budget: Budget
     pricing: Pricing | None
     timestamp: str
@@ -224,6 +226,7 @@ async def run_agentic_benchmark(
         model_id=model.model_id,
         effort=model.effort,
         harness=getattr(model, "harness", "api"),
+        modalities="frames+transcripts" if corpus.has_transcripts() else "frames",
         budget=budget,
         pricing=pricing,
         timestamp=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),

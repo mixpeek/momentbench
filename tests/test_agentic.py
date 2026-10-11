@@ -292,6 +292,17 @@ class TestContaminationControls:
         assert "11.25" not in dumped and "19.75" not in dumped
 
 
+class TestModalities:
+    async def test_runs_record_whether_transcripts_were_available(self, tmp_path):
+        with_text = await run_agentic_benchmark([make_query()], ScriptedModel([[SUBMIT_GOLD]]),
+                                                make_corpus(tmp_path), trials=1)
+        frames_only = LocalCorpus(ASSETS, tmp_path, frame_extractor=lambda v, t: b"jpeg",
+                                  transcripts={})
+        without = await run_agentic_benchmark([make_query()], ScriptedModel([[SUBMIT_GOLD]]),
+                                              frames_only, trials=1)
+        assert with_text.modalities == "frames+transcripts" and without.modalities == "frames"
+
+
 class TestBaselines:
     async def test_abstain_scores_only_no_answer_queries(self, tmp_path):
         from momentbench.agentic.baselines import BaselineAgent
