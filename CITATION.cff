@@ -1,25 +1,31 @@
 cff-version: 1.2.0
 title: "MomentBench: Corpus-Scale Video Moment Retrieval Benchmark"
-message: "If you use MomentBench in your research, please cite it as below."
-type: software
+message: "If you use MomentBench, please cite the version you evaluated on, as below."
+type: dataset
 authors:
   - name: Mixpeek
     website: https://mixpeek.com
 repository-code: https://github.com/mixpeek/momentbench
-url: https://momentbench.com
+url: https://github.com/mixpeek/momentbench
 license: Apache-2.0
-version: "0.1.0"
-date-released: "2025-07-12"
+version: "0.2.0"
+date-released: "2026-10-11"
 keywords:
   - video retrieval
   - temporal grounding
+  - moment localization
   - benchmark
   - multimodal
-  - moment localization
+  - agentic evaluation
 abstract: >-
-  MomentBench is a corpus-scale video moment retrieval benchmark comprising
-  75 hours of rights-cleared video across three verticals (civic proceedings,
-  aerospace operations, archival film) with 500 human-annotated queries
-  spanning four difficulty tiers. All footage is public domain or CC BY.
-  The benchmark measures whether systems can locate an exact moment — the
-  correct video and the correct sub-5-second window — across the full corpus.
+  MomentBench measures whether a system can find one specific moment, the right
+  video and the right few seconds, from a text request, searching a whole corpus
+  rather than a single clip. Version 0.2 has 27 hash-verified assets (Blender open
+  movies, NASA aerospace video and NASA robotics video, about 117 minutes, public
+  domain or CC BY) and 620 queries in four tiers: single-shot visual, dialogue plus
+  picture, no-answer near misses, and ordered multi-shot events. 457 queries are
+  published and 163 held out; queries on footage newer than current model training
+  cutoffs form a rolling split. Queries were drafted and verified by one model and
+  cross-checked by a second model family; human review is in progress. An agentic
+  track gives models tools to list videos, search transcripts and sample frames
+  under a fixed budget, and reports Recall@1 with bootstrap intervals and cost.
