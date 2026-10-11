@@ -223,8 +223,8 @@
     "gold_moments": [
       {
         "asset_id": "nasa-how-perseverance-drives",
-        "t_in": 122.67,
-        "t_out": 133.8
+        "t_in": 128.9,
+        "t_out": 133.93
       }
     ],
     "hard_negatives": [
@@ -255,6 +255,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          122.67,
+          133.8
+        ],
+        "to": [
+          128.9,
+          133.93
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -309,8 +321,8 @@
     "gold_moments": [
       {
         "asset_id": "nasa-perseverance-twin-rover",
-        "t_in": 17.97,
-        "t_out": 22.33
+        "t_in": 19.0,
+        "t_out": 22.5
       }
     ],
     "hard_negatives": [
@@ -341,6 +353,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          17.97,
+          22.33
+        ],
+        "to": [
+          19.0,
+          22.5
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -525,8 +549,8 @@
     "gold_moments": [
       {
         "asset_id": "nasa-perseverance-twin-rover",
-        "t_in": 53.4,
-        "t_out": 56.37
+        "t_in": 51.4,
+        "t_out": 55.4
       }
     ],
     "hard_negatives": [
@@ -557,6 +581,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          53.4,
+          56.37
+        ],
+        "to": [
+          51.4,
+          55.4
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -785,7 +821,7 @@
       {
         "asset_id": "nasa-perseverance-twin-rover",
         "t_in": 99.3,
-        "t_out": 104.13
+        "t_out": 104.3
       }
     ],
     "hard_negatives": [
@@ -816,6 +852,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          99.3,
+          104.13
+        ],
+        "to": [
+          99.3,
+          104.3
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -1173,8 +1221,8 @@
     "gold_moments": [
       {
         "asset_id": "nasa-viper-lander-exit-test",
-        "t_in": 35.13,
-        "t_out": 41.22
+        "t_in": 36.6,
+        "t_out": 41.1
       }
     ],
     "hard_negatives": [
@@ -1205,6 +1253,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          35.13,
+          41.22
+        ],
+        "to": [
+          36.6,
+          41.1
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -1470,14 +1530,14 @@
   },
   {
     "query_id": "q-robotics-0139",
-    "text": "Several people in white hoods sit on stools around a rover frame raised on a wooden stand next to a sand test bed, working on its wheels.",
+    "text": "Three people in white hoods, two sitting on stools and one standing, work around a rover frame raised on a wooden stand next to a sand test bed, working on its wheels.",
     "tier": 1,
     "vertical": "robotics",
     "gold_moments": [
       {
         "asset_id": "nasa-viper-slope-lab-testing",
-        "t_in": 101.43,
-        "t_out": 111.27
+        "t_in": 101.7,
+        "t_out": 105.78
       }
     ],
     "hard_negatives": [
@@ -1508,6 +1568,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          101.43,
+          111.27
+        ],
+        "to": [
+          101.7,
+          105.78
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "Several people in white hoods sit on stools around a rover frame raised on a wooden stand next to a sand test bed, working on its wheels.",
+        "date": "2026-10-11",
+        "reason": "The scene and start boundary match, but only two of the three hooded people are sitting on stools while the third stands at the rover, so change it to \"Three people in white hoods, two seated on stools and one standing, work on the wheels of a rover frame raised on a wooden stand in a sand test bed."
       }
     }
   },
@@ -2117,14 +2194,14 @@
   },
   {
     "query_id": "q-robotics-0311",
-    "text": "After an animation shows a rover lighting its way through the dark with a headlight on its mast, a masked woman speaks in a lab with a test rover on sand behind her.",
+    "text": "After an animation shows a rover lighting its way through the dark with a headlight on its mast, a masked woman speaks in a lab with a test rover on sand behind her, and then the NASA logo outro appears.",
     "tier": 4,
     "vertical": "robotics",
     "gold_moments": [
       {
         "asset_id": "nasa-viper-slope-lab-testing",
-        "t_in": 111.27,
-        "t_out": 149.1
+        "t_in": 119.2,
+        "t_out": 139.05
       }
     ],
     "hard_negatives": [
@@ -2155,6 +2232,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          111.27,
+          149.1
+        ],
+        "to": [
+          119.2,
+          139.05
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "After an animation shows a rover lighting its way through the dark with a headlight on its mast, a masked woman speaks in a lab with a test rover on sand behind her.",
+        "date": "2026-10-11",
+        "reason": "The query matches the frames: the frame before the span shows the animated rover with its mast headlight in the dark, and the start and middle frames show a masked woman in a lab with a test rover on sand behind her. But the end frame is already the NASA logo outro, so the span runs past the moment "
       }
     }
   },
@@ -2342,7 +2436,7 @@
       {
         "asset_id": "nasa-how-perseverance-drives",
         "t_in": 133.8,
-        "t_out": 145.9
+        "t_out": 141.17
       }
     ],
     "hard_negatives": [
@@ -2374,6 +2468,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          133.8,
+          145.9
+        ],
+        "to": [
+          133.8,
+          141.17
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -2385,8 +2491,8 @@
     "gold_moments": [
       {
         "asset_id": "nasa-perseverance-twin-rover",
-        "t_in": 50.57,
-        "t_out": 53.4
+        "t_in": 50.6,
+        "t_out": 53.6
       }
     ],
     "hard_negatives": [
@@ -2418,6 +2524,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          50.57,
+          53.4
+        ],
+        "to": [
+          50.6,
+          53.6
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -2474,7 +2592,7 @@
       {
         "asset_id": "nasa-perseverance-twin-rover",
         "t_in": 78.0,
-        "t_out": 80.93
+        "t_out": 83.0
       }
     ],
     "hard_negatives": [
@@ -2506,6 +2624,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          78.0,
+          80.93
+        ],
+        "to": [
+          78.0,
+          83.0
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -2517,8 +2647,8 @@
     "gold_moments": [
       {
         "asset_id": "nasa-perseverance-twin-rover",
-        "t_in": 86.47,
-        "t_out": 90.23
+        "t_in": 87.5,
+        "t_out": 90.5
       }
     ],
     "hard_negatives": [
@@ -2550,6 +2680,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          86.47,
+          90.23
+        ],
+        "to": [
+          87.5,
+          90.5
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -2869,8 +3011,8 @@
     "gold_moments": [
       {
         "asset_id": "nasa-ingenuity-fourth-flight",
-        "t_in": 23.97,
-        "t_out": 34.41
+        "t_in": 24.0,
+        "t_out": 30.21
       }
     ],
     "hard_negatives": [
@@ -2902,6 +3044,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          23.97,
+          34.41
+        ],
+        "to": [
+          24.0,
+          30.21
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },

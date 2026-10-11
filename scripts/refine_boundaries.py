@@ -54,6 +54,20 @@ Do not add new details you cannot be sure of.
 Reply: {{"text": "..."}}"""
 
 
+def video_end(video: Path) -> float:
+    """Where the picture ends; matroska files report no stream duration, so fall back."""
+    for entry in ("stream=duration", "format=duration"):
+        cmd = ["ffprobe", "-v", "error", "-show_entries", entry, "-of", "csv=p=0", str(video)]
+        if entry.startswith("stream"):
+            cmd[3:3] = ["-select_streams", "v:0"]
+        out = subprocess.run(cmd, capture_output=True, text=True).stdout.strip().strip(",")
+        try:
+            return float(out)
+        except ValueError:
+            continue
+    return 1e9
+
+
 def frames_around(video: Path, a: float, b: float, end: float, out: Path) -> list[tuple]:
     """Frames every `step` seconds over [a-2, b+2], as (time, path) pairs."""
     lo, hi = max(0.0, a - 2.0), min(end - 0.1, b + 2.0)
@@ -97,10 +111,7 @@ def five_frames(video: Path, a: float, b: float, end: float, out: Path) -> None:
 async def refine(q: dict, reason: str, corpus: Path, work: Path, sem) -> dict:
     g = q["gold_moments"][0]
     video = next(corpus.glob(f"{g['asset_id']}.*"))
-    end = float(subprocess.run(
-        ["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=duration",
-         "-of", "csv=p=0", str(video)], capture_output=True, text=True).stdout.strip().strip(",")
-        or 1e9)
+    end = video_end(video)
     qdir = work / q["query_id"]
     cache = qdir / "result.json"
     if cache.exists():
@@ -125,6 +136,8 @@ async def refine(q: dict, reason: str, corpus: Path, work: Path, sem) -> dict:
             five_frames(video, a, b, end, check)
             q2 = {**q, "query_id": "q", "gold_moments": [{**g, "t_in": a, "t_out": b}]}
             _, verdict = await pr.review(q2, check, pr.ROOT / "data/transcripts", sem)
+            if verdict["decision"] == "error":  # a failed call, not a judgement: retry later
+                return {"status": "error", "reason": verdict["reason"]}
             result = {"status": "accepted" if verdict["decision"] == "accept" else "not_verified",
                       "old": [g["t_in"], g["t_out"]], "new": [a, b], "check": verdict}
             if result["status"] == "not_verified" and verdict["decision"] == "fix":
@@ -134,13 +147,15 @@ async def refine(q: dict, reason: str, corpus: Path, work: Path, sem) -> dict:
                     edit = dq.parse_json(await dq.ask(dq.DRAFT_SYSTEM, EDIT_PROMPT.format(
                         reason=verdict["reason"], text=q["text"]), qdir, sem))
                     new_text = str(edit.get("text", "")).strip()
-                except (ValueError, RuntimeError, json.JSONDecodeError):
-                    new_text = ""
+                except (ValueError, RuntimeError, json.JSONDecodeError) as e:
+                    return {"status": "error", "reason": f"text edit failed: {str(e)[:120]}"}
                 if new_text and new_text != q["text"]:
                     recheck = qdir / "recheck"
                     five_frames(video, a, b, end, recheck)
                     q3 = {**q2, "text": new_text}
                     _, v2 = await pr.review(q3, recheck, pr.ROOT / "data/transcripts", sem)
+                    if v2["decision"] == "error":
+                        return {"status": "error", "reason": v2["reason"]}
                     if v2["decision"] == "accept":
                         result.update(status="accepted", text=new_text, check=v2,
                                       first_check=verdict)
@@ -180,7 +195,8 @@ async def main() -> None:
         today = datetime.date.today().isoformat()
         for q in queries:
             r = proposals.get(q["query_id"])
-            if r and r["status"] == "accepted":
+            # Already applied on an earlier run: keep the record of what it replaced.
+            if r and r["status"] == "accepted" and "boundary_refined" not in q["metadata"]:
                 g = q["gold_moments"][0]
                 q["metadata"]["boundary_refined"] = {
                     "from": r["old"], "to": r["new"], "date": today,
@@ -192,7 +208,9 @@ async def main() -> None:
                                                      "reason": r["first_check"]["reason"]}
                     q["text"] = r["text"]
         path.write_text(json.dumps(queries, indent=2, ensure_ascii=False) + "\n")
-        print(f"applied {counts.get('accepted', 0)} refined spans to {path.name}")
+        applied = sum(1 for q in queries
+                      if q["metadata"].get("boundary_refined", {}).get("date") == today)
+        print(f"{path.name}: {applied} queries carry a refinement applied today")
 
 
 if __name__ == "__main__":

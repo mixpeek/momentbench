@@ -10,6 +10,7 @@ each row names the run file it came from.
 from __future__ import annotations
 
 import argparse
+import datetime
 import json
 from pathlib import Path
 
@@ -29,6 +30,22 @@ def current_queries() -> dict[str, Query]:
                 for q in json.loads((root / name).read_text()):
                     _QUERIES[q["query_id"]] = Query(**q)
     return _QUERIES
+
+
+# The 7 robotics videos were written into the manifest at about this time; earlier runs,
+# which predate the corpus_assets field, searched the 20 film and aerospace assets.
+ROBOTICS_ADDED = "2026-10-10T23:50:00Z"
+
+
+def corpus_size(run: AgenticRun) -> int:
+    """Assets the run searched. Older runs store only their end time, so their start is
+    estimated from the summed trial time at the concurrency of 3 they were run with."""
+    if run.corpus_assets:
+        return run.corpus_assets
+    end = datetime.datetime.fromisoformat(run.timestamp.replace("Z", "+00:00"))
+    start = end - datetime.timedelta(seconds=sum(t.latency_s for t in run.trials) / 3)
+    added = datetime.datetime.fromisoformat(ROBOTICS_ADDED.replace("Z", "+00:00"))
+    return 20 if start < added else 27
 
 
 def load_run(path: Path | str) -> AgenticRun:
@@ -71,7 +88,8 @@ def table(paths: list[str], only: set[str] | None = None) -> str:
         lo, hi = s.recall_at_1_ci95
         cells = [
             run.model_id + (f" ({run.effort})" if run.effort else "")
-            + (" (frames only)" if run.modalities == "frames" else ""),
+            + (" (frames only)" if run.modalities == "frames" else "")
+            + (f" ({corpus_size(run)} assets)" if corpus_size(run) != 27 else ""),
             run.harness,
             f"{s.num_queries} x {s.num_trials}",
             f"{pct(s.recall_at_1)} ({pct(lo)} to {pct(hi)})",

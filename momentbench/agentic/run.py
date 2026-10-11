@@ -26,7 +26,8 @@ class ProviderUnavailableError(RuntimeError):
 
 
 # Plain "billing" is not a marker: Gemini's per-minute quota 429 mentions billing too.
-_FATAL_MARKERS = ("insufficient_quota", "account is not active", "spend cap", "invalid api key",
+_FATAL_MARKERS = ("insufficient_quota", "account is not active", "spend cap", "session limit",
+                  "invalid api key",
                   "incorrect api key", "permission denied", "api key not valid")
 
 

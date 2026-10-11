@@ -517,14 +517,14 @@
   },
   {
     "query_id": "q-aerospace-0115",
-    "text": "After a woman at a microphone throws her arms wide in celebration, an onboard camera shows a long side booster with fire at its base pulling away from the rocket, then the booster falls further away in a burst of flame.",
+    "text": "After a woman at a microphone throws her arms wide in celebration, an onboard camera shows a long side booster with fire at its base pulling away from the rocket, then a different view shows curved panels drifting away from a white surface against a dark sky.",
     "tier": 4,
     "vertical": "aerospace",
     "gold_moments": [
       {
         "asset_id": "nasa-artemis-ii-launch-recap",
-        "t_in": 76.6,
-        "t_out": 83.33
+        "t_in": 79.6,
+        "t_out": 83.6
       }
     ],
     "hard_negatives": [
@@ -555,6 +555,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          76.6,
+          83.33
+        ],
+        "to": [
+          79.6,
+          83.6
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "After a woman at a microphone throws her arms wide in celebration, an onboard camera shows a long side booster with fire at its base pulling away from the rocket, then the booster falls further away in a burst of flame.",
+        "date": "2026-10-11",
+        "reason": "The woman throwing her arms wide in the before frame and the onboard view of the side booster pulling away with fire at its base (start and middle) are correct, but the end frame cuts to a different camera showing dark sky and curved panels drifting off a white surface, not the booster falling away "
       }
     }
   },
@@ -566,7 +583,7 @@
     "gold_moments": [
       {
         "asset_id": "nasa-artemis-ii-launch-recap",
-        "t_in": 88.3,
+        "t_in": 90.8,
         "t_out": 94.3
       }
     ],
@@ -598,19 +615,31 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          88.3,
+          94.3
+        ],
+        "to": [
+          90.8,
+          94.3
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
   {
     "query_id": "q-aerospace-0117",
-    "text": "While a speaker says the Moon has now become the center and focus of the mission, an animated spacecraft with solar panel arms flies high above Earth, and then the view shows the curved edge of the planet.",
+    "text": "While a speaker says the Moon has now become the center and focus of the mission, an animated spacecraft with solar panel arms flies high above Earth's curved edge, and then the view cuts to a close-up of cratered lunar surface.",
     "tier": 2,
     "vertical": "aerospace",
     "gold_moments": [
       {
         "asset_id": "nasa-artemis-ii-launch-recap",
         "t_in": 97.9,
-        "t_out": 102.43
+        "t_out": 102.9
       }
     ],
     "hard_negatives": [
@@ -641,6 +670,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          97.9,
+          102.43
+        ],
+        "to": [
+          97.9,
+          102.9
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "While a speaker says the Moon has now become the center and focus of the mission, an animated spacecraft with solar panel arms flies high above Earth, and then the view shows the curved edge of the planet.",
+        "date": "2026-10-11",
+        "reason": "The span is right, but the last clause is wrong: the curved edge of Earth appears in the middle frame together with the spacecraft, while the end frame cuts to a close-up of cratered lunar surface. Change it to 'an animated spacecraft with solar panel arms flies high above Earth's curved edge, and t"
       }
     }
   },
@@ -1121,14 +1167,14 @@
   },
   {
     "query_id": "q-aerospace-0132",
-    "text": "While a voice says they are going for their teammates, an astronaut in an orange suit and a closed helmet makes a heart shape with gloved hands toward the camera.",
+    "text": "While a voice says they are going for their teammates, an astronaut in an orange suit and an open-visor helmet makes a heart shape with gloved hands toward the camera.",
     "tier": 2,
     "vertical": "aerospace",
     "gold_moments": [
       {
         "asset_id": "nasa-artemis-ii-mission-recap",
-        "t_in": 21.33,
-        "t_out": 23.4
+        "t_in": 21.3,
+        "t_out": 22.8
       }
     ],
     "hard_negatives": [
@@ -1159,6 +1205,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          21.33,
+          23.4
+        ],
+        "to": [
+          21.3,
+          22.8
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "While a voice says they are going for their teammates, an astronaut in an orange suit and a closed helmet makes a heart shape with gloved hands toward the camera.",
+        "date": "2026-10-11",
+        "reason": "The span and the heart gesture both match, but the visor looks raised with the astronaut's face fully exposed, so change \"a closed helmet\" to \"a helmet on\" (or \"an open-visor helmet\")."
       }
     }
   },
@@ -2162,8 +2225,8 @@
     "gold_moments": [
       {
         "asset_id": "nasa-artemis-i-launch-recap",
-        "t_in": 47.63,
-        "t_out": 52.47
+        "t_in": 47.6,
+        "t_out": 52.6
       }
     ],
     "hard_negatives": [
@@ -2194,6 +2257,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          47.63,
+          52.47
+        ],
+        "to": [
+          47.6,
+          52.6
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -2416,13 +2491,13 @@
   },
   {
     "query_id": "q-aerospace-0171",
-    "text": "While a voice says \"NASA\", the round blue NASA logo with its red swoosh appears on a plain black background.",
+    "text": "The round blue NASA logo with its red swoosh appears on a plain black background.",
     "tier": 2,
     "vertical": "aerospace",
     "gold_moments": [
       {
         "asset_id": "nasa-artemis-i-launch-recap",
-        "t_in": 135.6,
+        "t_in": 146.3,
         "t_out": 151.57
       }
     ],
@@ -2454,6 +2529,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          135.6,
+          151.57
+        ],
+        "to": [
+          146.3,
+          151.57
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "While a voice says \"NASA\", the round blue NASA logo with its red swoosh appears on a plain black background.",
+        "date": "2026-10-11",
+        "reason": "The frames show the round blue NASA logo with its red swoosh on plain black for the whole span, with the Artemis logo before and black after, so the boundaries are right; but the transcript for the span is empty, so nothing supports 'While a voice says \"NASA\"' and that clause should be dropped, e.g."
       }
     }
   },
@@ -2508,8 +2600,8 @@
     "gold_moments": [
       {
         "asset_id": "nasa-how-to-recover-a-spacecraft",
-        "t_in": 30.2,
-        "t_out": 33.67
+        "t_in": 32.2,
+        "t_out": 35.7
       }
     ],
     "hard_negatives": [
@@ -2540,6 +2632,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          30.2,
+          33.67
+        ],
+        "to": [
+          32.2,
+          35.7
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -2674,14 +2778,14 @@
   },
   {
     "query_id": "q-aerospace-0179",
-    "text": "Dark title card with the words \"HOW TO TRAIN THE RECOVERY TEAM\" over silhouettes of people running.",
+    "text": "Dark title card with the words \"HOW TO TRAIN THE RECOVERY TEAM\" over silhouettes of people running, then the video cuts to a presenter in front of a pool.",
     "tier": 1,
     "vertical": "aerospace",
     "gold_moments": [
       {
         "asset_id": "nasa-how-to-recover-a-spacecraft",
-        "t_in": 56.17,
-        "t_out": 59.87
+        "t_in": 56.7,
+        "t_out": 60.2
       }
     ],
     "hard_negatives": [
@@ -2712,6 +2816,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          56.17,
+          59.87
+        ],
+        "to": [
+          56.7,
+          60.2
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "Dark title card with the words \"HOW TO TRAIN THE RECOVERY TEAM\" over silhouettes of people running.",
+        "date": "2026-10-11",
+        "reason": "The text is right (dark title card reading 'HOW TO TRAIN / THE RECOVERY TEAM' over silhouettes of people running, shown at the start and middle frames), but the end frame at 60.20 s already shows the presenter in front of the pool, so the card cuts out somewhere between 58.45 s and 60.20 s and the o"
       }
     }
   },
@@ -3284,8 +3405,8 @@
     "gold_moments": [
       {
         "asset_id": "nasa-how-to-recover-a-spacecraft",
-        "t_in": 217.77,
-        "t_out": 223.27
+        "t_in": 219.3,
+        "t_out": 223.3
       }
     ],
     "hard_negatives": [
@@ -3316,6 +3437,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          217.77,
+          223.27
+        ],
+        "to": [
+          219.3,
+          223.3
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -4053,14 +4186,14 @@
   },
   {
     "query_id": "q-aerospace-0230",
-    "text": "A rendered space telescope with a flat white sunshade drifts through black space, then the view becomes a starfield with a small orange galaxy.",
+    "text": "A rendered space telescope with a flat white sunshade drifts through black space, then the view becomes a deep field full of many small galaxies.",
     "tier": 1,
     "vertical": "aerospace",
     "gold_moments": [
       {
         "asset_id": "nasa-minute-2026-09-04",
-        "t_in": 21.97,
-        "t_out": 33.83
+        "t_in": 21.9,
+        "t_out": 33.86
       }
     ],
     "hard_negatives": [
@@ -4091,6 +4224,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          21.97,
+          33.83
+        ],
+        "to": [
+          21.9,
+          33.86
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "A rendered space telescope with a flat white sunshade drifts through black space, then the view becomes a starfield with a small orange galaxy.",
+        "date": "2026-10-11",
+        "reason": "The boundaries are right (the span runs from the cut after the launch shot to the cut before the press conference), and the rendered telescope with its flat white sunshade drifting through space matches, but the end frame shows a deep field full of many small galaxies rather than one standout orange"
       }
     }
   },
@@ -4485,14 +4635,14 @@
   },
   {
     "query_id": "q-aerospace-0240",
-    "text": "A grey, cratered lunar surface seen from directly overhead, with a small fresh crater in the middle and bright ejecta rays spreading out to one side.",
+    "text": "A grey, cratered lunar surface seen from directly overhead flips back and forth between before-and-after images: a small fresh crater with bright ejecta rays spreading out to one side appears in the middle, then disappears to leave an older crater with no rays, then appears again.",
     "tier": 1,
     "vertical": "aerospace",
     "gold_moments": [
       {
         "asset_id": "nasa-minute-2026-08-21",
-        "t_in": 15.23,
-        "t_out": 26.57
+        "t_in": 16.4,
+        "t_out": 26.64
       }
     ],
     "hard_negatives": [
@@ -4523,6 +4673,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          15.23,
+          26.57
+        ],
+        "to": [
+          16.4,
+          26.64
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "A grey, cratered lunar surface seen from directly overhead, with a small fresh crater in the middle and bright ejecta rays spreading out to one side.",
+        "date": "2026-10-11",
+        "reason": "The span flips between two images of the same patch of Moon (start and end show the fresh rayed crater, but the middle frame shows the older crater with no rays), so the query should describe the crater appearing and disappearing in a before-and-after comparison, and since the frame 1 s before the s"
       }
     }
   },
@@ -4663,8 +4830,8 @@
     "gold_moments": [
       {
         "asset_id": "nasa-minute-2026-05-08",
-        "t_in": 109.13,
-        "t_out": 121.7
+        "t_in": 109.5,
+        "t_out": 117.4
       }
     ],
     "hard_negatives": [
@@ -4695,6 +4862,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          109.13,
+          121.7
+        ],
+        "to": [
+          109.5,
+          117.4
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -5136,8 +5315,8 @@
     "gold_moments": [
       {
         "asset_id": "nasa-minute-2026-01-23",
-        "t_in": 198.13,
-        "t_out": 207.97
+        "t_in": 198.1,
+        "t_out": 201.6
       }
     ],
     "hard_negatives": [
@@ -5168,18 +5347,30 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          198.13,
+          207.97
+        ],
+        "to": [
+          198.1,
+          201.6
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
   {
     "query_id": "q-aerospace-0263",
-    "text": "After photos taken from orbit show a coastal launch pad with a red arrow on the rocket, a suited host in front of flags signs off and the NASA logo appears.",
+    "text": "After a wide orbital view of the coast captioned 'Kennedy Space Center from nearly 250 miles above', a suited host in front of flags signs off and the NASA logo appears.",
     "tier": 4,
     "vertical": "aerospace",
     "gold_moments": [
       {
         "asset_id": "nasa-minute-2026-01-23",
-        "t_in": 189.7,
+        "t_in": 198.6,
         "t_out": 207.97
       }
     ],
@@ -5211,6 +5402,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          189.7,
+          207.97
+        ],
+        "to": [
+          198.6,
+          207.97
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "After photos taken from orbit show a coastal launch pad with a red arrow on the rocket, a suited host in front of flags signs off and the NASA logo appears.",
+        "date": "2026-10-11",
+        "reason": "The span itself is right (it opens on the suited host in front of the US and NASA flags saying 'Thanks for watching' and holds on the NASA logo until the video ends), but the before frame is only a wide orbital view of the coast captioned 'Kennedy Space Center from nearly 250 miles above' with no vi"
       }
     }
   },
@@ -5612,8 +5820,8 @@
     "gold_moments": [
       {
         "asset_id": "nasa-artemis-ii-launch-recap",
-        "t_in": 63.57,
-        "t_out": 66.67
+        "t_in": 65.1,
+        "t_out": 67.1
       }
     ],
     "hard_negatives": [
@@ -5644,6 +5852,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          63.57,
+          66.67
+        ],
+        "to": [
+          65.1,
+          67.1
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -5736,14 +5956,14 @@
   },
   {
     "query_id": "q-aerospace-0308",
-    "text": "On a ship's deck, an astronaut in an orange suit points one finger up as he walks between two military rescuers. Next, a grinning astronaut in an orange suit raises his fist behind a crew member in a tan vest. After that, a female astronaut in an orange suit and a navy cap waves her arm high near a helmeted rescuer.",
+    "text": "On a ship's deck, an astronaut in an orange suit points one finger up as he walks between two military rescuers. Next, a grinning astronaut in an orange suit raises his fist behind a crew member in a dark vest. After that, a female astronaut in an orange suit and a navy cap waves her arm high near a helmeted rescuer.",
     "tier": 4,
     "vertical": "aerospace",
     "gold_moments": [
       {
         "asset_id": "nasa-artemis-ii-welcome-home",
         "t_in": 84.1,
-        "t_out": 87.43
+        "t_out": 87.6
       }
     ],
     "hard_negatives": [
@@ -5774,6 +5994,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          84.1,
+          87.43
+        ],
+        "to": [
+          84.1,
+          87.6
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "On a ship's deck, an astronaut in an orange suit points one finger up as he walks between two military rescuers. Next, a grinning astronaut in an orange suit raises his fist behind a crew member in a tan vest. After that, a female astronaut in an orange suit and a navy cap waves her arm high near a helmeted rescuer.",
+        "date": "2026-10-11",
+        "reason": "The span boundaries and the start and end moments match (the finger point between two military rescuers, then the female astronaut in a navy cap waving near a helmeted rescuer), but in the middle frame the crew member in front of the grinning astronaut wears a black or dark tactical vest over a tan "
       }
     }
   },
@@ -6080,14 +6317,14 @@
   },
   {
     "query_id": "q-aerospace-0321",
-    "text": "After a fisheye close-up of the rocket clearing the tower in a shower of sparks, a wide night shot shows it rising on a bright flame between the launch towers. Then silhouetted spectators watch the glow across the water as a mission clock reads +00:00:07.",
+    "text": "After a fisheye close-up of the rocket clearing the tower in a shower of sparks, a wide night shot shows it rising on a bright flame between the launch towers. Then a lit crowd of spectators waves flags as they watch.",
     "tier": 4,
     "vertical": "aerospace",
     "gold_moments": [
       {
         "asset_id": "nasa-artemis-i-launch-recap",
         "t_in": 59.9,
-        "t_out": 66.07
+        "t_out": 66.4
       }
     ],
     "hard_negatives": [
@@ -6118,6 +6355,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          59.9,
+          66.07
+        ],
+        "to": [
+          59.9,
+          66.4
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "After a fisheye close-up of the rocket clearing the tower in a shower of sparks, a wide night shot shows it rising on a bright flame between the launch towers. Then silhouetted spectators watch the glow across the water as a mission clock reads +00:00:07.",
+        "date": "2026-10-11",
+        "reason": "The fisheye close-up of the rocket clearing the tower in sparks (start) and the wide night shot of it rising between the towers (middle) are both correct, but the span ends on a lit crowd waving flags at Space Center Houston, not silhouetted spectators across the water. None of the frames shows a +0"
       }
     }
   },
@@ -6173,8 +6427,8 @@
     "gold_moments": [
       {
         "asset_id": "nasa-artemis-i-launch-recap",
-        "t_in": 96.17,
-        "t_out": 110.9
+        "t_in": 96.5,
+        "t_out": 111.38
       }
     ],
     "hard_negatives": [
@@ -6205,6 +6459,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          96.17,
+          110.9
+        ],
+        "to": [
+          96.5,
+          111.38
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -6642,14 +6908,14 @@
   },
   {
     "query_id": "q-aerospace-0342",
-    "text": "A woman with long wavy blonde hair and a black button-front dress speaks to the camera with her hands out. Behind her are an American flag and a dark blue NASA flag.",
+    "text": "A woman with long wavy blonde hair and a black button-front dress speaks to the camera, then waves goodbye. Behind her are an American flag and a dark blue NASA flag.",
     "tier": 1,
     "vertical": "aerospace",
     "gold_moments": [
       {
         "asset_id": "nasa-minute-2026-08-21",
-        "t_in": 59.77,
-        "t_out": 72.8
+        "t_in": 60.3,
+        "t_out": 66.52
       }
     ],
     "hard_negatives": [
@@ -6680,6 +6946,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          59.77,
+          72.8
+        ],
+        "to": [
+          60.3,
+          66.52
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "A woman with long wavy blonde hair and a black button-front dress speaks to the camera with her hands out. Behind her are an American flag and a dark blue NASA flag.",
+        "date": "2026-10-11",
+        "reason": "The woman, dress, American flag and blue NASA flag all match, and the span runs from the cut-in to the wipe into the NASA logo, but 'with her hands out' only fits the middle frame: her hands are clasped at the start and she waves goodbye at the end, so change it to something like 'speaks to the came"
       }
     }
   },
@@ -7166,7 +7449,7 @@
     "gold_moments": [
       {
         "asset_id": "nasa-minute-2026-05-22",
-        "t_in": 79.17,
+        "t_in": 79.3,
         "t_out": 94.6
       }
     ],
@@ -7198,6 +7481,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          79.17,
+          94.6
+        ],
+        "to": [
+          79.3,
+          94.6
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -7253,8 +7548,8 @@
     "gold_moments": [
       {
         "asset_id": "nasa-artemis-ii-launch-recap",
-        "t_in": 59.27,
-        "t_out": 63.57
+        "t_in": 60.3,
+        "t_out": 62.3
       }
     ],
     "hard_negatives": [
@@ -7286,6 +7581,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          59.27,
+          63.57
+        ],
+        "to": [
+          60.3,
+          62.3
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -7385,8 +7692,8 @@
     "gold_moments": [
       {
         "asset_id": "nasa-artemis-ii-welcome-home",
-        "t_in": 79.0,
-        "t_out": 81.6
+        "t_in": 80.5,
+        "t_out": 82.0
       }
     ],
     "hard_negatives": [
@@ -7418,6 +7725,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          79.0,
+          81.6
+        ],
+        "to": [
+          80.5,
+          82.0
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -7863,14 +8182,14 @@
   },
   {
     "query_id": "q-aerospace-0918",
-    "text": "Seen from high above, two helicopters sit on a ship's flight deck in open ocean with their main rotors turning",
+    "text": "Seen from high above, two helicopters with their main rotors turning sit on a ship's flight deck in open ocean, with a third helicopter at the far end of the deck",
     "tier": 1,
     "vertical": "aerospace",
     "gold_moments": [
       {
         "asset_id": "nasa-how-to-recover-a-spacecraft",
-        "t_in": 37.53,
-        "t_out": 40.03
+        "t_in": 37.5,
+        "t_out": 40.0
       }
     ],
     "hard_negatives": [
@@ -7902,6 +8221,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          37.53,
+          40.03
+        ],
+        "to": [
+          37.5,
+          40.0
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "Seen from high above, two helicopters sit on a ship's flight deck in open ocean with their main rotors turning",
+        "date": "2026-10-11",
+        "reason": "The span boundaries match the shot (there are cuts just before and after it), and the high fisheye view, open ocean and turning rotors are all right, but a third helicopter is visible at the far end of the deck in every frame, so change 'two helicopters sit' to 'three helicopters sit', or to 'two he"
       }
     }
   },
@@ -8347,14 +8683,14 @@
   },
   {
     "query_id": "q-aerospace-0931",
-    "text": "At night, a white rocket rises past the tall launch tower beside it as bright flame and exhaust flood the base of the pad.",
+    "text": "At night, a white rocket rises past the tall launch tower beside it as bright flame and exhaust flood the base of the pad, before the footage cuts to black-and-white imagery.",
     "tier": 1,
     "vertical": "aerospace",
     "gold_moments": [
       {
         "asset_id": "nasa-minute-2026-10-02",
-        "t_in": 70.57,
-        "t_out": 72.83
+        "t_in": 70.6,
+        "t_out": 73.1
       }
     ],
     "hard_negatives": [
@@ -8386,6 +8722,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          70.57,
+          72.83
+        ],
+        "to": [
+          70.6,
+          73.1
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "At night, a white rocket rises past the tall launch tower beside it as bright flame and exhaust flood the base of the pad.",
+        "date": "2026-10-11",
+        "reason": "The start and middle frames match the text (a white rocket lifting off at night beside the launch tower, with bright flame and exhaust at the base), but the end frame at 73.10 s already shows black-and-white ISS imagery, so the span runs past the launch shot and the end should be moved back to the c"
       }
     }
   },
@@ -8397,8 +8750,8 @@
     "gold_moments": [
       {
         "asset_id": "nasa-minute-2026-10-02",
-        "t_in": 84.13,
-        "t_out": 90.33
+        "t_in": 84.1,
+        "t_out": 88.6
       }
     ],
     "hard_negatives": [
@@ -8430,6 +8783,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          84.13,
+          90.33
+        ],
+        "to": [
+          84.1,
+          88.6
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -8529,8 +8894,8 @@
     "gold_moments": [
       {
         "asset_id": "nasa-minute-2026-09-04",
-        "t_in": 9.4,
-        "t_out": 21.97
+        "t_in": 9.5,
+        "t_out": 21.19
       }
     ],
     "hard_negatives": [
@@ -8562,6 +8927,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          9.4,
+          21.97
+        ],
+        "to": [
+          9.5,
+          21.19
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -8699,14 +9076,14 @@
   },
   {
     "query_id": "q-aerospace-0941",
-    "text": "Real orbital footage: a white SpaceX Dragon capsule with its nose cone open moves toward the camera through black space, high above the bright, cloud-covered curve of Earth.",
+    "text": "Real orbital footage: a white SpaceX Dragon capsule with its nose cone open hangs in black space, high above the bright, cloud-covered curve of Earth.",
     "tier": 1,
     "vertical": "aerospace",
     "gold_moments": [
       {
         "asset_id": "nasa-minute-2026-05-22",
-        "t_in": 47.97,
-        "t_out": 49.87
+        "t_in": 48.0,
+        "t_out": 50.0
       }
     ],
     "hard_negatives": [
@@ -8738,6 +9115,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          47.97,
+          49.87
+        ],
+        "to": [
+          48.0,
+          50.0
+        ],
+        "date": "2026-10-11",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "Real orbital footage: a white SpaceX Dragon capsule with its nose cone open moves toward the camera through black space, high above the bright, cloud-covered curve of Earth.",
+        "date": "2026-10-11",
+        "reason": "The span is right: it cuts in from a Mars ice-cap shot and cuts out to a docked-ISS view, and it shows a white Dragon with its nose cone open over the bright, cloud-covered curve of Earth. But the capsule's position and size look the same in the start, middle and end frames, so nothing shows it movi"
       }
     }
   }

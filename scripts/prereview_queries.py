@@ -97,8 +97,8 @@ async def review(q: dict, review_dir: Path, transcripts: Path, sem) -> tuple[str
         verdict = dq.parse_json(await dq.ask(SYSTEM, prompt, work, sem))
         result = {"decision": str(verdict.get("decision", "fix")).lower(),
                   "reason": str(verdict.get("reason", ""))[:300]}
-    except Exception as e:  # one failure must not stop the pass
-        result = {"decision": "fix", "reason": f"pre-review failed: {str(e)[:120]}"}
+    except Exception as e:  # one failure must not stop the pass, and is not cached
+        return qid, {"decision": "error", "reason": f"pre-review failed: {str(e)[:120]}"}
     cache.write_text(json.dumps(result))
     return qid, result
 
