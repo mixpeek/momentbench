@@ -52,6 +52,8 @@ def run(model: str, queries: str, corpus: str, output: str, concurrency: int):
               help="Directory holding <asset_id>.mp4 and optional transcripts")
 @click.option("--transcripts-dir", type=click.Path(file_okay=False), default="data/transcripts",
               help="Directory of <asset_id>.vtt transcripts, used when --corpus-dir has none")
+@click.option("--physical-only", is_flag=True,
+              help="Run only queries tagged metadata.physical_event (machine motion or contact)")
 @click.option("--no-transcripts", is_flag=True,
               help="Visual-only ablation: no transcript is available to any tool")
 @click.option("--provider", default="anthropic",
@@ -72,7 +74,7 @@ def run(model: str, queries: str, corpus: str, output: str, concurrency: int):
 @click.option("--output", "-o", type=click.Path(), default="data/results/agentic")
 @click.option("--concurrency", type=int, default=4)
 def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_dir: str,
-            no_transcripts: bool, provider: str, base_url: str | None,
+            physical_only: bool, no_transcripts: bool, provider: str, base_url: str | None,
             effort: str | None, trials: int, max_steps: int, max_frames: int,
             max_tool_calls: int, pricing: str, output: str, concurrency: int):
     """Run the agentic track: a tool-using model searches the corpus for each moment."""
@@ -88,6 +90,10 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_
     from momentbench.runner import load_corpus_assets, load_queries
 
     query_list = load_queries(Path(queries))
+    if physical_only:
+        query_list = [q for q in query_list if q.metadata.get("physical_event")]
+        if not query_list:
+            raise click.ClickException(f"no query in {queries} is tagged physical_event")
     local = LocalCorpus(load_corpus_assets(Path(corpus)), Path(corpus_dir),
                         transcripts={} if no_transcripts else None,
                         transcripts_dir=Path(transcripts_dir))

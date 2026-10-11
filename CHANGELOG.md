@@ -6,13 +6,16 @@ Corpus and queries
 
 - 20 hash-verified assets: 7 Blender open movies and 13 NASA videos (2022 to 2026). The two v0.1 assets with dead source links were removed.
 - 493 queries across four tiers and two domains, drafted and verified by Claude and cross-checked by Gemini. 352 are published (`data/queries/film_v0.2.json`, `data/queries/aerospace_v0.2.json`); 141 are held out.
+- Robotics domain: 7 NASA rover, free-flyer and helicopter videos, 72 public queries.
+- 64 physical-event queries (`metadata.physical_event`), runnable alone with `--physical-only`.
 - `rolling` split for footage published after 2026-06-30.
 - Whisper transcripts for every asset with speech, in `data/transcripts`.
 
 Harness
 
 - Agentic track providers: Anthropic API, local Claude Code, OpenAI Responses, Gemini, any OpenAI-compatible Chat Completions server (vLLM, SGLang, Ollama), and `baseline` floors (random, abstain).
-- Inspect AI task, defaulting to the v0.2 query files.
+- Inspect AI task, defaulting to the three v0.2 query files.
+- Visual-only ablation (`--no-transcripts`); runs record their `modalities`.
 - Recall@1 at tIoU 0.3, 0.5 and 0.7, per-tier rows with bootstrap intervals, cost per query.
 - A run stops when the provider refuses the account (billing, quota, auth) and keeps finished trials in a `.partial.json` file instead of scoring the failures.
 

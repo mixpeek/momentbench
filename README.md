@@ -31,6 +31,17 @@ momentbench agentic <model> --provider openai-compatible --base-url http://local
 
 `--provider` is one of `openai-compatible` (vLLM, SGLang, Ollama and other `/v1/chat/completions` servers), `openai`, `gemini`, `anthropic`, `claude-code` or `baseline`. [`docs/integrating.md`](docs/integrating.md) covers each route, including a runnable template for your own agent ([`examples/custom_agent.py`](examples/custom_agent.py)) and the Inspect AI task. Scores so far are in [`docs/results.md`](docs/results.md); compare yours against the `baseline-random` and `baseline-abstain` floors there.
 
+## For world-model and physical-AI teams
+
+MomentBench asks whether a system can find one specific moment in a large corpus of video. These parts of it target physical understanding directly:
+
+- **Robotics domain** ([`data/queries/robotics_v0.2.json`](data/queries/robotics_v0.2.json)): NASA rovers on slopes and ramps, free-flying robots and a Mars helicopter, from test labs and from flight.
+- **Physical-event subset**: queries tagged `metadata.physical_event`, in which a machine visibly moves or makes contact (a wheel onto a ramp, a rocket leaving the pad, a capsule under drogue parachutes, a splashdown). Run only these with `--physical-only`, or `-T physical_only=true` under Inspect.
+- **Visual-only ablation**: `--no-transcripts` removes speech, so a score reflects what the model saw rather than what was said.
+- **Temporal precision**: Recall@1 is reported at tIoU 0.3, 0.5 and 0.7, and tier 4 asks for ordered cause-and-effect across consecutive shots.
+
+What it does not have yet: robot manipulation (grasping and placing), egocentric footage or driving. Openly licensed robot-learning datasets are candidates for v0.3, each pending its own licence review. PRs with rights-cleared footage are welcome.
+
 ## Query Tiers
 
 Difficulty targets were pre-registered before any baseline evaluations were run.
@@ -88,7 +99,7 @@ The same track runs under [Inspect AI](https://inspect.aisi.org.uk/), with the s
 pip install -e ".[inspect]"
 inspect eval momentbench/agentic/inspect_task.py --model anthropic/claude-opus-5-5 \
   -T corpus_dir=/path/to/videos --epochs 1
-# defaults to film_v0.2.json and aerospace_v0.2.json; pass -T queries=a.json,b.json to change
+# defaults to the film, aerospace and robotics v0.2 files; -T queries=a.json,b.json to change
 ```
 
 To run through a local Claude Code install instead of an API key, add `--provider claude-code` (and `pip install -e ".[claude-code]"`). The Claude Agent SDK runs the tool loop with Claude Code's built-in tools, settings and other MCP servers switched off and the benchmark's system prompt in place of Claude Code's. The corpus tools charge the same budget. Each run records `harness: "claude-code"` or `harness: "api"`, so results from the two are never mixed silently.

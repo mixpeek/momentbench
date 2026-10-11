@@ -200,10 +200,12 @@ def _resolve(path: str) -> Path:
 
 @task
 def momentbench_agentic(
-    queries: str = "data/queries/film_v0.2.json,data/queries/aerospace_v0.2.json",
+    queries: str = ("data/queries/film_v0.2.json,data/queries/aerospace_v0.2.json,"
+                    "data/queries/robotics_v0.2.json"),
     corpus: str = "data/corpus_manifests/sample_manifest.json",
     corpus_dir: str | None = None,
     transcripts_dir: str = "data/transcripts",
+    physical_only: bool = False,
     max_steps: int = 30,
     max_frames: int = 64,
     max_tool_calls: int = 60,
@@ -216,4 +218,6 @@ def momentbench_agentic(
     budget = Budget(max_steps=max_steps, max_frames=max_frames, max_tool_calls=max_tool_calls)
     # Comma-separated, so one eval can span several query files.
     query_list = [q for path in queries.split(",") for q in load_queries(_resolve(path.strip()))]
+    if physical_only:
+        query_list = [q for q in query_list if q.metadata.get("physical_event")]
     return build_task_from(query_list, local, budget)

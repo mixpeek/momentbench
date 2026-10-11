@@ -75,7 +75,7 @@ def test_parse_answer_ignores_prose_and_garbage():
 
 
 def test_default_task_spans_the_v0_2_query_files():
-    files = ("film_v0.2.json", "aerospace_v0.2.json")
+    files = ("film_v0.2.json", "aerospace_v0.2.json", "robotics_v0.2.json")
     expected = sum(len(json.loads((REPO_ROOT / "data/queries" / f).read_text())) for f in files)
     assert len(momentbench_agentic().dataset) == expected
 
@@ -92,3 +92,12 @@ NO_ANSWER = Query(query_id="na", text="a moment that is not in the corpus",
 def test_no_answer_query_is_a_hit_only_on_an_explicit_empty_submission(tmp_path):
     assert run(tmp_path / "a", [call("submit", answer="[]")], query=NO_ANSWER).value == 1.0
     assert run(tmp_path / "b", [call("submit", answer="I give up")], query=NO_ANSWER).value == 0.0
+
+
+def test_physical_only_keeps_just_the_tagged_queries():
+    files = ("film_v0.2.json", "aerospace_v0.2.json", "robotics_v0.2.json")
+    tagged = sum(
+        bool(q["metadata"].get("physical_event"))
+        for f in files for q in json.loads((REPO_ROOT / "data/queries" / f).read_text())
+    )
+    assert tagged and len(momentbench_agentic(physical_only=True).dataset) == tagged
