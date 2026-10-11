@@ -90,9 +90,11 @@ answers none, so it scores exactly the share of no-answer queries.
 | Model | Harness | Queries x trials | Recall@1 (95% CI) | R@1 tIoU 0.3 / 0.7 | Tier 1 | Tier 2 | Tier 3 | Tier 4 | Cost per query | Run |
 |---|---|---|---|---|---|---|---|---|---|---|
 | claude-opus-5-5 (20 assets) | claude-code | 185 x 1 | 56.2 (49.2 to 63.2) | 64.3 / 44.9 | 59.8 (n=87) | 81.2 (n=32) | 30.6 (n=36) | 50.0 (n=30) | $0.117 notional | `agentic-claude-opus-5-5-da54af61.json` |
+| claude-opus-5-5 | claude-code | 185 x 1 | 54.1 (46.5 to 61.6) | 63.8 / 47.0 | 62.1 (n=87) | 65.6 (n=32) | 19.4 (n=36) | 60.0 (n=30) | $0.120 notional | `agentic-claude-opus-5-5-0d68625a.json` |
 | gemini-3.1-pro-preview | api | 185 x 1 | 40.0 (32.4 to 47.0) | 48.6 / 33.5 | 28.7 (n=87) | 71.9 (n=32) | 36.1 (n=36) | 43.3 (n=30) | $0.326 | `agentic-gemini-3.1-pro-preview-7f1b7722.json` |
 | claude-sonnet-5-5 | claude-code | 185 x 1 | 31.4 (24.9 to 38.4) | 43.2 / 11.4 | 23.0 (n=87) | 78.1 (n=32) | 11.1 (n=36) | 30.0 (n=30) | $0.068 notional | `agentic-claude-sonnet-5-5-5a202b4b.json` |
 | claude-haiku-5-5 (20 assets) | claude-code | 185 x 1 | 30.8 (24.3 to 37.3) | 39.5 / 17.8 | 12.6 (n=87) | 81.2 (n=32) | 41.7 (n=36) | 16.7 (n=30) | $0.015 notional | `agentic-claude-haiku-5-5-2eb421f7.json` |
+| claude-haiku-5-5 | claude-code | 185 x 1 | 29.2 (22.7 to 35.7) | 39.5 / 15.7 | 17.2 (n=87) | 65.6 (n=32) | 27.8 (n=36) | 26.7 (n=30) | $0.015 notional | `agentic-claude-haiku-5-5-2d52fc45.json` |
 | baseline-abstain | api | 185 x 3 | 19.5 (13.5 to 25.4) | 19.5 / 19.5 | 0.0 (n=87) | 0.0 (n=32) | 100.0 (n=36) | 0.0 (n=30) | none (no model) | `agentic-baseline-abstain-540fc4f7.json` |
 | baseline-random | api | 185 x 3 | 0.2 (0.0 to 0.5) | 0.2 / 0.0 | 0.0 (n=87) | 1.0 (n=32) | 0.0 (n=36) | 0.0 (n=30) | none (no model) | `agentic-baseline-random-e7eea7e0.json` |
 
@@ -183,8 +185,9 @@ trials would reveal where the held-out answers are.
   second or two of a neighbouring shot.
 - The corpus is small (117 minutes) and has no robot manipulation,
   egocentric or driving footage.
-- Frontier coverage is incomplete: GPT-5.5 has no v0.2 result yet because no working
-  OpenAI key was available, and Gemini 3.1 Pro results are being added.
+- Frontier coverage is incomplete: GPT-5.5 is not evaluated on v0.2 because the OpenAI
+  organization available to us has its billing plan cancelled, and Gemini 3.1 Pro has
+  no aerospace result yet.
 - Claude results were produced through the Claude Code harness; costs shown for them are
   what the tokens would cost at API list prices.
 

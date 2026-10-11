@@ -290,8 +290,9 @@ out of training data.
   second or two of a neighbouring shot.
 - The corpus is small ({ct['minutes']:.0f} minutes) and has no robot manipulation,
   egocentric or driving footage.
-- Frontier coverage is incomplete: GPT-5.5 has no v0.2 result yet because no working
-  OpenAI key was available, and Gemini 3.1 Pro results are being added.
+- Frontier coverage is incomplete: GPT-5.5 is not evaluated on v0.2 because the OpenAI
+  organization available to us has its billing plan cancelled, and Gemini 3.1 Pro has
+  no aerospace result yet.
 - Claude results were produced through the Claude Code harness; costs shown for them are
   what the tokens would cost at API list prices.
 

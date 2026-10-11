@@ -216,8 +216,9 @@ queries. A system's overall Recall@1 only means something above both.
 
 **Status.** The queries are model-annotated (Claude drafted and verified, Gemini
 cross-checked) and not yet human-reviewed, so treat every number as provisional.
-GPT-5.5 and Gemini 3.1 Pro have no v0.2 result yet: both provider accounts used for the
-first attempt were cut off by billing limits mid-run, and those runs were discarded.
+GPT-5.5 is not evaluated on v0.2: the OpenAI organization available to us has its billing
+plan cancelled, and a first attempt that ran into it was discarded. Gemini 3.1 Pro has
+film and robotics results; its aerospace run is waiting on budget.
 Claude results come from the local Claude Code harness; their cost is what the tokens
 would cost at API list prices, not money spent.
 

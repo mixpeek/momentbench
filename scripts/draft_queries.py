@@ -211,7 +211,48 @@ def signature(path: Path) -> list[float]:
 # ---------------------------------------------------------------- claude
 
 
+# Which model family drafts and verifies. "claude" runs through a local Claude Code
+# login; "gemini" uses GEMINI_API_KEY, so a domain can be drafted by the other family.
+BACKEND = "claude"
+GEMINI_MODEL = "gemini-3.1-pro-preview"
+
+
 async def ask(system: str, prompt: str, cwd: Path, sem: asyncio.Semaphore) -> str:
+    if BACKEND == "gemini":
+        return await ask_gemini(system, prompt, sem)
+    return await ask_claude(system, prompt, cwd, sem)
+
+
+async def ask_gemini(system: str, prompt: str, sem: asyncio.Semaphore) -> str:
+    import os
+
+    from google import genai
+    from google.genai import types
+
+    # Prompts name the sheet as "Read the image <path>."; Gemini gets the bytes instead.
+    m = re.search(r"Read the image (\S+?\.jpg)", prompt)
+    parts: list = []
+    if m:
+        parts.append(types.Part.from_bytes(data=Path(m.group(1)).read_bytes(),
+                                           mime_type="image/jpeg"))
+        prompt = prompt.replace(m.group(0), "Look at the attached image")
+    parts.append(prompt)
+    client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+    async with sem:
+        for attempt in range(6):
+            try:
+                r = await client.aio.models.generate_content(
+                    model=GEMINI_MODEL, contents=parts,
+                    config=types.GenerateContentConfig(system_instruction=system))
+                return r.text or ""
+            except Exception as e:
+                if getattr(e, "code", None) not in (429, 500, 503) or attempt == 5:
+                    raise RuntimeError(f"gemini: {e}") from e
+                await asyncio.sleep(10 * (attempt + 1))
+    return ""
+
+
+async def ask_claude(system: str, prompt: str, cwd: Path, sem: asyncio.Semaphore) -> str:
     from claude_agent_sdk import ClaudeAgentOptions, ResultMessage, query
 
     options = ClaudeAgentOptions(
@@ -422,13 +463,16 @@ def to_query(film: Film, d: dict, v: dict, n: int) -> dict:
     qid = f"q-{film.vertical}-{n:04d}"
     held = int(hashlib.sha256(qid.encode()).hexdigest(), 16) % 100 < HELD_OUT_FRACTION * 100
     meta = {
-        "source": f"model-annotated: drafted and independently verified by {MODEL} via Claude "
-                  "Code; pending human review",
+        "source": (f"model-annotated: drafted and independently verified by {GEMINI_MODEL}; "
+                   "pending human review") if BACKEND == "gemini" else
+                  (f"model-annotated: drafted and independently verified by {MODEL} via Claude "
+                   "Code; pending human review"),
         "canary": CANARY,
         "verification": "gold span is a scene-cut-bounded shot (or consecutive shots); the "
                         "verifier picked it out of it plus 3 corpus look-alikes with no wrong "
                         "detail. Not checked against every shot in the corpus.",
         "bias_note": "drafter and verifier are the same model family as one entrant",
+        "drafted_by": GEMINI_MODEL if BACKEND == "gemini" else MODEL,
     }
     if d.get("physical"):
         meta["physical_event"] = True
@@ -461,6 +505,8 @@ async def main() -> None:
     p.add_argument("--assets", nargs="*", help="limit to these asset ids")
     p.add_argument("--max-windows", type=int, default=None, help="per film, for a trial run")
     p.add_argument("--concurrency", type=int, default=4)
+    p.add_argument("--backend", choices=["claude", "gemini"], default="claude",
+                   help="model family that drafts and verifies (gemini needs GEMINI_API_KEY)")
     p.add_argument("--vertical", default="film", help='draft for this vertical, or "all"')
     p.add_argument("--physical-only", action="store_true",
                    help="draft only tier 1 and 4 queries about a machine's physical motion")
@@ -472,6 +518,8 @@ async def main() -> None:
     p.add_argument("--existing", nargs="*", default=[str(ROOT / "data/queries/sample.json")],
                    help="query files whose gold spans new drafts must not duplicate")
     args = p.parse_args()
+    global BACKEND
+    BACKEND = args.backend
 
     manifest = json.loads(Path(args.manifest).read_text())
     assets = manifest if isinstance(manifest, list) else manifest["assets"]

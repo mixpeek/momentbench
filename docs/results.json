@@ -89,6 +89,46 @@
       "model": "claude-haiku-5-5",
       "harness": "claude-code",
       "modalities": "frames+transcripts",
+      "corpus_assets": 27,
+      "queries": 185,
+      "trials": 1,
+      "recall_at_1": 0.2919,
+      "recall_at_1_ci95": [
+        0.227,
+        0.3568
+      ],
+      "recall_at_1_by_iou": {
+        "0.3": 0.3946,
+        "0.5": 0.2919,
+        "0.7": 0.1568
+      },
+      "by_tier": {
+        "1": {
+          "queries": 87,
+          "recall_at_1": 0.1724
+        },
+        "2": {
+          "queries": 32,
+          "recall_at_1": 0.6562
+        },
+        "3": {
+          "queries": 36,
+          "recall_at_1": 0.2778
+        },
+        "4": {
+          "queries": 30,
+          "recall_at_1": 0.2667
+        }
+      },
+      "cost_usd_per_query": 0.01518422972972973,
+      "error_trials": 0,
+      "run_file": "agentic-claude-haiku-5-5-2d52fc45.json"
+    },
+    {
+      "domain": "film",
+      "model": "claude-haiku-5-5",
+      "harness": "claude-code",
+      "modalities": "frames+transcripts",
       "corpus_assets": 20,
       "queries": 185,
       "trials": 1,
@@ -123,6 +163,46 @@
       "cost_usd_per_query": 0.014813254054054054,
       "error_trials": 0,
       "run_file": "agentic-claude-haiku-5-5-2eb421f7.json"
+    },
+    {
+      "domain": "film",
+      "model": "claude-opus-5-5",
+      "harness": "claude-code",
+      "modalities": "frames+transcripts",
+      "corpus_assets": 27,
+      "queries": 185,
+      "trials": 1,
+      "recall_at_1": 0.5405,
+      "recall_at_1_ci95": [
+        0.4649,
+        0.6162
+      ],
+      "recall_at_1_by_iou": {
+        "0.3": 0.6378,
+        "0.5": 0.5405,
+        "0.7": 0.4703
+      },
+      "by_tier": {
+        "1": {
+          "queries": 87,
+          "recall_at_1": 0.6207
+        },
+        "2": {
+          "queries": 32,
+          "recall_at_1": 0.6562
+        },
+        "3": {
+          "queries": 36,
+          "recall_at_1": 0.1944
+        },
+        "4": {
+          "queries": 30,
+          "recall_at_1": 0.6
+        }
+      },
+      "cost_usd_per_query": 0.11965932972972973,
+      "error_trials": 0,
+      "run_file": "agentic-claude-opus-5-5-0d68625a.json"
     },
     {
       "domain": "film",
