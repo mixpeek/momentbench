@@ -28,26 +28,34 @@ QUERY_FILES = {"film": "film_v0.2.json", "aerospace": "aerospace_v0.2.json",
 # Seed runs on identical query text (after the q-film-005 fix, before the q-film-001 rewording).
 SEED_RUNS = ("agentic-claude-opus-5-5-e51b703b", "agentic-gpt-5.5-b893d59f",
              "agentic-gemini-3.1-pro-preview-a6ff462c", "agentic-gemma-4-31b-it-d23baa9c")
-# Two independent single-trial Opus runs on the same film queries.
-RETEST = (ROOT / "data/results/agentic-v0.2/agentic-claude-opus-5-5-65eb804b.json",
-          RECORD / "agentic-claude-opus-5-5-da54af61.json")
+# Pairs of independent single-trial Opus runs on the same queries.
+RETEST = [
+    ("film", ROOT / "data/results/agentic-v0.2/agentic-claude-opus-5-5-65eb804b.json",
+     RECORD / "agentic-claude-opus-5-5-da54af61.json"),
+    ("aerospace",
+     ROOT / "data/results/agentic-v0.2/superseded/agentic-claude-opus-5-5-2b5433a6.json",
+     RECORD / "agentic-claude-opus-5-5-519357e4.json"),
+]
 
 
 def retest() -> str:
-    a, b = ({t.query_id: t.hit_at_1 for t in AgenticRun.model_validate_json(p.read_text()).trials}
-            for p in RETEST)
-    ids = sorted(set(a) & set(b))
-    agree = sum(a[i] == b[i] for i in ids) / len(ids)
-    pa, pb = (sum(x[i] for i in ids) / len(ids) for x in (a, b))
-    expected = pa * pb + (1 - pa) * (1 - pb)
-    kappa = (agree - expected) / (1 - expected)
-    flips = sum(a[i] != b[i] for i in ids)
-    return (f"Two independent single-trial Claude Opus 5.5 runs on the same {len(ids)} film "
-            f"queries scored {100 * pa:.1f}% and {100 * pb:.1f}% Recall@1. Per query they agreed "
-            f"{100 * agree:.0f}% of the time (Cohen's kappa {kappa:.2f}); {flips} queries were a "
-            "hit in only one run. One trial is enough for the aggregate; per-tier comparisons "
-            "on small slices need more. Runs: "
-            + ", ".join(f"`{p.name}`" for p in RETEST) + ".")
+    lines = ["| Domain | Shared queries | Run A R@1 | Run B R@1 | Per-query agreement "
+             "| Cohen's kappa | Runs |", "|---|---|---|---|---|---|---|"]
+    for domain, pa_path, pb_path in RETEST:
+        a, b = ({t.query_id: t.hit_at_1
+                 for t in AgenticRun.model_validate_json(p.read_text()).trials}
+                for p in (pa_path, pb_path))
+        ids = sorted(set(a) & set(b))
+        agree = sum(a[i] == b[i] for i in ids) / len(ids)
+        ra, rb = (sum(x[i] for i in ids) / len(ids) for x in (a, b))
+        expected = ra * rb + (1 - ra) * (1 - rb)
+        kappa = (agree - expected) / (1 - expected)
+        lines.append(f"| {domain} | {len(ids)} | {100 * ra:.1f} | {100 * rb:.1f} | "
+                     f"{100 * agree:.0f}% | {kappa:.2f} | `{pa_path.name}`, `{pb_path.name}` |")
+    return ("Two independent single-trial Claude Opus 5.5 runs per domain, compared on the "
+            "queries both covered. The aggregate moves by a point or two; individual queries "
+            "flip more often, so per-query or small-slice comparisons need several trials.\n\n"
+            + "\n".join(lines))
 
 
 def runs_for(vertical: str) -> list[Path]:

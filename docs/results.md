@@ -32,7 +32,7 @@ Runs here covered different versions of the query file, so every row is computed
 
 | Model | Harness | Queries x trials | Recall@1 (95% CI) | R@1 tIoU 0.3 / 0.7 | Tier 1 | Tier 2 | Tier 3 | Tier 4 | Cost per query | Run |
 |---|---|---|---|---|---|---|---|---|---|---|
-| claude-opus-5-5 | claude-code | 167 x 1 | 65.3 (58.1 to 72.5) | 72.5 / 56.9 | 63.3 (n=79) | 85.3 (n=34) | 52.4 (n=21) | 57.6 (n=33) | $0.140 notional | `agentic-claude-opus-5-5-2b5433a6.json` |
+| claude-opus-5-5 | claude-code | 167 x 1 | 66.5 (59.3 to 73.7) | 71.3 / 52.7 | 67.1 (n=79) | 91.2 (n=34) | 42.9 (n=21) | 54.5 (n=33) | $0.142 notional | `agentic-claude-opus-5-5-519357e4.json` |
 | claude-haiku-5-5 | claude-code | 167 x 1 | 43.7 (35.9 to 50.9) | 52.1 / 28.1 | 31.6 (n=79) | 76.5 (n=34) | 38.1 (n=21) | 42.4 (n=33) | $0.018 notional | `agentic-claude-haiku-5-5-73f3e5ad.json` |
 | claude-sonnet-5-5 | claude-code | 167 x 1 | 37.1 (30.5 to 44.3) | 52.1 / 21.6 | 32.9 (n=79) | 61.8 (n=34) | 23.8 (n=21) | 30.3 (n=33) | $0.073 notional | `agentic-claude-sonnet-5-5-a44a1b82.json` |
 | baseline-abstain | api | 167 x 3 | 12.6 (7.8 to 18.0) | 12.6 / 12.6 | 0.0 (n=79) | 0.0 (n=34) | 100.0 (n=21) | 0.0 (n=33) | none (no model) | `agentic-baseline-abstain-465629a5.json` |
@@ -52,7 +52,7 @@ evidence of anything by itself.
 | baseline-abstain | 12.1 (7.1 to 17.9), n=140 | 14.8 (3.7 to 29.6), n=27 |
 | baseline-random | 0.0 (0.0 to 0.0), n=140 | 0.0 (0.0 to 0.0), n=27 |
 | claude-haiku-5-5 | 39.6 (32.3 to 47.0), n=164 | 48.7 (33.3 to 64.1), n=39 |
-| claude-opus-5-5 | 63.6 (55.7 to 71.4), n=140 | 74.1 (59.3 to 88.9), n=27 |
+| claude-opus-5-5 | 64.0 (56.7 to 70.7), n=164 | 61.5 (46.2 to 76.9), n=39 |
 | claude-sonnet-5-5 | 32.9 (25.0 to 40.7), n=140 | 59.3 (40.7 to 77.8), n=27 |
 
 ## Robotics (robotics_v0.2.json)
@@ -75,6 +75,7 @@ appear here.
 
 | Domain | Model | Physical-event R@1 (95% CI) | Run |
 |---|---|---|---|
+| aerospace | claude-opus-5-5 | 50.0 (33.3 to 66.7), n=36 | `agentic-claude-opus-5-5-519357e4.json` |
 | aerospace | claude-haiku-5-5 | 30.6 (16.7 to 44.4), n=36 | `agentic-claude-haiku-5-5-73f3e5ad.json` |
 | robotics | claude-opus-5-5 | 83.3 (66.7 to 100.0), n=18 | `agentic-claude-opus-5-5-e7ca7bd1.json` |
 | robotics | baseline-abstain | 0.0 (0.0 to 0.0), n=18 | `agentic-baseline-abstain-b3a169c6.json` |
@@ -82,7 +83,12 @@ appear here.
 
 ## Run-to-run stability
 
-Two independent single-trial Claude Opus 5.5 runs on the same 185 film queries scored 54.1% and 56.2% Recall@1. Per query they agreed 78% of the time (Cohen's kappa 0.56); 40 queries were a hit in only one run. One trial is enough for the aggregate; per-tier comparisons on small slices need more. Runs: `agentic-claude-opus-5-5-65eb804b.json`, `agentic-claude-opus-5-5-da54af61.json`.
+Two independent single-trial Claude Opus 5.5 runs per domain, compared on the queries both covered. The aggregate moves by a point or two; individual queries flip more often, so per-query or small-slice comparisons need several trials.
+
+| Domain | Shared queries | Run A R@1 | Run B R@1 | Per-query agreement | Cohen's kappa | Runs |
+|---|---|---|---|---|---|---|
+| film | 185 | 54.1 | 56.2 | 78% | 0.56 | `agentic-claude-opus-5-5-65eb804b.json`, `agentic-claude-opus-5-5-da54af61.json` |
+| aerospace | 167 | 65.3 | 66.5 | 84% | 0.65 | `agentic-claude-opus-5-5-2b5433a6.json`, `agentic-claude-opus-5-5-519357e4.json` |
 
 ## Against the pre-registered targets
 
