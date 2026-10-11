@@ -60,6 +60,8 @@ Transcripts are the files in [`data/transcripts`](../data/transcripts), machine 
 
 **Trials.** Run each query at least once. Five trials per query is the default for small sets. With 300 queries the query-resampled interval dominates, and one to three trials is enough. State the number.
 
+**Measured run-to-run stability.** Two independent single-trial Claude Opus 5.5 runs on the 185 public film queries scored 54.1% and 56.2% Recall@1, inside each other's interval. Per query they agreed 78% of the time (Cohen's kappa 0.56): 82 queries were hits in both runs and 40 in only one. A single trial is enough for an aggregate over this many queries. Per-query or per-tier comparisons on small slices need several trials.
+
 **What to report:** model id and snapshot, provider, harness (`api` or `claude-code`), effort setting, budget, trials, query file and its commit, Recall@1 with interval overall and per tier, cost per query and the pricing `as_of` date. The run JSON written by `momentbench agentic` holds all of it plus every trial's tool trace.
 
 ## Query construction
@@ -84,5 +86,7 @@ Transcripts are the files in [`data/transcripts`](../data/transcripts), machine 
 **Captions:** the NASA Minute episodes burn their narration into the picture as captions, so some aerospace tier 2 queries can be answered by reading the frames alone. They are still correct, but on those assets tier 2 measures reading as much as listening.
 
 **Aerospace spot check:** 10 random aerospace queries were checked against frames before the cross-check. All 10 matched; one described a red-vested crew member as wearing a green flight suit.
+
+**Robotics domain:** drafted and verified by Claude; the Gemini cross-check is pending because the key used for it hit its project spend cap (`metadata.cross_check.status` is `pending`). A spot check of 8 random robotics queries found all 8 accurate, but only 2 described a physical event: NASA's robotics videos are mostly public-outreach footage of people and control rooms. A dedicated pass (`draft_queries.py --physical-only`) therefore drafts only queries in which a robot, vehicle or mechanism visibly moves or makes contact, and tags them `metadata.physical_event`. Report that subset separately when the question is physical understanding.
 
 **Known limitation:** scene detection misses some dissolves and dark cuts, mostly in Elephants Dream, so a few gold spans include a second or two of the neighbouring shot.

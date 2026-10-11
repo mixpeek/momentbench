@@ -115,6 +115,26 @@ moves, what it touches, which direction). For tier 4, prefer cause then effect
 ("after the rover's front wheels reach the ramp edge, the body pitches down"). Do
 not describe computer animation as if it were real footage; say it is an animation."""
 
+PHYSICAL_PROMPT = """Read the image {sheet}. It shows shots {first} to {last} of one video.
+Each tile is labelled with its shot id and time range; shots longer than 4 s have two
+tiles (early and late).
+
+Shots:
+{shots}
+
+Narration in this window (may be empty or imperfect):
+{dialogue}
+
+Write up to 3 queries as a JSON list: {{"tier": 1|4, "text": "...", "shots": [ids]}}.
+Every query must be about a robot, vehicle or mechanism doing something physical that a
+viewer can see happen in the cited shots: a wheel rolling onto, over or off something,
+a body tilting or sliding, an arm or tool moving to touch, grip, lift or release
+something, rotors spinning up, something lifting off, landing, falling or stopping.
+Describe the motion and what it acts on precisely enough to pin the moment. Tier 1 is
+one shot; tier 4 is two or three consecutive shots as cause then effect. Do not write
+about people, screens, captions or static views of a machine. Do not describe computer
+animation as real footage. Return [] if no shot in the window shows such an event."""
+
 VERIFY_SYSTEM = (
     "You check video retrieval queries against candidate clips. Be strict: a candidate "
     "matches only if every detail in the query is visible or audible in it. Reply with "
@@ -274,8 +294,10 @@ class Film:
         return "\n".join(said) or "(none)"
 
 
-async def draft_window(film: Film, first: int, last: int, sem, dialogue_only=False) -> list[dict]:
-    cache = film.dir / f"draft{'2' if dialogue_only else ''}_{first:04d}.json"
+async def draft_window(film: Film, first: int, last: int, sem, dialogue_only=False,
+                       physical_only=False) -> list[dict]:
+    tag = "2" if dialogue_only else "3" if physical_only else ""
+    cache = film.dir / f"draft{tag}_{first:04d}.json"
     if cache.exists():
         return json.loads(cache.read_text())
     tiles = [label_tile(p, label) for i in range(first, last + 1) for p, label in film.tiles(i)]
@@ -288,10 +310,11 @@ async def draft_window(film: Film, first: int, last: int, sem, dialogue_only=Fal
     if dialogue_only and said == "(none)":
         cache.write_text("[]")
         return []
-    template = DIALOGUE_PROMPT if dialogue_only else DRAFT_PROMPT
+    template = (DIALOGUE_PROMPT if dialogue_only else PHYSICAL_PROMPT if physical_only
+                else DRAFT_PROMPT)
     prompt = template.format(sheet=sheet, first=f"S{first}", last=f"S{last}",
                              shots=shots, dialogue=said)
-    if film.vertical == "robotics" and not dialogue_only:
+    if film.vertical == "robotics" and not (dialogue_only or physical_only):
         prompt += PHYSICAL_GUIDANCE
     try:
         drafts = parse_json(await ask(DRAFT_SYSTEM, prompt, film.dir, sem))
@@ -305,7 +328,7 @@ async def draft_window(film: Film, first: int, last: int, sem, dialogue_only=Fal
             continue
         keep.append({"asset_id": film.id, "tier": int(d.get("tier", 1)), "text": d["text"].strip(),
                      "shots": sorted(ids), "altered": d.get("altered"),
-                     "original": d.get("original")})
+                     "original": d.get("original"), "physical": physical_only})
     cache.write_text(json.dumps(keep, indent=1))
     return keep
 
@@ -407,6 +430,8 @@ def to_query(film: Film, d: dict, v: dict, n: int) -> dict:
                         "detail. Not checked against every shot in the corpus.",
         "bias_note": "drafter and verifier are the same model family as one entrant",
     }
+    if d.get("physical"):
+        meta["physical_event"] = True
     if d["tier"] == 3:
         meta["altered_from"] = {"asset_id": film.id, "t_in": a, "t_out": b,
                                 "change": d.get("altered")}
@@ -437,6 +462,8 @@ async def main() -> None:
     p.add_argument("--max-windows", type=int, default=None, help="per film, for a trial run")
     p.add_argument("--concurrency", type=int, default=4)
     p.add_argument("--vertical", default="film", help='draft for this vertical, or "all"')
+    p.add_argument("--physical-only", action="store_true",
+                   help="draft only tier 1 and 4 queries about a machine's physical motion")
     p.add_argument("--dialogue-only", action="store_true",
                    help="draft only tier 2 (dialogue plus picture) queries")
     p.add_argument("--offset", type=int, default=0,
@@ -471,7 +498,7 @@ async def main() -> None:
     for film in films.values():
         windows = [(s, min(s + SHOTS_PER_WINDOW, len(film.shots)) - 1)
                    for s in range(args.offset, len(film.shots), SHOTS_PER_WINDOW)]
-        jobs += [draft_window(film, a, b, sem, args.dialogue_only)
+        jobs += [draft_window(film, a, b, sem, args.dialogue_only, args.physical_only)
                  for a, b in windows[: args.max_windows]]
     drafts = [d for batch in await asyncio.gather(*jobs) for d in batch]
     taken = [(g["asset_id"], g["t_in"], g["t_out"]) for f in args.existing
