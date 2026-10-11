@@ -22,6 +22,7 @@ would cost at API list prices, not money spent.
 |---|---|---|---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | 185 x 1 | 56.2 (49.2 to 63.2) | 64.3 / 44.9 | 59.8 (n=87) | 81.2 (n=32) | 30.6 (n=36) | 50.0 (n=30) | $0.117 notional | `agentic-claude-opus-5-5-da54af61.json` |
 | claude-sonnet-5-5 | claude-code | 185 x 1 | 31.4 (24.9 to 37.8) | 43.8 / 10.8 | 25.3 (n=87) | 68.8 (n=32) | 16.7 (n=36) | 26.7 (n=30) | $0.064 notional | `agentic-claude-sonnet-5-5-2b162b09.json` |
+| claude-haiku-5-5 | claude-code | 185 x 1 | 30.8 (24.3 to 37.3) | 39.5 / 17.8 | 12.6 (n=87) | 81.2 (n=32) | 41.7 (n=36) | 16.7 (n=30) | $0.015 notional | `agentic-claude-haiku-5-5-2eb421f7.json` |
 | baseline-abstain | api | 185 x 3 | 19.5 (13.5 to 25.4) | 19.5 / 19.5 | 0.0 (n=87) | 0.0 (n=32) | 100.0 (n=36) | 0.0 (n=30) | none (no model) | `agentic-baseline-abstain-595b6c33.json` |
 | baseline-random | api | 185 x 3 | 0.2 (0.0 to 0.5) | 0.2 / 0.0 | 0.0 (n=87) | 1.0 (n=32) | 0.0 (n=36) | 0.0 (n=30) | none (no model) | `agentic-baseline-random-7ef04983.json` |
 
