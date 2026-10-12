@@ -30,7 +30,7 @@ SEED_RUNS = ("agentic-claude-opus-5-5-e51b703b", "agentic-gpt-5.5-b893d59f",
 # Pairs of independent single-trial Opus runs on the same queries.
 RETEST = [
     ("film", ROOT / "data/results/agentic-v0.2/agentic-claude-opus-5-5-65eb804b.json",
-     RECORD / "agentic-claude-opus-5-5-da54af61.json"),
+     ROOT / "data/results/agentic-v0.2/superseded/agentic-claude-opus-5-5-da54af61.json"),
     ("aerospace",
      ROOT / "data/results/agentic-v0.2/superseded/agentic-claude-opus-5-5-2b5433a6.json",
      RECORD / "agentic-claude-opus-5-5-519357e4.json"),

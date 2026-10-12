@@ -30,3 +30,11 @@ def test_validator_catches_each_problem():
     for expected in ("past the end", "duplicate", "missing canary", "metadata.source",
                      "unknown asset"):
         assert expected in problems
+
+
+def test_next_release_candidates_validate_against_their_own_manifest():
+    nxt = Path("data/next")
+    for f in sorted(nxt.glob("*_draft.json")):
+        manifest = json.loads((nxt / f.name.replace("_draft.json", "_manifest.json")).read_text())
+        queries = [Query(**q) for q in json.loads(f.read_text())]
+        assert queries and check_queries(queries, manifest) == [], f.name

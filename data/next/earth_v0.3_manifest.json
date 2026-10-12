@@ -1,0 +1,158 @@
+[
+  {
+    "asset_id": "nasa-hurricane-erin-from-iss",
+    "source_id": "nasa-image-and-video-library",
+    "title": "Hurricane Erin Seen From the International Space Station",
+    "vertical": "earth",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 190.7,
+    "source_url": "https://images.nasa.gov/details/jsc2025m000148-Hurricane_Erin_Seen_From_International_Space_Station",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "jsc2025m000148-Hurricane_Erin_Seen_From_International_Space_Station",
+      "published": "2025-08-19",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-hurricane-erin-from-iss.mp4",
+      "sha256": "ed1c089e8918ff0b8836cc896191849d3fe9cb7761389ba06f76314dc1cb432e",
+      "bytes": 55853683,
+      "download_url": "http://images-assets.nasa.gov/video/jsc2025m000148-Hurricane_Erin_Seen_From_International_Space_Station/jsc2025m000148-Hurricane_Erin_Seen_From_International_Space_Station~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-11"
+    }
+  },
+  {
+    "asset_id": "nasa-satellites-see-wildfires",
+    "source_id": "nasa-image-and-video-library",
+    "title": "NASA Satellites See Wildfires from Space",
+    "vertical": "earth",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 32.07,
+    "source_url": "https://images.nasa.gov/details/GSFC_20171011_Satellite_m12742_Wildfires",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "GSFC_20171011_Satellite_m12742_Wildfires",
+      "published": "2017-10-11",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-satellites-see-wildfires.mp4",
+      "sha256": "ca10cf36ee684c5d4f86bcc2c60a001a2c59af5b98a31e121253e89a3737045b",
+      "bytes": 7567335,
+      "download_url": "http://images-assets.nasa.gov/video/GSFC_20171011_Satellite_m12742_Wildfires/GSFC_20171011_Satellite_m12742_Wildfires~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-11"
+    }
+  },
+  {
+    "asset_id": "nasa-tracking-volcanic-ash",
+    "source_id": "nasa-image-and-video-library",
+    "title": "Tracking Volcanic Ash With Satellites",
+    "vertical": "earth",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 96.68,
+    "source_url": "https://images.nasa.gov/details/GSFC_20160512_Volcanic_m12221_Ash",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "GSFC_20160512_Volcanic_m12221_Ash",
+      "published": "2016-05-12",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-tracking-volcanic-ash.mp4",
+      "sha256": "a655edba4c54a9bc9a8e7449f16bbd37204fad2c1fe4bcfd2e8d6d10d65e6931",
+      "bytes": 29817367,
+      "download_url": "http://images-assets.nasa.gov/video/GSFC_20160512_Volcanic_m12221_Ash/GSFC_20160512_Volcanic_m12221_Ash~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-11"
+    }
+  },
+  {
+    "asset_id": "nasa-birth-of-a-new-island",
+    "source_id": "nasa-image-and-video-library",
+    "title": "The Birth of a New Island",
+    "vertical": "earth",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 327.6,
+    "source_url": "https://images.nasa.gov/details/GSFC_20171211_Tonga_m12800_NewIsland1",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "GSFC_20171211_Tonga_m12800_NewIsland1",
+      "published": "2017-12-11",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-birth-of-a-new-island.mp4",
+      "sha256": "aca61e7f427a77c11c9218fe736365444753368015e99b8a72d55d48429a4746",
+      "bytes": 93715681,
+      "download_url": "http://images-assets.nasa.gov/video/GSFC_20171211_Tonga_m12800_NewIsland1/GSFC_20171211_Tonga_m12800_NewIsland1~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-11"
+    }
+  },
+  {
+    "asset_id": "nasa-smoke-and-fire",
+    "source_id": "nasa-image-and-video-library",
+    "title": "Through Smoke and Fire, NASA Searches for Answers",
+    "vertical": "earth",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 47.12,
+    "source_url": "https://images.nasa.gov/details/GSFC_20190711_Fires_m13257_Kickoff",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "GSFC_20190711_Fires_m13257_Kickoff",
+      "published": "2019-07-11",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-smoke-and-fire.mp4",
+      "sha256": "58d608b9b0c9ed26ceab697d1baf7e9cbcf70c4cc8a0789aa1baf8be589ab775",
+      "bytes": 11240264,
+      "download_url": "http://images-assets.nasa.gov/video/GSFC_20190711_Fires_m13257_Kickoff/GSFC_20190711_Fires_m13257_Kickoff~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-11"
+    }
+  },
+  {
+    "asset_id": "nasa-earths-airglow",
+    "source_id": "nasa-image-and-video-library",
+    "title": "The Secrets behind Earth's Multi-colored Glow",
+    "vertical": "earth",
+    "license": "public_domain",
+    "attribution": "NASA (public domain, 17 U.S.C. § 105; NASA media usage guidelines)",
+    "duration_s": 194.47,
+    "source_url": "https://images.nasa.gov/details/GSFC_20181022_ICON_m12902_Airglow",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "GSFC_20181022_ICON_m12902_Airglow",
+      "published": "2018-10-22",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-earths-airglow.mp4",
+      "sha256": "4791ced0162ea96c526ef6ac14427e0e1fc2c76f5802a86a9310e3da9aeadce2",
+      "bytes": 55914836,
+      "download_url": "http://images-assets.nasa.gov/video/GSFC_20181022_ICON_m12902_Airglow/GSFC_20181022_ICON_m12902_Airglow~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-11"
+    }
+  }
+]
