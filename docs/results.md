@@ -23,12 +23,12 @@ would cost at API list prices, not money spent.
 
 | Model | Harness | Queries x trials | Recall@1 (95% CI) | R@1 tIoU 0.3 / 0.7 | Tier 1 | Tier 2 | Tier 3 | Tier 4 | Cost per query | Run |
 |---|---|---|---|---|---|---|---|---|---|---|
-| claude-opus-5-5 | claude-code | 185 x 1 | 54.1 (46.5 to 61.6) | 63.8 / 47.0 | 62.1 (n=87) | 65.6 (n=32) | 19.4 (n=36) | 60.0 (n=30) | $0.120 notional | `agentic-claude-opus-5-5-0d68625a.json` |
-| gemini-3.1-pro-preview | api | 185 x 1 | 40.0 (32.4 to 47.0) | 48.6 / 33.5 | 28.7 (n=87) | 71.9 (n=32) | 36.1 (n=36) | 43.3 (n=30) | $0.326 | `agentic-gemini-3.1-pro-preview-7f1b7722.json` |
-| claude-sonnet-5-5 | claude-code | 185 x 1 | 31.4 (24.9 to 38.4) | 43.2 / 11.4 | 23.0 (n=87) | 78.1 (n=32) | 11.1 (n=36) | 30.0 (n=30) | $0.068 notional | `agentic-claude-sonnet-5-5-5a202b4b.json` |
-| claude-haiku-5-5 | claude-code | 185 x 1 | 29.2 (22.7 to 35.7) | 39.5 / 15.7 | 17.2 (n=87) | 65.6 (n=32) | 27.8 (n=36) | 26.7 (n=30) | $0.015 notional | `agentic-claude-haiku-5-5-2d52fc45.json` |
+| claude-opus-5-5 | claude-code | 185 x 1 | 55.7 (48.6 to 62.7) | 63.8 / 48.1 | 62.1 (n=87) | 71.9 (n=32) | 19.4 (n=36) | 63.3 (n=30) | $0.120 notional | `agentic-claude-opus-5-5-0d68625a.json` |
+| gemini-3.1-pro-preview | api | 185 x 1 | 42.7 (35.1 to 49.7) | 47.6 / 34.1 | 29.9 (n=87) | 81.2 (n=32) | 36.1 (n=36) | 46.7 (n=30) | $0.326 | `agentic-gemini-3.1-pro-preview-7f1b7722.json` |
+| claude-sonnet-5-5 | claude-code | 185 x 1 | 31.4 (24.9 to 38.4) | 41.1 / 11.4 | 23.0 (n=87) | 75.0 (n=32) | 11.1 (n=36) | 33.3 (n=30) | $0.068 notional | `agentic-claude-sonnet-5-5-5a202b4b.json` |
+| claude-haiku-5-5 | claude-code | 185 x 1 | 29.2 (22.7 to 35.7) | 36.8 / 15.7 | 18.4 (n=87) | 59.4 (n=32) | 27.8 (n=36) | 30.0 (n=30) | $0.015 notional | `agentic-claude-haiku-5-5-2d52fc45.json` |
 | baseline-abstain | api | 185 x 3 | 19.5 (13.5 to 25.4) | 19.5 / 19.5 | 0.0 (n=87) | 0.0 (n=32) | 100.0 (n=36) | 0.0 (n=30) | none (no model) | `agentic-baseline-abstain-540fc4f7.json` |
-| baseline-random | api | 185 x 3 | 0.2 (0.0 to 0.5) | 0.2 / 0.0 | 0.0 (n=87) | 1.0 (n=32) | 0.0 (n=36) | 0.0 (n=30) | none (no model) | `agentic-baseline-random-e7eea7e0.json` |
+| baseline-random | api | 185 x 3 | 0.0 (0.0 to 0.0) | 0.2 / 0.0 | 0.0 (n=87) | 0.0 (n=32) | 0.0 (n=36) | 0.0 (n=30) | none (no model) | `agentic-baseline-random-e7eea7e0.json` |
 
 ## Aerospace (aerospace_v0.2.json)
 
@@ -106,7 +106,7 @@ Two independent single-trial Claude Opus 5.5 runs per domain, compared on the qu
 
 | Domain | Shared queries | Run A R@1 | Run B R@1 | Per-query agreement | Cohen's kappa | Runs |
 |---|---|---|---|---|---|---|
-| film | 185 | 54.1 | 56.2 | 78% | 0.56 | `agentic-claude-opus-5-5-65eb804b.json`, `agentic-claude-opus-5-5-da54af61.json` |
+| film | 185 | 56.2 | 58.4 | 79% | 0.58 | `agentic-claude-opus-5-5-65eb804b.json`, `agentic-claude-opus-5-5-da54af61.json` |
 | aerospace | 167 | 67.1 | 67.1 | 83% | 0.62 | `agentic-claude-opus-5-5-2b5433a6.json`, `agentic-claude-opus-5-5-519357e4.json` |
 
 ## Against the pre-registered targets

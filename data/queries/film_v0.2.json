@@ -131,14 +131,14 @@
   },
   {
     "query_id": "q-film-0103",
-    "text": "A big, fat white rabbit sits in a sunny meadow and stares up at a pink-purple butterfly fluttering near his head.",
+    "text": "A big, fat white rabbit stands in a sunny meadow and stares at a pink-purple butterfly fluttering near his head.",
     "tier": 1,
     "vertical": "film",
     "gold_moments": [
       {
         "asset_id": "big-buck-bunny",
-        "t_in": 103.92,
-        "t_out": 112.67
+        "t_in": 105.6,
+        "t_out": 112.03
       }
     ],
     "hard_negatives": [
@@ -169,6 +169,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          103.92,
+          112.67
+        ],
+        "to": [
+          105.6,
+          112.03
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "A big, fat white rabbit sits in a sunny meadow and stares up at a pink-purple butterfly fluttering near his head.",
+        "date": "2026-10-12",
+        "reason": "The span is right (it starts as the rabbit tosses away an apple core and the purple butterfly flies in, and ends as he smiles and it flutters off just before the cut), but the frames don't show him sitting and he's probably standing, so change 'sits' to 'stands' and 'stares up at' to 'stares at' bec"
       }
     }
   },
@@ -260,14 +277,14 @@
   },
   {
     "query_id": "q-film-0110",
-    "text": "A red rodent dangles upside down from a tree trunk at the edge of a grassy field, holding a purple butterfly.",
+    "text": "A red rodent dangles upside down from a tree branch at the edge of a grassy field, holding a purple butterfly.",
     "tier": 1,
     "vertical": "film",
     "gold_moments": [
       {
         "asset_id": "big-buck-bunny",
-        "t_in": 211.62,
-        "t_out": 213.79
+        "t_in": 212.6,
+        "t_out": 213.6
       }
     ],
     "hard_negatives": [
@@ -298,6 +315,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          211.62,
+          213.79
+        ],
+        "to": [
+          212.6,
+          213.6
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "A red rodent dangles upside down from a tree trunk at the edge of a grassy field, holding a purple butterfly.",
+        "date": "2026-10-12",
+        "reason": "The span boundaries fit the shot and the red rodent is upside down with the purple butterfly, but in the middle and end frames it hangs from a branch, not the trunk, so change 'dangles upside down from a tree trunk' to 'dangles upside down from a tree branch'."
       }
     }
   },
@@ -519,14 +553,14 @@
   },
   {
     "query_id": "q-film-0120",
-    "text": "After a big gray rabbit pulls back a wooden bow with a sharpened stick on it, the stick is shown stuck in the bark of a tree trunk with leaves on it.",
+    "text": "After a big gray rabbit pulls back a wooden bow with a sharpened stick on it, the stick, with leaves tied to its end, is shown stuck in the bark of a tree trunk.",
     "tier": 4,
     "vertical": "film",
     "gold_moments": [
       {
         "asset_id": "big-buck-bunny",
-        "t_in": 292.21,
-        "t_out": 297.12
+        "t_in": 292.2,
+        "t_out": 297.2
       }
     ],
     "hard_negatives": [
@@ -557,6 +591,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          292.21,
+          297.12
+        ],
+        "to": [
+          292.2,
+          297.2
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "After a big gray rabbit pulls back a wooden bow with a sharpened stick on it, the stick is shown stuck in the bark of a tree trunk with leaves on it.",
+        "date": "2026-10-12",
+        "reason": "The span is right (the rabbit draws the bow, then the arrow is shown stuck in the trunk before the cut back), but the leaves are tied to the end of the stick as fletching, not growing on the tree, so reword to \"the stick, with leaves tied to its end, is shown stuck in the bark of a tree trunk.\""
       }
     }
   },
@@ -568,8 +619,8 @@
     "gold_moments": [
       {
         "asset_id": "big-buck-bunny",
-        "t_in": 279.71,
-        "t_out": 284.71
+        "t_in": 280.7,
+        "t_out": 284.7
       }
     ],
     "hard_negatives": [
@@ -600,6 +651,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          279.71,
+          284.71
+        ],
+        "to": [
+          280.7,
+          284.7
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -735,14 +798,14 @@
   },
   {
     "query_id": "q-film-0127",
-    "text": "After a flying squirrel with its arms spread wide floats toward the camera against a blue sky with white clouds, a big grey rabbit sitting in tall green grass looks on with a smug half-smile.",
+    "text": "After a flying squirrel with its arms spread wide floats toward the camera against a blue sky with white clouds, the film cuts to an empty forest path, then to a big grey rabbit in tall green grass who points with a smug half-smile.",
     "tier": 4,
     "vertical": "film",
     "gold_moments": [
       {
         "asset_id": "big-buck-bunny",
-        "t_in": 424.33,
-        "t_out": 429.29
+        "t_in": 424.3,
+        "t_out": 429.3
       }
     ],
     "hard_negatives": [
@@ -773,6 +836,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          424.33,
+          429.29
+        ],
+        "to": [
+          424.3,
+          429.3
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "After a flying squirrel with its arms spread wide floats toward the camera against a blue sky with white clouds, a big grey rabbit sitting in tall green grass looks on with a smug half-smile.",
+        "date": "2026-10-12",
+        "reason": "The start and end boundaries hold up: the squirrel is at the start, the rabbit is at the end, and the squirrel is back at +1 s. But the text leaves out the empty forest-path shot in the middle of the span, and it misdescribes the rabbit. He isn't clearly sitting or just looking on; he is pointing do"
       }
     }
   },
@@ -865,14 +945,14 @@
   },
   {
     "query_id": "q-film-0135",
-    "text": "In a misty blue cavern, a tiny figure holding a staff stands with a small dog beneath huge curved fronds shaped like ribs. Light shines down from above.",
+    "text": "In a misty blue cavern, a tiny figure holding a staff stands with a small dog beneath huge curved fronds shaped like ribs. Light shines down from above, before the view cuts to empty mist with no figure.",
     "tier": 1,
     "vertical": "film",
     "gold_moments": [
       {
         "asset_id": "spring",
-        "t_in": 178.08,
-        "t_out": 189.17
+        "t_in": 178.6,
+        "t_out": 181.73
       }
     ],
     "hard_negatives": [
@@ -903,6 +983,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          178.08,
+          189.17
+        ],
+        "to": [
+          178.6,
+          181.73
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "In a misty blue cavern, a tiny figure holding a staff stands with a small dog beneath huge curved fronds shaped like ribs. Light shines down from above.",
+        "date": "2026-10-12",
+        "reason": "The start and middle frames match the query (a tiny figure with a staff and a small dog in a misty blue cavern under rib-like fronds), but the end frame at 181.73 s is already a different shot looking up into empty mist with no figure, so the end should be trimmed to the cut that comes after the mid"
       }
     }
   },
@@ -914,8 +1011,8 @@
     "gold_moments": [
       {
         "asset_id": "spring",
-        "t_in": 29.75,
-        "t_out": 57.17
+        "t_in": 30.4,
+        "t_out": 59.21
       }
     ],
     "hard_negatives": [
@@ -946,19 +1043,31 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          29.75,
+          57.17
+        ],
+        "to": [
+          30.4,
+          59.21
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
   {
     "query_id": "q-film-0138",
-    "text": "Close-up of long, clear icicles hanging in warm golden light, starting to melt.",
+    "text": "Close-up of long, clear icicles hanging in warm golden backlight.",
     "tier": 1,
     "vertical": "film",
     "gold_moments": [
       {
         "asset_id": "spring",
-        "t_in": 367.79,
-        "t_out": 371.79
+        "t_in": 367.8,
+        "t_out": 371.8
       }
     ],
     "hard_negatives": [
@@ -989,6 +1098,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          367.79,
+          371.79
+        ],
+        "to": [
+          367.8,
+          371.8
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "Close-up of long, clear icicles hanging in warm golden light, starting to melt.",
+        "date": "2026-10-12",
+        "reason": "The span starts and ends cleanly on the icicle close-up in warm golden backlight (the frames before and after are different shots), but no drips or visible melting show in the start, middle or end frames, so drop 'starting to melt' (e.g. 'Close-up of long, clear icicles hanging in warm golden backli"
       }
     }
   },
@@ -1433,8 +1559,8 @@
     "gold_moments": [
       {
         "asset_id": "big-buck-bunny",
-        "t_in": 416.12,
-        "t_out": 420.71
+        "t_in": 414.1,
+        "t_out": 423.1
       }
     ],
     "hard_negatives": [
@@ -1465,19 +1591,31 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          416.12,
+          420.71
+        ],
+        "to": [
+          414.1,
+          423.1
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
   {
     "query_id": "q-film-3012",
-    "text": "A big grey-white rabbit holds out a thin branch, and a small brown squirrel crouches on it right next to him in the forest.",
+    "text": "A big grey-white rabbit holds out a thin branch with a small brown squirrel crouched on it right next to him in the forest, then grabs the squirrel in his hand.",
     "tier": 1,
     "vertical": "film",
     "gold_moments": [
       {
         "asset_id": "big-buck-bunny",
-        "t_in": 451.75,
-        "t_out": 458.29
+        "t_in": 453.2,
+        "t_out": 457.3
       }
     ],
     "hard_negatives": [
@@ -1508,6 +1646,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          451.75,
+          458.29
+        ],
+        "to": [
+          453.2,
+          457.3
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "A big grey-white rabbit holds out a thin branch, and a small brown squirrel crouches on it right next to him in the forest.",
+        "date": "2026-10-12",
+        "reason": "The start and middle frames match the query (the big grey-white rabbit holds out a thin branch with the small brown squirrel crouched on it next to him), but by the end frame the rabbit has already grabbed the squirrel in his hand, so either move the end earlier to just before the grab (by about a s"
       }
     }
   },
@@ -1606,8 +1761,8 @@
     "gold_moments": [
       {
         "asset_id": "sintel",
-        "t_in": 48.71,
-        "t_out": 53.96
+        "t_in": 49.7,
+        "t_out": 54.2
       }
     ],
     "hard_negatives": [
@@ -1638,6 +1793,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          48.71,
+          53.96
+        ],
+        "to": [
+          49.7,
+          54.2
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -3070,14 +3237,14 @@
   },
   {
     "query_id": "q-film-1055",
-    "text": "A man in a dark jacket stands by a tall mast with ropes, holding a gun. Next comes a close-up of a hand on the gun's black metal body. Then a close-up shows him looking down at the weapon, where a small red light glows.",
+    "text": "A man in a dark jacket stands by a tall mast with ropes, holding a gun. Next comes a close-up of a hand on the gun's black metal body, where a small red light glows. Then a close-up shows him looking down at the weapon.",
     "tier": 4,
     "vertical": "film",
     "gold_moments": [
       {
         "asset_id": "tears-of-steel",
-        "t_in": 482.12,
-        "t_out": 485.5
+        "t_in": 482.1,
+        "t_out": 485.6
       }
     ],
     "hard_negatives": [
@@ -3108,6 +3275,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          482.12,
+          485.5
+        ],
+        "to": [
+          482.1,
+          485.6
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "A man in a dark jacket stands by a tall mast with ropes, holding a gun. Next comes a close-up of a hand on the gun's black metal body. Then a close-up shows him looking down at the weapon, where a small red light glows.",
+        "date": "2026-10-12",
+        "reason": "The span boundaries and the shot order are right (man with a gun by the roped mast, close-up of a hand on the black gun body, close-up of his face looking down), but the small red light shows on the gun in the middle hand close-up, not in the final face shot, so move it: 'Next comes a close-up of a "
       }
     }
   },
@@ -3684,8 +3868,8 @@
     "gold_moments": [
       {
         "asset_id": "tears-of-steel",
-        "t_in": 208.67,
-        "t_out": 212.46
+        "t_in": 209.7,
+        "t_out": 211.2
       }
     ],
     "hard_negatives": [
@@ -3717,7 +3901,19 @@
         "agreed": true,
         "picked": "gold"
       },
-      "review_flag": "miss audit 2026-10-10: the gold span appears to contain a missed cut; only the first half shows the orange grid lines"
+      "review_flag": "miss audit 2026-10-10: the gold span appears to contain a missed cut; only the first half shows the orange grid lines",
+      "boundary_refined": {
+        "from": [
+          208.67,
+          212.46
+        ],
+        "to": [
+          209.7,
+          211.2
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      }
     }
   },
   {
@@ -5281,14 +5477,14 @@
   },
   {
     "query_id": "q-film-2044",
-    "text": "In a barbershop, a man in a light blue shirt leans over to a bronze head bust on a wall shelf next to framed pictures.",
+    "text": "In a barbershop, a man in a light blue shirt leans over to a bronze head bust on a wooden cabinet next to framed pictures and presses buttons on top of the bust's head.",
     "tier": 1,
     "vertical": "film",
     "gold_moments": [
       {
         "asset_id": "agent-327-operation-barbershop",
-        "t_in": 153.96,
-        "t_out": 157.67
+        "t_in": 154.0,
+        "t_out": 158.0
       }
     ],
     "hard_negatives": [
@@ -5319,6 +5515,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          153.96,
+          157.67
+        ],
+        "to": [
+          154.0,
+          158.0
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "In a barbershop, a man in a light blue shirt leans over to a bronze head bust on a wall shelf next to framed pictures.",
+        "date": "2026-10-12",
+        "reason": "The scene is right: the barber in a light blue smock leans toward a bronze bust beside framed pictures, but the bust sits on a wooden cabinet or counter top, not a 'wall shelf', and by the end of the span his hand is pressing buttons on top of the bust's head, so the query should read: 'In a barbers"
       }
     }
   },
@@ -6230,14 +6443,14 @@
   },
   {
     "query_id": "q-film-6009",
-    "text": "A young man in a leather jacket stands by a canal railing and tells a woman with her back to the camera that he was young and a dick, but that's no reason to destroy the world, while a large robotic arm moves beside him.",
+    "text": "A young man in a leather jacket stands by a canal and tells a woman with her back to the camera that he was young and a dick, but that's no reason to destroy the world, while a metallic robotic hand is raised beside her head.",
     "tier": 2,
     "vertical": "film",
     "gold_moments": [
       {
         "asset_id": "tears-of-steel",
-        "t_in": 356.33,
-        "t_out": 362.12
+        "t_in": 356.3,
+        "t_out": 362.3
       }
     ],
     "hard_negatives": [
@@ -6268,6 +6481,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          356.33,
+          362.12
+        ],
+        "to": [
+          356.3,
+          362.3
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "A young man in a leather jacket stands by a canal railing and tells a woman with her back to the camera that he was young and a dick, but that's no reason to destroy the world, while a large robotic arm moves beside him.",
+        "date": "2026-10-12",
+        "reason": "The dialogue and timing match, but the frames show a metallic robotic hand raised next to the woman's head, not a large robotic arm beside the man, and no canal railing is visible (only canal-side buildings and trees), so the query should say 'by a canal, while a metallic robotic hand is raised besi"
       }
     }
   },
@@ -6316,14 +6546,14 @@
   },
   {
     "query_id": "q-film-6014",
-    "text": "A heavyset man with a glowing red mechanical eye sits in a warmly lit room, gesturing with an open hand as he says, \"You know, there's a lesson to be learned from this.\"",
+    "text": "A heavyset man with a glowing red mechanical eye sits in a warmly lit room, gesturing with his fingertips pressed together as he says, \"You know.\"",
     "tier": 2,
     "vertical": "film",
     "gold_moments": [
       {
         "asset_id": "tears-of-steel",
-        "t_in": 556.83,
-        "t_out": 564.29
+        "t_in": 556.8,
+        "t_out": 560.8
       }
     ],
     "hard_negatives": [
@@ -6354,6 +6584,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          556.83,
+          564.29
+        ],
+        "to": [
+          556.8,
+          560.8
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "A heavyset man with a glowing red mechanical eye sits in a warmly lit room, gesturing with an open hand as he says, \"You know, there's a lesson to be learned from this.\"",
+        "date": "2026-10-12",
+        "reason": "The span's transcript is only \"You know\", so the rest of the quoted line falls outside the span, and in the frames he gestures with his fingertips pressed together rather than an open hand. Either cut the quote to \"You know\" and say \"gesturing with his fingertips pressed together\", or extend the spa"
       }
     }
   },
@@ -6408,8 +6655,8 @@
     "gold_moments": [
       {
         "asset_id": "elephants-dream",
-        "t_in": 358.54,
-        "t_out": 369.79
+        "t_in": 359.1,
+        "t_out": 364.84
       }
     ],
     "hard_negatives": [
@@ -6440,6 +6687,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          358.54,
+          369.79
+        ],
+        "to": [
+          359.1,
+          364.84
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -6580,8 +6839,8 @@
     "gold_moments": [
       {
         "asset_id": "elephants-dream",
-        "t_in": 426.58,
-        "t_out": 440.67
+        "t_in": 429.1,
+        "t_out": 441.15
       }
     ],
     "hard_negatives": [
@@ -6612,19 +6871,31 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          426.58,
+          440.67
+        ],
+        "to": [
+          429.1,
+          441.15
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
   {
     "query_id": "q-film-6027",
-    "text": "A gaunt young man in a pale shirt presses a hand to his cheek and leans away against a curved tiled wall, then says \"Prug, you're a sick man.\"",
+    "text": "A gaunt young man in a pale shirt presses a hand to his chest and leans away against a curved tiled wall, then says \"Prug, you're a sick man.\"",
     "tier": 2,
     "vertical": "film",
     "gold_moments": [
       {
         "asset_id": "elephants-dream",
         "t_in": 461.5,
-        "t_out": 466.88
+        "t_out": 465.5
       }
     ],
     "hard_negatives": [
@@ -6655,19 +6926,36 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          461.5,
+          466.88
+        ],
+        "to": [
+          461.5,
+          465.5
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "A gaunt young man in a pale shirt presses a hand to his cheek and leans away against a curved tiled wall, then says \"Prug, you're a sick man.\"",
+        "date": "2026-10-12",
+        "reason": "The frames show his hand pressed to his chest or collar, not his cheek, so change \"presses a hand to his cheek\" to \"presses a hand to his chest\"; the rest of the query and the span boundaries match."
       }
     }
   },
   {
     "query_id": "q-film-6030",
-    "text": "Someone says 'That's it' as a red-haired man's head fills the foreground. Past him, a lone dark sheep sits on the grassy cliff with a low sun over the sea.",
+    "text": "Someone says 'That's it' as a red-haired man's head fills the foreground. Past him, a lone grey sheep sits on the grassy cliff with a low sun over the sea.",
     "tier": 2,
     "vertical": "film",
     "gold_moments": [
       {
         "asset_id": "cosmos-laundromat",
-        "t_in": 334.88,
-        "t_out": 341.79
+        "t_in": 336.9,
+        "t_out": 339.4
       }
     ],
     "hard_negatives": [
@@ -6698,19 +6986,36 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          334.88,
+          341.79
+        ],
+        "to": [
+          336.9,
+          339.4
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "Someone says 'That's it' as a red-haired man's head fills the foreground. Past him, a lone dark sheep sits on the grassy cliff with a low sun over the sea.",
+        "date": "2026-10-12",
+        "reason": "The span and dialogue line up: the red-haired man's head fills the foreground at the start and middle, past him a lone sheep sits on the cliff with a low sun over the sea, and he has left the frame by the end. But the sheep looks mid-grey and woolly, not dark, so change 'a lone dark sheep' to 'a lon"
       }
     }
   },
   {
     "query_id": "q-film-6031",
-    "text": "A voice says \"This is 327. I'm going in\" while the camera looks down from high above onto a narrow sunlit street lined with rooftops and planters.",
+    "text": "A voice says \"This is 327. I'm going in\" while the camera looks down from high above onto a narrow sunlit street lined with rooftops and planters, then cuts to street level, where a man in a suit stands beside a barbershop's striped pole.",
     "tier": 2,
     "vertical": "film",
     "gold_moments": [
       {
         "asset_id": "agent-327-operation-barbershop",
-        "t_in": 0.0,
-        "t_out": 10.37
+        "t_in": 6.7,
+        "t_out": 10.82
       }
     ],
     "hard_negatives": [
@@ -6741,19 +7046,36 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          0.0,
+          10.37
+        ],
+        "to": [
+          6.7,
+          10.82
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "A voice says \"This is 327. I'm going in\" while the camera looks down from high above onto a narrow sunlit street lined with rooftops and planters.",
+        "date": "2026-10-12",
+        "reason": "The start and middle frames match the high overhead shot of the narrow sunlit street with rooftops and balcony planters, but by the end frame the shot has cut to street level, showing the agent in a suit beside a barbershop's striped pole, so the query should add '...then cuts to the agent standing "
       }
     }
   },
   {
     "query_id": "q-film-6033",
-    "text": "A bald, heavyset man points a gun with a red laser sight as someone says it looks like they've found their next recruit.",
+    "text": "A bald, heavyset man points a gun with a red laser sight as someone says it looks like they've found their next recruit, then the shot cuts to a masked surgeon in scrubs as a voice says, \"Carry on with the procedure. We have to make room for Agent 327.\"",
     "tier": 2,
     "vertical": "film",
     "gold_moments": [
       {
         "asset_id": "agent-327-operation-barbershop",
-        "t_in": 160.5,
-        "t_out": 177.46
+        "t_in": 172.5,
+        "t_out": 177.67
       }
     ],
     "hard_negatives": [
@@ -6784,6 +7106,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          160.5,
+          177.46
+        ],
+        "to": [
+          172.5,
+          177.67
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "A bald, heavyset man points a gun with a red laser sight as someone says it looks like they've found their next recruit.",
+        "date": "2026-10-12",
+        "reason": "The start frame (red laser dot on Agent 327) and the middle frame (bald, heavyset man aiming a gun with a red laser) match the query, but by the end frame the shot has cut to a masked surgeon in scrubs, and 'Carry on with the procedure. We have to make room for Agent 327' plays there, so move the en"
       }
     }
   },
@@ -7004,14 +7343,14 @@
   },
   {
     "query_id": "q-film-7009",
-    "text": "A young man in a grey shirt stands among masses of red, snake-like cables in amber light and announces \"The Colossus of Rhodus!\" then says it is here just for you, Prug.",
+    "text": "Among masses of golden-brown, snake-like cables in amber light, someone announces \"The Colossus of Rhodus!\" then says it is here just for you, Prug, and a bald old man in a green coat is shown.",
     "tier": 2,
     "vertical": "film",
     "gold_moments": [
       {
         "asset_id": "elephants-dream",
-        "t_in": 484.5,
-        "t_out": 501.71
+        "t_in": 488.7,
+        "t_out": 501.98
       }
     ],
     "hard_negatives": [
@@ -7042,6 +7381,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          484.5,
+          501.71
+        ],
+        "to": [
+          488.7,
+          501.98
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "A young man in a grey shirt stands among masses of red, snake-like cables in amber light and announces \"The Colossus of Rhodus!\" then says it is here just for you, Prug.",
+        "date": "2026-10-12",
+        "reason": "The span and dialogue are right, but the visuals don't match the text: the cables look golden-brown rather than red, and the middle and end frames show the bald old man in a green coat (Prug) instead of a young man in a grey shirt. Change the visual description to something like \"among masses of gol"
       }
     }
   },
@@ -7053,8 +7409,8 @@
     "gold_moments": [
       {
         "asset_id": "cosmos-laundromat",
-        "t_in": 585.75,
-        "t_out": 601.83
+        "t_in": 586.3,
+        "t_out": 601.34
       }
     ],
     "hard_negatives": [
@@ -7085,6 +7441,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          585.75,
+          601.83
+        ],
+        "to": [
+          586.3,
+          601.34
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -7096,8 +7464,8 @@
     "gold_moments": [
       {
         "asset_id": "agent-327-operation-barbershop",
-        "t_in": 54.25,
-        "t_out": 64.37
+        "t_in": 60.5,
+        "t_out": 64.59
       }
     ],
     "hard_negatives": [
@@ -7128,6 +7496,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          54.25,
+          64.37
+        ],
+        "to": [
+          60.5,
+          64.59
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -7139,8 +7519,8 @@
     "gold_moments": [
       {
         "asset_id": "big-buck-bunny",
-        "t_in": 412.12,
-        "t_out": 416.12
+        "t_in": 412.1,
+        "t_out": 415.1
       }
     ],
     "hard_negatives": [
@@ -7171,6 +7551,18 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          412.12,
+          416.12
+        ],
+        "to": [
+          412.1,
+          415.1
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
       }
     }
   },
@@ -7391,14 +7783,14 @@
   },
   {
     "query_id": "q-film-8007",
-    "text": "After a hand reaches up toward a dragon flying low overhead against a pale sky, the shot cuts to a close-up of the red-haired girl staring up with her mouth open as a dark wing sweeps past.",
+    "text": "After a hand reaches up toward a dragon flying low overhead against a pale sky, the red-haired girl lunges forward with her arm stretched out.",
     "tier": 4,
     "vertical": "film",
     "gold_moments": [
       {
         "asset_id": "sintel",
-        "t_in": 328.17,
-        "t_out": 332.12
+        "t_in": 328.2,
+        "t_out": 332.2
       }
     ],
     "hard_negatives": [
@@ -7429,6 +7821,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          328.17,
+          332.12
+        ],
+        "to": [
+          328.2,
+          332.2
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "After a hand reaches up toward a dragon flying low overhead against a pale sky, the shot cuts to a close-up of the red-haired girl staring up with her mouth open as a dark wing sweeps past.",
+        "date": "2026-10-12",
+        "reason": "The start and middle frames do show a hand reaching up toward a low-flying dragon, but the open-mouthed close-up of the girl is in the before frame, outside the span, and the end frame shows her lunging forward with her arm out and no dark wing passing. Either rewrite the second clause to 'the shot "
       }
     }
   },
@@ -7606,14 +8015,14 @@
   },
   {
     "query_id": "q-film-8013",
-    "text": "Wide view of a ruined cathedral interior with tall organ pipes at the far end and plants growing over the stone columns, lit by hazy golden light.",
+    "text": "Wide view of a ruined cathedral interior with tall organ pipes at the far end and plants growing over the stone columns, lit by hazy golden light, as an explosion of debris and smoke bursts up in the center of the nave.",
     "tier": 1,
     "vertical": "film",
     "gold_moments": [
       {
         "asset_id": "tears-of-steel",
-        "t_in": 499.42,
-        "t_out": 502.38
+        "t_in": 500.9,
+        "t_out": 502.4
       }
     ],
     "hard_negatives": [
@@ -7644,6 +8053,23 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          499.42,
+          502.38
+        ],
+        "to": [
+          500.9,
+          502.4
+        ],
+        "date": "2026-10-12",
+        "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "text_refined": {
+        "from": "Wide view of a ruined cathedral interior with tall organ pipes at the far end and plants growing over the stone columns, lit by hazy golden light.",
+        "date": "2026-10-12",
+        "reason": "The shot boundaries and the setting (wide ruined cathedral, organ pipes at the far end, overgrown columns, hazy golden light) are right, but the query leaves out the main event: from the middle frame on, an explosion of debris and smoke bursts up in the center of the nave. Add something like 'as an "
       }
     }
   },

@@ -63,7 +63,7 @@ re-checked every query against the same candidates, reshuffled, and only queries
 models agreed on were kept. Method and measured error rates are in
 [`protocol.md`](protocol.md).
 
-**Label reliability.** Of 1272 drafts, 797 were well formed and 664 passed the Claude verifier. The Gemini cross-check agreed on 94.4% of those (37 removed), the two-model analogue of inter-annotator agreement. In the reverse direction, Claude agreed with 34 of 36 Gemini-drafted queries (94.4%). A strict model pre-review accepted 324 of the 460 published queries as they stood and flagged 136, mostly for loose span boundaries. Hand spot checks against frames found 2 wrong of 49 sampled across five sets. Counts are in [`data/quality.json`](../data/quality.json) (as of 2026-10-11).
+**Label reliability.** Of 1272 drafts, 797 were well formed and 664 passed the Claude verifier. The Gemini cross-check agreed on 94.4% of those (37 removed), the two-model analogue of inter-annotator agreement. In the reverse direction, Claude agreed with 34 of 36 Gemini-drafted queries (94.4%). A strict model pre-review accepted 324 of the 460 published queries as they stood and flagged 136, mostly for loose span boundaries. Hand spot checks against frames found 2 wrong of 54 sampled across five sets. Counts are in [`data/quality.json`](../data/quality.json) (as of 2026-10-11).
 
 **Quality.** Random spot checks against frames found about 10% of queries wrong before
 the cross-check. A model pre-review of all published queries, built to focus human
@@ -89,12 +89,12 @@ answers none, so it scores exactly the share of no-answer queries.
 
 | Model | Harness | Queries x trials | Recall@1 (95% CI) | R@1 tIoU 0.3 / 0.7 | Tier 1 | Tier 2 | Tier 3 | Tier 4 | Cost per query | Run |
 |---|---|---|---|---|---|---|---|---|---|---|
-| claude-opus-5-5 | claude-code | 185 x 1 | 54.1 (46.5 to 61.6) | 63.8 / 47.0 | 62.1 (n=87) | 65.6 (n=32) | 19.4 (n=36) | 60.0 (n=30) | $0.120 notional | `agentic-claude-opus-5-5-0d68625a.json` |
-| gemini-3.1-pro-preview | api | 185 x 1 | 40.0 (32.4 to 47.0) | 48.6 / 33.5 | 28.7 (n=87) | 71.9 (n=32) | 36.1 (n=36) | 43.3 (n=30) | $0.326 | `agentic-gemini-3.1-pro-preview-7f1b7722.json` |
-| claude-sonnet-5-5 | claude-code | 185 x 1 | 31.4 (24.9 to 38.4) | 43.2 / 11.4 | 23.0 (n=87) | 78.1 (n=32) | 11.1 (n=36) | 30.0 (n=30) | $0.068 notional | `agentic-claude-sonnet-5-5-5a202b4b.json` |
-| claude-haiku-5-5 | claude-code | 185 x 1 | 29.2 (22.7 to 35.7) | 39.5 / 15.7 | 17.2 (n=87) | 65.6 (n=32) | 27.8 (n=36) | 26.7 (n=30) | $0.015 notional | `agentic-claude-haiku-5-5-2d52fc45.json` |
+| claude-opus-5-5 | claude-code | 185 x 1 | 55.7 (48.6 to 62.7) | 63.8 / 48.1 | 62.1 (n=87) | 71.9 (n=32) | 19.4 (n=36) | 63.3 (n=30) | $0.120 notional | `agentic-claude-opus-5-5-0d68625a.json` |
+| gemini-3.1-pro-preview | api | 185 x 1 | 42.7 (35.1 to 49.7) | 47.6 / 34.1 | 29.9 (n=87) | 81.2 (n=32) | 36.1 (n=36) | 46.7 (n=30) | $0.326 | `agentic-gemini-3.1-pro-preview-7f1b7722.json` |
+| claude-sonnet-5-5 | claude-code | 185 x 1 | 31.4 (24.9 to 38.4) | 41.1 / 11.4 | 23.0 (n=87) | 75.0 (n=32) | 11.1 (n=36) | 33.3 (n=30) | $0.068 notional | `agentic-claude-sonnet-5-5-5a202b4b.json` |
+| claude-haiku-5-5 | claude-code | 185 x 1 | 29.2 (22.7 to 35.7) | 36.8 / 15.7 | 18.4 (n=87) | 59.4 (n=32) | 27.8 (n=36) | 30.0 (n=30) | $0.015 notional | `agentic-claude-haiku-5-5-2d52fc45.json` |
 | baseline-abstain | api | 185 x 3 | 19.5 (13.5 to 25.4) | 19.5 / 19.5 | 0.0 (n=87) | 0.0 (n=32) | 100.0 (n=36) | 0.0 (n=30) | none (no model) | `agentic-baseline-abstain-540fc4f7.json` |
-| baseline-random | api | 185 x 3 | 0.2 (0.0 to 0.5) | 0.2 / 0.0 | 0.0 (n=87) | 1.0 (n=32) | 0.0 (n=36) | 0.0 (n=30) | none (no model) | `agentic-baseline-random-e7eea7e0.json` |
+| baseline-random | api | 185 x 3 | 0.0 (0.0 to 0.0) | 0.2 / 0.0 | 0.0 (n=87) | 0.0 (n=32) | 0.0 (n=36) | 0.0 (n=30) | none (no model) | `agentic-baseline-random-e7eea7e0.json` |
 
 ### Aerospace
 
@@ -154,7 +154,7 @@ Two independent single-trial Claude Opus 5.5 runs per domain, compared on the qu
 
 | Domain | Shared queries | Run A R@1 | Run B R@1 | Per-query agreement | Cohen's kappa | Runs |
 |---|---|---|---|---|---|---|
-| film | 185 | 54.1 | 56.2 | 78% | 0.56 | `agentic-claude-opus-5-5-65eb804b.json`, `agentic-claude-opus-5-5-da54af61.json` |
+| film | 185 | 56.2 | 58.4 | 79% | 0.58 | `agentic-claude-opus-5-5-65eb804b.json`, `agentic-claude-opus-5-5-da54af61.json` |
 | aerospace | 167 | 67.1 | 67.1 | 83% | 0.62 | `agentic-claude-opus-5-5-2b5433a6.json`, `agentic-claude-opus-5-5-519357e4.json` |
 
 ## 6. Contamination
@@ -170,7 +170,9 @@ trials would reveal where the held-out answers are.
 
 | Domain | Model | Public R@1 (95% CI) | Held-out R@1 (95% CI) |
 |---|---|---|---|
-| film | claude-opus-5-5 | 54.1 (46.5 to 61.6), n=185 | 58.5 (47.6 to 69.5), n=82 |
+| film | claude-opus-5-5 | 55.7 (48.6 to 62.7), n=185 | 58.5 (47.6 to 69.5), n=82 |
+| aerospace | claude-opus-5-5 | 63.9 (56.9 to 70.3), n=202 | 61.5 (49.2 to 72.3), n=65 |
+| robotics | claude-opus-5-5 | 72.9 (61.4 to 82.9), n=70 | 68.8 (43.8 to 87.5), n=16 |
 
 ## 7. Limitations
 

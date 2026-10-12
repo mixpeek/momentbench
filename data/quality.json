@@ -17,11 +17,11 @@
     "reject": 7
   },
   "refinement": {
-    "not_verified": 59,
-    "unfixable": 24,
+    "not_verified": 30,
+    "accepted": 67,
+    "unfixable": 25,
     "too_short": 1,
-    "accepted": 39,
-    "note": "film refinement is being rerun; its not_verified count is provisional"
+    "applied": 67
   },
   "spot_checks": [
     {
@@ -53,6 +53,12 @@
       "n": 5,
       "wrong": 0,
       "loose": 2
+    },
+    {
+      "set": "film refinements",
+      "n": 5,
+      "wrong": 0,
+      "note": "one span ends 0.2 s into the next shot, which the text describes"
     }
   ],
   "after_verification": {
