@@ -128,8 +128,9 @@ def reliability_text() -> str:
             f"agreed on {100 * agree:.1f}% of those ({x['disagreed_and_removed']} removed), the "
             f"two-model analogue of inter-annotator agreement. "
             + reverse
-            + f"A strict model pre-review accepted {pre.get('accept', 0)} of the {n_pre} published queries as they stood and flagged "
-            f"{n_pre - pre.get('accept', 0)}, mostly for loose span boundaries. Hand spot checks "
+            + f"A strict model pre-review accepted {pre.get('accept', 0)} of the {n_pre} "
+            f"published queries as they stood and flagged {n_pre - pre.get('accept', 0)}, "
+            f"mostly for loose span boundaries. Hand spot checks "
             f"against frames found {wrong} wrong of {checked} sampled across five sets. Counts "
             f"are in [`data/quality.json`](../data/quality.json) (as of {q['as_of']}).")
 
