@@ -88,7 +88,13 @@ async def judge(films, q: dict, text: str, gold_span, sem, client, usage, tag: s
     said = "\n" + "\n".join(dialogue) + "\n" if dialogue else ""
     prompt = dq.VERIFY_PROMPT.format(sheet="attached", last_label=labels[-1], text=text,
                                      dialogue=said)
-    reply = await ask_gemini(client, dq.VERIFY_SYSTEM, prompt, sheet, sem, usage)
+    if client is None:  # Claude cross-checks Gemini-drafted queries
+        claude_prompt = dq.VERIFY_PROMPT.format(sheet=sheet, last_label=labels[-1], text=text,
+                                                dialogue=said)
+        reply = dq.parse_json(await dq.ask_claude(dq.VERIFY_SYSTEM, claude_prompt,
+                                                  sheet.parent, sem))
+    else:
+        reply = await ask_gemini(client, dq.VERIFY_SYSTEM, prompt, sheet, sem, usage)
     picked = dict(zip(labels, (c[2] for c in candidates))).get(
         str(reply.get("answer", "")).strip().upper(), "none")
     if picked == "gold" and reply.get("wrong_details"):
@@ -121,11 +127,18 @@ async def main() -> None:
     p.add_argument("--transcripts", default=str(dq.ROOT / "data/transcripts"))
     p.add_argument("--work", required=True)
     p.add_argument("--concurrency", type=int, default=8)
+    p.add_argument("--checker", choices=["gemini", "claude"], default="gemini",
+                   help="model family that cross-checks; use the one that did not draft")
     args = p.parse_args()
 
-    from google import genai
+    global MODEL
+    client = None
+    if args.checker == "gemini":
+        from google import genai
 
-    client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+        client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+    else:
+        MODEL = dq.MODEL
     assets = json.loads(Path(args.manifest).read_text())
     corpus, work, tdir = Path(args.corpus_dir), Path(args.work), Path(args.transcripts)
     films = {}
@@ -147,10 +160,13 @@ async def main() -> None:
 
         results = await asyncio.gather(*(keep_or_check(q) for q in queries),
                                        return_exceptions=True)
-        kept, rejected = [], []
+        kept, rejected, failed = [], [], 0
         for q, r in zip(queries, results):
             if isinstance(r, Exception):
-                r = {"model": MODEL, "agreed": False, "error": str(r)[:200]}
+                # A failed call is not a verdict: keep the query, unchanged, to retry.
+                failed += 1
+                kept.append(q)
+                continue
             already = q["metadata"].get("cross_check") is r
             q["metadata"]["cross_check"] = r
             if not r["agreed"]:
@@ -163,7 +179,8 @@ async def main() -> None:
         out = work / f"{path.stem}.rejected.json"
         old = json.loads(out.read_text()) if out.exists() else []
         out.write_text(json.dumps(old + rejected, indent=2, ensure_ascii=False) + "\n")
-        print(f"{path.name}: kept {len(kept)}, rejected {len(rejected)}")
+        print(f"{path.name}: kept {len(kept)}, rejected {len(rejected)}, "
+              f"failed calls left unchanged {failed}")
     print(f"tokens: {usage['in']} in, {usage['out']} out")
 
 
