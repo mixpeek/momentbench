@@ -250,21 +250,21 @@
       "harness": "api",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 167,
+      "queries": 202,
       "trials": 3,
-      "recall_at_1": 0.1257,
+      "recall_at_1": 0.104,
       "recall_at_1_ci95": [
-        0.0778,
-        0.1796
+        0.0644,
+        0.1485
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.1257,
-        "0.5": 0.1257,
-        "0.7": 0.1257
+        "0.3": 0.104,
+        "0.5": 0.104,
+        "0.7": 0.104
       },
       "by_tier": {
         "1": {
-          "queries": 79,
+          "queries": 110,
           "recall_at_1": 0
         },
         "2": {
@@ -276,7 +276,7 @@
           "recall_at_1": 1
         },
         "4": {
-          "queries": 33,
+          "queries": 37,
           "recall_at_1": 0
         }
       },
@@ -290,7 +290,7 @@
       "harness": "api",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 167,
+      "queries": 202,
       "trials": 3,
       "recall_at_1": 0.0,
       "recall_at_1_ci95": [
@@ -304,7 +304,7 @@
       },
       "by_tier": {
         "1": {
-          "queries": 79,
+          "queries": 110,
           "recall_at_1": 0
         },
         "2": {
@@ -316,7 +316,7 @@
           "recall_at_1": 0
         },
         "4": {
-          "queries": 33,
+          "queries": 37,
           "recall_at_1": 0
         }
       },
@@ -330,22 +330,22 @@
       "harness": "claude-code",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 167,
+      "queries": 202,
       "trials": 1,
-      "recall_at_1": 0.4311,
+      "recall_at_1": 0.4109,
       "recall_at_1_ci95": [
-        0.3533,
-        0.503
+        0.3416,
+        0.4752
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.521,
-        "0.5": 0.4311,
-        "0.7": 0.2814
+        "0.3": 0.4901,
+        "0.5": 0.4109,
+        "0.7": 0.2624
       },
       "by_tier": {
         "1": {
-          "queries": 79,
-          "recall_at_1": 0.3165
+          "queries": 110,
+          "recall_at_1": 0.3273
         },
         "2": {
           "queries": 34,
@@ -356,11 +356,11 @@
           "recall_at_1": 0.381
         },
         "4": {
-          "queries": 33,
-          "recall_at_1": 0.3939
+          "queries": 37,
+          "recall_at_1": 0.3514
         }
       },
-      "cost_usd_per_query": 0.018499480838323354,
+      "cost_usd_per_query": 0.017465101485148515,
       "error_trials": 0,
       "run_file": "agentic-claude-haiku-5-5-73f3e5ad.json"
     },
@@ -370,22 +370,22 @@
       "harness": "claude-code",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 167,
+      "queries": 202,
       "trials": 1,
-      "recall_at_1": 0.6707,
+      "recall_at_1": 0.6386,
       "recall_at_1_ci95": [
-        0.5988,
-        0.7425
+        0.5693,
+        0.703
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.7126,
-        "0.5": 0.6707,
-        "0.7": 0.5509
+        "0.3": 0.6832,
+        "0.5": 0.6386,
+        "0.7": 0.5297
       },
       "by_tier": {
         "1": {
-          "queries": 79,
-          "recall_at_1": 0.6709
+          "queries": 110,
+          "recall_at_1": 0.6273
         },
         "2": {
           "queries": 34,
@@ -396,11 +396,11 @@
           "recall_at_1": 0.4286
         },
         "4": {
-          "queries": 33,
-          "recall_at_1": 0.5455
+          "queries": 37,
+          "recall_at_1": 0.5135
         }
       },
-      "cost_usd_per_query": 0.14163031736526946,
+      "cost_usd_per_query": 0.14458607524752476,
       "error_trials": 0,
       "run_file": "agentic-claude-opus-5-5-519357e4.json"
     },
@@ -409,23 +409,23 @@
       "model": "claude-sonnet-5-5",
       "harness": "claude-code",
       "modalities": "frames+transcripts",
-      "corpus_assets": 20,
-      "queries": 167,
+      "corpus_assets": 27,
+      "queries": 202,
       "trials": 1,
-      "recall_at_1": 0.3653,
+      "recall_at_1": 0.3416,
       "recall_at_1_ci95": [
-        0.2994,
-        0.4431
+        0.2772,
+        0.4059
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.521,
-        "0.5": 0.3653,
-        "0.7": 0.2216
+        "0.3": 0.4752,
+        "0.5": 0.3416,
+        "0.7": 0.1832
       },
       "by_tier": {
         "1": {
-          "queries": 79,
-          "recall_at_1": 0.3038
+          "queries": 110,
+          "recall_at_1": 0.2727
         },
         "2": {
           "queries": 34,
@@ -436,13 +436,13 @@
           "recall_at_1": 0.2381
         },
         "4": {
-          "queries": 33,
-          "recall_at_1": 0.3333
+          "queries": 37,
+          "recall_at_1": 0.3514
         }
       },
-      "cost_usd_per_query": 0.07266905868263474,
+      "cost_usd_per_query": 0.07891248415841584,
       "error_trials": 0,
-      "run_file": "agentic-claude-sonnet-5-5-a44a1b82.json"
+      "run_file": "agentic-claude-sonnet-5-5-e3adc2e7.json"
     },
     {
       "domain": "robotics",
