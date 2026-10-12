@@ -59,5 +59,11 @@
     "duplicates_merged": 5,
     "removed_after_spot_check": 2,
     "note": "664 verified - 37 cross-check removals - 5 duplicates - 2 spot-check removals = 620 released"
+  },
+  "cross_check_reverse": {
+    "set": "earth v0.3 candidate (drafted and verified by gemini-3.1-pro-preview)",
+    "checker": "claude-opus-5-5",
+    "checked": 36,
+    "disagreed_and_removed": 2
   }
 }
