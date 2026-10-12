@@ -84,8 +84,10 @@ def heldout_rows(heldout_runs: Path | None) -> str:
     lines = ["| Domain | Model | Public R@1 (95% CI) | Held-out R@1 (95% CI) |",
              "|---|---|---|---|"]
     for vertical in QUERY_FILES:
-        public_runs = {load_run(p).model_id: p
-                       for p in runs_for(vertical)}
+        # Held-out runs had transcripts, so compare with the full public run, not the
+        # frames-only ablation of the same model.
+        public_runs = {r.model_id: p for p in runs_for(vertical)
+                       if (r := load_run(p)).modalities != "frames"}
         for f in sorted(heldout_runs.glob("*.json")):
             if f.name.endswith(".partial.json"):
                 continue

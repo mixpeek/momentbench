@@ -172,7 +172,7 @@ trials would reveal where the held-out answers are.
 |---|---|---|---|
 | film | claude-opus-5-5 | 55.7 (48.6 to 62.7), n=185 | 58.5 (47.6 to 69.5), n=82 |
 | aerospace | claude-opus-5-5 | 63.9 (56.9 to 70.3), n=202 | 61.5 (49.2 to 72.3), n=65 |
-| robotics | claude-opus-5-5 | 72.9 (61.4 to 82.9), n=70 | 68.8 (43.8 to 87.5), n=16 |
+| robotics | claude-opus-5-5 | 77.1 (67.1 to 87.1), n=70 | 68.8 (43.8 to 87.5), n=16 |
 
 ## 7. Limitations
 
