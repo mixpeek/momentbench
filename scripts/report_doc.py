@@ -116,12 +116,19 @@ def reliability_text() -> str:
     n_pre = sum(pre.values())
     spot = q["spot_checks"]
     wrong = sum(s["wrong"] for s in spot)
+    rev = q.get("cross_check_reverse")
+    reverse = ""
+    if rev:
+        kept = rev["checked"] - rev["disagreed_and_removed"]
+        reverse = (f"In the reverse direction, Claude agreed with {kept} of {rev['checked']} "
+                   f"Gemini-drafted queries ({100 * kept / rev['checked']:.1f}%). ")
     checked = sum(s["n"] for s in spot)
     return (f"Of {d['drafted']} drafts, {d['well_formed']} were well formed and "
             f"{d['passed_claude_verifier']} passed the Claude verifier. The Gemini cross-check "
             f"agreed on {100 * agree:.1f}% of those ({x['disagreed_and_removed']} removed), the "
-            f"two-model analogue of inter-annotator agreement. A strict model pre-review accepted "
-            f"{pre.get('accept', 0)} of the {n_pre} published queries as they stood and flagged "
+            f"two-model analogue of inter-annotator agreement. "
+            + reverse
+            + f"A strict model pre-review accepted {pre.get('accept', 0)} of the {n_pre} published queries as they stood and flagged "
             f"{n_pre - pre.get('accept', 0)}, mostly for loose span boundaries. Hand spot checks "
             f"against frames found {wrong} wrong of {checked} sampled across five sets. Counts "
             f"are in [`data/quality.json`](../data/quality.json) (as of {q['as_of']}).")
