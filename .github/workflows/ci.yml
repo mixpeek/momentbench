@@ -23,8 +23,12 @@ jobs:
       - run: pip install -e ".[dev,models,inspect]"
       - run: ruff check .
       - run: pytest -q
-      - name: inspect eval on the seed set with a mock model
-        run: inspect eval momentbench/agentic/inspect_task.py --model mockllm/model --display plain -T queries=data/queries/sample.json
+      # CI has no corpus. The task must refuse to build without one; partial=true is
+      # the explicit debug mode, used here only to smoke-test the Inspect wiring.
+      - name: inspect task refuses an unverified corpus
+        run: "! inspect eval momentbench/agentic/inspect_task.py --model mockllm/model --display plain -T queries=data/queries/sample.json"
+      - name: inspect eval with a mock model (partial: no-answer queries only, wiring check)
+        run: inspect eval momentbench/agentic/inspect_task.py --model mockllm/model --display plain -T queries=data/queries/robotics_v0.2.json -T partial=true
 
   docker:
     runs-on: ubuntu-latest
