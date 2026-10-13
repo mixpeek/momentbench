@@ -1,8 +1,9 @@
 # Scope and roadmap (v0.2)
 
 What a MomentBench v0.2 number measures, what it does not, and the work each open gap
-needs. It answers the multimodal lab readiness audit of 2026-10-13 (30 findings, made
-against commit 16e16bc); the last section gives the status of every finding.
+needs. It answers two lab readiness audits of 2026-10-13: the first (30 findings,
+against 16e16bc) and a second onboarding pass (R1 to R20, against 8ac60e9). The last
+two sections give the status of every finding.
 
 ## What v0.2 measures
 
@@ -22,6 +23,12 @@ That makes a v0.2 score a measure of:
   reported next to every score.
 
 ## What it does not measure
+
+- **Joint visual-language reasoning on every tier-2 query.** `baseline-transcript`
+  answers from keyword transcript search alone and localizes 23 of 34 aerospace tier-2
+  queries (4 of 32 film, 3 of 10 robotics). Those queries can be solved from speech.
+  docs/results.md splits each model's tier-2 score by whether the control solved the
+  query; read tier 2 through that split.
 
 - **Archive-scale retrieval.** 27 assets, mostly short, from two source families
   (Blender open movies and NASA outreach). Query density is uneven: per video, positive
@@ -68,7 +75,10 @@ this repository without outside input.
 | Source-disjoint held-out (20) | Group the split by video and event; publish a held-out evaluation route with rules, turnaround and auditable aggregate records. | Maintainers, plus an evaluation service for entrant code |
 | Contamination evidence (21) | Model-specific cutoff evidence, publisher release dates, temporarily sealed queries, rolling queries matched in source and difficulty. | Maintainers and new footage |
 | Harness effects and coverage (23) | Same-model crossover between the Claude Code and API loops; GPT-5.5 on v0.2; Gemini on aerospace; open-weight runs on all domains; transcript, visual-segment and hybrid baselines; several budgets. | API budget for the frontier runs; maintainers for the rest |
-| Modality controls (16) | Transcript-only and metadata-only conditions, masked captions, shuffled or reversed frames, mismatched speech and picture, run across models and domains. | Maintainers and API budget |
+| Modality controls (16, R12, R15) | Transcript-only control is built in (`baseline-transcript`). Still to add: metadata-only, masked captions, shuffled or reversed frames, mismatched speech and picture; new tier-2 queries kept only when the transcript control fails them. | Maintainers and API budget |
+| Reruns under the new contract (R10) | Rerun every record row on the full 0.2.1 release with receipts, identity and resolved model; keep the current rows as historical. The Claude reruns use the local Claude Code subscription; the Gemini rerun needs API budget, and GPT-5.5 needs an OpenAI account. | Owner decision on API spend |
+| Indexed retrieval reference (R11) | One end-to-end indexed baseline with deterministic segments, an id map, an index receipt and measured build and query cost, wrapped as an agent. | Maintainers |
+| Untrusted entrant isolation (R4) | Custom agents now get a metered, closed corpus interface in-process. Code from outside entrants, especially on held-out queries, needs a separate process or service. | Maintainers |
 | Mixpeek workflow (8) | Expose server build, feature URI and retriever id on the CLI; persist ingestion state; map robotics; check collection readiness. | Maintainers |
 | Vendor index identity (9) | Ingestion tools that write benchmark ids into vendor metadata, id maps, index receipts and a round-trip check for TwelveLabs and Mixpeek. | Maintainers, vendor accounts |
 | Segment-level embedding baselines (3) | Timestamped frame or clip embeddings, segment ranking and a calibrated abstention threshold. Today these adapters are labelled whole-video controls. | Maintainers, GPU time |
@@ -113,3 +123,28 @@ Fixed means the change is on main with a test that reproduces the audit's probe.
 | 28 | Submit and leaderboard ignore the agentic track | Fixed | 8bfc896 |
 | 29 | Licence exceptions | Partly: `license_status` per asset, pending films not sellable; confirmation open | 94ddb76, roadmap |
 | 30 | Release drift | Fixed: consistency tests over card, README, SUBMISSION and report; lossless manifest | 94ddb76 |
+
+## Status of the second audit (R1 to R20)
+
+| # | Finding | Status | Where |
+|---|---|---|---|
+| R1 | Install path does not deliver a runnable benchmark | Fixed: README, SUBMISSION and the integration guide clone a release tag, name ffmpeg, and say the package is not on PyPI | 0.2.1 |
+| R2 | Tagged release is the old code | Fixed: v0.2.1 tags the hardened harness; v0.2.0 is left as it was | 0.2.1 |
+| R3 | Verification and frames can read different files | Fixed: one resolver; frames are pinned to the verified file | 359b333 |
+| R4 | Custom agents can bypass frame metering | Fixed in process: closed, metered, serialised corpus interface; process isolation is on the roadmap | 359b333 |
+| R5 | Inspect runs without verification | Fixed: Inspect uses the same preparation and refuses an unverified corpus | 359b333 |
+| R6 | API runs reportable by default; submit accepts no receipt | Fixed: reportable only on a pinned, fully verified corpus; submit checks the receipt and recomputes the key | 359b333 |
+| R7 | Duplicate or dropped trials change scores | Fixed: complete, unique trial grid required | 359b333 |
+| R8 | Invalid first candidate promotes the second | Fixed: any invalid entry rejects the ranking | 359b333 |
+| R9 | Keys not enforced; subset shares key | Fixed: key covers the selected queries; leaderboard ranks only within a key | 359b333 |
+| R10 | Record runs predate the identity contract | Open: rows are labelled historical; reruns are on the roadmap | roadmap |
+| R11 | Retrieval-system integration incomplete | Open | roadmap |
+| R12 | Aerospace tier 2 solvable from transcripts | Measured and reported: `baseline-transcript` control and the tier-2 split in docs/results.md; new queries open | 0.2.1, roadmap |
+| R13 | No human label review | Open | roadmap |
+| R14 | Narrow generalization | Open; stated above | roadmap |
+| R15 | No audio, continuous video or temporal controls | Open; stated above | roadmap |
+| R16 | Physical location is not dynamics | Open; stated above | roadmap |
+| R17 | Model comparisons incomplete and harness-confounded | Open | roadmap |
+| R18 | Site overstated contamination evidence | Fixed: site and report describe the held-out comparison as limited evidence | 0.2.1 |
+| R19 | Long-run operations and serving recipes | Open | roadmap |
+| R20 | Reuse claims broader than the manifest | Fixed in README and ATTRIBUTION (exceptions named, per-asset fields); confirmation from Blender Studio still open | 0.2.1 |

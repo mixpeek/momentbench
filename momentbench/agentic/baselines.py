@@ -4,6 +4,12 @@
   whose length is drawn from the corpus's typical shot length. This is chance.
 - `abstain`: always submits an empty answer. It scores exactly the share of no-answer
   (tier 3) queries, which is the most a system can get by never committing.
+- `transcript`: a modality control. It sends the request text to the corpus's own
+  keyword search_transcript and submits the top five cue spans, never looking at a
+  frame. Where it scores, a query can be answered from speech alone; on tier 2
+  (dialogue together with the picture) that marks a shortcut (audit 2, R12). It
+  abstains only when the search finds nothing, so it scores near zero on no-answer
+  queries.
 
 A model that does not clear both floors on a tier has learned nothing there.
 """
@@ -29,6 +35,8 @@ class _Session(AgentSession):
 
     async def step(self, tool_results: list[ToolResult] | None) -> ModelTurn:
         self._turn += 1
+        if self._kind == "transcript":
+            return self._transcript(tool_results)
         if self._kind == "abstain":
             return ModelTurn([ToolCall("a", "submit_answer", {"moments": []})], Usage())
         if self._turn == 1:
@@ -45,16 +53,30 @@ class _Session(AgentSession):
         return ModelTurn([ToolCall("a", "submit_answer", {"moments": [moment]})], Usage())
 
 
+    def _transcript(self, tool_results: list[ToolResult] | None) -> ModelTurn:
+        if self._turn == 1:
+            return ModelTurn([ToolCall("s", "search_transcript",
+                                       {"query": self._request, "top_k": 5})], Usage())
+        hits = json.loads(tool_results[0].text) if tool_results and not tool_results[0].is_error \
+            else []
+        moments = [{"asset_id": h["asset_id"], "t_in": h["t_in"], "t_out": h["t_out"]}
+                   for h in hits if h["t_out"] > h["t_in"]]
+        return ModelTurn([ToolCall("a", "submit_answer", {"moments": moments})], Usage())
+
+
 class BaselineAgent(AgentModel):
-    """`model` is "random" or "abstain"."""
+    """`model` is "random", "abstain" or "transcript"."""
 
     def __init__(self, model: str = "random", effort: str | None = None, seed: int = 0):
-        if model not in ("random", "abstain"):
-            raise ValueError('baseline model must be "random" or "abstain"')
+        if model not in ("random", "abstain", "transcript"):
+            raise ValueError('baseline model must be "random", "abstain" or "transcript"')
         self.model_id = f"baseline-{model}"
         self.effort = None
         self._kind = model
         self._rng = random.Random(seed)
 
     def start(self, system: str, task: str, tools: list[dict[str, Any]]) -> AgentSession:
-        return _Session(self._kind, random.Random(self._rng.random()))
+        session = _Session(self._kind, random.Random(self._rng.random()))
+        # The request is the first line of the task text ("Find this moment: ...").
+        session._request = task.split("\n", 1)[0].removeprefix("Find this moment: ")
+        return session

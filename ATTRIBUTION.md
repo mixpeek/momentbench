@@ -1,6 +1,6 @@
 # MomentBench Attribution
 
-All video content in MomentBench is sourced from works that are either in the public domain or licensed under Creative Commons Attribution (CC BY), permitting commercial use and derivative works.
+Video in MomentBench comes from works in the public domain or under Creative Commons Attribution (CC BY), with the exceptions listed under "Open licence questions" below. Each asset's status is machine-readable in the manifest (`license_status`, `is_sellable`).
 
 This manifest is auto-generated from asset metadata in the corpus. Each entry includes the source, license, and attribution string required for redistribution.
 

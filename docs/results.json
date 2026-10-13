@@ -100,6 +100,53 @@
     },
     {
       "domain": "film",
+      "model": "baseline-transcript",
+      "harness": "api",
+      "modalities": "frames+transcripts",
+      "anonymize_titles": false,
+      "standard": true,
+      "condition": "",
+      "corpus_assets": 27,
+      "queries": 167,
+      "trials": 1,
+      "recall_at_1": 0.018,
+      "recall_at_1_ci95": [
+        0.0,
+        0.0419
+      ],
+      "recall_at_1_by_iou": {
+        "0.3": 0.0359,
+        "0.5": 0.018,
+        "0.7": 0.012
+      },
+      "by_tier": {
+        "1": {
+          "queries": 80,
+          "recall_at_1": 0
+        },
+        "2": {
+          "queries": 25,
+          "recall_at_1": 0.12
+        },
+        "3": {
+          "queries": 36,
+          "recall_at_1": 0
+        },
+        "4": {
+          "queries": 26,
+          "recall_at_1": 0
+        }
+      },
+      "positive_recall_at_1": 0.022900763358778626,
+      "no_answer_accuracy": 0.0,
+      "false_positive_rate": 1.0,
+      "abstention_on_positives": 0.0,
+      "cost_usd_per_query": null,
+      "error_trials": 0,
+      "run_file": "agentic-baseline-transcript-f33ed534.json"
+    },
+    {
+      "domain": "film",
       "model": "claude-haiku-5-5",
       "harness": "claude-code",
       "modalities": "frames+transcripts",
@@ -382,6 +429,53 @@
     },
     {
       "domain": "aerospace",
+      "model": "baseline-transcript",
+      "harness": "api",
+      "modalities": "frames+transcripts",
+      "anonymize_titles": false,
+      "standard": true,
+      "condition": "",
+      "corpus_assets": 27,
+      "queries": 188,
+      "trials": 1,
+      "recall_at_1": 0.117,
+      "recall_at_1_ci95": [
+        0.0745,
+        0.1649
+      ],
+      "recall_at_1_by_iou": {
+        "0.3": 0.133,
+        "0.5": 0.117,
+        "0.7": 0.0585
+      },
+      "by_tier": {
+        "1": {
+          "queries": 103,
+          "recall_at_1": 0
+        },
+        "2": {
+          "queries": 31,
+          "recall_at_1": 0.7097
+        },
+        "3": {
+          "queries": 21,
+          "recall_at_1": 0
+        },
+        "4": {
+          "queries": 33,
+          "recall_at_1": 0
+        }
+      },
+      "positive_recall_at_1": 0.1317365269461078,
+      "no_answer_accuracy": 0.0,
+      "false_positive_rate": 1.0,
+      "abstention_on_positives": 0.0,
+      "cost_usd_per_query": null,
+      "error_trials": 0,
+      "run_file": "agentic-baseline-transcript-9ddcd4c3.json"
+    },
+    {
+      "domain": "aerospace",
       "model": "claude-haiku-5-5",
       "harness": "claude-code",
       "modalities": "frames+transcripts",
@@ -614,6 +708,53 @@
       "cost_usd_per_query": null,
       "error_trials": 0,
       "run_file": "agentic-baseline-random-cfb1ec6f.json"
+    },
+    {
+      "domain": "robotics",
+      "model": "baseline-transcript",
+      "harness": "api",
+      "modalities": "frames+transcripts",
+      "anonymize_titles": false,
+      "standard": true,
+      "condition": "",
+      "corpus_assets": 27,
+      "queries": 68,
+      "trials": 1,
+      "recall_at_1": 0.0441,
+      "recall_at_1_ci95": [
+        0.0,
+        0.1029
+      ],
+      "recall_at_1_by_iou": {
+        "0.3": 0.0882,
+        "0.5": 0.0441,
+        "0.7": 0.0
+      },
+      "by_tier": {
+        "1": {
+          "queries": 41,
+          "recall_at_1": 0
+        },
+        "2": {
+          "queries": 10,
+          "recall_at_1": 0.3
+        },
+        "3": {
+          "queries": 10,
+          "recall_at_1": 0
+        },
+        "4": {
+          "queries": 7,
+          "recall_at_1": 0
+        }
+      },
+      "positive_recall_at_1": 0.05172413793103448,
+      "no_answer_accuracy": 0.0,
+      "false_positive_rate": 1.0,
+      "abstention_on_positives": 0.0,
+      "cost_usd_per_query": null,
+      "error_trials": 0,
+      "run_file": "agentic-baseline-transcript-b00784de.json"
     },
     {
       "domain": "robotics",

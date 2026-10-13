@@ -1,5 +1,44 @@
 # Changelog
 
+## 0.2.1 (2026-10-13)
+
+Same corpus and queries as 0.2.0; the harness, scoring and submission rules are
+hardened after two lab-readiness audits. Cite 0.2.1 for any new result; 0.2.0 scores
+some invalid answers and partial corpora that 0.2.1 refuses. docs/scope.md lists what
+is fixed and what is still open.
+
+Scoring
+
+- Every expected query is scored once; missing predictions count as misses and
+  duplicate or unknown ids are rejected.
+- Only `{"moments": []}` abstains. Malformed output, unknown videos, out-of-range
+  times, or an invalid entry anywhere in a ranked answer is rejected.
+- Summaries report positive Recall@1, no-answer accuracy, false-positive rate and
+  abstention on positives apart, with per-video clustered and paired intervals.
+- A run is scored only on queries whose wording it saw (per-trial text hash).
+
+Corpus and runs
+
+- One preparation step for the CLI, the Python API and the Inspect task: every asset
+  is hashed at the path its frames are read from and pinned there. A run is reportable
+  only on a fully verified corpus; `--partial` debug runs are not.
+- Runs record their identity: commit, selected queries, verified bytes, transcripts,
+  prompt, tools, budget, conditions, provider, resolved model and a compatibility key.
+- Custom agents get the request text only, and a closed corpus interface metered
+  against the harness budget.
+- Frames at a video's final second, ffmpeg off the event loop, download timeout and
+  retries.
+
+Controls and submission
+
+- `baseline-transcript`, a transcript-only modality control, reported per domain with
+  each model's tier-2 score split by whether speech alone solves the query.
+- `--anonymize-titles`, and Inspect parity for both controls.
+- `momentbench submit` takes agentic runs and requires a complete trial grid, a corpus
+  receipt equal to the manifest and a matching compatibility key. `leaderboard` ranks
+  only runs that share a key.
+- Legacy adapters declare what they see (`input_kind`).
+
 ## 0.2.0 (2026-10-10)
 
 Corpus and queries

@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import datetime
+import functools
 import json
 from pathlib import Path
 
@@ -50,6 +51,13 @@ def corpus_size(run: AgenticRun) -> int:
 
 def load_run(path: Path | str) -> AgenticRun:
     """A saved run, rescored against the current gold (see rescore)."""
+    return _load_run(str(Path(path).resolve()))
+
+
+@functools.lru_cache(maxsize=None)
+def _load_run(path: str) -> AgenticRun:
+    # The generators load each run file many times; parse and rescore it once. Callers
+    # must not modify the returned run (use model_copy), since it is shared.
     return rescore(AgenticRun.model_validate_json(Path(path).read_text()), current_queries())
 
 
@@ -85,9 +93,9 @@ def table(paths: list[str], only: set[str] | None = None) -> str:
     # .partial.json files are runs a provider cut off; they are never results.
     files = [Path(f) for f in paths if not str(f).endswith(".partial.json")]
     runs = [(f, load_run(f)) for f in files]
-    if only is not None:
-        for _, run in runs:
-            run.trials = [t for t in run.trials if t.query_id in only]
+    if only is not None:  # copies: load_run's results are cached and shared
+        runs = [(f, r.model_copy(update={"trials": [t for t in r.trials if t.query_id in only]}))
+                for f, r in runs]
     lines = []
     tiers = sorted({str(t.tier) for _, r in runs for t in r.trials})
     head = ["Model", "Harness", "Queries x trials", "Recall@1 (95% CI)", "R@1 tIoU 0.3 / 0.7"]

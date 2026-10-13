@@ -176,8 +176,10 @@ def main() -> None:
             if r1 > best_r1:
                 best_r1, best_model, best_domain = r1, run.model_id, vertical
     held_section = (f"""Each model was also run once on the held-out queries, whose gold spans are
-not published. A model whose public score came from training on the published answers would
-drop on held-out. The held-out run files stay with the maintainers, because their
+not published. Held-out queries come from the same videos as public ones, so
+this comparison can reveal memorized answers but cannot show whether a model saw the
+footage, and it covers only the models below. Treat it as limited evidence about
+contamination (see docs/scope.md). The held-out run files stay with the maintainers, because their
 trials would reveal where the held-out answers are.
 
 {held}

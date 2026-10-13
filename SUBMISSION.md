@@ -7,11 +7,13 @@ There is one route onto the leaderboard: an agentic-track run on a whole domain'
 ## 1. Get the corpus
 
 ```bash
-pip install momentbench
+git clone --branch v0.2.1 https://github.com/mixpeek/momentbench.git
+cd momentbench
+pip install -e ".[openai]"   # Python 3.10+; or .[gemini], .[claude-code], .[inspect]
 momentbench corpus-download -m data/corpus_manifests/sample_manifest.json --corpus-dir corpus/
 ```
 
-`corpus-download` checks every file against the sha256 in the manifest.
+MomentBench is not on PyPI; the commands read the queries, manifest and transcripts in the checkout, so run them inside it. `ffmpeg` and `ffprobe` must be on the PATH. `corpus-download` checks every file against the sha256 in the manifest.
 
 ## 2. Run the agentic track
 

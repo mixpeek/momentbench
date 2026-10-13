@@ -666,3 +666,16 @@ class TestComparableOnly:  # audit 2: R9
         r = CliRunner().invoke(main, ["leaderboard", str(runs)], env={"COLUMNS": "200"})
         titles = [line for line in r.output.splitlines() if "agentic track" in line]
         assert r.exit_code == 0 and len(titles) == 2, r.output
+
+
+class TestTranscriptControl:  # audit 2: R12
+    async def test_it_answers_from_speech_and_never_samples_a_frame(self, tmp_path):
+        from momentbench.agentic.baselines import BaselineAgent
+
+        run = await run_agentic_benchmark([make_query(), NO_ANSWER],
+                                          BaselineAgent("transcript"),
+                                          make_corpus(tmp_path), trials=1)
+        by_id = {t.query_id: t for t in run.trials}
+        assert by_id["q1"].moments and by_id["q1"].usage.frames == 0
+        assert [x["tool"] for x in by_id["q1"].trace][0] == "search_transcript"
+        assert run.model_id == "baseline-transcript"

@@ -224,7 +224,39 @@ def section(paths: list[Path]) -> str:
             + "\n\nLocalization and abstention, separately (positive queries have a gold "
             "moment; no-answer queries are right only on an explicit empty answer):\n\n"
             + split_table(paths)
-            + (f"\n\nPaired differences on the same queries:\n\n{paired}" if paired else ""))
+            + (f"\n\nPaired differences on the same queries:\n\n{paired}" if paired else "")
+            + (f"\n\n{ctrl}" if (ctrl := control_table(paths)) else ""))
+
+
+def control_table(paths: list[Path]) -> str:
+    """Tier 2 split by whether the transcript-only control solved the query (audit 2, R12).
+
+    A model's score on control-solved queries can come from speech alone; the
+    control-missed column is the part that needed the picture.
+    """
+    runs = [load_run(f) for f in paths]
+    control = next((r for r in runs if r.model_id == "baseline-transcript"), None)
+    if control is None:
+        return ""
+    t2 = {t.query_id: t.hit_at_1 for t in control.trials if t.tier == 2}
+    solved = {q for q, hit in t2.items() if hit}
+    missed = set(t2) - solved
+    lines = [f"`baseline-transcript` sends the request to the keyword transcript search and "
+             f"submits the top cue, without looking at a frame. It localizes "
+             f"{len(solved)} of {len(t2)} tier-2 queries here. Tier-2 Recall@1 of each model "
+             "on those queries and on the rest:", "",
+             "| Model | Tier 2, solved by transcript alone | Tier 2, needs more than the "
+             "transcript |", "|---|---|---|"]
+
+    def rate(run, ids):
+        hits = [float(t.hit_at_1) for t in run.trials if t.query_id in ids]
+        return f"{100 * sum(hits) / len(hits):.1f} (n={len(hits)})" if hits else "n/a"
+
+    for run in runs:
+        if run.model_id.startswith("baseline-") or not is_standard(run):
+            continue
+        lines.append(f"| {run.model_id} | {rate(run, solved)} | {rate(run, missed)} |")
+    return "\n".join(lines)
 
 
 def results_json(domains: dict[str, list[Path]]) -> dict:
@@ -241,7 +273,8 @@ def results_json(domains: dict[str, list[Path]]) -> dict:
             for q in json.loads((ROOT / "data/queries" / name).read_text())}
         for f in paths:
             run = load_run(f)
-            run.trials = [t for t in run.trials if t.query_id in current]
+            run = run.model_copy(update={"trials": [t for t in run.trials
+                                                    if t.query_id in current]})
             from momentbench.agentic.run import summarize
 
             s = summarize(run.trials, run.summary.num_trials)
@@ -279,6 +312,7 @@ NASA rover, free-flyer and helicopter footage. Queries target physical events: c
 wheels on slopes, lift-off and landing, cause then effect.
 
 {section(robotics)}
+
 """ if robotics else "")
     seed = [SEED / f"{r}.json" for r in SEED_RUNS]
     phys = physical_rows(aero + robotics)
@@ -293,6 +327,10 @@ appear here.
 {phys}
 
 """ if phys else "")
+    all_runs = [load_run(f) for f in sorted(RECORD.glob("*.json"))
+                if not f.name.endswith(".partial.json")]
+    total = len(all_runs)
+    historical = sum(1 for r in all_runs if not r.identity.get("compatibility_key"))
     reworded = {d: sum(1 for q in json.loads((ROOT / "data/queries" / f).read_text())
                        if q["metadata"].get("text_refined"))
                 for d, f in QUERY_FILES.items() if (ROOT / "data/queries" / f).exists()}
@@ -306,7 +344,9 @@ track's default budget (30 turns, 64 frames, 60 tool calls), 1 trial per query, 
 were added, on a smaller and so slightly easier corpus; they will be replaced by reruns on
 all 27.
 
-**Floors.** `baseline-random` submits a random asset and span (chance). `baseline-abstain`
+**Floors.** `baseline-transcript` is a modality control: it answers from the keyword
+transcript search alone and never looks at a frame. `baseline-random` submits a random
+asset and span (chance). `baseline-abstain`
 always submits an empty answer, so it scores exactly the share of no-answer (tier 3)
 queries. A system's overall Recall@1 only means something above both.
 
@@ -317,6 +357,12 @@ plan cancelled, and a first attempt that ran into it was discarded. Gemini 3.1 P
 film and robotics results; its aerospace run is waiting on budget.
 Claude results come from the local Claude Code harness; their cost is what the tokens
 would cost at API list prices, not money spent.
+
+**Historical rows.** {historical} of the {total} model and floor runs on this page were made
+before runs recorded their identity (commit, verified bytes, compatibility key) in 0.2.1.
+Their scores come from the answers saved in each run file, rescored against the current
+gold, so they are honest but not reproducible byte for byte. They will be replaced by
+reruns under 0.2.1.
 
 **Reworded queries.** Rows are rescored against the current gold, but a run is only
 scored on queries whose wording it saw. Queries reworded after a run ({reworded_note})

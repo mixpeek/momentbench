@@ -87,6 +87,8 @@ answers none, so it scores exactly the share of no-answer queries.
 
 ### Film
 
+Every row is computed on the 167 current queries that all of these runs covered (runs made on earlier versions of the file, or on queries since removed by review, are scored only on what remains).
+
 | Model | Harness | Queries x trials | Recall@1 (95% CI) | R@1 tIoU 0.3 / 0.7 | Tier 1 | Tier 2 | Tier 3 | Tier 4 | Cost per query | Run |
 |---|---|---|---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | 167 x 1 | 55.1 (47.3 to 62.9) | 62.3 / 48.5 | 62.5 (n=80) | 72.0 (n=25) | 19.4 (n=36) | 65.4 (n=26) | $0.123 notional | `agentic-claude-opus-5-5-0d68625a.json` |
@@ -94,6 +96,7 @@ answers none, so it scores exactly the share of no-answer queries.
 | claude-sonnet-5-5 | claude-code | 167 x 1 | 31.7 (25.1 to 38.9) | 41.9 / 12.0 | 23.8 (n=80) | 80.0 (n=25) | 11.1 (n=36) | 38.5 (n=26) | $0.070 notional | `agentic-claude-sonnet-5-5-5a202b4b.json` |
 | claude-haiku-5-5 | claude-code | 167 x 1 | 28.7 (22.2 to 35.9) | 36.5 / 16.8 | 18.8 (n=80) | 60.0 (n=25) | 27.8 (n=36) | 30.8 (n=26) | $0.016 notional | `agentic-claude-haiku-5-5-2d52fc45.json` |
 | baseline-abstain | api | 167 x 3 | 21.6 (15.6 to 28.1) | 21.6 / 21.6 | 0.0 (n=80) | 0.0 (n=25) | 100.0 (n=36) | 0.0 (n=26) | none (no model) | `agentic-baseline-abstain-540fc4f7.json` |
+| baseline-transcript | api | 167 x 1 | 1.8 (0.0 to 4.2) | 3.6 / 1.2 | 0.0 (n=80) | 12.0 (n=25) | 0.0 (n=36) | 0.0 (n=26) | none (no model) | `agentic-baseline-transcript-f33ed534.json` |
 | baseline-random | api | 167 x 3 | 0.0 (0.0 to 0.0) | 0.0 / 0.0 | 0.0 (n=80) | 0.0 (n=25) | 0.0 (n=36) | 0.0 (n=26) | none (no model) | `agentic-baseline-random-e7eea7e0.json` |
 
 Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer):
@@ -113,6 +116,15 @@ Paired differences on the same queries:
 | claude-sonnet-5-5 | -23.4 (-31.7 to -15.0), n=167 |
 | gemini-3.1-pro-preview | -12.6 (-22.2 to -3.6), n=167 |
 
+`baseline-transcript` sends the request to the keyword transcript search and submits the top cue, without looking at a frame. It localizes 4 of 32 tier-2 queries here. Tier-2 Recall@1 of each model on those queries and on the rest:
+
+| Model | Tier 2, solved by transcript alone | Tier 2, needs more than the transcript |
+|---|---|---|
+| claude-haiku-5-5 | 100.0 (n=3) | 54.5 (n=22) |
+| claude-opus-5-5 | 100.0 (n=3) | 68.2 (n=22) |
+| claude-sonnet-5-5 | 100.0 (n=3) | 77.3 (n=22) |
+| gemini-3.1-pro-preview | 100.0 (n=3) | 81.8 (n=22) |
+
 ### Aerospace
 
 Every row is computed on the 188 current queries that all of these runs covered (runs made on earlier versions of the file, or on queries since removed by review, are scored only on what remains).
@@ -122,6 +134,7 @@ Every row is computed on the 188 current queries that all of these runs covered 
 | claude-opus-5-5 | claude-code | 188 x 1 | 62.8 (55.3 to 69.7) | 67.6 / 51.1 | 63.1 (n=103) | 93.5 (n=31) | 42.9 (n=21) | 45.5 (n=33) | $0.148 notional | `agentic-claude-opus-5-5-519357e4.json` |
 | claude-haiku-5-5 | claude-code | 188 x 1 | 40.4 (33.0 to 47.3) | 48.4 / 25.5 | 32.0 (n=103) | 77.4 (n=31) | 38.1 (n=21) | 33.3 (n=33) | $0.017 notional | `agentic-claude-haiku-5-5-73f3e5ad.json` |
 | claude-sonnet-5-5 | claude-code | 188 x 1 | 31.9 (25.5 to 38.3) | 44.7 / 18.1 | 25.2 (n=103) | 61.3 (n=31) | 23.8 (n=21) | 30.3 (n=33) | $0.081 notional | `agentic-claude-sonnet-5-5-e3adc2e7.json` |
+| baseline-transcript | api | 188 x 1 | 11.7 (7.4 to 16.5) | 13.3 / 5.9 | 0.0 (n=103) | 71.0 (n=31) | 0.0 (n=21) | 0.0 (n=33) | none (no model) | `agentic-baseline-transcript-9ddcd4c3.json` |
 | baseline-abstain | api | 188 x 3 | 11.2 (6.9 to 16.0) | 11.2 / 11.2 | 0.0 (n=103) | 0.0 (n=31) | 100.0 (n=21) | 0.0 (n=33) | none (no model) | `agentic-baseline-abstain-cbb76cd7.json` |
 | baseline-random | api | 188 x 3 | 0.0 (0.0 to 0.0) | 0.0 / 0.0 | 0.0 (n=103) | 0.0 (n=31) | 0.0 (n=21) | 0.0 (n=33) | none (no model) | `agentic-baseline-random-0cd4a178.json` |
 
@@ -140,6 +153,14 @@ Paired differences on the same queries:
 | claude-haiku-5-5 | -22.3 (-30.3 to -14.4), n=188 |
 | claude-sonnet-5-5 | -30.9 (-38.3 to -23.4), n=188 |
 
+`baseline-transcript` sends the request to the keyword transcript search and submits the top cue, without looking at a frame. It localizes 23 of 34 tier-2 queries here. Tier-2 Recall@1 of each model on those queries and on the rest:
+
+| Model | Tier 2, solved by transcript alone | Tier 2, needs more than the transcript |
+|---|---|---|
+| claude-haiku-5-5 | 90.9 (n=22) | 44.4 (n=9) |
+| claude-opus-5-5 | 95.5 (n=22) | 88.9 (n=9) |
+| claude-sonnet-5-5 | 69.6 (n=23) | 45.5 (n=11) |
+
 ### Robotics
 
 Every row is computed on the 68 current queries that all of these runs covered (runs made on earlier versions of the file, or on queries since removed by review, are scored only on what remains).
@@ -152,6 +173,7 @@ Every row is computed on the 68 current queries that all of these runs covered (
 | claude-haiku-5-5 | claude-code | 68 x 1 | 41.2 (30.9 to 52.9) | 54.4 / 20.6 | 39.0 (n=41) | 60.0 (n=10) | 20.0 (n=10) | 57.1 (n=7) | $0.013 notional | `agentic-claude-haiku-5-5-59536b38.json` |
 | claude-sonnet-5-5 | claude-code | 68 x 1 | 38.2 (26.5 to 50.0) | 58.8 / 13.2 | 41.5 (n=41) | 60.0 (n=10) | 0.0 (n=10) | 42.9 (n=7) | $0.051 notional | `agentic-claude-sonnet-5-5-4e1ecc2c.json` |
 | baseline-abstain | api | 68 x 3 | 14.7 (7.4 to 23.5) | 14.7 / 14.7 | 0.0 (n=41) | 0.0 (n=10) | 100.0 (n=10) | 0.0 (n=7) | none (no model) | `agentic-baseline-abstain-b3a169c6.json` |
+| baseline-transcript | api | 68 x 1 | 4.4 (0.0 to 10.3) | 8.8 / 0.0 | 0.0 (n=41) | 30.0 (n=10) | 0.0 (n=10) | 0.0 (n=7) | none (no model) | `agentic-baseline-transcript-b00784de.json` |
 | baseline-random | api | 68 x 3 | 0.0 (0.0 to 0.0) | 0.5 / 0.0 | 0.0 (n=41) | 0.0 (n=10) | 0.0 (n=10) | 0.0 (n=7) | none (no model) | `agentic-baseline-random-cfb1ec6f.json` |
 
 Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer):
@@ -171,6 +193,15 @@ Paired differences on the same queries:
 | claude-sonnet-5-5 | -38.2 (-50.0 to -26.5), n=68 |
 | gemini-3.1-pro-preview | -14.7 (-27.9 to -1.5), n=68 |
 
+`baseline-transcript` sends the request to the keyword transcript search and submits the top cue, without looking at a frame. It localizes 3 of 10 tier-2 queries here. Tier-2 Recall@1 of each model on those queries and on the rest:
+
+| Model | Tier 2, solved by transcript alone | Tier 2, needs more than the transcript |
+|---|---|---|
+| claude-haiku-5-5 | 100.0 (n=3) | 42.9 (n=7) |
+| claude-opus-5-5 | 100.0 (n=3) | 57.1 (n=7) |
+| claude-sonnet-5-5 | 100.0 (n=3) | 42.9 (n=7) |
+| gemini-3.1-pro-preview | 100.0 (n=3) | 85.7 (n=7) |
+
 ### Physical-event subset
 
 | Domain | Model | Physical-event R@1 (95% CI) | Run |
@@ -180,6 +211,7 @@ Paired differences on the same queries:
 | aerospace | claude-sonnet-5-5 | 25.7 (11.4 to 40.0), n=35 | `agentic-claude-sonnet-5-5-e3adc2e7.json` |
 | aerospace | baseline-abstain | 0.0 (0.0 to 0.0), n=32 | `agentic-baseline-abstain-cbb76cd7.json` |
 | aerospace | baseline-random | 0.0 (0.0 to 0.0), n=32 | `agentic-baseline-random-0cd4a178.json` |
+| aerospace | baseline-transcript | 0.0 (0.0 to 0.0), n=35 | `agentic-baseline-transcript-9ddcd4c3.json` |
 | robotics | claude-opus-5-5 | 83.3 (66.7 to 100.0), n=18 | `agentic-claude-opus-5-5-e7ca7bd1.json` |
 | robotics | claude-opus-5-5 (frames only) | 72.2 (50.0 to 88.9), n=18 | `agentic-claude-opus-5-5-fe94c043.json` |
 | robotics | gemini-3.1-pro-preview | 55.6 (33.3 to 77.8), n=18 | `agentic-gemini-3.1-pro-preview-cfaace12.json` |
@@ -187,6 +219,7 @@ Paired differences on the same queries:
 | robotics | claude-haiku-5-5 | 33.3 (11.1 to 55.6), n=18 | `agentic-claude-haiku-5-5-59536b38.json` |
 | robotics | baseline-abstain | 0.0 (0.0 to 0.0), n=18 | `agentic-baseline-abstain-b3a169c6.json` |
 | robotics | baseline-random | 0.0 (0.0 to 0.0), n=18 | `agentic-baseline-random-cfb1ec6f.json` |
+| robotics | baseline-transcript | 0.0 (0.0 to 0.0), n=18 | `agentic-baseline-transcript-b00784de.json` |
 
 ### Public vs rolling (aerospace)
 
@@ -194,6 +227,7 @@ Paired differences on the same queries:
 |---|---|---|
 | baseline-abstain | 11.0 (6.5 to 16.2), n=154 | 11.8 (2.9 to 23.5), n=34 |
 | baseline-random | 0.0 (0.0 to 0.0), n=154 | 0.0 (0.0 to 0.0), n=34 |
+| baseline-transcript | 11.0 (6.7 to 15.9), n=164 | 13.2 (2.6 to 23.7), n=38 |
 | claude-haiku-5-5 | 38.3 (30.5 to 46.1), n=154 | 50.0 (35.3 to 67.6), n=34 |
 | claude-opus-5-5 | 63.0 (55.2 to 70.8), n=154 | 61.8 (47.1 to 76.5), n=34 |
 | claude-sonnet-5-5 | 32.3 (25.0 to 39.0), n=164 | 42.1 (26.3 to 57.9), n=38 |
@@ -217,8 +251,10 @@ CORPORA` with GUID `ed215737-6cb9-44f0-a608-a8cbc6a47be8`; filter documents cont
 out of training data.
 
 Each model was also run once on the held-out queries, whose gold spans are
-not published. A model whose public score came from training on the published answers would
-drop on held-out. The held-out run files stay with the maintainers, because their
+not published. Held-out queries come from the same videos as public ones, so
+this comparison can reveal memorized answers but cannot show whether a model saw the
+footage, and it covers only the models below. Treat it as limited evidence about
+contamination (see docs/scope.md). The held-out run files stay with the maintainers, because their
 trials would reveal where the held-out answers are.
 
 | Domain | Model | Public R@1 (95% CI) | Held-out R@1 (95% CI) |

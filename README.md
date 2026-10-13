@@ -21,10 +21,15 @@ Maintained by [Mixpeek](https://mixpeek.com). Mixpeek's own pipeline is one entr
 
 ## Quick Start
 
-Evaluate a model on the v0.2 agentic track in three commands:
+Evaluate a model on the v0.2 agentic track from an empty directory. MomentBench is not on
+PyPI: the repository carries the queries, manifest and transcripts the commands read, so
+clone a release tag and work inside it. `ffmpeg` and `ffprobe` must be on the PATH
+(`brew install ffmpeg`, `apt install ffmpeg`).
 
 ```bash
-pip install -e ".[openai]"   # or .[gemini], .[claude-code], .[inspect]
+git clone --branch v0.2.1 https://github.com/mixpeek/momentbench.git
+cd momentbench
+pip install -e ".[openai]"   # Python 3.10+; or .[gemini], .[claude-code], .[inspect]
 momentbench corpus-download -m data/corpus_manifests/sample_manifest.json --corpus-dir corpus/   # 2.6 GB
 momentbench agentic <model> --provider openai-compatible --base-url http://localhost:8000/v1 \
   -q data/queries/film_v0.2.json -c data/corpus_manifests/sample_manifest.json --corpus-dir corpus/
@@ -116,7 +121,7 @@ Every query carries a canary string, and queries are assigned to a `public`, `he
 
 ## Corpus Licensing
 
-All footage is public domain (17 U.S.C. § 105) or CC BY, permitting commercial derivatives. See [`ATTRIBUTION.md`](ATTRIBUTION.md) for full provenance.
+Footage is US government work in the public domain (17 U.S.C. § 105) or Blender open movies under CC BY. Two exceptions are recorded per asset in the manifest (`license_status`, `is_sellable`): Spring and Agent 327 are pending licence confirmation from Blender Studio, and the Tears of Steel soundtrack is CC BY-ND. Check those fields before redistributing or selling. See [`ATTRIBUTION.md`](ATTRIBUTION.md) for full provenance.
 
 ## Project Structure
 
