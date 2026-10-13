@@ -52,6 +52,9 @@ def run(model: str, queries: str, corpus: str, output: str, concurrency: int):
               help="Directory holding <asset_id>.mp4 and optional transcripts")
 @click.option("--transcripts-dir", type=click.Path(file_okay=False), default="data/transcripts",
               help="Directory of <asset_id>.vtt transcripts, used when --corpus-dir has none")
+@click.option("--partial", is_flag=True,
+              help="Debug only: allow a corpus with missing or unverified assets. The run is "
+              "marked not reportable and saved under data/results/debug")
 @click.option("--physical-only", is_flag=True,
               help="Run only queries tagged metadata.physical_event (machine motion or contact)")
 @click.option("--no-transcripts", is_flag=True,
@@ -74,7 +77,8 @@ def run(model: str, queries: str, corpus: str, output: str, concurrency: int):
 @click.option("--output", "-o", type=click.Path(), default="data/results/agentic")
 @click.option("--concurrency", type=int, default=4)
 def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_dir: str,
-            physical_only: bool, no_transcripts: bool, provider: str, base_url: str | None,
+            partial: bool, physical_only: bool, no_transcripts: bool, provider: str,
+            base_url: str | None,
             effort: str | None, trials: int, max_steps: int, max_frames: int,
             max_tool_calls: int, pricing: str, output: str, concurrency: int):
     """Run the agentic track: a tool-using model searches the corpus for each moment."""
@@ -97,15 +101,27 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_
     local = LocalCorpus(load_corpus_assets(Path(corpus)), Path(corpus_dir),
                         transcripts={} if no_transcripts else None,
                         transcripts_dir=Path(transcripts_dir))
-    missing = set(local.missing_videos())
-    runnable = [q for q in query_list if not any(g.asset_id in missing for g in q.gold_moments)]
-    if missing:
-        console.print(
-            f"[yellow]{len(missing)} of {len(local.assets)} assets have no video file in "
-            f"{corpus_dir}; running {len(runnable)} of {len(query_list)} queries.[/yellow]"
-        )
+    from momentbench.corpus.verify import verify_corpus
+
+    # A reportable run needs every asset present and hash-verified: with assets missing,
+    # positives drop out while every no-answer query stays, which inflates the score.
+    receipt, failures = verify_corpus(list(local.assets.values()), Path(corpus_dir),
+                                      Path(corpus_dir) / ".momentbench-verify-cache.json")
+    runnable = query_list
+    if failures:
+        detail = "; ".join(f"{c.asset_id}: {', '.join(c.problems)}" for c in failures[:5])
+        if not partial:
+            raise click.ClickException(
+                f"{len(failures)} of {len(local.assets)} assets failed verification ({detail}). "
+                "Run corpus-download, or pass --partial for a non-reportable debug run.")
+        bad = {c.asset_id for c in failures}
+        runnable = [q for q in query_list if not any(g.asset_id in bad for g in q.gold_moments)]
+        console.print(f"[yellow]--partial: {len(failures)} assets unverified; running "
+                      f"{len(runnable)} of {len(query_list)} queries. This run is NOT "
+                      "reportable and is saved under data/results/debug.[/yellow]")
+        output = str(Path("data/results/debug"))
     if not runnable:
-        raise click.ClickException("no query has its gold video on disk")
+        raise click.ClickException("no query is runnable on this corpus")
 
     prices = load_pricing(Path(pricing), model)
     if prices is None:
@@ -134,6 +150,8 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_
                 pricing=prices,
                 max_concurrency=concurrency,
                 output_dir=Path(output),
+                reportable=not failures,
+                corpus_receipt=receipt,
             )
         )
     except ProviderUnavailableError as e:

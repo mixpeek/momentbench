@@ -65,6 +65,8 @@ def runs_for(vertical: str) -> list[Path]:
         if f.name.endswith(".partial.json"):
             continue
         run = load_run(f)
+        if not run.reportable:  # debug runs on a partial corpus never enter a table
+            continue
         ran = {t.query_id for t in run.trials}
         # A run belongs to this domain if nearly all of its queries are in the file;
         # queries removed later (review, cross-check) are then left out of its row.

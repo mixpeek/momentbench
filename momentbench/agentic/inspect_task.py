@@ -21,7 +21,12 @@ from inspect_ai.tool import ContentImage, ContentText, Tool, ToolError, tool
 from inspect_ai.util import store
 
 from momentbench.agentic.budget import Budget
-from momentbench.agentic.environment import MAX_FRAMES_PER_CALL, LocalCorpus, parse_submission
+from momentbench.agentic.environment import (
+    MAX_FRAMES_PER_CALL,
+    InvalidSubmissionError,
+    LocalCorpus,
+    parse_submission,
+)
 from momentbench.agentic.episode import SYSTEM_PROMPT, build_task
 from momentbench.eval.scoring import evaluate_prediction
 from momentbench.runner import load_corpus_assets, load_queries
@@ -132,7 +137,12 @@ def parse_answer(completion: str, known_assets: set[str]) -> list[Moment] | None
         items = json.loads(completion[start : end + 1])
     except json.JSONDecodeError:
         return None
-    return parse_submission({"moments": items}, known_assets) if isinstance(items, list) else None
+    if not isinstance(items, list):
+        return None
+    try:
+        return parse_submission({"moments": items}, known_assets)
+    except InvalidSubmissionError:  # malformed output is a miss, never an abstention
+        return None
 
 
 @scorer(metrics=[mean(), stderr()])

@@ -14,7 +14,7 @@ from pydantic import BaseModel, Field
 
 from momentbench.agentic.budget import Budget, Pricing, Usage
 from momentbench.agentic.environment import LocalCorpus
-from momentbench.agentic.episode import run_episode
+from momentbench.agentic.episode import EpisodeError, run_episode
 from momentbench.agentic.model import AgentModel
 from momentbench.agentic.stats import bootstrap_ci
 from momentbench.eval.scoring import compute_temporal_iou, evaluate_prediction
@@ -91,6 +91,11 @@ class AgenticRun(BaseModel):
     # Number of assets the model could search (list_assets). 0 in runs saved before
     # this field existed.
     corpus_assets: int = 0
+    # False for debugging runs on an incomplete or unverified corpus; such runs never
+    # enter a results table (no-answer queries survive a partial corpus and inflate it).
+    reportable: bool = True
+    # asset_id -> sha256 of every corpus file the run could search, from verification.
+    corpus_receipt: dict[str, str] = Field(default_factory=dict)
     budget: Budget
     pricing: Pricing | None
     timestamp: str
@@ -99,6 +104,34 @@ class AgenticRun(BaseModel):
 
 
 IOU_THRESHOLDS = (0.3, 0.5, 0.7)
+
+
+class MeteredCorpus:
+    """A corpus proxy that counts every tool call and frame an entrant draws."""
+
+    def __init__(self, corpus: LocalCorpus):
+        self._corpus = corpus
+        self.usage = Usage()
+
+    def __getattr__(self, name: str) -> Any:
+        return getattr(self._corpus, name)
+
+    def execute(self, call, budget: Budget, usage: Usage):
+        before = (self.usage.tool_calls, self.usage.frames)
+        result = self._corpus.execute(call, budget, self.usage)
+        usage.tool_calls += self.usage.tool_calls - before[0]
+        usage.frames += self.usage.frames - before[1]
+        return result
+
+
+def budget_violation(usage: Usage, budget: Budget) -> str | None:
+    """Why an episode broke its budget, or None. Over budget scores zero."""
+    for used, limit, what in ((usage.steps, budget.max_steps, "turns"),
+                              (usage.frames, budget.max_frames, "frames"),
+                              (usage.tool_calls, budget.max_tool_calls, "tool calls")):
+        if used > limit:
+            return f"used {used} {what}, budget {limit}"
+    return None
 
 
 def score_trial(query: Query, moments: list[Moment], outcome: str
@@ -192,6 +225,8 @@ async def run_agentic_benchmark(
     pricing: Pricing | None = None,
     max_concurrency: int = 4,
     output_dir: Path | None = None,
+    reportable: bool = True,
+    corpus_receipt: dict[str, str] | None = None,
 ) -> AgenticRun:
     budget = budget or Budget()
     semaphore = asyncio.Semaphore(max_concurrency)
@@ -201,18 +236,30 @@ async def run_agentic_benchmark(
             start = time.perf_counter()
             error = None
             try:
+                request = query.request()  # entrants never see gold, tier or negatives
                 if hasattr(model, "run_episode"):  # entrants that run their own tool loop
-                    episode = await model.run_episode(corpus, query, budget)
+                    metered = MeteredCorpus(corpus)
+                    episode = await model.run_episode(metered, request, budget)
+                    # The harness owns tool accounting: replace whatever the entrant
+                    # reported with what actually went through the corpus tools.
+                    episode.usage.tool_calls = metered.usage.tool_calls
+                    episode.usage.frames = metered.usage.frames
                 else:
-                    episode = await run_episode(model, corpus, query, budget)
+                    episode = await run_episode(model, corpus, request, budget)
                 moments, usage, outcome, trace = (
                     episode.moments, episode.usage, episode.outcome, episode.trace
                 )
+                over = budget_violation(usage, budget)
+                if over:
+                    moments, outcome, error = [], "budget_exceeded", over
             except Exception as e:  # a failed trial scores zero and is counted, never dropped
-                if is_fatal_provider_error(e):
-                    raise ProviderUnavailableError(f"{type(e).__name__}: {e}") from e
-                moments, usage, outcome, trace = [], Usage(), "error", []
-                error = f"{type(e).__name__}: {e}"
+                cause = e.cause if isinstance(e, EpisodeError) else e
+                if is_fatal_provider_error(cause):
+                    raise ProviderUnavailableError(f"{type(cause).__name__}: {cause}") from e
+                usage = e.usage if isinstance(e, EpisodeError) else Usage()
+                trace = e.trace if isinstance(e, EpisodeError) else []
+                moments, outcome = [], "error"
+                error = f"{type(cause).__name__}: {cause}"
             latency = time.perf_counter() - start
         hit1, hit5, best, top1 = score_trial(query, moments, outcome)
         return AgenticTrial(
@@ -258,6 +305,8 @@ async def run_agentic_benchmark(
         harness=getattr(model, "harness", "api"),
         modalities="frames+transcripts" if corpus.has_transcripts() else "frames",
         corpus_assets=len(corpus.assets),
+        reportable=reportable,
+        corpus_receipt=corpus_receipt or {},
         budget=budget,
         pricing=pricing,
         timestamp=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),

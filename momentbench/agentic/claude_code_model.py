@@ -19,10 +19,15 @@ import tempfile
 from typing import Any
 
 from momentbench.agentic.budget import Budget, Usage
-from momentbench.agentic.environment import TOOLS, LocalCorpus, parse_submission
+from momentbench.agentic.environment import (
+    TOOLS,
+    InvalidSubmissionError,
+    LocalCorpus,
+    parse_submission,
+)
 from momentbench.agentic.episode import SYSTEM_PROMPT, Episode, build_task
 from momentbench.agentic.model import AgentModel, AgentSession, ToolCall
-from momentbench.types import Query
+from momentbench.types import Query, QueryRequest
 
 SERVER = "momentbench"
 
@@ -39,7 +44,8 @@ class ClaudeCodeAgent(AgentModel):
     def start(self, system: str, task: str, tools: list[dict[str, Any]]) -> AgentSession:
         raise NotImplementedError("ClaudeCodeAgent runs whole episodes; use run_episode")
 
-    async def run_episode(self, corpus: LocalCorpus, query: Query, budget: Budget) -> Episode:
+    async def run_episode(self, corpus: LocalCorpus, query: Query | QueryRequest,
+                          budget: Budget) -> Episode:
         from claude_agent_sdk import (
             ClaudeAgentOptions,
             ResultMessage,
@@ -61,6 +67,14 @@ class ClaudeCodeAgent(AgentModel):
             async def handler(args: dict[str, Any]) -> dict[str, Any]:
                 if name == "submit_answer":
                     if not submitted:
+                        try:
+                            submitted["moments"] = parse_submission(args, corpus.assets)
+                        except InvalidSubmissionError as e:
+                            trace.append({"tool": name, "arguments": args, "is_error": True,
+                                          "error": str(e)})
+                            return {"content": [{"type": "text",
+                                                 "text": f"Invalid submission: {e}"}],
+                                    "is_error": True}
                         submitted["arguments"] = args
                         trace.append({"tool": name, "arguments": args})
                     return {"content": [{"type": "text", "text": "Answer recorded. Stop now."}]}
@@ -120,7 +134,7 @@ class ClaudeCodeAgent(AgentModel):
             usage.steps = result.num_turns
 
         if submitted:
-            moments = parse_submission(submitted["arguments"], set(corpus.assets))
+            moments = submitted["moments"]
             return Episode(query.query_id, moments, usage, "submitted", trace)
         if result is not None and result.subtype == "error_max_turns":
             return Episode(query.query_id, [], usage, "step_limit", trace)

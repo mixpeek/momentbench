@@ -52,6 +52,18 @@ class Query(BaseModel):
     def is_no_answer(self) -> bool:
         return not self.gold_moments
 
+    def request(self) -> QueryRequest:
+        """What an entrant may see: the id and the request text, never gold, tier or
+        hard negatives (tier 3 alone would reveal that the answer is none)."""
+        return QueryRequest(query_id=self.query_id, text=self.text)
+
+
+class QueryRequest(BaseModel):
+    """The entrant-facing view of a query."""
+
+    query_id: str
+    text: str
+
 
 class Prediction(BaseModel):
     query_id: str
@@ -69,6 +81,9 @@ class EvalResult(BaseModel):
     best_temporal_iou: float
     tier: QueryTier
     vertical: str
+    # True when the system produced no prediction for this query (an error or a gap).
+    # Such a query scores zero and stays in the denominator.
+    failed: bool = False
 
 
 class BenchmarkRun(BaseModel):
@@ -77,3 +92,5 @@ class BenchmarkRun(BaseModel):
     results: list[EvalResult]
     config: dict[str, Any] = Field(default_factory=dict)
     timestamp: str | None = None
+    # The raw predictions behind `results`, so a run can be rescored and audited.
+    predictions: list[Prediction] = Field(default_factory=list)

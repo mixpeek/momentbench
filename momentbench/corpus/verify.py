@@ -67,3 +67,42 @@ def check_asset(
     if abs(float(asset["duration_s"]) - duration) > DURATION_TOLERANCE_S:
         problems.append(f"duration mismatch: manifest {asset['duration_s']}s, file {duration:.2f}s")
     return AssetCheck(asset_id, path, digest, duration, tuple(problems))
+
+
+def verify_corpus(
+    assets: list[dict[str, Any]], corpus_dir: Path, cache_path: Path | None = None
+) -> tuple[dict[str, str], list[AssetCheck]]:
+    """Check every manifest asset. Returns (receipt of asset_id -> sha256, failures).
+
+    Hashes are cached by (file path, size, mtime) in `cache_path`, so a second run over
+    an unchanged corpus does not re-read 2.6 GB.
+    """
+    import json
+
+    cache: dict[str, Any] = {}
+    if cache_path and cache_path.exists():
+        try:
+            cache = json.loads(cache_path.read_text())
+        except ValueError:
+            cache = {}
+
+    def cached_hash(path: Path) -> str:
+        st = path.stat()
+        key = f"{path.resolve()}|{st.st_size}|{st.st_mtime_ns}"
+        if key not in cache:
+            cache[key] = {"sha256": sha256_file(path), "duration_s": probe_duration(path)}
+        return cache[key]["sha256"]
+
+    def cached_duration(path: Path) -> float:
+        st = path.stat()
+        return cache[f"{path.resolve()}|{st.st_size}|{st.st_mtime_ns}"]["duration_s"]
+
+    checks = [check_asset(a, corpus_dir, hasher=cached_hash, prober=cached_duration)
+              for a in assets]
+    if cache_path:
+        try:
+            cache_path.write_text(json.dumps(cache))
+        except OSError:
+            pass
+    receipt = {c.asset_id: c.sha256 for c in checks if c.ok}
+    return receipt, [c for c in checks if not c.ok]

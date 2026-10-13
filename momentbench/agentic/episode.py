@@ -6,9 +6,14 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from momentbench.agentic.budget import Budget, Usage
-from momentbench.agentic.environment import TOOLS, LocalCorpus, parse_submission
+from momentbench.agentic.environment import (
+    TOOLS,
+    InvalidSubmissionError,
+    LocalCorpus,
+    parse_submission,
+)
 from momentbench.agentic.model import AgentModel, ToolResult
-from momentbench.types import Moment, Query
+from momentbench.types import Moment, Query, QueryRequest
 
 SYSTEM_PROMPT = (
     "You are locating a specific moment in a corpus of videos. You cannot watch "
@@ -41,11 +46,30 @@ class Episode:
     trace: list[dict[str, Any]] = field(default_factory=list)
 
 
+class EpisodeError(RuntimeError):
+    """A failure partway through an episode; carries what was spent and done so far."""
+
+    def __init__(self, cause: BaseException, usage: Usage, trace: list[dict[str, Any]]):
+        super().__init__(f"{type(cause).__name__}: {cause}")
+        self.cause = cause
+        self.usage = usage
+        self.trace = trace
+
+
 async def run_episode(
-    model: AgentModel, corpus: LocalCorpus, query: Query, budget: Budget
+    model: AgentModel, corpus: LocalCorpus, query: Query | QueryRequest, budget: Budget
 ) -> Episode:
     usage = Usage()
     trace: list[dict[str, Any]] = []
+    try:
+        return await _episode(model, corpus, query, budget, usage, trace)
+    except Exception as e:
+        # Keep tokens already spent and the tool trace: a failed trial is still costed
+        # and inspectable (audit finding 27).
+        raise EpisodeError(e, usage, trace) from e
+
+
+async def _episode(model, corpus, query, budget, usage, trace) -> Episode:
     session = model.start(SYSTEM_PROMPT, build_task(query, budget), TOOLS)
     results: list[ToolResult] | None = None
 
@@ -61,7 +85,15 @@ async def run_episode(
         results = []
         for call in turn.tool_calls:
             if call.name == "submit_answer":
-                moments = parse_submission(call.arguments, set(corpus.assets))
+                try:
+                    moments = parse_submission(call.arguments, corpus.assets)
+                except InvalidSubmissionError as e:
+                    # Not an abstention: tell the model and let it submit again.
+                    trace.append({"tool": call.name, "arguments": call.arguments,
+                                  "is_error": True, "error": str(e)})
+                    results.append(ToolResult(call.call_id, f"Invalid submission: {e}",
+                                              is_error=True))
+                    continue
                 trace.append({"tool": call.name, "arguments": call.arguments})
                 return Episode(query.query_id, moments, usage, "submitted", trace)
             result = corpus.execute(call, budget, usage)

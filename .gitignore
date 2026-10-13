@@ -32,3 +32,6 @@ Thumbs.db
 
 # Downloaded corpus files
 data/corpus_raw/
+
+# Debug runs on a partial corpus (--partial); never results
+data/results/debug/

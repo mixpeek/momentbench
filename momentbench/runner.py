@@ -38,7 +38,8 @@ async def run_benchmark(
     async def predict_one(query: Query) -> Prediction | None:
         async with semaphore:
             try:
-                return await adapter.predict(query, corpus_assets)
+                # Adapters see only the request; gold and tier stay with the scorer.
+                return await adapter.predict(query.request(), corpus_assets)
             except Exception as e:
                 console.print(f"[red]Error on {query.query_id}: {e}[/red]")
                 return None
@@ -58,7 +59,8 @@ async def run_benchmark(
                 predictions.append(result)
             progress.advance(task)
 
-    bench_run = evaluate_run(queries, predictions, run_id=run_id)
+    # Every query is scored: one that raised has no prediction and counts as a miss.
+    bench_run = evaluate_run(queries, predictions, run_id=run_id, model_id=model_name)
     bench_run.config = {"model_kwargs": model_kwargs}
     bench_run.timestamp = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 

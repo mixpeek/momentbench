@@ -8,9 +8,10 @@ without a vendor: a lexical transcript search and raw frames.
 from __future__ import annotations
 
 import json
+import math
 import re
 import subprocess
-from collections.abc import Callable
+from collections.abc import Callable, Mapping
 from pathlib import Path
 from typing import Any
 
@@ -319,15 +320,45 @@ class LocalCorpus:
             return ToolResult(call.call_id, f"error: {e}", is_error=True)
 
 
-def parse_submission(arguments: dict[str, Any], known_assets: set[str]) -> list[Moment]:
-    """Turn a submit_answer call into Moments, dropping malformed entries."""
-    moments = []
-    for item in (arguments.get("moments") or [])[:5]:
+class InvalidSubmissionError(ValueError):
+    """A submit_answer call that is neither a valid answer nor an explicit abstention."""
+
+
+def parse_submission(arguments: Any, known_assets: Mapping[str, Any] | set[str]
+                     ) -> list[Moment]:
+    """Turn a submit_answer call into Moments.
+
+    `{"moments": []}` is an explicit abstention and returns []. Anything else must
+    contain at least one valid moment (a known asset, finite times, 0 <= t_in < t_out,
+    inside the video); otherwise InvalidSubmissionError is raised, so malformed output
+    can never be scored as a correct "no answer". Invalid entries next to valid ones are
+    dropped.
+    """
+    raw = arguments.get("moments") if isinstance(arguments, dict) else None
+    if not isinstance(raw, list):
+        raise InvalidSubmissionError("moments must be a list; submit [] if nothing matches")
+    if not raw:
+        return []
+    durations = (
+        {k: float((v or {}).get("duration_s") or "inf") for k, v in known_assets.items()}
+        if isinstance(known_assets, Mapping) else {k: math.inf for k in known_assets}
+    )
+    moments, problems = [], []
+    for item in raw[:5]:
         try:
             asset_id = str(item["asset_id"])
             t_in, t_out = float(item["t_in"]), float(item["t_out"])
         except (KeyError, TypeError, ValueError):
+            problems.append(f"malformed entry {item!r}")
             continue
-        if asset_id in known_assets and 0 <= t_in < t_out:
+        if asset_id not in durations:
+            problems.append(f"unknown asset_id {asset_id!r}")
+        elif not (math.isfinite(t_in) and math.isfinite(t_out)) or not 0 <= t_in < t_out:
+            problems.append(f"bad times {t_in}..{t_out} for {asset_id}")
+        elif t_out > durations[asset_id] + 0.5:
+            problems.append(f"{asset_id} ends at {durations[asset_id]:.1f}s, got t_out {t_out}")
+        else:
             moments.append(Moment(asset_id=asset_id, t_in=t_in, t_out=t_out))
+    if not moments:
+        raise InvalidSubmissionError("no valid moment: " + "; ".join(problems))
     return moments

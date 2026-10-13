@@ -79,16 +79,31 @@ def evaluate_run(
     predictions: list[Prediction],
     iou_threshold: float = 0.5,
     run_id: str = "default",
+    model_id: str | None = None,
 ) -> BenchmarkRun:
-    """Evaluate a full benchmark run: all predictions against all queries."""
+    """Score a run against every expected query.
+
+    Exactly one prediction per query is allowed. A query with no prediction scores
+    zero and stays in the denominator; a duplicate or unknown query id is an error,
+    because silently dropping or double-counting either one changes the score.
+    """
     query_map = {q.query_id: q for q in queries}
-    results = []
-    model_id = predictions[0].model_id if predictions else "unknown"
-
+    seen: dict[str, Prediction] = {}
     for pred in predictions:
-        query = query_map.get(pred.query_id)
-        if query is None:
-            continue
-        results.append(evaluate_prediction(query, pred, iou_threshold))
-
-    return BenchmarkRun(run_id=run_id, model_id=model_id, results=results)
+        if pred.query_id not in query_map:
+            raise ValueError(f"prediction for unknown query {pred.query_id!r}")
+        if pred.query_id in seen:
+            raise ValueError(f"more than one prediction for query {pred.query_id!r}")
+        seen[pred.query_id] = pred
+    model_id = model_id or (predictions[0].model_id if predictions else "unknown")
+    results = []
+    for query in queries:
+        pred = seen.get(query.query_id)
+        if pred is None:
+            results.append(EvalResult(query_id=query.query_id, model_id=model_id,
+                                      hit_at_1=False, hit_at_5=False, best_temporal_iou=0.0,
+                                      tier=query.tier, vertical=query.vertical, failed=True))
+        else:
+            results.append(evaluate_prediction(query, pred, iou_threshold))
+    return BenchmarkRun(run_id=run_id, model_id=model_id, results=results,
+                        predictions=list(seen.values()))
