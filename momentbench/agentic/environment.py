@@ -8,6 +8,7 @@ without a vendor: a lexical transcript search and raw frames.
 from __future__ import annotations
 
 import functools
+import hashlib
 import json
 import math
 import re
@@ -221,8 +222,17 @@ class LocalCorpus:
         frame_extractor: FrameExtractor = ffmpeg_frame,
         transcripts: dict[str, list[dict[str, Any]]] | None = None,
         transcripts_dir: Path | None = None,
+        anonymize_titles: bool = False,
     ):
         self.assets = {a["asset_id"]: a for a in assets}
+        # Titles and descriptive asset ids ("nasa-artemis-ii-launch-recap") name what a
+        # video shows. Anonymized, the model sees "video-07" and no title; answers are
+        # mapped back to the real ids before scoring. The order is a hash, not the name.
+        self.anonymize_titles = anonymize_titles
+        order = sorted(self.assets, key=lambda a: hashlib.sha256(a.encode()).hexdigest())
+        self._alias = ({real: f"video-{i:02d}" for i, real in enumerate(order, 1)}
+                       if anonymize_titles else {})
+        self._real = {shown: real for real, shown in self._alias.items()}
         self.corpus_dir = corpus_dir
         self._extract = frame_extractor
         self._transcripts = dict(transcripts or {})
@@ -258,20 +268,41 @@ class LocalCorpus:
 
     # --- tools -----------------------------------------------------------
 
+    def shown_id(self, asset_id: str) -> str:
+        """The id the model sees for a real asset id."""
+        return self._alias.get(asset_id, asset_id)
+
+    def real_id(self, shown: str) -> str:
+        """The real asset id behind an id the model used."""
+        if self._alias:
+            if shown not in self._real:
+                raise ValueError(f"unknown asset_id {shown!r}; call list_assets")
+            return self._real[shown]
+        return shown
+
+    def parse_answer(self, arguments: Mapping[str, Any]) -> list[Moment]:
+        """Validate a submit_answer call against the ids the model saw; return real ids."""
+        shown = {self.shown_id(a): meta for a, meta in self.assets.items()}
+        return [m.model_copy(update={"asset_id": self.real_id(m.asset_id)})
+                for m in parse_submission(arguments, shown)]
+
     def list_assets(self) -> str:
-        rows = [
-            {
-                "asset_id": a["asset_id"],
-                "title": a.get("title", ""),
-                "duration_s": a.get("duration_s"),
-                "has_transcript": a["asset_id"] in self._transcripts,
-            }
-            for a in self.assets.values()
-        ]
+        rows = []
+        assets = list(self.assets.values())
+        if self.anonymize_titles:  # by alias, so manifest order cannot hint at the domain
+            assets.sort(key=lambda a: self.shown_id(a["asset_id"]))
+        for a in assets:
+            row = {"asset_id": self.shown_id(a["asset_id"])}
+            if not self.anonymize_titles:
+                row["title"] = a.get("title", "")
+            row |= {"duration_s": a.get("duration_s"),
+                    "has_transcript": a["asset_id"] in self._transcripts}
+            rows.append(row)
         return json.dumps(rows)
 
     def search_transcript(self, query: str, asset_id: str | None = None, top_k: int = 5) -> str:
         terms = set(_tokens(query))
+        asset_id = self.real_id(asset_id) if asset_id else None
         scored = []
         for aid, segments in self._transcripts.items():
             if asset_id and aid != asset_id:
@@ -282,12 +313,14 @@ class LocalCorpus:
                     scored.append((overlap, aid, seg))
         scored.sort(key=lambda s: (-s[0], s[1], s[2]["t_in"]))
         hits = [
-            {"asset_id": aid, "t_in": seg["t_in"], "t_out": seg["t_out"], "text": seg["text"]}
+            {"asset_id": self.shown_id(aid), "t_in": seg["t_in"], "t_out": seg["t_out"],
+             "text": seg["text"]}
             for _, aid, seg in scored[: max(1, min(top_k, 20))]
         ]
         return json.dumps(hits)
 
     def read_transcript(self, asset_id: str, t_start: float, t_end: float) -> str:
+        asset_id = self.real_id(asset_id)
         self._require_asset(asset_id)
         t_end = min(t_end, t_start + MAX_TRANSCRIPT_WINDOW_S)
         segments = [
@@ -299,6 +332,7 @@ class LocalCorpus:
     def sample_frames(
         self, asset_id: str, t_start: float, t_end: float, num_frames: int
     ) -> tuple[str, list[bytes]]:
+        asset_id = self.real_id(asset_id)
         self._require_asset(asset_id)
         video = self.video_path(asset_id)
         if video is None:
@@ -318,7 +352,7 @@ class LocalCorpus:
         else:
             times = [t_start + (t_end - t_start) * i / (n - 1) for i in range(n)]
         frames = [self._extract(video, t) for t in times]
-        info = {"asset_id": asset_id, "frame_times_s": [round(t, 2) for t in times]}
+        info = {"asset_id": self.shown_id(asset_id), "frame_times_s": [round(t, 2) for t in times]}
         return json.dumps(info), frames
 
     def _require_asset(self, asset_id: str) -> None:

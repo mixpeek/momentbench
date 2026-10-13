@@ -39,6 +39,7 @@ MomentBench asks whether a system can find one specific moment in a large corpus
 - **Robotics domain** ([`data/queries/robotics_v0.2.json`](data/queries/robotics_v0.2.json)): NASA rovers on slopes and ramps, free-flying robots and a Mars helicopter, from test labs and from flight.
 - **Physical-event subset**: queries tagged `metadata.physical_event`, in which a machine visibly moves or makes contact (a wheel onto a ramp, a rocket leaving the pad, a capsule under drogue parachutes, a splashdown). Run only these with `--physical-only`, or `-T physical_only=true` under Inspect.
 - **Visual-only ablation**: `--no-transcripts` removes speech, so a score reflects what the model saw rather than what was said.
+- **Title control**: `--anonymize-titles` hides titles and descriptive asset ids, so a model cannot pick a video by its name.
 - **Temporal precision**: Recall@1 is reported at tIoU 0.3, 0.5 and 0.7, and tier 4 asks for ordered cause-and-effect across consecutive shots.
 
 What it does not have yet: robot manipulation (grasping and placing), egocentric footage or driving. Openly licensed robot-learning datasets are candidates for v0.3, each pending its own licence review. PRs with rights-cleared footage are welcome.

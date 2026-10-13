@@ -101,3 +101,23 @@ def test_physical_only_keeps_just_the_tagged_queries():
         for f in files for q in json.loads((REPO_ROOT / "data/queries" / f).read_text())
     )
     assert tagged and len(momentbench_agentic(physical_only=True).dataset) == tagged
+
+
+def test_task_supports_the_transcript_and_title_controls():
+    from momentbench.agentic.inspect_task import momentbench_agentic
+
+    plain = momentbench_agentic(queries="data/queries/robotics_v0.2.json")
+    controlled = momentbench_agentic(queries="data/queries/robotics_v0.2.json",
+                                     no_transcripts=True, anonymize_titles=True)
+    assert len(plain.dataset) == len(controlled.dataset) == 70
+
+
+def test_parse_answer_maps_aliases_back_when_titles_are_anonymized(tmp_path):
+    from momentbench.agentic.environment import LocalCorpus
+
+    corpus = LocalCorpus([{"asset_id": "nasa-rover", "title": "Rover", "duration_s": 60}],
+                         tmp_path, transcripts={}, anonymize_titles=True)
+    alias = corpus.shown_id("nasa-rover")
+    got = parse_answer(f'[{{"asset_id": "{alias}", "t_in": 1, "t_out": 2}}]', corpus)
+    assert [m.asset_id for m in got] == ["nasa-rover"]
+    assert parse_answer('[{"asset_id": "nasa-rover", "t_in": 1, "t_out": 2}]', corpus) is None

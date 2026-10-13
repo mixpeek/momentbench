@@ -67,6 +67,9 @@ def run(model: str, queries: str, corpus: str, output: str, concurrency: int):
               help="Run only queries tagged metadata.physical_event (machine motion or contact)")
 @click.option("--no-transcripts", is_flag=True,
               help="Visual-only ablation: no transcript is available to any tool")
+@click.option("--anonymize-titles", is_flag=True,
+              help="Control: hide titles and show opaque asset ids (video-01, ...), so the "
+              "model cannot pick a video by its name")
 @click.option("--provider", default="anthropic",
               type=click.Choice(["anthropic", "claude-code", "openai", "gemini",
                                  "openai-compatible", "baseline"]),
@@ -85,7 +88,8 @@ def run(model: str, queries: str, corpus: str, output: str, concurrency: int):
 @click.option("--output", "-o", type=click.Path(), default="data/results/agentic")
 @click.option("--concurrency", type=int, default=4)
 def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_dir: str,
-            partial: bool, physical_only: bool, no_transcripts: bool, provider: str,
+            partial: bool, physical_only: bool, no_transcripts: bool,
+            anonymize_titles: bool, provider: str,
             base_url: str | None,
             effort: str | None, trials: int, max_steps: int, max_frames: int,
             max_tool_calls: int, pricing: str, output: str, concurrency: int):
@@ -108,7 +112,8 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_
             raise click.ClickException(f"no query in {queries} is tagged physical_event")
     local = LocalCorpus(load_corpus_assets(Path(corpus)), Path(corpus_dir),
                         transcripts={} if no_transcripts else None,
-                        transcripts_dir=Path(transcripts_dir))
+                        transcripts_dir=Path(transcripts_dir),
+                        anonymize_titles=anonymize_titles)
     from momentbench.corpus.verify import verify_corpus
 
     # A reportable run needs every asset present and hash-verified: with assets missing,
@@ -150,6 +155,7 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_
         transcripts=local.transcripts, system_prompt=SYSTEM_PROMPT, tools=TOOLS,
         budget=budget.model_dump(),
         modalities="frames+transcripts" if local.has_transcripts() else "frames",
+        anonymize_titles=anonymize_titles,
         provider=provider, endpoint=base_url, pricing_as_of=pricing_as_of)
     identity["query_filter"] = "physical_only" if physical_only else None
 

@@ -43,6 +43,8 @@ Transcripts are the files in [`data/transcripts`](../data/transcripts), machine 
 
 **Visual-only ablation:** `momentbench agentic ... --no-transcripts` removes every transcript, so the model can only look. Runs record `modalities` (`frames+transcripts` or `frames`) and the results table marks frames-only rows. Use it to separate visual grounding from finding the moment through speech, which is what world-model and physical-AI evaluations usually need.
 
+**Title control:** `--anonymize-titles` hides every title and replaces asset ids with opaque aliases (`video-01`, ...), ordered by hash so the list order says nothing either. Answers are mapped back to the real ids before scoring. Without it, a model can choose the right video from a name like `nasa-viper-slope-lab-testing` before looking at a frame. Runs record `anonymize_titles`, it is part of the compatibility key, and the results table marks those rows. The Inspect task takes the same two controls as `-T no_transcripts=true` and `-T anonymize_titles=true`.
+
 **Budget per query:** 30 turns, 64 frames, 60 tool calls. The harness enforces it and tells the model the limits in the task text. A tool call past the limit returns an error, and the model must then submit.
 
 **System prompt:** fixed, in `momentbench/agentic/episode.py` (`SYSTEM_PROMPT`). It states the scoring rule and that some requests have no match.

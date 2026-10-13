@@ -130,8 +130,12 @@ def corpus_tools(corpus: LocalCorpus, budget: Budget) -> list[Tool]:
     return [list_assets(), search_transcript(), read_transcript(), sample_frames()]
 
 
-def parse_answer(completion: str, known_assets: set[str]) -> list[Moment] | None:
-    """Parse a submitted JSON array of moments. Returns None when nothing valid was submitted."""
+def parse_answer(completion: str, known_assets: set[str] | LocalCorpus) -> list[Moment] | None:
+    """Parse a submitted JSON array of moments. Returns None when nothing valid was submitted.
+
+    Given the corpus, ids are checked against what the model saw and mapped back to
+    the real ids (they differ when titles are anonymized).
+    """
     start, end = completion.find("["), completion.rfind("]")
     if start == -1 or end <= start:
         return None
@@ -142,13 +146,15 @@ def parse_answer(completion: str, known_assets: set[str]) -> list[Moment] | None
     if not isinstance(items, list):
         return None
     try:
+        if isinstance(known_assets, LocalCorpus):
+            return known_assets.parse_answer({"moments": items})
         return parse_submission({"moments": items}, known_assets)
     except InvalidSubmissionError:  # malformed output is a miss, never an abstention
         return None
 
 
 @scorer(metrics=[mean(), stderr()])
-def recall_at_1(known_assets: set[str]) -> Scorer:
+def recall_at_1(known_assets: set[str] | LocalCorpus) -> Scorer:
     async def score(state: TaskState, target: Target) -> Score:
         query = Query.model_validate(state.metadata["query"])
         parsed = parse_answer(state.output.completion or "", known_assets)
@@ -197,7 +203,7 @@ def build_task_from(queries: list[Query], corpus: LocalCorpus, budget: Budget) -
             message_limit=2 * budget.max_steps + 2,
             submit_description=SUBMIT_DESCRIPTION,
         ),
-        scorer=recall_at_1(set(corpus.assets)),
+        scorer=recall_at_1(corpus),
     )
 
 
@@ -218,6 +224,8 @@ def momentbench_agentic(
     corpus_dir: str | None = None,
     transcripts_dir: str = "data/transcripts",
     physical_only: bool = False,
+    no_transcripts: bool = False,
+    anonymize_titles: bool = False,
     max_steps: int = 30,
     max_frames: int = 64,
     max_tool_calls: int = 60,
@@ -225,7 +233,9 @@ def momentbench_agentic(
     """Corpus-scale video moment retrieval with tools. Use --epochs for repeated trials."""
     local = LocalCorpus(
         load_corpus_assets(_resolve(corpus)), _resolve(corpus_dir) if corpus_dir else None,
+        transcripts={} if no_transcripts else None,
         transcripts_dir=_resolve(transcripts_dir),
+        anonymize_titles=anonymize_titles,
     )
     budget = Budget(max_steps=max_steps, max_frames=max_frames, max_tool_calls=max_tool_calls)
     # Comma-separated, so one eval can span several query files.

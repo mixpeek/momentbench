@@ -53,6 +53,18 @@ def load_run(path: Path | str) -> AgenticRun:
     return rescore(AgenticRun.model_validate_json(Path(path).read_text()), current_queries())
 
 
+def is_standard(run: AgenticRun) -> bool:
+    """Full task: frames and transcripts, real titles. Ablations and controls are not."""
+    return run.modalities != "frames" and not run.anonymize_titles
+
+
+def condition(run: AgenticRun) -> str:
+    """Label for a non-standard run, appended to its model name ("" when standard)."""
+    tags = (["frames only"] if run.modalities == "frames" else []) + (
+        ["anonymized titles"] if run.anonymize_titles else [])
+    return f" ({', '.join(tags)})" if tags else ""
+
+
 def pct(x: float) -> str:
     return f"{100 * x:.1f}"
 
@@ -88,7 +100,7 @@ def table(paths: list[str], only: set[str] | None = None) -> str:
         lo, hi = s.recall_at_1_ci95
         cells = [
             run.model_id + (f" ({run.effort})" if run.effort else "")
-            + (" (frames only)" if run.modalities == "frames" else "")
+            + condition(run)
             + (f" ({corpus_size(run)} assets)" if corpus_size(run) != 27 else ""),
             run.harness,
             f"{s.num_queries} x {s.num_trials}",

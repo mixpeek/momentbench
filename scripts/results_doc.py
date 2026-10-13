@@ -15,7 +15,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from results_table import common_queries, current_queries, load_run, table  # noqa: E402
+from results_table import (  # noqa: E402
+    common_queries,
+    condition,
+    current_queries,
+    is_standard,
+    load_run,
+    table,
+)
 
 from momentbench.agentic.stats import (  # noqa: E402
     bootstrap_ci,
@@ -122,7 +129,7 @@ def physical_rows(paths: list[Path]) -> str:
         lo, hi = bootstrap_ci(hits)
         domain = run.trials[0].vertical
         mean_hit = sum(hits) / len(hits)
-        model = run.model_id + (" (frames only)" if run.modalities == "frames" else "")
+        model = run.model_id + condition(run)
         rows.append((domain, -mean_hit, f"| {domain} | {model} | {100 * mean_hit:.1f} "
                      f"({100 * lo:.1f} to {100 * hi:.1f}), n={len(hits)} | `{f.name}` |"))
     lines += [r[2] for r in sorted(rows)]
@@ -144,7 +151,7 @@ def split_table(paths: list[Path]) -> str:
              "False-positive rate | Abstains on positives |", "|---|---|---|---|---|"]
     for f in paths:
         run = load_run(f)
-        if run.model_id.startswith("baseline-") or run.modalities == "frames":
+        if run.model_id.startswith("baseline-") or not is_standard(run):
             continue
         per_q: dict[str, list[float]] = {}
         for t in run.trials:
@@ -171,7 +178,7 @@ def split_table(paths: list[Path]) -> str:
 def paired_table(paths: list[Path]) -> str:
     """Each model against the domain's best, on the queries both ran (paired)."""
     runs = [load_run(f) for f in paths]
-    runs = [r for r in runs if not r.model_id.startswith("baseline-") and r.modalities != "frames"]
+    runs = [r for r in runs if not r.model_id.startswith("baseline-") and is_standard(r)]
     if len(runs) < 2:
         return ""
     common = set.intersection(*[{t.query_id for t in r.trials} for r in runs])
@@ -240,7 +247,9 @@ def results_json(domains: dict[str, list[Path]]) -> dict:
             s = summarize(run.trials, run.summary.num_trials)
             out["rows"].append({
                 "domain": domain, "model": run.model_id, "harness": run.harness,
-                "modalities": run.modalities, "corpus_assets": corpus_size(run),
+                "modalities": run.modalities, "anonymize_titles": run.anonymize_titles,
+                "standard": is_standard(run), "condition": condition(run).strip(" ()"),
+                "corpus_assets": corpus_size(run),
                 "queries": s.num_queries, "trials": s.num_trials,
                 "recall_at_1": round(s.recall_at_1, 4),
                 "recall_at_1_ci95": [round(x, 4) for x in s.recall_at_1_ci95],

@@ -24,7 +24,6 @@ from momentbench.agentic.environment import (
     TOOLS,
     InvalidSubmissionError,
     LocalCorpus,
-    parse_submission,
 )
 from momentbench.agentic.episode import SYSTEM_PROMPT, Episode, build_task
 from momentbench.agentic.model import AgentModel, AgentSession, ToolCall
@@ -70,7 +69,7 @@ class ClaudeCodeAgent(AgentModel):
                 if name == "submit_answer":
                     if not submitted:
                         try:
-                            submitted["moments"] = parse_submission(args, corpus.assets)
+                            submitted["moments"] = corpus.parse_answer(args)
                         except InvalidSubmissionError as e:
                             trace.append({"tool": name, "arguments": args, "is_error": True,
                                           "error": str(e)})

@@ -28,7 +28,7 @@ from results_doc import (  # noqa: E402
     section,
     split_rows,
 )
-from results_table import load_run  # noqa: E402
+from results_table import is_standard, load_run  # noqa: E402
 
 from momentbench.agentic.run import AgenticRun  # noqa: E402
 from momentbench.agentic.stats import bootstrap_ci  # noqa: E402
@@ -88,7 +88,7 @@ def heldout_rows(heldout_runs: Path | None) -> str:
         # Held-out runs had transcripts, so compare with the full public run, not the
         # frames-only ablation of the same model.
         public_runs = {r.model_id: p for p in runs_for(vertical)
-                       if (r := load_run(p)).modalities != "frames"}
+                       if is_standard(r := load_run(p))}
         for f in sorted(heldout_runs.glob("*.json")):
             if f.name.endswith(".partial.json"):
                 continue
@@ -170,7 +170,7 @@ def main() -> None:
             if t3:
                 best_t3 = max(best_t3, 100 * sum(t3) / len(t3))
             hits = [t.hit_at_1 for t in trials]
-            if run.modalities == "frames" or not hits:
+            if not is_standard(run) or not hits:
                 continue
             r1 = 100 * sum(hits) / len(hits)
             if r1 > best_r1:

@@ -111,12 +111,12 @@ def leaderboard(results: dict) -> str:
         models = sorted([r for r in rows if not r["model"].startswith("baseline-")],
                         key=lambda r: -r["recall_at_1"])
         floors = [r for r in rows if r["model"].startswith("baseline-")]
-        best = max((r["recall_at_1"] for r in models if r["modalities"] != "frames"),
+        best = max((r["recall_at_1"] for r in models if r.get("standard", True)),
                    default=0)
         body = []
         for r in models + floors:
             floor = r["model"].startswith("baseline-")
-            name = r["model"] + (" (frames only)" if r["modalities"] == "frames" else "")
+            name = r["model"] + (f' ({r["condition"]})' if r.get("condition") else "")
             r1 = 100 * r["recall_at_1"]
             lo, hi = (100 * x for x in r["recall_at_1_ci95"])
             tiers = "".join(
@@ -130,7 +130,7 @@ def leaderboard(results: dict) -> str:
                 cost = f'${r["cost_usd_per_query"]:.3f}<sup>*</sup>'
             else:
                 cost = f'${r["cost_usd_per_query"]:.3f}'
-            strong = (not floor and r["modalities"] != "frames"
+            strong = (not floor and r.get("standard", True)
                       and abs(r["recall_at_1"] - best) < 1e-9)
             body.append(
                 f'<tr class="{"floor" if floor else ""}"><td class="model">{e(name)}</td>'
@@ -156,7 +156,7 @@ def leaderboard(results: dict) -> str:
 def cost_chart(results: dict) -> str:
     """Recall@1 against cost per query, one point per model and domain (ARC-AGI style)."""
     pts = [r for r in results["rows"] if not r["model"].startswith("baseline-")
-           and r["modalities"] != "frames" and r["cost_usd_per_query"]]
+           and r.get("standard", True) and r["cost_usd_per_query"]]
     if not pts:
         return ""
     w, h, pad, right = 680, 300, 44, 120
@@ -203,7 +203,7 @@ def heldout(runs_dir: Path | None, results: dict) -> str:
             continue
         d = run["trials"][0]["vertical"]
         pub = next((r for r in results["rows"] if r["domain"] == d and r["model"] == run["model_id"]
-                    and r["modalities"] != "frames"), None)
+                    and r.get("standard", True)), None)
         if not pub:
             continue
         hits = [float(t["hit_at_1"]) for t in run["trials"]]
@@ -248,7 +248,7 @@ def example_cards(examples: list[dict]) -> str:
 
 def page(results: dict, st: dict, examples: list[dict], held: str) -> str:
     best = {d: max((r for r in results["rows"] if r["domain"] == d
-                    and not r["model"].startswith("baseline-") and r["modalities"] != "frames"),
+                    and not r["model"].startswith("baseline-") and r.get("standard", True)),
                    key=lambda r: r["recall_at_1"]) for d in DOMAINS}
     headline_best = max(best.values(), key=lambda r: r["recall_at_1"])
     t3 = max((r["by_tier"]["3"]["recall_at_1"] for r in results["rows"]

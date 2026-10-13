@@ -437,3 +437,50 @@ class TestSubmission:  # finding 28
         r = CliRunner().invoke(main, ["submit", "-r", str(legacy_file), "--model-name", "x",
                                       "-o", str(out)])
         assert r.exit_code != 0 and "legacy-track run" in r.output
+
+
+class TestAnonymizedTitles:  # finding 16
+    def _corpus(self, tmp_path):
+        from momentbench.agentic.environment import LocalCorpus
+        from tests.test_agentic import ASSETS, TRANSCRIPTS
+
+        for a in ASSETS:
+            (tmp_path / f"{a['asset_id']}.mp4").write_bytes(b"")
+        return LocalCorpus(ASSETS, tmp_path, frame_extractor=lambda v, t: b"jpeg",
+                           transcripts=TRANSCRIPTS, anonymize_titles=True)
+
+    def test_the_model_sees_no_title_and_no_real_id(self, tmp_path):
+        corpus = self._corpus(tmp_path)
+        listed = json.loads(corpus.list_assets())
+        assert all(set(row) == {"asset_id", "duration_s", "has_transcript"} for row in listed)
+        assert all(row["asset_id"].startswith("video-") for row in listed)
+        for real in corpus.assets:
+            assert real not in corpus.list_assets()
+            assert real not in corpus.search_transcript("hearing order")
+
+    def test_real_ids_are_refused_and_aliases_work(self, tmp_path):
+        corpus = self._corpus(tmp_path)
+        alias = corpus.shown_id("v1")
+        with pytest.raises(ValueError, match="unknown asset_id"):
+            corpus.read_transcript("v1", 0, 30)
+        assert json.loads(corpus.sample_frames(alias, 0, 10, 2)[0])["asset_id"] == alias
+        with pytest.raises(InvalidSubmissionError):
+            corpus.parse_answer({"moments": [{"asset_id": "v1", "t_in": 10, "t_out": 20}]})
+
+    async def test_an_answer_by_alias_is_scored_against_the_real_gold(self, tmp_path):
+        corpus = self._corpus(tmp_path)
+        answer = ("submit_answer", {"moments": [{"asset_id": corpus.shown_id("v1"),
+                                                 "t_in": 10, "t_out": 20}]})
+        run = await run_agentic_benchmark([make_query()], ScriptedModel([[answer]]), corpus,
+                                          trials=1)
+        assert run.summary.recall_at_1 == 1.0 and run.anonymize_titles is True
+        assert run.trials[0].moments[0].asset_id == "v1"
+
+    def test_the_condition_changes_the_compatibility_key(self):
+        from momentbench.agentic.identity import build_identity
+
+        base = dict(queries_path=None, manifest_path=None, transcripts={},
+                    system_prompt="p", tools=[], budget={}, modalities="frames+transcripts",
+                    provider="x", endpoint=None, pricing_as_of=None)
+        assert (build_identity(**base)["compatibility_key"]
+                != build_identity(**base, anonymize_titles=True)["compatibility_key"])

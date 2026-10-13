@@ -61,7 +61,7 @@ def build_identity(*, queries_path: Path | None, manifest_path: Path | None,
                    transcripts: dict[str, list[dict[str, Any]]], system_prompt: str,
                    tools: list[dict[str, Any]], budget: dict[str, Any], modalities: str,
                    provider: str | None, endpoint: str | None,
-                   pricing_as_of: str | None) -> dict[str, Any]:
+                   pricing_as_of: str | None, anonymize_titles: bool = False) -> dict[str, Any]:
     task = {
         "queries_sha256": file_sha(queries_path),
         "manifest_sha256": file_sha(manifest_path),
@@ -70,6 +70,7 @@ def build_identity(*, queries_path: Path | None, manifest_path: Path | None,
         "tools_sha": text_sha(json.dumps(tools, sort_keys=True)),
         "budget": budget,
         "modalities": modalities,
+        "anonymize_titles": anonymize_titles,
     }
     return {
         **task,

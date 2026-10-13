@@ -11,7 +11,6 @@ from momentbench.agentic.environment import (
     TOOLS,
     InvalidSubmissionError,
     LocalCorpus,
-    parse_submission,
 )
 from momentbench.agentic.model import AgentModel, ToolResult
 from momentbench.types import Moment, Query, QueryRequest
@@ -90,7 +89,7 @@ async def _episode(model, corpus, query, budget, usage, trace) -> Episode:
         for call in turn.tool_calls:
             if call.name == "submit_answer":
                 try:
-                    moments = parse_submission(call.arguments, corpus.assets)
+                    moments = corpus.parse_answer(call.arguments)
                 except InvalidSubmissionError as e:
                     # Not an abstention: tell the model and let it submit again.
                     trace.append({"tool": call.name, "arguments": call.arguments,

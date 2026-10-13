@@ -106,6 +106,8 @@ class AgenticRun(BaseModel):
     harness: str = "api"
     # "frames+transcripts" (default) or "frames" for the visual-only ablation.
     modalities: str = "frames+transcripts"
+    # True when titles were hidden and asset ids replaced with opaque aliases.
+    anonymize_titles: bool = False
     # Number of assets the model could search (list_assets). 0 in runs saved before
     # this field existed.
     corpus_assets: int = 0
@@ -369,6 +371,7 @@ async def run_agentic_benchmark(
         effort=model.effort,
         harness=getattr(model, "harness", "api"),
         modalities="frames+transcripts" if corpus.has_transcripts() else "frames",
+        anonymize_titles=getattr(corpus, "anonymize_titles", False),
         corpus_assets=len(corpus.assets),
         reportable=reportable,
         corpus_receipt=corpus_receipt or {},
