@@ -33,11 +33,13 @@ def _tool_spec(tool: dict[str, Any]) -> dict[str, Any]:
 
 class OpenAICompatSession(AgentSession):
     def __init__(self, client: Any, model: str, system: str, task: str,
-                 tools: list[dict[str, Any]], extra_body: dict[str, Any] | None = None):
+                 tools: list[dict[str, Any]], extra_body: dict[str, Any] | None = None,
+                 effort: str | None = None):
         self._client = client
         self._model = model
         self._tools = [_tool_spec(t) for t in tools]
         self._extra_body = extra_body or {}
+        self._effort = effort
         self._messages: list[dict[str, Any]] = [
             {"role": "system", "content": system},
             {"role": "user", "content": task},
@@ -60,9 +62,12 @@ class OpenAICompatSession(AgentSession):
                         for j in r.images_jpeg]
             if frames:
                 self._messages.append({"role": "user", "content": frames})
+        # reasoning_effort is the Chat Completions field for --effort; sent only when
+        # set, so a server that does not support it is never handed one.
+        effort = {"reasoning_effort": self._effort} if self._effort else {}
         response = await self._client.chat.completions.create(
             model=self._model, messages=self._messages, tools=self._tools,
-            max_tokens=MAX_TOKENS, extra_body=self._extra_body or None,
+            max_tokens=MAX_TOKENS, extra_body=self._extra_body or None, **effort,
         )
         choice = response.choices[0]
         message = choice.message
@@ -89,12 +94,19 @@ class OpenAICompatSession(AgentSession):
                          model=getattr(response, "model", None))
 
 
+# Values of Chat Completions' reasoning_effort.
+EFFORTS = {"minimal", "low", "medium", "high"}
+
+
 class OpenAICompatAgent(AgentModel):
     """`base_url` defaults to $OPENAI_BASE_URL; the key to $OPENAI_API_KEY, or "none"."""
 
     def __init__(self, model: str, effort: str | None = None, base_url: str | None = None,
                  api_key: str | None = None, client: Any = None,
                  extra_body: dict[str, Any] | None = None):
+        if effort is not None and effort not in EFFORTS:
+            raise ValueError(f"openai-compatible --effort must be one of {sorted(EFFORTS)}, "
+                             f"got {effort!r}")
         self.model_id = model
         self.effort = effort
         self._base_url = base_url or os.environ.get("OPENAI_BASE_URL")
@@ -110,4 +122,4 @@ class OpenAICompatAgent(AgentModel):
                 raise ValueError("openai-compatible needs --base-url or OPENAI_BASE_URL")
             self._client = openai.AsyncOpenAI(base_url=self._base_url, api_key=self._api_key)
         return OpenAICompatSession(self._client, self.model_id, system, task, tools,
-                                   self._extra_body)
+                                   self._extra_body, self.effort)

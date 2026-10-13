@@ -93,7 +93,7 @@ Before results appear on the leaderboard:
 
 ## Evaluation on the private set
 
-The 150-query private held-out set is never distributed. To evaluate against it:
+The 163-query private held-out set is never distributed. To evaluate against it:
 
 1. Submit your model adapter code
 2. We run it against the private set on our infrastructure

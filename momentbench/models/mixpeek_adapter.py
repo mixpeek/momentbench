@@ -61,7 +61,10 @@ below is therefore a required constructor argument, not a hardcoded guess.
 
 from __future__ import annotations
 
+import os
+import subprocess
 import time
+from pathlib import Path
 from typing import Any
 
 from momentbench.models.base import ModelAdapter
@@ -72,6 +75,8 @@ from momentbench.types import Moment, Prediction, Query
 # older than this sha scores near zero from a 33-minute merge window, not
 # from retrieval quality.
 MIN_SUPPORTED_BUILD_SHA = "75b4f058bb"
+# Commit time of that sha on mixpeek main, for runs without a mixpeek checkout.
+MIN_SUPPORTED_BUILD_TIME = "2026-08-31T20:56:05Z"
 
 # TEXT queries must set this explicitly — the stage default ('query_chunks')
 # is only populated for FILE-input queries and silently returns empty
@@ -87,14 +92,29 @@ class MixpeekBuildTooOldError(RuntimeError):
     """Raised when server_build is missing or predates the moment_group fix."""
 
 
-def check_server_build(server_build: str | None) -> None:
-    """Raise unless server_build is present and at or after MIN_SUPPORTED_BUILD_SHA.
+def _is_ancestor(repo: Path, older: str, newer: str) -> bool | None:
+    """True/False from git ancestry in `repo`; None when git cannot resolve either sha."""
+    def git(*args: str) -> subprocess.CompletedProcess:
+        return subprocess.run(["git", "-C", str(repo), *args], capture_output=True,
+                              text=True, timeout=30)
 
-    Short-sha string comparison here relies on 75b4f058bb-style sha prefixes
-    sorting the same as their commit order, which git short-shas do not
-    guarantee in general (hex, not chronological). It is sufficient for the
-    single fixed point this checks against; do not generalize it into a
-    history-ordering comparison for two arbitrary shas.
+    try:
+        for sha in (older, newer):
+            if git("cat-file", "-e", f"{sha}^{{commit}}").returncode != 0:
+                return None
+        return git("merge-base", "--is-ancestor", older, newer).returncode == 0
+    except (OSError, subprocess.SubprocessError):
+        return None
+
+
+def check_server_build(server_build: str | None, server_build_time: str | None = None,
+                       mixpeek_repo: str | Path | None = None) -> str:
+    """Raise unless server_build includes the moment_group fix; return how that was checked.
+
+    Shas carry no order, so the check is git ancestry in a mixpeek checkout
+    (`mixpeek_repo` or $MIXPEEK_REPO) when one can resolve the sha. Without one,
+    `server_build_time` (the build commit's ISO time, UTC "Z" or a date) is compared
+    with the fix's commit time, and a date on the fix's own day is refused as ambiguous.
     """
     if not server_build:
         raise MixpeekBuildTooOldError(
@@ -106,13 +126,39 @@ def check_server_build(server_build: str | None) -> None:
             "units-bug score nearly reached publication before — see this "
             "module's docstring."
         )
-    if server_build != MIN_SUPPORTED_BUILD_SHA and server_build < MIN_SUPPORTED_BUILD_SHA:
+    too_old = (f"server_build={server_build!r} predates {MIN_SUPPORTED_BUILD_SHA}, "
+               "the moment_group units-bug fix (see module docstring). Re-run "
+               "against a namespace on a newer build before publishing any "
+               "number from this adapter.")
+    if server_build.startswith(MIN_SUPPORTED_BUILD_SHA):
+        return "exact"
+    repo = mixpeek_repo or os.environ.get("MIXPEEK_REPO")
+    if repo:
+        verdict = _is_ancestor(Path(repo).expanduser(), MIN_SUPPORTED_BUILD_SHA, server_build)
+        if verdict is True:
+            return "ancestry"
+        if verdict is False:
+            raise MixpeekBuildTooOldError(too_old)
+    if not server_build_time:
         raise MixpeekBuildTooOldError(
-            f"server_build={server_build!r} predates {MIN_SUPPORTED_BUILD_SHA}, "
-            "the moment_group units-bug fix (see module docstring). Re-run "
-            "against a namespace on a newer build before publishing any "
-            "number from this adapter."
-        )
+            f"cannot order server_build={server_build!r} against "
+            f"{MIN_SUPPORTED_BUILD_SHA}: git shas have no order. Set MIXPEEK_REPO to a "
+            "mixpeek checkout containing it, or pass server_build_time (its commit "
+            "time, e.g. 2026-09-02T14:00:00Z).")
+    when = server_build_time.strip()
+    if len(when) == 10:  # a bare date
+        if when == MIN_SUPPORTED_BUILD_TIME[:10]:
+            raise MixpeekBuildTooOldError(
+                f"server_build_time {when} is the day of the fix; pass the full commit "
+                "time or set MIXPEEK_REPO so the order is certain.")
+        if when < MIN_SUPPORTED_BUILD_TIME[:10]:
+            raise MixpeekBuildTooOldError(too_old)
+        return "commit-date"
+    if not when.endswith("Z"):
+        raise MixpeekBuildTooOldError("server_build_time must be UTC, ending in Z")
+    if when < MIN_SUPPORTED_BUILD_TIME:
+        raise MixpeekBuildTooOldError(too_old)
+    return "commit-time"
 
 
 def _build_stages(
@@ -161,6 +207,7 @@ class MixpeekAdapter(ModelAdapter):
         namespace: str | None = None,
         collection: str | None = None,
         server_build: str | None = None,
+        server_build_time: str | None = None,
         feature_uri: str | None = None,
         retriever_id: str | None = None,
         parent_field: str = DEFAULT_PARENT_FIELD,
@@ -175,6 +222,9 @@ class MixpeekAdapter(ModelAdapter):
                 running. Required — checked against MIN_SUPPORTED_BUILD_SHA
                 before any request is made. See module docstring for why this
                 can't be verified automatically instead.
+            server_build_time: Commit time of server_build (UTC, ending in Z),
+                used to order it against the fix when no mixpeek checkout is
+                available via $MIXPEEK_REPO.
             feature_uri: The text extractor's feature URI on the target
                 collection (e.g. "mixpeek://text_extractor@v1/embedding").
                 Required — depends on which extractor the corpus was actually
@@ -188,7 +238,7 @@ class MixpeekAdapter(ModelAdapter):
             merge_tolerance_ms: Gap tolerance for merging nearby hits into one
                 moment. Defaults to the stage's own default (2000ms/2s).
         """
-        check_server_build(server_build)
+        self._build_check = check_server_build(server_build, server_build_time)
         if not feature_uri and not retriever_id:
             raise ValueError(
                 "feature_uri (or a pre-built retriever_id) is required — see "
@@ -254,5 +304,6 @@ class MixpeekAdapter(ModelAdapter):
             ranked_moments=moments[:max_results],
             model_id=self.model_id,
             latency_ms=latency,
-            metadata={"server_build": self._server_build, "retriever_id": retriever_id},
+            metadata={"server_build": self._server_build, "build_check": self._build_check,
+                      "retriever_id": retriever_id},
         )

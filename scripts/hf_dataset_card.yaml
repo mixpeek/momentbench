@@ -26,7 +26,7 @@ task_ids: []
 
 **Corpus-scale video moment retrieval benchmark. Release v0.2.**
 
-v0.2 is about 115 minutes of footage and 620 queries, short of the design target of 75 hours. Read the status section before citing any number from it.
+v0.2 is about 117 minutes of footage and 620 queries, short of the design target of 75 hours. Read the status section before citing any number from it.
 
 ## Status (v0.2)
 
@@ -48,17 +48,17 @@ Two tracks share that scoring rule:
 
 | Tier | Name | What a query is | Published queries |
 |------|------|-----------------|-------------------|
-| 1 | Single-condition visual | One shot, described visually | 166 |
-| 2 | Cross-modal joint | Dialogue or narration together with the picture | 66 |
-| 3 | Corpus-scale hard negatives | A real shot with one detail changed; the right answer is no moment | 57 |
-| 4 | Temporal reasoning | Two or three consecutive shots in order | 63 |
+| 1 | Single-condition visual | One shot, described visually | 239 |
+| 2 | Cross-modal joint | Dialogue or narration together with the picture | 76 |
+| 3 | Corpus-scale hard negatives | A real shot with one detail changed; the right answer is no moment | 67 |
+| 4 | Temporal reasoning | Two or three consecutive shots in order | 75 |
 
 ## Files
 
-- `queries/film_v0.2.json`, `queries/aerospace_v0.2.json`: queries with gold spans, tier, vertical, split, hard negatives and provenance in `metadata` (who drafted, verified and cross-checked each one).
+- `queries/film_v0.2.json`, `queries/aerospace_v0.2.json`, `queries/robotics_v0.2.json`: queries with gold spans, tier, vertical, split, hard negatives and provenance in `metadata` (who drafted, verified and cross-checked each one).
 - `queries/sample.json`: the 4-query v0.1 seed.
 - `transcripts/*.vtt`: the transcripts every entrant's tools read.
-- `corpus_manifests/sample_manifest.json`: assets with licence, attribution, duration, sha256 and download URL.
+- `corpus_manifests/sample_manifest.json`: assets with licence, licence status, attribution, duration, sha256 and download URL.
 - Video files are fetched from their original sources with `momentbench corpus-download`, which checks each hash.
 
 ## Contamination
@@ -67,7 +67,7 @@ Every query carries the canary string `MOMENTBENCH DATA SHOULD NEVER APPEAR IN T
 
 ## Licensing
 
-The benchmark code is Apache-2.0. Each video keeps its own licence, recorded per asset in the manifest (public domain or Creative Commons Attribution). Attribution strings are in `ATTRIBUTION.md`.
+The benchmark code is Apache-2.0. Each video keeps its own licence, recorded per asset in the manifest (public domain or Creative Commons Attribution). `license_status` is `confirmed` or `pending`; two films (Spring, Agent 327) are pending confirmation from Blender Studio and are marked `is_sellable: false` until then. Attribution strings are in `ATTRIBUTION.md`.
 
 ## Maintainer
 

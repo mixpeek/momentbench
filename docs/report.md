@@ -9,8 +9,8 @@ tables.*
 MomentBench asks a system to find one specific moment, the right video and the right few
 seconds, from a text request, searching a whole corpus rather than a single clip. Version
 0.2 contains 27 hash-verified assets (117 minutes of public-domain
-or CC BY video across film, aerospace and robotics) and 457 queries in four tiers,
-of which 457 are published, 0 are held out, and
+or CC BY video across film, aerospace and robotics) and 620 queries in four tiers,
+of which 457 are published, 163 are held out, and
 38 sit in a rolling split on footage newer than current model training
 cutoffs.
 An agentic track gives a model five tools (list videos, search and read transcripts,
@@ -48,9 +48,9 @@ across systems. Licences and open questions are in [`ATTRIBUTION.md`](../ATTRIBU
 
 | Domain | Queries | Public | Rolling | Held out | Tier 1 | Tier 2 | Tier 3 | Tier 4 | Physical event |
 |---|---|---|---|---|---|---|---|---|---|
-| film | 185 | 185 | 0 | 0 | 87 | 32 | 36 | 30 | 0 |
-| aerospace | 202 | 164 | 38 | 0 | 110 | 34 | 21 | 37 | 35 |
-| robotics | 70 | 70 | 0 | 0 | 42 | 10 | 10 | 8 | 18 |
+| film | 267 | 185 | 0 | 82 | 127 | 46 | 47 | 47 | 0 |
+| aerospace | 267 | 164 | 38 | 65 | 147 | 43 | 31 | 46 | 41 |
+| robotics | 86 | 70 | 0 | 16 | 52 | 11 | 10 | 13 | 22 |
 
 Tiers: 1 single-shot visual; 2 dialogue or narration plus picture; 3 no-answer near miss; 4 ordered multi-shot event.
 Physical-event queries are those in which a machine visibly moves or makes contact.
@@ -216,7 +216,16 @@ Every query carries the canary string `MOMENTBENCH DATA SHOULD NEVER APPEAR IN T
 CORPORA` with GUID `ed215737-6cb9-44f0-a608-a8cbc6a47be8`; filter documents containing it
 out of training data.
 
-Held-out results will be added when the held-out runs complete.
+Each model was also run once on the held-out queries, whose gold spans are
+not published. A model whose public score came from training on the published answers would
+drop on held-out. The held-out run files stay with the maintainers, because their
+trials would reveal where the held-out answers are.
+
+| Domain | Model | Public R@1 (95% CI) | Held-out R@1 (95% CI) |
+|---|---|---|---|
+| film | claude-opus-5-5 | 55.1 (47.3 to 62.9), n=167 | 58.5 (47.6 to 69.5), n=82 |
+| aerospace | claude-opus-5-5 | 62.8 (55.3 to 69.7), n=188 | 61.5 (49.2 to 72.3), n=65 |
+| robotics | claude-opus-5-5 | 76.5 (66.2 to 86.8), n=68 | 68.8 (43.8 to 87.5), n=16 |
 
 ## 7. Limitations
 

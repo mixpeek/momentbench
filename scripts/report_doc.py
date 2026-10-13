@@ -1,6 +1,7 @@
 """Write docs/report.md, the MomentBench v0.2 technical report.
 
-    python scripts/report_doc.py > docs/report.md
+    python scripts/report_doc.py --heldout CORPUS/heldout --heldout-runs CORPUS/heldout/runs \
+        > docs/report.md
 
 Corpus, query and result numbers are computed here from the manifest, the query
 files and the run files in data/results/agentic-v0.2/record, so the report cannot
@@ -139,11 +140,16 @@ def reliability_text() -> str:
 
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    p.add_argument("--heldout", type=Path, default=None,
+    # Both are required: without them the report would state "0 held out" and drop
+    # the held-out results, which reads as a fact rather than as missing input.
+    p.add_argument("--heldout", type=Path, required=True,
                    help="directory holding the *_held_out.json query files")
-    p.add_argument("--heldout-runs", type=Path, default=None,
+    p.add_argument("--heldout-runs", type=Path, required=True,
                    help="directory holding agentic runs on the held-out queries")
     args = p.parse_args()
+    for d in (args.heldout, args.heldout_runs):
+        if not d.is_dir():
+            p.error(f"{d} is not a directory")
 
     corpus, ct = corpus_table()
     reliability = reliability_text()

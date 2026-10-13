@@ -154,19 +154,24 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_
     identity["query_filter"] = "physical_only" if physical_only else None
 
     try:
+        agent = (
+            OpenAICompatAgent(model=model, effort=effort, base_url=base_url)
+            if provider == "openai-compatible" else {
+                "anthropic": AnthropicAgent,
+                "claude-code": ClaudeCodeAgent,
+                "openai": OpenAIAgent,
+                "gemini": GeminiAgent,
+                "baseline": BaselineAgent,
+            }[provider](model=model, effort=effort)
+        )
+    except ValueError as e:
+        raise click.ClickException(str(e)) from e
+
+    try:
         result = asyncio.run(
             run_agentic_benchmark(
                 queries=runnable,
-                model=(
-                    OpenAICompatAgent(model=model, effort=effort, base_url=base_url)
-                    if provider == "openai-compatible" else {
-                        "anthropic": AnthropicAgent,
-                        "claude-code": ClaudeCodeAgent,
-                        "openai": OpenAIAgent,
-                        "gemini": GeminiAgent,
-                        "baseline": BaselineAgent,
-                    }[provider](model=model, effort=effort)
-                ),
+                model=agent,
                 corpus=local,
                 trials=trials,
                 budget=budget,

@@ -162,11 +162,20 @@ async def test_openai_compatible_round_trip_through_the_real_sdk(tmp_path):
                          frame_extractor=lambda video, t: b"jpeg", transcripts={})
     query = Query(query_id="q", text="x", tier=QueryTier.SINGLE_VISUAL, vertical="film",
                   gold_moments=[Moment(asset_id="v1", t_in=10, t_out=20)])
-    agent = OpenAICompatAgent(model="qwen-vl", client=client)
+    agent = OpenAICompatAgent(model="qwen-vl", client=client, effort="high")
     episode = await run_episode(agent, corpus, query, Budget())
 
     assert episode.outcome == "submitted" and episode.usage.frames == 2
+    assert episode.resolved_model == "qwen-vl"
     assert requests[0]["tools"][0]["type"] == "function"
+    # --effort reaches the server (audit finding 30); unset, the field is not sent.
+    assert all(r["reasoning_effort"] == "high" for r in requests)
+    requests.clear()
+    await run_episode(OpenAICompatAgent(model="qwen-vl", client=client), corpus, query,
+                      Budget())
+    assert requests and all("reasoning_effort" not in r for r in requests)
+    with pytest.raises(ValueError, match="--effort"):
+        OpenAICompatAgent(model="qwen-vl", client=client, effort="max")
     second = requests[1]["messages"]
     assert second[-2]["role"] == "tool" and second[-2]["tool_call_id"] == "c1"
     frames = second[-1]["content"]

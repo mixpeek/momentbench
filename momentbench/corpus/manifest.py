@@ -9,6 +9,11 @@ from typing import Any
 
 from momentbench.corpus.sources import LicenseType
 
+LICENSE_STATUSES = {"confirmed", "pending"}
+FIELDS = ("asset_id", "source_id", "title", "vertical", "license", "license_status",
+          "license_note", "attribution", "duration_s", "source_url", "is_sellable",
+          "storage_path", "mixpeek_asset_id", "metadata")
+
 
 @dataclass
 class ManifestEntry:
@@ -24,6 +29,19 @@ class ManifestEntry:
     storage_path: str | None = None
     mixpeek_asset_id: str | None = None
     metadata: dict[str, Any] = field(default_factory=dict)
+    # "confirmed" or "pending". A pending licence is never sellable.
+    license_status: str = "confirmed"
+    license_note: str | None = None
+    # Every other key in the manifest entry (the `file` block with its sha256 and
+    # download URL, among others), kept so load then save loses nothing.
+    extra: dict[str, Any] = field(default_factory=dict)
+
+    def __post_init__(self) -> None:
+        if self.license_status not in LICENSE_STATUSES:
+            raise ValueError(f"{self.asset_id}: license_status must be one of "
+                             f"{sorted(LICENSE_STATUSES)}, got {self.license_status!r}")
+        if self.license_status == "pending" and self.is_sellable:
+            raise ValueError(f"{self.asset_id}: a pending licence cannot be sellable")
 
 
 @dataclass
@@ -51,22 +69,13 @@ class CorpusManifest:
     def save(self, path: Path) -> None:
         data = []
         for e in self.entries:
-            data.append({
-                "asset_id": e.asset_id,
-                "source_id": e.source_id,
-                "title": e.title,
-                "vertical": e.vertical,
-                "license": e.license.value,
-                "attribution": e.attribution,
-                "duration_s": e.duration_s,
-                "source_url": e.source_url,
-                "is_sellable": e.is_sellable,
-                "storage_path": e.storage_path,
-                "mixpeek_asset_id": e.mixpeek_asset_id,
-                "metadata": e.metadata,
-            })
+            item = {k: getattr(e, k) for k in FIELDS}
+            item["license"] = e.license.value
+            if item["license_note"] is None:
+                del item["license_note"]
+            data.append({**item, **e.extra})
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps(data, indent=2))
+        path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
 
     def generate_attribution_md(self) -> str:
         """Generate ATTRIBUTION.md content."""
@@ -91,18 +100,9 @@ def load_manifest(path: Path) -> CorpusManifest:
     data = json.loads(path.read_text())
     manifest = CorpusManifest()
     for item in data:
+        known = {k: item[k] for k in FIELDS if k in item}
+        known["license"] = LicenseType(item["license"])
+        known.setdefault("metadata", {})
         manifest.add(ManifestEntry(
-            asset_id=item["asset_id"],
-            source_id=item["source_id"],
-            title=item["title"],
-            vertical=item["vertical"],
-            license=LicenseType(item["license"]),
-            attribution=item["attribution"],
-            duration_s=item["duration_s"],
-            source_url=item["source_url"],
-            is_sellable=item["is_sellable"],
-            storage_path=item.get("storage_path"),
-            mixpeek_asset_id=item.get("mixpeek_asset_id"),
-            metadata=item.get("metadata", {}),
-        ))
+            **known, extra={k: v for k, v in item.items() if k not in FIELDS}))
     return manifest
