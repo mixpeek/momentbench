@@ -182,16 +182,14 @@ Install OSS dependencies: `pip install -e ".[oss]"`
 
 ## Submit Results
 
-We welcome external submissions. See [`SUBMISSION.md`](SUBMISSION.md) for details.
+We welcome external submissions. Run the agentic track on a whole query file, package the run, and open a PR adding the directory it writes under `submissions/`. [`SUBMISSION.md`](SUBMISSION.md) has the steps and what is checked.
 
 ```bash
 momentbench submit \
-  --results data/results/your-run.json \
+  --results data/results/agentic/agentic-<model>-<id>.json \
   --model-name "Your Model" \
   --contact you@example.com
 ```
-
-Or open a PR adding your results to [`submissions/`](submissions/).
 
 ## Run Your Own Footage
 

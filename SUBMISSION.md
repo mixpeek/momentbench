@@ -2,112 +2,80 @@
 
 We welcome external submissions. MomentBench is only credible if teams beyond Mixpeek run models against it, find weaknesses, and push the state of the art.
 
-## How to submit
+There is one route onto the leaderboard: an agentic-track run on a whole domain's query file, on the full hash-verified corpus.
 
-### 1. Run the benchmark
+## 1. Get the corpus
 
 ```bash
 pip install momentbench
-
-# Using a built-in adapter
-momentbench run <model-name> \
-  -q data/queries/sample.json \
-  -c data/corpus_manifests/sample_manifest.json \
-  -o data/results/
-
-# Using a custom adapter (see below)
-momentbench run my-model \
-  -q data/queries/sample.json \
-  -c data/corpus_manifests/sample_manifest.json \
-  -o data/results/
+momentbench corpus-download -m data/corpus_manifests/sample_manifest.json --corpus-dir corpus/
 ```
 
-### 2. Submit via CLI
+`corpus-download` checks every file against the sha256 in the manifest.
+
+## 2. Run the agentic track
+
+```bash
+momentbench agentic <model> --provider <provider> \
+  -q data/queries/robotics_v0.2.json \
+  -c data/corpus_manifests/sample_manifest.json \
+  --corpus-dir corpus/ -o data/results/agentic/
+```
+
+Run every query in the file (the default). [`docs/integrating.md`](docs/integrating.md) covers each provider (`anthropic`, `openai`, `gemini`, `openai-compatible` for vLLM, SGLang or any OpenAI-compatible server) and how to plug in your own agent or loop.
+
+The run file records what it ran: repo commit, hashes of the queries, manifest, transcripts, prompt and tools, the budget, the provider and the model version it reported, and a compatibility key. A run on an incomplete corpus is refused unless you pass `--partial`, and a `--partial` run is marked not reportable and cannot be submitted.
+
+## 3. Package it
 
 ```bash
 momentbench submit \
-  --results data/results/your-run.json \
+  --results data/results/agentic/agentic-<model>-<id>.json \
   --model-name "Your Model Name" \
   --model-description "Brief description of approach" \
   --contact your@email.com
 ```
 
-### 3. Or submit via pull request
+`submit` rescores the run against the query file as it stands and refuses a run that is not reportable or skipped any query. It writes `submissions/<model-name>/` with the run file and a `submission.json` holding the scores, the compatibility key and the run identity.
 
-1. Fork the repo
-2. Add your results file to `submissions/`
-3. Open a PR with:
-   - Results JSON file
-   - Brief description of your model/approach
-   - Whether you want your submission public or anonymous until leaderboard update
+## 4. Open a pull request
 
-## Results format
+Add the `submissions/<model-name>/` directory and say in the PR whether the entry should be public now or anonymous until the next leaderboard update. Maintainers check the compatibility key against the current release, move the run into `data/results/agentic-v0.2/record/`, and regenerate `docs/results.md` and momentbench.com.
 
-Your results JSON must follow the `BenchmarkRun` schema:
+To see how your run ranks before submitting:
 
-```json
-{
-  "run_id": "your-model-20250712",
-  "model_id": "your-model-name",
-  "results": [
-    {
-      "query_id": "q-film-001",
-      "model_id": "your-model-name",
-      "hit_at_1": true,
-      "hit_at_5": true,
-      "best_temporal_iou": 0.82,
-      "tier": 1,
-      "vertical": "film"
-    }
-  ],
-  "config": {},
-  "timestamp": "2025-07-12T00:00:00Z"
-}
+```bash
+momentbench leaderboard data/results/agentic/
 ```
-
-## Writing a custom adapter
-
-```python
-from momentbench.models.base import ModelAdapter
-from momentbench.models.registry import register_adapter
-
-@register_adapter("my-model")
-class MyModelAdapter(ModelAdapter):
-    model_id = "my-model-v1"
-
-    async def predict(self, query, corpus_assets, max_results=5):
-        # Your retrieval logic here
-        # Return a Prediction with ranked_moments
-        ...
-```
-
-Save this in `momentbench/models/my_model.py` and it will be auto-discovered.
 
 ## What we verify
 
-Before results appear on the leaderboard:
-
-1. **Format check** — results JSON parses and covers all public queries
-2. **Reproducibility** — we may re-run your adapter if the code is included
-3. **No query-set overfitting** — the private held-out set guards against this; we may run your model against it via our scoring endpoint
+1. **Reportable and complete:** the run covers every query in the file and its corpus receipt lists every asset.
+2. **Same benchmark:** the compatibility key matches runs on the current release (same queries, corpus, transcripts, prompt, tools, budget and modalities).
+3. **Reproducibility:** we may rerun the model, so include how to call it.
+4. **No query-set overfitting:** see the held-out set below.
 
 ## Evaluation on the private set
 
 The 163-query private held-out set is never distributed. To evaluate against it:
 
-1. Submit your model adapter code
-2. We run it against the private set on our infrastructure
-3. Private-set scores are reported alongside public-set scores on the leaderboard
+1. Tell us how to call your model (an endpoint, or an agent class like `examples/custom_agent.py`).
+2. We run it on the held-out queries with the same harness and budget.
+3. Held-out scores are reported next to the public-set scores.
 
 This prevents contamination while letting every submission be scored on both sets.
 
+## The legacy track
+
+`momentbench run <adapter>` is the older single-call track. Its adapters see titles and durations, or return whole videos (see each adapter's `input_kind`), so its scores do not measure multimodal moment retrieval and are not ranked. `momentbench submit` refuses them.
+
 ## What makes a good submission
 
-- Novel approach or architecture (not just a parameter sweep)
-- Reproducible from the adapter code
-- Brief write-up of what the approach does differently
+- A model or system evaluated on all three domains, or a clear reason for one
+- Reproducible from what you send us
+- A short write-up of what the approach does differently
 
-We especially welcome submissions from teams working on video-language models, temporal grounding, or multimodal retrieval — including approaches that use decomposition, indexing, or retrieval-augmented methods.
+We especially welcome submissions from teams working on video-language models, temporal grounding, world models and multimodal retrieval.
 
 ## Questions?
 

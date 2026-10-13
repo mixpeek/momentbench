@@ -53,7 +53,7 @@ The harness owns the tools, the budget and scoring, so a custom agent cannot acc
 
 ## 4. A retrieval system that ranks moments directly
 
-Embedding and video-search systems that do not use tools can submit ranked moments per query in the `Prediction` schema (`momentbench/types.py`) and score them with `momentbench.eval.scoring.evaluate_prediction`. The legacy adapters in `momentbench/models/` (`momentbench run <adapter>`) are examples of this track.
+Embedding and video-search systems that do not use tools can produce ranked moments per query in the `Prediction` schema (`momentbench/types.py`) and score them with `momentbench.eval.scoring.evaluate_run`, which counts a query with no prediction as a miss. The legacy adapters in `momentbench/models/` (`momentbench run <adapter>`) are examples. This track is not ranked: to put such a system on the leaderboard, wrap it as an agent whose tools call your index (section 3).
 
 ## Reading your result
 
@@ -65,4 +65,4 @@ Compare against the floors in [`results.md`](results.md): `baseline-random` is c
 
 ## Submitting
 
-Open a pull request adding your run file to `data/results/agentic-v0.2/record/` and a row will appear in `docs/results.md` the next time it is generated. Held-out queries are scored by the maintainers on request; see [`SUBMISSION.md`](../SUBMISSION.md).
+Package the run with `momentbench submit --results <run file> --model-name "..."` and open a pull request adding the `submissions/<model-name>/` directory it writes. [`SUBMISSION.md`](../SUBMISSION.md) has the steps, what is checked, and how held-out queries are scored.

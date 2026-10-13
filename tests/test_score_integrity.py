@@ -378,3 +378,62 @@ class TestFrameSampling:  # finding 26
         await run_agentic_benchmark(queries, ScriptedModel(script), corpus, trials=1,
                                     max_concurrency=4)
         assert time.perf_counter() - start < 1.2  # serial would take 1.6 s
+
+
+class TestSubmission:  # finding 28
+    async def _run(self, tmp_path, queries, reportable=True):
+        script = [[("submit_answer", {"moments": []})]]
+        return await run_agentic_benchmark(queries, ScriptedModel(script), make_corpus(tmp_path),
+                                           trials=1, reportable=reportable)
+
+    def _file(self, tmp_path, queries):
+        path = tmp_path / "q_v0.2.json"
+        path.write_text(json.dumps([q.model_dump(mode="json") for q in queries]))
+        return path
+
+    async def test_a_complete_reportable_run_is_packaged(self, tmp_path):
+        from momentbench.submission import agentic_entry
+
+        qs = [NO_ANSWER, make_query()]
+        entry = agentic_entry(await self._run(tmp_path, qs), self._file(tmp_path, qs))
+        assert entry["track"] == "agentic" and entry["num_queries"] == 2
+        assert entry["recall_at_1"] == 0.5
+
+    async def test_incomplete_or_partial_runs_are_refused(self, tmp_path):
+        from momentbench.submission import SubmissionError, agentic_entry
+
+        qs = [NO_ANSWER, make_query()]
+        path = self._file(tmp_path, qs)
+        with pytest.raises(SubmissionError, match="covers 1 of 2"):
+            agentic_entry(await self._run(tmp_path, [NO_ANSWER]), path)
+        with pytest.raises(SubmissionError, match="not reportable"):
+            agentic_entry(await self._run(tmp_path, qs, reportable=False), path)
+        # Listing older runs records coverage instead of refusing.
+        entry = agentic_entry(await self._run(tmp_path, [NO_ANSWER]), path,
+                              require_complete=False)
+        assert (entry["num_queries"], entry["queries_in_file"]) == (1, 2)
+
+    async def test_cli_submit_and_leaderboard_take_agentic_runs(self, tmp_path):
+        from momentbench.cli import main
+
+        qs = [NO_ANSWER, make_query()]
+        qfile = self._file(tmp_path, qs)
+        runs = tmp_path / "runs"
+        run = await self._run(tmp_path, qs)
+        runs.mkdir()
+        run_file = runs / "run.json"
+        run_file.write_text(run.model_dump_json())
+        out = tmp_path / "subs"
+        r = CliRunner().invoke(main, ["submit", "-r", str(run_file), "-q", str(qfile),
+                                      "--model-name", "Floor", "-o", str(out)])
+        assert r.exit_code == 0, r.output
+        meta = json.loads((out / "floor" / "submission.json").read_text())
+        assert meta["recall_at_1"] == 0.5 and meta["compatibility_key"] is None
+        assert (out / "floor" / "run.json").exists()
+
+        legacy = evaluate_run([q("a")], [pred("a")])
+        legacy_file = tmp_path / "legacy.json"
+        legacy_file.write_text(legacy.model_dump_json())
+        r = CliRunner().invoke(main, ["submit", "-r", str(legacy_file), "--model-name", "x",
+                                      "-o", str(out)])
+        assert r.exit_code != 0 and "legacy-track run" in r.output

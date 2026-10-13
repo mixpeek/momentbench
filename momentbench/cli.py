@@ -260,40 +260,76 @@ def corpus_verify(manifest: str, corpus_dir: str):
 @main.command()
 @click.argument("results_dir", type=click.Path(exists=True))
 def leaderboard(results_dir: str):
-    """Display leaderboard from saved results."""
+    """Rank the runs in a directory: agentic runs per query file, legacy runs apart."""
     from rich.table import Table
 
+    from momentbench.agentic.run import AgenticRun
     from momentbench.eval.metrics import compute_aggregate
-    from momentbench.runner import load_run
+    from momentbench.submission import (
+        SubmissionError,
+        agentic_entry,
+        find_queries_file,
+        load_any_run,
+    )
 
-    results_path = Path(results_dir)
-    runs = [load_run(f) for f in results_path.glob("*.json")]
-
-    if not runs:
+    files = sorted(Path(results_dir).glob("*.json"))
+    if not files:
         console.print("[yellow]No results found.[/yellow]")
         return
 
-    table = Table(title="MomentBench Leaderboard")
-    table.add_column("Rank", justify="right")
-    table.add_column("Model")
-    table.add_column("R@1", justify="right")
-    table.add_column("R@5", justify="right")
-    table.add_column("mIoU", justify="right")
-    table.add_column("Queries", justify="right")
+    def pct(x):
+        return "n/a" if x is None else f"{100 * x:.1f}"
 
-    scored = []
-    for r in runs:
-        m = compute_aggregate(r)
-        scored.append((r.model_id, m))
+    boards: dict[str, list[dict]] = {}
+    legacy, excluded = [], []
+    for f in files:
+        try:
+            run = load_any_run(f)
+        except ValueError as e:
+            excluded.append((f.name, f"unreadable: {str(e).splitlines()[0]}"))
+            continue
+        if isinstance(run, AgenticRun):
+            try:
+                entry = agentic_entry(run, find_queries_file(run), require_complete=False)
+            except SubmissionError as e:
+                excluded.append((f.name, str(e)))
+                continue
+            boards.setdefault(entry["queries_file"], []).append({**entry, "file": f.name})
+        else:
+            legacy.append((run, compute_aggregate(run)))
 
-    scored.sort(key=lambda x: x[1].recall_at_1, reverse=True)
-    for i, (model_id, m) in enumerate(scored, 1):
-        table.add_row(
-            str(i), model_id, f"{m.recall_at_1:.1%}", f"{m.recall_at_5:.1%}",
-            f"{m.mean_temporal_iou:.3f}", str(m.num_queries),
-        )
+    for name, entries in sorted(boards.items()):
+        table = Table(title=f"MomentBench agentic track: {name}")
+        for col in ("Rank", "Model", "R@1 (95% CI)", "Positive R@1", "No-answer acc",
+                    "Cost/query", "Coverage x trials", "Run"):
+            table.add_column(col, justify="right" if col not in ("Model", "Run") else "left")
+        entries.sort(key=lambda e: e["recall_at_1"], reverse=True)
+        for i, e in enumerate(entries, 1):
+            lo, hi = e["recall_at_1_ci95"]
+            cost = e["mean_cost_usd_per_query"]
+            table.add_row(str(i), e["model_id"],
+                          f"{pct(e['recall_at_1'])} ({pct(lo)} to {pct(hi)})",
+                          pct(e["positive_recall_at_1"]), pct(e["no_answer_accuracy"]),
+                          "n/a" if cost is None else f"${cost:.3f}",
+                          f"{e['num_queries']}/{e['queries_in_file']} x {e['num_trials']}",
+                          e["file"])
+        console.print(table)
+        if any(e["num_queries"] < e["queries_in_file"] for e in entries):
+            console.print("Coverage below the file size: the run predates queries added or "
+                          "reworded since, and is scored on the queries it answered. "
+                          "docs/results.md compares runs on their common queries.")
 
-    console.print(table)
+    if legacy:
+        table = Table(title="Legacy track (single call, not comparable with the agentic track)")
+        for col in ("Model", "Input kind", "R@1", "Queries"):
+            table.add_column(col)
+        for run, m in sorted(legacy, key=lambda x: x[1].recall_at_1, reverse=True):
+            table.add_row(run.model_id, run.config.get("input_kind", "unrecorded"),
+                          f"{m.recall_at_1:.1%}", str(m.num_queries))
+        console.print(table)
+
+    for name, reason in excluded:
+        console.print(f"[yellow]Not ranked: {name}: {reason}[/yellow]")
 
 
 @main.command()
@@ -340,69 +376,56 @@ def attribution(manifest: str, output: str):
 
 
 @main.command()
-@click.option("--results", "-r", type=click.Path(exists=True), required=True)
+@click.option("--results", "-r", type=click.Path(exists=True), required=True,
+              help="An agentic run file written by `momentbench agentic`")
+@click.option("--queries", "-q", type=click.Path(exists=True), default=None,
+              help="Query file the run answered (found in data/queries when omitted)")
 @click.option("--model-name", required=True, help="Display name for the leaderboard")
 @click.option("--model-description", default="", help="Brief description of approach")
 @click.option("--contact", default="", help="Contact email for verification")
 @click.option("--output-dir", "-o", type=click.Path(), default="submissions")
-def submit(results: str, model_name: str, model_description: str, contact: str, output_dir: str):
-    """Package a benchmark run for leaderboard submission."""
+def submit(results: str, queries: str | None, model_name: str, model_description: str,
+           contact: str, output_dir: str):
+    """Package an agentic run for leaderboard submission."""
     import json
     import shutil
 
-    from momentbench.eval.metrics import compute_aggregate, compute_by_tier
-    from momentbench.runner import load_run
+    from momentbench.agentic.run import AgenticRun
+    from momentbench.submission import (
+        SubmissionError,
+        agentic_entry,
+        find_queries_file,
+        load_any_run,
+    )
 
-    run = load_run(Path(results))
-    overall = compute_aggregate(run)
-    by_tier = compute_by_tier(run)
-
-    if overall.num_queries == 0:
-        console.print("[red]No results found in the run file.[/red]")
-        return
-
-    out = Path(output_dir)
-    out.mkdir(parents=True, exist_ok=True)
+    run = load_any_run(Path(results))
+    if not isinstance(run, AgenticRun):
+        raise click.ClickException(
+            "this is a legacy-track run. The leaderboard takes agentic runs: run "
+            "`momentbench agentic` and submit its run file (see SUBMISSION.md).")
+    try:
+        queries_path = Path(queries) if queries else find_queries_file(run)
+        entry = agentic_entry(run, queries_path)
+    except SubmissionError as e:
+        raise click.ClickException(str(e)) from e
 
     slug = model_name.lower().replace(" ", "-").replace("/", "-")
-    submission_dir = out / slug
+    submission_dir = Path(output_dir) / slug
     submission_dir.mkdir(parents=True, exist_ok=True)
+    shutil.copy(results, submission_dir / "run.json")
+    meta = {"model_name": model_name, "model_description": model_description,
+            "contact": contact, **entry}
+    (submission_dir / "submission.json").write_text(json.dumps(meta, indent=2) + "\n")
 
-    shutil.copy(results, submission_dir / "results.json")
-
-    meta = {
-        "model_name": model_name,
-        "model_description": model_description,
-        "contact": contact,
-        "run_id": run.run_id,
-        "model_id": run.model_id,
-        "num_queries": overall.num_queries,
-        "recall_at_1": round(overall.recall_at_1, 4),
-        "recall_at_5": round(overall.recall_at_5, 4),
-        "mean_temporal_iou": round(overall.mean_temporal_iou, 4),
-        "by_tier": {
-            f"tier_{k.value}": {
-                "recall_at_1": round(v.recall_at_1, 4),
-                "recall_at_5": round(v.recall_at_5, 4),
-                "mean_temporal_iou": round(v.mean_temporal_iou, 4),
-                "num_queries": v.num_queries,
-            }
-            for k, v in by_tier.items()
-        },
-        "timestamp": run.timestamp,
-    }
-    (submission_dir / "submission.json").write_text(json.dumps(meta, indent=2))
-
+    lo, hi = entry["recall_at_1_ci95"]
     console.print(f"\n[bold]Submission packaged:[/bold] {submission_dir}/")
-    console.print(f"  Model: {model_name}")
-    console.print(f"  Recall@1: {overall.recall_at_1:.1%}")
-    console.print(f"  Recall@5: {overall.recall_at_5:.1%}")
-    console.print(f"  Mean tIoU: {overall.mean_temporal_iou:.3f}")
-    console.print(f"  Queries: {overall.num_queries}")
-    console.print(
-        "\nTo submit: open a PR adding this directory to the repo, "
-        "or email the submission.json to team@mixpeek.com"
-    )
+    console.print(f"  Model: {model_name} ({entry['model_id']})")
+    console.print(f"  Queries: {entry['queries_file']}, {entry['num_queries']} x "
+                  f"{entry['num_trials']} trials")
+    console.print(f"  Recall@1: {entry['recall_at_1']:.1%} ({lo:.1%} to {hi:.1%})")
+    console.print(f"  Compatibility key: {entry['compatibility_key']}")
+    console.print("\nTo submit: open a PR adding this directory under submissions/ "
+                  "(see SUBMISSION.md).")
 
 
 if __name__ == "__main__":
