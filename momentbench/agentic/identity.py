@@ -1,8 +1,9 @@
 """What a run was, precisely enough to tell whether two runs can be compared.
 
 Recorded on every AgenticRun (audit finding 24). `compatibility_key` hashes the inputs
-that define the task (query text, corpus, transcripts, prompt, tools, budget,
-modalities); two runs with the same key ran the same benchmark.
+that define the task (the selected queries and their text, the verified corpus
+bytes, transcripts, prompt, tools, budget and conditions); two runs with the same
+key ran the same benchmark.
 """
 
 from __future__ import annotations
@@ -57,14 +58,23 @@ def package_versions() -> dict[str, str]:
     return out
 
 
-def build_identity(*, queries_path: Path | None, manifest_path: Path | None,
-                   transcripts: dict[str, list[dict[str, Any]]], system_prompt: str,
-                   tools: list[dict[str, Any]], budget: dict[str, Any], modalities: str,
-                   provider: str | None, endpoint: str | None,
-                   pricing_as_of: str | None, anonymize_titles: bool = False) -> dict[str, Any]:
+def queries_sha(queries: list[Any]) -> str:
+    """Hash of exactly the queries a run was given: ids and request text, in id order."""
+    rows = sorted((q.query_id, q.text) for q in queries)
+    return text_sha(json.dumps(rows))
+
+
+def task_identity(*, queries: list[Any], receipt: dict[str, str],
+                  transcripts: dict[str, list[dict[str, Any]]], system_prompt: str,
+                  tools: list[dict[str, Any]], budget: dict[str, Any], modalities: str,
+                  anonymize_titles: bool = False) -> dict[str, Any]:
+    """What defines the task. Two runs with the same compatibility_key ran the same
+    benchmark: the same selected queries and wording, the same verified video bytes,
+    transcripts, prompt, tools, budget and conditions."""
     task = {
-        "queries_sha256": file_sha(queries_path),
-        "manifest_sha256": file_sha(manifest_path),
+        "queries_sha": queries_sha(queries),
+        "num_queries": len(queries),
+        "corpus_sha": text_sha(json.dumps(sorted(receipt.items()))),
         "transcripts_sha": transcripts_sha(transcripts),
         "system_prompt_sha": text_sha(system_prompt),
         "tools_sha": text_sha(json.dumps(tools, sort_keys=True)),
@@ -72,9 +82,18 @@ def build_identity(*, queries_path: Path | None, manifest_path: Path | None,
         "modalities": modalities,
         "anonymize_titles": anonymize_titles,
     }
+    return {**task, "compatibility_key": text_sha(json.dumps(task, sort_keys=True))}
+
+
+def environment_identity(*, queries_path: Path | None = None,
+                         manifest_path: Path | None = None, provider: str | None = None,
+                         endpoint: str | None = None, pricing_as_of: str | None = None,
+                         query_filter: str | None = None) -> dict[str, Any]:
+    """Where a run came from: source files, provider, code and packages."""
     return {
-        **task,
-        "compatibility_key": text_sha(json.dumps(task, sort_keys=True)),
+        "queries_file_sha256": file_sha(queries_path),
+        "manifest_sha256": file_sha(manifest_path),
+        "query_filter": query_filter,
         "provider": provider,
         "endpoint": endpoint,
         "pricing_as_of": pricing_as_of,

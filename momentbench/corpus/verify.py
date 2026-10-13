@@ -50,11 +50,21 @@ def find_video(asset_id: str, corpus_dir: Path) -> Path | None:
     return None
 
 
+def resolve_video(asset: dict[str, Any], corpus_dir: Path | None) -> Path | None:
+    """The one file an asset plays from: its storage_path if that exists, else
+    <corpus_dir>/<asset_id>.<suffix>. Verification and frame extraction both use this,
+    so the bytes that were hashed are the bytes that are shown."""
+    stored = asset.get("storage_path")
+    if stored and Path(stored).exists():
+        return Path(stored)
+    return find_video(asset["asset_id"], corpus_dir) if corpus_dir else None
+
+
 def check_asset(
     asset: dict[str, Any], corpus_dir: Path, hasher=sha256_file, prober=probe_duration
 ) -> AssetCheck:
     asset_id = asset["asset_id"]
-    path = find_video(asset_id, corpus_dir)
+    path = resolve_video(asset, corpus_dir)
     if path is None:
         return AssetCheck(asset_id, None, problems=("no file on disk",))
     digest, duration = hasher(path), prober(path)
@@ -106,3 +116,13 @@ def verify_corpus(
             pass
     receipt = {c.asset_id: c.sha256 for c in checks if c.ok}
     return receipt, [c for c in checks if not c.ok]
+
+
+def verify_checks(assets: list[dict[str, Any]], corpus_dir: Path,
+                  cache_path: Path | None = None) -> list[AssetCheck]:
+    """Like verify_corpus, but every AssetCheck, with the path that was hashed."""
+    receipt, failures = verify_corpus(assets, corpus_dir, cache_path)
+    bad = {c.asset_id for c in failures}
+    ok = [AssetCheck(a["asset_id"], resolve_video(a, corpus_dir), receipt[a["asset_id"]])
+          for a in assets if a["asset_id"] not in bad]
+    return ok + failures

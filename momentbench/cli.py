@@ -98,35 +98,32 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_
     from momentbench.agentic.baselines import BaselineAgent
     from momentbench.agentic.budget import Budget, load_pricing
     from momentbench.agentic.claude_code_model import ClaudeCodeAgent
-    from momentbench.agentic.environment import LocalCorpus
     from momentbench.agentic.gemini_model import GeminiAgent
     from momentbench.agentic.openai_compat_model import OpenAICompatAgent
     from momentbench.agentic.openai_model import OpenAIAgent
     from momentbench.agentic.run import run_agentic_benchmark
-    from momentbench.runner import load_corpus_assets, load_queries
+    from momentbench.runner import load_queries
 
     query_list = load_queries(Path(queries))
     if physical_only:
         query_list = [q for q in query_list if q.metadata.get("physical_event")]
         if not query_list:
             raise click.ClickException(f"no query in {queries} is tagged physical_event")
-    local = LocalCorpus(load_corpus_assets(Path(corpus)), Path(corpus_dir),
-                        transcripts={} if no_transcripts else None,
-                        transcripts_dir=Path(transcripts_dir),
-                        anonymize_titles=anonymize_titles)
-    from momentbench.corpus.verify import verify_corpus
+    from momentbench.agentic.prepare import CorpusNotVerifiedError, prepare_corpus
 
     # A reportable run needs every asset present and hash-verified: with assets missing,
     # positives drop out while every no-answer query stays, which inflates the score.
-    receipt, failures = verify_corpus(list(local.assets.values()), Path(corpus_dir),
-                                      Path(corpus_dir) / ".momentbench-verify-cache.json")
+    # prepare_corpus also pins frames to the verified files.
+    try:
+        local, failures = prepare_corpus(
+            Path(corpus), Path(corpus_dir), transcripts_dir=Path(transcripts_dir),
+            no_transcripts=no_transcripts, anonymize_titles=anonymize_titles,
+            partial=partial)
+    except CorpusNotVerifiedError as e:
+        raise click.ClickException(
+            str(e).replace("prepare with partial=True", "pass --partial")) from e
     runnable = query_list
     if failures:
-        detail = "; ".join(f"{c.asset_id}: {', '.join(c.problems)}" for c in failures[:5])
-        if not partial:
-            raise click.ClickException(
-                f"{len(failures)} of {len(local.assets)} assets failed verification ({detail}). "
-                "Run corpus-download, or pass --partial for a non-reportable debug run.")
         bad = {c.asset_id for c in failures}
         runnable = [q for q in query_list if not any(g.asset_id in bad for g in q.gold_moments)]
         console.print(f"[yellow]--partial: {len(failures)} assets unverified; running "
@@ -140,9 +137,7 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_
     if prices is None:
         console.print(f"[yellow]No price for {model} in {pricing}; cost will be omitted.[/yellow]")
 
-    from momentbench.agentic.environment import TOOLS
-    from momentbench.agentic.episode import SYSTEM_PROMPT
-    from momentbench.agentic.identity import build_identity
+    from momentbench.agentic.identity import environment_identity
     from momentbench.agentic.run import ProviderUnavailableError
 
     budget = Budget(max_steps=max_steps, max_frames=max_frames, max_tool_calls=max_tool_calls)
@@ -150,14 +145,12 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_
         pricing_as_of = json.loads(Path(pricing).read_text()).get("as_of")
     except (OSError, ValueError):
         pricing_as_of = None
-    identity = build_identity(
-        queries_path=Path(queries), manifest_path=Path(corpus),
-        transcripts=local.transcripts, system_prompt=SYSTEM_PROMPT, tools=TOOLS,
-        budget=budget.model_dump(),
-        modalities="frames+transcripts" if local.has_transcripts() else "frames",
-        anonymize_titles=anonymize_titles,
-        provider=provider, endpoint=base_url, pricing_as_of=pricing_as_of)
-    identity["query_filter"] = "physical_only" if physical_only else None
+    # The task identity (selected queries, verified bytes, conditions) is computed by
+    # the run itself; this adds where the run came from.
+    identity = environment_identity(
+        queries_path=Path(queries), manifest_path=Path(corpus), provider=provider,
+        endpoint=base_url, pricing_as_of=pricing_as_of,
+        query_filter="physical_only" if physical_only else None)
 
     try:
         agent = (
@@ -185,7 +178,6 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_
                 max_concurrency=concurrency,
                 output_dir=Path(output),
                 reportable=not failures,
-                corpus_receipt=receipt,
                 identity=identity,
             )
         )
@@ -300,12 +292,18 @@ def leaderboard(results_dir: str):
             except SubmissionError as e:
                 excluded.append((f.name, str(e)))
                 continue
-            boards.setdefault(entry["queries_file"], []).append({**entry, "file": f.name})
+            # Rank only runs of the same task: same file, and the same compatibility key
+            # (selected queries, verified bytes, budget, conditions). Runs from before
+            # run identity existed are listed apart, never ranked against keyed runs.
+            key = entry["compatibility_key"]
+            board = (entry["queries_file"],
+                     f"task {key}" if key else "historical runs (no run identity)")
+            boards.setdefault(board, []).append({**entry, "file": f.name})
         else:
             legacy.append((run, compute_aggregate(run)))
 
-    for name, entries in sorted(boards.items()):
-        table = Table(title=f"MomentBench agentic track: {name}")
+    for (name, task), entries in sorted(boards.items()):
+        table = Table(title=f"MomentBench agentic track: {name}, {task}")
         for col in ("Rank", "Model", "R@1 (95% CI)", "Positive R@1", "No-answer acc",
                     "Cost/query", "Coverage x trials", "Run"):
             table.add_column(col, justify="right" if col not in ("Model", "Run") else "left")
@@ -386,11 +384,16 @@ def attribution(manifest: str, output: str):
               help="An agentic run file written by `momentbench agentic`")
 @click.option("--queries", "-q", type=click.Path(exists=True), default=None,
               help="Query file the run answered (found in data/queries when omitted)")
+@click.option("--manifest", "-c", type=click.Path(exists=True), default=None,
+              help="Corpus manifest of the release (default: the repository's)")
+@click.option("--transcripts-dir", type=click.Path(exists=True), default=None,
+              help="Transcripts of the release (default: the repository's)")
 @click.option("--model-name", required=True, help="Display name for the leaderboard")
 @click.option("--model-description", default="", help="Brief description of approach")
 @click.option("--contact", default="", help="Contact email for verification")
 @click.option("--output-dir", "-o", type=click.Path(), default="submissions")
-def submit(results: str, queries: str | None, model_name: str, model_description: str,
+def submit(results: str, queries: str | None, manifest: str | None,
+           transcripts_dir: str | None, model_name: str, model_description: str,
            contact: str, output_dir: str):
     """Package an agentic run for leaderboard submission."""
     import json
@@ -398,6 +401,7 @@ def submit(results: str, queries: str | None, model_name: str, model_description
 
     from momentbench.agentic.run import AgenticRun
     from momentbench.submission import (
+        MANIFEST,
         SubmissionError,
         agentic_entry,
         find_queries_file,
@@ -411,7 +415,15 @@ def submit(results: str, queries: str | None, model_name: str, model_description
             "`momentbench agentic` and submit its run file (see SUBMISSION.md).")
     try:
         queries_path = Path(queries) if queries else find_queries_file(run)
-        entry = agentic_entry(run, queries_path)
+        kwargs = {"manifest": Path(manifest)} if manifest else {}
+        if transcripts_dir:
+            from momentbench.agentic.environment import LocalCorpus
+            from momentbench.runner import load_corpus_assets
+
+            assets = load_corpus_assets(Path(manifest) if manifest else MANIFEST)
+            kwargs["transcripts"] = LocalCorpus(
+                assets, None, transcripts_dir=Path(transcripts_dir)).transcripts
+        entry = agentic_entry(run, queries_path, **kwargs)
     except SubmissionError as e:
         raise click.ClickException(str(e)) from e
 

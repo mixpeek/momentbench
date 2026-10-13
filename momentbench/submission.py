@@ -15,7 +15,10 @@ from typing import Any
 from momentbench.agentic.run import AgenticRun, rescore
 from momentbench.types import BenchmarkRun, Query
 
-QUERIES_DIR = Path(__file__).resolve().parents[1] / "data" / "queries"
+ROOT = Path(__file__).resolve().parents[1]
+QUERIES_DIR = ROOT / "data" / "queries"
+MANIFEST = ROOT / "data" / "corpus_manifests" / "sample_manifest.json"
+TRANSCRIPTS_DIR = ROOT / "data" / "transcripts"
 
 
 class SubmissionError(ValueError):
@@ -33,12 +36,13 @@ def load_queries_file(path: Path) -> dict[str, Query]:
     return {q["query_id"]: Query(**q) for q in json.loads(path.read_text())}
 
 
-def find_queries_file(run: AgenticRun, search: Path = QUERIES_DIR) -> Path:
+def find_queries_file(run: AgenticRun, search: Path | None = None) -> Path:
     """The published query file the run answered: the one holding most of its query ids.
 
     Older runs can include queries since removed by review, so containment is not
     required; at least half of the run's ids must be in the file.
     """
+    search = search or QUERIES_DIR
     ids = {t.query_id for t in run.trials}
     best, overlap = None, 0
     for path in sorted(search.glob("*_v*.json")):
@@ -51,8 +55,46 @@ def find_queries_file(run: AgenticRun, search: Path = QUERIES_DIR) -> Path:
     return best
 
 
+def expected_key(run: AgenticRun, queries: dict[str, Query], manifest: Path,
+                 transcripts: dict[str, list[dict[str, Any]]] | None = None) -> str:
+    """The compatibility key a complete run on the current release must carry."""
+    from momentbench.agentic.environment import TOOLS, LocalCorpus
+    from momentbench.agentic.episode import SYSTEM_PROMPT
+    from momentbench.agentic.identity import task_identity
+    from momentbench.runner import load_corpus_assets
+
+    assets = load_corpus_assets(manifest)
+    if transcripts is None:
+        transcripts = LocalCorpus(assets, None, transcripts_dir=TRANSCRIPTS_DIR).transcripts
+    if run.modalities == "frames":
+        transcripts = {}
+    receipt = {a["asset_id"]: a["file"]["sha256"] for a in assets}
+    return task_identity(queries=list(queries.values()), receipt=receipt,
+                         transcripts=transcripts, system_prompt=SYSTEM_PROMPT, tools=TOOLS,
+                         budget=run.budget.model_dump(), modalities=run.modalities,
+                         anonymize_titles=run.anonymize_titles)["compatibility_key"]
+
+
+def check_trial_grid(run: AgenticRun) -> None:
+    """Exactly one trial per (query, trial number), num_trials of them per query."""
+    n = run.summary.num_trials
+    seen: dict[str, set[int]] = {}
+    for t in run.trials:
+        trials = seen.setdefault(t.query_id, set())
+        if t.trial in trials:
+            raise SubmissionError(f"{run.run_id}: query {t.query_id} trial {t.trial} "
+                                  "appears more than once")
+        trials.add(t.trial)
+    for qid, trials in seen.items():
+        if trials != set(range(n)):
+            raise SubmissionError(f"{run.run_id}: query {qid} has trials {sorted(trials)}, "
+                                  f"expected 0 to {n - 1}")
+
+
 def agentic_entry(run: AgenticRun, queries_path: Path,
-                  require_complete: bool = True) -> dict[str, Any]:
+                  require_complete: bool = True, manifest: Path = MANIFEST,
+                  transcripts: dict[str, list[dict[str, Any]]] | None = None
+                  ) -> dict[str, Any]:
     """Rescore `run` against `queries_path` and return its leaderboard entry.
 
     Raises SubmissionError when the run is not reportable, or (with require_complete,
@@ -62,7 +104,25 @@ def agentic_entry(run: AgenticRun, queries_path: Path,
     if not run.reportable:
         raise SubmissionError(f"{run.run_id} is marked not reportable (a --partial run on an "
                               "incomplete corpus)")
+    check_trial_grid(run)
     queries = load_queries_file(queries_path)
+    if require_complete:
+        # A new submission must be the current release, end to end: its receipt names
+        # the manifest's bytes and its key matches one recomputed here.
+        assets = json.loads(manifest.read_text())
+        want = {a["asset_id"]: a["file"]["sha256"] for a in assets}
+        if run.corpus_receipt != want:
+            bad = sorted(set(want) ^ set(run.corpus_receipt)
+                         | {a for a in want if run.corpus_receipt.get(a) not in (None, want[a])})
+            raise SubmissionError(
+                f"{run.run_id}: corpus receipt does not match {manifest.name} "
+                f"({len(run.corpus_receipt)} of {len(want)} assets verified; "
+                f"differs on {', '.join(bad[:3]) or 'none'}). Rerun on the verified corpus.")
+        key = run.identity.get("compatibility_key")
+        if key != expected_key(run, queries, manifest, transcripts):
+            raise SubmissionError(
+                f"{run.run_id}: compatibility key {key} does not match the current "
+                f"release of {queries_path.name}; rerun with the current harness and files.")
     scored = rescore(run, queries)
     covered = {t.query_id for t in scored.trials}
     missing = sorted(set(queries) - covered)

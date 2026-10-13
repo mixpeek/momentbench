@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import threading
 import time
 import uuid
 from pathlib import Path
@@ -13,10 +14,10 @@ from typing import Any
 from pydantic import BaseModel, Field
 
 from momentbench.agentic.budget import Budget, Pricing, Usage
-from momentbench.agentic.environment import LocalCorpus
-from momentbench.agentic.episode import EpisodeError, run_episode
-from momentbench.agentic.identity import text_sha
-from momentbench.agentic.model import AgentModel
+from momentbench.agentic.environment import TOOLS, LocalCorpus
+from momentbench.agentic.episode import SYSTEM_PROMPT, EpisodeError, run_episode
+from momentbench.agentic.identity import task_identity, text_sha
+from momentbench.agentic.model import AgentModel, ToolCall, ToolResult
 from momentbench.agentic.stats import bootstrap_ci
 from momentbench.eval.scoring import compute_temporal_iou, evaluate_prediction
 from momentbench.types import Moment, Prediction, Query
@@ -132,21 +133,64 @@ IOU_THRESHOLDS = (0.3, 0.5, 0.7)
 
 
 class MeteredCorpus:
-    """A corpus proxy that counts every tool call and frame an entrant draws."""
+    """The only corpus a custom run_episode gets: every operation is metered and capped.
 
-    def __init__(self, corpus: LocalCorpus):
-        self._corpus = corpus
+    It exposes the four tools, execute, parse_answer and has_transcripts, and nothing
+    else, so there is no unmetered path to frames or transcripts. Each operation
+    counts as a tool call against the harness's own budget (whatever budget the
+    entrant passes is ignored), frames count as drawn, and a call past either limit is
+    refused. Calls are serialised, so parallel calls cannot overdraw. This bounds what
+    an in-process entrant can see; untrusted code still needs process isolation.
+    """
+
+    __slots__ = ("_MeteredCorpus__corpus", "_MeteredCorpus__budget", "_MeteredCorpus__lock",
+                 "usage")
+
+    def __init__(self, corpus: LocalCorpus, budget: Budget):
+        self.__corpus = corpus
+        self.__budget = budget
+        self.__lock = threading.Lock()
         self.usage = Usage()
 
-    def __getattr__(self, name: str) -> Any:
-        return getattr(self._corpus, name)
-
-    def execute(self, call, budget: Budget, usage: Usage):
-        before = (self.usage.tool_calls, self.usage.frames)
-        result = self._corpus.execute(call, budget, self.usage)
-        usage.tool_calls += self.usage.tool_calls - before[0]
-        usage.frames += self.usage.frames - before[1]
+    def execute(self, call: ToolCall, budget: Budget | None = None,
+                usage: Usage | None = None) -> ToolResult:
+        with self.__lock:
+            before = (self.usage.tool_calls, self.usage.frames)
+            result = self.__corpus.execute(call, self.__budget, self.usage)
+        if usage is not None:
+            usage.tool_calls += self.usage.tool_calls - before[0]
+            usage.frames += self.usage.frames - before[1]
         return result
+
+    def _tool(self, name: str, **arguments: Any) -> ToolResult:
+        result = self.execute(ToolCall(name, name, arguments))
+        if result.is_error:
+            raise ValueError(result.text.removeprefix("error: "))
+        return result
+
+    def list_assets(self) -> str:
+        return self._tool("list_assets").text
+
+    def search_transcript(self, query: str, asset_id: str | None = None,
+                          top_k: int = 5) -> str:
+        return self._tool("search_transcript", query=query, asset_id=asset_id,
+                          top_k=top_k).text
+
+    def read_transcript(self, asset_id: str, t_start: float, t_end: float) -> str:
+        return self._tool("read_transcript", asset_id=asset_id, t_start=t_start,
+                          t_end=t_end).text
+
+    def sample_frames(self, asset_id: str, t_start: float, t_end: float,
+                      num_frames: int) -> tuple[str, list[bytes]]:
+        r = self._tool("sample_frames", asset_id=asset_id, t_start=t_start, t_end=t_end,
+                       num_frames=num_frames)
+        return r.text, list(r.images_jpeg)
+
+    def parse_answer(self, arguments: Any) -> list[Moment]:
+        return self.__corpus.parse_answer(arguments)
+
+    def has_transcripts(self) -> bool:
+        return self.__corpus.has_transcripts()
 
 
 def budget_violation(usage: Usage, budget: Budget) -> str | None:
@@ -290,7 +334,16 @@ async def run_agentic_benchmark(
     corpus_receipt: dict[str, str] | None = None,
     identity: dict[str, Any] | None = None,
 ) -> AgenticRun:
+    """Run every query `trials` times and score the answers.
+
+    A run is reportable only when `corpus` was built by prepare_corpus on a fully
+    verified corpus; `reportable=False` can only lower that. `identity` adds
+    environment fields (environment_identity); the task identity and its
+    compatibility key are always computed here, from what the run was given.
+    """
     budget = budget or Budget()
+    reportable = reportable and bool(getattr(corpus, "fully_verified", False))
+    corpus_receipt = corpus_receipt or dict(getattr(corpus, "receipt", {}) or {})
     semaphore = asyncio.Semaphore(max_concurrency)
 
     async def one(query: Query, trial: int) -> AgenticTrial:
@@ -301,7 +354,7 @@ async def run_agentic_benchmark(
             try:
                 request = query.request()  # entrants never see gold, tier or negatives
                 if hasattr(model, "run_episode"):  # entrants that run their own tool loop
-                    metered = MeteredCorpus(corpus)
+                    metered = MeteredCorpus(corpus, budget)
                     episode = await model.run_episode(metered, request, budget)
                     # The harness owns tool accounting: replace whatever the entrant
                     # reported with what actually went through the corpus tools.
@@ -376,6 +429,12 @@ async def run_agentic_benchmark(
         reportable=reportable,
         corpus_receipt=corpus_receipt or {},
         identity={**(identity or {}),
+                  **task_identity(
+                      queries=queries, receipt=corpus_receipt,
+                      transcripts=getattr(corpus, "transcripts", {}),
+                      system_prompt=SYSTEM_PROMPT, tools=TOOLS, budget=budget.model_dump(),
+                      modalities="frames+transcripts" if corpus.has_transcripts() else "frames",
+                      anonymize_titles=getattr(corpus, "anonymize_titles", False)),
                   "resolved_models": sorted({t.resolved_model for t in results
                                              if t.resolved_model})},
         budget=budget,

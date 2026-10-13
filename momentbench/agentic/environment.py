@@ -19,9 +19,9 @@ from typing import Any
 
 from momentbench.agentic.budget import Budget, BudgetExceededError, Usage
 from momentbench.agentic.model import ToolCall, ToolResult
+from momentbench.corpus.verify import VIDEO_SUFFIXES, resolve_video  # noqa: F401
 from momentbench.types import Moment
 
-VIDEO_SUFFIXES = (".mp4", ".mkv", ".webm", ".mov")
 MAX_FRAMES_PER_CALL = 8
 MAX_TRANSCRIPT_WINDOW_S = 600.0
 FRAME_WIDTH_PX = 512
@@ -229,6 +229,9 @@ class LocalCorpus:
         # video shows. Anonymized, the model sees "video-07" and no title; answers are
         # mapped back to the real ids before scoring. The order is a hash, not the name.
         self.anonymize_titles = anonymize_titles
+        self._pinned: dict[str, tuple[Path, int, int]] | None = None
+        # asset_id -> sha256 of the verified file, set by pin_files.
+        self.receipt: dict[str, str] = {}
         order = sorted(self.assets, key=lambda a: hashlib.sha256(a.encode()).hexdigest())
         self._alias = ({real: f"video-{i:02d}" for i, real in enumerate(order, 1)}
                        if anonymize_titles else {})
@@ -246,15 +249,35 @@ class LocalCorpus:
                     self._transcripts[asset_id] = load_transcript(path)
 
     def video_path(self, asset_id: str) -> Path | None:
-        stored = self.assets[asset_id].get("storage_path")
-        if stored and Path(stored).exists():
-            return Path(stored)
-        if self.corpus_dir:
-            for suffix in VIDEO_SUFFIXES:
-                candidate = self.corpus_dir / f"{asset_id}{suffix}"
-                if candidate.exists():
-                    return candidate
-        return None
+        if self._pinned is not None:
+            pin = self._pinned.get(asset_id)
+            if pin is None:
+                return None  # not verified, so never shown
+            path, size, mtime_ns = pin
+            st = path.stat() if path.exists() else None
+            if st is None or (st.st_size, st.st_mtime_ns) != (size, mtime_ns):
+                raise RuntimeError(f"{asset_id}: {path} changed after verification")
+            return path
+        return resolve_video(self.assets[asset_id], self.corpus_dir)
+
+    def pin_files(self, verified: dict[str, Path],
+                  receipt: dict[str, str] | None = None) -> None:
+        """Serve only these verified files from now on (asset_id -> the path hashed).
+
+        An asset outside the map has no video, and a pinned file whose size or mtime
+        changes is refused, so every frame comes from the bytes in the receipt."""
+        self._pinned = {a: (p, p.stat().st_size, p.stat().st_mtime_ns)
+                        for a, p in verified.items()}
+        self.receipt = dict(receipt or {})
+
+    @property
+    def pinned(self) -> bool:
+        return self._pinned is not None
+
+    @property
+    def fully_verified(self) -> bool:
+        """Every manifest asset was hash-verified and is pinned."""
+        return self.pinned and set(self.receipt) == set(self.assets)
 
     @property
     def transcripts(self) -> dict[str, list[dict[str, Any]]]:
@@ -411,8 +434,10 @@ def parse_submission(arguments: Any, known_assets: Mapping[str, Any] | set[str]
     `{"moments": []}` is an explicit abstention and returns []. Anything else must
     contain at least one valid moment (a known asset, finite times, 0 <= t_in < t_out,
     inside the video); otherwise InvalidSubmissionError is raised, so malformed output
-    can never be scored as a correct "no answer". Invalid entries next to valid ones are
-    dropped.
+    can never be scored as a correct "no answer". An invalid entry anywhere in the
+    ranking rejects the whole submission: dropping it would move the entries below it
+    up, and Recall@1 scores whatever is first. The harness loops return the error to
+    the model, which may resubmit.
     """
     raw = arguments.get("moments") if isinstance(arguments, dict) else None
     if not isinstance(raw, list):
@@ -439,6 +464,6 @@ def parse_submission(arguments: Any, known_assets: Mapping[str, Any] | set[str]
             problems.append(f"{asset_id} ends at {durations[asset_id]:.1f}s, got t_out {t_out}")
         else:
             moments.append(Moment(asset_id=asset_id, t_in=t_in, t_out=t_out))
-    if not moments:
-        raise InvalidSubmissionError("no valid moment: " + "; ".join(problems))
+    if problems:
+        raise InvalidSubmissionError("invalid submission: " + "; ".join(problems))
     return moments

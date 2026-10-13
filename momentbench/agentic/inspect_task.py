@@ -30,7 +30,7 @@ from momentbench.agentic.environment import (
 )
 from momentbench.agentic.episode import SYSTEM_PROMPT, build_task
 from momentbench.eval.scoring import evaluate_prediction
-from momentbench.runner import load_corpus_assets, load_queries
+from momentbench.runner import load_queries
 from momentbench.types import Moment, Prediction, Query
 
 SUBMIT_DESCRIPTION = (
@@ -226,20 +226,31 @@ def momentbench_agentic(
     physical_only: bool = False,
     no_transcripts: bool = False,
     anonymize_titles: bool = False,
+    partial: bool = False,
     max_steps: int = 30,
     max_frames: int = 64,
     max_tool_calls: int = 60,
 ) -> Task:
-    """Corpus-scale video moment retrieval with tools. Use --epochs for repeated trials."""
-    local = LocalCorpus(
-        load_corpus_assets(_resolve(corpus)), _resolve(corpus_dir) if corpus_dir else None,
-        transcripts={} if no_transcripts else None,
-        transcripts_dir=_resolve(transcripts_dir),
-        anonymize_titles=anonymize_titles,
-    )
+    """Corpus-scale video moment retrieval with tools. Use --epochs for repeated trials.
+
+    The corpus is verified and pinned exactly as `momentbench agentic` does it: every
+    asset must be on disk under corpus_dir with its manifest hash, or the task refuses
+    to build. partial=true serves only the verified assets, for debugging; such an
+    eval is not comparable with reported results.
+    """
+    from momentbench.agentic.prepare import prepare_corpus
+
+    local, failures = prepare_corpus(
+        _resolve(corpus), _resolve(corpus_dir) if corpus_dir else None,
+        transcripts_dir=_resolve(transcripts_dir), no_transcripts=no_transcripts,
+        anonymize_titles=anonymize_titles, partial=partial)
     budget = Budget(max_steps=max_steps, max_frames=max_frames, max_tool_calls=max_tool_calls)
     # Comma-separated, so one eval can span several query files.
     query_list = [q for path in queries.split(",") for q in load_queries(_resolve(path.strip()))]
     if physical_only:
         query_list = [q for q in query_list if q.metadata.get("physical_event")]
+    if failures:  # partial: drop queries whose gold video was not verified
+        bad = {c.asset_id for c in failures}
+        query_list = [q for q in query_list if not any(g.asset_id in bad
+                                                       for g in q.gold_moments)]
     return build_task_from(query_list, local, budget)

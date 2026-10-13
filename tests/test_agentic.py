@@ -93,17 +93,21 @@ class TestEnvironment:
     def test_missing_videos_lists_assets_without_files(self, tmp_path):
         assert LocalCorpus(ASSETS, tmp_path).missing_videos() == ["v1", "v2"]
 
-    def test_parse_submission_drops_unknown_assets_and_inverted_spans(self):
-        moments = parse_submission(
-            {"moments": [
-                {"asset_id": "v1", "t_in": 1, "t_out": 2},
-                {"asset_id": "ghost", "t_in": 1, "t_out": 2},
-                {"asset_id": "v1", "t_in": 5, "t_out": 3},
-                {"asset_id": "v1"},
-            ]},
-            {"v1"},
-        )
-        assert [(m.t_in, m.t_out) for m in moments] == [(1.0, 2.0)]
+    def test_parse_submission_rejects_a_ranking_with_any_invalid_entry(self):
+        # Dropping bad entries would promote the ones below them (audit 2, R8).
+        from momentbench.agentic.environment import InvalidSubmissionError
+
+        with pytest.raises(InvalidSubmissionError) as e:
+            parse_submission(
+                {"moments": [
+                    {"asset_id": "v1", "t_in": 1, "t_out": 2},
+                    {"asset_id": "ghost", "t_in": 1, "t_out": 2},
+                    {"asset_id": "v1", "t_in": 5, "t_out": 3},
+                    {"asset_id": "v1"},
+                ]},
+                {"v1"},
+            )
+        assert "ghost" in str(e.value) and "bad times" in str(e.value)
 
     def test_load_vtt(self, tmp_path):
         p = tmp_path / "a.vtt"

@@ -74,15 +74,50 @@ def test_parse_answer_ignores_prose_and_garbage():
     assert [(m.t_in, m.t_out) for m in got] == [(1.0, 2.0)]
 
 
-def test_default_task_spans_the_v0_2_query_files():
+@pytest.fixture
+def verified(monkeypatch, tmp_path):
+    """Stand in for a downloaded corpus: every manifest asset verifies at a stub file.
+    The query-selection tests below are about which queries load, not about hashing;
+    test_an_unverified_corpus_is_refused covers the refusal."""
+    from momentbench.agentic import prepare
+    from momentbench.corpus.verify import AssetCheck
+
+    def ok(assets, corpus_dir, cache_path=None):
+        out = []
+        for a in assets:
+            f = tmp_path / f"{a['asset_id']}.mp4"
+            f.write_bytes(b"")
+            out.append(AssetCheck(a["asset_id"], f, "sha"))
+        return out
+
+    monkeypatch.setattr(prepare, "verify_checks", ok)
+    return str(tmp_path)
+
+
+def test_an_unverified_corpus_is_refused(tmp_path):
+    from momentbench.agentic.prepare import CorpusNotVerifiedError
+
+    with pytest.raises(CorpusNotVerifiedError, match="27 of 27"):
+        momentbench_agentic(queries="data/queries/robotics_v0.2.json")
+    with pytest.raises(CorpusNotVerifiedError, match="27 of 27"):
+        momentbench_agentic(queries="data/queries/robotics_v0.2.json",
+                            corpus_dir=str(tmp_path))
+    # partial=true is the explicit debug mode: only no-answer queries survive here.
+    task = momentbench_agentic(queries="data/queries/robotics_v0.2.json",
+                               corpus_dir=str(tmp_path), partial=True)
+    assert all(not s.metadata["query"]["gold_moments"] for s in task.dataset)
+
+
+def test_default_task_spans_the_v0_2_query_files(verified):
     files = ("film_v0.2.json", "aerospace_v0.2.json", "robotics_v0.2.json")
     expected = sum(len(json.loads((REPO_ROOT / "data/queries" / f).read_text())) for f in files)
-    assert len(momentbench_agentic().dataset) == expected
+    assert len(momentbench_agentic(corpus_dir=verified).dataset) == expected
 
 
-def test_a_single_query_file_still_works():
+def test_a_single_query_file_still_works(verified):
     seed = json.loads((REPO_ROOT / "data/queries/sample.json").read_text())
-    assert len(momentbench_agentic(queries="data/queries/sample.json").dataset) == len(seed)
+    assert len(momentbench_agentic(queries="data/queries/sample.json",
+                                   corpus_dir=verified).dataset) == len(seed)
 
 
 NO_ANSWER = Query(query_id="na", text="a moment that is not in the corpus",
@@ -94,21 +129,24 @@ def test_no_answer_query_is_a_hit_only_on_an_explicit_empty_submission(tmp_path)
     assert run(tmp_path / "b", [call("submit", answer="I give up")], query=NO_ANSWER).value == 0.0
 
 
-def test_physical_only_keeps_just_the_tagged_queries():
+def test_physical_only_keeps_just_the_tagged_queries(verified):
     files = ("film_v0.2.json", "aerospace_v0.2.json", "robotics_v0.2.json")
     tagged = sum(
         bool(q["metadata"].get("physical_event"))
         for f in files for q in json.loads((REPO_ROOT / "data/queries" / f).read_text())
     )
-    assert tagged and len(momentbench_agentic(physical_only=True).dataset) == tagged
+    task = momentbench_agentic(physical_only=True, corpus_dir=verified)
+    assert tagged and len(task.dataset) == tagged
 
 
-def test_task_supports_the_transcript_and_title_controls():
+def test_task_supports_the_transcript_and_title_controls(verified):
     from momentbench.agentic.inspect_task import momentbench_agentic
 
-    plain = momentbench_agentic(queries="data/queries/robotics_v0.2.json")
+    plain = momentbench_agentic(queries="data/queries/robotics_v0.2.json",
+                                corpus_dir=verified)
     controlled = momentbench_agentic(queries="data/queries/robotics_v0.2.json",
-                                     no_transcripts=True, anonymize_titles=True)
+                                     corpus_dir=verified, no_transcripts=True,
+                                     anonymize_titles=True)
     assert len(plain.dataset) == len(controlled.dataset) == 70
 
 

@@ -23,6 +23,14 @@ NO_ANSWER = Query(query_id="na", text="nothing like this exists", vertical="film
                   tier=QueryTier.CORPUS_HARD_NEGATIVE, gold_moments=[])
 
 
+def verified_corpus(tmp_path):
+    """make_corpus, pinned to its files as prepare_corpus would after hashing them."""
+    corpus = make_corpus(tmp_path)
+    files = {a: tmp_path / f"{a}.mp4" for a in corpus.assets}
+    corpus.pin_files(files, {a: f"sha-{a}" for a in files})
+    return corpus
+
+
 def q(qid: str) -> Query:
     return Query(query_id=qid, text="t", tier=QueryTier.SINGLE_VISUAL, vertical="film",
                  gold_moments=[Moment(asset_id="v1", t_in=10, t_out=20)])
@@ -222,21 +230,25 @@ class TestRunIdentity:  # findings 14, 24
         assert r.exit_code == 0, r.output
         [f] = (tmp_path / "data/results/debug").glob("*.json")
         ident = json.loads(f.read_text())["identity"]
-        for key in ("queries_sha256", "manifest_sha256", "system_prompt_sha", "tools_sha",
-                    "compatibility_key", "git", "packages", "pricing_as_of"):
+        for key in ("queries_sha", "queries_file_sha256", "manifest_sha256", "corpus_sha",
+                    "system_prompt_sha", "tools_sha", "compatibility_key", "git", "packages",
+                    "pricing_as_of"):
             assert ident.get(key) is not None, key
         assert ident["provider"] == "baseline" and ident["budget"]["max_steps"] > 0
 
     def test_compatibility_key_changes_with_the_task(self):
-        from momentbench.agentic.identity import build_identity
+        from momentbench.agentic.identity import task_identity
 
-        base = dict(queries_path=None, manifest_path=None, transcripts={},
+        base = dict(queries=[NO_ANSWER, make_query()], receipt={"v1": "a"}, transcripts={},
                     system_prompt="p", tools=[], budget={"max_steps": 30},
-                    modalities="frames", provider="x", endpoint=None, pricing_as_of=None)
-        a = build_identity(**base)["compatibility_key"]
-        assert build_identity(**{**base, "provider": "y"})["compatibility_key"] == a
-        assert build_identity(**{**base, "modalities": "frames+transcripts"}
-                              )["compatibility_key"] != a
+                    modalities="frames")
+        a = task_identity(**base)["compatibility_key"]
+        assert task_identity(**base)["compatibility_key"] == a
+        for change in ({"modalities": "frames+transcripts"}, {"receipt": {"v1": "b"}},
+                       {"queries": [NO_ANSWER]},  # a subset is a different task (R9)
+                       {"queries": [NO_ANSWER, make_query().model_copy(
+                           update={"text": "reworded"})]}):
+            assert task_identity(**{**base, **change})["compatibility_key"] != a, change
 
     async def test_resolved_model_is_recorded_per_trial(self, tmp_path):
         class Named(AgentSession):
@@ -383,8 +395,22 @@ class TestFrameSampling:  # finding 26
 class TestSubmission:  # finding 28
     async def _run(self, tmp_path, queries, reportable=True):
         script = [[("submit_answer", {"moments": []})]]
-        return await run_agentic_benchmark(queries, ScriptedModel(script), make_corpus(tmp_path),
-                                           trials=1, reportable=reportable)
+        return await run_agentic_benchmark(queries, ScriptedModel(script),
+                                           verified_corpus(tmp_path), trials=1,
+                                           reportable=reportable)
+
+    def _release(self, tmp_path):
+        """A manifest and transcripts dir matching verified_corpus, as a release."""
+        from tests.test_agentic import ASSETS, TRANSCRIPTS
+
+        manifest = tmp_path / "manifest.json"
+        manifest.write_text(json.dumps([{**a, "file": {"sha256": f"sha-{a['asset_id']}"}}
+                                        for a in ASSETS]))
+        tdir = tmp_path / "transcripts"
+        tdir.mkdir(exist_ok=True)
+        for aid, segs in TRANSCRIPTS.items():
+            (tdir / f"{aid}.transcript.json").write_text(json.dumps(segs))
+        return manifest, tdir
 
     def _file(self, tmp_path, queries):
         path = tmp_path / "q_v0.2.json"
@@ -393,21 +419,27 @@ class TestSubmission:  # finding 28
 
     async def test_a_complete_reportable_run_is_packaged(self, tmp_path):
         from momentbench.submission import agentic_entry
+        from tests.test_agentic import TRANSCRIPTS
 
         qs = [NO_ANSWER, make_query()]
-        entry = agentic_entry(await self._run(tmp_path, qs), self._file(tmp_path, qs))
+        manifest, _ = self._release(tmp_path)
+        entry = agentic_entry(await self._run(tmp_path, qs), self._file(tmp_path, qs),
+                              manifest=manifest, transcripts=TRANSCRIPTS)
         assert entry["track"] == "agentic" and entry["num_queries"] == 2
         assert entry["recall_at_1"] == 0.5
 
     async def test_incomplete_or_partial_runs_are_refused(self, tmp_path):
         from momentbench.submission import SubmissionError, agentic_entry
+        from tests.test_agentic import TRANSCRIPTS
 
         qs = [NO_ANSWER, make_query()]
         path = self._file(tmp_path, qs)
-        with pytest.raises(SubmissionError, match="covers 1 of 2"):
-            agentic_entry(await self._run(tmp_path, [NO_ANSWER]), path)
+        manifest, _ = self._release(tmp_path)
+        release = {"manifest": manifest, "transcripts": TRANSCRIPTS}
+        with pytest.raises(SubmissionError, match="does not match the current release"):
+            agentic_entry(await self._run(tmp_path, [NO_ANSWER]), path, **release)
         with pytest.raises(SubmissionError, match="not reportable"):
-            agentic_entry(await self._run(tmp_path, qs, reportable=False), path)
+            agentic_entry(await self._run(tmp_path, qs, reportable=False), path, **release)
         # Listing older runs records coverage instead of refusing.
         entry = agentic_entry(await self._run(tmp_path, [NO_ANSWER]), path,
                               require_complete=False)
@@ -424,11 +456,13 @@ class TestSubmission:  # finding 28
         run_file = runs / "run.json"
         run_file.write_text(run.model_dump_json())
         out = tmp_path / "subs"
+        manifest, tdir = self._release(tmp_path)
         r = CliRunner().invoke(main, ["submit", "-r", str(run_file), "-q", str(qfile),
+                                      "-c", str(manifest), "--transcripts-dir", str(tdir),
                                       "--model-name", "Floor", "-o", str(out)])
         assert r.exit_code == 0, r.output
         meta = json.loads((out / "floor" / "submission.json").read_text())
-        assert meta["recall_at_1"] == 0.5 and meta["compatibility_key"] is None
+        assert meta["recall_at_1"] == 0.5 and meta["compatibility_key"]
         assert (out / "floor" / "run.json").exists()
 
         legacy = evaluate_run([q("a")], [pred("a")])
@@ -477,10 +511,158 @@ class TestAnonymizedTitles:  # finding 16
         assert run.trials[0].moments[0].asset_id == "v1"
 
     def test_the_condition_changes_the_compatibility_key(self):
-        from momentbench.agentic.identity import build_identity
+        from momentbench.agentic.identity import task_identity
 
-        base = dict(queries_path=None, manifest_path=None, transcripts={},
-                    system_prompt="p", tools=[], budget={}, modalities="frames+transcripts",
-                    provider="x", endpoint=None, pricing_as_of=None)
-        assert (build_identity(**base)["compatibility_key"]
-                != build_identity(**base, anonymize_titles=True)["compatibility_key"])
+        base = dict(queries=[NO_ANSWER], receipt={}, transcripts={}, system_prompt="p",
+                    tools=[], budget={}, modalities="frames+transcripts")
+        assert (task_identity(**base)["compatibility_key"]
+                != task_identity(**base, anonymize_titles=True)["compatibility_key"])
+
+
+
+class TestAdmission:  # audit 2: R3, R5, R6, R7
+    async def test_an_api_run_on_an_unverified_corpus_is_not_reportable(self, tmp_path):
+        run = await run_agentic_benchmark([NO_ANSWER], ScriptedModel([[("submit_answer",
+                                          {"moments": []})]]), make_corpus(tmp_path), trials=1)
+        assert run.reportable is False and run.corpus_receipt == {}
+        assert run.identity["compatibility_key"]
+
+    async def test_a_wrong_receipt_or_key_cannot_be_submitted(self, tmp_path):
+        from momentbench.submission import SubmissionError, agentic_entry
+        from tests.test_agentic import TRANSCRIPTS
+
+        sub = TestSubmission()
+        qs = [NO_ANSWER, make_query()]
+        path, (manifest, _) = sub._file(tmp_path, qs), sub._release(tmp_path)
+        run = await sub._run(tmp_path, qs)
+        release = {"manifest": manifest, "transcripts": TRANSCRIPTS}
+        agentic_entry(run, path, **release)  # the honest run passes
+        wrong_bytes = run.model_copy(update={"corpus_receipt": {**run.corpus_receipt,
+                                                                 "v1": "other"}})
+        with pytest.raises(SubmissionError, match="corpus receipt"):
+            agentic_entry(wrong_bytes, path, **release)
+        for ident in ({}, {**run.identity, "compatibility_key": "forged"}):
+            with pytest.raises(SubmissionError, match="compatibility key"):
+                agentic_entry(run.model_copy(update={"identity": ident}), path, **release)
+
+    async def test_duplicated_or_missing_trials_are_rejected(self, tmp_path):
+        from momentbench.submission import SubmissionError, agentic_entry
+
+        script = [[SUBMIT_GOLD]]
+        run = await run_agentic_benchmark([make_query()], ScriptedModel(script),
+                                          verified_corpus(tmp_path), trials=2)
+        hit = run.trials[0]
+        stuffed = run.model_copy(update={"trials": [hit] * 4 + run.trials[1:]})
+        with pytest.raises(SubmissionError, match="more than once"):
+            agentic_entry(stuffed, tmp_path / "unused.json", require_complete=False)
+        dropped = run.model_copy(update={"trials": run.trials[:1]})
+        with pytest.raises(SubmissionError, match="expected 0 to 1"):
+            agentic_entry(dropped, tmp_path / "unused.json", require_complete=False)
+
+    def test_frames_come_from_the_verified_file(self, tmp_path):
+        from momentbench.agentic.environment import LocalCorpus
+
+        real, impostor = tmp_path / "viper.mp4", tmp_path / "ingenuity.mp4"
+        real.write_bytes(b"viper")
+        impostor.write_bytes(b"ingenuity")
+        seen = []
+        corpus = LocalCorpus([{"asset_id": "viper", "title": "t", "duration_s": 10,
+                               "storage_path": str(impostor)}], tmp_path,
+                             frame_extractor=lambda v, t: seen.append(v) or b"jpeg",
+                             transcripts={})
+        corpus.pin_files({"viper": real}, {"viper": "sha"})
+        corpus.sample_frames("viper", 0, 5, 1)
+        assert seen == [real]
+        real.write_bytes(b"swapped after verification")
+        with pytest.raises(RuntimeError, match="changed after verification"):
+            corpus.sample_frames("viper", 0, 5, 1)
+
+
+class TestMeteredCustomLoops:  # audit 2: R4
+    async def test_direct_and_parallel_calls_cannot_draw_unmetered_frames(self, tmp_path):
+        import asyncio
+
+        got = {}
+
+        class Greedy(AgentModel):
+            model_id = "greedy"
+
+            def start(self, system, task, tools):
+                raise AssertionError
+
+            async def run_episode(self, corpus, query, budget):
+                frames, refused = 0, 0
+                for _ in range(3):  # the audit's probe: 3 direct calls of 8 frames
+                    try:
+                        frames += len(corpus.sample_frames("v1", 0, 60, 8)[1])
+                    except ValueError:
+                        refused += 1
+
+                async def grab():
+                    try:
+                        return len(await asyncio.to_thread(
+                            corpus.sample_frames, "v1", 0, 60, 8))
+                    except ValueError:
+                        return 0
+
+                frames += sum(await asyncio.gather(*(grab() for _ in range(8))))
+                for name in ("_corpus", "_MeteredCorpus__corpus", "assets", "_extract"):
+                    try:
+                        getattr(corpus, name)
+                        got.setdefault("reached", []).append(name)
+                    except AttributeError:
+                        pass
+                got.update(frames=frames, refused=refused)
+                return Episode(query.query_id, [Moment(asset_id="v1", t_in=10, t_out=20)],
+                               Usage(steps=1), "submitted")
+
+        run = await run_agentic_benchmark([make_query()], Greedy(), make_corpus(tmp_path),
+                                          budget=Budget(max_frames=1), trials=1)
+        t = run.trials[0]
+        assert got["frames"] <= 1 and got["refused"] == 2
+        assert t.usage.frames <= 1 and t.outcome == "submitted"
+        # Name mangling only deters; it is the documented limit of in-process isolation.
+        assert set(got.get("reached", [])) <= {"_MeteredCorpus__corpus"}
+
+
+class TestRankedAnswers:  # audit 2: R8
+    def test_an_invalid_top_candidate_rejects_the_ranking(self):
+        good = {"asset_id": "v1", "t_in": 10, "t_out": 20}
+        for bad in ({"asset_id": "nope", "t_in": 1, "t_out": 2},
+                    {"asset_id": "v1", "t_in": 5, "t_out": 5}):
+            with pytest.raises(InvalidSubmissionError, match="invalid submission"):
+                parse_submission({"moments": [bad, good]}, {"v1": {"duration_s": 100}})
+        assert parse_submission({"moments": [good]}, {"v1": {"duration_s": 100}})
+
+    async def test_it_scores_zero_unless_the_model_resubmits(self, tmp_path):
+        bad_first = ("submit_answer", {"moments": [
+            {"asset_id": "nope", "t_in": 1, "t_out": 2},
+            {"asset_id": "v1", "t_in": 10, "t_out": 20}]})
+        run = await run_agentic_benchmark([make_query()], ScriptedModel([[bad_first]]),
+                                          make_corpus(tmp_path), trials=1)
+        assert run.summary.recall_at_1 == 0.0
+
+
+class TestComparableOnly:  # audit 2: R9
+    async def test_runs_with_different_tasks_are_never_ranked_together(self, tmp_path,
+                                                                      monkeypatch):
+        from momentbench import submission
+        from momentbench.cli import main
+
+        qs = [NO_ANSWER, make_query()]
+        qdir = tmp_path / "queries"
+        qdir.mkdir()
+        (qdir / "q_v0.2.json").write_text(json.dumps([x.model_dump(mode="json") for x in qs]))
+        monkeypatch.setattr(submission, "QUERIES_DIR", qdir)
+        runs = tmp_path / "runs"
+        runs.mkdir()
+        script = [[("submit_answer", {"moments": []})]]
+        for i, frames in enumerate((64, 8)):
+            (tmp_path / f"c{i}").mkdir()
+            run = await run_agentic_benchmark(qs, ScriptedModel(script),
+                                              verified_corpus(tmp_path / f"c{i}"), trials=1,
+                                              budget=Budget(max_frames=frames))
+            (runs / f"r{i}.json").write_text(run.model_dump_json())
+        r = CliRunner().invoke(main, ["leaderboard", str(runs)], env={"COLUMNS": "200"})
+        titles = [line for line in r.output.splitlines() if "agentic track" in line]
+        assert r.exit_code == 0 and len(titles) == 2, r.output
