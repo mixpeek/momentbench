@@ -17,7 +17,7 @@
 
 In total 620 queries across film, aerospace and robotics, 457 in this repository. They were drafted and verified by Claude, then cross-checked by Gemini, and only queries both agreed on were kept (37 of 657 were dropped at that step). They have not had human review yet; a 20-query spot check put the error rate before cross-checking at about 10%. The technical report is [`docs/report.md`](docs/report.md); current scores are in [`docs/results.md`](docs/results.md). [`docs/protocol.md`](docs/protocol.md) defines the task, metrics and what a reported result must state, and describes how the queries were built. [`docs/scope.md`](docs/scope.md) states what a v0.2 score measures and what it does not, with a roadmap for each gap. PRs adding rights-cleared footage or queries are welcome (see [`SUBMISSION.md`](SUBMISSION.md)).
 
-Built on [Mixpeek](https://mixpeek.com).
+Maintained by [Mixpeek](https://mixpeek.com). Mixpeek's own pipeline is one entrant on the leaderboard and follows the same rules as every other. See [`GOVERNANCE.md`](GOVERNANCE.md).
 
 ## Quick Start
 

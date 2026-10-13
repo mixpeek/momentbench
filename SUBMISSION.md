@@ -63,7 +63,7 @@ The 163-query private held-out set is never distributed. To evaluate against it:
 2. We run it on the held-out queries with the same harness and budget.
 3. Held-out scores are reported next to the public-set scores.
 
-This prevents contamination while letting every submission be scored on both sets.
+This prevents contamination while letting every submission be scored on both sets. [`GOVERNANCE.md`](GOVERNANCE.md) states how Mixpeek, which maintains the benchmark and holds the held-out labels, handles its own entries.
 
 ## The legacy track
 
