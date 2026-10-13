@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -99,7 +100,8 @@ async def _episode(model, corpus, query, budget, usage, trace) -> Episode:
                     continue
                 trace.append({"tool": call.name, "arguments": call.arguments})
                 return Episode(query.query_id, moments, usage, "submitted", trace, resolved[0])
-            result = corpus.execute(call, budget, usage)
+            # A worker thread, so ffmpeg in one episode does not stall the others.
+            result = await asyncio.to_thread(corpus.execute, call, budget, usage)
             trace.append(
                 {
                     "tool": call.name,

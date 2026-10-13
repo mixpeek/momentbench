@@ -9,6 +9,7 @@ sample by calling `submit` with a JSON array of moments.
 
 from __future__ import annotations
 
+import asyncio
 import base64
 import json
 from pathlib import Path
@@ -113,7 +114,8 @@ def corpus_tools(corpus: LocalCorpus, budget: Budget) -> list[Tool]:
                 raise ToolError("frame budget exhausted; call submit now")
             want = max(1, min(num_frames, MAX_FRAMES_PER_CALL, left))
             try:
-                info, frames = corpus.sample_frames(asset_id, t_start, t_end, want)
+                info, frames = await asyncio.to_thread(
+                    corpus.sample_frames, asset_id, t_start, t_end, want)
             except (ValueError, RuntimeError) as e:
                 raise ToolError(str(e)) from e
             store().set("frames", store().get("frames", 0) + len(frames))

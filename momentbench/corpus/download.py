@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import shutil
+import time
+import urllib.error
 import urllib.request
 import zipfile
 from pathlib import Path
@@ -12,9 +14,21 @@ from momentbench.corpus.verify import sha256_file
 
 # download.blender.org answers urllib's default User-Agent with 403.
 USER_AGENT = "momentbench-corpus-download/0.1 (+https://github.com/mixpeek/momentbench)"
+# Seconds a connect or a single read may stall before the attempt is abandoned.
+TIMEOUT_S = 60
+# Waits before the second and third attempts.
+RETRY_WAITS_S = (5, 20)
 
 
-def download_asset(asset: dict[str, Any], corpus_dir: Path) -> str:
+def _retryable(e: OSError) -> bool:
+    """Network faults and 5xx/429 are worth retrying; other HTTP errors are not."""
+    if isinstance(e, urllib.error.HTTPError):
+        return e.code == 429 or e.code >= 500
+    return True
+
+
+def download_asset(asset: dict[str, Any], corpus_dir: Path,
+                   sleep: Any = time.sleep) -> str:
     """Download one asset to <corpus_dir>/<file.name>. Returns a one-line status."""
     spec = asset.get("file")
     if not spec:
@@ -25,16 +39,21 @@ def download_asset(asset: dict[str, Any], corpus_dir: Path) -> str:
     url = spec["download_url"]
     tmp = corpus_dir / (spec["name"] + ".part")
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    try:
-        _fetch(request, tmp)
-    except OSError as e:  # URLError and HTTPError are OSError subclasses
-        tmp.unlink(missing_ok=True)
-        return f"FAIL {asset['asset_id']}: {url}: {e}"
+    for attempt, wait in enumerate((*RETRY_WAITS_S, None), start=1):
+        try:
+            _fetch(request, tmp)
+            break
+        except OSError as e:  # URLError, HTTPError and socket timeouts are all OSError
+            tmp.unlink(missing_ok=True)
+            if wait is None or not _retryable(e):
+                return f"FAIL {asset['asset_id']}: {url}: {e} (attempt {attempt})"
+            sleep(wait)
     return _finish(asset, spec, url, tmp, target)
 
 
 def _fetch(request: urllib.request.Request, tmp: Path) -> None:
-    with urllib.request.urlopen(request) as resp, tmp.open("wb") as out:  # noqa: S310
+    with (urllib.request.urlopen(request, timeout=TIMEOUT_S) as resp,  # noqa: S310
+          tmp.open("wb") as out):
         shutil.copyfileobj(resp, out, length=1 << 20)
 
 

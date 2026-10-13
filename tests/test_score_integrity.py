@@ -335,3 +335,46 @@ class TestLegacyLabels:  # findings 2, 3
         assert "metadata-only" in text and "momentbench agentic" in text
         [f] = out.glob("*.json")
         assert json.loads(f.read_text())["config"]["input_kind"] == "metadata-only"
+
+
+class TestFrameSampling:  # finding 26
+    @pytest.mark.skipif(not __import__("shutil").which("ffmpeg"), reason="needs ffmpeg")
+    def test_the_last_second_of_a_video_returns_a_frame(self, tmp_path):
+        import subprocess
+
+        from momentbench.agentic.environment import LocalCorpus
+
+        # Picture stops at 2 s, audio runs to 3 s: the shape of Elephants Dream.
+        video = tmp_path / "v.mp4"
+        subprocess.run(["ffmpeg", "-v", "error", "-f", "lavfi", "-i",
+                        "testsrc=duration=2:size=128x72:rate=10", "-f", "lavfi", "-i",
+                        "sine=duration=3", "-c:v", "libx264", "-pix_fmt", "yuv420p",
+                        "-c:a", "aac", str(video)], check=True)
+        corpus = LocalCorpus([{"asset_id": "v", "title": "t", "duration_s": 3.0}], tmp_path,
+                             transcripts={})
+        info, frames = corpus.sample_frames("v", 3.0, 3.0, 1)
+        assert frames and frames[0][:2] == b"\xff\xd8"
+        assert json.loads(info)["frame_times_s"][0] <= 2.0  # reports what was decoded
+        assert len(corpus.sample_frames("v", 0, 3.0, 4)[1]) == 4
+
+    async def test_frame_extraction_does_not_block_other_episodes(self, tmp_path):
+        import time
+
+        from momentbench.agentic.environment import LocalCorpus
+        from tests.test_agentic import ASSETS, TRANSCRIPTS
+
+        for a in ASSETS:
+            (tmp_path / f"{a['asset_id']}.mp4").write_bytes(b"")
+
+        def slow(video, t):
+            time.sleep(0.4)  # a blocking ffmpeg call
+            return b"jpeg"
+
+        corpus = LocalCorpus(ASSETS, tmp_path, frame_extractor=slow, transcripts=TRANSCRIPTS)
+        script = [[("sample_frames", {"asset_id": "v1", "t_start": 0, "t_end": 1,
+                                      "num_frames": 1})], [SUBMIT_GOLD]]
+        queries = [make_query().model_copy(update={"query_id": f"q{i}"}) for i in range(4)]
+        start = time.perf_counter()
+        await run_agentic_benchmark(queries, ScriptedModel(script), corpus, trials=1,
+                                    max_concurrency=4)
+        assert time.perf_counter() - start < 1.2  # serial would take 1.6 s

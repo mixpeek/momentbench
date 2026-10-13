@@ -72,8 +72,10 @@ def test_a_failed_fetch_is_reported_and_does_not_stop_the_run(tmp_path):
 
     asset = {"asset_id": "v1", "file": {"name": "v1.mp4", "sha256": "x",
                                         "download_url": (tmp_path / "missing.mp4").as_uri()}}
-    result = download_asset(asset, tmp_path)
+    waits = []
+    result = download_asset(asset, tmp_path, sleep=waits.append)
     assert result.startswith("FAIL v1") and not (tmp_path / "v1.mp4.part").exists()
+    assert len(waits) == 2  # three attempts on a network error
 
 
 def test_requests_send_a_user_agent(monkeypatch, tmp_path):
@@ -88,5 +90,84 @@ def test_requests_send_a_user_agent(monkeypatch, tmp_path):
     monkeypatch.setattr(download, "_fetch", fake_fetch)
     asset = {"asset_id": "v1", "file": {"name": "v1.mp4", "sha256": "x",
                                         "download_url": "https://example.org/v1.mp4"}}
-    download.download_asset(asset, tmp_path)
+    download.download_asset(asset, tmp_path, sleep=lambda s: None)
     assert seen["ua"] == download.USER_AGENT
+
+
+class _Server:
+    """A real local HTTP server whose replies the test scripts (audit finding 26)."""
+
+    def __init__(self, replies):
+        import http.server
+        import threading
+
+        self.replies, self.hits = list(replies), 0
+        outer = self
+
+        class Handler(http.server.BaseHTTPRequestHandler):
+            def do_GET(self):  # noqa: N802
+                outer.hits += 1
+                kind = outer.replies.pop(0) if outer.replies else 200
+                if kind == "stall":
+                    import time
+                    time.sleep(3)
+                    return
+                if kind != 200:
+                    self.send_error(kind)
+                    return
+                self.send_response(200)
+                self.send_header("Content-Length", "3")
+                self.end_headers()
+                self.wfile.write(b"abc")
+
+            def log_message(self, *args):
+                pass
+
+        self.httpd = http.server.ThreadingHTTPServer(("127.0.0.1", 0), Handler)
+        threading.Thread(target=self.httpd.serve_forever, daemon=True).start()
+        self.url = f"http://127.0.0.1:{self.httpd.server_port}/v1.mp4"
+
+    def close(self):
+        self.httpd.shutdown()
+
+
+ABC_SHA = "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+
+
+def _asset(url):
+    return {"asset_id": "v1", "file": {"name": "v1.mp4", "download_url": url, "sha256": ABC_SHA}}
+
+
+def test_a_transient_server_error_is_retried(tmp_path):
+    from momentbench.corpus.download import download_asset
+
+    server = _Server([503, 200])
+    try:
+        assert download_asset(_asset(server.url), tmp_path, sleep=lambda s: None) == "got  v1"
+        assert server.hits == 2
+    finally:
+        server.close()
+
+
+def test_a_client_error_is_not_retried(tmp_path):
+    from momentbench.corpus.download import download_asset
+
+    server = _Server([404])
+    try:
+        result = download_asset(_asset(server.url), tmp_path, sleep=lambda s: None)
+        assert result.startswith("FAIL v1") and server.hits == 1
+    finally:
+        server.close()
+
+
+def test_a_stalled_server_times_out_and_is_retried(tmp_path, monkeypatch):
+    from momentbench.corpus import download
+
+    monkeypatch.setattr(download, "TIMEOUT_S", 0.5)
+    server = _Server(["stall", 200])
+    try:
+        assert download.download_asset(_asset(server.url), tmp_path,
+                                       sleep=lambda s: None) == "got  v1"
+        assert server.hits == 2
+    finally:
+        server.close()

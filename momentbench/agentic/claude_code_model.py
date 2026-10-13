@@ -14,6 +14,7 @@ signed in with.
 
 from __future__ import annotations
 
+import asyncio
 import base64
 import tempfile
 from typing import Any
@@ -79,7 +80,8 @@ class ClaudeCodeAgent(AgentModel):
                         submitted["arguments"] = args
                         trace.append({"tool": name, "arguments": args})
                     return {"content": [{"type": "text", "text": "Answer recorded. Stop now."}]}
-                result = corpus.execute(ToolCall(name, name, args), budget, usage)
+                result = await asyncio.to_thread(
+                    corpus.execute, ToolCall(name, name, args), budget, usage)
                 trace.append(
                     {
                         "tool": name,

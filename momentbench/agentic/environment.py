@@ -7,6 +7,7 @@ without a vendor: a lexical transcript search and raw frames.
 
 from __future__ import annotations
 
+import functools
 import json
 import math
 import re
@@ -116,8 +117,44 @@ TOOLS: list[dict[str, Any]] = [
 ]
 
 
+# Seeking to the last instant of a stream decodes nothing; sample this far inside the end.
+END_MARGIN_S = 0.25
+FFMPEG_TIMEOUT_S = 60
+
+
+@functools.lru_cache(maxsize=256)
+def video_stream_end(video: Path) -> float | None:
+    """End time of the first video stream, which can fall seconds before the container's.
+
+    Elephants Dream's picture ends at 653.8 s while its audio runs to 658.3 s; a seek
+    into that gap returns no frame at all.
+    """
+    try:
+        out = subprocess.run(
+            ["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+             "stream=duration:format=duration", "-of", "json", str(video)],
+            capture_output=True, text=True, check=False, timeout=FFMPEG_TIMEOUT_S).stdout
+        info = json.loads(out or "{}")
+    except (OSError, subprocess.SubprocessError, ValueError):
+        return None
+    for value in ([s.get("duration") for s in info.get("streams", [])]
+                  + [info.get("format", {}).get("duration")]):
+        try:
+            return float(value)
+        except (TypeError, ValueError):
+            continue
+    return None
+
+
 def ffmpeg_frame(video: Path, t: float) -> bytes:
-    """Extract one JPEG frame at time t, scaled to FRAME_WIDTH_PX wide."""
+    """Extract one JPEG frame at time t, scaled to FRAME_WIDTH_PX wide.
+
+    t is clamped to just inside the end of the video stream, so a request at the
+    asset's final second returns its last frame rather than an error.
+    """
+    end = video_stream_end(video)
+    if end is not None:
+        t = min(t, max(0.0, end - END_MARGIN_S))
     proc = subprocess.run(
         [
             "ffmpeg", "-v", "error", "-ss", f"{t:.3f}", "-i", str(video),
@@ -126,6 +163,7 @@ def ffmpeg_frame(video: Path, t: float) -> bytes:
         ],
         capture_output=True,
         check=False,
+        timeout=FFMPEG_TIMEOUT_S,
     )
     if proc.returncode != 0 or not proc.stdout:
         raise RuntimeError(f"ffmpeg failed at t={t}: {proc.stderr.decode(errors='replace')[:200]}")
@@ -266,10 +304,14 @@ class LocalCorpus:
         if video is None:
             raise ValueError(f"no video file available for {asset_id}")
         duration = self.assets[asset_id].get("duration_s")
-        if duration:
-            t_end = min(t_end, float(duration))
         if t_end < t_start:
             raise ValueError("t_end must be >= t_start")
+        ends = [float(duration)] if duration else []
+        if self._extract is ffmpeg_frame and (stream_end := video_stream_end(video)):
+            ends.append(stream_end)  # so frame_times_s reports what was decoded
+        if ends:
+            t_end = min(t_end, max(0.0, min(ends) - END_MARGIN_S))
+            t_start = min(t_start, t_end)
         n = max(1, min(num_frames, MAX_FRAMES_PER_CALL))
         if n == 1:
             times = [(t_start + t_end) / 2]
