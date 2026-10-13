@@ -1,6 +1,7 @@
 # Evaluation protocol (v0.2)
 
 This page specifies what a MomentBench number means. A result that departs from it should say how.
+For what a v0.2 number does not cover (audio, archive scale, physical prediction, unseen footage) and the plan for each gap, see [`scope.md`](scope.md).
 
 ## Task
 
