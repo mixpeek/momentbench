@@ -85,7 +85,8 @@ class OpenAICompatSession(AgentSession):
         if getattr(message, "refusal", None):
             stopped = "refusal"
         return ModelTurn(tool_calls=[] if stopped else calls, usage=usage,
-                         text=message.content or "", stopped=stopped)
+                         text=message.content or "", stopped=stopped,
+                         model=getattr(response, "model", None))
 
 
 class OpenAICompatAgent(AgentModel):

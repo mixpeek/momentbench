@@ -15,6 +15,7 @@ from pydantic import BaseModel, Field
 from momentbench.agentic.budget import Budget, Pricing, Usage
 from momentbench.agentic.environment import LocalCorpus
 from momentbench.agentic.episode import EpisodeError, run_episode
+from momentbench.agentic.identity import text_sha
 from momentbench.agentic.model import AgentModel
 from momentbench.agentic.stats import bootstrap_ci
 from momentbench.eval.scoring import compute_temporal_iou, evaluate_prediction
@@ -48,6 +49,11 @@ class AgenticTrial(BaseModel):
     best_temporal_iou: float
     # True when the query has no gold moment (the right answer is to abstain).
     no_answer: bool = False
+    # Hash of the request text the model saw; rescoring skips a trial whose query text
+    # has changed since (a new wording can deserve a different answer).
+    query_text_sha: str | None = None
+    # Model identifier the provider reported for this trial's responses.
+    resolved_model: str | None = None
     # tIoU of the first submitted moment against its best gold span; 1.0 for a correct
     # abstention on a no-answer query. Drives Recall@1 at other thresholds.
     top1_iou: float = 0.0
@@ -108,6 +114,11 @@ class AgenticRun(BaseModel):
     reportable: bool = True
     # asset_id -> sha256 of every corpus file the run could search, from verification.
     corpus_receipt: dict[str, str] = Field(default_factory=dict)
+    # Commit, input hashes, provider, endpoint, packages and a compatibility key
+    # (momentbench.agentic.identity).
+    identity: dict[str, Any] = Field(default_factory=dict)
+    # Trials left out when this run was rescored because their query text changed.
+    rescore_excluded: int = 0
     budget: Budget
     pricing: Pricing | None
     timestamp: str
@@ -168,20 +179,35 @@ def score_trial(query: Query, moments: list[Moment], outcome: str
 def rescore(run: AgenticRun, queries: dict[str, Query]) -> AgenticRun:
     """Score a saved run against the current gold, dropping queries no longer in the set.
 
-    A run stores each trial's submitted moments, so a corrected label changes the score
-    without rerunning the model.
+    A run stores each trial's submitted moments, so a corrected span changes the score
+    without rerunning the model. A changed request is different: the old answer was to
+    a different question, so that trial is left out and counted in rescore_excluded.
+    Runs from before trials recorded query_text_sha fall back to when the refinement
+    was applied (applied_at, UTC like the run timestamp; else the day, conservatively).
     """
-    trials = []
+    trials, excluded = [], 0
+    run_at = run.timestamp or ""
     for t in run.trials:
         q = queries.get(t.query_id)
         if q is None:
+            continue
+        if t.query_text_sha is not None:
+            changed = t.query_text_sha != text_sha(q.text)
+        else:
+            refined = q.metadata.get("text_refined") or {}
+            if refined.get("applied_at"):
+                changed = run_at < refined["applied_at"]
+            else:
+                changed = bool(refined) and run_at[:10] <= refined.get("date", "")[:10]
+        if changed:
+            excluded += 1
             continue
         hit1, hit5, best, top1 = score_trial(q, t.moments, t.outcome)
         trials.append(t.model_copy(update={"hit_at_1": hit1, "hit_at_5": hit5,
                                            "best_temporal_iou": best, "top1_iou": top1,
                                            "tier": int(q.tier),
                                            "no_answer": q.is_no_answer}))
-    return run.model_copy(update={"trials": trials,
+    return run.model_copy(update={"trials": trials, "rescore_excluded": excluded,
                                   "summary": summarize(trials, run.summary.num_trials)})
 
 
@@ -260,6 +286,7 @@ async def run_agentic_benchmark(
     output_dir: Path | None = None,
     reportable: bool = True,
     corpus_receipt: dict[str, str] | None = None,
+    identity: dict[str, Any] | None = None,
 ) -> AgenticRun:
     budget = budget or Budget()
     semaphore = asyncio.Semaphore(max_concurrency)
@@ -268,6 +295,7 @@ async def run_agentic_benchmark(
         async with semaphore:
             start = time.perf_counter()
             error = None
+            resolved = None
             try:
                 request = query.request()  # entrants never see gold, tier or negatives
                 if hasattr(model, "run_episode"):  # entrants that run their own tool loop
@@ -282,6 +310,7 @@ async def run_agentic_benchmark(
                 moments, usage, outcome, trace = (
                     episode.moments, episode.usage, episode.outcome, episode.trace
                 )
+                resolved = episode.resolved_model
                 over = budget_violation(usage, budget)
                 if over:
                     moments, outcome, error = [], "budget_exceeded", over
@@ -301,6 +330,8 @@ async def run_agentic_benchmark(
             tier=int(query.tier),
             vertical=query.vertical,
             no_answer=query.is_no_answer,
+            query_text_sha=text_sha(query.text),
+            resolved_model=resolved,
             outcome=outcome,
             hit_at_1=hit1,
             hit_at_5=hit5,
@@ -341,6 +372,9 @@ async def run_agentic_benchmark(
         corpus_assets=len(corpus.assets),
         reportable=reportable,
         corpus_receipt=corpus_receipt or {},
+        identity={**(identity or {}),
+                  "resolved_models": sorted({t.resolved_model for t in results
+                                             if t.resolved_model})},
         budget=budget,
         pricing=pricing,
         timestamp=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),

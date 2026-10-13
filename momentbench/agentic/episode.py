@@ -44,6 +44,7 @@ class Episode:
     # "submitted", "no_submission", "step_limit", or the provider stop ("refusal", ...).
     outcome: str
     trace: list[dict[str, Any]] = field(default_factory=list)
+    resolved_model: str | None = None
 
 
 class EpisodeError(RuntimeError):
@@ -72,15 +73,17 @@ async def run_episode(
 async def _episode(model, corpus, query, budget, usage, trace) -> Episode:
     session = model.start(SYSTEM_PROMPT, build_task(query, budget), TOOLS)
     results: list[ToolResult] | None = None
+    resolved: list[str | None] = [None]
 
     while usage.steps < budget.max_steps:
         turn = await session.step(results)
         usage.steps += 1
         usage.add(turn.usage)
+        resolved[0] = turn.model or resolved[0]
         if turn.stopped:
-            return Episode(query.query_id, [], usage, turn.stopped, trace)
+            return Episode(query.query_id, [], usage, turn.stopped, trace, resolved[0])
         if not turn.tool_calls:
-            return Episode(query.query_id, [], usage, "no_submission", trace)
+            return Episode(query.query_id, [], usage, "no_submission", trace, resolved[0])
 
         results = []
         for call in turn.tool_calls:
@@ -95,7 +98,7 @@ async def _episode(model, corpus, query, budget, usage, trace) -> Episode:
                                               is_error=True))
                     continue
                 trace.append({"tool": call.name, "arguments": call.arguments})
-                return Episode(query.query_id, moments, usage, "submitted", trace)
+                return Episode(query.query_id, moments, usage, "submitted", trace, resolved[0])
             result = corpus.execute(call, budget, usage)
             trace.append(
                 {
@@ -107,4 +110,4 @@ async def _episode(model, corpus, query, budget, usage, trace) -> Episode:
             )
             results.append(result)
 
-    return Episode(query.query_id, [], usage, "step_limit", trace)
+    return Episode(query.query_id, [], usage, "step_limit", trace, resolved[0])

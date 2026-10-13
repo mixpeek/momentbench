@@ -91,7 +91,8 @@ class OpenAISession(AgentSession):
             reason = getattr(response.incomplete_details, "reason", None)
             stopped = "max_tokens" if reason == "max_output_tokens" else (reason or "incomplete")
         return ModelTurn(tool_calls=[] if stopped else calls, usage=usage,
-                         text="".join(text_parts), stopped=stopped)
+                         text="".join(text_parts), stopped=stopped,
+                         model=getattr(response, "model", None))
 
 
 class OpenAIAgent(AgentModel):

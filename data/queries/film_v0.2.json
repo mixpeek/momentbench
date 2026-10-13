@@ -185,7 +185,8 @@
       "text_refined": {
         "from": "A big, fat white rabbit sits in a sunny meadow and stares up at a pink-purple butterfly fluttering near his head.",
         "date": "2026-10-12",
-        "reason": "The span is right (it starts as the rabbit tosses away an apple core and the purple butterfly flies in, and ends as he smiles and it flutters off just before the cut), but the frames don't show him sitting and he's probably standing, so change 'sits' to 'stands' and 'stares up at' to 'stares at' bec"
+        "reason": "The span is right (it starts as the rabbit tosses away an apple core and the purple butterfly flies in, and ends as he smiles and it flutters off just before the cut), but the frames don't show him sitting and he's probably standing, so change 'sits' to 'stands' and 'stares up at' to 'stares at' bec",
+        "applied_at": "2026-10-12T13:40:41Z"
       }
     }
   },
@@ -331,7 +332,8 @@
       "text_refined": {
         "from": "A red rodent dangles upside down from a tree trunk at the edge of a grassy field, holding a purple butterfly.",
         "date": "2026-10-12",
-        "reason": "The span boundaries fit the shot and the red rodent is upside down with the purple butterfly, but in the middle and end frames it hangs from a branch, not the trunk, so change 'dangles upside down from a tree trunk' to 'dangles upside down from a tree branch'."
+        "reason": "The span boundaries fit the shot and the red rodent is upside down with the purple butterfly, but in the middle and end frames it hangs from a branch, not the trunk, so change 'dangles upside down from a tree trunk' to 'dangles upside down from a tree branch'.",
+        "applied_at": "2026-10-12T13:40:41Z"
       }
     }
   },
@@ -607,7 +609,8 @@
       "text_refined": {
         "from": "After a big gray rabbit pulls back a wooden bow with a sharpened stick on it, the stick is shown stuck in the bark of a tree trunk with leaves on it.",
         "date": "2026-10-12",
-        "reason": "The span is right (the rabbit draws the bow, then the arrow is shown stuck in the trunk before the cut back), but the leaves are tied to the end of the stick as fletching, not growing on the tree, so reword to \"the stick, with leaves tied to its end, is shown stuck in the bark of a tree trunk.\""
+        "reason": "The span is right (the rabbit draws the bow, then the arrow is shown stuck in the trunk before the cut back), but the leaves are tied to the end of the stick as fletching, not growing on the tree, so reword to \"the stick, with leaves tied to its end, is shown stuck in the bark of a tree trunk.\"",
+        "applied_at": "2026-10-12T13:40:41Z"
       }
     }
   },
@@ -852,7 +855,8 @@
       "text_refined": {
         "from": "After a flying squirrel with its arms spread wide floats toward the camera against a blue sky with white clouds, a big grey rabbit sitting in tall green grass looks on with a smug half-smile.",
         "date": "2026-10-12",
-        "reason": "The start and end boundaries hold up: the squirrel is at the start, the rabbit is at the end, and the squirrel is back at +1 s. But the text leaves out the empty forest-path shot in the middle of the span, and it misdescribes the rabbit. He isn't clearly sitting or just looking on; he is pointing do"
+        "reason": "The start and end boundaries hold up: the squirrel is at the start, the rabbit is at the end, and the squirrel is back at +1 s. But the text leaves out the empty forest-path shot in the middle of the span, and it misdescribes the rabbit. He isn't clearly sitting or just looking on; he is pointing do",
+        "applied_at": "2026-10-12T13:40:41Z"
       }
     }
   },
@@ -999,7 +1003,8 @@
       "text_refined": {
         "from": "In a misty blue cavern, a tiny figure holding a staff stands with a small dog beneath huge curved fronds shaped like ribs. Light shines down from above.",
         "date": "2026-10-12",
-        "reason": "The start and middle frames match the query (a tiny figure with a staff and a small dog in a misty blue cavern under rib-like fronds), but the end frame at 181.73 s is already a different shot looking up into empty mist with no figure, so the end should be trimmed to the cut that comes after the mid"
+        "reason": "The start and middle frames match the query (a tiny figure with a staff and a small dog in a misty blue cavern under rib-like fronds), but the end frame at 181.73 s is already a different shot looking up into empty mist with no figure, so the end should be trimmed to the cut that comes after the mid",
+        "applied_at": "2026-10-12T13:40:41Z"
       }
     }
   },
@@ -1114,7 +1119,8 @@
       "text_refined": {
         "from": "Close-up of long, clear icicles hanging in warm golden light, starting to melt.",
         "date": "2026-10-12",
-        "reason": "The span starts and ends cleanly on the icicle close-up in warm golden backlight (the frames before and after are different shots), but no drips or visible melting show in the start, middle or end frames, so drop 'starting to melt' (e.g. 'Close-up of long, clear icicles hanging in warm golden backli"
+        "reason": "The span starts and ends cleanly on the icicle close-up in warm golden backlight (the frames before and after are different shots), but no drips or visible melting show in the start, middle or end frames, so drop 'starting to melt' (e.g. 'Close-up of long, clear icicles hanging in warm golden backli",
+        "applied_at": "2026-10-12T13:40:41Z"
       }
     }
   },
@@ -1662,7 +1668,8 @@
       "text_refined": {
         "from": "A big grey-white rabbit holds out a thin branch, and a small brown squirrel crouches on it right next to him in the forest.",
         "date": "2026-10-12",
-        "reason": "The start and middle frames match the query (the big grey-white rabbit holds out a thin branch with the small brown squirrel crouched on it next to him), but by the end frame the rabbit has already grabbed the squirrel in his hand, so either move the end earlier to just before the grab (by about a s"
+        "reason": "The start and middle frames match the query (the big grey-white rabbit holds out a thin branch with the small brown squirrel crouched on it next to him), but by the end frame the rabbit has already grabbed the squirrel in his hand, so either move the end earlier to just before the grab (by about a s",
+        "applied_at": "2026-10-12T13:40:41Z"
       }
     }
   },
@@ -3291,7 +3298,8 @@
       "text_refined": {
         "from": "A man in a dark jacket stands by a tall mast with ropes, holding a gun. Next comes a close-up of a hand on the gun's black metal body. Then a close-up shows him looking down at the weapon, where a small red light glows.",
         "date": "2026-10-12",
-        "reason": "The span boundaries and the shot order are right (man with a gun by the roped mast, close-up of a hand on the black gun body, close-up of his face looking down), but the small red light shows on the gun in the middle hand close-up, not in the final face shot, so move it: 'Next comes a close-up of a "
+        "reason": "The span boundaries and the shot order are right (man with a gun by the roped mast, close-up of a hand on the black gun body, close-up of his face looking down), but the small red light shows on the gun in the middle hand close-up, not in the final face shot, so move it: 'Next comes a close-up of a ",
+        "applied_at": "2026-10-12T13:40:41Z"
       }
     }
   },
@@ -5531,7 +5539,8 @@
       "text_refined": {
         "from": "In a barbershop, a man in a light blue shirt leans over to a bronze head bust on a wall shelf next to framed pictures.",
         "date": "2026-10-12",
-        "reason": "The scene is right: the barber in a light blue smock leans toward a bronze bust beside framed pictures, but the bust sits on a wooden cabinet or counter top, not a 'wall shelf', and by the end of the span his hand is pressing buttons on top of the bust's head, so the query should read: 'In a barbers"
+        "reason": "The scene is right: the barber in a light blue smock leans toward a bronze bust beside framed pictures, but the bust sits on a wooden cabinet or counter top, not a 'wall shelf', and by the end of the span his hand is pressing buttons on top of the bust's head, so the query should read: 'In a barbers",
+        "applied_at": "2026-10-12T13:40:41Z"
       }
     }
   },
@@ -6497,7 +6506,8 @@
       "text_refined": {
         "from": "A young man in a leather jacket stands by a canal railing and tells a woman with her back to the camera that he was young and a dick, but that's no reason to destroy the world, while a large robotic arm moves beside him.",
         "date": "2026-10-12",
-        "reason": "The dialogue and timing match, but the frames show a metallic robotic hand raised next to the woman's head, not a large robotic arm beside the man, and no canal railing is visible (only canal-side buildings and trees), so the query should say 'by a canal, while a metallic robotic hand is raised besi"
+        "reason": "The dialogue and timing match, but the frames show a metallic robotic hand raised next to the woman's head, not a large robotic arm beside the man, and no canal railing is visible (only canal-side buildings and trees), so the query should say 'by a canal, while a metallic robotic hand is raised besi",
+        "applied_at": "2026-10-12T13:40:41Z"
       }
     }
   },
@@ -6600,7 +6610,8 @@
       "text_refined": {
         "from": "A heavyset man with a glowing red mechanical eye sits in a warmly lit room, gesturing with an open hand as he says, \"You know, there's a lesson to be learned from this.\"",
         "date": "2026-10-12",
-        "reason": "The span's transcript is only \"You know\", so the rest of the quoted line falls outside the span, and in the frames he gestures with his fingertips pressed together rather than an open hand. Either cut the quote to \"You know\" and say \"gesturing with his fingertips pressed together\", or extend the spa"
+        "reason": "The span's transcript is only \"You know\", so the rest of the quoted line falls outside the span, and in the frames he gestures with his fingertips pressed together rather than an open hand. Either cut the quote to \"You know\" and say \"gesturing with his fingertips pressed together\", or extend the spa",
+        "applied_at": "2026-10-12T13:40:41Z"
       }
     }
   },
@@ -6942,7 +6953,8 @@
       "text_refined": {
         "from": "A gaunt young man in a pale shirt presses a hand to his cheek and leans away against a curved tiled wall, then says \"Prug, you're a sick man.\"",
         "date": "2026-10-12",
-        "reason": "The frames show his hand pressed to his chest or collar, not his cheek, so change \"presses a hand to his cheek\" to \"presses a hand to his chest\"; the rest of the query and the span boundaries match."
+        "reason": "The frames show his hand pressed to his chest or collar, not his cheek, so change \"presses a hand to his cheek\" to \"presses a hand to his chest\"; the rest of the query and the span boundaries match.",
+        "applied_at": "2026-10-12T13:40:41Z"
       }
     }
   },
@@ -7002,7 +7014,8 @@
       "text_refined": {
         "from": "Someone says 'That's it' as a red-haired man's head fills the foreground. Past him, a lone dark sheep sits on the grassy cliff with a low sun over the sea.",
         "date": "2026-10-12",
-        "reason": "The span and dialogue line up: the red-haired man's head fills the foreground at the start and middle, past him a lone sheep sits on the cliff with a low sun over the sea, and he has left the frame by the end. But the sheep looks mid-grey and woolly, not dark, so change 'a lone dark sheep' to 'a lon"
+        "reason": "The span and dialogue line up: the red-haired man's head fills the foreground at the start and middle, past him a lone sheep sits on the cliff with a low sun over the sea, and he has left the frame by the end. But the sheep looks mid-grey and woolly, not dark, so change 'a lone dark sheep' to 'a lon",
+        "applied_at": "2026-10-12T13:40:41Z"
       }
     }
   },
@@ -7062,7 +7075,8 @@
       "text_refined": {
         "from": "A voice says \"This is 327. I'm going in\" while the camera looks down from high above onto a narrow sunlit street lined with rooftops and planters.",
         "date": "2026-10-12",
-        "reason": "The start and middle frames match the high overhead shot of the narrow sunlit street with rooftops and balcony planters, but by the end frame the shot has cut to street level, showing the agent in a suit beside a barbershop's striped pole, so the query should add '...then cuts to the agent standing "
+        "reason": "The start and middle frames match the high overhead shot of the narrow sunlit street with rooftops and balcony planters, but by the end frame the shot has cut to street level, showing the agent in a suit beside a barbershop's striped pole, so the query should add '...then cuts to the agent standing ",
+        "applied_at": "2026-10-12T13:40:41Z"
       }
     }
   },
@@ -7122,7 +7136,8 @@
       "text_refined": {
         "from": "A bald, heavyset man points a gun with a red laser sight as someone says it looks like they've found their next recruit.",
         "date": "2026-10-12",
-        "reason": "The start frame (red laser dot on Agent 327) and the middle frame (bald, heavyset man aiming a gun with a red laser) match the query, but by the end frame the shot has cut to a masked surgeon in scrubs, and 'Carry on with the procedure. We have to make room for Agent 327' plays there, so move the en"
+        "reason": "The start frame (red laser dot on Agent 327) and the middle frame (bald, heavyset man aiming a gun with a red laser) match the query, but by the end frame the shot has cut to a masked surgeon in scrubs, and 'Carry on with the procedure. We have to make room for Agent 327' plays there, so move the en",
+        "applied_at": "2026-10-12T13:40:41Z"
       }
     }
   },
@@ -7397,7 +7412,8 @@
       "text_refined": {
         "from": "A young man in a grey shirt stands among masses of red, snake-like cables in amber light and announces \"The Colossus of Rhodus!\" then says it is here just for you, Prug.",
         "date": "2026-10-12",
-        "reason": "The span and dialogue are right, but the visuals don't match the text: the cables look golden-brown rather than red, and the middle and end frames show the bald old man in a green coat (Prug) instead of a young man in a grey shirt. Change the visual description to something like \"among masses of gol"
+        "reason": "The span and dialogue are right, but the visuals don't match the text: the cables look golden-brown rather than red, and the middle and end frames show the bald old man in a green coat (Prug) instead of a young man in a grey shirt. Change the visual description to something like \"among masses of gol",
+        "applied_at": "2026-10-12T13:40:41Z"
       }
     }
   },
@@ -7837,7 +7853,8 @@
       "text_refined": {
         "from": "After a hand reaches up toward a dragon flying low overhead against a pale sky, the shot cuts to a close-up of the red-haired girl staring up with her mouth open as a dark wing sweeps past.",
         "date": "2026-10-12",
-        "reason": "The start and middle frames do show a hand reaching up toward a low-flying dragon, but the open-mouthed close-up of the girl is in the before frame, outside the span, and the end frame shows her lunging forward with her arm out and no dark wing passing. Either rewrite the second clause to 'the shot "
+        "reason": "The start and middle frames do show a hand reaching up toward a low-flying dragon, but the open-mouthed close-up of the girl is in the before frame, outside the span, and the end frame shows her lunging forward with her arm out and no dark wing passing. Either rewrite the second clause to 'the shot ",
+        "applied_at": "2026-10-12T13:40:41Z"
       }
     }
   },
@@ -8069,7 +8086,8 @@
       "text_refined": {
         "from": "Wide view of a ruined cathedral interior with tall organ pipes at the far end and plants growing over the stone columns, lit by hazy golden light.",
         "date": "2026-10-12",
-        "reason": "The shot boundaries and the setting (wide ruined cathedral, organ pipes at the far end, overgrown columns, hazy golden light) are right, but the query leaves out the main event: from the middle frame on, an explosion of debris and smoke bursts up in the center of the nave. Add something like 'as an "
+        "reason": "The shot boundaries and the setting (wide ruined cathedral, organ pipes at the far end, overgrown columns, hazy golden light) are right, but the query leaves out the main event: from the middle frame on, an explosion of debris and smoke bursts up in the center of the nave. Add something like 'as an ",
+        "applied_at": "2026-10-12T13:40:41Z"
       }
     }
   },

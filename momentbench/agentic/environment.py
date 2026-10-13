@@ -208,6 +208,10 @@ class LocalCorpus:
                     return candidate
         return None
 
+    @property
+    def transcripts(self) -> dict[str, list[dict[str, Any]]]:
+        return self._transcripts
+
     def has_transcripts(self) -> bool:
         return bool(self._transcripts)
 

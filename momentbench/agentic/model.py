@@ -31,6 +31,8 @@ class ModelTurn:
     text: str = ""
     # Set when the provider declined or cut the turn short ("refusal", "max_tokens").
     stopped: str | None = None
+    # The model identifier the provider reported for this response, when it gives one.
+    model: str | None = None
 
 
 class AgentSession(abc.ABC):

@@ -10,25 +10,25 @@
       "harness": "api",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 185,
+      "queries": 167,
       "trials": 3,
-      "recall_at_1": 0.1946,
+      "recall_at_1": 0.2156,
       "recall_at_1_ci95": [
-        0.1351,
-        0.2541
+        0.1557,
+        0.2814
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.1946,
-        "0.5": 0.1946,
-        "0.7": 0.1946
+        "0.3": 0.2156,
+        "0.5": 0.2156,
+        "0.7": 0.2156
       },
       "by_tier": {
         "1": {
-          "queries": 87,
+          "queries": 80,
           "recall_at_1": 0
         },
         "2": {
-          "queries": 32,
+          "queries": 25,
           "recall_at_1": 0
         },
         "3": {
@@ -36,7 +36,7 @@
           "recall_at_1": 1
         },
         "4": {
-          "queries": 30,
+          "queries": 26,
           "recall_at_1": 0
         }
       },
@@ -54,7 +54,7 @@
       "harness": "api",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 185,
+      "queries": 167,
       "trials": 3,
       "recall_at_1": 0.0,
       "recall_at_1_ci95": [
@@ -62,17 +62,17 @@
         0.0
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.0018,
+        "0.3": 0.0,
         "0.5": 0.0,
         "0.7": 0.0
       },
       "by_tier": {
         "1": {
-          "queries": 87,
+          "queries": 80,
           "recall_at_1": 0
         },
         "2": {
-          "queries": 32,
+          "queries": 25,
           "recall_at_1": 0
         },
         "3": {
@@ -80,7 +80,7 @@
           "recall_at_1": 0
         },
         "4": {
-          "queries": 30,
+          "queries": 26,
           "recall_at_1": 0
         }
       },
@@ -98,41 +98,41 @@
       "harness": "claude-code",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 185,
+      "queries": 167,
       "trials": 1,
-      "recall_at_1": 0.2919,
+      "recall_at_1": 0.2874,
       "recall_at_1_ci95": [
-        0.227,
-        0.3568
+        0.2216,
+        0.3593
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.3676,
-        "0.5": 0.2919,
-        "0.7": 0.1568
+        "0.3": 0.3653,
+        "0.5": 0.2874,
+        "0.7": 0.1677
       },
       "by_tier": {
         "1": {
-          "queries": 87,
-          "recall_at_1": 0.1839
+          "queries": 80,
+          "recall_at_1": 0.1875
         },
         "2": {
-          "queries": 32,
-          "recall_at_1": 0.5938
+          "queries": 25,
+          "recall_at_1": 0.6
         },
         "3": {
           "queries": 36,
           "recall_at_1": 0.2778
         },
         "4": {
-          "queries": 30,
-          "recall_at_1": 0.3
+          "queries": 26,
+          "recall_at_1": 0.3077
         }
       },
-      "positive_recall_at_1": 0.2953020134228188,
+      "positive_recall_at_1": 0.2900763358778626,
       "no_answer_accuracy": 0.2777777777777778,
       "false_positive_rate": 0.7222222222222222,
-      "abstention_on_positives": 0.11409395973154363,
-      "cost_usd_per_query": 0.01518422972972973,
+      "abstention_on_positives": 0.12213740458015267,
+      "cost_usd_per_query": 0.015760809580838326,
       "error_trials": 0,
       "run_file": "agentic-claude-haiku-5-5-2d52fc45.json"
     },
@@ -142,41 +142,41 @@
       "harness": "claude-code",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 185,
+      "queries": 167,
       "trials": 1,
-      "recall_at_1": 0.5568,
+      "recall_at_1": 0.5509,
       "recall_at_1_ci95": [
-        0.4865,
-        0.627
+        0.4731,
+        0.6287
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.6378,
-        "0.5": 0.5568,
-        "0.7": 0.4811
+        "0.3": 0.6228,
+        "0.5": 0.5509,
+        "0.7": 0.485
       },
       "by_tier": {
         "1": {
-          "queries": 87,
-          "recall_at_1": 0.6207
+          "queries": 80,
+          "recall_at_1": 0.625
         },
         "2": {
-          "queries": 32,
-          "recall_at_1": 0.7188
+          "queries": 25,
+          "recall_at_1": 0.72
         },
         "3": {
           "queries": 36,
           "recall_at_1": 0.1944
         },
         "4": {
-          "queries": 30,
-          "recall_at_1": 0.6333
+          "queries": 26,
+          "recall_at_1": 0.6538
         }
       },
-      "positive_recall_at_1": 0.6442953020134228,
+      "positive_recall_at_1": 0.648854961832061,
       "no_answer_accuracy": 0.19444444444444445,
       "false_positive_rate": 0.8055555555555556,
       "abstention_on_positives": 0.0,
-      "cost_usd_per_query": 0.11965932972972973,
+      "cost_usd_per_query": 0.12256747425149701,
       "error_trials": 0,
       "run_file": "agentic-claude-opus-5-5-0d68625a.json"
     },
@@ -186,41 +186,41 @@
       "harness": "claude-code",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 185,
+      "queries": 167,
       "trials": 1,
-      "recall_at_1": 0.3135,
+      "recall_at_1": 0.3174,
       "recall_at_1_ci95": [
-        0.2486,
-        0.3838
+        0.2515,
+        0.3892
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.4108,
-        "0.5": 0.3135,
-        "0.7": 0.1135
+        "0.3": 0.4192,
+        "0.5": 0.3174,
+        "0.7": 0.1198
       },
       "by_tier": {
         "1": {
-          "queries": 87,
-          "recall_at_1": 0.2299
+          "queries": 80,
+          "recall_at_1": 0.2375
         },
         "2": {
-          "queries": 32,
-          "recall_at_1": 0.75
+          "queries": 25,
+          "recall_at_1": 0.8
         },
         "3": {
           "queries": 36,
           "recall_at_1": 0.1111
         },
         "4": {
-          "queries": 30,
-          "recall_at_1": 0.3333
+          "queries": 26,
+          "recall_at_1": 0.3846
         }
       },
-      "positive_recall_at_1": 0.3624161073825503,
+      "positive_recall_at_1": 0.37404580152671757,
       "no_answer_accuracy": 0.1111111111111111,
       "false_positive_rate": 0.8888888888888888,
-      "abstention_on_positives": 0.04697986577181208,
-      "cost_usd_per_query": 0.06842343135135136,
+      "abstention_on_positives": 0.04580152671755725,
+      "cost_usd_per_query": 0.07009735568862276,
       "error_trials": 0,
       "run_file": "agentic-claude-sonnet-5-5-5a202b4b.json"
     },
@@ -230,41 +230,41 @@
       "harness": "api",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 185,
+      "queries": 167,
       "trials": 1,
-      "recall_at_1": 0.427,
+      "recall_at_1": 0.4251,
       "recall_at_1_ci95": [
-        0.3514,
-        0.4973
+        0.3473,
+        0.503
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.4757,
-        "0.5": 0.427,
-        "0.7": 0.3405
+        "0.3": 0.4731,
+        "0.5": 0.4251,
+        "0.7": 0.3413
       },
       "by_tier": {
         "1": {
-          "queries": 87,
-          "recall_at_1": 0.2989
+          "queries": 80,
+          "recall_at_1": 0.3
         },
         "2": {
-          "queries": 32,
-          "recall_at_1": 0.8125
+          "queries": 25,
+          "recall_at_1": 0.84
         },
         "3": {
           "queries": 36,
           "recall_at_1": 0.3611
         },
         "4": {
-          "queries": 30,
-          "recall_at_1": 0.4667
+          "queries": 26,
+          "recall_at_1": 0.5
         }
       },
-      "positive_recall_at_1": 0.4429530201342282,
+      "positive_recall_at_1": 0.44274809160305345,
       "no_answer_accuracy": 0.3611111111111111,
       "false_positive_rate": 0.6388888888888888,
-      "abstention_on_positives": 0.06040268456375839,
-      "cost_usd_per_query": 0.32604324324324324,
+      "abstention_on_positives": 0.061068702290076333,
+      "cost_usd_per_query": 0.3359427664670659,
       "error_trials": 0,
       "run_file": "agentic-gemini-3.1-pro-preview-7f1b7722.json"
     },
@@ -274,25 +274,25 @@
       "harness": "api",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 202,
+      "queries": 188,
       "trials": 3,
-      "recall_at_1": 0.104,
+      "recall_at_1": 0.1117,
       "recall_at_1_ci95": [
-        0.0644,
-        0.1485
+        0.0691,
+        0.1596
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.104,
-        "0.5": 0.104,
-        "0.7": 0.104
+        "0.3": 0.1117,
+        "0.5": 0.1117,
+        "0.7": 0.1117
       },
       "by_tier": {
         "1": {
-          "queries": 110,
+          "queries": 103,
           "recall_at_1": 0
         },
         "2": {
-          "queries": 34,
+          "queries": 31,
           "recall_at_1": 0
         },
         "3": {
@@ -300,7 +300,7 @@
           "recall_at_1": 1
         },
         "4": {
-          "queries": 37,
+          "queries": 33,
           "recall_at_1": 0
         }
       },
@@ -318,7 +318,7 @@
       "harness": "api",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 202,
+      "queries": 188,
       "trials": 3,
       "recall_at_1": 0.0,
       "recall_at_1_ci95": [
@@ -332,11 +332,11 @@
       },
       "by_tier": {
         "1": {
-          "queries": 110,
+          "queries": 103,
           "recall_at_1": 0
         },
         "2": {
-          "queries": 34,
+          "queries": 31,
           "recall_at_1": 0
         },
         "3": {
@@ -344,7 +344,7 @@
           "recall_at_1": 0
         },
         "4": {
-          "queries": 37,
+          "queries": 33,
           "recall_at_1": 0
         }
       },
@@ -362,41 +362,41 @@
       "harness": "claude-code",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 202,
+      "queries": 188,
       "trials": 1,
-      "recall_at_1": 0.4109,
+      "recall_at_1": 0.4043,
       "recall_at_1_ci95": [
-        0.3416,
-        0.4752
+        0.3298,
+        0.4734
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.4901,
-        "0.5": 0.4109,
-        "0.7": 0.2624
+        "0.3": 0.484,
+        "0.5": 0.4043,
+        "0.7": 0.2553
       },
       "by_tier": {
         "1": {
-          "queries": 110,
-          "recall_at_1": 0.3273
+          "queries": 103,
+          "recall_at_1": 0.3204
         },
         "2": {
-          "queries": 34,
-          "recall_at_1": 0.7647
+          "queries": 31,
+          "recall_at_1": 0.7742
         },
         "3": {
           "queries": 21,
           "recall_at_1": 0.381
         },
         "4": {
-          "queries": 37,
-          "recall_at_1": 0.3514
+          "queries": 33,
+          "recall_at_1": 0.3333
         }
       },
-      "positive_recall_at_1": 0.4143646408839779,
+      "positive_recall_at_1": 0.40718562874251496,
       "no_answer_accuracy": 0.38095238095238093,
       "false_positive_rate": 0.6190476190476191,
-      "abstention_on_positives": 0.11602209944751381,
-      "cost_usd_per_query": 0.017465101485148515,
+      "abstention_on_positives": 0.11377245508982035,
+      "cost_usd_per_query": 0.017353518085106386,
       "error_trials": 0,
       "run_file": "agentic-claude-haiku-5-5-73f3e5ad.json"
     },
@@ -406,41 +406,41 @@
       "harness": "claude-code",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 202,
+      "queries": 188,
       "trials": 1,
-      "recall_at_1": 0.6386,
+      "recall_at_1": 0.6277,
       "recall_at_1_ci95": [
-        0.5693,
-        0.703
+        0.5532,
+        0.6968
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.6832,
-        "0.5": 0.6386,
-        "0.7": 0.5297
+        "0.3": 0.6755,
+        "0.5": 0.6277,
+        "0.7": 0.5106
       },
       "by_tier": {
         "1": {
-          "queries": 110,
-          "recall_at_1": 0.6273
+          "queries": 103,
+          "recall_at_1": 0.6311
         },
         "2": {
-          "queries": 34,
-          "recall_at_1": 0.9412
+          "queries": 31,
+          "recall_at_1": 0.9355
         },
         "3": {
           "queries": 21,
           "recall_at_1": 0.4286
         },
         "4": {
-          "queries": 37,
-          "recall_at_1": 0.5135
+          "queries": 33,
+          "recall_at_1": 0.4545
         }
       },
-      "positive_recall_at_1": 0.6629834254143646,
+      "positive_recall_at_1": 0.6526946107784432,
       "no_answer_accuracy": 0.42857142857142855,
       "false_positive_rate": 0.5714285714285714,
       "abstention_on_positives": 0.0,
-      "cost_usd_per_query": 0.14458607524752476,
+      "cost_usd_per_query": 0.1479926425531915,
       "error_trials": 0,
       "run_file": "agentic-claude-opus-5-5-519357e4.json"
     },
@@ -450,41 +450,41 @@
       "harness": "claude-code",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 202,
+      "queries": 188,
       "trials": 1,
-      "recall_at_1": 0.3416,
+      "recall_at_1": 0.3191,
       "recall_at_1_ci95": [
-        0.2772,
-        0.4059
+        0.2553,
+        0.383
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.4752,
-        "0.5": 0.3416,
-        "0.7": 0.1832
+        "0.3": 0.4468,
+        "0.5": 0.3191,
+        "0.7": 0.1809
       },
       "by_tier": {
         "1": {
-          "queries": 110,
-          "recall_at_1": 0.2727
+          "queries": 103,
+          "recall_at_1": 0.2524
         },
         "2": {
-          "queries": 34,
-          "recall_at_1": 0.6176
+          "queries": 31,
+          "recall_at_1": 0.6129
         },
         "3": {
           "queries": 21,
           "recall_at_1": 0.2381
         },
         "4": {
-          "queries": 37,
-          "recall_at_1": 0.3514
+          "queries": 33,
+          "recall_at_1": 0.303
         }
       },
-      "positive_recall_at_1": 0.35359116022099446,
+      "positive_recall_at_1": 0.32934131736526945,
       "no_answer_accuracy": 0.23809523809523808,
       "false_positive_rate": 0.7619047619047619,
-      "abstention_on_positives": 0.03867403314917127,
-      "cost_usd_per_query": 0.07891248415841584,
+      "abstention_on_positives": 0.041916167664670656,
+      "cost_usd_per_query": 0.08109942659574468,
       "error_trials": 0,
       "run_file": "agentic-claude-sonnet-5-5-e3adc2e7.json"
     },
@@ -494,21 +494,21 @@
       "harness": "api",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 70,
+      "queries": 68,
       "trials": 3,
-      "recall_at_1": 0.1429,
+      "recall_at_1": 0.1471,
       "recall_at_1_ci95": [
-        0.0714,
-        0.2286
+        0.0735,
+        0.2353
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.1429,
-        "0.5": 0.1429,
-        "0.7": 0.1429
+        "0.3": 0.1471,
+        "0.5": 0.1471,
+        "0.7": 0.1471
       },
       "by_tier": {
         "1": {
-          "queries": 42,
+          "queries": 41,
           "recall_at_1": 0
         },
         "2": {
@@ -520,7 +520,7 @@
           "recall_at_1": 1
         },
         "4": {
-          "queries": 8,
+          "queries": 7,
           "recall_at_1": 0
         }
       },
@@ -538,7 +538,7 @@
       "harness": "api",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 70,
+      "queries": 68,
       "trials": 3,
       "recall_at_1": 0.0,
       "recall_at_1_ci95": [
@@ -546,13 +546,13 @@
         0.0
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.0048,
+        "0.3": 0.0049,
         "0.5": 0.0,
         "0.7": 0.0
       },
       "by_tier": {
         "1": {
-          "queries": 42,
+          "queries": 41,
           "recall_at_1": 0
         },
         "2": {
@@ -564,7 +564,7 @@
           "recall_at_1": 0
         },
         "4": {
-          "queries": 8,
+          "queries": 7,
           "recall_at_1": 0
         }
       },
@@ -582,22 +582,22 @@
       "harness": "claude-code",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 70,
+      "queries": 68,
       "trials": 1,
-      "recall_at_1": 0.4286,
+      "recall_at_1": 0.4118,
       "recall_at_1_ci95": [
-        0.3143,
-        0.5429
+        0.3088,
+        0.5294
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.5571,
-        "0.5": 0.4286,
-        "0.7": 0.2286
+        "0.3": 0.5441,
+        "0.5": 0.4118,
+        "0.7": 0.2059
       },
       "by_tier": {
         "1": {
-          "queries": 42,
-          "recall_at_1": 0.4048
+          "queries": 41,
+          "recall_at_1": 0.3902
         },
         "2": {
           "queries": 10,
@@ -608,15 +608,15 @@
           "recall_at_1": 0.2
         },
         "4": {
-          "queries": 8,
-          "recall_at_1": 0.625
+          "queries": 7,
+          "recall_at_1": 0.5714
         }
       },
-      "positive_recall_at_1": 0.4666666666666667,
+      "positive_recall_at_1": 0.4482758620689655,
       "no_answer_accuracy": 0.2,
       "false_positive_rate": 0.8,
-      "abstention_on_positives": 0.03333333333333333,
-      "cost_usd_per_query": 0.01336231,
+      "abstention_on_positives": 0.034482758620689655,
+      "cost_usd_per_query": 0.01347725294117647,
       "error_trials": 0,
       "run_file": "agentic-claude-haiku-5-5-59536b38.json"
     },
@@ -626,22 +626,22 @@
       "harness": "claude-code",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 70,
+      "queries": 68,
       "trials": 1,
-      "recall_at_1": 0.7714,
+      "recall_at_1": 0.7647,
       "recall_at_1_ci95": [
-        0.6714,
-        0.8714
+        0.6618,
+        0.8676
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.8143,
-        "0.5": 0.7714,
-        "0.7": 0.6857
+        "0.3": 0.8088,
+        "0.5": 0.7647,
+        "0.7": 0.6765
       },
       "by_tier": {
         "1": {
-          "queries": 42,
-          "recall_at_1": 0.8333
+          "queries": 41,
+          "recall_at_1": 0.8293
         },
         "2": {
           "queries": 10,
@@ -652,15 +652,15 @@
           "recall_at_1": 0.5
         },
         "4": {
-          "queries": 8,
-          "recall_at_1": 0.875
+          "queries": 7,
+          "recall_at_1": 0.8571
         }
       },
-      "positive_recall_at_1": 0.8166666666666667,
+      "positive_recall_at_1": 0.8103448275862069,
       "no_answer_accuracy": 0.5,
       "false_positive_rate": 0.5,
-      "abstention_on_positives": 0.016666666666666666,
-      "cost_usd_per_query": 0.11131199714285714,
+      "abstention_on_positives": 0.017241379310344827,
+      "cost_usd_per_query": 0.11201006176470588,
       "error_trials": 0,
       "run_file": "agentic-claude-opus-5-5-e7ca7bd1.json"
     },
@@ -670,22 +670,22 @@
       "harness": "claude-code",
       "modalities": "frames",
       "corpus_assets": 27,
-      "queries": 70,
+      "queries": 68,
       "trials": 1,
-      "recall_at_1": 0.7286,
+      "recall_at_1": 0.7206,
       "recall_at_1_ci95": [
-        0.6143,
-        0.8286
+        0.6176,
+        0.8235
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.7714,
-        "0.5": 0.7286,
-        "0.7": 0.5286
+        "0.3": 0.7647,
+        "0.5": 0.7206,
+        "0.7": 0.5147
       },
       "by_tier": {
         "1": {
-          "queries": 42,
-          "recall_at_1": 0.7619
+          "queries": 41,
+          "recall_at_1": 0.7561
         },
         "2": {
           "queries": 10,
@@ -696,15 +696,15 @@
           "recall_at_1": 0.5
         },
         "4": {
-          "queries": 8,
-          "recall_at_1": 0.75
+          "queries": 7,
+          "recall_at_1": 0.7143
         }
       },
-      "positive_recall_at_1": 0.7666666666666667,
+      "positive_recall_at_1": 0.7586206896551724,
       "no_answer_accuracy": 0.5,
       "false_positive_rate": 0.5,
       "abstention_on_positives": 0.0,
-      "cost_usd_per_query": 0.12348955428571429,
+      "cost_usd_per_query": 0.12375829705882353,
       "error_trials": 0,
       "run_file": "agentic-claude-opus-5-5-fe94c043.json"
     },
@@ -714,22 +714,22 @@
       "harness": "claude-code",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 70,
+      "queries": 68,
       "trials": 1,
-      "recall_at_1": 0.3857,
+      "recall_at_1": 0.3824,
       "recall_at_1_ci95": [
-        0.2714,
+        0.2647,
         0.5
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.5857,
-        "0.5": 0.3857,
-        "0.7": 0.1429
+        "0.3": 0.5882,
+        "0.5": 0.3824,
+        "0.7": 0.1324
       },
       "by_tier": {
         "1": {
-          "queries": 42,
-          "recall_at_1": 0.4048
+          "queries": 41,
+          "recall_at_1": 0.4146
         },
         "2": {
           "queries": 10,
@@ -740,15 +740,15 @@
           "recall_at_1": 0
         },
         "4": {
-          "queries": 8,
-          "recall_at_1": 0.5
+          "queries": 7,
+          "recall_at_1": 0.4286
         }
       },
-      "positive_recall_at_1": 0.45,
+      "positive_recall_at_1": 0.4482758620689655,
       "no_answer_accuracy": 0.0,
       "false_positive_rate": 1.0,
       "abstention_on_positives": 0.0,
-      "cost_usd_per_query": 0.051598194285714286,
+      "cost_usd_per_query": 0.05051669705882353,
       "error_trials": 0,
       "run_file": "agentic-claude-sonnet-5-5-4e1ecc2c.json"
     },
@@ -758,22 +758,22 @@
       "harness": "api",
       "modalities": "frames+transcripts",
       "corpus_assets": 27,
-      "queries": 70,
+      "queries": 68,
       "trials": 1,
-      "recall_at_1": 0.6143,
+      "recall_at_1": 0.6176,
       "recall_at_1_ci95": [
         0.5,
-        0.7286
+        0.7206
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.6857,
-        "0.5": 0.6143,
-        "0.7": 0.5429
+        "0.3": 0.6912,
+        "0.5": 0.6176,
+        "0.7": 0.5441
       },
       "by_tier": {
         "1": {
-          "queries": 42,
-          "recall_at_1": 0.5952
+          "queries": 41,
+          "recall_at_1": 0.6098
         },
         "2": {
           "queries": 10,
@@ -784,15 +784,15 @@
           "recall_at_1": 0.4
         },
         "4": {
-          "queries": 8,
-          "recall_at_1": 0.625
+          "queries": 7,
+          "recall_at_1": 0.5714
         }
       },
-      "positive_recall_at_1": 0.65,
+      "positive_recall_at_1": 0.6551724137931034,
       "no_answer_accuracy": 0.4,
       "false_positive_rate": 0.5,
-      "abstention_on_positives": 0.05,
-      "cost_usd_per_query": 0.32785295,
+      "abstention_on_positives": 0.034482758620689655,
+      "cost_usd_per_query": 0.32242200367647056,
       "error_trials": 0,
       "run_file": "agentic-gemini-3.1-pro-preview-cfaace12.json"
     }

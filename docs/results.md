@@ -19,58 +19,65 @@ film and robotics results; its aerospace run is waiting on budget.
 Claude results come from the local Claude Code harness; their cost is what the tokens
 would cost at API list prices, not money spent.
 
+**Reworded queries.** Rows are rescored against the current gold, but a run is only
+scored on queries whose wording it saw. Queries reworded after a run (18 film, 14 aerospace, 2 robotics)
+are left out of that run's row, which is why the query counts are below the file's size.
+New runs record a hash of each query's text, so this is exact for them.
+
 ## Film (film_v0.2.json)
 
 | Model | Harness | Queries x trials | Recall@1 (95% CI) | R@1 tIoU 0.3 / 0.7 | Tier 1 | Tier 2 | Tier 3 | Tier 4 | Cost per query | Run |
 |---|---|---|---|---|---|---|---|---|---|---|
-| claude-opus-5-5 | claude-code | 185 x 1 | 55.7 (48.6 to 62.7) | 63.8 / 48.1 | 62.1 (n=87) | 71.9 (n=32) | 19.4 (n=36) | 63.3 (n=30) | $0.120 notional | `agentic-claude-opus-5-5-0d68625a.json` |
-| gemini-3.1-pro-preview | api | 185 x 1 | 42.7 (35.1 to 49.7) | 47.6 / 34.1 | 29.9 (n=87) | 81.2 (n=32) | 36.1 (n=36) | 46.7 (n=30) | $0.326 | `agentic-gemini-3.1-pro-preview-7f1b7722.json` |
-| claude-sonnet-5-5 | claude-code | 185 x 1 | 31.4 (24.9 to 38.4) | 41.1 / 11.4 | 23.0 (n=87) | 75.0 (n=32) | 11.1 (n=36) | 33.3 (n=30) | $0.068 notional | `agentic-claude-sonnet-5-5-5a202b4b.json` |
-| claude-haiku-5-5 | claude-code | 185 x 1 | 29.2 (22.7 to 35.7) | 36.8 / 15.7 | 18.4 (n=87) | 59.4 (n=32) | 27.8 (n=36) | 30.0 (n=30) | $0.015 notional | `agentic-claude-haiku-5-5-2d52fc45.json` |
-| baseline-abstain | api | 185 x 3 | 19.5 (13.5 to 25.4) | 19.5 / 19.5 | 0.0 (n=87) | 0.0 (n=32) | 100.0 (n=36) | 0.0 (n=30) | none (no model) | `agentic-baseline-abstain-540fc4f7.json` |
-| baseline-random | api | 185 x 3 | 0.0 (0.0 to 0.0) | 0.2 / 0.0 | 0.0 (n=87) | 0.0 (n=32) | 0.0 (n=36) | 0.0 (n=30) | none (no model) | `agentic-baseline-random-e7eea7e0.json` |
+| claude-opus-5-5 | claude-code | 167 x 1 | 55.1 (47.3 to 62.9) | 62.3 / 48.5 | 62.5 (n=80) | 72.0 (n=25) | 19.4 (n=36) | 65.4 (n=26) | $0.123 notional | `agentic-claude-opus-5-5-0d68625a.json` |
+| gemini-3.1-pro-preview | api | 167 x 1 | 42.5 (34.7 to 50.3) | 47.3 / 34.1 | 30.0 (n=80) | 84.0 (n=25) | 36.1 (n=36) | 50.0 (n=26) | $0.336 | `agentic-gemini-3.1-pro-preview-7f1b7722.json` |
+| claude-sonnet-5-5 | claude-code | 167 x 1 | 31.7 (25.1 to 38.9) | 41.9 / 12.0 | 23.8 (n=80) | 80.0 (n=25) | 11.1 (n=36) | 38.5 (n=26) | $0.070 notional | `agentic-claude-sonnet-5-5-5a202b4b.json` |
+| claude-haiku-5-5 | claude-code | 167 x 1 | 28.7 (22.2 to 35.9) | 36.5 / 16.8 | 18.8 (n=80) | 60.0 (n=25) | 27.8 (n=36) | 30.8 (n=26) | $0.016 notional | `agentic-claude-haiku-5-5-2d52fc45.json` |
+| baseline-abstain | api | 167 x 3 | 21.6 (15.6 to 28.1) | 21.6 / 21.6 | 0.0 (n=80) | 0.0 (n=25) | 100.0 (n=36) | 0.0 (n=26) | none (no model) | `agentic-baseline-abstain-540fc4f7.json` |
+| baseline-random | api | 167 x 3 | 0.0 (0.0 to 0.0) | 0.0 / 0.0 | 0.0 (n=80) | 0.0 (n=25) | 0.0 (n=36) | 0.0 (n=26) | none (no model) | `agentic-baseline-random-e7eea7e0.json` |
 
 Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer):
 
 | Model | Positive R@1 (95% CI by video) | No-answer accuracy | False-positive rate | Abstains on positives |
 |---|---|---|---|---|
-| claude-haiku-5-5 | 29.5 (21.6 to 39.0), n=149 | 27.8 | 72.2 | 11.4 |
-| claude-opus-5-5 | 64.4 (61.2 to 70.7), n=149 | 19.4 | 80.6 | 0.0 |
-| claude-sonnet-5-5 | 36.2 (29.3 to 45.3), n=149 | 11.1 | 88.9 | 4.7 |
-| gemini-3.1-pro-preview | 44.3 (34.9 to 55.3), n=149 | 36.1 | 63.9 | 6.0 |
+| claude-haiku-5-5 | 29.0 (21.6 to 39.0), n=131 | 27.8 | 72.2 | 12.2 |
+| claude-opus-5-5 | 64.9 (60.0 to 73.8), n=131 | 19.4 | 80.6 | 0.0 |
+| claude-sonnet-5-5 | 37.4 (30.3 to 47.0), n=131 | 11.1 | 88.9 | 4.6 |
+| gemini-3.1-pro-preview | 44.3 (34.4 to 54.3), n=131 | 36.1 | 63.9 | 6.1 |
 
 Paired differences on the same queries:
 
 | Model | Recall@1 difference vs claude-opus-5-5 (paired 95% CI) |
 |---|---|
-| claude-haiku-5-5 | -26.5 (-35.1 to -17.3), n=185 |
-| claude-sonnet-5-5 | -24.3 (-31.9 to -15.7), n=185 |
-| gemini-3.1-pro-preview | -13.0 (-21.6 to -3.8), n=185 |
+| claude-haiku-5-5 | -26.3 (-35.9 to -16.8), n=167 |
+| claude-sonnet-5-5 | -23.4 (-31.7 to -15.0), n=167 |
+| gemini-3.1-pro-preview | -12.6 (-22.2 to -3.6), n=167 |
 
 ## Aerospace (aerospace_v0.2.json)
 
+Every row is computed on the 188 current queries that all of these runs covered (runs made on earlier versions of the file, or on queries since removed by review, are scored only on what remains).
+
 | Model | Harness | Queries x trials | Recall@1 (95% CI) | R@1 tIoU 0.3 / 0.7 | Tier 1 | Tier 2 | Tier 3 | Tier 4 | Cost per query | Run |
 |---|---|---|---|---|---|---|---|---|---|---|
-| claude-opus-5-5 | claude-code | 202 x 1 | 63.9 (56.9 to 70.3) | 68.3 / 53.0 | 62.7 (n=110) | 94.1 (n=34) | 42.9 (n=21) | 51.4 (n=37) | $0.145 notional | `agentic-claude-opus-5-5-519357e4.json` |
-| claude-haiku-5-5 | claude-code | 202 x 1 | 41.1 (34.2 to 47.5) | 49.0 / 26.2 | 32.7 (n=110) | 76.5 (n=34) | 38.1 (n=21) | 35.1 (n=37) | $0.017 notional | `agentic-claude-haiku-5-5-73f3e5ad.json` |
-| claude-sonnet-5-5 | claude-code | 202 x 1 | 34.2 (27.7 to 40.6) | 47.5 / 18.3 | 27.3 (n=110) | 61.8 (n=34) | 23.8 (n=21) | 35.1 (n=37) | $0.079 notional | `agentic-claude-sonnet-5-5-e3adc2e7.json` |
-| baseline-abstain | api | 202 x 3 | 10.4 (6.4 to 14.9) | 10.4 / 10.4 | 0.0 (n=110) | 0.0 (n=34) | 100.0 (n=21) | 0.0 (n=37) | none (no model) | `agentic-baseline-abstain-cbb76cd7.json` |
-| baseline-random | api | 202 x 3 | 0.0 (0.0 to 0.0) | 0.0 / 0.0 | 0.0 (n=110) | 0.0 (n=34) | 0.0 (n=21) | 0.0 (n=37) | none (no model) | `agentic-baseline-random-0cd4a178.json` |
+| claude-opus-5-5 | claude-code | 188 x 1 | 62.8 (55.3 to 69.7) | 67.6 / 51.1 | 63.1 (n=103) | 93.5 (n=31) | 42.9 (n=21) | 45.5 (n=33) | $0.148 notional | `agentic-claude-opus-5-5-519357e4.json` |
+| claude-haiku-5-5 | claude-code | 188 x 1 | 40.4 (33.0 to 47.3) | 48.4 / 25.5 | 32.0 (n=103) | 77.4 (n=31) | 38.1 (n=21) | 33.3 (n=33) | $0.017 notional | `agentic-claude-haiku-5-5-73f3e5ad.json` |
+| claude-sonnet-5-5 | claude-code | 188 x 1 | 31.9 (25.5 to 38.3) | 44.7 / 18.1 | 25.2 (n=103) | 61.3 (n=31) | 23.8 (n=21) | 30.3 (n=33) | $0.081 notional | `agentic-claude-sonnet-5-5-e3adc2e7.json` |
+| baseline-abstain | api | 188 x 3 | 11.2 (6.9 to 16.0) | 11.2 / 11.2 | 0.0 (n=103) | 0.0 (n=31) | 100.0 (n=21) | 0.0 (n=33) | none (no model) | `agentic-baseline-abstain-cbb76cd7.json` |
+| baseline-random | api | 188 x 3 | 0.0 (0.0 to 0.0) | 0.0 / 0.0 | 0.0 (n=103) | 0.0 (n=31) | 0.0 (n=21) | 0.0 (n=33) | none (no model) | `agentic-baseline-random-0cd4a178.json` |
 
 Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer):
 
 | Model | Positive R@1 (95% CI by video) | No-answer accuracy | False-positive rate | Abstains on positives |
 |---|---|---|---|---|
-| claude-haiku-5-5 | 41.4 (31.9 to 55.4), n=181 | 38.1 | 61.9 | 11.6 |
-| claude-opus-5-5 | 66.3 (55.4 to 80.8), n=181 | 42.9 | 57.1 | 0.0 |
-| claude-sonnet-5-5 | 35.4 (27.4 to 48.6), n=181 | 23.8 | 76.2 | 3.9 |
+| claude-haiku-5-5 | 40.7 (30.2 to 56.6), n=167 | 38.1 | 61.9 | 11.4 |
+| claude-opus-5-5 | 65.3 (54.5 to 80.0), n=167 | 42.9 | 57.1 | 0.0 |
+| claude-sonnet-5-5 | 32.9 (25.2 to 46.2), n=167 | 23.8 | 76.2 | 4.2 |
 
 Paired differences on the same queries:
 
 | Model | Recall@1 difference vs claude-opus-5-5 (paired 95% CI) |
 |---|---|
-| claude-haiku-5-5 | -22.8 (-30.7 to -14.9), n=202 |
-| claude-sonnet-5-5 | -29.7 (-37.1 to -22.8), n=202 |
+| claude-haiku-5-5 | -22.3 (-30.3 to -14.4), n=188 |
+| claude-sonnet-5-5 | -30.9 (-38.3 to -23.4), n=188 |
 
 ### Public vs rolling (aerospace)
 
@@ -83,10 +90,10 @@ evidence of anything by itself.
 
 | Model | Public R@1 (95% CI) | Rolling R@1 (95% CI) |
 |---|---|---|
-| baseline-abstain | 10.4 (5.5 to 15.2), n=164 | 10.5 (2.6 to 21.1), n=38 |
-| baseline-random | 0.0 (0.0 to 0.0), n=164 | 0.0 (0.0 to 0.0), n=38 |
-| claude-haiku-5-5 | 39.0 (31.7 to 46.3), n=164 | 50.0 (34.2 to 65.8), n=38 |
-| claude-opus-5-5 | 64.6 (57.3 to 71.3), n=164 | 60.5 (44.7 to 76.3), n=38 |
+| baseline-abstain | 11.0 (6.5 to 16.2), n=154 | 11.8 (2.9 to 23.5), n=34 |
+| baseline-random | 0.0 (0.0 to 0.0), n=154 | 0.0 (0.0 to 0.0), n=34 |
+| claude-haiku-5-5 | 38.3 (30.5 to 46.1), n=154 | 50.0 (35.3 to 67.6), n=34 |
+| claude-opus-5-5 | 63.0 (55.2 to 70.8), n=154 | 61.8 (47.1 to 76.5), n=34 |
 | claude-sonnet-5-5 | 32.3 (25.0 to 39.0), n=164 | 42.1 (26.3 to 57.9), n=38 |
 
 ## Robotics (robotics_v0.2.json)
@@ -94,32 +101,34 @@ evidence of anything by itself.
 NASA rover, free-flyer and helicopter footage. Queries target physical events: contact,
 wheels on slopes, lift-off and landing, cause then effect.
 
+Every row is computed on the 68 current queries that all of these runs covered (runs made on earlier versions of the file, or on queries since removed by review, are scored only on what remains).
+
 | Model | Harness | Queries x trials | Recall@1 (95% CI) | R@1 tIoU 0.3 / 0.7 | Tier 1 | Tier 2 | Tier 3 | Tier 4 | Cost per query | Run |
 |---|---|---|---|---|---|---|---|---|---|---|
-| claude-opus-5-5 | claude-code | 70 x 1 | 77.1 (67.1 to 87.1) | 81.4 / 68.6 | 83.3 (n=42) | 70.0 (n=10) | 50.0 (n=10) | 87.5 (n=8) | $0.111 notional | `agentic-claude-opus-5-5-e7ca7bd1.json` |
-| claude-opus-5-5 (frames only) | claude-code | 70 x 1 | 72.9 (61.4 to 82.9) | 77.1 / 52.9 | 76.2 (n=42) | 80.0 (n=10) | 50.0 (n=10) | 75.0 (n=8) | $0.123 notional | `agentic-claude-opus-5-5-fe94c043.json` |
-| gemini-3.1-pro-preview | api | 70 x 1 | 61.4 (50.0 to 72.9) | 68.6 / 54.3 | 59.5 (n=42) | 90.0 (n=10) | 40.0 (n=10) | 62.5 (n=8) | $0.328 | `agentic-gemini-3.1-pro-preview-cfaace12.json` |
-| claude-haiku-5-5 | claude-code | 70 x 1 | 42.9 (31.4 to 54.3) | 55.7 / 22.9 | 40.5 (n=42) | 60.0 (n=10) | 20.0 (n=10) | 62.5 (n=8) | $0.013 notional | `agentic-claude-haiku-5-5-59536b38.json` |
-| claude-sonnet-5-5 | claude-code | 70 x 1 | 38.6 (27.1 to 50.0) | 58.6 / 14.3 | 40.5 (n=42) | 60.0 (n=10) | 0.0 (n=10) | 50.0 (n=8) | $0.052 notional | `agentic-claude-sonnet-5-5-4e1ecc2c.json` |
-| baseline-abstain | api | 70 x 3 | 14.3 (7.1 to 22.9) | 14.3 / 14.3 | 0.0 (n=42) | 0.0 (n=10) | 100.0 (n=10) | 0.0 (n=8) | none (no model) | `agentic-baseline-abstain-b3a169c6.json` |
-| baseline-random | api | 70 x 3 | 0.0 (0.0 to 0.0) | 0.5 / 0.0 | 0.0 (n=42) | 0.0 (n=10) | 0.0 (n=10) | 0.0 (n=8) | none (no model) | `agentic-baseline-random-cfb1ec6f.json` |
+| claude-opus-5-5 | claude-code | 68 x 1 | 76.5 (66.2 to 86.8) | 80.9 / 67.6 | 82.9 (n=41) | 70.0 (n=10) | 50.0 (n=10) | 85.7 (n=7) | $0.112 notional | `agentic-claude-opus-5-5-e7ca7bd1.json` |
+| claude-opus-5-5 (frames only) | claude-code | 68 x 1 | 72.1 (61.8 to 82.4) | 76.5 / 51.5 | 75.6 (n=41) | 80.0 (n=10) | 50.0 (n=10) | 71.4 (n=7) | $0.124 notional | `agentic-claude-opus-5-5-fe94c043.json` |
+| gemini-3.1-pro-preview | api | 68 x 1 | 61.8 (50.0 to 72.1) | 69.1 / 54.4 | 61.0 (n=41) | 90.0 (n=10) | 40.0 (n=10) | 57.1 (n=7) | $0.322 | `agentic-gemini-3.1-pro-preview-cfaace12.json` |
+| claude-haiku-5-5 | claude-code | 68 x 1 | 41.2 (30.9 to 52.9) | 54.4 / 20.6 | 39.0 (n=41) | 60.0 (n=10) | 20.0 (n=10) | 57.1 (n=7) | $0.013 notional | `agentic-claude-haiku-5-5-59536b38.json` |
+| claude-sonnet-5-5 | claude-code | 68 x 1 | 38.2 (26.5 to 50.0) | 58.8 / 13.2 | 41.5 (n=41) | 60.0 (n=10) | 0.0 (n=10) | 42.9 (n=7) | $0.051 notional | `agentic-claude-sonnet-5-5-4e1ecc2c.json` |
+| baseline-abstain | api | 68 x 3 | 14.7 (7.4 to 23.5) | 14.7 / 14.7 | 0.0 (n=41) | 0.0 (n=10) | 100.0 (n=10) | 0.0 (n=7) | none (no model) | `agentic-baseline-abstain-b3a169c6.json` |
+| baseline-random | api | 68 x 3 | 0.0 (0.0 to 0.0) | 0.5 / 0.0 | 0.0 (n=41) | 0.0 (n=10) | 0.0 (n=10) | 0.0 (n=7) | none (no model) | `agentic-baseline-random-cfb1ec6f.json` |
 
 Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer):
 
 | Model | Positive R@1 (95% CI by video) | No-answer accuracy | False-positive rate | Abstains on positives |
 |---|---|---|---|---|
-| claude-haiku-5-5 | 46.7 (40.7 to 64.3), n=60 | 20.0 | 80.0 | 3.3 |
-| claude-opus-5-5 | 81.7 (75.0 to 90.5), n=60 | 50.0 | 50.0 | 1.7 |
-| claude-sonnet-5-5 | 45.0 (27.5 to 77.3), n=60 | 0.0 | 100.0 | 0.0 |
-| gemini-3.1-pro-preview | 65.0 (59.5 to 75.0), n=60 | 40.0 | 50.0 | 5.0 |
+| claude-haiku-5-5 | 44.8 (37.7 to 64.3), n=58 | 20.0 | 80.0 | 3.4 |
+| claude-opus-5-5 | 81.0 (72.3 to 90.5), n=58 | 50.0 | 50.0 | 1.7 |
+| claude-sonnet-5-5 | 44.8 (27.4 to 78.1), n=58 | 0.0 | 100.0 | 0.0 |
+| gemini-3.1-pro-preview | 65.5 (60.5 to 75.0), n=58 | 40.0 | 50.0 | 3.4 |
 
 Paired differences on the same queries:
 
 | Model | Recall@1 difference vs claude-opus-5-5 (paired 95% CI) |
 |---|---|
-| claude-haiku-5-5 | -34.3 (-47.1 to -21.4), n=70 |
-| claude-sonnet-5-5 | -38.6 (-50.0 to -27.1), n=70 |
-| gemini-3.1-pro-preview | -15.7 (-28.6 to -1.4), n=70 |
+| claude-haiku-5-5 | -35.3 (-48.5 to -22.1), n=68 |
+| claude-sonnet-5-5 | -38.2 (-50.0 to -26.5), n=68 |
+| gemini-3.1-pro-preview | -14.7 (-27.9 to -1.5), n=68 |
 ## Physical-event subset
 
 Queries tagged `metadata.physical_event`: a robot, vehicle or mechanism visibly moves or
@@ -130,11 +139,11 @@ appear here.
 
 | Domain | Model | Physical-event R@1 (95% CI) | Run |
 |---|---|---|---|
-| aerospace | claude-opus-5-5 | 48.6 (31.4 to 65.7), n=35 | `agentic-claude-opus-5-5-519357e4.json` |
-| aerospace | claude-haiku-5-5 | 31.4 (17.1 to 48.6), n=35 | `agentic-claude-haiku-5-5-73f3e5ad.json` |
+| aerospace | claude-opus-5-5 | 50.0 (31.2 to 65.6), n=32 | `agentic-claude-opus-5-5-519357e4.json` |
+| aerospace | claude-haiku-5-5 | 31.2 (15.6 to 46.9), n=32 | `agentic-claude-haiku-5-5-73f3e5ad.json` |
 | aerospace | claude-sonnet-5-5 | 25.7 (11.4 to 40.0), n=35 | `agentic-claude-sonnet-5-5-e3adc2e7.json` |
-| aerospace | baseline-abstain | 0.0 (0.0 to 0.0), n=35 | `agentic-baseline-abstain-cbb76cd7.json` |
-| aerospace | baseline-random | 0.0 (0.0 to 0.0), n=35 | `agentic-baseline-random-0cd4a178.json` |
+| aerospace | baseline-abstain | 0.0 (0.0 to 0.0), n=32 | `agentic-baseline-abstain-cbb76cd7.json` |
+| aerospace | baseline-random | 0.0 (0.0 to 0.0), n=32 | `agentic-baseline-random-0cd4a178.json` |
 | robotics | claude-opus-5-5 | 83.3 (66.7 to 100.0), n=18 | `agentic-claude-opus-5-5-e7ca7bd1.json` |
 | robotics | claude-opus-5-5 (frames only) | 72.2 (50.0 to 88.9), n=18 | `agentic-claude-opus-5-5-fe94c043.json` |
 | robotics | gemini-3.1-pro-preview | 55.6 (33.3 to 77.8), n=18 | `agentic-gemini-3.1-pro-preview-cfaace12.json` |
@@ -155,8 +164,8 @@ Two independent single-trial Claude Opus 5.5 runs per domain, compared on the qu
 
 | Domain | Shared queries | Run A R@1 | Run B R@1 | Per-query agreement | Cohen's kappa | Runs |
 |---|---|---|---|---|---|---|
-| film | 185 | 56.2 | 58.4 | 79% | 0.58 | `agentic-claude-opus-5-5-65eb804b.json`, `agentic-claude-opus-5-5-da54af61.json` |
-| aerospace | 167 | 67.1 | 67.1 | 83% | 0.62 | `agentic-claude-opus-5-5-2b5433a6.json`, `agentic-claude-opus-5-5-519357e4.json` |
+| film | 167 | 56.9 | 59.3 | 77% | 0.53 | `agentic-claude-opus-5-5-65eb804b.json`, `agentic-claude-opus-5-5-da54af61.json` |
+| aerospace | 156 | 64.7 | 65.4 | 83% | 0.62 | `agentic-claude-opus-5-5-2b5433a6.json`, `agentic-claude-opus-5-5-519357e4.json` |
 
 ## Against the pre-registered targets
 

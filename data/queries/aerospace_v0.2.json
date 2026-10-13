@@ -571,7 +571,8 @@
       "text_refined": {
         "from": "After a woman at a microphone throws her arms wide in celebration, an onboard camera shows a long side booster with fire at its base pulling away from the rocket, then the booster falls further away in a burst of flame.",
         "date": "2026-10-11",
-        "reason": "The woman throwing her arms wide in the before frame and the onboard view of the side booster pulling away with fire at its base (start and middle) are correct, but the end frame cuts to a different camera showing dark sky and curved panels drifting off a white surface, not the booster falling away "
+        "reason": "The woman throwing her arms wide in the before frame and the onboard view of the side booster pulling away with fire at its base (start and middle) are correct, but the end frame cuts to a different camera showing dark sky and curved panels drifting off a white surface, not the booster falling away ",
+        "applied_at": "2026-10-11T14:46:01Z"
       }
     }
   },
@@ -686,7 +687,8 @@
       "text_refined": {
         "from": "While a speaker says the Moon has now become the center and focus of the mission, an animated spacecraft with solar panel arms flies high above Earth, and then the view shows the curved edge of the planet.",
         "date": "2026-10-11",
-        "reason": "The span is right, but the last clause is wrong: the curved edge of Earth appears in the middle frame together with the spacecraft, while the end frame cuts to a close-up of cratered lunar surface. Change it to 'an animated spacecraft with solar panel arms flies high above Earth's curved edge, and t"
+        "reason": "The span is right, but the last clause is wrong: the curved edge of Earth appears in the middle frame together with the spacecraft, while the end frame cuts to a close-up of cratered lunar surface. Change it to 'an animated spacecraft with solar panel arms flies high above Earth's curved edge, and t",
+        "applied_at": "2026-10-11T14:46:01Z"
       }
     }
   },
@@ -1221,7 +1223,8 @@
       "text_refined": {
         "from": "While a voice says they are going for their teammates, an astronaut in an orange suit and a closed helmet makes a heart shape with gloved hands toward the camera.",
         "date": "2026-10-11",
-        "reason": "The span and the heart gesture both match, but the visor looks raised with the astronaut's face fully exposed, so change \"a closed helmet\" to \"a helmet on\" (or \"an open-visor helmet\")."
+        "reason": "The span and the heart gesture both match, but the visor looks raised with the astronaut's face fully exposed, so change \"a closed helmet\" to \"a helmet on\" (or \"an open-visor helmet\").",
+        "applied_at": "2026-10-11T14:46:01Z"
       }
     }
   },
@@ -2545,7 +2548,8 @@
       "text_refined": {
         "from": "While a voice says \"NASA\", the round blue NASA logo with its red swoosh appears on a plain black background.",
         "date": "2026-10-11",
-        "reason": "The frames show the round blue NASA logo with its red swoosh on plain black for the whole span, with the Artemis logo before and black after, so the boundaries are right; but the transcript for the span is empty, so nothing supports 'While a voice says \"NASA\"' and that clause should be dropped, e.g."
+        "reason": "The frames show the round blue NASA logo with its red swoosh on plain black for the whole span, with the Artemis logo before and black after, so the boundaries are right; but the transcript for the span is empty, so nothing supports 'While a voice says \"NASA\"' and that clause should be dropped, e.g.",
+        "applied_at": "2026-10-11T14:46:01Z"
       }
     }
   },
@@ -2832,7 +2836,8 @@
       "text_refined": {
         "from": "Dark title card with the words \"HOW TO TRAIN THE RECOVERY TEAM\" over silhouettes of people running.",
         "date": "2026-10-11",
-        "reason": "The text is right (dark title card reading 'HOW TO TRAIN / THE RECOVERY TEAM' over silhouettes of people running, shown at the start and middle frames), but the end frame at 60.20 s already shows the presenter in front of the pool, so the card cuts out somewhere between 58.45 s and 60.20 s and the o"
+        "reason": "The text is right (dark title card reading 'HOW TO TRAIN / THE RECOVERY TEAM' over silhouettes of people running, shown at the start and middle frames), but the end frame at 60.20 s already shows the presenter in front of the pool, so the card cuts out somewhere between 58.45 s and 60.20 s and the o",
+        "applied_at": "2026-10-11T14:46:01Z"
       }
     }
   },
@@ -4240,7 +4245,8 @@
       "text_refined": {
         "from": "A rendered space telescope with a flat white sunshade drifts through black space, then the view becomes a starfield with a small orange galaxy.",
         "date": "2026-10-11",
-        "reason": "The boundaries are right (the span runs from the cut after the launch shot to the cut before the press conference), and the rendered telescope with its flat white sunshade drifting through space matches, but the end frame shows a deep field full of many small galaxies rather than one standout orange"
+        "reason": "The boundaries are right (the span runs from the cut after the launch shot to the cut before the press conference), and the rendered telescope with its flat white sunshade drifting through space matches, but the end frame shows a deep field full of many small galaxies rather than one standout orange",
+        "applied_at": "2026-10-11T14:46:01Z"
       }
     }
   },
@@ -4689,7 +4695,8 @@
       "text_refined": {
         "from": "A grey, cratered lunar surface seen from directly overhead, with a small fresh crater in the middle and bright ejecta rays spreading out to one side.",
         "date": "2026-10-11",
-        "reason": "The span flips between two images of the same patch of Moon (start and end show the fresh rayed crater, but the middle frame shows the older crater with no rays), so the query should describe the crater appearing and disappearing in a before-and-after comparison, and since the frame 1 s before the s"
+        "reason": "The span flips between two images of the same patch of Moon (start and end show the fresh rayed crater, but the middle frame shows the older crater with no rays), so the query should describe the crater appearing and disappearing in a before-and-after comparison, and since the frame 1 s before the s",
+        "applied_at": "2026-10-11T14:46:01Z"
       }
     }
   },
@@ -5418,7 +5425,8 @@
       "text_refined": {
         "from": "After photos taken from orbit show a coastal launch pad with a red arrow on the rocket, a suited host in front of flags signs off and the NASA logo appears.",
         "date": "2026-10-11",
-        "reason": "The span itself is right (it opens on the suited host in front of the US and NASA flags saying 'Thanks for watching' and holds on the NASA logo until the video ends), but the before frame is only a wide orbital view of the coast captioned 'Kennedy Space Center from nearly 250 miles above' with no vi"
+        "reason": "The span itself is right (it opens on the suited host in front of the US and NASA flags saying 'Thanks for watching' and holds on the NASA logo until the video ends), but the before frame is only a wide orbital view of the coast captioned 'Kennedy Space Center from nearly 250 miles above' with no vi",
+        "applied_at": "2026-10-11T14:46:01Z"
       }
     }
   },
@@ -6010,7 +6018,8 @@
       "text_refined": {
         "from": "On a ship's deck, an astronaut in an orange suit points one finger up as he walks between two military rescuers. Next, a grinning astronaut in an orange suit raises his fist behind a crew member in a tan vest. After that, a female astronaut in an orange suit and a navy cap waves her arm high near a helmeted rescuer.",
         "date": "2026-10-11",
-        "reason": "The span boundaries and the start and end moments match (the finger point between two military rescuers, then the female astronaut in a navy cap waving near a helmeted rescuer), but in the middle frame the crew member in front of the grinning astronaut wears a black or dark tactical vest over a tan "
+        "reason": "The span boundaries and the start and end moments match (the finger point between two military rescuers, then the female astronaut in a navy cap waving near a helmeted rescuer), but in the middle frame the crew member in front of the grinning astronaut wears a black or dark tactical vest over a tan ",
+        "applied_at": "2026-10-11T14:46:01Z"
       }
     }
   },
@@ -6371,7 +6380,8 @@
       "text_refined": {
         "from": "After a fisheye close-up of the rocket clearing the tower in a shower of sparks, a wide night shot shows it rising on a bright flame between the launch towers. Then silhouetted spectators watch the glow across the water as a mission clock reads +00:00:07.",
         "date": "2026-10-11",
-        "reason": "The fisheye close-up of the rocket clearing the tower in sparks (start) and the wide night shot of it rising between the towers (middle) are both correct, but the span ends on a lit crowd waving flags at Space Center Houston, not silhouetted spectators across the water. None of the frames shows a +0"
+        "reason": "The fisheye close-up of the rocket clearing the tower in sparks (start) and the wide night shot of it rising between the towers (middle) are both correct, but the span ends on a lit crowd waving flags at Space Center Houston, not silhouetted spectators across the water. None of the frames shows a +0",
+        "applied_at": "2026-10-11T14:46:01Z"
       }
     }
   },
@@ -6962,7 +6972,8 @@
       "text_refined": {
         "from": "A woman with long wavy blonde hair and a black button-front dress speaks to the camera with her hands out. Behind her are an American flag and a dark blue NASA flag.",
         "date": "2026-10-11",
-        "reason": "The woman, dress, American flag and blue NASA flag all match, and the span runs from the cut-in to the wipe into the NASA logo, but 'with her hands out' only fits the middle frame: her hands are clasped at the start and she waves goodbye at the end, so change it to something like 'speaks to the came"
+        "reason": "The woman, dress, American flag and blue NASA flag all match, and the span runs from the cut-in to the wipe into the NASA logo, but 'with her hands out' only fits the middle frame: her hands are clasped at the start and she waves goodbye at the end, so change it to something like 'speaks to the came",
+        "applied_at": "2026-10-11T14:46:01Z"
       }
     }
   },
@@ -8237,7 +8248,8 @@
       "text_refined": {
         "from": "Seen from high above, two helicopters sit on a ship's flight deck in open ocean with their main rotors turning",
         "date": "2026-10-11",
-        "reason": "The span boundaries match the shot (there are cuts just before and after it), and the high fisheye view, open ocean and turning rotors are all right, but a third helicopter is visible at the far end of the deck in every frame, so change 'two helicopters sit' to 'three helicopters sit', or to 'two he"
+        "reason": "The span boundaries match the shot (there are cuts just before and after it), and the high fisheye view, open ocean and turning rotors are all right, but a third helicopter is visible at the far end of the deck in every frame, so change 'two helicopters sit' to 'three helicopters sit', or to 'two he",
+        "applied_at": "2026-10-11T14:46:01Z"
       }
     }
   },
@@ -8738,7 +8750,8 @@
       "text_refined": {
         "from": "At night, a white rocket rises past the tall launch tower beside it as bright flame and exhaust flood the base of the pad.",
         "date": "2026-10-11",
-        "reason": "The start and middle frames match the text (a white rocket lifting off at night beside the launch tower, with bright flame and exhaust at the base), but the end frame at 73.10 s already shows black-and-white ISS imagery, so the span runs past the launch shot and the end should be moved back to the c"
+        "reason": "The start and middle frames match the text (a white rocket lifting off at night beside the launch tower, with bright flame and exhaust at the base), but the end frame at 73.10 s already shows black-and-white ISS imagery, so the span runs past the launch shot and the end should be moved back to the c",
+        "applied_at": "2026-10-11T14:46:01Z"
       }
     }
   },
@@ -9131,7 +9144,8 @@
       "text_refined": {
         "from": "Real orbital footage: a white SpaceX Dragon capsule with its nose cone open moves toward the camera through black space, high above the bright, cloud-covered curve of Earth.",
         "date": "2026-10-11",
-        "reason": "The span is right: it cuts in from a Mars ice-cap shot and cuts out to a docked-ISS view, and it shows a white Dragon with its nose cone open over the bright, cloud-covered curve of Earth. But the capsule's position and size look the same in the start, middle and end frames, so nothing shows it movi"
+        "reason": "The span is right: it cuts in from a Mars ice-cap shot and cuts out to a docked-ISS view, and it shows a white Dragon with its nose cone open over the bright, cloud-covered curve of Earth. But the capsule's position and size look the same in the start, middle and end frames, so nothing shows it movi",
+        "applied_at": "2026-10-11T14:46:01Z"
       }
     }
   }

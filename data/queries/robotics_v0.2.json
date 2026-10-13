@@ -1584,7 +1584,8 @@
       "text_refined": {
         "from": "Several people in white hoods sit on stools around a rover frame raised on a wooden stand next to a sand test bed, working on its wheels.",
         "date": "2026-10-11",
-        "reason": "The scene and start boundary match, but only two of the three hooded people are sitting on stools while the third stands at the rover, so change it to \"Three people in white hoods, two seated on stools and one standing, work on the wheels of a rover frame raised on a wooden stand in a sand test bed."
+        "reason": "The scene and start boundary match, but only two of the three hooded people are sitting on stools while the third stands at the rover, so change it to \"Three people in white hoods, two seated on stools and one standing, work on the wheels of a rover frame raised on a wooden stand in a sand test bed.",
+        "applied_at": "2026-10-11T14:46:01Z"
       }
     }
   },
@@ -2248,7 +2249,8 @@
       "text_refined": {
         "from": "After an animation shows a rover lighting its way through the dark with a headlight on its mast, a masked woman speaks in a lab with a test rover on sand behind her.",
         "date": "2026-10-11",
-        "reason": "The query matches the frames: the frame before the span shows the animated rover with its mast headlight in the dark, and the start and middle frames show a masked woman in a lab with a test rover on sand behind her. But the end frame is already the NASA logo outro, so the span runs past the moment "
+        "reason": "The query matches the frames: the frame before the span shows the animated rover with its mast headlight in the dark, and the start and middle frames show a masked woman in a lab with a test rover on sand behind her. But the end frame is already the NASA logo outro, so the span runs past the moment ",
+        "applied_at": "2026-10-11T14:46:01Z"
       }
     }
   },

@@ -69,7 +69,8 @@ class GeminiSession(AgentSession):
             cache_read_tokens=cached,
         )
         if not response.candidates:
-            return ModelTurn(tool_calls=[], usage=usage, stopped="refusal")
+            return ModelTurn(tool_calls=[], usage=usage, stopped="refusal",
+                             model=getattr(response, "model_version", None))
         candidate = response.candidates[0]
         finish = candidate.finish_reason.name if candidate.finish_reason else None
         stopped = STOPS.get(finish or "")
@@ -89,7 +90,7 @@ class GeminiSession(AgentSession):
                 calls.append(ToolCall(call_id=call_id, name=fc.name, arguments=dict(fc.args or {})))
         text = "".join(p.text for p in parts if p.text and not p.thought)
         return ModelTurn(tool_calls=[] if stopped else calls, usage=usage, text=text,
-                         stopped=stopped)
+                         stopped=stopped, model=getattr(response, "model_version", None))
 
 
     async def _generate(self) -> Any:

@@ -207,3 +207,87 @@ class TestIntervals:  # finding 22
         b = [0.0, 1.0, 0.0, 0.0]
         diff, (lo, hi) = paired_difference_ci(a, b)
         assert diff == 0.5 and lo <= diff <= hi
+
+
+class TestRunIdentity:  # findings 14, 24
+    def test_cli_runs_record_what_they_ran(self, tmp_path, monkeypatch):
+        from momentbench.cli import main
+
+        manifest, queries, corpus = TestCompleteCorpus()._files(tmp_path)
+        monkeypatch.chdir(tmp_path)
+        r = CliRunner().invoke(main, ["agentic", "abstain", "--provider", "baseline",
+                                      "--partial", "-q", str(queries), "-c", str(manifest),
+                                      "--corpus-dir", str(corpus), "--trials", "1",
+                                      "--pricing", str(PRICING)])
+        assert r.exit_code == 0, r.output
+        [f] = (tmp_path / "data/results/debug").glob("*.json")
+        ident = json.loads(f.read_text())["identity"]
+        for key in ("queries_sha256", "manifest_sha256", "system_prompt_sha", "tools_sha",
+                    "compatibility_key", "git", "packages", "pricing_as_of"):
+            assert ident.get(key) is not None, key
+        assert ident["provider"] == "baseline" and ident["budget"]["max_steps"] > 0
+
+    def test_compatibility_key_changes_with_the_task(self):
+        from momentbench.agentic.identity import build_identity
+
+        base = dict(queries_path=None, manifest_path=None, transcripts={},
+                    system_prompt="p", tools=[], budget={"max_steps": 30},
+                    modalities="frames", provider="x", endpoint=None, pricing_as_of=None)
+        a = build_identity(**base)["compatibility_key"]
+        assert build_identity(**{**base, "provider": "y"})["compatibility_key"] == a
+        assert build_identity(**{**base, "modalities": "frames+transcripts"}
+                              )["compatibility_key"] != a
+
+    async def test_resolved_model_is_recorded_per_trial(self, tmp_path):
+        class Named(AgentSession):
+            async def step(self, results):
+                return ModelTurn([ToolCall("a", "submit_answer", {"moments": []})], Usage(),
+                                 model="provider-model-2026-10-01")
+
+        class NamedModel(AgentModel):
+            model_id = "alias"
+
+            def start(self, system, task, tools):
+                return Named()
+
+        run = await run_agentic_benchmark([NO_ANSWER], NamedModel(), make_corpus(tmp_path),
+                                          trials=1)
+        assert run.trials[0].resolved_model == "provider-model-2026-10-01"
+        assert run.identity["resolved_models"] == ["provider-model-2026-10-01"]
+        assert run.trials[0].query_text_sha
+
+
+class TestRescoreDropsChangedText:  # finding 14
+    async def test_a_reworded_query_is_not_scored_with_the_old_answer(self, tmp_path):
+        from momentbench.agentic.run import rescore
+
+        run = await run_agentic_benchmark([NO_ANSWER], ScriptedModel([[("submit_answer",
+                                          {"moments": []})]]), make_corpus(tmp_path), trials=1)
+        same = rescore(run, {"na": NO_ANSWER})
+        assert len(same.trials) == 1 and same.rescore_excluded == 0
+        reworded = NO_ANSWER.model_copy(update={"text": "a different question"})
+        changed = rescore(run, {"na": reworded})
+        assert changed.trials == [] and changed.rescore_excluded == 1
+
+    async def test_old_runs_fall_back_to_the_refinement_date(self, tmp_path):
+        from momentbench.agentic.run import rescore
+
+        run = await run_agentic_benchmark([NO_ANSWER], ScriptedModel([[("submit_answer",
+                                          {"moments": []})]]), make_corpus(tmp_path), trials=1)
+        legacy = run.model_copy(update={
+            "timestamp": "2026-10-01T00:00:00Z",
+            "trials": [t.model_copy(update={"query_text_sha": None}) for t in run.trials]})
+        def refined_on(day):
+            return NO_ANSWER.model_copy(update={"metadata": {"text_refined": {"date": day}}})
+
+        refined = refined_on("2026-10-05")
+        assert rescore(legacy, {"na": refined}).rescore_excluded == 1
+        earlier = refined_on("2026-09-20")
+        assert rescore(legacy, {"na": earlier}).rescore_excluded == 0
+        # Same day: the exact instant decides which wording the run saw.
+        def applied(at):
+            return NO_ANSWER.model_copy(update={"metadata": {"text_refined": {
+                "date": at[:10], "applied_at": at}}})
+
+        assert rescore(legacy, {"na": applied("2026-10-01T09:00:00Z")}).rescore_excluded == 1
+        assert rescore(legacy, {"na": applied("2026-09-30T23:00:00Z")}).rescore_excluded == 0

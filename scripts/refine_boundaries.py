@@ -193,6 +193,9 @@ async def main() -> None:
 
     if args.apply:
         today = datetime.date.today().isoformat()
+        # UTC instant, comparable with a run's timestamp: rescoring uses it to tell
+        # whether a saved run saw the old wording or the new one.
+        applied_at = datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
         for q in queries:
             r = proposals.get(q["query_id"])
             # Already applied on an earlier run: keep the record of what it replaced.
@@ -205,6 +208,7 @@ async def main() -> None:
                 g["t_in"], g["t_out"] = r["new"]
                 if r.get("text"):
                     q["metadata"]["text_refined"] = {"from": q["text"], "date": today,
+                                                     "applied_at": applied_at,
                                                      "reason": r["first_check"]["reason"]}
                     q["text"] = r["text"]
         path.write_text(json.dumps(queries, indent=2, ensure_ascii=False) + "\n")

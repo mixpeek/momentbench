@@ -59,7 +59,7 @@ class AnthropicSession(AgentSession):
         stop = response.stop_reason
         stopped = stop if stop in ("refusal", "max_tokens") else None
         return ModelTurn(tool_calls=[] if stopped else calls, usage=usage, text=text,
-                         stopped=stopped)
+                         stopped=stopped, model=getattr(response, "model", None))
 
 
 def _result_block(result: ToolResult) -> dict[str, Any]:

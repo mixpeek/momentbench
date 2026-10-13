@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import asyncio
+import json
 from pathlib import Path
 
 import click
@@ -127,7 +128,23 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_
     if prices is None:
         console.print(f"[yellow]No price for {model} in {pricing}; cost will be omitted.[/yellow]")
 
+    from momentbench.agentic.environment import TOOLS
+    from momentbench.agentic.episode import SYSTEM_PROMPT
+    from momentbench.agentic.identity import build_identity
     from momentbench.agentic.run import ProviderUnavailableError
+
+    budget = Budget(max_steps=max_steps, max_frames=max_frames, max_tool_calls=max_tool_calls)
+    try:
+        pricing_as_of = json.loads(Path(pricing).read_text()).get("as_of")
+    except (OSError, ValueError):
+        pricing_as_of = None
+    identity = build_identity(
+        queries_path=Path(queries), manifest_path=Path(corpus),
+        transcripts=local.transcripts, system_prompt=SYSTEM_PROMPT, tools=TOOLS,
+        budget=budget.model_dump(),
+        modalities="frames+transcripts" if local.has_transcripts() else "frames",
+        provider=provider, endpoint=base_url, pricing_as_of=pricing_as_of)
+    identity["query_filter"] = "physical_only" if physical_only else None
 
     try:
         result = asyncio.run(
@@ -145,13 +162,13 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_
                 ),
                 corpus=local,
                 trials=trials,
-                budget=Budget(max_steps=max_steps, max_frames=max_frames,
-                              max_tool_calls=max_tool_calls),
+                budget=budget,
                 pricing=prices,
                 max_concurrency=concurrency,
                 output_dir=Path(output),
                 reportable=not failures,
                 corpus_receipt=receipt,
+                identity=identity,
             )
         )
     except ProviderUnavailableError as e:
