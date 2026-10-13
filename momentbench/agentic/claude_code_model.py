@@ -47,6 +47,7 @@ class ClaudeCodeAgent(AgentModel):
     async def run_episode(self, corpus: LocalCorpus, query: Query | QueryRequest,
                           budget: Budget) -> Episode:
         from claude_agent_sdk import (
+            AssistantMessage,
             ClaudeAgentOptions,
             ResultMessage,
             create_sdk_mcp_server,
@@ -121,7 +122,10 @@ class ClaudeCodeAgent(AgentModel):
                 cwd=cwd,
             )
             result: ResultMessage | None = None
+            resolved: str | None = None
             async for message in sdk_query(prompt=build_task(query, budget), options=options):
+                if isinstance(message, AssistantMessage):
+                    resolved = getattr(message, "model", None) or resolved
                 if isinstance(message, ResultMessage):
                     result = message
 
@@ -135,9 +139,9 @@ class ClaudeCodeAgent(AgentModel):
 
         if submitted:
             moments = submitted["moments"]
-            return Episode(query.query_id, moments, usage, "submitted", trace)
+            return Episode(query.query_id, moments, usage, "submitted", trace, resolved)
         if result is not None and result.subtype == "error_max_turns":
-            return Episode(query.query_id, [], usage, "step_limit", trace)
+            return Episode(query.query_id, [], usage, "step_limit", trace, resolved)
         if result is not None and result.is_error:
             raise RuntimeError(f"claude code ended with {result.subtype}: {result.errors}")
-        return Episode(query.query_id, [], usage, "no_submission", trace)
+        return Episode(query.query_id, [], usage, "no_submission", trace, resolved)
