@@ -3,6 +3,10 @@
 Projects text and images into a shared embedding space. For video retrieval,
 embeds query text and corpus asset descriptions, ranks by cosine similarity.
 Supports the hosted Jina API or local model via transformers.
+
+WHOLE-VIDEO CONTROL: ranks assets by their title/description text and returns
+each whole video as the span. It does not look at frames or localize a moment;
+it is a retrieval floor, not a multimodal result.
 """
 
 from __future__ import annotations
@@ -29,6 +33,7 @@ def _cosine_sim(a: np.ndarray, b: np.ndarray) -> float:
 @register_adapter("jina-clip")
 class JinaCLIPAdapter(ModelAdapter):
     model_id: str = "jina-clip-v2"
+    input_kind = "whole-video-control"
 
     def __init__(
         self,

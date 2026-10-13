@@ -1,4 +1,9 @@
-"""OpenAI GPT adapter — frames + transcript in context."""
+"""OpenAI GPT adapter (legacy track, metadata-only).
+
+METADATA-ONLY: the prompt carries asset titles and durations, no frames,
+audio or transcript. A score here measures guessing from titles; use
+`momentbench agentic` to evaluate the model on the media.
+"""
 
 from __future__ import annotations
 

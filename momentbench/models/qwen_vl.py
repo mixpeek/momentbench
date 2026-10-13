@@ -3,6 +3,10 @@
 Closest OSS analog to Gemini for video understanding. Supports text, image,
 and video inputs in a unified architecture. Runs via the OpenAI-compatible
 API served by vLLM, SGLang, or any compatible inference server.
+
+METADATA-ONLY: the prompt carries asset titles and durations, no frames,
+audio or transcript. A score here measures guessing from titles; use
+`momentbench agentic` to evaluate the model on the media.
 """
 
 from __future__ import annotations

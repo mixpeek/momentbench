@@ -154,6 +154,7 @@ def _build_stages(
 @register_adapter("mixpeek")
 class MixpeekAdapter(ModelAdapter):
     model_id: str = "mixpeek-pipeline"
+    input_kind = "indexed-platform"
 
     def __init__(
         self,

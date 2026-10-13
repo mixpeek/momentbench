@@ -7,11 +7,27 @@ from typing import Any
 
 from momentbench.types import Moment, Prediction, Query
 
+# What an adapter's predictions are based on. Recorded in every run's config and
+# printed by `momentbench run`, so a score is never read as more than it is.
+INPUT_KINDS = {
+    "metadata-only": "sees asset titles and durations only, no frames, audio or transcript",
+    "whole-video-control": "ranks whole videos by title/description text and returns the "
+                           "full video as the span; a retrieval control, not localization",
+    "indexed-platform": "queries a provider index built from the media; segment times come "
+                        "from the provider",
+}
+
 
 class ModelAdapter(abc.ABC):
-    """Base adapter that all model implementations must subclass."""
+    """Base adapter that all model implementations must subclass.
+
+    These adapters are the legacy track. For a model that watches frames and reads
+    transcripts, use the agentic track (`momentbench agentic`, momentbench.agentic).
+    """
 
     model_id: str
+    # One of INPUT_KINDS. Subclasses that see real media must say so explicitly.
+    input_kind: str = "metadata-only"
 
     @abc.abstractmethod
     async def predict(

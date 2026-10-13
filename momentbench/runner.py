@@ -61,7 +61,7 @@ async def run_benchmark(
 
     # Every query is scored: one that raised has no prediction and counts as a miss.
     bench_run = evaluate_run(queries, predictions, run_id=run_id, model_id=model_name)
-    bench_run.config = {"model_kwargs": model_kwargs}
+    bench_run.config = {"model_kwargs": model_kwargs, "input_kind": adapter.input_kind}
     bench_run.timestamp = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 
     if output_dir:

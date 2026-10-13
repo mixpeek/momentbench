@@ -32,7 +32,14 @@ def run(model: str, queries: str, corpus: str, output: str, concurrency: int):
     query_list = load_queries(Path(queries))
     corpus_assets = load_corpus_assets(Path(corpus))
 
-    console.print(f"[bold]Running {model}[/bold] on {len(query_list)} queries...")
+    from momentbench.models.base import INPUT_KINDS
+    from momentbench.models.registry import get_adapter_class
+
+    kind = get_adapter_class(model).input_kind
+    console.print(f"[bold]Running {model}[/bold] ({kind}) on {len(query_list)} queries...")
+    if kind != "indexed-platform":
+        console.print(f"[yellow]{model} {INPUT_KINDS[kind]}. This legacy-track score is not a "
+                      "multimodal result; run `momentbench agentic` for that.[/yellow]")
     result = asyncio.run(
         run_benchmark(
             queries=query_list,

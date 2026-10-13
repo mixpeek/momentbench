@@ -7,6 +7,10 @@ via Qwen2.5-Omni backbone. Commercially friendly (MIT).
 This adapter uses E5-Omni as an embedding-based retriever: embed the query
 and all corpus asset descriptions, then rank by cosine similarity. For full
 video-level retrieval, provide video_urls in corpus asset metadata.
+
+WHOLE-VIDEO CONTROL: ranks assets by their title/description text and returns
+each whole video as the span. It does not look at frames or localize a moment;
+it is a retrieval floor, not a multimodal result.
 """
 
 from __future__ import annotations
@@ -32,6 +36,7 @@ def _cosine_sim(a: np.ndarray, b: np.ndarray) -> float:
 @register_adapter("e5-omni")
 class E5OmniAdapter(ModelAdapter):
     model_id: str = "intfloat/e5-omni"
+    input_kind = "whole-video-control"
 
     def __init__(self, model: str = "intfloat/e5-omni", device: str = "auto", **kwargs):
         self.model_id = model

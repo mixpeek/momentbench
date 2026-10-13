@@ -3,6 +3,10 @@
 Uses mxbai-embed-large or mxbai-embed-2d-large for text embedding, then
 ranks corpus assets by cosine similarity. Supports both the hosted API
 and local model loading via sentence-transformers.
+
+WHOLE-VIDEO CONTROL: ranks assets by their title/description text and returns
+each whole video as the span. It does not look at frames or localize a moment;
+it is a retrieval floor, not a multimodal result.
 """
 
 from __future__ import annotations
@@ -29,6 +33,7 @@ def _cosine_sim(a: np.ndarray, b: np.ndarray) -> float:
 @register_adapter("mixedbread")
 class MixedBreadAdapter(ModelAdapter):
     model_id: str = "mxbai-embed-large-v1"
+    input_kind = "whole-video-control"
 
     def __init__(
         self,

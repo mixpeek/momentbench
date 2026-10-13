@@ -291,3 +291,47 @@ class TestRescoreDropsChangedText:  # finding 14
 
         assert rescore(legacy, {"na": applied("2026-10-01T09:00:00Z")}).rescore_excluded == 1
         assert rescore(legacy, {"na": applied("2026-09-30T23:00:00Z")}).rescore_excluded == 0
+
+
+class TestLegacyLabels:  # findings 2, 3
+    EXPECTED = {
+        "gemini": "metadata-only", "openai": "metadata-only", "claude": "metadata-only",
+        "qwen-vl": "metadata-only", "hf-vlm": "metadata-only",
+        "clip": "whole-video-control", "jina-clip": "whole-video-control",
+        "mixedbread": "whole-video-control", "e5-omni": "whole-video-control",
+        "twelvelabs": "indexed-platform", "mixpeek": "indexed-platform",
+    }
+
+    @pytest.mark.parametrize("name", sorted(EXPECTED))
+    def test_every_builtin_adapter_declares_what_it_sees(self, name):
+        from momentbench.models.base import INPUT_KINDS
+        from momentbench.models.registry import get_adapter_class
+
+        try:
+            cls = get_adapter_class(name)
+        except (ImportError, ValueError) as e:  # optional dependency not installed
+            pytest.skip(str(e))
+        assert cls.input_kind == self.EXPECTED[name] and cls.input_kind in INPUT_KINDS
+
+    def test_run_warns_and_records_the_input_kind(self, tmp_path):
+        from momentbench.cli import main
+        from momentbench.models.base import ModelAdapter
+        from momentbench.models.registry import register_adapter
+
+        @register_adapter("title-guesser-test")
+        class TitleGuesser(ModelAdapter):
+            model_id = "title-guesser-test"
+
+            async def predict(self, query, corpus_assets, max_results=5):
+                return Prediction(query_id=query.query_id, model_id=self.model_id,
+                                  ranked_moments=[])
+
+        manifest, queries, _ = TestCompleteCorpus()._files(tmp_path)
+        out = tmp_path / "out"
+        r = CliRunner().invoke(main, ["run", "title-guesser-test", "-q", str(queries),
+                                      "-c", str(manifest), "-o", str(out)])
+        assert r.exit_code == 0, r.output
+        text = " ".join(r.output.split())  # rich wraps to the terminal width
+        assert "metadata-only" in text and "momentbench agentic" in text
+        [f] = out.glob("*.json")
+        assert json.loads(f.read_text())["config"]["input_kind"] == "metadata-only"

@@ -122,7 +122,7 @@ All footage is public domain (17 U.S.C. § 105) or CC BY, permitting commercial 
 momentbench/
 ├── momentbench/           # Core library
 │   ├── eval/              # Scoring engine
-│   ├── models/            # Model adapters (Gemini, GPT, Claude, Mixpeek)
+│   ├── models/            # Legacy single-call adapters (see input_kind)
 │   ├── corpus/            # Corpus management & sourcing
 │   ├── taxonomy/          # Query tier definitions & generation
 │   └── mixpeek_integration/  # Mixpeek pipeline integration
@@ -133,30 +133,33 @@ momentbench/
 └── tests/                 # Test suite
 ```
 
-## Model Adapters
+## Legacy adapters (`momentbench run`)
 
-MomentBench ships adapters for both closed and open-source models.
+For multimodal evaluation use the agentic track (`momentbench agentic`): the model
+samples frames and reads transcripts through tools, and every reported number on this
+page comes from it. The adapters below are the older single-call track. Each declares an
+`input_kind`, which `momentbench run` prints and records in the run's config:
 
-### Closed-source (API-based)
+- **metadata-only**: the model sees asset titles and durations, no frames, audio or
+  transcript. It measures guessing from titles.
+- **whole-video-control**: ranks videos by title/description text and returns the whole
+  video as the span. A retrieval floor, with no localization.
+- **indexed-platform**: queries a provider's index built from the media; segment times
+  come from the provider.
 
-| Adapter | Model | Notes |
-|---------|-------|-------|
-| `gemini` | Gemini 2.5 Pro | Native multimodal, long-context |
-| `openai` | GPT-4.1 | Frames + transcript in context |
-| `claude` | Claude Sonnet 4 | Frames + transcript in context |
-| `mixpeek` | Mixpeek pipeline | Decompose→embed→search |
-| `twelvelabs` | TwelveLabs Marengo | Video search API with temporal segments |
-| `mixedbread` | mxbai-embed-large | Text embedding retrieval via MixedBread API |
-| `jina-clip` | Jina CLIP v2 | Multilingual multimodal embeddings |
-
-### Open-source (self-hosted)
-
-| Adapter | Model | Modalities | Notes |
-|---------|-------|------------|-------|
-| `qwen-vl` | Qwen3-VL / Qwen2.5-VL | Text, image, video | Closest OSS analog to Gemini for video understanding. Serve via vLLM or SGLang. |
-| `e5-omni` | E5-Omni (Microsoft) | Text, image, audio, video | Closest to Gemini Embedding 2 — shared 3584-dim space, MIT license. |
-| `clip` | OpenAI CLIP (ViT-L/14) | Text, image | Zero-shot image-text retrieval via OpenCLIP. Ranks by cosine similarity. |
-| `hf-vlm` | Any OpenAI-compatible VLM | Varies | Generic adapter for InternVL3, MiniCPM-V, Llama 4, Phi-4, etc. |
+| Adapter | Model | Input kind |
+|---------|-------|------------|
+| `gemini` | Gemini 2.5 Pro | metadata-only |
+| `openai` | GPT-4.1 | metadata-only |
+| `claude` | Claude Sonnet 4 | metadata-only |
+| `qwen-vl` | Qwen3-VL / Qwen2.5-VL (vLLM, SGLang) | metadata-only |
+| `hf-vlm` | Any OpenAI-compatible VLM server | metadata-only |
+| `clip` | OpenAI CLIP (ViT-L/14) | whole-video-control |
+| `jina-clip` | Jina CLIP v2 | whole-video-control |
+| `mixedbread` | mxbai-embed-large | whole-video-control |
+| `e5-omni` | E5-Omni (Microsoft) | whole-video-control |
+| `twelvelabs` | TwelveLabs Marengo | indexed-platform |
+| `mixpeek` | Mixpeek pipeline | indexed-platform |
 
 ```bash
 # Run API-based models

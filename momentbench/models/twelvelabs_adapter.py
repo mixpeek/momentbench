@@ -18,6 +18,7 @@ from momentbench.types import Moment, Prediction, Query
 @register_adapter("twelvelabs")
 class TwelveLabsAdapter(ModelAdapter):
     model_id: str = "twelvelabs-marengo"
+    input_kind = "indexed-platform"
 
     def __init__(
         self,

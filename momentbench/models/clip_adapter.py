@@ -1,8 +1,12 @@
 """CLIP adapter — zero-shot image-text retrieval via OpenCLIP.
 
-Encodes query text and corpus asset descriptions (or frames) into a shared
+Encodes query text and corpus asset descriptions into a shared
 embedding space, then ranks by cosine similarity. Works with any OpenCLIP
 checkpoint (ViT-B/32, ViT-L/14, ViT-H/14, SigLIP, etc.).
+
+WHOLE-VIDEO CONTROL: ranks assets by their title/description text and returns
+each whole video as the span. It does not look at frames or localize a moment;
+it is a retrieval floor, not a multimodal result.
 """
 
 from __future__ import annotations
@@ -28,6 +32,7 @@ def _cosine_sim(a: np.ndarray, b: np.ndarray) -> float:
 @register_adapter("clip")
 class CLIPAdapter(ModelAdapter):
     model_id: str = "openai/clip-vit-large-patch14"
+    input_kind = "whole-video-control"
 
     def __init__(
         self,

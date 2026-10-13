@@ -3,6 +3,10 @@
 Covers vLLM, SGLang, TGI, Ollama, or any server exposing an OpenAI-compatible
 chat completions endpoint. Use this for models like InternVL3, MiniCPM-V,
 Llama 4 Maverick, Phi-4 Multimodal, or any other self-hosted VLM.
+
+METADATA-ONLY: the prompt carries asset titles and durations, no frames,
+audio or transcript. A score here measures guessing from titles; use
+`momentbench agentic` to evaluate the model on the media.
 """
 
 from __future__ import annotations

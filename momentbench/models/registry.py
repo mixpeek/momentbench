@@ -17,8 +17,8 @@ def register_adapter(name: str):
     return decorator
 
 
-def get_adapter(name: str, **kwargs: Any) -> ModelAdapter:
-    """Instantiate a registered model adapter by name."""
+def get_adapter_class(name: str) -> type[ModelAdapter]:
+    """Look up a registered adapter class by name, importing built-ins on demand."""
     if name not in _REGISTRY:
         _load_builtin(name)
     if name not in _REGISTRY:
@@ -26,7 +26,12 @@ def get_adapter(name: str, **kwargs: Any) -> ModelAdapter:
             f"Unknown model adapter: {name}. "
             f"Available: {list(_REGISTRY.keys())}"
         )
-    return _REGISTRY[name](**kwargs)
+    return _REGISTRY[name]
+
+
+def get_adapter(name: str, **kwargs: Any) -> ModelAdapter:
+    """Instantiate a registered model adapter by name."""
+    return get_adapter_class(name)(**kwargs)
 
 
 def _load_builtin(name: str) -> None:
