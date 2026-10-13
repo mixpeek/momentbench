@@ -27,7 +27,7 @@ jobs:
       # the explicit debug mode, used here only to smoke-test the Inspect wiring.
       - name: inspect task refuses an unverified corpus
         run: "! inspect eval momentbench/agentic/inspect_task.py --model mockllm/model --display plain -T queries=data/queries/sample.json"
-      - name: inspect eval with a mock model (partial: no-answer queries only, wiring check)
+      - name: "inspect eval with a mock model (partial: no-answer queries only, wiring check)"
         run: inspect eval momentbench/agentic/inspect_task.py --model mockllm/model --display plain -T queries=data/queries/robotics_v0.2.json -T partial=true
 
   docker:
