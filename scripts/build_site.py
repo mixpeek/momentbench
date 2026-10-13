@@ -173,15 +173,32 @@ def cost_chart(results: dict) -> str:
             xx = pad + (w - pad - right) * c / xmax
             out.append(f'<text x="{xx:.0f}" y="{h - pad + 18}" class="ax" '
                        f'text-anchor="middle">${c:.2f}</text>')
-    for r in pts:
+    # Labels are placed top to bottom and pushed down past any label they would overlap
+    # (cheap models cluster near the origin); a moved label gets a leader line.
+    def at(r):
+        return (pad + (w - pad - right) * r["cost_usd_per_query"] / xmax,
+                h - pad - (h - 2 * pad) * r["recall_at_1"])
+
+    # Every dot is an obstacle too, so no label covers another model's point.
+    placed: list[tuple[float, float, float]] = [(x - 6, x + 6, y + 4) for x, y in map(at, pts)]
+    for r in sorted(pts, key=lambda r: -r["recall_at_1"]):
         x = pad + (w - pad - right) * r["cost_usd_per_query"] / xmax
         y = h - pad - (h - 2 * pad) * r["recall_at_1"]
         short = (r["model"].replace("claude-", "").replace("-preview", "")
                  .replace("-5-5", " 5.5").replace("gemini-3.1-pro", "gemini 3.1"))
+        x0, x1, ly = x + 8, x + 8 + 6.6 * len(short), y + 4
+        mine = (x - 6, x + 6, y + 4)
+        while any(a < x1 and x0 < b and abs(ly - c) < 12
+                  for a, b, c in placed if (a, b, c) != mine):
+            ly += 12
+        placed.append((x0, x1, ly))
+        leader = (f'<line x1="{x + 5:.0f}" y1="{y:.0f}" x2="{x0 - 1:.0f}" y2="{ly - 4:.0f}" '
+                  f'class="grid"/>' if ly - (y + 4) > 0 else "")
         out.append(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="5" fill="{colors[r["domain"]]}">'
                    f'<title>{e(r["model"])}, {r["domain"]}: {100 * r["recall_at_1"]:.1f}% at '
-                   f'${r["cost_usd_per_query"]:.3f}/query</title></circle>'
-                   f'<text x="{x + 8:.0f}" y="{y + 4:.0f}" class="pt">{e(short)}</text>')
+                   f'${r["cost_usd_per_query"]:.3f}/query</title></circle>{leader}'
+                   f'<text x="{x0:.0f}" y="{ly:.0f}" class="pt" '
+                   f'style="fill:{colors[r["domain"]]}">{e(short)}</text>')
     out.append(f'<text x="{w / 2:.0f}" y="{h - 6}" class="ax" text-anchor="middle">'
                'cost per query (USD)</text>')
     out.append(f'<text x="14" y="{h / 2:.0f}" class="ax" text-anchor="middle" '
@@ -280,7 +297,7 @@ def page(results: dict, st: dict, examples: list[dict], held: str) -> str:
 
 <header class="hero" id="top"><div class="wrap">
   <p class="eyebrow">v0.2 &middot; agentic video moment retrieval</p>
-  <h1>Find the moment,<br><span class="dim">not just the clip.</span></h1>
+  <h1>Find one moment<br><span class="dim">in a corpus of video.</span></h1>
   <p class="lede">A request describes one moment: a rover wheel rolling through regolith, a line of dialogue over a close-up, a shot that does not exist. The system has to search the whole corpus and return the right video and the right few seconds, or say nothing matches.</p>
   <div class="cta">
     <a class="btn primary" href="{REPO}/blob/main/docs/integrating.md">Run the benchmark</a>
