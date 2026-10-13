@@ -30,6 +30,23 @@ would cost at API list prices, not money spent.
 | baseline-abstain | api | 185 x 3 | 19.5 (13.5 to 25.4) | 19.5 / 19.5 | 0.0 (n=87) | 0.0 (n=32) | 100.0 (n=36) | 0.0 (n=30) | none (no model) | `agentic-baseline-abstain-540fc4f7.json` |
 | baseline-random | api | 185 x 3 | 0.0 (0.0 to 0.0) | 0.2 / 0.0 | 0.0 (n=87) | 0.0 (n=32) | 0.0 (n=36) | 0.0 (n=30) | none (no model) | `agentic-baseline-random-e7eea7e0.json` |
 
+Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer):
+
+| Model | Positive R@1 (95% CI by video) | No-answer accuracy | False-positive rate | Abstains on positives |
+|---|---|---|---|---|
+| claude-haiku-5-5 | 29.5 (21.6 to 39.0), n=149 | 27.8 | 72.2 | 11.4 |
+| claude-opus-5-5 | 64.4 (61.2 to 70.7), n=149 | 19.4 | 80.6 | 0.0 |
+| claude-sonnet-5-5 | 36.2 (29.3 to 45.3), n=149 | 11.1 | 88.9 | 4.7 |
+| gemini-3.1-pro-preview | 44.3 (34.9 to 55.3), n=149 | 36.1 | 63.9 | 6.0 |
+
+Paired differences on the same queries:
+
+| Model | Recall@1 difference vs claude-opus-5-5 (paired 95% CI) |
+|---|---|
+| claude-haiku-5-5 | -26.5 (-35.1 to -17.3), n=185 |
+| claude-sonnet-5-5 | -24.3 (-31.9 to -15.7), n=185 |
+| gemini-3.1-pro-preview | -13.0 (-21.6 to -3.8), n=185 |
+
 ## Aerospace (aerospace_v0.2.json)
 
 | Model | Harness | Queries x trials | Recall@1 (95% CI) | R@1 tIoU 0.3 / 0.7 | Tier 1 | Tier 2 | Tier 3 | Tier 4 | Cost per query | Run |
@@ -39,6 +56,21 @@ would cost at API list prices, not money spent.
 | claude-sonnet-5-5 | claude-code | 202 x 1 | 34.2 (27.7 to 40.6) | 47.5 / 18.3 | 27.3 (n=110) | 61.8 (n=34) | 23.8 (n=21) | 35.1 (n=37) | $0.079 notional | `agentic-claude-sonnet-5-5-e3adc2e7.json` |
 | baseline-abstain | api | 202 x 3 | 10.4 (6.4 to 14.9) | 10.4 / 10.4 | 0.0 (n=110) | 0.0 (n=34) | 100.0 (n=21) | 0.0 (n=37) | none (no model) | `agentic-baseline-abstain-cbb76cd7.json` |
 | baseline-random | api | 202 x 3 | 0.0 (0.0 to 0.0) | 0.0 / 0.0 | 0.0 (n=110) | 0.0 (n=34) | 0.0 (n=21) | 0.0 (n=37) | none (no model) | `agentic-baseline-random-0cd4a178.json` |
+
+Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer):
+
+| Model | Positive R@1 (95% CI by video) | No-answer accuracy | False-positive rate | Abstains on positives |
+|---|---|---|---|---|
+| claude-haiku-5-5 | 41.4 (31.9 to 55.4), n=181 | 38.1 | 61.9 | 11.6 |
+| claude-opus-5-5 | 66.3 (55.4 to 80.8), n=181 | 42.9 | 57.1 | 0.0 |
+| claude-sonnet-5-5 | 35.4 (27.4 to 48.6), n=181 | 23.8 | 76.2 | 3.9 |
+
+Paired differences on the same queries:
+
+| Model | Recall@1 difference vs claude-opus-5-5 (paired 95% CI) |
+|---|---|
+| claude-haiku-5-5 | -22.8 (-30.7 to -14.9), n=202 |
+| claude-sonnet-5-5 | -29.7 (-37.1 to -22.8), n=202 |
 
 ### Public vs rolling (aerospace)
 
@@ -71,6 +103,23 @@ wheels on slopes, lift-off and landing, cause then effect.
 | claude-sonnet-5-5 | claude-code | 70 x 1 | 38.6 (27.1 to 50.0) | 58.6 / 14.3 | 40.5 (n=42) | 60.0 (n=10) | 0.0 (n=10) | 50.0 (n=8) | $0.052 notional | `agentic-claude-sonnet-5-5-4e1ecc2c.json` |
 | baseline-abstain | api | 70 x 3 | 14.3 (7.1 to 22.9) | 14.3 / 14.3 | 0.0 (n=42) | 0.0 (n=10) | 100.0 (n=10) | 0.0 (n=8) | none (no model) | `agentic-baseline-abstain-b3a169c6.json` |
 | baseline-random | api | 70 x 3 | 0.0 (0.0 to 0.0) | 0.5 / 0.0 | 0.0 (n=42) | 0.0 (n=10) | 0.0 (n=10) | 0.0 (n=8) | none (no model) | `agentic-baseline-random-cfb1ec6f.json` |
+
+Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer):
+
+| Model | Positive R@1 (95% CI by video) | No-answer accuracy | False-positive rate | Abstains on positives |
+|---|---|---|---|---|
+| claude-haiku-5-5 | 46.7 (40.7 to 64.3), n=60 | 20.0 | 80.0 | 3.3 |
+| claude-opus-5-5 | 81.7 (75.0 to 90.5), n=60 | 50.0 | 50.0 | 1.7 |
+| claude-sonnet-5-5 | 45.0 (27.5 to 77.3), n=60 | 0.0 | 100.0 | 0.0 |
+| gemini-3.1-pro-preview | 65.0 (59.5 to 75.0), n=60 | 40.0 | 50.0 | 5.0 |
+
+Paired differences on the same queries:
+
+| Model | Recall@1 difference vs claude-opus-5-5 (paired 95% CI) |
+|---|---|
+| claude-haiku-5-5 | -34.3 (-47.1 to -21.4), n=70 |
+| claude-sonnet-5-5 | -38.6 (-50.0 to -27.1), n=70 |
+| gemini-3.1-pro-preview | -15.7 (-28.6 to -1.4), n=70 |
 ## Physical-event subset
 
 Queries tagged `metadata.physical_event`: a robot, vehicle or mechanism visibly moves or

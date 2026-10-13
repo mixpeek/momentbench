@@ -46,6 +46,8 @@ class AgenticTrial(BaseModel):
     hit_at_1: bool
     hit_at_5: bool
     best_temporal_iou: float
+    # True when the query has no gold moment (the right answer is to abstain).
+    no_answer: bool = False
     # tIoU of the first submitted moment against its best gold span; 1.0 for a correct
     # abstention on a no-answer query. Drives Recall@1 at other thresholds.
     top1_iou: float = 0.0
@@ -75,6 +77,16 @@ class AgenticSummary(BaseModel):
     error_trials: int = 0
     # Recall@1 at tIoU 0.3, 0.5 and 0.7, keyed by the threshold as a string.
     recall_at_1_by_iou: dict[str, float] = Field(default_factory=dict)
+    # Abstention and localization are different skills; report them apart (audit 17).
+    # positive_*: queries with a gold moment. no_answer_accuracy: share of no-answer
+    # trials that explicitly abstained. false_positive_rate: share of no-answer trials
+    # that returned a moment. abstention_on_positives: share of positive trials that
+    # explicitly abstained. mean_tiou_positive excludes no-answer queries.
+    positive_recall_at_1: float | None = None
+    no_answer_accuracy: float | None = None
+    false_positive_rate: float | None = None
+    abstention_on_positives: float | None = None
+    mean_tiou_positive: float | None = None
     # Per tier: number of queries, Recall@1 and its 95% CI.
     by_tier: dict[str, dict[str, Any]] = Field(default_factory=dict)
 
@@ -167,9 +179,29 @@ def rescore(run: AgenticRun, queries: dict[str, Query]) -> AgenticRun:
         hit1, hit5, best, top1 = score_trial(q, t.moments, t.outcome)
         trials.append(t.model_copy(update={"hit_at_1": hit1, "hit_at_5": hit5,
                                            "best_temporal_iou": best, "top1_iou": top1,
-                                           "tier": int(q.tier)}))
+                                           "tier": int(q.tier),
+                                           "no_answer": q.is_no_answer}))
     return run.model_copy(update={"trials": trials,
                                   "summary": summarize(trials, run.summary.num_trials)})
+
+
+def _split_metrics(trials: list[AgenticTrial]) -> dict[str, float | None]:
+    pos = [t for t in trials if not t.no_answer]
+    neg = [t for t in trials if t.no_answer]
+
+    def rate(ts, pred):
+        return mean(1.0 if pred(t) else 0.0 for t in ts) if ts else None
+
+    def abstained(t):
+        return t.outcome == "submitted" and not t.moments
+
+    return {
+        "positive_recall_at_1": rate(pos, lambda t: t.hit_at_1),
+        "no_answer_accuracy": rate(neg, abstained),
+        "false_positive_rate": rate(neg, lambda t: t.outcome == "submitted" and bool(t.moments)),
+        "abstention_on_positives": rate(pos, abstained),
+        "mean_tiou_positive": mean(t.best_temporal_iou for t in pos) if pos else None,
+    }
 
 
 def summarize(trials: list[AgenticTrial], num_trials: int) -> AgenticSummary:
@@ -197,6 +229,7 @@ def summarize(trials: list[AgenticTrial], num_trials: int) -> AgenticSummary:
         mean_steps_per_query=avg([t.usage.steps for t in trials]),
         failed_trials=sum(1 for t in trials if t.outcome != "submitted"),
         error_trials=sum(1 for t in trials if t.outcome == "error"),
+        **_split_metrics(trials),
         recall_at_1_by_iou={
             str(th): avg([mean(t.top1_iou >= th for t in ts) for ts in by_query.values()])
             for th in IOU_THRESHOLDS
@@ -267,6 +300,7 @@ async def run_agentic_benchmark(
             trial=trial,
             tier=int(query.tier),
             vertical=query.vertical,
+            no_answer=query.is_no_answer,
             outcome=outcome,
             hit_at_1=hit1,
             hit_at_5=hit5,

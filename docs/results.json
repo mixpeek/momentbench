@@ -40,6 +40,10 @@
           "recall_at_1": 0
         }
       },
+      "positive_recall_at_1": 0.0,
+      "no_answer_accuracy": 1.0,
+      "false_positive_rate": 0.0,
+      "abstention_on_positives": 1.0,
       "cost_usd_per_query": null,
       "error_trials": 0,
       "run_file": "agentic-baseline-abstain-540fc4f7.json"
@@ -80,6 +84,10 @@
           "recall_at_1": 0
         }
       },
+      "positive_recall_at_1": 0.0,
+      "no_answer_accuracy": 0.0,
+      "false_positive_rate": 1.0,
+      "abstention_on_positives": 0.0,
       "cost_usd_per_query": null,
       "error_trials": 0,
       "run_file": "agentic-baseline-random-e7eea7e0.json"
@@ -120,6 +128,10 @@
           "recall_at_1": 0.3
         }
       },
+      "positive_recall_at_1": 0.2953020134228188,
+      "no_answer_accuracy": 0.2777777777777778,
+      "false_positive_rate": 0.7222222222222222,
+      "abstention_on_positives": 0.11409395973154363,
       "cost_usd_per_query": 0.01518422972972973,
       "error_trials": 0,
       "run_file": "agentic-claude-haiku-5-5-2d52fc45.json"
@@ -160,6 +172,10 @@
           "recall_at_1": 0.6333
         }
       },
+      "positive_recall_at_1": 0.6442953020134228,
+      "no_answer_accuracy": 0.19444444444444445,
+      "false_positive_rate": 0.8055555555555556,
+      "abstention_on_positives": 0.0,
       "cost_usd_per_query": 0.11965932972972973,
       "error_trials": 0,
       "run_file": "agentic-claude-opus-5-5-0d68625a.json"
@@ -200,6 +216,10 @@
           "recall_at_1": 0.3333
         }
       },
+      "positive_recall_at_1": 0.3624161073825503,
+      "no_answer_accuracy": 0.1111111111111111,
+      "false_positive_rate": 0.8888888888888888,
+      "abstention_on_positives": 0.04697986577181208,
       "cost_usd_per_query": 0.06842343135135136,
       "error_trials": 0,
       "run_file": "agentic-claude-sonnet-5-5-5a202b4b.json"
@@ -240,6 +260,10 @@
           "recall_at_1": 0.4667
         }
       },
+      "positive_recall_at_1": 0.4429530201342282,
+      "no_answer_accuracy": 0.3611111111111111,
+      "false_positive_rate": 0.6388888888888888,
+      "abstention_on_positives": 0.06040268456375839,
       "cost_usd_per_query": 0.32604324324324324,
       "error_trials": 0,
       "run_file": "agentic-gemini-3.1-pro-preview-7f1b7722.json"
@@ -280,6 +304,10 @@
           "recall_at_1": 0
         }
       },
+      "positive_recall_at_1": 0.0,
+      "no_answer_accuracy": 1.0,
+      "false_positive_rate": 0.0,
+      "abstention_on_positives": 1.0,
       "cost_usd_per_query": null,
       "error_trials": 0,
       "run_file": "agentic-baseline-abstain-cbb76cd7.json"
@@ -320,6 +348,10 @@
           "recall_at_1": 0
         }
       },
+      "positive_recall_at_1": 0.0,
+      "no_answer_accuracy": 0.0,
+      "false_positive_rate": 1.0,
+      "abstention_on_positives": 0.0,
       "cost_usd_per_query": null,
       "error_trials": 0,
       "run_file": "agentic-baseline-random-0cd4a178.json"
@@ -360,6 +392,10 @@
           "recall_at_1": 0.3514
         }
       },
+      "positive_recall_at_1": 0.4143646408839779,
+      "no_answer_accuracy": 0.38095238095238093,
+      "false_positive_rate": 0.6190476190476191,
+      "abstention_on_positives": 0.11602209944751381,
       "cost_usd_per_query": 0.017465101485148515,
       "error_trials": 0,
       "run_file": "agentic-claude-haiku-5-5-73f3e5ad.json"
@@ -400,6 +436,10 @@
           "recall_at_1": 0.5135
         }
       },
+      "positive_recall_at_1": 0.6629834254143646,
+      "no_answer_accuracy": 0.42857142857142855,
+      "false_positive_rate": 0.5714285714285714,
+      "abstention_on_positives": 0.0,
       "cost_usd_per_query": 0.14458607524752476,
       "error_trials": 0,
       "run_file": "agentic-claude-opus-5-5-519357e4.json"
@@ -440,6 +480,10 @@
           "recall_at_1": 0.3514
         }
       },
+      "positive_recall_at_1": 0.35359116022099446,
+      "no_answer_accuracy": 0.23809523809523808,
+      "false_positive_rate": 0.7619047619047619,
+      "abstention_on_positives": 0.03867403314917127,
       "cost_usd_per_query": 0.07891248415841584,
       "error_trials": 0,
       "run_file": "agentic-claude-sonnet-5-5-e3adc2e7.json"
@@ -480,6 +524,10 @@
           "recall_at_1": 0
         }
       },
+      "positive_recall_at_1": 0.0,
+      "no_answer_accuracy": 1.0,
+      "false_positive_rate": 0.0,
+      "abstention_on_positives": 1.0,
       "cost_usd_per_query": null,
       "error_trials": 0,
       "run_file": "agentic-baseline-abstain-b3a169c6.json"
@@ -520,6 +568,10 @@
           "recall_at_1": 0
         }
       },
+      "positive_recall_at_1": 0.0,
+      "no_answer_accuracy": 0.0,
+      "false_positive_rate": 1.0,
+      "abstention_on_positives": 0.0,
       "cost_usd_per_query": null,
       "error_trials": 0,
       "run_file": "agentic-baseline-random-cfb1ec6f.json"
@@ -560,6 +612,10 @@
           "recall_at_1": 0.625
         }
       },
+      "positive_recall_at_1": 0.4666666666666667,
+      "no_answer_accuracy": 0.2,
+      "false_positive_rate": 0.8,
+      "abstention_on_positives": 0.03333333333333333,
       "cost_usd_per_query": 0.01336231,
       "error_trials": 0,
       "run_file": "agentic-claude-haiku-5-5-59536b38.json"
@@ -600,6 +656,10 @@
           "recall_at_1": 0.875
         }
       },
+      "positive_recall_at_1": 0.8166666666666667,
+      "no_answer_accuracy": 0.5,
+      "false_positive_rate": 0.5,
+      "abstention_on_positives": 0.016666666666666666,
       "cost_usd_per_query": 0.11131199714285714,
       "error_trials": 0,
       "run_file": "agentic-claude-opus-5-5-e7ca7bd1.json"
@@ -640,6 +700,10 @@
           "recall_at_1": 0.75
         }
       },
+      "positive_recall_at_1": 0.7666666666666667,
+      "no_answer_accuracy": 0.5,
+      "false_positive_rate": 0.5,
+      "abstention_on_positives": 0.0,
       "cost_usd_per_query": 0.12348955428571429,
       "error_trials": 0,
       "run_file": "agentic-claude-opus-5-5-fe94c043.json"
@@ -680,6 +744,10 @@
           "recall_at_1": 0.5
         }
       },
+      "positive_recall_at_1": 0.45,
+      "no_answer_accuracy": 0.0,
+      "false_positive_rate": 1.0,
+      "abstention_on_positives": 0.0,
       "cost_usd_per_query": 0.051598194285714286,
       "error_trials": 0,
       "run_file": "agentic-claude-sonnet-5-5-4e1ecc2c.json"
@@ -720,6 +788,10 @@
           "recall_at_1": 0.625
         }
       },
+      "positive_recall_at_1": 0.65,
+      "no_answer_accuracy": 0.4,
+      "false_positive_rate": 0.5,
+      "abstention_on_positives": 0.05,
       "cost_usd_per_query": 0.32785295,
       "error_trials": 0,
       "run_file": "agentic-gemini-3.1-pro-preview-cfaace12.json"

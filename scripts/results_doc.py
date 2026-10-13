@@ -15,9 +15,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from results_table import common_queries, load_run, table  # noqa: E402
+from results_table import common_queries, current_queries, load_run, table  # noqa: E402
 
-from momentbench.agentic.stats import bootstrap_ci  # noqa: E402
+from momentbench.agentic.stats import (  # noqa: E402
+    bootstrap_ci,
+    cluster_bootstrap_ci,
+    paired_difference_ci,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 RECORD = ROOT / "data/results/agentic-v0.2/record"
@@ -125,6 +129,74 @@ def physical_rows(paths: list[Path]) -> str:
     return "\n".join(lines) if len(lines) > 2 else ""
 
 
+def source_video(query_id: str) -> str:
+    q = current_queries()[query_id]
+    if q.gold_moments:
+        return q.gold_moments[0].asset_id
+    return (q.metadata.get("altered_from") or {}).get("asset_id", query_id)
+
+
+def split_table(paths: list[Path]) -> str:
+    """Localization on positive queries and abstention on no-answer queries, apart."""
+    files = [str(p) for p in paths]
+    common = common_queries(files)
+    lines = ["| Model | Positive R@1 (95% CI by video) | No-answer accuracy | "
+             "False-positive rate | Abstains on positives |", "|---|---|---|---|---|"]
+    for f in paths:
+        run = load_run(f)
+        if run.model_id.startswith("baseline-") or run.modalities == "frames":
+            continue
+        per_q: dict[str, list[float]] = {}
+        for t in run.trials:
+            if t.query_id in common and not t.no_answer:
+                per_q.setdefault(t.query_id, []).append(float(t.hit_at_1))
+        vals = [sum(v) / len(v) for v in per_q.values()]
+        lo, hi = cluster_bootstrap_ci(vals, [source_video(k) for k in per_q])
+        trials = [t for t in run.trials if t.query_id in common]
+        neg = [t for t in trials if t.no_answer]
+        pos = [t for t in trials if not t.no_answer]
+
+        def pct(ts, pred):
+            return f"{100 * sum(1 for t in ts if pred(t)) / len(ts):.1f}" if ts else "n/a"
+
+        lines.append(
+            f"| {run.model_id} | {100 * sum(vals) / max(len(vals), 1):.1f} ({100 * lo:.1f} to "
+            f"{100 * hi:.1f}), n={len(vals)} | "
+            f"{pct(neg, lambda t: t.outcome == 'submitted' and not t.moments)} | "
+            f"{pct(neg, lambda t: t.outcome == 'submitted' and bool(t.moments))} | "
+            f"{pct(pos, lambda t: t.outcome == 'submitted' and not t.moments)} |")
+    return "\n".join(lines)
+
+
+def paired_table(paths: list[Path]) -> str:
+    """Each model against the domain's best, on the queries both ran (paired)."""
+    runs = [load_run(f) for f in paths]
+    runs = [r for r in runs if not r.model_id.startswith("baseline-") and r.modalities != "frames"]
+    if len(runs) < 2:
+        return ""
+    common = set.intersection(*[{t.query_id for t in r.trials} for r in runs])
+
+    def per_query(run):
+        acc: dict[str, list[float]] = {}
+        for t in run.trials:
+            if t.query_id in common:
+                acc.setdefault(t.query_id, []).append(float(t.hit_at_1))
+        return {k: sum(v) / len(v) for k, v in acc.items()}
+
+    scores = {r.model_id: per_query(r) for r in runs}
+    best = max(scores, key=lambda m: sum(scores[m].values()))
+    keys = sorted(common)
+    lines = [f"| Model | Recall@1 difference vs {best} (paired 95% CI) |", "|---|---|"]
+    for m in scores:
+        if m == best:
+            continue
+        diff, (lo, hi) = paired_difference_ci([scores[m][k] for k in keys],
+                                              [scores[best][k] for k in keys])
+        lines.append(f"| {m} | {100 * diff:+.1f} ({100 * lo:+.1f} to {100 * hi:+.1f}), "
+                     f"n={len(keys)} |")
+    return "\n".join(lines)
+
+
 def section(paths: list[Path]) -> str:
     """A domain's table, every row computed on the queries all of its runs covered."""
     files = [str(p) for p in paths]
@@ -140,7 +212,12 @@ def section(paths: list[Path]) -> str:
             f"Every row is computed on the {len(common)} current queries that all of these "
             "runs covered (runs made on earlier versions of the file, or on queries since "
             "removed by review, are scored only on what remains).\n\n")
-    return note + table(files, only=common)
+    paired = paired_table(paths)
+    return (note + table(files, only=common)
+            + "\n\nLocalization and abstention, separately (positive queries have a gold "
+            "moment; no-answer queries are right only on an explicit empty answer):\n\n"
+            + split_table(paths)
+            + (f"\n\nPaired differences on the same queries:\n\n{paired}" if paired else ""))
 
 
 def results_json(domains: dict[str, list[Path]]) -> dict:
@@ -171,6 +248,10 @@ def results_json(domains: dict[str, list[Path]]) -> dict:
                 "by_tier": {k: {"queries": v["num_queries"],
                                 "recall_at_1": round(v["recall_at_1"], 4)}
                             for k, v in s.by_tier.items()},
+                "positive_recall_at_1": s.positive_recall_at_1,
+                "no_answer_accuracy": s.no_answer_accuracy,
+                "false_positive_rate": s.false_positive_rate,
+                "abstention_on_positives": s.abstention_on_positives,
                 "cost_usd_per_query": s.mean_cost_usd_per_query,
                 "error_trials": s.error_trials, "run_file": Path(f).name})
     return out

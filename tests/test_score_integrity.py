@@ -16,7 +16,7 @@ from momentbench.agentic.model import AgentModel, AgentSession, ModelTurn, ToolC
 from momentbench.agentic.run import run_agentic_benchmark
 from momentbench.eval.scoring import evaluate_run
 from momentbench.types import Moment, Prediction, Query, QueryTier
-from tests.test_agentic import ScriptedModel, make_corpus, make_query
+from tests.test_agentic import SUBMIT_GOLD, ScriptedModel, make_corpus, make_query
 
 PRICING = Path(__file__).resolve().parents[1] / "configs/pricing.json"
 NO_ANSWER = Query(query_id="na", text="nothing like this exists", vertical="film",
@@ -173,3 +173,37 @@ class TestCompleteCorpus:  # finding 6
         [f] = (tmp_path / "data/results/debug").glob("*.json")
         saved = json.loads(f.read_text())
         assert saved["reportable"] is False
+
+
+class TestSplitMetrics:  # finding 17
+    async def test_abstention_and_localization_are_reported_apart(self, tmp_path):
+        from momentbench.agentic.run import summarize
+
+        # One positive answered right, one no-answer wrongly answered with a moment.
+        run = await run_agentic_benchmark(
+            [make_query(), NO_ANSWER], ScriptedModel([[SUBMIT_GOLD]]), make_corpus(tmp_path),
+            trials=1)
+        s = summarize(run.trials, 1)
+        assert s.positive_recall_at_1 == 1.0
+        assert s.no_answer_accuracy == 0.0 and s.false_positive_rate == 1.0
+        assert s.abstention_on_positives == 0.0
+        assert s.mean_tiou_positive == 1.0  # the no-answer query does not count here
+
+
+class TestIntervals:  # finding 22
+    def test_clustered_interval_is_wider_when_queries_share_a_video(self):
+        from momentbench.agentic.stats import bootstrap_ci, cluster_bootstrap_ci
+
+        hits = [1.0] * 10 + [0.0] * 10
+        videos = ["a"] * 10 + ["b"] * 10  # all hits on one video, all misses on the other
+        lo_q, hi_q = bootstrap_ci(hits)
+        lo_c, hi_c = cluster_bootstrap_ci(hits, videos)
+        assert hi_c - lo_c > hi_q - lo_q
+
+    def test_paired_difference_uses_the_same_queries(self):
+        from momentbench.agentic.stats import paired_difference_ci
+
+        a = [1.0, 1.0, 0.0, 1.0]
+        b = [0.0, 1.0, 0.0, 0.0]
+        diff, (lo, hi) = paired_difference_ci(a, b)
+        assert diff == 0.5 and lo <= diff <= hi
