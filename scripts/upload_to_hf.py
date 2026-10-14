@@ -1,90 +1,92 @@
-"""Upload MomentBench dataset to Hugging Face as mixpeek/momentbench."""
+"""Upload MomentBench to Hugging Face as Mixpeek/momentbench.
+
+    python scripts/upload_to_hf.py --videos CORPUS/videos --dry-run
+    HF_TOKEN=... python scripts/upload_to_hf.py --videos CORPUS/videos
+
+Uploads the dataset card, query files, manifest, transcripts, the 0.2.1 record runs
+and, with --videos, every video whose manifest entry has license_status "confirmed".
+A video with a pending licence is never uploaded; it stays fetchable from its source
+with `momentbench corpus-download`. Each video's sha256 is checked against the manifest
+before upload, and everything goes up in one commit.
+"""
+
+from __future__ import annotations
 
 import argparse
+import json
+import os
+import shutil
+import sys
+import tempfile
 from pathlib import Path
 
-from huggingface_hub import HfApi
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from momentbench.corpus.verify import resolve_video, sha256_file  # noqa: E402
 
 REPO_ID = "Mixpeek/momentbench"
 REPO_TYPE = "dataset"
 
 
-def main():
-    parser = argparse.ArgumentParser(description="Upload MomentBench to Hugging Face")
-    parser.add_argument(
-        "--queries", type=str, default="data/queries",
-        help="Path to queries directory",
-    )
-    parser.add_argument(
-        "--manifests", type=str, default="data/corpus_manifests",
-        help="Path to corpus manifests directory",
-    )
-    parser.add_argument(
-        "--results", type=str, default="data/results/agentic-v0.2/record",
-        help="Path to results directory (baseline runs)",
-    )
-    parser.add_argument(
-        "--dataset-card", type=str, default="scripts/hf_dataset_card.yaml",
-        help="Path to dataset card YAML",
-    )
-    parser.add_argument("--private", action="store_true", help="Create as private dataset")
-    parser.add_argument("--dry-run", action="store_true", help="Show what would be uploaded")
-    args = parser.parse_args()
-
-    uploads = []
-
-    card_path = Path(args.dataset_card)
-    if card_path.exists():
-        uploads.append((card_path, "README.md"))
-
-    queries_dir = Path(args.queries)
-    if queries_dir.exists():
-        for f in queries_dir.glob("*.json"):
-            uploads.append((f, f"queries/{f.name}"))
-
-    manifests_dir = Path(args.manifests)
-    if manifests_dir.exists():
-        for f in manifests_dir.glob("*.json"):
-            uploads.append((f, f"corpus_manifests/{f.name}"))
-
+def plan(args: argparse.Namespace) -> list[tuple[Path, str]]:
+    uploads: list[tuple[Path, str]] = [(ROOT / "scripts/hf_dataset_card.yaml", "README.md")]
+    uploads += [(f, f"queries/{f.name}") for f in sorted((ROOT / "data/queries").glob("*.json"))]
+    manifest = ROOT / "data/corpus_manifests/sample_manifest.json"
+    uploads.append((manifest, f"corpus_manifests/{manifest.name}"))
     # Every entrant's transcript tools read these, so they ship with the queries.
-    for f in sorted(Path("data/transcripts").glob("*")):
-        uploads.append((f, f"transcripts/{f.name}"))
+    uploads += [(f, f"transcripts/{f.name}") for f in sorted((ROOT / "data/transcripts").glob("*"))]
+    uploads += [(f, f"runs/{f.name}")
+                for f in sorted((ROOT / "data/results/agentic-v0.2.1/record").glob("*.json"))]
+    for name in ("ATTRIBUTION.md", "LICENSE", "GOVERNANCE.md"):
+        if (ROOT / name).exists():
+            uploads.append((ROOT / name, name))
+    if args.videos:
+        for asset in json.loads(manifest.read_text()):
+            if asset.get("license_status") != "confirmed":
+                print(f"  skip {asset['asset_id']}: licence {asset.get('license_status')}")
+                continue
+            path = resolve_video(asset, Path(args.videos))
+            if path is None:
+                raise SystemExit(f"{asset['asset_id']}: no video under {args.videos}")
+            if sha256_file(path) != asset["file"]["sha256"]:
+                raise SystemExit(f"{asset['asset_id']}: sha256 does not match the manifest")
+            uploads.append((path, f"videos/{asset['file']['name']}"))
+    return uploads
 
-    results_dir = Path(args.results)
-    if results_dir.exists():
-        for f in results_dir.glob("*.json"):
-            uploads.append((f, f"baselines/{f.name}"))
 
-    if not uploads:
-        print("No data files found to upload.")
-        return
+def main() -> None:
+    p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    p.add_argument("--videos", help="corpus directory; uploads videos with confirmed licences")
+    p.add_argument("--private", action="store_true", help="create as a private dataset")
+    p.add_argument("--dry-run", action="store_true", help="list what would be uploaded")
+    args = p.parse_args()
 
+    uploads = plan(args)
+    size = sum(f.stat().st_size for f, _ in uploads)
+    print(f"{len(uploads)} files, {size / 1e9:.2f} GB -> {REPO_ID}")
     if args.dry_run:
-        print(f"Would upload {len(uploads)} files to {REPO_ID}:")
         for local, remote in uploads:
-            print(f"  {local} -> {remote}")
+            print(f"  {remote}  <-  {local}")
         return
 
-    api = HfApi()
+    from huggingface_hub import HfApi
 
-    api.create_repo(
-        repo_id=REPO_ID,
-        repo_type=REPO_TYPE,
-        private=args.private,
-        exist_ok=True,
-    )
-
-    for local_path, repo_path in uploads:
-        api.upload_file(
-            path_or_fileobj=str(local_path),
-            path_in_repo=repo_path,
-            repo_id=REPO_ID,
-            repo_type=REPO_TYPE,
-        )
-        print(f"  {local_path} -> {repo_path}")
-
-    print(f"\nDone. Dataset at: https://huggingface.co/datasets/{REPO_ID}")
+    api = HfApi(token=os.environ.get("HF_TOKEN"))
+    api.create_repo(repo_id=REPO_ID, repo_type=REPO_TYPE, private=args.private,
+                    exist_ok=True)
+    with tempfile.TemporaryDirectory() as tmp:
+        for local, remote in uploads:  # stage with hard links, then one commit
+            dest = Path(tmp) / remote
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            try:
+                os.link(local, dest)
+            except OSError:
+                shutil.copy2(local, dest)
+        api.upload_folder(folder_path=tmp, repo_id=REPO_ID, repo_type=REPO_TYPE,
+                          commit_message="MomentBench v0.2.2: queries, transcripts, "
+                                         "runs and licence-confirmed videos")
+    print(f"Done: https://huggingface.co/datasets/{REPO_ID}")
 
 
 if __name__ == "__main__":

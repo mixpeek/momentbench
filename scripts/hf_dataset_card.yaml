@@ -4,7 +4,8 @@ annotations_creators:
 language:
   - en
 license: other
-license_name: per-asset (public domain or CC BY, see manifest)
+license_name: per-asset-public-domain-or-cc-by
+license_link: https://github.com/mixpeek/momentbench/blob/main/ATTRIBUTION.md
 multilinguality: monolingual
 pretty_name: MomentBench
 size_categories:
@@ -55,11 +56,13 @@ Two tracks share that scoring rule:
 
 ## Files
 
-- `queries/film_v0.2.json`, `queries/aerospace_v0.2.json`, `queries/robotics_v0.2.json`: queries with gold spans, tier, vertical, split, hard negatives and provenance in `metadata` (who drafted, verified and cross-checked each one).
+- `queries/film_v0.2.json`, `queries/aerospace_v0.2.json`, `queries/robotics_v0.2.json`: queries with gold spans, tier, vertical, split, hard negatives and provenance in `metadata` (who drafted, verified, cross-checked and reviewed each one).
 - `queries/sample.json`: the 4-query v0.1 seed.
 - `transcripts/*.vtt`: the transcripts every entrant's tools read.
 - `corpus_manifests/sample_manifest.json`: assets with licence, licence status, attribution, duration, sha256 and download URL.
-- Video files are fetched from their original sources with `momentbench corpus-download`, which checks each hash.
+- `videos/`: 25 of the 27 videos, each byte-identical to the sha256 in the manifest. Spring and Agent 327 are left out while their licences are pending confirmation from Blender Studio; `momentbench corpus-download` fetches them (and any other asset) from the original source and checks each hash.
+- `runs/`: the 0.2.1 record runs behind the results, one JSON file per run, with every trial's answer, usage, the corpus receipt and the run's compatibility key.
+- `ATTRIBUTION.md`, `GOVERNANCE.md`: per-asset attribution and how the maintainer's own entries are handled.
 
 ## Contamination
 

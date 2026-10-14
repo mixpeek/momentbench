@@ -8,7 +8,7 @@
 
 **Design target:** 75 hours of rights-cleared video, 500 queries across 4 difficulty tiers, evaluated against frontier models and retrieval pipelines.
 
-**Current release (v0.2):** 27 hash-verified assets in three domains: 7 Blender open movies (about 72 minutes), 13 NASA aerospace videos (about 32 minutes, 2022 to 2026) and 7 NASA robotics videos (about 13 minutes, 2019 to 2023), with machine transcripts in [`data/transcripts`](data/transcripts). Queries:
+**Current release (v0.2):** 27 hash-verified assets in three domains: 7 Blender open movies (about 72 minutes), 13 NASA aerospace videos (about 32 minutes, 2022 to 2026) and 7 NASA robotics videos (about 13 minutes, 2019 to 2023), with machine transcripts in [`data/transcripts`](data/transcripts). The queries, transcripts, runs and the 25 videos with confirmed licences are also on Hugging Face at [`Mixpeek/momentbench`](https://huggingface.co/datasets/Mixpeek/momentbench). Queries:
 
 - [`data/queries/film_v0.2.json`](data/queries/film_v0.2.json): 184 public film queries across all four tiers; 82 more are held out.
 - [`data/queries/aerospace_v0.2.json`](data/queries/aerospace_v0.2.json): 202 NASA queries across all four tiers, 164 `public` and 38 `rolling` (footage published after current model training cutoffs); 65 more are held out.
