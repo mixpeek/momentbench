@@ -4,7 +4,8 @@
         > docs/report.md
 
 Corpus, query and result numbers are computed here from the manifest, the query
-files and the run files in data/results/agentic-v0.2/record, so the report cannot
+files and the run files in data/results/agentic-v0.2.1/record (and, for a model with no
+0.2.1 run, data/results/agentic-v0.2/record), so the report cannot
 drift from the release. Held-out aggregates are computed from runs kept outside
 the repository (their files would reveal held-out answers) when that directory is
 given with --heldout-runs.

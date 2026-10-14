@@ -31,6 +31,9 @@ from momentbench.agentic.stats import (  # noqa: E402
 )
 
 ROOT = Path(__file__).resolve().parents[1]
+# Runs under the 0.2.1 contract (receipt, identity, compatibility key) come first. A
+# model with no 0.2.1 run keeps its earlier row, labelled historical.
+RECORD_021 = ROOT / "data/results/agentic-v0.2.1/record"
 RECORD = ROOT / "data/results/agentic-v0.2/record"
 SEED = ROOT / "data/results/agentic"
 QUERY_FILES = {"film": "film_v0.2.json", "aerospace": "aerospace_v0.2.json",
@@ -38,13 +41,15 @@ QUERY_FILES = {"film": "film_v0.2.json", "aerospace": "aerospace_v0.2.json",
 # Seed runs on identical query text (after the q-film-005 fix, before the q-film-001 rewording).
 SEED_RUNS = ("agentic-claude-opus-5-5-e51b703b", "agentic-gpt-5.5-b893d59f",
              "agentic-gemini-3.1-pro-preview-a6ff462c", "agentic-gemma-4-31b-it-d23baa9c")
-# Pairs of independent single-trial Opus runs on the same queries.
+# Pairs of independent single-trial Opus runs on the same queries: the earlier record
+# run and its 0.2.1 rerun.
 RETEST = [
-    ("film", ROOT / "data/results/agentic-v0.2/agentic-claude-opus-5-5-65eb804b.json",
-     ROOT / "data/results/agentic-v0.2/superseded/agentic-claude-opus-5-5-da54af61.json"),
-    ("aerospace",
-     ROOT / "data/results/agentic-v0.2/superseded/agentic-claude-opus-5-5-2b5433a6.json",
-     RECORD / "agentic-claude-opus-5-5-519357e4.json"),
+    ("film", RECORD / "agentic-claude-opus-5-5-0d68625a.json",
+     RECORD_021 / "agentic-claude-opus-5-5-381de39d.json"),
+    ("aerospace", RECORD / "agentic-claude-opus-5-5-519357e4.json",
+     RECORD_021 / "agentic-claude-opus-5-5-0ec085fb.json"),
+    ("robotics", RECORD / "agentic-claude-opus-5-5-e7ca7bd1.json",
+     RECORD_021 / "agentic-claude-opus-5-5-c5031ac2.json"),
 ]
 
 
@@ -71,8 +76,8 @@ def retest() -> str:
 def runs_for(vertical: str) -> list[Path]:
     ids = {q["query_id"] for q in json.loads((ROOT / "data/queries" / QUERY_FILES[vertical])
                                              .read_text())}
-    out = []
-    for f in sorted(RECORD.glob("*.json")):
+    chosen: dict[tuple, Path] = {}
+    for f in sorted(RECORD_021.glob("*.json")) + sorted(RECORD.glob("*.json")):
         if f.name.endswith(".partial.json"):
             continue
         run = load_run(f)
@@ -81,9 +86,12 @@ def runs_for(vertical: str) -> list[Path]:
         ran = {t.query_id for t in run.trials}
         # A run belongs to this domain if nearly all of its queries are in the file;
         # queries removed later (review, cross-check) are then left out of its row.
-        if ran and len(ran & ids) >= 0.9 * len(ran):
-            out.append(f)
-    return out
+        if not (ran and len(ran & ids) >= 0.9 * len(ran)):
+            continue
+        # One row per model and condition; the 0.2.1 directory is read first, so a
+        # rerun replaces the earlier row.
+        chosen.setdefault((run.model_id, run.modalities, run.anonymize_titles), f)
+    return sorted(chosen.values())
 
 
 def split_rows(paths: list[Path]) -> str:
@@ -327,8 +335,7 @@ appear here.
 {phys}
 
 """ if phys else "")
-    all_runs = [load_run(f) for f in sorted(RECORD.glob("*.json"))
-                if not f.name.endswith(".partial.json")]
+    all_runs = [load_run(f) for f in {f for d in QUERY_FILES for f in runs_for(d)}]
     total = len(all_runs)
     historical = sum(1 for r in all_runs if not r.identity.get("compatibility_key"))
     reworded = {d: sum(1 for q in json.loads((ROOT / "data/queries" / f).read_text())
@@ -358,11 +365,12 @@ film and robotics results; its aerospace run is waiting on budget.
 Claude results come from the local Claude Code harness; their cost is what the tokens
 would cost at API list prices, not money spent.
 
-**Historical rows.** {historical} of the {total} model and floor runs on this page were made
-before runs recorded their identity (commit, verified bytes, compatibility key) in 0.2.1.
-Their scores come from the answers saved in each run file, rescored against the current
-gold, so they are honest but not reproducible byte for byte. They will be replaced by
-reruns under 0.2.1.
+**Historical rows.** Rows come from 0.2.1 runs, which record the verified corpus, the
+exact queries and a compatibility key, except where a model has no 0.2.1 run yet.
+{historical} of the {total} runs on this page are such earlier runs and are marked
+"(historical)": their saved answers are rescored against the current gold, honestly but
+without the 0.2.1 identity. The runs they replaced stay in
+`data/results/agentic-v0.2/record`.
 
 **Reworded queries.** Rows are rescored against the current gold, but a run is only
 scored on queries whose wording it saw. Queries reworded after a run ({reworded_note})

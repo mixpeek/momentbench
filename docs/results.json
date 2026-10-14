@@ -6,6 +6,53 @@
   "rows": [
     {
       "domain": "film",
+      "model": "gemini-3.1-pro-preview",
+      "harness": "api",
+      "modalities": "frames+transcripts",
+      "anonymize_titles": false,
+      "standard": true,
+      "condition": "historical",
+      "corpus_assets": 27,
+      "queries": 167,
+      "trials": 1,
+      "recall_at_1": 0.4251,
+      "recall_at_1_ci95": [
+        0.3473,
+        0.503
+      ],
+      "recall_at_1_by_iou": {
+        "0.3": 0.4731,
+        "0.5": 0.4251,
+        "0.7": 0.3413
+      },
+      "by_tier": {
+        "1": {
+          "queries": 80,
+          "recall_at_1": 0.3
+        },
+        "2": {
+          "queries": 25,
+          "recall_at_1": 0.84
+        },
+        "3": {
+          "queries": 36,
+          "recall_at_1": 0.3611
+        },
+        "4": {
+          "queries": 26,
+          "recall_at_1": 0.5
+        }
+      },
+      "positive_recall_at_1": 0.44274809160305345,
+      "no_answer_accuracy": 0.3611111111111111,
+      "false_positive_rate": 0.6388888888888888,
+      "abstention_on_positives": 0.061068702290076333,
+      "cost_usd_per_query": 0.3359427664670659,
+      "error_trials": 0,
+      "run_file": "agentic-gemini-3.1-pro-preview-7f1b7722.json"
+    },
+    {
+      "domain": "film",
       "model": "baseline-abstain",
       "harness": "api",
       "modalities": "frames+transcripts",
@@ -49,7 +96,7 @@
       "abstention_on_positives": 1.0,
       "cost_usd_per_query": null,
       "error_trials": 0,
-      "run_file": "agentic-baseline-abstain-540fc4f7.json"
+      "run_file": "agentic-baseline-abstain-c1c88fa3.json"
     },
     {
       "domain": "film",
@@ -96,7 +143,7 @@
       "abstention_on_positives": 0.0,
       "cost_usd_per_query": null,
       "error_trials": 0,
-      "run_file": "agentic-baseline-random-e7eea7e0.json"
+      "run_file": "agentic-baseline-random-6ba67d22.json"
     },
     {
       "domain": "film",
@@ -108,7 +155,7 @@
       "condition": "",
       "corpus_assets": 27,
       "queries": 167,
-      "trials": 1,
+      "trials": 3,
       "recall_at_1": 0.018,
       "recall_at_1_ci95": [
         0.0,
@@ -143,7 +190,7 @@
       "abstention_on_positives": 0.0,
       "cost_usd_per_query": null,
       "error_trials": 0,
-      "run_file": "agentic-baseline-transcript-f33ed534.json"
+      "run_file": "agentic-baseline-transcript-afd48986.json"
     },
     {
       "domain": "film",
@@ -156,20 +203,20 @@
       "corpus_assets": 27,
       "queries": 167,
       "trials": 1,
-      "recall_at_1": 0.2874,
+      "recall_at_1": 0.2814,
       "recall_at_1_ci95": [
-        0.2216,
-        0.3593
+        0.2156,
+        0.3533
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.3653,
-        "0.5": 0.2874,
-        "0.7": 0.1677
+        "0.3": 0.3713,
+        "0.5": 0.2814,
+        "0.7": 0.1916
       },
       "by_tier": {
         "1": {
           "queries": 80,
-          "recall_at_1": 0.1875
+          "recall_at_1": 0.1375
         },
         "2": {
           "queries": 25,
@@ -177,20 +224,20 @@
         },
         "3": {
           "queries": 36,
-          "recall_at_1": 0.2778
+          "recall_at_1": 0.4167
         },
         "4": {
           "queries": 26,
-          "recall_at_1": 0.3077
+          "recall_at_1": 0.2308
         }
       },
-      "positive_recall_at_1": 0.2900763358778626,
-      "no_answer_accuracy": 0.2777777777777778,
-      "false_positive_rate": 0.7222222222222222,
+      "positive_recall_at_1": 0.24427480916030533,
+      "no_answer_accuracy": 0.4166666666666667,
+      "false_positive_rate": 0.5833333333333334,
       "abstention_on_positives": 0.12213740458015267,
-      "cost_usd_per_query": 0.015760809580838326,
+      "cost_usd_per_query": 0.015113414371257485,
       "error_trials": 0,
-      "run_file": "agentic-claude-haiku-5-5-2d52fc45.json"
+      "run_file": "agentic-claude-haiku-5-5-255da92f.json"
     },
     {
       "domain": "film",
@@ -203,41 +250,41 @@
       "corpus_assets": 27,
       "queries": 167,
       "trials": 1,
-      "recall_at_1": 0.5509,
+      "recall_at_1": 0.5868,
       "recall_at_1_ci95": [
-        0.4731,
-        0.6287
+        0.515,
+        0.6647
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.6228,
-        "0.5": 0.5509,
-        "0.7": 0.485
+        "0.3": 0.6407,
+        "0.5": 0.5868,
+        "0.7": 0.479
       },
       "by_tier": {
         "1": {
           "queries": 80,
-          "recall_at_1": 0.625
+          "recall_at_1": 0.6
         },
         "2": {
           "queries": 25,
-          "recall_at_1": 0.72
+          "recall_at_1": 0.84
         },
         "3": {
           "queries": 36,
-          "recall_at_1": 0.1944
+          "recall_at_1": 0.3333
         },
         "4": {
           "queries": 26,
           "recall_at_1": 0.6538
         }
       },
-      "positive_recall_at_1": 0.648854961832061,
-      "no_answer_accuracy": 0.19444444444444445,
-      "false_positive_rate": 0.8055555555555556,
-      "abstention_on_positives": 0.0,
-      "cost_usd_per_query": 0.12256747425149701,
+      "positive_recall_at_1": 0.6564885496183206,
+      "no_answer_accuracy": 0.3333333333333333,
+      "false_positive_rate": 0.6666666666666666,
+      "abstention_on_positives": 0.022900763358778626,
+      "cost_usd_per_query": 0.1195474383233533,
       "error_trials": 0,
-      "run_file": "agentic-claude-opus-5-5-0d68625a.json"
+      "run_file": "agentic-claude-opus-5-5-381de39d.json"
     },
     {
       "domain": "film",
@@ -250,88 +297,41 @@
       "corpus_assets": 27,
       "queries": 167,
       "trials": 1,
-      "recall_at_1": 0.3174,
+      "recall_at_1": 0.2934,
       "recall_at_1_ci95": [
-        0.2515,
-        0.3892
+        0.2216,
+        0.3653
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.4192,
-        "0.5": 0.3174,
+        "0.3": 0.4132,
+        "0.5": 0.2934,
         "0.7": 0.1198
       },
       "by_tier": {
         "1": {
           "queries": 80,
-          "recall_at_1": 0.2375
+          "recall_at_1": 0.225
         },
         "2": {
           "queries": 25,
-          "recall_at_1": 0.8
+          "recall_at_1": 0.76
         },
         "3": {
           "queries": 36,
-          "recall_at_1": 0.1111
+          "recall_at_1": 0.1667
         },
         "4": {
           "queries": 26,
-          "recall_at_1": 0.3846
+          "recall_at_1": 0.2308
         }
       },
-      "positive_recall_at_1": 0.37404580152671757,
-      "no_answer_accuracy": 0.1111111111111111,
-      "false_positive_rate": 0.8888888888888888,
-      "abstention_on_positives": 0.04580152671755725,
-      "cost_usd_per_query": 0.07009735568862276,
+      "positive_recall_at_1": 0.3282442748091603,
+      "no_answer_accuracy": 0.16666666666666666,
+      "false_positive_rate": 0.8333333333333334,
+      "abstention_on_positives": 0.07633587786259542,
+      "cost_usd_per_query": 0.06716357365269461,
       "error_trials": 0,
-      "run_file": "agentic-claude-sonnet-5-5-5a202b4b.json"
-    },
-    {
-      "domain": "film",
-      "model": "gemini-3.1-pro-preview",
-      "harness": "api",
-      "modalities": "frames+transcripts",
-      "anonymize_titles": false,
-      "standard": true,
-      "condition": "",
-      "corpus_assets": 27,
-      "queries": 167,
-      "trials": 1,
-      "recall_at_1": 0.4251,
-      "recall_at_1_ci95": [
-        0.3473,
-        0.503
-      ],
-      "recall_at_1_by_iou": {
-        "0.3": 0.4731,
-        "0.5": 0.4251,
-        "0.7": 0.3413
-      },
-      "by_tier": {
-        "1": {
-          "queries": 80,
-          "recall_at_1": 0.3
-        },
-        "2": {
-          "queries": 25,
-          "recall_at_1": 0.84
-        },
-        "3": {
-          "queries": 36,
-          "recall_at_1": 0.3611
-        },
-        "4": {
-          "queries": 26,
-          "recall_at_1": 0.5
-        }
-      },
-      "positive_recall_at_1": 0.44274809160305345,
-      "no_answer_accuracy": 0.3611111111111111,
-      "false_positive_rate": 0.6388888888888888,
-      "abstention_on_positives": 0.061068702290076333,
-      "cost_usd_per_query": 0.3359427664670659,
-      "error_trials": 0,
-      "run_file": "agentic-gemini-3.1-pro-preview-7f1b7722.json"
+      "run_file": "agentic-claude-sonnet-5-5-a15a8558.json"
     },
     {
       "domain": "aerospace",
@@ -342,25 +342,25 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 188,
+      "queries": 202,
       "trials": 3,
-      "recall_at_1": 0.1117,
+      "recall_at_1": 0.104,
       "recall_at_1_ci95": [
-        0.0691,
-        0.1596
+        0.0644,
+        0.1485
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.1117,
-        "0.5": 0.1117,
-        "0.7": 0.1117
+        "0.3": 0.104,
+        "0.5": 0.104,
+        "0.7": 0.104
       },
       "by_tier": {
         "1": {
-          "queries": 103,
+          "queries": 110,
           "recall_at_1": 0
         },
         "2": {
-          "queries": 31,
+          "queries": 34,
           "recall_at_1": 0
         },
         "3": {
@@ -368,7 +368,7 @@
           "recall_at_1": 1
         },
         "4": {
-          "queries": 33,
+          "queries": 37,
           "recall_at_1": 0
         }
       },
@@ -378,7 +378,7 @@
       "abstention_on_positives": 1.0,
       "cost_usd_per_query": null,
       "error_trials": 0,
-      "run_file": "agentic-baseline-abstain-cbb76cd7.json"
+      "run_file": "agentic-baseline-abstain-6275d8c8.json"
     },
     {
       "domain": "aerospace",
@@ -389,7 +389,7 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 188,
+      "queries": 202,
       "trials": 3,
       "recall_at_1": 0.0,
       "recall_at_1_ci95": [
@@ -403,11 +403,11 @@
       },
       "by_tier": {
         "1": {
-          "queries": 103,
+          "queries": 110,
           "recall_at_1": 0
         },
         "2": {
-          "queries": 31,
+          "queries": 34,
           "recall_at_1": 0
         },
         "3": {
@@ -415,7 +415,7 @@
           "recall_at_1": 0
         },
         "4": {
-          "queries": 33,
+          "queries": 37,
           "recall_at_1": 0
         }
       },
@@ -425,7 +425,7 @@
       "abstention_on_positives": 0.0,
       "cost_usd_per_query": null,
       "error_trials": 0,
-      "run_file": "agentic-baseline-random-0cd4a178.json"
+      "run_file": "agentic-baseline-random-7f80780f.json"
     },
     {
       "domain": "aerospace",
@@ -436,43 +436,43 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 188,
-      "trials": 1,
-      "recall_at_1": 0.117,
+      "queries": 202,
+      "trials": 3,
+      "recall_at_1": 0.1139,
       "recall_at_1_ci95": [
-        0.0745,
-        0.1649
+        0.0743,
+        0.1634
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.133,
-        "0.5": 0.117,
-        "0.7": 0.0585
+        "0.3": 0.1287,
+        "0.5": 0.1139,
+        "0.7": 0.0594
       },
       "by_tier": {
         "1": {
-          "queries": 103,
+          "queries": 110,
           "recall_at_1": 0
         },
         "2": {
-          "queries": 31,
-          "recall_at_1": 0.7097
+          "queries": 34,
+          "recall_at_1": 0.6765
         },
         "3": {
           "queries": 21,
           "recall_at_1": 0
         },
         "4": {
-          "queries": 33,
+          "queries": 37,
           "recall_at_1": 0
         }
       },
-      "positive_recall_at_1": 0.1317365269461078,
+      "positive_recall_at_1": 0.1270718232044199,
       "no_answer_accuracy": 0.0,
       "false_positive_rate": 1.0,
       "abstention_on_positives": 0.0,
       "cost_usd_per_query": null,
       "error_trials": 0,
-      "run_file": "agentic-baseline-transcript-9ddcd4c3.json"
+      "run_file": "agentic-baseline-transcript-2ce74830.json"
     },
     {
       "domain": "aerospace",
@@ -483,43 +483,43 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 188,
+      "queries": 202,
       "trials": 1,
-      "recall_at_1": 0.4043,
+      "recall_at_1": 0.4208,
       "recall_at_1_ci95": [
-        0.3298,
-        0.4734
+        0.3515,
+        0.4901
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.484,
-        "0.5": 0.4043,
-        "0.7": 0.2553
+        "0.3": 0.5099,
+        "0.5": 0.4208,
+        "0.7": 0.2921
       },
       "by_tier": {
         "1": {
-          "queries": 103,
-          "recall_at_1": 0.3204
+          "queries": 110,
+          "recall_at_1": 0.3545
         },
         "2": {
-          "queries": 31,
-          "recall_at_1": 0.7742
+          "queries": 34,
+          "recall_at_1": 0.6765
         },
         "3": {
           "queries": 21,
-          "recall_at_1": 0.381
+          "recall_at_1": 0.4762
         },
         "4": {
-          "queries": 33,
-          "recall_at_1": 0.3333
+          "queries": 37,
+          "recall_at_1": 0.3514
         }
       },
-      "positive_recall_at_1": 0.40718562874251496,
-      "no_answer_accuracy": 0.38095238095238093,
-      "false_positive_rate": 0.6190476190476191,
-      "abstention_on_positives": 0.11377245508982035,
-      "cost_usd_per_query": 0.017353518085106386,
+      "positive_recall_at_1": 0.4143646408839779,
+      "no_answer_accuracy": 0.47619047619047616,
+      "false_positive_rate": 0.5238095238095238,
+      "abstention_on_positives": 0.1270718232044199,
+      "cost_usd_per_query": 0.016597077227722773,
       "error_trials": 0,
-      "run_file": "agentic-claude-haiku-5-5-73f3e5ad.json"
+      "run_file": "agentic-claude-haiku-5-5-b1549d86.json"
     },
     {
       "domain": "aerospace",
@@ -530,43 +530,43 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 188,
+      "queries": 202,
       "trials": 1,
-      "recall_at_1": 0.6277,
+      "recall_at_1": 0.6485,
       "recall_at_1_ci95": [
-        0.5532,
-        0.6968
+        0.5792,
+        0.7129
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.6755,
-        "0.5": 0.6277,
-        "0.7": 0.5106
+        "0.3": 0.703,
+        "0.5": 0.6485,
+        "0.7": 0.5248
       },
       "by_tier": {
         "1": {
-          "queries": 103,
-          "recall_at_1": 0.6311
+          "queries": 110,
+          "recall_at_1": 0.6455
         },
         "2": {
-          "queries": 31,
-          "recall_at_1": 0.9355
+          "queries": 34,
+          "recall_at_1": 0.9118
         },
         "3": {
           "queries": 21,
-          "recall_at_1": 0.4286
+          "recall_at_1": 0.5238
         },
         "4": {
-          "queries": 33,
-          "recall_at_1": 0.4545
+          "queries": 37,
+          "recall_at_1": 0.4865
         }
       },
-      "positive_recall_at_1": 0.6526946107784432,
-      "no_answer_accuracy": 0.42857142857142855,
-      "false_positive_rate": 0.5714285714285714,
+      "positive_recall_at_1": 0.6629834254143646,
+      "no_answer_accuracy": 0.5238095238095238,
+      "false_positive_rate": 0.47619047619047616,
       "abstention_on_positives": 0.0,
-      "cost_usd_per_query": 0.1479926425531915,
+      "cost_usd_per_query": 0.1431717920792079,
       "error_trials": 0,
-      "run_file": "agentic-claude-opus-5-5-519357e4.json"
+      "run_file": "agentic-claude-opus-5-5-0ec085fb.json"
     },
     {
       "domain": "aerospace",
@@ -577,43 +577,137 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 188,
+      "queries": 202,
       "trials": 1,
-      "recall_at_1": 0.3191,
+      "recall_at_1": 0.2921,
       "recall_at_1_ci95": [
-        0.2553,
-        0.383
+        0.2277,
+        0.3564
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.4468,
-        "0.5": 0.3191,
-        "0.7": 0.1809
+        "0.3": 0.4356,
+        "0.5": 0.2921,
+        "0.7": 0.1238
       },
       "by_tier": {
         "1": {
-          "queries": 103,
-          "recall_at_1": 0.2524
+          "queries": 110,
+          "recall_at_1": 0.2455
         },
         "2": {
-          "queries": 31,
-          "recall_at_1": 0.6129
+          "queries": 34,
+          "recall_at_1": 0.6176
         },
         "3": {
           "queries": 21,
-          "recall_at_1": 0.2381
+          "recall_at_1": 0.2857
         },
         "4": {
-          "queries": 33,
-          "recall_at_1": 0.303
+          "queries": 37,
+          "recall_at_1": 0.1351
         }
       },
-      "positive_recall_at_1": 0.32934131736526945,
-      "no_answer_accuracy": 0.23809523809523808,
-      "false_positive_rate": 0.7619047619047619,
-      "abstention_on_positives": 0.041916167664670656,
-      "cost_usd_per_query": 0.08109942659574468,
+      "positive_recall_at_1": 0.292817679558011,
+      "no_answer_accuracy": 0.2857142857142857,
+      "false_positive_rate": 0.7142857142857143,
+      "abstention_on_positives": 0.049723756906077346,
+      "cost_usd_per_query": 0.07659745742574257,
       "error_trials": 0,
-      "run_file": "agentic-claude-sonnet-5-5-e3adc2e7.json"
+      "run_file": "agentic-claude-sonnet-5-5-93968f9c.json"
+    },
+    {
+      "domain": "robotics",
+      "model": "claude-opus-5-5",
+      "harness": "claude-code",
+      "modalities": "frames",
+      "anonymize_titles": false,
+      "standard": false,
+      "condition": "frames only, historical",
+      "corpus_assets": 27,
+      "queries": 68,
+      "trials": 1,
+      "recall_at_1": 0.7206,
+      "recall_at_1_ci95": [
+        0.6176,
+        0.8235
+      ],
+      "recall_at_1_by_iou": {
+        "0.3": 0.7647,
+        "0.5": 0.7206,
+        "0.7": 0.5147
+      },
+      "by_tier": {
+        "1": {
+          "queries": 41,
+          "recall_at_1": 0.7561
+        },
+        "2": {
+          "queries": 10,
+          "recall_at_1": 0.8
+        },
+        "3": {
+          "queries": 10,
+          "recall_at_1": 0.5
+        },
+        "4": {
+          "queries": 7,
+          "recall_at_1": 0.7143
+        }
+      },
+      "positive_recall_at_1": 0.7586206896551724,
+      "no_answer_accuracy": 0.5,
+      "false_positive_rate": 0.5,
+      "abstention_on_positives": 0.0,
+      "cost_usd_per_query": 0.12375829705882353,
+      "error_trials": 0,
+      "run_file": "agentic-claude-opus-5-5-fe94c043.json"
+    },
+    {
+      "domain": "robotics",
+      "model": "gemini-3.1-pro-preview",
+      "harness": "api",
+      "modalities": "frames+transcripts",
+      "anonymize_titles": false,
+      "standard": true,
+      "condition": "historical",
+      "corpus_assets": 27,
+      "queries": 68,
+      "trials": 1,
+      "recall_at_1": 0.6176,
+      "recall_at_1_ci95": [
+        0.5,
+        0.7206
+      ],
+      "recall_at_1_by_iou": {
+        "0.3": 0.6912,
+        "0.5": 0.6176,
+        "0.7": 0.5441
+      },
+      "by_tier": {
+        "1": {
+          "queries": 41,
+          "recall_at_1": 0.6098
+        },
+        "2": {
+          "queries": 10,
+          "recall_at_1": 0.9
+        },
+        "3": {
+          "queries": 10,
+          "recall_at_1": 0.4
+        },
+        "4": {
+          "queries": 7,
+          "recall_at_1": 0.5714
+        }
+      },
+      "positive_recall_at_1": 0.6551724137931034,
+      "no_answer_accuracy": 0.4,
+      "false_positive_rate": 0.5,
+      "abstention_on_positives": 0.034482758620689655,
+      "cost_usd_per_query": 0.32242200367647056,
+      "error_trials": 0,
+      "run_file": "agentic-gemini-3.1-pro-preview-cfaace12.json"
     },
     {
       "domain": "robotics",
@@ -660,7 +754,7 @@
       "abstention_on_positives": 1.0,
       "cost_usd_per_query": null,
       "error_trials": 0,
-      "run_file": "agentic-baseline-abstain-b3a169c6.json"
+      "run_file": "agentic-baseline-abstain-6bb3a3ec.json"
     },
     {
       "domain": "robotics",
@@ -679,7 +773,7 @@
         0.0
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.0049,
+        "0.3": 0.0,
         "0.5": 0.0,
         "0.7": 0.0
       },
@@ -707,7 +801,7 @@
       "abstention_on_positives": 0.0,
       "cost_usd_per_query": null,
       "error_trials": 0,
-      "run_file": "agentic-baseline-random-cfb1ec6f.json"
+      "run_file": "agentic-baseline-random-7292ef98.json"
     },
     {
       "domain": "robotics",
@@ -719,7 +813,7 @@
       "condition": "",
       "corpus_assets": 27,
       "queries": 68,
-      "trials": 1,
+      "trials": 3,
       "recall_at_1": 0.0441,
       "recall_at_1_ci95": [
         0.0,
@@ -754,7 +848,7 @@
       "abstention_on_positives": 0.0,
       "cost_usd_per_query": null,
       "error_trials": 0,
-      "run_file": "agentic-baseline-transcript-b00784de.json"
+      "run_file": "agentic-baseline-transcript-c4987082.json"
     },
     {
       "domain": "robotics",
@@ -767,15 +861,15 @@
       "corpus_assets": 27,
       "queries": 68,
       "trials": 1,
-      "recall_at_1": 0.4118,
+      "recall_at_1": 0.4265,
       "recall_at_1_ci95": [
         0.3088,
-        0.5294
+        0.5441
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.5441,
-        "0.5": 0.4118,
-        "0.7": 0.2059
+        "0.3": 0.6324,
+        "0.5": 0.4265,
+        "0.7": 0.1912
       },
       "by_tier": {
         "1": {
@@ -784,7 +878,7 @@
         },
         "2": {
           "queries": 10,
-          "recall_at_1": 0.6
+          "recall_at_1": 0.7
         },
         "3": {
           "queries": 10,
@@ -795,13 +889,13 @@
           "recall_at_1": 0.5714
         }
       },
-      "positive_recall_at_1": 0.4482758620689655,
+      "positive_recall_at_1": 0.46551724137931033,
       "no_answer_accuracy": 0.2,
       "false_positive_rate": 0.8,
-      "abstention_on_positives": 0.034482758620689655,
-      "cost_usd_per_query": 0.01347725294117647,
+      "abstention_on_positives": 0.017241379310344827,
+      "cost_usd_per_query": 0.014939370588235294,
       "error_trials": 0,
-      "run_file": "agentic-claude-haiku-5-5-59536b38.json"
+      "run_file": "agentic-claude-haiku-5-5-01b8225f.json"
     },
     {
       "domain": "robotics",
@@ -820,9 +914,9 @@
         0.8676
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.8088,
+        "0.3": 0.8235,
         "0.5": 0.7647,
-        "0.7": 0.6765
+        "0.7": 0.6176
       },
       "by_tier": {
         "1": {
@@ -831,71 +925,24 @@
         },
         "2": {
           "queries": 10,
-          "recall_at_1": 0.7
+          "recall_at_1": 0.8
         },
         "3": {
           "queries": 10,
-          "recall_at_1": 0.5
+          "recall_at_1": 0.4
         },
         "4": {
           "queries": 7,
           "recall_at_1": 0.8571
         }
       },
-      "positive_recall_at_1": 0.8103448275862069,
-      "no_answer_accuracy": 0.5,
-      "false_positive_rate": 0.5,
-      "abstention_on_positives": 0.017241379310344827,
-      "cost_usd_per_query": 0.11201006176470588,
-      "error_trials": 0,
-      "run_file": "agentic-claude-opus-5-5-e7ca7bd1.json"
-    },
-    {
-      "domain": "robotics",
-      "model": "claude-opus-5-5",
-      "harness": "claude-code",
-      "modalities": "frames",
-      "anonymize_titles": false,
-      "standard": false,
-      "condition": "frames only",
-      "corpus_assets": 27,
-      "queries": 68,
-      "trials": 1,
-      "recall_at_1": 0.7206,
-      "recall_at_1_ci95": [
-        0.6176,
-        0.8235
-      ],
-      "recall_at_1_by_iou": {
-        "0.3": 0.7647,
-        "0.5": 0.7206,
-        "0.7": 0.5147
-      },
-      "by_tier": {
-        "1": {
-          "queries": 41,
-          "recall_at_1": 0.7561
-        },
-        "2": {
-          "queries": 10,
-          "recall_at_1": 0.8
-        },
-        "3": {
-          "queries": 10,
-          "recall_at_1": 0.5
-        },
-        "4": {
-          "queries": 7,
-          "recall_at_1": 0.7143
-        }
-      },
-      "positive_recall_at_1": 0.7586206896551724,
-      "no_answer_accuracy": 0.5,
+      "positive_recall_at_1": 0.8275862068965517,
+      "no_answer_accuracy": 0.4,
       "false_positive_rate": 0.5,
       "abstention_on_positives": 0.0,
-      "cost_usd_per_query": 0.12375829705882353,
+      "cost_usd_per_query": 0.11074496470588235,
       "error_trials": 0,
-      "run_file": "agentic-claude-opus-5-5-fe94c043.json"
+      "run_file": "agentic-claude-opus-5-5-c5031ac2.json"
     },
     {
       "domain": "robotics",
@@ -908,20 +955,20 @@
       "corpus_assets": 27,
       "queries": 68,
       "trials": 1,
-      "recall_at_1": 0.3824,
+      "recall_at_1": 0.3529,
       "recall_at_1_ci95": [
-        0.2647,
-        0.5
+        0.25,
+        0.4706
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.5882,
-        "0.5": 0.3824,
-        "0.7": 0.1324
+        "0.3": 0.5147,
+        "0.5": 0.3529,
+        "0.7": 0.1618
       },
       "by_tier": {
         "1": {
           "queries": 41,
-          "recall_at_1": 0.4146
+          "recall_at_1": 0.3171
         },
         "2": {
           "queries": 10,
@@ -929,67 +976,20 @@
         },
         "3": {
           "queries": 10,
-          "recall_at_1": 0
-        },
-        "4": {
-          "queries": 7,
-          "recall_at_1": 0.4286
-        }
-      },
-      "positive_recall_at_1": 0.4482758620689655,
-      "no_answer_accuracy": 0.0,
-      "false_positive_rate": 1.0,
-      "abstention_on_positives": 0.0,
-      "cost_usd_per_query": 0.05051669705882353,
-      "error_trials": 0,
-      "run_file": "agentic-claude-sonnet-5-5-4e1ecc2c.json"
-    },
-    {
-      "domain": "robotics",
-      "model": "gemini-3.1-pro-preview",
-      "harness": "api",
-      "modalities": "frames+transcripts",
-      "anonymize_titles": false,
-      "standard": true,
-      "condition": "",
-      "corpus_assets": 27,
-      "queries": 68,
-      "trials": 1,
-      "recall_at_1": 0.6176,
-      "recall_at_1_ci95": [
-        0.5,
-        0.7206
-      ],
-      "recall_at_1_by_iou": {
-        "0.3": 0.6912,
-        "0.5": 0.6176,
-        "0.7": 0.5441
-      },
-      "by_tier": {
-        "1": {
-          "queries": 41,
-          "recall_at_1": 0.6098
-        },
-        "2": {
-          "queries": 10,
-          "recall_at_1": 0.9
-        },
-        "3": {
-          "queries": 10,
-          "recall_at_1": 0.4
+          "recall_at_1": 0.1
         },
         "4": {
           "queries": 7,
           "recall_at_1": 0.5714
         }
       },
-      "positive_recall_at_1": 0.6551724137931034,
-      "no_answer_accuracy": 0.4,
-      "false_positive_rate": 0.5,
-      "abstention_on_positives": 0.034482758620689655,
-      "cost_usd_per_query": 0.32242200367647056,
+      "positive_recall_at_1": 0.39655172413793105,
+      "no_answer_accuracy": 0.1,
+      "false_positive_rate": 0.9,
+      "abstention_on_positives": 0.0,
+      "cost_usd_per_query": 0.049307644117647056,
       "error_trials": 0,
-      "run_file": "agentic-gemini-3.1-pro-preview-cfaace12.json"
+      "run_file": "agentic-claude-sonnet-5-5-9c856a5d.json"
     }
   ]
 }

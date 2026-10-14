@@ -69,7 +69,8 @@ def is_standard(run: AgenticRun) -> bool:
 def condition(run: AgenticRun) -> str:
     """Label for a non-standard run, appended to its model name ("" when standard)."""
     tags = (["frames only"] if run.modalities == "frames" else []) + (
-        ["anonymized titles"] if run.anonymize_titles else [])
+        ["anonymized titles"] if run.anonymize_titles else []) + (
+        ["historical"] if not run.identity.get("compatibility_key") else [])
     return f" ({', '.join(tags)})" if tags else ""
 
 
