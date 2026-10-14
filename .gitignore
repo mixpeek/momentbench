@@ -35,3 +35,6 @@ data/corpus_raw/
 
 # Debug runs on a partial corpus (--partial); never results
 data/results/debug/
+
+# Inspect AI eval logs
+logs/
