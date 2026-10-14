@@ -358,10 +358,11 @@ always submits an empty answer, so it scores exactly the share of no-answer (tie
 queries. A system's overall Recall@1 only means something above both.
 
 **Status.** The queries are model-annotated (Claude drafted and verified, Gemini
-cross-checked) and not yet human-reviewed, so treat every number as provisional.
-GPT-5.5 is not evaluated on v0.2: the OpenAI organization available to us has its billing
-plan cancelled, and a first attempt that ran into it was discarded. Gemini 3.1 Pro has
-film and robotics results; its aerospace run is waiting on budget.
+cross-checked) and were then reviewed frame by frame by Claude on the maintainer's behalf
+(59 corrected, 1 removed; `metadata.model_review`). They are not yet human-reviewed, so
+treat every number as provisional. GPT-5.5 is not evaluated on v0.2: no OpenAI budget is
+available for it. Gemini 3.1 Pro has
+film and robotics results and no aerospace run, also for lack of API budget.
 Claude results come from the local Claude Code harness; their cost is what the tokens
 would cost at API list prices, not money spent.
 

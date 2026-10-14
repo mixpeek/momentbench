@@ -26,12 +26,12 @@ task_ids: []
 
 **Corpus-scale video moment retrieval benchmark. Release v0.2.**
 
-v0.2 is about 117 minutes of footage and 620 queries, short of the design target of 75 hours. Read the status section before citing any number from it.
+v0.2 is about 117 minutes of footage and 619 queries, short of the design target of 75 hours. Read the status section before citing any number from it.
 
 ## Status (v0.2)
 
 - **Corpus:** 27 assets, each with a sha256 and source URL in the manifest: 7 Blender open movies (about 72 minutes), 13 NASA aerospace videos (about 32 minutes, 2022 to 2026) and 7 NASA robotics videos (about 13 minutes, 2019 to 2023). Machine transcripts (Whisper small) ship with the queries.
-- **Queries:** 620, drafted and verified by Claude, cross-checked by Gemini, and kept only where both agreed. 457 are published here (419 `public`, 38 `rolling`); 163 are held out by the maintainers. Human review is in progress; a random spot check before cross-checking found about 10% wrong.
+- **Queries:** 619, drafted and verified by Claude, cross-checked by Gemini, and kept only where both agreed. 456 are published here (418 `public`, 38 `rolling`); 163 are held out by the maintainers. Every published query then had a frame-level review by Claude, delegated by the maintainer on 2026-10-14: 397 accepted, 59 corrected (wording or span), 1 removed; each carries `metadata.model_review`. Human review is still pending; a random spot check before cross-checking found about 10% wrong.
 - **Rolling split:** queries on footage published after 2026-06-30, newer than current model training cutoffs.
 - **Results:** see `docs/results.md` in the GitHub repository. Every row names the run file it was computed from.
 
@@ -50,7 +50,7 @@ Two tracks share that scoring rule:
 |------|------|-----------------|-------------------|
 | 1 | Single-condition visual | One shot, described visually | 239 |
 | 2 | Cross-modal joint | Dialogue or narration together with the picture | 76 |
-| 3 | Corpus-scale hard negatives | A real shot with one detail changed; the right answer is no moment | 67 |
+| 3 | Corpus-scale hard negatives | A real shot with one detail changed; the right answer is no moment | 66 |
 | 4 | Temporal reasoning | Two or three consecutive shots in order | 75 |
 
 ## Files

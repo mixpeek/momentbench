@@ -7,7 +7,7 @@ There is one route onto the leaderboard: an agentic-track run on a whole domain'
 ## 1. Get the corpus
 
 ```bash
-git clone --branch v0.2.1 https://github.com/mixpeek/momentbench.git
+git clone --branch v0.2.2 https://github.com/mixpeek/momentbench.git
 cd momentbench
 pip install -e ".[openai]"   # Python 3.10+; or .[gemini], .[claude-code], .[inspect]
 momentbench corpus-download -m data/corpus_manifests/sample_manifest.json --corpus-dir corpus/

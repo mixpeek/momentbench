@@ -10,12 +10,12 @@
 
 **Current release (v0.2):** 27 hash-verified assets in three domains: 7 Blender open movies (about 72 minutes), 13 NASA aerospace videos (about 32 minutes, 2022 to 2026) and 7 NASA robotics videos (about 13 minutes, 2019 to 2023), with machine transcripts in [`data/transcripts`](data/transcripts). Queries:
 
-- [`data/queries/film_v0.2.json`](data/queries/film_v0.2.json): 185 public film queries across all four tiers; 82 more are held out.
+- [`data/queries/film_v0.2.json`](data/queries/film_v0.2.json): 184 public film queries across all four tiers; 82 more are held out.
 - [`data/queries/aerospace_v0.2.json`](data/queries/aerospace_v0.2.json): 202 NASA queries across all four tiers, 164 `public` and 38 `rolling` (footage published after current model training cutoffs); 65 more are held out.
 - [`data/queries/robotics_v0.2.json`](data/queries/robotics_v0.2.json): 70 public NASA robotics queries across all four tiers; 16 more are held out.
 - [`data/queries/sample.json`](data/queries/sample.json): the 4-query v0.1 seed, kept for comparison with earlier runs.
 
-In total 620 queries across film, aerospace and robotics, 457 in this repository. They were drafted and verified by Claude, then cross-checked by Gemini, and only queries both agreed on were kept (37 of 657 were dropped at that step). They have not had human review yet; a 20-query spot check put the error rate before cross-checking at about 10%. The technical report is [`docs/report.md`](docs/report.md); current scores are in [`docs/results.md`](docs/results.md). [`docs/protocol.md`](docs/protocol.md) defines the task, metrics and what a reported result must state, and describes how the queries were built. [`docs/scope.md`](docs/scope.md) states what a v0.2 score measures and what it does not, with a roadmap for each gap. PRs adding rights-cleared footage or queries are welcome (see [`SUBMISSION.md`](SUBMISSION.md)).
+In total 619 queries across film, aerospace and robotics, 456 in this repository. They were drafted and verified by Claude, then cross-checked by Gemini, and only queries both agreed on were kept (37 of 657 were dropped at that step). Every published query then had a frame-level review by Claude, delegated by the maintainer on 2026-10-14: 397 accepted, 59 corrected (wording or span), 1 removed; each carries `metadata.model_review`. Human review is still pending. A 20-query spot check had put the error rate before cross-checking at about 10%. The technical report is [`docs/report.md`](docs/report.md); current scores are in [`docs/results.md`](docs/results.md). [`docs/protocol.md`](docs/protocol.md) defines the task, metrics and what a reported result must state, and describes how the queries were built. [`docs/scope.md`](docs/scope.md) states what a v0.2 score measures and what it does not, with a roadmap for each gap. PRs adding rights-cleared footage or queries are welcome (see [`SUBMISSION.md`](SUBMISSION.md)).
 
 Maintained by [Mixpeek](https://mixpeek.com). Mixpeek's own pipeline is one entrant on the leaderboard and follows the same rules as every other. See [`GOVERNANCE.md`](GOVERNANCE.md).
 
@@ -27,7 +27,7 @@ clone a release tag and work inside it. `ffmpeg` and `ffprobe` must be on the PA
 (`brew install ffmpeg`, `apt install ffmpeg`).
 
 ```bash
-git clone --branch v0.2.1 https://github.com/mixpeek/momentbench.git
+git clone --branch v0.2.2 https://github.com/mixpeek/momentbench.git
 cd momentbench
 pip install -e ".[openai]"   # Python 3.10+; or .[gemini], .[claude-code], .[inspect]
 momentbench corpus-download -m data/corpus_manifests/sample_manifest.json --corpus-dir corpus/   # 2.6 GB

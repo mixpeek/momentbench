@@ -52,8 +52,10 @@ That makes a v0.2 score a measure of:
 - **Model differences free of harness effects.** Claude runs use the Claude Code SDK
   loop and other models the API loop; turn semantics and image transport differ. Each
   row names its harness.
-- **Human-verified labels.** All 457 published queries were drafted and verified by
-  Claude and cross-checked by Gemini. None has a human review record yet. Verification
+- **Human-verified labels.** All 456 published queries were drafted and verified by
+  Claude, cross-checked by Gemini, and then reviewed frame by frame by Claude on the
+  maintainer's behalf (59 corrected, 1 removed). None has a human review record yet, and
+  a model review cannot stand in for one: the reviewers share model blind spots. Verification
   compared each candidate with three look-alike shots, which does not prove a positive
   is unique or a no-answer query has no match anywhere in the corpus.
 - **Event boundaries.** Gold spans mostly follow shot cuts, while an event can fill

@@ -12,6 +12,12 @@
     python scripts/review_queries.py apply data/queries/film_v0.2.json decisions*.json \\
         --reviewer "name or handle"
 
+    # A review done by a model (--kind model) is recorded as metadata.model_review and
+    # leaves the query pending human review; only --kind human (the default) writes
+    # metadata.human_review. A decision may carry "fix": {"text": ...} and/or
+    # {"t_in": ..., "t_out": ...}, applied with the same provenance records as
+    # refine_boundaries.py (text_refined, boundary_refined).
+
 Each query shows five frames: one second before the gold span, its start, middle and
 end, and one second after, so a reviewer can judge both the description and the
 boundaries. A no-answer query shows its altered source shot and the change that was
@@ -140,6 +146,8 @@ def apply(args: argparse.Namespace) -> None:
     for f in args.decisions:  # one file per review page; query ids are unique across them
         decisions.update(json.loads(Path(f).read_text()))
     today = datetime.date.today().isoformat()
+    now = datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+    human = args.kind == "human"
     kept, counts = [], {"accept": 0, "fix": 0, "reject": 0, "unreviewed": 0}
     for q in queries:
         d = decisions.get(q["query_id"]) or {}
@@ -153,11 +161,34 @@ def apply(args: argparse.Namespace) -> None:
         counts[decision] += 1
         if decision == "reject":
             continue
-        q["metadata"]["human_review"] = {"reviewer": args.reviewer, "date": today,
-                                         "decision": decision, "note": d.get("note", "")}
-        if decision == "accept":
-            q["metadata"]["source"] = q["metadata"]["source"].replace(
-                "pending human review", f"human-reviewed by {args.reviewer} on {today}")
+        meta = q["metadata"]
+        fix = d.get("fix") or {}
+        by = f"{args.reviewer} review" + ("" if human else " (model)")
+        if fix.get("text") and fix["text"] != q["text"]:
+            meta["text_refined"] = {"from": q["text"], "date": today, "applied_at": now,
+                                    "reason": d["note"], "by": by}
+            q["text"] = fix["text"]
+        if "t_in" in fix and "t_out" in fix:
+            # A no-answer query has no gold span; its span fix moves the source shot.
+            g = q["gold_moments"][0] if q["gold_moments"] else meta.get("altered_from")
+            if not g:
+                raise SystemExit(f"{q['query_id']}: span fix but no gold or altered_from")
+            new = [float(fix["t_in"]), float(fix["t_out"])]
+            if not 0 <= new[0] < new[1]:
+                raise SystemExit(f"{q['query_id']}: bad fix span {new}")
+            meta["boundary_refined"] = {
+                "from": [g["t_in"], g["t_out"]], "to": new, "date": today, "by": by,
+                "field": "gold_moments" if q["gold_moments"] else "altered_from"}
+            g["t_in"], g["t_out"] = new
+        record = {"reviewer": args.reviewer, "date": today, "decision": decision,
+                  "note": d.get("note", "")}
+        if human:
+            meta["human_review"] = record
+            if decision == "accept":
+                meta["source"] = meta["source"].replace(
+                    "pending human review", f"human-reviewed by {args.reviewer} on {today}")
+        else:
+            meta["model_review"] = {**record, "basis": d.get("basis", "")}
         kept.append(q)
     path.write_text(json.dumps(kept, indent=2, ensure_ascii=False) + "\n")
     print(json.dumps(counts))
@@ -175,6 +206,8 @@ def main() -> None:
     a.add_argument("queries")
     a.add_argument("decisions", nargs="+")
     a.add_argument("--reviewer", required=True)
+    a.add_argument("--kind", choices=("human", "model"), default="human",
+                   help="who reviewed: a person (human_review) or a model (model_review)")
     args = p.parse_args()
     (build if args.cmd == "build" else apply)(args)
 

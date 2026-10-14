@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.2.2 (2026-10-14)
+
+Query review. Same harness as 0.2.1. The maintainer delegated the review of the 457
+published queries to Claude: each was checked against its frames, and the 69 that the
+frame pre-review had flagged without a later fix were re-reviewed with extra frames, the
+video and the transcript. 397 were accepted, 59 corrected (wording, span, or both) and 1
+removed (q-film-1021, a no-answer query that nearly matches a real shot). Every query
+records `metadata.model_review`; corrections carry `text_refined` or `boundary_refined`.
+Human review is still pending, and the queries say so.
+
+- 456 published queries (film 184, aerospace 202, robotics 70); 619 in total.
+- Runs are rescored: corrected spans apply to saved answers, and reworded queries are
+  left out of runs made before the rewording.
+- `scripts/review_queries.py apply --kind model` records a model review without
+  marking queries human-reviewed, and applies concrete text and span fixes.
+
 ## 0.2.1 (2026-10-13)
 
 Same corpus and queries as 0.2.0; the harness, scoring and submission rules are

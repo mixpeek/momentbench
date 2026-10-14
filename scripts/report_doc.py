@@ -247,9 +247,12 @@ models agreed on were kept. Method and measured error rates are in
 
 **Quality.** Random spot checks against frames found about 10% of queries wrong before
 the cross-check. A model pre-review of all published queries, built to focus human
-review, flags mostly span boundaries that include part of a neighbouring shot. Human
-review is in progress; until it completes, every query says `pending human review` in
-its metadata and results should be read as provisional.
+review, flags mostly span boundaries that include part of a neighbouring shot. On
+2026-10-14 the maintainer delegated the review to Claude: every published query was
+checked against its frames (and the video, for flagged queries), 59 were corrected and 1
+removed, and each records `metadata.model_review`. Human review is still pending; every
+query says `pending human review` in its metadata, and results should be read as
+provisional.
 
 ## 4. Protocol
 

@@ -13,41 +13,41 @@
       "standard": true,
       "condition": "historical",
       "corpus_assets": 27,
-      "queries": 167,
+      "queries": 144,
       "trials": 1,
-      "recall_at_1": 0.4251,
+      "recall_at_1": 0.4306,
       "recall_at_1_ci95": [
-        0.3473,
-        0.503
+        0.3542,
+        0.5139
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.4731,
-        "0.5": 0.4251,
-        "0.7": 0.3413
+        "0.3": 0.4722,
+        "0.5": 0.4306,
+        "0.7": 0.3542
       },
       "by_tier": {
         "1": {
-          "queries": 80,
-          "recall_at_1": 0.3
+          "queries": 68,
+          "recall_at_1": 0.3088
         },
         "2": {
-          "queries": 25,
-          "recall_at_1": 0.84
+          "queries": 20,
+          "recall_at_1": 0.9
         },
         "3": {
-          "queries": 36,
-          "recall_at_1": 0.3611
+          "queries": 34,
+          "recall_at_1": 0.3824
         },
         "4": {
-          "queries": 26,
-          "recall_at_1": 0.5
+          "queries": 22,
+          "recall_at_1": 0.4545
         }
       },
-      "positive_recall_at_1": 0.44274809160305345,
-      "no_answer_accuracy": 0.3611111111111111,
-      "false_positive_rate": 0.6388888888888888,
-      "abstention_on_positives": 0.061068702290076333,
-      "cost_usd_per_query": 0.3359427664670659,
+      "positive_recall_at_1": 0.44545454545454544,
+      "no_answer_accuracy": 0.38235294117647056,
+      "false_positive_rate": 0.6176470588235294,
+      "abstention_on_positives": 0.05454545454545454,
+      "cost_usd_per_query": 0.3404969513888889,
       "error_trials": 0,
       "run_file": "agentic-gemini-3.1-pro-preview-7f1b7722.json"
     },
@@ -60,33 +60,33 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 167,
+      "queries": 144,
       "trials": 3,
-      "recall_at_1": 0.2156,
+      "recall_at_1": 0.2361,
       "recall_at_1_ci95": [
-        0.1557,
-        0.2814
+        0.1667,
+        0.3056
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.2156,
-        "0.5": 0.2156,
-        "0.7": 0.2156
+        "0.3": 0.2361,
+        "0.5": 0.2361,
+        "0.7": 0.2361
       },
       "by_tier": {
         "1": {
-          "queries": 80,
+          "queries": 68,
           "recall_at_1": 0
         },
         "2": {
-          "queries": 25,
+          "queries": 20,
           "recall_at_1": 0
         },
         "3": {
-          "queries": 36,
+          "queries": 34,
           "recall_at_1": 1
         },
         "4": {
-          "queries": 26,
+          "queries": 22,
           "recall_at_1": 0
         }
       },
@@ -107,7 +107,7 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 167,
+      "queries": 144,
       "trials": 3,
       "recall_at_1": 0.0,
       "recall_at_1_ci95": [
@@ -121,19 +121,19 @@
       },
       "by_tier": {
         "1": {
-          "queries": 80,
+          "queries": 68,
           "recall_at_1": 0
         },
         "2": {
-          "queries": 25,
+          "queries": 20,
           "recall_at_1": 0
         },
         "3": {
-          "queries": 36,
+          "queries": 34,
           "recall_at_1": 0
         },
         "4": {
-          "queries": 26,
+          "queries": 22,
           "recall_at_1": 0
         }
       },
@@ -154,37 +154,37 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 167,
+      "queries": 144,
       "trials": 3,
-      "recall_at_1": 0.018,
+      "recall_at_1": 0.0208,
       "recall_at_1_ci95": [
         0.0,
-        0.0419
+        0.0486
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.0359,
-        "0.5": 0.018,
-        "0.7": 0.012
+        "0.3": 0.0347,
+        "0.5": 0.0208,
+        "0.7": 0.0139
       },
       "by_tier": {
         "1": {
-          "queries": 80,
+          "queries": 68,
           "recall_at_1": 0
         },
         "2": {
-          "queries": 25,
-          "recall_at_1": 0.12
+          "queries": 20,
+          "recall_at_1": 0.15
         },
         "3": {
-          "queries": 36,
+          "queries": 34,
           "recall_at_1": 0
         },
         "4": {
-          "queries": 26,
+          "queries": 22,
           "recall_at_1": 0
         }
       },
-      "positive_recall_at_1": 0.022900763358778626,
+      "positive_recall_at_1": 0.02727272727272727,
       "no_answer_accuracy": 0.0,
       "false_positive_rate": 1.0,
       "abstention_on_positives": 0.0,
@@ -201,41 +201,41 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 167,
+      "queries": 144,
       "trials": 1,
-      "recall_at_1": 0.2814,
+      "recall_at_1": 0.2986,
       "recall_at_1_ci95": [
-        0.2156,
-        0.3533
+        0.2292,
+        0.375
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.3713,
-        "0.5": 0.2814,
-        "0.7": 0.1916
+        "0.3": 0.3889,
+        "0.5": 0.2986,
+        "0.7": 0.2222
       },
       "by_tier": {
         "1": {
-          "queries": 80,
-          "recall_at_1": 0.1375
+          "queries": 68,
+          "recall_at_1": 0.1471
         },
         "2": {
-          "queries": 25,
+          "queries": 20,
           "recall_at_1": 0.6
         },
         "3": {
-          "queries": 36,
-          "recall_at_1": 0.4167
+          "queries": 34,
+          "recall_at_1": 0.4412
         },
         "4": {
-          "queries": 26,
-          "recall_at_1": 0.2308
+          "queries": 22,
+          "recall_at_1": 0.2727
         }
       },
-      "positive_recall_at_1": 0.24427480916030533,
-      "no_answer_accuracy": 0.4166666666666667,
-      "false_positive_rate": 0.5833333333333334,
-      "abstention_on_positives": 0.12213740458015267,
-      "cost_usd_per_query": 0.015113414371257485,
+      "positive_recall_at_1": 0.2545454545454545,
+      "no_answer_accuracy": 0.4411764705882353,
+      "false_positive_rate": 0.5588235294117647,
+      "abstention_on_positives": 0.09090909090909091,
+      "cost_usd_per_query": 0.015068397222222224,
       "error_trials": 0,
       "run_file": "agentic-claude-haiku-5-5-255da92f.json"
     },
@@ -248,41 +248,41 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 167,
+      "queries": 144,
       "trials": 1,
-      "recall_at_1": 0.5868,
+      "recall_at_1": 0.5903,
       "recall_at_1_ci95": [
-        0.515,
-        0.6647
+        0.5139,
+        0.6736
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.6407,
-        "0.5": 0.5868,
-        "0.7": 0.479
+        "0.3": 0.6319,
+        "0.5": 0.5903,
+        "0.7": 0.4931
       },
       "by_tier": {
         "1": {
-          "queries": 80,
-          "recall_at_1": 0.6
+          "queries": 68,
+          "recall_at_1": 0.6176
         },
         "2": {
-          "queries": 25,
-          "recall_at_1": 0.84
+          "queries": 20,
+          "recall_at_1": 0.9
         },
         "3": {
-          "queries": 36,
-          "recall_at_1": 0.3333
+          "queries": 34,
+          "recall_at_1": 0.3235
         },
         "4": {
-          "queries": 26,
-          "recall_at_1": 0.6538
+          "queries": 22,
+          "recall_at_1": 0.6364
         }
       },
-      "positive_recall_at_1": 0.6564885496183206,
-      "no_answer_accuracy": 0.3333333333333333,
-      "false_positive_rate": 0.6666666666666666,
-      "abstention_on_positives": 0.022900763358778626,
-      "cost_usd_per_query": 0.1195474383233533,
+      "positive_recall_at_1": 0.6727272727272727,
+      "no_answer_accuracy": 0.3235294117647059,
+      "false_positive_rate": 0.6764705882352942,
+      "abstention_on_positives": 0.02727272727272727,
+      "cost_usd_per_query": 0.117572275,
       "error_trials": 0,
       "run_file": "agentic-claude-opus-5-5-381de39d.json"
     },
@@ -295,41 +295,41 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 167,
+      "queries": 144,
       "trials": 1,
-      "recall_at_1": 0.2934,
+      "recall_at_1": 0.3056,
       "recall_at_1_ci95": [
-        0.2216,
-        0.3653
+        0.2292,
+        0.3819
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.4132,
-        "0.5": 0.2934,
-        "0.7": 0.1198
+        "0.3": 0.4097,
+        "0.5": 0.3056,
+        "0.7": 0.125
       },
       "by_tier": {
         "1": {
-          "queries": 80,
-          "recall_at_1": 0.225
+          "queries": 68,
+          "recall_at_1": 0.2353
         },
         "2": {
-          "queries": 25,
-          "recall_at_1": 0.76
+          "queries": 20,
+          "recall_at_1": 0.8
         },
         "3": {
-          "queries": 36,
-          "recall_at_1": 0.1667
+          "queries": 34,
+          "recall_at_1": 0.1765
         },
         "4": {
-          "queries": 26,
-          "recall_at_1": 0.2308
+          "queries": 22,
+          "recall_at_1": 0.2727
         }
       },
-      "positive_recall_at_1": 0.3282442748091603,
-      "no_answer_accuracy": 0.16666666666666666,
-      "false_positive_rate": 0.8333333333333334,
-      "abstention_on_positives": 0.07633587786259542,
-      "cost_usd_per_query": 0.06716357365269461,
+      "positive_recall_at_1": 0.34545454545454546,
+      "no_answer_accuracy": 0.17647058823529413,
+      "false_positive_rate": 0.8235294117647058,
+      "abstention_on_positives": 0.08181818181818182,
+      "cost_usd_per_query": 0.06631095277777778,
       "error_trials": 0,
       "run_file": "agentic-claude-sonnet-5-5-a15a8558.json"
     },
@@ -342,33 +342,33 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 202,
+      "queries": 188,
       "trials": 3,
-      "recall_at_1": 0.104,
+      "recall_at_1": 0.1064,
       "recall_at_1_ci95": [
-        0.0644,
-        0.1485
+        0.0638,
+        0.1489
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.104,
-        "0.5": 0.104,
-        "0.7": 0.104
+        "0.3": 0.1064,
+        "0.5": 0.1064,
+        "0.7": 0.1064
       },
       "by_tier": {
         "1": {
-          "queries": 110,
+          "queries": 100,
           "recall_at_1": 0
         },
         "2": {
-          "queries": 34,
+          "queries": 32,
           "recall_at_1": 0
         },
         "3": {
-          "queries": 21,
+          "queries": 20,
           "recall_at_1": 1
         },
         "4": {
-          "queries": 37,
+          "queries": 36,
           "recall_at_1": 0
         }
       },
@@ -389,7 +389,7 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 202,
+      "queries": 188,
       "trials": 3,
       "recall_at_1": 0.0,
       "recall_at_1_ci95": [
@@ -403,19 +403,19 @@
       },
       "by_tier": {
         "1": {
-          "queries": 110,
+          "queries": 100,
           "recall_at_1": 0
         },
         "2": {
-          "queries": 34,
+          "queries": 32,
           "recall_at_1": 0
         },
         "3": {
-          "queries": 21,
+          "queries": 20,
           "recall_at_1": 0
         },
         "4": {
-          "queries": 37,
+          "queries": 36,
           "recall_at_1": 0
         }
       },
@@ -436,37 +436,37 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 202,
+      "queries": 188,
       "trials": 3,
-      "recall_at_1": 0.1139,
+      "recall_at_1": 0.1117,
       "recall_at_1_ci95": [
-        0.0743,
-        0.1634
+        0.0691,
+        0.1596
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.1287,
-        "0.5": 0.1139,
-        "0.7": 0.0594
+        "0.3": 0.1277,
+        "0.5": 0.1117,
+        "0.7": 0.0585
       },
       "by_tier": {
         "1": {
-          "queries": 110,
+          "queries": 100,
           "recall_at_1": 0
         },
         "2": {
-          "queries": 34,
-          "recall_at_1": 0.6765
+          "queries": 32,
+          "recall_at_1": 0.6562
         },
         "3": {
-          "queries": 21,
+          "queries": 20,
           "recall_at_1": 0
         },
         "4": {
-          "queries": 37,
+          "queries": 36,
           "recall_at_1": 0
         }
       },
-      "positive_recall_at_1": 0.1270718232044199,
+      "positive_recall_at_1": 0.125,
       "no_answer_accuracy": 0.0,
       "false_positive_rate": 1.0,
       "abstention_on_positives": 0.0,
@@ -483,41 +483,41 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 202,
+      "queries": 188,
       "trials": 1,
-      "recall_at_1": 0.4208,
+      "recall_at_1": 0.4362,
       "recall_at_1_ci95": [
-        0.3515,
-        0.4901
+        0.367,
+        0.5053
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.5099,
-        "0.5": 0.4208,
-        "0.7": 0.2921
+        "0.3": 0.5106,
+        "0.5": 0.4362,
+        "0.7": 0.2979
       },
       "by_tier": {
         "1": {
-          "queries": 110,
-          "recall_at_1": 0.3545
+          "queries": 100,
+          "recall_at_1": 0.37
         },
         "2": {
-          "queries": 34,
-          "recall_at_1": 0.6765
+          "queries": 32,
+          "recall_at_1": 0.7188
         },
         "3": {
-          "queries": 21,
-          "recall_at_1": 0.4762
+          "queries": 20,
+          "recall_at_1": 0.45
         },
         "4": {
-          "queries": 37,
-          "recall_at_1": 0.3514
+          "queries": 36,
+          "recall_at_1": 0.3611
         }
       },
-      "positive_recall_at_1": 0.4143646408839779,
-      "no_answer_accuracy": 0.47619047619047616,
-      "false_positive_rate": 0.5238095238095238,
-      "abstention_on_positives": 0.1270718232044199,
-      "cost_usd_per_query": 0.016597077227722773,
+      "positive_recall_at_1": 0.43452380952380953,
+      "no_answer_accuracy": 0.45,
+      "false_positive_rate": 0.55,
+      "abstention_on_positives": 0.125,
+      "cost_usd_per_query": 0.016404725531914896,
       "error_trials": 0,
       "run_file": "agentic-claude-haiku-5-5-b1549d86.json"
     },
@@ -530,41 +530,41 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 202,
+      "queries": 188,
       "trials": 1,
-      "recall_at_1": 0.6485,
+      "recall_at_1": 0.6596,
       "recall_at_1_ci95": [
-        0.5792,
-        0.7129
+        0.5904,
+        0.7234
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.703,
-        "0.5": 0.6485,
-        "0.7": 0.5248
+        "0.3": 0.7074,
+        "0.5": 0.6596,
+        "0.7": 0.5266
       },
       "by_tier": {
         "1": {
-          "queries": 110,
-          "recall_at_1": 0.6455
+          "queries": 100,
+          "recall_at_1": 0.66
         },
         "2": {
-          "queries": 34,
-          "recall_at_1": 0.9118
+          "queries": 32,
+          "recall_at_1": 0.9375
         },
         "3": {
-          "queries": 21,
-          "recall_at_1": 0.5238
+          "queries": 20,
+          "recall_at_1": 0.55
         },
         "4": {
-          "queries": 37,
-          "recall_at_1": 0.4865
+          "queries": 36,
+          "recall_at_1": 0.4722
         }
       },
-      "positive_recall_at_1": 0.6629834254143646,
-      "no_answer_accuracy": 0.5238095238095238,
-      "false_positive_rate": 0.47619047619047616,
+      "positive_recall_at_1": 0.6726190476190477,
+      "no_answer_accuracy": 0.55,
+      "false_positive_rate": 0.45,
       "abstention_on_positives": 0.0,
-      "cost_usd_per_query": 0.1431717920792079,
+      "cost_usd_per_query": 0.14379597872340424,
       "error_trials": 0,
       "run_file": "agentic-claude-opus-5-5-0ec085fb.json"
     },
@@ -577,41 +577,41 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 202,
+      "queries": 188,
       "trials": 1,
-      "recall_at_1": 0.2921,
+      "recall_at_1": 0.2979,
       "recall_at_1_ci95": [
-        0.2277,
-        0.3564
+        0.234,
+        0.367
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.4356,
-        "0.5": 0.2921,
-        "0.7": 0.1238
+        "0.3": 0.4415,
+        "0.5": 0.2979,
+        "0.7": 0.133
       },
       "by_tier": {
         "1": {
-          "queries": 110,
-          "recall_at_1": 0.2455
+          "queries": 100,
+          "recall_at_1": 0.26
         },
         "2": {
-          "queries": 34,
-          "recall_at_1": 0.6176
+          "queries": 32,
+          "recall_at_1": 0.5938
         },
         "3": {
-          "queries": 21,
-          "recall_at_1": 0.2857
+          "queries": 20,
+          "recall_at_1": 0.3
         },
         "4": {
-          "queries": 37,
-          "recall_at_1": 0.1351
+          "queries": 36,
+          "recall_at_1": 0.1389
         }
       },
-      "positive_recall_at_1": 0.292817679558011,
-      "no_answer_accuracy": 0.2857142857142857,
-      "false_positive_rate": 0.7142857142857143,
-      "abstention_on_positives": 0.049723756906077346,
-      "cost_usd_per_query": 0.07659745742574257,
+      "positive_recall_at_1": 0.2976190476190476,
+      "no_answer_accuracy": 0.3,
+      "false_positive_rate": 0.7,
+      "abstention_on_positives": 0.041666666666666664,
+      "cost_usd_per_query": 0.07598199574468086,
       "error_trials": 0,
       "run_file": "agentic-claude-sonnet-5-5-93968f9c.json"
     },
@@ -624,22 +624,22 @@
       "standard": false,
       "condition": "frames only, historical",
       "corpus_assets": 27,
-      "queries": 68,
+      "queries": 59,
       "trials": 1,
-      "recall_at_1": 0.7206,
+      "recall_at_1": 0.7119,
       "recall_at_1_ci95": [
-        0.6176,
-        0.8235
+        0.5932,
+        0.8305
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.7647,
-        "0.5": 0.7206,
-        "0.7": 0.5147
+        "0.3": 0.7458,
+        "0.5": 0.7119,
+        "0.7": 0.5424
       },
       "by_tier": {
         "1": {
-          "queries": 41,
-          "recall_at_1": 0.7561
+          "queries": 32,
+          "recall_at_1": 0.75
         },
         "2": {
           "queries": 10,
@@ -654,11 +654,11 @@
           "recall_at_1": 0.7143
         }
       },
-      "positive_recall_at_1": 0.7586206896551724,
+      "positive_recall_at_1": 0.7551020408163265,
       "no_answer_accuracy": 0.5,
       "false_positive_rate": 0.5,
       "abstention_on_positives": 0.0,
-      "cost_usd_per_query": 0.12375829705882353,
+      "cost_usd_per_query": 0.1282845525423729,
       "error_trials": 0,
       "run_file": "agentic-claude-opus-5-5-fe94c043.json"
     },
@@ -671,26 +671,26 @@
       "standard": true,
       "condition": "historical",
       "corpus_assets": 27,
-      "queries": 68,
+      "queries": 59,
       "trials": 1,
-      "recall_at_1": 0.6176,
+      "recall_at_1": 0.6271,
       "recall_at_1_ci95": [
-        0.5,
-        0.7206
+        0.5085,
+        0.7458
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.6912,
-        "0.5": 0.6176,
-        "0.7": 0.5441
+        "0.3": 0.678,
+        "0.5": 0.6271,
+        "0.7": 0.5424
       },
       "by_tier": {
         "1": {
-          "queries": 41,
-          "recall_at_1": 0.6098
+          "queries": 32,
+          "recall_at_1": 0.5938
         },
         "2": {
           "queries": 10,
-          "recall_at_1": 0.9
+          "recall_at_1": 1
         },
         "3": {
           "queries": 10,
@@ -701,11 +701,11 @@
           "recall_at_1": 0.5714
         }
       },
-      "positive_recall_at_1": 0.6551724137931034,
+      "positive_recall_at_1": 0.673469387755102,
       "no_answer_accuracy": 0.4,
       "false_positive_rate": 0.5,
-      "abstention_on_positives": 0.034482758620689655,
-      "cost_usd_per_query": 0.32242200367647056,
+      "abstention_on_positives": 0.04081632653061224,
+      "cost_usd_per_query": 0.32230804237288135,
       "error_trials": 0,
       "run_file": "agentic-gemini-3.1-pro-preview-cfaace12.json"
     },
@@ -718,21 +718,21 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 68,
+      "queries": 59,
       "trials": 3,
-      "recall_at_1": 0.1471,
+      "recall_at_1": 0.1695,
       "recall_at_1_ci95": [
-        0.0735,
-        0.2353
+        0.0847,
+        0.2712
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.1471,
-        "0.5": 0.1471,
-        "0.7": 0.1471
+        "0.3": 0.1695,
+        "0.5": 0.1695,
+        "0.7": 0.1695
       },
       "by_tier": {
         "1": {
-          "queries": 41,
+          "queries": 32,
           "recall_at_1": 0
         },
         "2": {
@@ -765,7 +765,7 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 68,
+      "queries": 59,
       "trials": 3,
       "recall_at_1": 0.0,
       "recall_at_1_ci95": [
@@ -779,7 +779,7 @@
       },
       "by_tier": {
         "1": {
-          "queries": 41,
+          "queries": 32,
           "recall_at_1": 0
         },
         "2": {
@@ -812,26 +812,26 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 68,
+      "queries": 59,
       "trials": 3,
-      "recall_at_1": 0.0441,
+      "recall_at_1": 0.0678,
       "recall_at_1_ci95": [
-        0.0,
-        0.1029
+        0.0169,
+        0.1356
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.0882,
-        "0.5": 0.0441,
+        "0.3": 0.1017,
+        "0.5": 0.0678,
         "0.7": 0.0
       },
       "by_tier": {
         "1": {
-          "queries": 41,
+          "queries": 32,
           "recall_at_1": 0
         },
         "2": {
           "queries": 10,
-          "recall_at_1": 0.3
+          "recall_at_1": 0.4
         },
         "3": {
           "queries": 10,
@@ -842,7 +842,7 @@
           "recall_at_1": 0
         }
       },
-      "positive_recall_at_1": 0.05172413793103448,
+      "positive_recall_at_1": 0.08163265306122448,
       "no_answer_accuracy": 0.0,
       "false_positive_rate": 1.0,
       "abstention_on_positives": 0.0,
@@ -859,26 +859,26 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 68,
+      "queries": 59,
       "trials": 1,
-      "recall_at_1": 0.4265,
+      "recall_at_1": 0.4576,
       "recall_at_1_ci95": [
-        0.3088,
-        0.5441
+        0.322,
+        0.5763
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.6324,
-        "0.5": 0.4265,
-        "0.7": 0.1912
+        "0.3": 0.6271,
+        "0.5": 0.4576,
+        "0.7": 0.2203
       },
       "by_tier": {
         "1": {
-          "queries": 41,
-          "recall_at_1": 0.3902
+          "queries": 32,
+          "recall_at_1": 0.4062
         },
         "2": {
           "queries": 10,
-          "recall_at_1": 0.7
+          "recall_at_1": 0.8
         },
         "3": {
           "queries": 10,
@@ -889,11 +889,11 @@
           "recall_at_1": 0.5714
         }
       },
-      "positive_recall_at_1": 0.46551724137931033,
+      "positive_recall_at_1": 0.5102040816326531,
       "no_answer_accuracy": 0.2,
       "false_positive_rate": 0.8,
-      "abstention_on_positives": 0.017241379310344827,
-      "cost_usd_per_query": 0.014939370588235294,
+      "abstention_on_positives": 0.02040816326530612,
+      "cost_usd_per_query": 0.014414966101694916,
       "error_trials": 0,
       "run_file": "agentic-claude-haiku-5-5-01b8225f.json"
     },
@@ -906,26 +906,26 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 68,
+      "queries": 59,
       "trials": 1,
-      "recall_at_1": 0.7647,
+      "recall_at_1": 0.7627,
       "recall_at_1_ci95": [
-        0.6618,
-        0.8676
+        0.6441,
+        0.8644
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.8235,
-        "0.5": 0.7647,
-        "0.7": 0.6176
+        "0.3": 0.7966,
+        "0.5": 0.7627,
+        "0.7": 0.6102
       },
       "by_tier": {
         "1": {
-          "queries": 41,
-          "recall_at_1": 0.8293
+          "queries": 32,
+          "recall_at_1": 0.8125
         },
         "2": {
           "queries": 10,
-          "recall_at_1": 0.8
+          "recall_at_1": 0.9
         },
         "3": {
           "queries": 10,
@@ -936,11 +936,11 @@
           "recall_at_1": 0.8571
         }
       },
-      "positive_recall_at_1": 0.8275862068965517,
+      "positive_recall_at_1": 0.8367346938775511,
       "no_answer_accuracy": 0.4,
       "false_positive_rate": 0.5,
       "abstention_on_positives": 0.0,
-      "cost_usd_per_query": 0.11074496470588235,
+      "cost_usd_per_query": 0.11187142033898305,
       "error_trials": 0,
       "run_file": "agentic-claude-opus-5-5-c5031ac2.json"
     },
@@ -953,22 +953,22 @@
       "standard": true,
       "condition": "",
       "corpus_assets": 27,
-      "queries": 68,
+      "queries": 59,
       "trials": 1,
-      "recall_at_1": 0.3529,
+      "recall_at_1": 0.3559,
       "recall_at_1_ci95": [
-        0.25,
-        0.4706
+        0.2373,
+        0.4746
       ],
       "recall_at_1_by_iou": {
-        "0.3": 0.5147,
-        "0.5": 0.3529,
-        "0.7": 0.1618
+        "0.3": 0.5254,
+        "0.5": 0.3559,
+        "0.7": 0.1525
       },
       "by_tier": {
         "1": {
-          "queries": 41,
-          "recall_at_1": 0.3171
+          "queries": 32,
+          "recall_at_1": 0.3125
         },
         "2": {
           "queries": 10,
@@ -983,11 +983,11 @@
           "recall_at_1": 0.5714
         }
       },
-      "positive_recall_at_1": 0.39655172413793105,
+      "positive_recall_at_1": 0.40816326530612246,
       "no_answer_accuracy": 0.1,
       "false_positive_rate": 0.9,
       "abstention_on_positives": 0.0,
-      "cost_usd_per_query": 0.049307644117647056,
+      "cost_usd_per_query": 0.048237172881355934,
       "error_trials": 0,
       "run_file": "agentic-claude-sonnet-5-5-9c856a5d.json"
     }

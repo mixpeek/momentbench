@@ -39,6 +39,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show people in white spacesuit costumes among large white NASA letters under a hanging rocket stage, with a crowd behind them, and the before frame (a speaker at a podium) and after frame (a seated audience at Canadian Space Agency HQ) are different scenes, so both boundarie",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -82,6 +89,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show an outdoor crowd at Kennedy Space Center cheering with arms raised, and a smiling woman in large black sunglasses is in the front (fully visible in the middle and end frames). The before frame (an indoor audience) and the after frame (an astronaut in a suit)",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -125,12 +139,19 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the orange-and-white SLS rocket between lightning towers, with the white water tower on the left and a blue sky behind, while the before frame (dusk wide shot) and after frame (close-up from a different angle) are separate shots, so the span boundaries match",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
   {
     "query_id": "q-aerospace-0103",
-    "text": "An astronaut in an orange suit, wearing a closed helmet with the visor up, sits in a red chair while someone says shivers have run up and down his spine many times.",
+    "text": "An astronaut in an orange suit sits in a red chair with his clear helmet visor closed while a technician adjusts the helmet and someone says shivers have run up and down his spine many times.",
     "tier": 2,
     "vertical": "aerospace",
     "gold_moments": [
@@ -168,6 +189,20 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "text_refined": {
+        "from": "An astronaut in an orange suit, wearing a closed helmet with the visor up, sits in a red chair while someone says shivers have run up and down his spine many times.",
+        "date": "2026-10-14",
+        "applied_at": "2026-10-14T13:13:28Z",
+        "reason": "Span and speech check out (cue 27.04-30.56 'shivers run up and down my spine'); 'closed helmet with the visor up' contradicts itself and the frames show the clear visor down while a technician's gloved hand adjusts the helmet, so the helmet clause is rewritten.",
+        "by": "Claude (delegated by Ethan, 2026-10-14) review (model)"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "fix",
+        "note": "Span and speech check out (cue 27.04-30.56 'shivers run up and down my spine'); 'closed helmet with the visor up' contradicts itself and the frames show the clear visor down while a technician's gloved hand adjusts the helmet, so the helmet clause is rewritten.",
+        "basis": ""
       }
     }
   },
@@ -211,6 +246,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span matches all three described beats in order: at the start, a helmeted astronaut in an orange suit leans back and gestures with gloved hands; in the middle, Commander Reid Wiseman raises his hand in a salute-like gesture from a red chair; at the end, two suited astronauts sit while a blonde t",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -254,6 +296,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three span frames show the wide white suit-up room, with the orange-suited man seated left of center and white-clad technicians bending over a second crew member reclined in a red chair. The before frame (close-up) and after frame (different shot) are cuts away, so the span boundaries match the ",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -297,6 +346,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show a fisheye view looking down the core stage at the engines igniting, with the light growing brighter by the end frame and '813' printed in the upper-right part of the image; the before and after frames are different camera shots, so the span lines up with this view.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -340,6 +396,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "Inside the span, a smiling woman in an orange suit with an American flag patch sits in front of a gauge panel and looks toward a technician in white as the line is spoken, and the span matches the shot, which starts after the previous standing shot and ends before the walkout.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -383,6 +446,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span opens on the empty doorway under the purple banner listing the crew names, the crew walks out of it in the middle, and it ends with four astronauts in orange suits standing in a row in front of the door; the frames just before and after show a different interview and a different shot, so th",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -426,6 +496,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All five frames match the query: inside the span, a red-haired woman in a light green blazer stands at a microphone in front of tall windows, and between the start and end frames she flings both arms out wide; the span starts just before the gesture and ends just before the cut to launch footage, so",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -469,6 +546,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show the same onboard shot looking back at a white spacecraft section with an engine nozzle against black space and bright light glaring along its lower edge, while the before frame (an interior ring view) and after frame (a view with Earth) are different shots, so the span ",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -512,6 +596,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span opens on the cut from the crowd to a woman in a light-green blazer holding a handheld microphone in front of large windows; she stays in that shot through the end, and the transcript ('our greatest chapters are yet to be written') fits the span, so both boundaries are tight.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -573,6 +664,13 @@
         "date": "2026-10-11",
         "reason": "The woman throwing her arms wide in the before frame and the onboard view of the side booster pulling away with fire at its base (start and middle) are correct, but the end frame cuts to a different camera showing dark sky and curved panels drifting off a white surface, not the booster falling away ",
         "applied_at": "2026-10-11T14:46:01Z"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The booster part matches: the middle frame shows the long side booster pulling away with fire at its base, the end frame shows it farther away in a burst of flame, and the after frame cuts to a different camera, so the end boundary is right Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -628,6 +726,13 @@
         ],
         "date": "2026-10-11",
         "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The text matches the middle and end frames (blue NEXT card, Earth, small Moon, orbit path, caption about the nearly 10-day mission), but the start frame at 88.3 s still shows the spacecraft camera view of Earth, so move the start later to w Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -689,6 +794,13 @@
         "date": "2026-10-11",
         "reason": "The span is right, but the last clause is wrong: the curved edge of Earth appears in the middle frame together with the spacecraft, while the end frame cuts to a close-up of cratered lunar surface. Change it to 'an animated spacecraft with solar panel arms flies high above Earth's curved edge, and t",
         "applied_at": "2026-10-11T14:46:01Z"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The span and the narration line up, and the frames do show the spacecraft with solar panel arms over Earth, but Earth's curved edge is already in view while the craft is there (middle and end frames both show the edge with the craft), so dr Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -732,6 +844,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span starts on the cheering outdoor crowd, the middle frame shows two boosters drifting apart with smoke trails, and the end frame shows a silhouetted person behind tall angled windows watching the plume climb. The frames just before and after (astronaut suit patches and portraits) fall outside ",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -775,12 +894,19 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the cratered, curved lunar limb filling the lower part of the frame, with a small blue-and-white Earth peeking over the horizon against black space; the before frame (a different Moon shot with no Earth) and the after frame (mission control) confirm the span",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
   {
     "query_id": "q-aerospace-0123",
-    "text": "A close-up of a woman with glasses studying a computer screen at a console, with an older man in a suit working beside her in a control room.",
+    "text": "A close-up of a woman with glasses and a headset looking down at her desk at a console, with an older man in a suit working beside her in a control room.",
     "tier": 1,
     "vertical": "aerospace",
     "gold_moments": [
@@ -818,6 +944,20 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "text_refined": {
+        "from": "A close-up of a woman with glasses studying a computer screen at a console, with an older man in a suit working beside her in a control room.",
+        "date": "2026-10-14",
+        "applied_at": "2026-10-14T13:13:28Z",
+        "reason": "Boundaries are correct (wide control room before, Moon after); the woman is looking down at her desk and keyboard, not at a visible screen, so 'studying a computer screen' is replaced.",
+        "by": "Claude (delegated by Ethan, 2026-10-14) review (model)"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "fix",
+        "note": "Boundaries are correct (wide control room before, Moon after); the woman is looking down at her desk and keyboard, not at a visible screen, so 'studying a computer screen' is replaced.",
+        "basis": ""
       }
     }
   },
@@ -861,6 +1001,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the dark disc of the Moon in front of a glowing white halo, and the span's transcript is the repeated \"oh\". The span is tight: the before frame shows a control room and the after frame shows the crew, so the shot starts and ends at the span edges.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -905,6 +1052,13 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "In every frame of the span, the person in the foreground with glasses at the console is clearly a woman, so changing her to a man makes the query clearly false; the rest of the text (an older man in a suit working beside her in a control room) still fits, and the span matches this shot, which is bou",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -948,6 +1102,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span covers the whole overhead shot: three red-and-white striped parachutes lower the capsule onto deep blue water, white spray appears at splashdown in the middle frame, and the parachutes start to collapse at the end. Both boundaries line up with shot cuts, since the before frame is a washed-o",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -959,7 +1120,7 @@
     "gold_moments": [
       {
         "asset_id": "nasa-artemis-ii-welcome-home",
-        "t_in": 79.0,
+        "t_in": 80.03,
         "t_out": 81.6
       }
     ],
@@ -991,6 +1152,26 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          79.0,
+          81.6
+        ],
+        "to": [
+          80.03,
+          81.6
+        ],
+        "date": "2026-10-14",
+        "by": "Claude (delegated by Ethan, 2026-10-14) review (model)",
+        "field": "gold_moments"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "fix",
+        "note": "Frame sampling shows the capsule-with-flotation-balloons shot runs to 80.00 and the helicopter shot starts at 80.03; end at 81.6 is on the cut to the crew-by-helicopter shot. Text is accurate (rotor blur visible). Moved t_in to the cut.",
+        "basis": ""
       }
     }
   },
@@ -1034,6 +1215,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "Span is the Glover/Koch helicopter-cabin shot (88.87-~92) then black and the NASA worm/meatball outro to the end; the earlier Wiseman/Hansen shot sits in the open doorway on deck and is not followed by the logo, so the 'then cuts to the NASA logo' clause already makes the description unique and accurate.",
+        "basis": ""
       }
     }
   },
@@ -1077,6 +1265,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span opens on the cut to a capsule under three red-and-white striped parachutes over dark blue water, shows it splashing down at the midpoint, and closes on a high shot of a helicopter on a ship's deck at sea; the cuts just before and after the span match both boundaries.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -1121,6 +1316,13 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames show three red-and-white striped parachutes lowering the capsule onto deep blue water, seen from above, with white spray where it lands, so saying 'two' parachutes is clearly false while everything else fits the span.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -1164,6 +1366,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show four astronauts in orange suits standing side by side on a white-striped walkway in front of a building with NASA logos; the before frame (a dark shot) and the after frame (a different shot, with crowd and photographers) fall outside it, so the span boundaries line up w",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -1225,6 +1434,13 @@
         "date": "2026-10-11",
         "reason": "The span and the heart gesture both match, but the visor looks raised with the astronaut's face fully exposed, so change \"a closed helmet\" to \"a helmet on\" (or \"an open-visor helmet\").",
         "applied_at": "2026-10-11T14:46:01Z"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The span is right: the start and middle frames show the orange-suited astronaut making a heart with gloved hands toward the camera, the end frame shows the hands still together, and the before and after frames show a different astronaut and Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -1268,6 +1484,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span opens right after a cut from a dark shot. It starts on four astronauts in orange suits posing in a row on the walkway, and by the end they are walking past a crowd raising phones and hands. The after frame is a new interior shot, so both boundaries line up with the described moment.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -1311,6 +1534,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span covers the announcer saying 'liftoff' and that the Artemis II crew is 'now bound for the moon', and the start, middle and end frames show the rocket climbing off the pad above a large exhaust cloud, which looks white to light grey. The frames before and after the span show a different pad s",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -1354,6 +1584,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start frame shows the rocket rising off the pad above a smoke cloud, the middle frame shows spectators filming with phones (one wears a NASA sweatshirt), and the end frame shows the rocket climbing through a blue sky trailing a bright flame; the before (close-up of the pad) and after (engine clo",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -1397,6 +1634,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the full grey, cratered Moon centred on a plain black background with nothing else in view, and the span ends where it should: the frame before shows the Moon through a spacecraft window and the frame after shows the spacecraft hull beside a small Moon.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -1440,6 +1684,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span starts and ends cleanly at shot cuts (Moon exterior before, dark cabin after), and inside it four crew members in dark jackets float together under an American flag while the woman in the middle speaks into a handheld microphone; there is also a Canadian flag beside the American one, which ",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -1483,6 +1734,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start frame shows a dark silhouette at a window with the bright blue-and-white Earth outside, and the middle and end frames show a close-up of a man's ear and cheek with a small Moon in the black window behind him. Both boundaries line up with shot changes: the frame before is the cockpit 'Trans",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -1526,6 +1784,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show a mission control room with people seated at desks with monitors, and the span is bounded by a dark Earth view just before and the Orion cockpit just after, so it closely matches the roughly 2-second shot during the 'Houston is go for TLI' call.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -1569,12 +1834,19 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start frame shows the small Moon through a square window framed by cables and padding, the middle shows the full grey Moon alone on black, and the end shows the Moon next to the curved white edge of the spacecraft; the before frame is a different shot (an astronaut's face at a window) and the af",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
   {
     "query_id": "q-aerospace-0142",
-    "text": "A dark crescent of the Moon fills the lower frame against black space, with a small crescent Earth peeking over the upper-left edge of the lunar limb.",
+    "text": "A gray, cratered dome of the Moon fills the lower frame against black space, with a small crescent Earth peeking over the upper-left edge of the lunar limb.",
     "tier": 1,
     "vertical": "aerospace",
     "gold_moments": [
@@ -1612,6 +1884,20 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "text_refined": {
+        "from": "A dark crescent of the Moon fills the lower frame against black space, with a small crescent Earth peeking over the upper-left edge of the lunar limb.",
+        "date": "2026-10-14",
+        "applied_at": "2026-10-14T13:13:28Z",
+        "reason": "Span and the small crescent Earth over the upper-left limb are right, but the Moon is a sunlit gray cratered dome, not a dark crescent.",
+        "by": "Claude (delegated by Ethan, 2026-10-14) review (model)"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "fix",
+        "note": "Span and the small crescent Earth over the upper-left limb are right, but the Moon is a sunlit gray cratered dome, not a dark crescent.",
+        "basis": ""
       }
     }
   },
@@ -1655,6 +1941,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the dark Moon centered in the frame with a soft white coronal glow against black space, and the span begins and ends where that shot does (the before frame is the spacecraft and the after frame is the crew cabin).",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -1698,6 +1991,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the same shot: four astronauts in matching black shirts posing in a cramped cabin under US and Canadian flags, with a small plush toy in front of them. The before and after frames show different shots, so the span starts and ends where this moment does.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -1741,6 +2041,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames show the crew smiling inside a cluttered capsule under Canadian and American flags while the transcript says \"coffee, moon, joy,\" and the span lines up with the shot change: it starts right after the cut from the moon and ends before the next shot.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -1784,6 +2091,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start and middle frames show the eclipsed Moon as a black disk ringed by bright white light, and the end frame shows four astronauts crowded into a selfie wearing colorful paper eclipse glasses; the span begins where the eclipse shot starts (the before frame is a different, uneclipsed Moon view)",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -1828,6 +2142,13 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three span frames clearly show four astronauts in colorful paper eclipse glasses squeezed together for a close-up selfie inside the spacecraft, so the text's 'three astronauts' is clearly false while every other detail fits, and the span is bounded cleanly by exterior space shots before and afte",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -1871,6 +2192,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show the spacecraft solar array on the left and a half-lit Earth against black space, the pink 'SAFE RETURN' caption appears in the middle frame, and the span runs exactly from the cut after the presenter shot to the cut before the NASA-logo close-up.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -1914,6 +2242,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three span frames show the capsule floating in the ocean with an orange inflatable collar, red-orange uprighting balloons on top and recovery crew in an orange raft beside it, and the span lines up with the shot cuts (parachute descent before, station interior after).",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -1957,6 +2292,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span starts on the white hardware moving down the road on a transporter with the \"LET'S GO!\" banner, shows the rocket on its launch tower with the American flag in the middle, and ends on spectators cheering with their arms raised. The frame before (crew inside the spacecraft) and the frame afte",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -2001,6 +2343,13 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The frames show three red-and-white striped parachutes lowering the capsule toward a dark blue ocean while pink text says the Artemis II crew are the first humans to fly around the Moon in over 50 years, so everything fits except the deliberately changed green-and-white colour, which is clearly fals",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -2044,6 +2393,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show workers in blue standing around the base of a large white spacecraft section marked with the NASA and ESA logos. The frame before (a top-down view of a different hangar) and the frame after (a group photo outdoors) are different shots, so the span matches th",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -2088,6 +2444,13 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The frames show the Artemis logo on black giving way to the NASA meatball (which is blue, but not ESA's), so swapping in the ESA logo makes the text clearly false while the black screen, Artemis logo and the span boundaries all fit (crew photo before, black after).",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -2131,6 +2494,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start and middle frames show a full moon on black and the end frame shows the lit rocket on its tower at night, with the after frame already cutting to a close-up of the rocket, so the span matches the query. The frames can't show whether the rocket fades in over the moon, and the query leaves o",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -2174,6 +2544,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the night crowd under the 'Space Center' sign, a masked man in a grey NASA sweatshirt in front, and people waving small American flags; the before frame (wide aerial shot) and after frame (interview graphic) are different scenes, so the span is bounded corre",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -2217,6 +2594,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the same wide shot of the launch firing room, with tall slanted windows, rows of desks with monitors and staff seated at the consoles; the before frame is an unrelated onboard camera view and the after frame cuts to a closer angle, so the span boundaries mat",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -2272,6 +2656,13 @@
         ],
         "date": "2026-10-11",
         "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The span is right: it starts as the shot cuts from the wide view of the control room to the woman with long reddish hair and glasses standing with a suited man behind her, and it ends just before the cut to the engines igniting, with the 'g Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -2316,12 +2707,19 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span runs from the cut into the night crowd shot to the cut out of it, and it shows the 'Space Center' sign, the cheering crowd, small American flags and a masked man in front, so everything else fits; but his NASA sweatshirt is clearly grey, not red, so the changed detail makes the text clearly",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
   {
     "query_id": "q-aerospace-0165",
-    "text": "A cheering crowd at night waves small American flags. A man in front wears a green NASA sweatshirt, and the on-screen caption reads Space Center Houston.",
+    "text": "A cheering crowd indoors waves small American flags. A man in front wears a green NASA sweatshirt, and the on-screen caption reads Space Center Houston.",
     "tier": 1,
     "vertical": "aerospace",
     "gold_moments": [
@@ -2359,6 +2757,20 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "text_refined": {
+        "from": "A cheering crowd at night waves small American flags. A man in front wears a green NASA sweatshirt, and the on-screen caption reads Space Center Houston.",
+        "date": "2026-10-14",
+        "applied_at": "2026-10-14T13:13:28Z",
+        "reason": "Flags, green NASA worm sweatshirt and SPACE CENTER HOUSTON caption match and boundaries are right, but the crowd is in a lit indoor hall; nothing on screen shows night, so 'at night' is replaced with 'indoors'.",
+        "by": "Claude (delegated by Ethan, 2026-10-14) review (model)"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "fix",
+        "note": "Flags, green NASA worm sweatshirt and SPACE CENTER HOUSTON caption match and boundaries are right, but the crowd is in a lit indoor hall; nothing on screen shows night, so 'at night' is replaced with 'indoors'.",
+        "basis": ""
       }
     }
   },
@@ -2402,6 +2814,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the same wide shot of a control room with rows of wood-paneled consoles and monitors, and many staff sitting with some standing. The before and after frames cut to the launch director speaking into a microphone, so the span boundaries match the shot.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -2445,6 +2864,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show a woman in glasses speaking into a handheld microphone in front of tall angled windows, and the transcript matches the quoted line. The span also matches the shot exactly: the frames just before and just after are different shots (a rocket exhaust shot and the firing ro",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -2489,6 +2915,13 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show an older man in a dark suit jacket and light blue open-collar shirt speaking at a microphone in front of a starfield backdrop with no American flag, so the changed detail makes the text clearly false while everything else fits, and the span starts and ends at the cuts f",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -2550,6 +2983,13 @@
         "date": "2026-10-11",
         "reason": "The frames show the round blue NASA logo with its red swoosh on plain black for the whole span, with the Artemis logo before and black after, so the boundaries are right; but the transcript for the span is empty, so nothing supports 'While a voice says \"NASA\"' and that clause should be dropped, e.g.",
         "applied_at": "2026-10-11T14:46:01Z"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The description is right, but the NASA logo on black only shows in the end frame (151.57 s) while the start and middle frames are a starfield and a Mars animation, so the span should start about 1–2 s before the end (around 150 s) and end a Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -2593,6 +3033,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "In the start, middle and end frames, the black cone-shaped capsule with yellow flotation balloons on top sits in choppy blue water with a crewed motorboat right behind it, and the shot runs the whole span: the before frame shows the capsule indoors with a presenter, and the after frame cuts to a dif",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -2648,6 +3095,13 @@
         ],
         "date": "2026-10-11",
         "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The middle and end frames match the query (an overhead view of dark-uniformed sailors around black inflatable boats on a wet, sloped deck down to the sea), but the start frame at 30.20 s still shows the Orion capsule with yellow airbags ins Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -2691,6 +3145,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three frames inside the span show the open stern well deck of a gray navy ship facing the camera, with a capsule topped by yellow balloons floating in front of it next to a small boat. The before frame (a distant ship seen from an aircraft) and the after frame (a presenter standing beside a caps",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -2734,12 +3195,19 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span covers exactly one shot: a woman in a black jacket gestures toward the black capsule topped with yellow balloons inside the hangar while saying 'Behind me is the crew module test article', and the frames just before and after are different water-recovery shots, so the boundaries fit the mom",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
   {
     "query_id": "q-aerospace-0177",
-    "text": "After a gray navy ship is seen far off on the horizon past the curved edge of a hull, the ship's open stern is shown with a floating capsule and a small boat. Then a woman in black stands in front of the capsule on a ship's deck.",
+    "text": "After a gray navy ship is seen far off on the horizon past the curved edge of a hull, the ship's open stern is shown with a floating capsule and a small boat. Then a woman in black stands indoors in front of the capsule.",
     "tier": 4,
     "vertical": "aerospace",
     "gold_moments": [
@@ -2777,6 +3245,20 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "text_refined": {
+        "from": "After a gray navy ship is seen far off on the horizon past the curved edge of a hull, the ship's open stern is shown with a floating capsule and a small boat. Then a woman in black stands in front of the capsule on a ship's deck.",
+        "date": "2026-10-14",
+        "applied_at": "2026-10-14T13:13:28Z",
+        "reason": "The three shots and their order and boundaries match, but in the third shot the woman in black stands in front of the capsule in an indoor hangar-like bay, not visibly on a ship's deck.",
+        "by": "Claude (delegated by Ethan, 2026-10-14) review (model)"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "fix",
+        "note": "The three shots and their order and boundaries match, but in the third shot the woman in black stands in front of the capsule in an indoor hangar-like bay, not visibly on a ship's deck.",
+        "basis": ""
       }
     }
   },
@@ -2838,6 +3320,13 @@
         "date": "2026-10-11",
         "reason": "The text is right (dark title card reading 'HOW TO TRAIN / THE RECOVERY TEAM' over silhouettes of people running, shown at the start and middle frames), but the end frame at 60.20 s already shows the presenter in front of the pool, so the card cuts out somewhere between 58.45 s and 60.20 s and the o",
         "applied_at": "2026-10-11T14:46:01Z"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The title card and span boundaries are correct, but the helmeted silhouettes are leaning back and pulling on a line, not running, so change \"silhouettes of people running\" to \"silhouettes of helmeted crew members hauling a line\". Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -2881,6 +3370,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All five frames match the query: the span opens on the cut from the 'How to Train the Recovery Team' title card and ends at the cut to the wide pool shot. Throughout it, a man in a dark navy polo stands in front of the indoor pool with a white capsule mockup behind him, and he introduces himself as ",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -2924,6 +3420,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span opens on the underwater shot looking down at the submerged mockup, moves to the wide view of the indoor pool with flags along the walls in the middle frame, and ends on the capsule mockup next to the yellow inflatable raft; the boundaries are tight, since the before frame is a different wid",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -2967,6 +3470,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show divers crowded on a capsule that sits on a yellow inflatable raft in a large indoor pool, with a row of national flags on the wall behind them; the before and after frames cut to a presenter, so the span boundaries are tight.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -3010,6 +3520,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show young men in navy T-shirts listening by the pool, one in a camouflage cap with yellow \"DEEP SEA\" on the back of his shirt, and the before and after frames are different shots, so the span starts and ends on the cuts.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -3053,6 +3570,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span runs from the start of the navy-ship shot, where 'PERFORMING_' begins typing on, to the cut at 104.8 s, where the caption carries over onto a capsule-and-boat shot; inside it the full caption 'PERFORMING THE / UNDERWAY RECOVERY TEST' is on screen over the dark grey ship at sea, and 'white c",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -3096,6 +3620,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span runs from the cut after the interview, starting on the tan-uniformed crew in harnesses with the orange-red cylinder, through the 'Performing the Underway Recovery Test' caption over a ship, to the capsule bobbing in waves as a small boat approaches, and the before and after frames both fall",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -3140,6 +3671,13 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames show the same poolside shot of young men in navy T-shirts listening, with one in a camouflage cap whose shirt clearly says \"DEEP SEA\" in yellow, so the changed text \"NAVY DIVER\" is clearly false while everything else fits, and the span matches the shot because the be",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -3183,6 +3721,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show a gray Seahawk-type Navy helicopter hovering just above a ship's flight deck under a mostly clear blue sky, and the span lines up with the shot because the before frame (boat crew on the water) and the after frame (presenter in the hangar) are separate shots",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -3226,6 +3771,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All five frames match the query: the start, middle and end frames show a woman in a black jacket standing in front of the capsule with yellow balloons, and the transcript matches her 'in and outs' line about training the ship to handle the CMTA (crew module test article). The span also cuts cleanly,",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -3269,12 +3821,19 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start and middle frames show the gray amphibious ship at sea with its stern well deck open, and the end frame shows a capsule with three yellow balloons floating right at the open stern gate. The span is bounded by a cut from a different interior well-deck shot before it and a cut to an intervie",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
   {
     "query_id": "q-aerospace-0194",
-    "text": "A rescuer in a red and black suit is lowered on a cable from a helicopter against a bright blue sky.",
+    "text": "A rescuer in black, holding a person in an orange suit, is hoisted up on a cable toward a helicopter against a bright blue sky.",
     "tier": 3,
     "vertical": "aerospace",
     "gold_moments": [],
@@ -3313,6 +3872,20 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "text_refined": {
+        "from": "A rescuer in a red and black suit is lowered on a cable from a helicopter against a bright blue sky.",
+        "date": "2026-10-14",
+        "applied_at": "2026-10-14T13:13:28Z",
+        "reason": "Tier 3: the source shot (144.4-147.4) has an overcast gray sky, so 'bright blue' is a real change; but frames every 0.4 s show a black-clad rescuer holding a person in orange being hoisted UP toward the helicopter, so 'lowered' was a second, unintended change. Rewrote so the sky is the only altered detail. Checked the hard negative at 217.77-223.27: distant helicopter with a dark figure under a hazy pale sky, which does not match.",
+        "by": "Claude (delegated by Ethan, 2026-10-14) review (model)"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "fix",
+        "note": "Tier 3: the source shot (144.4-147.4) has an overcast gray sky, so 'bright blue' is a real change; but frames every 0.4 s show a black-clad rescuer holding a person in orange being hoisted UP toward the helicopter, so 'lowered' was a second, unintended change. Rewrote so the sky is the only altered detail. Checked the hard negative at 217.77-223.27: distant helicopter with a dark figure under a hazy pale sky, which does not match.",
+        "basis": ""
       }
     }
   },
@@ -3356,6 +3929,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show a gray Seahawk-type helicopter hovering low over open ocean, seen head-on against a pale overcast sky, and the span matches the shot exactly: the frame before shows crew in orange suits and the frame after shows deck crew.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -3399,6 +3979,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The frames match the query in order: the start frame shows an American flag patch on an orange suit's shoulder, the middle frame shows a round mission patch on an orange sleeve, and the end frame shows gloved hands adjusting an orange suit's wrist. The before frame (a ship's flight deck) and the aft",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -3454,12 +4041,19 @@
         ],
         "date": "2026-10-11",
         "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The middle frame (low-angle shot of a person on the hoist cable against a grey sky) and the end frame (helicopter low over choppy sea) match the query, but the start frame is a different shot: crew on a yellow and orange raft hooking someon Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
   {
     "query_id": "q-aerospace-0202",
-    "text": "On a ship's flight deck, crew members in helmets walk a person in an orange suit away from a grey helicopter whose rotors are still turning.",
+    "text": "On a ship's flight deck, crew members in helmets walk a person in an orange suit away from a parked grey helicopter.",
     "tier": 1,
     "vertical": "aerospace",
     "gold_moments": [
@@ -3497,6 +4091,20 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "text_refined": {
+        "from": "On a ship's flight deck, crew members in helmets walk a person in an orange suit away from a grey helicopter whose rotors are still turning.",
+        "date": "2026-10-14",
+        "applied_at": "2026-10-14T13:13:28Z",
+        "reason": "Frame-by-frame samples (1/30 s and 0.4 s apart) show the main and tail rotor blades sharp and in the same position throughout, so the rotors are stopped; everything else and the boundaries match.",
+        "by": "Claude (delegated by Ethan, 2026-10-14) review (model)"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "fix",
+        "note": "Frame-by-frame samples (1/30 s and 0.4 s apart) show the main and tail rotor blades sharp and in the same position throughout, so the rotors are stopped; everything else and the boundaries match.",
+        "basis": ""
       }
     }
   },
@@ -3540,6 +4148,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All five frames match the query: the span shows a seated sailor with a moustache, in camouflage, inside a hangar-like ship bay next to grey inflatable boats, and the transcript is the 'front porch' life-raft line; the span starts with the cut from the close-up shot and ends just before the cut to th",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -3583,6 +4198,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span opens on two inflatable boats full of divers crossing choppy blue water, then cuts to a wide shot of the capsule with its yellow balloons beside a crowded raft and a large gray Navy ship on the horizon, and the boundaries fall cleanly between the interview shot before it and the capsule-int",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -3626,6 +4248,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show the same overhead shot of a large crowd on a flight deck holding an American flag, with a group in bright green shirts on the left, and the before and after frames are different shots, so the span starts and ends cleanly on this moment.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -3669,6 +4298,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show the same shot of a bearded man in a black cap, glasses and a navy polo with an Airbus logo, looking down in a dim, equipment-filled area, and the span lines up with the shot cuts because the before frame (hard-hatted crew) and after frame (a woman being interviewed) are",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -3712,6 +4348,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span opens on the man and woman in red life vests writing at a desk, then cuts to an older gray-bearded man pointing while workers in brown hard hats watch, and it ends when that shot ends, so every detail and both boundaries match.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -3755,12 +4398,19 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show a capsule with its nose cone open against black space, with Earth's curved horizon below, approaching a docking port that appears at the right by the end frame; the before frame (crew portrait) and after frame (interior waving) are different shots, so the span boundarie",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
   {
     "query_id": "q-aerospace-0216",
-    "text": "A white-domed space capsule rides on an orange multi-wheeled KAMAG transporter along a road under a purple dusk sky, headlights on.",
+    "text": "A grey-and-white space capsule with blue markings rides on an orange multi-wheeled KAMAG transporter along a road under a purple dusk sky, headlights on.",
     "tier": 1,
     "vertical": "aerospace",
     "gold_moments": [
@@ -3798,6 +4448,20 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "text_refined": {
+        "from": "A white-domed space capsule rides on an orange multi-wheeled KAMAG transporter along a road under a purple dusk sky, headlights on.",
+        "date": "2026-10-14",
+        "applied_at": "2026-10-14T13:13:28Z",
+        "reason": "Boundaries and the KAMAG transporter, road, purple dusk sky and headlights match; the capsule's cone is grey with blue markings over a white lower section, so 'white-domed' is wrong.",
+        "by": "Claude (delegated by Ethan, 2026-10-14) review (model)"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "fix",
+        "note": "Boundaries and the KAMAG transporter, road, purple dusk sky and headlights match; the capsule's cone is grey with blue markings over a white lower section, so 'white-domed' is wrong.",
+        "basis": ""
       }
     }
   },
@@ -3841,6 +4505,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show a tall orange core stage standing vertically in a dark assembly building, lit by floodlights at its base, with steel work platforms on both sides. The before frame (engine close-up) and after frame (launch) are different shots, so the span boundaries match t",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -3884,6 +4555,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show the astronaut in a blue NASA flight suit with arms crossed against a dark background while the narrator names Woody Hoberg as commander of the next crewed Starliner mission, and the before and after frames show different shots (the spacecraft and a launch), so the span ",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -3928,6 +4606,13 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The frames show a white-domed capsule riding an orange KAMAG multi-wheeled transporter along a road under a purple dusk sky with its headlights on, so the 'bright blue midday sky' is clearly false while everything else matches, and the span lines up with the shot (other scenes appear in the before a",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -3971,6 +4656,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the same SLS launch shot: an orange core stage with two white side boosters lifting off beside the tower, flames and billowing smoke at the base. The before frame (core stage inside the assembly building) and the after frame (an aircraft on a runway) are dif",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -4014,6 +4706,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the same cockpit display, with green flight symbols, a heading tape (24, 248, 2) and a pitch ladder over the aircraft's pointed nose and the dry, brownish terrain below. The before frame (an outside view of the jet) and the after frame (a jet against blue sk",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -4057,6 +4756,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span opens on the cut from the jets to the man in a dark suit and red striped tie talking to the camera against a dark background, a transition starts around the middle, and it ends on the round blue NASA logo with the red swoosh on black just before the video ends, so the text and both boundari",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -4100,6 +4806,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "Every frame in the span shows the white long-nosed X-59 against a deep blue sky with a chase jet nearby. The narration of Mach 1.53, just over a thousand miles an hour, falls inside the span. The cockpit view before and the presenter shot after confirm that both boundaries are tight.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -4143,6 +4856,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span starts right after the cut from the SLS launch, on the white long-nosed X-59 rolling down a desert runway (lifting off by the middle frame), and ends on the cockpit head-up display looking out over the long nose before the next shot, so the boundaries are tight; the in-flight shot above the",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -4186,6 +4906,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the smiling man in a cap and dark grey short-sleeve shirt holding a large camera while a man in a backwards cap leans in to photograph him in a hangar-like facility, and the before and after frames show different scenes, so the span boundaries are right.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -4247,6 +4974,13 @@
         "date": "2026-10-11",
         "reason": "The boundaries are right (the span runs from the cut after the launch shot to the cut before the press conference), and the rendered telescope with its flat white sunshade drifting through space matches, but the end frame shows a deep field full of many small galaxies rather than one standout orange",
         "applied_at": "2026-10-11T14:46:01Z"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The boundaries are right (the launch is before the span and the press conference after) and the telescope drifting with its white sunshade matches the start, but the end frame shows a field of many faint galaxies with no single small orange Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -4290,6 +5024,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the same wide, low-angle shot of the SLS core stage engine section held in tall blue scaffolding inside a large hall, and the narrator says \"NASA is making major progress towards Artemis 3\" during the span. The span edges are right: the shot cuts in from a p",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -4333,6 +5074,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "Sampled the close-up every 0.3 s: the clock reads T+ 00:00:02 at 9.5-10.1 and T+ 00:00:03 from ~10.4 to 11.1, with a large burst of flame at the base by 10.7, before the wide climb over the exhaust clouds; the pre-review judged only the first frame.",
+        "basis": ""
       }
     }
   },
@@ -4377,6 +5125,13 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The frames show a hangar where a man in glasses and a short-sleeve button shirt handles equipment at a table next to a man in a red, white and blue stars-and-stripes shirt, so the green Hawaiian floral shirt is clearly false while everything else fits, and the span edges line up with the shot cuts.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -4420,6 +5175,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three frames inside the span show three men in dark caps in the white cabin mockup, with the two on the left holding large cameras and the man on the right smiling. The before and after frames show different shots, so the span starts and ends with the moment.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -4463,6 +5225,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span runs from one camera cut to the next. All three in-span frames show the close-up helmet-cam view of a white-suited arm and gloved hand, loose white tether straps, a silver cylindrical fitting and dark station hardware. The before frame (station over Earth) and the after frame (station modul",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -4506,6 +5275,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "At full resolution (84.5, 87, 89.3 s) a small white-suited spacewalker with an arm raised is visible left of the round hatch module and moves between frames; the pre-review missed him at thumbnail size. Station modules, Earth limb and black space also match.",
+        "basis": ""
       }
     }
   },
@@ -4549,6 +5325,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the same shot of a robotic arm and station hardware against white clouds over Earth while the spacewalk line is spoken, and the span lines up with the shot change on both sides (a cabin crew photo before, a spacesuit close-up after).",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -4593,6 +5376,13 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "In the start, middle and end frames, three men in dark caps sit together in a white cabin mockup and the man on the right smiles, but the two on the left are clearly holding large professional cameras, not clipboards, so the one changed detail makes the text false while everything else fits, and the",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -4636,6 +5426,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start frame shows the rocket rising on a bright flame above billowing exhaust at the pad, the middle frame is a wide shot across water of it climbing into a hazy sky, and the end frame has the blue NASA logo on black; the span is tight, since the frame before it is an unrelated space station int",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -4697,6 +5494,13 @@
         "date": "2026-10-11",
         "reason": "The span flips between two images of the same patch of Moon (start and end show the fresh rayed crater, but the middle frame shows the older crater with no rays), so the query should describe the crater appearing and disappearing in a before-and-after comparison, and since the frame 1 s before the s",
         "applied_at": "2026-10-11T14:46:01Z"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The middle and end frames match (an overhead grey cratered surface with a fresh central crater and bright rays fanning out), but the start frame at 15.23 s shows the same patch before the crater exists, so either move the start to the first Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -4740,6 +5544,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show an aerial drone shot of a large hangar labeled 'Langley Research Center' in the foreground, with wooded campus buildings and white domes in the distance. The before frame (ISS hardware) and the after frame (control room) are different shots, so the span boundaries match",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -4783,6 +5594,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the same shot of two men at a control console in front of wall monitors, one in a headset, and the narration in the span covers pressure-sensitive paint at Langley. The before frame (aerial view of Langley) and the after frame (purple paint data display) are",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -4826,6 +5644,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span opens right at the cut from the satellite hardware shot to the blonde woman in the black polka-dot sleeveless dress, who talks in front of the US flag and the NASA-seal flag. It ends on the NASA meatball logo alone on black, and the black tile after it shows the video ends there, so every d",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -4881,6 +5706,13 @@
         ],
         "date": "2026-10-11",
         "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The start and the text are right (the frame before shows the earlier satellite scene, and the woman says the line in the middle frame), but the end frame at 121.70 s is already the NASA logo end card with the beep, and the video ends right  Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -4924,6 +5756,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All five frames match the query: the start, middle and end frames show a split screen with the foil-covered descent stage seen from below on top and the rover hanging from cables over brown ground underneath, while the before frame (presenter at a podium) and the after frame (rover on the surface) f",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -4967,6 +5806,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show an animated orange-red Mars (labeled \"Animation\") against a black, star-speckled background, and the span is tight: the frame before is a rover surface shot and the frame after is a presenter.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -5010,6 +5856,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span starts as the man in the gray plaid suit and dark tie stands with his hands clasped between the US flag and the dark blue NASA flag with its round seal, and it ends on the blue NASA logo with a red swoosh on black, so both boundaries match the cut from the Mars frame at the start and the bl",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -5053,6 +5906,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span starts and ends with the shot change: the descent image comes just before it and the animated Mars globe just after. The narration in the frames covers 'From that historic touchdown to today's ongoing discoveries, the mission continues to shape our path'. The start and middle frames show th",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -5096,6 +5956,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All the frames inside the span show a close-up of a hand holding a vacuum-sealed pouch of green, herb-flecked food with two blue dots on it, and the before and after frames show different scenes (mushrooms, then a growing tray), so the span boundaries are tight.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -5139,6 +6006,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All five frames agree with the query: the astronaut wears a grey polo and khaki trousers, holds a handheld microphone, and has a round hatch and white stowage bags behind him, and since the before and after frames show different scenes (a lab with plants and a satellite image), the span starts and e",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -5182,6 +6056,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span covers the whole shot of the astronaut in a grey polo holding a handheld microphone in a station module, while the narrator says 'NASA astronaut Chris Williams... joined in the excitement about Artemis II'; the frames before and after show different scenes (a lab and a satellite image), so ",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -5225,6 +6106,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span runs from the cut away from the astronaut to just before the cut to the presenter, and the frames show an overhead coastal launch pad with a red arrow at the rocket (and the dark shadow beside it), then a wider orbital view of the Florida coast with a runway strip, so the text and boundarie",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -5268,12 +6156,19 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The frames match the query: the span opens right after the Kennedy Space Center shot, with a man in a navy suit, hands clasped, speaking in front of the US flag and NASA seal. By the middle frame it has cut to the NASA logo on black, and it ends just before the screen goes fully black, so the conten",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
   {
     "query_id": "q-aerospace-0261",
-    "text": "While the narrator says the astronaut photographed the rocket and its shadow from nearly 250 miles above Kennedy Space Center, a red arrow marks the rocket on an orbital photo of the launch pad.",
+    "text": "While the narrator says the astronaut photographed the rocket and its shadow, a red arrow marks the rocket on a close orbital photo of the launch pad, and the view then widens to the Kennedy Space Center coast as he says it was seen from nearly 250 miles above.",
     "tier": 2,
     "vertical": "aerospace",
     "gold_moments": [
@@ -5311,6 +6206,20 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "text_refined": {
+        "from": "While the narrator says the astronaut photographed the rocket and its shadow from nearly 250 miles above Kennedy Space Center, a red arrow marks the rocket on an orbital photo of the launch pad.",
+        "date": "2026-10-14",
+        "applied_at": "2026-10-14T13:13:28Z",
+        "reason": "Span 189.7-198.13 is right, but sampling shows the red-arrow close-up only runs 189.7-~193.8 (captions 'sharing these images that... he took of the rocket and its shadow'); 'Kennedy Space Center from nearly 250 miles above' plays over a wide orbital view of the coast with no arrow. Text rewritten to describe both shots in order.",
+        "by": "Claude (delegated by Ethan, 2026-10-14) review (model)"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "fix",
+        "note": "Span 189.7-198.13 is right, but sampling shows the red-arrow close-up only runs 189.7-~193.8 (captions 'sharing these images that... he took of the rocket and its shadow'); 'Kennedy Space Center from nearly 250 miles above' plays over a wide orbital view of the coast with no arrow. Text rewritten to describe both shots in order.",
+        "basis": ""
       }
     }
   },
@@ -5366,6 +6275,13 @@
         ],
         "date": "2026-10-11",
         "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The host, suit and tie, flag, NASA seal and sign-off line are all correct, but the middle frame (~203 s) and the end frame already show the NASA logo end card, so the spoken line ends well before 207.97 s; move the end to about 201–202 s, w Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -5427,6 +6343,13 @@
         "date": "2026-10-11",
         "reason": "The span itself is right (it opens on the suited host in front of the US and NASA flags saying 'Thanks for watching' and holds on the NASA logo until the video ends), but the before frame is only a wide orbital view of the coast captioned 'Kennedy Space Center from nearly 250 miles above' with no vi",
         "applied_at": "2026-10-11T14:46:01Z"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The span really does start on the orbital photo of the pad with the red arrow (the frame before shows the astronaut on the ISS) and runs through the suited host saying 'Thanks for watching' to the NASA logo, but the word 'After' frames the  Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -5471,12 +6394,19 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start and middle frames show an overhead orbital photo of a coastal launch pad with a red arrow pointing at the rocket and no yellow circle, so the changed detail makes the text clearly false while the rest (orbital view, coastal pad, rocket with its shadow) fits the span, which is correctly bou",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
   {
     "query_id": "q-aerospace-0265",
-    "text": "Grayscale spacecraft view of a planet's surface, with a bright, ragged white ice cap in the upper left against a darker cratered terrain.",
+    "text": "Grayscale spacecraft view of a planet's surface, with a bright, ragged white ice cap in the upper left against darker, mostly featureless terrain.",
     "tier": 1,
     "vertical": "aerospace",
     "gold_moments": [
@@ -5514,6 +6444,20 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "text_refined": {
+        "from": "Grayscale spacecraft view of a planet's surface, with a bright, ragged white ice cap in the upper left against a darker cratered terrain.",
+        "date": "2026-10-14",
+        "applied_at": "2026-10-14T13:13:28Z",
+        "reason": "Boundaries and the bright ragged ice cap on the upper left are right; the surrounding dark terrain shows no visible craters, only faint dark patches.",
+        "by": "Claude (delegated by Ethan, 2026-10-14) review (model)"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "fix",
+        "note": "Boundaries and the bright ragged ice cap on the upper left are right; the surrounding dark terrain shows no visible craters, only faint dark patches.",
+        "basis": ""
       }
     }
   },
@@ -5557,6 +6501,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All five frames match: the span covers the wide oath shot where the man on the left raises his right hand in front of a row of American flags, and the woman holding a book stands between him and the man in the dark suit, while the narration says 'NASA officially welcomed Matt Anderson'; the span sta",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -5601,6 +6552,13 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "Every frame in the span shows the smiling, short-haired man in a dark suit in front of an American flag and a NASA seal on a blue background, but his tie is clearly red, white and blue striped, so 'solid green tie' makes the text false while everything else fits, and the span starts and ends cleanly",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -5644,6 +6602,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the ISS with its solar arrays spread out over a bright blue and white Earth that curves away at the right edge, and the span is tight: the before frame is a night-side Earth shot and the after frame is a lab scene.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -5687,6 +6652,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show the large red NASA 'worm' sculpture on a paved plaza in front of a grey office building, and the before (ISS) and after (lunar render) frames show the span covers exactly this shot.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -5730,6 +6702,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show a man in a grey NASA t-shirt and a woman with her hair in a bun leaning in close over equipment at a cluttered hardware wall. The span lines up with this shot, since the frame before shows an empty module and the frame after shows Earth from orbit.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -5773,6 +6752,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All five frames line up with the query: the lunar animation (astronauts, large pressurized rover, small American flag on grey regolith) appears from start to end while the 'tune in…humanity's first lunar outpost' line plays, and the span is cut cleanly between the NASA logo shot before it and the pr",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -5817,6 +6803,13 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "In every frame inside the span the worm-logo sculpture is clearly red, so calling it blue makes the text false. Everything else fits: the paved plaza, the grey office building, and the shot boundaries, which cut from the ISS view before the span to the lunar scene after it.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -5872,6 +6865,13 @@
         ],
         "date": "2026-10-11",
         "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: All the visual details match (crowd raising phones at the start, shoreline onlookers watching the distant rocket at the middle, rocket trailing a white plume in deep blue sky at the end), but the crowd-with-phones shot is the span's start f Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -5915,6 +6915,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span opens on side-by-side close-up portraits of two astronauts in orange suits and moves to a group portrait of all four crew in orange suits, while the frames just outside the span (a crowd before, the spacecraft over Earth after) show that the boundaries are tight.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -5959,6 +6966,13 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "In the start, middle and end frames, a large crowd near the water watches a rocket climb in the distance from behind a clearly visible chain-link fence, so the changed 'wooden picket fence' detail makes the query clearly false while the rest fits, and the span covers exactly this shot (the before an",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -6020,6 +7034,13 @@
         "date": "2026-10-11",
         "reason": "The span boundaries and the start and end moments match (the finger point between two military rescuers, then the female astronaut in a navy cap waving near a helmeted rescuer), but in the middle frame the crew member in front of the grinning astronaut wears a black or dark tactical vest over a tan ",
         "applied_at": "2026-10-11T14:46:01Z"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The three moments and the span boundaries match: the before and after frames are different shots, the start shows the astronaut pointing up between two military rescuers, the middle shows the grinning astronaut raising his fist, and the end Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -6063,6 +7084,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start frame shows a female astronaut in an orange suit raising her arm on the ship's deck. The middle and end frames show two orange-suited astronauts sitting side by side in a helicopter's open doorway, with a soldier in camouflage and purple gloves standing next to them. The before and after f",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -6106,6 +7134,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show a solar array in the lower left, a thin bright crescent of Earth in dark space, and a purple lens flare above it; the before frame (a close Earth horizon) and the after frame (the Orion capsule) are different shots, so the span boundaries are tight.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -6149,6 +7184,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start frame shows a close-up of the red NASA lettering on the shiny capsule, the middle frame shows a wider view of the blue reflective surface with the NASA logo and an American flag, and the end frame shows a small glowing crescent in a nearly black frame; the frames just outside the span show",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -6192,12 +7234,19 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the same close view of grey, heavily cratered lunar surface with a large crater on the left-centre that has a central peak, while the before frame (Earth over the lunar limb) and the after frame (curved lunar limb) show different shots, so the span boundarie",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
   {
     "query_id": "q-aerospace-0317",
-    "text": "Four red-and-white striped parachutes lower a capsule toward a dark blue ocean, while pink text says the crew are the first humans to fly around the Moon in over 50 years.",
+    "text": "Three red-and-white striped parachutes lower a capsule toward a dark blue ocean, while pink text says the crew are the first humans to fly around the Moon in over 50 years.",
     "tier": 1,
     "vertical": "aerospace",
     "gold_moments": [
@@ -6235,6 +7284,20 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "text_refined": {
+        "from": "Four red-and-white striped parachutes lower a capsule toward a dark blue ocean, while pink text says the crew are the first humans to fly around the Moon in over 50 years.",
+        "date": "2026-10-14",
+        "applied_at": "2026-10-14T13:13:28Z",
+        "reason": "Frames every 0.7 s through the span show three red-and-white main parachutes, not four; pink text and dark blue ocean shot match from the span start.",
+        "by": "Claude (delegated by Ethan, 2026-10-14) review (model)"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "fix",
+        "note": "Frames every 0.7 s through the span show three red-and-white main parachutes, not four; pink text and dark blue ocean shot match from the span start.",
+        "basis": ""
       }
     }
   },
@@ -6278,6 +7341,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show the same shot of a crew crowded inside a station module, with a US flag, a Canadian flag and an 'America 250' sign behind them, and one person appears to hold a microphone; the span matches the 'this is a relay race' line and is bounded by scene cuts (capsule recovery b",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -6321,6 +7391,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the same shot: a crowd at the U.S. Space & Rocket Center (the location caption confirms it) under a hanging rocket stage, with large NASA letters in the foreground; the before frame (Space Center Houston crowd) and after frame (launch) are different shots, s",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -6382,6 +7459,13 @@
         "date": "2026-10-11",
         "reason": "The fisheye close-up of the rocket clearing the tower in sparks (start) and the wide night shot of it rising between the towers (middle) are both correct, but the span ends on a lit crowd waving flags at Space Center Houston, not silhouetted spectators across the water. None of the frames shows a +0",
         "applied_at": "2026-10-11T14:46:01Z"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The fisheye sparks shot at the start, the wide night shot of the rocket rising between the towers in the middle and the silhouetted spectators at the end all match, and the boundaries line up with the cuts, but the clock in the end frame re Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -6426,6 +7510,13 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show the real shot (a seated crowd in the U.S. Space & Rocket Center hall, a huge rocket stage hanging overhead, and NASA letters in the foreground), but the letters are clearly white or pale lavender, not red, so the one changed detail makes the text plainly false while eve",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -6481,6 +7572,13 @@
         ],
         "date": "2026-10-11",
         "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The speech and the span boundaries match: the span runs from the cut away from the Orion exterior shot to the cut back to it, and the gray-haired man in a suit is in front of a starry backdrop. But he seems to be seated at a desk with a mic Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -6524,6 +7622,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three frames inside the span show three people in flight helmets and green flight suits walking toward the camera on a carrier deck, with crew in green shirts behind them, and the span lines up with the shot's cuts: the before frame is a presenter beside the capsule and the after frame is the 'H",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -6567,6 +7672,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start frame shows the wide shot of the capsule mockup in the pool, with the yellow raft beside it and a row of national flags on the wall. The middle and end frames show people in tan shirts handling a helmeted person in a wire rescue basket with an orange float. The before frame (an overhead po",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -6610,6 +7722,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start and middle frames show the capsule far off through the open stern of the dark, flooded well deck, and the end frame shows it closer, floating beside a yellow frame with people watching from a railing above; the span starts and ends on clean cuts, since the before and after frames show the ",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -6653,6 +7772,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The frames before and at the start of the span show small boats next to the capsule with red balloons in footage labelled 'ARTEMIS I MISSION', and the middle and end frames show the capsule on tow lines just outside the open well deck, seen from inside it. The span opens on the boat shot, so the tow",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -6696,6 +7822,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show the same high-angle aerial shot of a capsule with yellow balloons on top, an orange collar around it and a small gray inflatable boat beside it, the speaker's stability-collar line falls inside the span, and the before and after frames are different interview shots, so ",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -6740,6 +7873,13 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "In all three in-span frames, the crew member raising an arm toward the distant helicopter wears a yellow jacket and the others wear purple and blue, so 'green' is clearly false; the deck, the helicopter and the two watchers all match, and the span sits cleanly between a helicopter close-up before it",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -6783,6 +7923,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show a woman with long reddish-brown hair in a dark top, speaking in an interview against a dark background with blue and white cables, and the span is tight: the frame before shows a different shot (a man in a cap) and the frame after shows a new scene (two peop",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -6826,6 +7973,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show two men from behind looking toward a monitor, one in a dark hoodie with a red hood and a graphic printed on the back, with a small yellow capsule-shaped object in the bright background; the span starts and ends on the cuts seen in the before and after frames",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -6869,6 +8023,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span opens on a close-up of a man in a dark suit and tie speaking into a microphone at the press table, then cuts to a white rocket with a capsule on top lifting off at night beside the launch tower in a bright burst of flame, and it ends before the cut to the space station graphic, so the detai",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -6913,6 +8074,13 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show the training hall with a man in a light blue short-sleeved shirt handling equipment on a table, and the shot is cut tightly at both ends; the man next to him smiling is wearing a red, white and blue stars-and-stripes shirt, so the 'green Hawaiian shirt' change makes the",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -6974,6 +8142,13 @@
         "date": "2026-10-11",
         "reason": "The woman, dress, American flag and blue NASA flag all match, and the span runs from the cut-in to the wipe into the NASA logo, but 'with her hands out' only fits the middle frame: her hands are clasped at the start and she waves goodbye at the end, so change it to something like 'speaks to the came",
         "applied_at": "2026-10-11T14:46:01Z"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The woman, her black button-front dress and the American and NASA flags all match, but she has her hands clasped at the start and waves at the middle rather than holding her hands out, so the text should say 'clasps her hands, then waves go Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -7017,6 +8192,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show a tall, gold-foil-wrapped lander frame lit in blue, framed by the round open door of a large vacuum chamber, with rows of vertical panels behind it. The span is bounded by different shots on each side (the outside of the door before it, a SpaceX launch after",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -7060,6 +8242,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All five frames match the query: the span starts on the white rocket lifting off at night from its tower in white smoke, the middle and end frames show the technician in a hairnet and gloves working on the silver CubeSat next to an open case, and the frames before and after are different scenes (a v",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -7104,6 +8293,13 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The frames show the real shot: a worker in a white coat stands on the floor beside a huge cream-colored vacuum chamber door with a NASA logo, swung open. The span bounds this shot tightly. There is no red forklift anywhere, so the one added detail makes the query clearly false while everything else ",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -7147,6 +8343,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "Every frame inside the span shows the dark-blue DART animation: a small moonlet orbits a larger rocky asteroid along an elliptical path, with an Earth icon in the lower left. The span starts and ends cleanly, with real asteroid footage just before it and an observatory shot just after.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -7190,6 +8393,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show the same low-angle night shot: a boxy metal observatory under a starry Milky Way sky, a red-lit opening in its side and a black spherical object in front, while the before (DART graphic) and after (daytime dome) frames are different scenes, so the span boundaries are ti",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -7233,6 +8443,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span runs exactly over the shot of the gray, boulder-covered Dimorphos growing larger against black space (it starts right after the presenter cut and ends before the DART orbit diagram), and the narration about the spacecraft striking the moonlet in 2022 plays during it.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -7277,6 +8494,13 @@
         "agreed": true,
         "picked": "none",
         "original_picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All four frames show a man in a dark suit and a red patterned tie speaking to the camera in front of a NASA seal flag, and the span starts and ends with the shot, but the flag beside him is clearly an American flag, not a United Nations flag, so the one changed detail makes the text clearly false wh",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -7320,12 +8544,19 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span opens on the gold-foil HTV-X1 near the station's robotic arm above Earth's clouds and closes as the suited man speaks in front of the US flag and the NASA seal flag; it cuts to the asteroid right after, so the details and both boundaries match.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
   {
     "query_id": "q-aerospace-0357",
-    "text": "Lab monitors show a temperature reading of 3102.1°F next to a red-glowing thermal image, under a wall sign reading 'Development and Test Facility'.",
+    "text": "Lab monitors show a temperature reading of about 3,100°F next to a red-glowing thermal image, under a wall sign reading 'Lunar Development and Test Facility'.",
     "tier": 1,
     "vertical": "aerospace",
     "gold_moments": [
@@ -7363,6 +8594,20 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "text_refined": {
+        "from": "Lab monitors show a temperature reading of 3102.1°F next to a red-glowing thermal image, under a wall sign reading 'Development and Test Facility'.",
+        "date": "2026-10-14",
+        "applied_at": "2026-10-14T13:13:28Z",
+        "reason": "Boundaries are right; the sign reads 'Lunar Development and Test Facility' and the temperature changes during the shot (3101.5°F at the start, 3102.1°F mid-span), so the exact reading is replaced with an approximate one.",
+        "by": "Claude (delegated by Ethan, 2026-10-14) review (model)"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "fix",
+        "note": "Boundaries are right; the sign reads 'Lunar Development and Test Facility' and the temperature changes during the shot (3101.5°F at the start, 3102.1°F mid-span), so the exact reading is replaced with an approximate one.",
+        "basis": ""
       }
     }
   },
@@ -7406,6 +8651,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span matches the animated shot of suited astronauts, a lunar rover and domed habitats on the gray surface from start to end, while the narrator says 'technologies like CARD could help astronauts live and work'. The span ends at the cut to a different shot, and only the final word 'moon' falls ju",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -7449,6 +8701,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show the 'Deep Space Food Challenge' title card over a reddish planet edge, and 'MARS TO TABLE' fades in below it in large letters by the middle and end. The before frame (a speaker) and the after frame (food) fall outside the card, so the span boundaries line up with the mo",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -7504,6 +8763,13 @@
         ],
         "date": "2026-10-11",
         "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The boundaries are right (the span starts at the cut from the lunar render and ends on the NASA meatball logo just before the video ends), but the frames don't show her gesturing with both hands: she starts with her hands clasped and in the Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -7548,6 +8814,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show the same downward fisheye view along the rocket's side, with the boosters and core engines visible and flames growing from the nozzles until they light up the pad by the end frame; the before and after frames are different shots, so the span covers exactly this shot.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -7604,6 +8877,13 @@
         ],
         "date": "2026-10-11",
         "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The text matches the middle frame (a wide shot over low scrub of the orange-and-white rocket rising between thin lightning towers, with exhaust billowing left), but the span runs through other shots: it starts on a close-up of the tower bas Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -7648,6 +8928,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show an onboard camera looking down the vehicle's silver side as a side booster's nose fires bright orange separation thrusters, the booster tilts and drifts away with Earth far below, and the span begins and ends at hard cuts (a person speaking before, an interior shot afte",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -7692,6 +8979,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span covers one overhead shot over deep blue water: at the start the capsule hangs under three red-and-white striped parachutes, in the middle it hits the water with a white splash, and at the end the splash is still visible as the chutes collapse. The before and after frames come from different",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -7748,6 +9042,13 @@
         ],
         "date": "2026-10-11",
         "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The description matches the middle and end frames (aerial view of a gray ship's deck at sea with a helicopter on the deck markings), but the start frame at 79.0 s still shows the previous shot of the capsule floating with its red airbags, s Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -7792,6 +9093,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start and middle frames show what the query describes: a distant orange rocket with white side boosters rising beside its launch tower on a bright flame, grey-white exhaust clouds spreading across the pad, and a water tower on the right. The end frame cuts to a wider shot without the water tower",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -7836,6 +9144,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "In the start, middle and end frames the cone-shaped crew capsule floats free of the white cylindrical service module with the NASA logo, seen from space with blue Earth below, and the after frame shows parachutes, which fits the end-of-mission separation. The span covers this whole short shot, from ",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -7848,7 +9163,7 @@
       {
         "asset_id": "nasa-artemis-ii-mission-recap",
         "t_in": 154.5,
-        "t_out": 169.23
+        "t_out": 166.07
       }
     ],
     "hard_negatives": [
@@ -7880,6 +9195,26 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          154.5,
+          169.23
+        ],
+        "to": [
+          154.5,
+          166.07
+        ],
+        "date": "2026-10-14",
+        "by": "Claude (delegated by Ethan, 2026-10-14) review (model)",
+        "field": "gold_moments"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "fix",
+        "note": "The drogue shot runs 154.5 to a cut between 166.04 and 166.07; after it comes a different shot of pilot chutes then the red-and-white mains. Moved t_out to the cut. Text matches the shot (drogues deploy about 2 s in).",
+        "basis": ""
       }
     }
   },
@@ -7924,12 +9259,19 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span exactly covers the night close-up shot of the orange core stage's base between the two white boosters, with the engines glowing pink-white and red-lit exhaust clouds billowing out; it cuts in from the control-room shot before and out to the wide pad shot after.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
   {
     "query_id": "q-aerospace-0911",
-    "text": "Fisheye camera on the launch tower at night: the rocket rises past the tower structure on a blinding burst of engine fire, with sparks and debris spraying across the frame",
+    "text": "Fisheye camera on the launch tower at night: the rocket begins to rise alongside the tower structure on a blinding burst of engine fire, with sparks and debris spraying across the frame",
     "tier": 1,
     "vertical": "aerospace",
     "gold_moments": [
@@ -7968,6 +9310,20 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "text_refined": {
+        "from": "Fisheye camera on the launch tower at night: the rocket rises past the tower structure on a blinding burst of engine fire, with sparks and debris spraying across the frame",
+        "date": "2026-10-14",
+        "applied_at": "2026-10-14T13:13:28Z",
+        "reason": "Span is exactly the fisheye shot (59.9-61.67); samples every 0.43 s show the rocket climbing a little alongside the tower but never clearing it, so 'rises past' overstates the motion.",
+        "by": "Claude (delegated by Ethan, 2026-10-14) review (model)"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "fix",
+        "note": "Span is exactly the fisheye shot (59.9-61.67); samples every 0.43 s show the rocket climbing a little alongside the tower but never clearing it, so 'rises past' overstates the motion.",
+        "basis": ""
       }
     }
   },
@@ -8012,6 +9368,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span covers exactly the one wide night shot, from the cut after the close-up fisheye view (before) to the cut to the crowd-silhouette shot (after), and in it the rocket rises from the pad between the lightning towers while glowing exhaust clouds billow out sideways along the ground, so every det",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -8024,7 +9387,7 @@
       {
         "asset_id": "nasa-artemis-i-launch-recap",
         "t_in": 72.27,
-        "t_out": 79.27
+        "t_out": 76.17
       }
     ],
     "hard_negatives": [
@@ -8056,6 +9419,26 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          72.27,
+          79.27
+        ],
+        "to": [
+          72.27,
+          76.17
+        ],
+        "date": "2026-10-14",
+        "by": "Claude (delegated by Ethan, 2026-10-14) review (model)",
+        "field": "gold_moments"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "fix",
+        "note": "The span covers three shots: distant tracking (72.27-74.0), closer tracking with flame and plume (74.0-76.17), then a rocket-mounted camera looking along the side of the vehicle (76.2-79.27), which the text does not describe. Cut t_out to 76.17 so the span holds only the two tracking views against black sky that the text describes.",
+        "basis": ""
       }
     }
   },
@@ -8100,6 +9483,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the black cone-shaped capsule with yellow inflated balloons on top, sitting in rough open water with spray around its base and a crewed boat just behind it, while the before frame (a woman indoors beside the capsule) and the after frame (a different splash s",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -8144,6 +9534,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span opens right after the cut from the presenter shot, with the black capsule and its yellow balloons floating in the flooded well deck next to the yellow frame; it ends with the capsule sitting in the yellow cradle with water around it, and the next frame cuts to a different wide shot, so the ",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -8188,6 +9585,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three span frames show a grey MH-60-style Navy helicopter with spinning rotors hovering low over the sea, with a crewman in a helmet and headset at the bottom of the frame, and the span begins and ends at the shot cuts (the rescue boat crew before it, the overhead deck shot after it).",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -8250,12 +9654,19 @@
         "date": "2026-10-11",
         "reason": "The span boundaries match the shot (there are cuts just before and after it), and the high fisheye view, open ocean and turning rotors are all right, but a third helicopter is visible at the far end of the deck in every frame, so change 'two helicopters sit' to 'three helicopters sit', or to 'two he",
         "applied_at": "2026-10-11T14:46:01Z"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The span matches the shot exactly: it starts and ends on the cuts, and the high wide-angle view shows two helicopters on the deck in open ocean with their rotors in a different position in each frame. However, what looks like a third helico Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
   {
     "query_id": "q-aerospace-0919",
-    "text": "A wire rescue basket hangs on a hoist cable from a helicopter overhead, just above helmeted divers huddled in a yellow life raft at sea",
+    "text": "A wire rescue basket hangs on a hoist cable from a helicopter overhead, just above helmeted divers huddled in an orange life raft at sea",
     "tier": 1,
     "vertical": "aerospace",
     "gold_moments": [
@@ -8294,6 +9705,20 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "text_refined": {
+        "from": "A wire rescue basket hangs on a hoist cable from a helicopter overhead, just above helmeted divers huddled in a yellow life raft at sea",
+        "date": "2026-10-14",
+        "applied_at": "2026-10-14T13:13:28Z",
+        "reason": "Boundaries and the basket on a hoist cable above helmeted crew in a raft are right; the raft's tubes are orange with yellow flaps, so 'yellow life raft' becomes 'orange'.",
+        "by": "Claude (delegated by Ethan, 2026-10-14) review (model)"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "fix",
+        "note": "Boundaries and the basket on a hoist cable above helmeted crew in a raft are right; the raft's tubes are orange with yellow flaps, so 'yellow life raft' becomes 'orange'.",
+        "basis": ""
       }
     }
   },
@@ -8338,6 +9763,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "In the start, middle and end frames, a gray Navy-style helicopter hovers just above a ship's flight deck against a blue sky with its rotors spinning; the before frame (sailors with an inflatable boat) and the after frame (a woman in a hangar) show different scenes, so the span's boundaries match the",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -8382,6 +9814,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show the capsule with yellow balloons on top, sitting in churning water in the flooded well deck beside an orange frame while people watch from the walkways above, and the span lines up with the shot change on both sides (the presenter shot before, a different wide shot afte",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -8426,6 +9865,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show a gray military helicopter hovering low over open ocean, nose toward the camera, with its rotor spinning under a pale overcast sky; the span starts and ends at clean cuts, with orange-suited crew in the frame before and deck crew in the frame after.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -8470,6 +9916,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show the same high-angle shot from beside a ship: two dark inflatable boats full of crew moving across choppy blue water and leaving white wakes, and the span is bounded by cuts, with an interview shot just before it and a capsule-recovery shot just after.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -8514,6 +9967,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span opens on the hoist cable at the raft, the middle frame shows a person in dark gear lifted toward the hovering helicopter against a gray sky, and the end frame shows a dark military helicopter flying low over the open sea; the before and after frames are a different shot and an interview, so",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -8558,6 +10018,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span starts right at the cut from the presenter to the pad shot. Inside it, the white rocket with its capsule ignites with bright flames at the base and begins to rise beside the tall tower and its access arm under a cloudy sky. It ends just before the cut to the close-up of the exhaust plume, s",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -8602,6 +10069,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three frames inside the span show a distant view across water and marsh of a rocket climbing above the pad on a long bright flame, with large white steam clouds spreading along the ground, and the span starts and ends at the cuts from the exhaust close-up and to the astronaut portrait.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -8646,6 +10120,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three frames inside the span show the white Dragon with its nose cap open and the docking port facing forward, with the cloud-covered Earth below. The span starts and ends on hard cuts: the frame before is an astronaut portrait and the frame after is crew inside the station.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -8690,6 +10171,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show an orange multi-wheeled KAMAG transporter with its lights on, carrying a large white capsule (the nose is blue-grey) along a paved road under a purple dusk sky, and the span is tight because the before frame (ISS interior) and after frame (press conference) ",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -8752,6 +10240,13 @@
         "date": "2026-10-11",
         "reason": "The start and middle frames match the text (a white rocket lifting off at night beside the launch tower, with bright flame and exhaust at the base), but the end frame at 73.10 s already shows black-and-white ISS imagery, so the span runs past the launch shot and the end should be moved back to the c",
         "applied_at": "2026-10-11T14:46:01Z"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The span matches the whole launch shot (it runs from the cut after the press-conference frame to the cut before the ISS graphic), and the rocket, tower and bright exhaust are all right. But the dark red-brown sky is most likely the camera e Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -8808,6 +10303,13 @@
         ],
         "date": "2026-10-11",
         "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The start frame (distant liftoff across the marsh with white smoke) and the middle frame (close tracking shot of the tilted rocket with engine flames) match the query, but the end frame already shows a different shot of a capsule landing un Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -8852,6 +10354,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "In the start, middle and end frames, the SLS rocket with its orange core stage and two white side boosters fires at liftoff beside the tower while exhaust clouds billow across the pad, and the span lines up with the shot because the frames just before and after are different scenes (a core stage ind",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -8896,6 +10405,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The span opens on a white X-59 with a long, needle-like nose rolling down a desert runway past hangars (start and middle frames). It ends with the jet flying high above a dry lakebed. The frames just outside the span show unrelated scenes (an SLS rocket launch before and a cockpit HUD view after), s",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -8952,6 +10468,13 @@
         ],
         "date": "2026-10-11",
         "by": "claude-opus-5-5 from frames, verified by an independent pre-review call"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The span boundaries are right (it starts at the liftoff cut around T+2 and ends before the cut to the animation), and the liftoff beside the tower is correct, but the middle and end frames come from one fixed wide camera (the tower stays in Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   },
@@ -8996,6 +10519,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "All three in-span frames show the same tighter telephoto shot of a heavy-lift rocket climbing straight up on a long bright flame, with billowing exhaust clouds spreading over the pad and tower below, and the span cleanly excludes the ISS interior shot before it and the wider launch shot after it.",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -9008,7 +10538,7 @@
       {
         "asset_id": "nasa-minute-2026-09-04",
         "t_in": 94.57,
-        "t_out": 101.97
+        "t_out": 97.6
       }
     ],
     "hard_negatives": [
@@ -9040,6 +10570,26 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "boundary_refined": {
+        "from": [
+          94.57,
+          101.97
+        ],
+        "to": [
+          94.57,
+          97.6
+        ],
+        "date": "2026-10-14",
+        "by": "Claude (delegated by Ethan, 2026-10-14) review (model)",
+        "field": "gold_moments"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "fix",
+        "note": "The description matches the hazy wide launch shot exactly, so the query can be saved without a rewrite: the shot starts at 94.57 and the NASA-logo wipe begins at ~97.6 (sampled every 1/15 s). The old end at 101.97 included 4 s of outro (IoU 0.41), so t_out moves to 97.6.",
+        "basis": ""
       }
     }
   },
@@ -9084,6 +10634,13 @@
         "model": "gemini-3.5-flash",
         "agreed": true,
         "picked": "gold"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "The start, middle and end frames all show the split screen, with the foil-wrapped descent stage and its thrusters on top and the rover on cables being lowered toward the dusty ground below. The before frame (presenter) and the after frame (a different surface shot) are outside the span, so the bound",
+        "basis": "frame pre-review (before/start/middle/end/after frames) accepted it"
       }
     }
   },
@@ -9146,6 +10703,13 @@
         "date": "2026-10-11",
         "reason": "The span is right: it cuts in from a Mars ice-cap shot and cuts out to a docked-ISS view, and it shows a white Dragon with its nose cone open over the bright, cloud-covered curve of Earth. But the capsule's position and size look the same in the start, middle and end frames, so nothing shows it movi",
         "applied_at": "2026-10-11T14:46:01Z"
+      },
+      "model_review": {
+        "reviewer": "Claude (delegated by Ethan, 2026-10-14)",
+        "date": "2026-10-14",
+        "decision": "accept",
+        "note": "pre-review flagged: The span boundaries are right and the frames do show a white Dragon with its nose cone open, black space, and the bright, cloudy curve of Earth below, but the capsule stays about the same size and spot from start to end, so the stills don't Resolved by refinement on 2026-10-11.",
+        "basis": "flagged by the frame pre-review, then refined and the refinement verified by an independent check"
       }
     }
   }
