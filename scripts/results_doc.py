@@ -42,14 +42,14 @@ QUERY_FILES = {"film": "film_v0.2.json", "aerospace": "aerospace_v0.2.json",
 SEED_RUNS = ("agentic-claude-opus-5-5-e51b703b", "agentic-gpt-5.5-b893d59f",
              "agentic-gemini-3.1-pro-preview-a6ff462c", "agentic-gemma-4-31b-it-d23baa9c")
 # Pairs of independent single-trial Opus runs on the same queries: the earlier record
-# run and its 0.2.1 rerun.
+# run and its 0.2.1 rerun (as first run, before the reworded queries were merged in).
 RETEST = [
     ("film", RECORD / "agentic-claude-opus-5-5-0d68625a.json",
-     RECORD_021 / "agentic-claude-opus-5-5-381de39d.json"),
+     RECORD_021.parent / "superseded" / "agentic-claude-opus-5-5-381de39d.json"),
     ("aerospace", RECORD / "agentic-claude-opus-5-5-519357e4.json",
-     RECORD_021 / "agentic-claude-opus-5-5-0ec085fb.json"),
+     RECORD_021.parent / "superseded" / "agentic-claude-opus-5-5-0ec085fb.json"),
     ("robotics", RECORD / "agentic-claude-opus-5-5-e7ca7bd1.json",
-     RECORD_021 / "agentic-claude-opus-5-5-c5031ac2.json"),
+     RECORD_021.parent / "superseded" / "agentic-claude-opus-5-5-c5031ac2.json"),
 ]
 
 
@@ -153,8 +153,7 @@ def source_video(query_id: str) -> str:
 
 def split_table(paths: list[Path]) -> str:
     """Localization on positive queries and abstention on no-answer queries, apart."""
-    files = [str(p) for p in paths]
-    common = common_queries(files)
+    common = keyed_common(paths)
     lines = ["| Model | Positive R@1 (95% CI by video) | No-answer accuracy | "
              "False-positive rate | Abstains on positives |", "|---|---|---|---|---|"]
     for f in paths:
@@ -212,21 +211,28 @@ def paired_table(paths: list[Path]) -> str:
     return "\n".join(lines)
 
 
+def keyed_common(paths: list[Path]) -> set[str]:
+    """Queries every run with a run identity covered (historical runs do not narrow it)."""
+    keyed = [str(p) for p in paths if load_run(p).identity.get("compatibility_key")]
+    return common_queries(keyed or [str(p) for p in paths])
+
+
 def section(paths: list[Path]) -> str:
-    """A domain's table, every row computed on the queries all of its runs covered."""
+    """A domain's table: runs with a run identity on the queries they all covered,
+    historical rows on the current queries they covered (their own row count)."""
     files = [str(p) for p in paths]
     current = set()
     for name in QUERY_FILES.values():
         f = ROOT / "data/queries" / name
         if f.exists():
             current |= {q["query_id"] for q in json.loads(f.read_text())}
-    common = common_queries(files) & current
-    covered = {len({t.query_id for t in load_run(p).trials})
-               for p in paths}
-    note = ("" if len(covered) <= 1 and max(covered, default=0) == len(common) else
-            f"Every row is computed on the {len(common)} current queries that all of these "
-            "runs covered (runs made on earlier versions of the file, or on queries since "
-            "removed by review, are scored only on what remains).\n\n")
+    common = keyed_common(paths) & current
+    covered = {len({t.query_id for t in load_run(p).trials} & common) for p in paths}
+    note = ("" if covered == {len(common)} else
+            f"Rows are computed on the {len(common)} current queries every 0.2.1 run covered. "
+            "A historical row covers fewer (its Queries column says how many): it was run "
+            "before some queries were reworded, and is scored only on the queries whose "
+            "wording it saw.\n\n")
     paired = paired_table(paths)
     return (note + table(files, only=common)
             + "\n\nLocalization and abstention, separately (positive queries have a gold "
@@ -274,8 +280,7 @@ def results_json(domains: dict[str, list[Path]]) -> dict:
     out = {"benchmark": "momentbench", "version": "0.2", "track": "agentic",
            "metric": "recall_at_1_tiou_0.5", "rows": []}
     for domain, paths in domains.items():
-        files = [str(p) for p in paths]
-        current = common_queries(files) & {
+        current = keyed_common(paths) & {
             q["query_id"] for name in QUERY_FILES.values()
             if (ROOT / "data/queries" / name).exists()
             for q in json.loads((ROOT / "data/queries" / name).read_text())}

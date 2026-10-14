@@ -1,0 +1,1123 @@
+{
+  "run_id": "agentic-claude-opus-5-5-c639ddf0",
+  "track": "agentic",
+  "model_id": "claude-opus-5-5",
+  "effort": null,
+  "harness": "claude-code",
+  "modalities": "frames+transcripts",
+  "anonymize_titles": false,
+  "corpus_assets": 27,
+  "reportable": true,
+  "corpus_receipt": {
+    "big-buck-bunny": "b2acb9bddcb384f9762f919af8f6d8b4be781e40ad2f35a37cc12beef55b9a27",
+    "sintel": "f12c070e295b38cfc94ebd61ac3357c3bac82d1015985f1e8da93a4c6496c46d",
+    "tears-of-steel": "efa9062d9cdb7a338e40ad530dfdf234806743f29ae6a1a136b97ece4e588e8f",
+    "elephants-dream": "6fc295e0e92835316ec95929ccfc664b05ed2434f673e6f5e684f98f7558a547",
+    "cosmos-laundromat": "ed4f43b895920072f8e995520d85f8470708a2909258ab5b6d102e7a3f5fca0f",
+    "spring": "916523651f3d6a38ec98a9f35e48daf7591e21baba473e1d1cf9a7c5dac42031",
+    "agent-327-operation-barbershop": "83a28babdec6f16930232176254f8da2b4ccdd379811371dbdcf928308a6166f",
+    "nasa-artemis-ii-launch-recap": "dc8d66b5fdf2998bfef58c6044e31985104e97f8b1405607813d2ccd41149ad6",
+    "nasa-artemis-ii-welcome-home": "2583bd5b2d6782e0ec060acf5af24f3ed237eb6782c0f3fc3a6a46278a7df8e1",
+    "nasa-artemis-ii-mission-recap": "7aa1e2380756db5458bf248edfc380e9db4829febf434508d36de38d00fd58d8",
+    "nasa-artemis-i-launch-recap": "18935adac9d2a1f99894a5b3291eceaec04ac1b9f6eace01afd233f0c939c0ca",
+    "nasa-how-to-recover-a-spacecraft": "b4b43f5c48ecef9694f64036e35063b7521a061b92ba53aa4883ca80ac8ed39b",
+    "nasa-minute-2026-10-02": "e0ec6f1db55ef3e700bd368212ce253e06ffd509314323d1ba49588fba502d4a",
+    "nasa-minute-2026-09-04": "5360beae61eec38e70b7b604d840174110e7bc758ab479c8c3ea654ddd296ab8",
+    "nasa-minute-2026-08-21": "8cf0db6a14b4c7f3806a3ff9724de232fab18a2a510a68e894037eb1932cb122",
+    "nasa-minute-2026-05-08": "0897ea812952789a178acc099bc73eacd093431b70df6751b23d08a04f31bd11",
+    "nasa-minute-2026-03-13": "533322e071ba6dec48bd1b232fc08a816bc5670e6ea91cb47fc07578c8905f25",
+    "nasa-minute-2026-02-20": "8d035866757d14d436ee2d581d6e6a6c2a14b50f857b7a353e33583643113dbb",
+    "nasa-minute-2026-01-23": "46be4c783b67863119fa21e0558090bb1c91efcd019077672440a6a510cb449c",
+    "nasa-minute-2026-05-22": "26417c23b52ba05ed0f7ab3d0e4dc13d57fdf094202aadacb1eab8b7d076352d",
+    "nasa-how-perseverance-drives": "d8b3e0553b1606fdb304fcb93749cf20712627daf83e75ca215ba45eb734ea21",
+    "nasa-perseverance-twin-rover": "73555afafd411ca81c40d68fdd875f2ff59b6ddbec683357750a3ef30ee9ffb6",
+    "nasa-viper-lander-exit-test": "3ec4b3a0c3123a0823329ee8a79f53197904a3084f22cc63ad21becf92707195",
+    "nasa-viper-slope-lab-testing": "99fcfe5261632ba0f67191b57ec82e90d90b659242856639e5b03a8d05f730d7",
+    "nasa-astrobee-flying-robots": "dc37b9530d77629d93dc85344fb3718b218afd7440d53a76872f5650af9521f4",
+    "nasa-ingenuity-fourth-flight": "7bdd5ed26c99771afb33b36a1bad45fee533f6892e54c35536b7d4a6745dc6c5",
+    "nasa-viper-egress-testing": "e3373d178d24730ac7e3a57503a0f0260f101b4bb6d5c0d83e1bea0093b3440d"
+  },
+  "identity": {
+    "queries_file_sha256": "bc5883364f2d1df6547d9de4c8305b15c7d495ea766f8aedaa05919596e03166",
+    "manifest_sha256": "9d133abb16f760f3ef0611882b43b604d9323702ebb0fd976b58ca6cab80b2cf",
+    "query_filter": null,
+    "provider": "claude-code",
+    "endpoint": null,
+    "pricing_as_of": "2026-10-10",
+    "git": {
+      "commit": "8058c2da1a0b05c6115b4ad3f86bee01be2e29c6",
+      "dirty": false
+    },
+    "packages": {
+      "momentbench": "0.1.0",
+      "openai": "3.28.0",
+      "google-genai": "2.29.0",
+      "claude-agent-sdk": "0.2.165",
+      "inspect-ai": "0.3.278",
+      "pillow": "12.3.0"
+    },
+    "queries_sha": "41cd45298ce80f24",
+    "num_queries": 9,
+    "corpus_sha": "ca25d3017581a1ba",
+    "transcripts_sha": "a5fc537971ab4349",
+    "system_prompt_sha": "a1129b1fcbc1bedb",
+    "tools_sha": "c6b04aab02de6656",
+    "budget": {
+      "max_steps": 30,
+      "max_frames": 64,
+      "max_tool_calls": 60
+    },
+    "modalities": "frames+transcripts",
+    "anonymize_titles": false,
+    "compatibility_key": "47daf148c7e352b4",
+    "resolved_models": [
+      "claude-opus-5-5"
+    ]
+  },
+  "rescore_excluded": 0,
+  "budget": {
+    "max_steps": 30,
+    "max_frames": 64,
+    "max_tool_calls": 60
+  },
+  "pricing": {
+    "input_per_mtok": 4.0,
+    "output_per_mtok": 20.0,
+    "cache_read_per_mtok": 0.2,
+    "cache_write_per_mtok": null
+  },
+  "timestamp": "2026-10-14T13:35:33Z",
+  "summary": {
+    "num_queries": 9,
+    "num_trials": 1,
+    "recall_at_1": 0.7777777777777778,
+    "recall_at_1_ci95": [
+      0.4444444444444444,
+      1.0
+    ],
+    "recall_at_5": 0.7777777777777778,
+    "mean_temporal_iou": 0.6996920839610978,
+    "mean_cost_usd_per_query": 0.11061768888888888,
+    "mean_input_tokens_per_query": 14.222222222222221,
+    "mean_output_tokens_per_query": 1463.111111111111,
+    "mean_frames_per_query": 32.888888888888886,
+    "mean_steps_per_query": 8.11111111111111,
+    "failed_trials": 0,
+    "error_trials": 0,
+    "recall_at_1_by_iou": {
+      "0.3": 0.8888888888888888,
+      "0.5": 0.7777777777777778,
+      "0.7": 0.6666666666666666
+    },
+    "positive_recall_at_1": 0.7777777777777778,
+    "no_answer_accuracy": null,
+    "false_positive_rate": null,
+    "abstention_on_positives": 0.0,
+    "mean_tiou_positive": 0.6996920839610978,
+    "by_tier": {
+      "1": {
+        "num_queries": 9,
+        "recall_at_1": 0.7777777777777778,
+        "recall_at_1_ci95": [
+          0.4444444444444444,
+          1
+        ]
+      }
+    }
+  },
+  "trials": [
+    {
+      "query_id": "q-robotics-0100",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.9436619718309871,
+      "no_answer": false,
+      "query_text_sha": "7b807ccf6b494c98",
+      "resolved_model": "claude-opus-5-5",
+      "top1_iou": 0.9436619718309871,
+      "usage": {
+        "steps": 8,
+        "tool_calls": 6,
+        "frames": 24,
+        "input_tokens": 12,
+        "output_tokens": 1051,
+        "cache_read_tokens": 46464,
+        "cache_write_tokens": 14470
+      },
+      "cost_usd": 0.08824080000000001,
+      "latency_s": 58.057694540999364,
+      "moments": [
+        {
+          "asset_id": "nasa-how-perseverance-drives",
+          "t_in": 34.3,
+          "t_out": 41.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "rover drive path planning autonomous navigation",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "nasa-how-perseverance-drives",
+            "t_start": 40,
+            "t_end": 135
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-how-perseverance-drives",
+            "t_start": 40,
+            "t_end": 135,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-how-perseverance-drives",
+            "t_start": 33,
+            "t_end": 51,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-how-perseverance-drives",
+            "t_start": 33.5,
+            "t_end": 43,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "nasa-how-perseverance-drives",
+                "t_in": 34.3,
+                "t_out": 41
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0134",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.3105590062111802,
+      "no_answer": false,
+      "query_text_sha": "bb57676b0ab0fb18",
+      "resolved_model": "claude-opus-5-5",
+      "top1_iou": 0.3105590062111802,
+      "usage": {
+        "steps": 14,
+        "tool_calls": 12,
+        "frames": 64,
+        "input_tokens": 22,
+        "output_tokens": 3003,
+        "cache_read_tokens": 176435,
+        "cache_write_tokens": 31278
+      },
+      "cost_usd": 0.220547,
+      "latency_s": 96.93671820795862,
+      "moments": [
+        {
+          "asset_id": "nasa-viper-slope-lab-testing",
+          "t_in": 50.0,
+          "t_out": 54.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-slope-lab-testing",
+            "t_start": 0,
+            "t_end": 149,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-slope-lab-testing",
+            "t_start": 90,
+            "t_end": 104,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-slope-lab-testing",
+            "t_start": 24,
+            "t_end": 60,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-slope-lab-testing",
+            "t_start": 66,
+            "t_end": 88,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-slope-lab-testing",
+            "t_start": 106,
+            "t_end": 146,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-slope-lab-testing",
+            "t_start": 3,
+            "t_end": 21,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-slope-lab-testing",
+            "t_start": 35,
+            "t_end": 45,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-slope-lab-testing",
+            "t_start": 25,
+            "t_end": 34,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-slope-lab-testing",
+            "t_start": 60,
+            "t_end": 66,
+            "num_frames": 4
+          },
+          "is_error": false,
+          "frames": 4
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-egress-testing",
+            "t_start": 0,
+            "t_end": 153,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 4
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-slope-lab-testing",
+            "t_start": 46,
+            "t_end": 58,
+            "num_frames": 7
+          },
+          "is_error": true,
+          "frames": 0
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "nasa-viper-slope-lab-testing",
+                "t_in": 50,
+                "t_out": 54
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0146",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.9215017064846415,
+      "no_answer": false,
+      "query_text_sha": "2024350c82e8c6e5",
+      "resolved_model": "claude-opus-5-5",
+      "top1_iou": 0.9215017064846415,
+      "usage": {
+        "steps": 5,
+        "tool_calls": 3,
+        "frames": 16,
+        "input_tokens": 10,
+        "output_tokens": 796,
+        "cache_read_tokens": 25381,
+        "cache_write_tokens": 9076
+      },
+      "cost_usd": 0.057340199999999994,
+      "latency_s": 29.424296082986984,
+      "moments": [
+        {
+          "asset_id": "nasa-ingenuity-fourth-flight",
+          "t_in": 18.3,
+          "t_out": 21.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-ingenuity-fourth-flight",
+            "t_start": 0,
+            "t_end": 34,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-ingenuity-fourth-flight",
+            "t_start": 15.5,
+            "t_end": 23.5,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "nasa-ingenuity-fourth-flight",
+                "t_in": 18.3,
+                "t_out": 21
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0300",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.9129032258064507,
+      "no_answer": false,
+      "query_text_sha": "c7f6e8dd1e69d975",
+      "resolved_model": "claude-opus-5-5",
+      "top1_iou": 0.9129032258064507,
+      "usage": {
+        "steps": 8,
+        "tool_calls": 6,
+        "frames": 22,
+        "input_tokens": 12,
+        "output_tokens": 1196,
+        "cache_read_tokens": 43562,
+        "cache_write_tokens": 13188
+      },
+      "cost_usd": 0.08543239999999999,
+      "latency_s": 32.79419120802777,
+      "moments": [
+        {
+          "asset_id": "nasa-perseverance-twin-rover",
+          "t_in": 50.5,
+          "t_out": 53.6,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "first drive test rover vehicle system test bed"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "nasa-perseverance-twin-rover",
+            "t_start": 0,
+            "t_end": 140
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-perseverance-twin-rover",
+            "t_start": 0,
+            "t_end": 140,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-perseverance-twin-rover",
+            "t_start": 42,
+            "t_end": 60,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-perseverance-twin-rover",
+            "t_start": 50,
+            "t_end": 55,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "nasa-perseverance-twin-rover",
+                "t_in": 50.5,
+                "t_out": 53.6
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0301",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "no_answer": false,
+      "query_text_sha": "4bfcd23ea91f6b94",
+      "resolved_model": "claude-opus-5-5",
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 11,
+        "tool_calls": 9,
+        "frames": 58,
+        "input_tokens": 22,
+        "output_tokens": 2705,
+        "cache_read_tokens": 149138,
+        "cache_write_tokens": 26963
+      },
+      "cost_usd": 0.1918676,
+      "latency_s": 72.5199943750049,
+      "moments": [
+        {
+          "asset_id": "nasa-perseverance-twin-rover",
+          "t_in": 50.2,
+          "t_out": 53.3,
+          "metadata": {}
+        },
+        {
+          "asset_id": "nasa-perseverance-twin-rover",
+          "t_in": 46.3,
+          "t_out": 47.9,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-perseverance-twin-rover",
+            "t_start": 0,
+            "t_end": 140,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-perseverance-twin-rover",
+            "t_start": 42,
+            "t_end": 78,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-perseverance-twin-rover",
+            "t_start": 43,
+            "t_end": 52,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-perseverance-twin-rover",
+            "t_start": 45.8,
+            "t_end": 48,
+            "num_frames": 4
+          },
+          "is_error": false,
+          "frames": 4
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-slope-lab-testing",
+            "t_start": 5,
+            "t_end": 145,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-perseverance-twin-rover",
+            "t_start": 2,
+            "t_end": 40,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-perseverance-twin-rover",
+            "t_start": 80,
+            "t_end": 135,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-perseverance-twin-rover",
+            "t_start": 49.6,
+            "t_end": 57,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "nasa-perseverance-twin-rover",
+                "t_in": 50.2,
+                "t_out": 53.3
+              },
+              {
+                "asset_id": "nasa-perseverance-twin-rover",
+                "t_in": 46.3,
+                "t_out": 47.9
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0510",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.8409090909090937,
+      "no_answer": false,
+      "query_text_sha": "352f2806390c810c",
+      "resolved_model": "claude-opus-5-5",
+      "top1_iou": 0.8409090909090937,
+      "usage": {
+        "steps": 6,
+        "tool_calls": 4,
+        "frames": 24,
+        "input_tokens": 12,
+        "output_tokens": 1031,
+        "cache_read_tokens": 39163,
+        "cache_write_tokens": 12389
+      },
+      "cost_usd": 0.0780566,
+      "latency_s": 32.67434495798079,
+      "moments": [
+        {
+          "asset_id": "nasa-perseverance-twin-rover",
+          "t_in": 128.6,
+          "t_out": 132.3,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-perseverance-twin-rover",
+            "t_start": 0,
+            "t_end": 140,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-perseverance-twin-rover",
+            "t_start": 102,
+            "t_end": 137,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-perseverance-twin-rover",
+            "t_start": 128,
+            "t_end": 136,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "nasa-perseverance-twin-rover",
+                "t_in": 128.6,
+                "t_out": 132.3
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0512",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.6328293736501079,
+      "no_answer": false,
+      "query_text_sha": "6ccc81c5c4eb1eed",
+      "resolved_model": "claude-opus-5-5",
+      "top1_iou": 0.6328293736501079,
+      "usage": {
+        "steps": 8,
+        "tool_calls": 6,
+        "frames": 40,
+        "input_tokens": 14,
+        "output_tokens": 1434,
+        "cache_read_tokens": 68799,
+        "cache_write_tokens": 18768
+      },
+      "cost_usd": 0.1175678,
+      "latency_s": 59.1895476669888,
+      "moments": [
+        {
+          "asset_id": "nasa-viper-lander-exit-test",
+          "t_in": 7.5,
+          "t_out": 12.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-lander-exit-test",
+            "t_start": 0,
+            "t_end": 41,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-egress-testing",
+            "t_start": 0,
+            "t_end": 153,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-lander-exit-test",
+            "t_start": 24,
+            "t_end": 39,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-lander-exit-test",
+            "t_start": 1,
+            "t_end": 22,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-lander-exit-test",
+            "t_start": 8,
+            "t_end": 16,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "nasa-viper-lander-exit-test",
+                "t_in": 7.5,
+                "t_out": 12
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0601",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.7624999999999986,
+      "no_answer": false,
+      "query_text_sha": "bef6884b4572bce0",
+      "resolved_model": "claude-opus-5-5",
+      "top1_iou": 0.7624999999999986,
+      "usage": {
+        "steps": 7,
+        "tool_calls": 5,
+        "frames": 24,
+        "input_tokens": 12,
+        "output_tokens": 934,
+        "cache_read_tokens": 41511,
+        "cache_write_tokens": 12930
+      },
+      "cost_usd": 0.07875019999999999,
+      "latency_s": 49.438154999981634,
+      "moments": [
+        {
+          "asset_id": "nasa-viper-slope-lab-testing",
+          "t_in": 82.5,
+          "t_out": 85.7,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "VIPER traction rover wheels"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-slope-lab-testing",
+            "t_start": 0,
+            "t_end": 149,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-slope-lab-testing",
+            "t_start": 72,
+            "t_end": 100,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-slope-lab-testing",
+            "t_start": 81,
+            "t_end": 88,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "nasa-viper-slope-lab-testing",
+                "t_in": 82.5,
+                "t_out": 85.7
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-robotics-0602",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "robotics",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.9723643807574204,
+      "no_answer": false,
+      "query_text_sha": "a7990428bc3b9a08",
+      "resolved_model": "claude-opus-5-5",
+      "top1_iou": 0.9723643807574204,
+      "usage": {
+        "steps": 6,
+        "tool_calls": 4,
+        "frames": 24,
+        "input_tokens": 12,
+        "output_tokens": 1018,
+        "cache_read_tokens": 39163,
+        "cache_write_tokens": 12379
+      },
+      "cost_usd": 0.07775660000000001,
+      "latency_s": 34.76818687497871,
+      "moments": [
+        {
+          "asset_id": "nasa-viper-slope-lab-testing",
+          "t_in": 43.0,
+          "t_out": 52.5,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-slope-lab-testing",
+            "t_start": 0,
+            "t_end": 149,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-slope-lab-testing",
+            "t_start": 45,
+            "t_end": 100,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "nasa-viper-slope-lab-testing",
+            "t_start": 38,
+            "t_end": 52,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "nasa-viper-slope-lab-testing",
+                "t_in": 43,
+                "t_out": 52.5
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    }
+  ]
+}

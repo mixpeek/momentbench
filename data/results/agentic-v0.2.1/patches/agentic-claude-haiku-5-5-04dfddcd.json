@@ -1,0 +1,3653 @@
+{
+  "run_id": "agentic-claude-haiku-5-5-04dfddcd",
+  "track": "agentic",
+  "model_id": "claude-haiku-5-5",
+  "effort": null,
+  "harness": "claude-code",
+  "modalities": "frames+transcripts",
+  "anonymize_titles": false,
+  "corpus_assets": 27,
+  "reportable": true,
+  "corpus_receipt": {
+    "big-buck-bunny": "b2acb9bddcb384f9762f919af8f6d8b4be781e40ad2f35a37cc12beef55b9a27",
+    "sintel": "f12c070e295b38cfc94ebd61ac3357c3bac82d1015985f1e8da93a4c6496c46d",
+    "tears-of-steel": "efa9062d9cdb7a338e40ad530dfdf234806743f29ae6a1a136b97ece4e588e8f",
+    "elephants-dream": "6fc295e0e92835316ec95929ccfc664b05ed2434f673e6f5e684f98f7558a547",
+    "cosmos-laundromat": "ed4f43b895920072f8e995520d85f8470708a2909258ab5b6d102e7a3f5fca0f",
+    "spring": "916523651f3d6a38ec98a9f35e48daf7591e21baba473e1d1cf9a7c5dac42031",
+    "agent-327-operation-barbershop": "83a28babdec6f16930232176254f8da2b4ccdd379811371dbdcf928308a6166f",
+    "nasa-artemis-ii-launch-recap": "dc8d66b5fdf2998bfef58c6044e31985104e97f8b1405607813d2ccd41149ad6",
+    "nasa-artemis-ii-welcome-home": "2583bd5b2d6782e0ec060acf5af24f3ed237eb6782c0f3fc3a6a46278a7df8e1",
+    "nasa-artemis-ii-mission-recap": "7aa1e2380756db5458bf248edfc380e9db4829febf434508d36de38d00fd58d8",
+    "nasa-artemis-i-launch-recap": "18935adac9d2a1f99894a5b3291eceaec04ac1b9f6eace01afd233f0c939c0ca",
+    "nasa-how-to-recover-a-spacecraft": "b4b43f5c48ecef9694f64036e35063b7521a061b92ba53aa4883ca80ac8ed39b",
+    "nasa-minute-2026-10-02": "e0ec6f1db55ef3e700bd368212ce253e06ffd509314323d1ba49588fba502d4a",
+    "nasa-minute-2026-09-04": "5360beae61eec38e70b7b604d840174110e7bc758ab479c8c3ea654ddd296ab8",
+    "nasa-minute-2026-08-21": "8cf0db6a14b4c7f3806a3ff9724de232fab18a2a510a68e894037eb1932cb122",
+    "nasa-minute-2026-05-08": "0897ea812952789a178acc099bc73eacd093431b70df6751b23d08a04f31bd11",
+    "nasa-minute-2026-03-13": "533322e071ba6dec48bd1b232fc08a816bc5670e6ea91cb47fc07578c8905f25",
+    "nasa-minute-2026-02-20": "8d035866757d14d436ee2d581d6e6a6c2a14b50f857b7a353e33583643113dbb",
+    "nasa-minute-2026-01-23": "46be4c783b67863119fa21e0558090bb1c91efcd019077672440a6a510cb449c",
+    "nasa-minute-2026-05-22": "26417c23b52ba05ed0f7ab3d0e4dc13d57fdf094202aadacb1eab8b7d076352d",
+    "nasa-how-perseverance-drives": "d8b3e0553b1606fdb304fcb93749cf20712627daf83e75ca215ba45eb734ea21",
+    "nasa-perseverance-twin-rover": "73555afafd411ca81c40d68fdd875f2ff59b6ddbec683357750a3ef30ee9ffb6",
+    "nasa-viper-lander-exit-test": "3ec4b3a0c3123a0823329ee8a79f53197904a3084f22cc63ad21becf92707195",
+    "nasa-viper-slope-lab-testing": "99fcfe5261632ba0f67191b57ec82e90d90b659242856639e5b03a8d05f730d7",
+    "nasa-astrobee-flying-robots": "dc37b9530d77629d93dc85344fb3718b218afd7440d53a76872f5650af9521f4",
+    "nasa-ingenuity-fourth-flight": "7bdd5ed26c99771afb33b36a1bad45fee533f6892e54c35536b7d4a6745dc6c5",
+    "nasa-viper-egress-testing": "e3373d178d24730ac7e3a57503a0f0260f101b4bb6d5c0d83e1bea0093b3440d"
+  },
+  "identity": {
+    "queries_file_sha256": "f089254ee8013250148c6d58d5a60c639482f92a3393741ccf949090724858a6",
+    "manifest_sha256": "9d133abb16f760f3ef0611882b43b604d9323702ebb0fd976b58ca6cab80b2cf",
+    "query_filter": null,
+    "provider": "claude-code",
+    "endpoint": null,
+    "pricing_as_of": "2026-10-10",
+    "git": {
+      "commit": "8058c2da1a0b05c6115b4ad3f86bee01be2e29c6",
+      "dirty": true
+    },
+    "packages": {
+      "momentbench": "0.1.0",
+      "openai": "3.28.0",
+      "google-genai": "2.29.0",
+      "claude-agent-sdk": "0.2.165",
+      "inspect-ai": "0.3.278",
+      "pillow": "12.3.0"
+    },
+    "queries_sha": "5503ccb34837ae0f",
+    "num_queries": 22,
+    "corpus_sha": "ca25d3017581a1ba",
+    "transcripts_sha": "a5fc537971ab4349",
+    "system_prompt_sha": "a1129b1fcbc1bedb",
+    "tools_sha": "c6b04aab02de6656",
+    "budget": {
+      "max_steps": 30,
+      "max_frames": 64,
+      "max_tool_calls": 60
+    },
+    "modalities": "frames+transcripts",
+    "anonymize_titles": false,
+    "compatibility_key": "cdbaf0bed57141cf",
+    "resolved_models": [
+      "claude-haiku-5-5"
+    ]
+  },
+  "rescore_excluded": 0,
+  "budget": {
+    "max_steps": 30,
+    "max_frames": 64,
+    "max_tool_calls": 60
+  },
+  "pricing": {
+    "input_per_mtok": 0.1,
+    "output_per_mtok": 0.5,
+    "cache_read_per_mtok": null,
+    "cache_write_per_mtok": null
+  },
+  "timestamp": "2026-10-14T14:39:22Z",
+  "summary": {
+    "num_queries": 22,
+    "num_trials": 1,
+    "recall_at_1": 0.2727272727272727,
+    "recall_at_1_ci95": [
+      0.09090909090909091,
+      0.45454545454545453
+    ],
+    "recall_at_5": 0.2727272727272727,
+    "mean_temporal_iou": 0.25848378966132557,
+    "mean_cost_usd_per_query": 0.016610895454545454,
+    "mean_input_tokens_per_query": 19.454545454545453,
+    "mean_output_tokens_per_query": 4010.6363636363635,
+    "mean_frames_per_query": 44.95454545454545,
+    "mean_steps_per_query": 13.409090909090908,
+    "failed_trials": 0,
+    "error_trials": 0,
+    "recall_at_1_by_iou": {
+      "0.3": 0.4090909090909091,
+      "0.5": 0.2727272727272727,
+      "0.7": 0.09090909090909091
+    },
+    "positive_recall_at_1": 0.2857142857142857,
+    "no_answer_accuracy": 0.0,
+    "false_positive_rate": 1.0,
+    "abstention_on_positives": 0.14285714285714285,
+    "mean_tiou_positive": 0.2707925415499601,
+    "by_tier": {
+      "1": {
+        "num_queries": 12,
+        "recall_at_1": 0.25,
+        "recall_at_1_ci95": [
+          0,
+          0.5
+        ]
+      },
+      "2": {
+        "num_queries": 5,
+        "recall_at_1": 0.2,
+        "recall_at_1_ci95": [
+          0,
+          0.6
+        ]
+      },
+      "3": {
+        "num_queries": 1,
+        "recall_at_1": 0,
+        "recall_at_1_ci95": [
+          0,
+          0
+        ]
+      },
+      "4": {
+        "num_queries": 4,
+        "recall_at_1": 0.5,
+        "recall_at_1_ci95": [
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "trials": [
+    {
+      "query_id": "q-film-0111",
+      "trial": 0,
+      "tier": 4,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.6899999999999977,
+      "no_answer": false,
+      "query_text_sha": "f037e180fe7acc47",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.6899999999999977,
+      "usage": {
+        "steps": 11,
+        "tool_calls": 9,
+        "frames": 52,
+        "input_tokens": 18,
+        "output_tokens": 5407,
+        "cache_read_tokens": 123533,
+        "cache_write_tokens": 27557
+      },
+      "cost_usd": 0.0178143,
+      "latency_s": 74.0228720830055,
+      "moments": [
+        {
+          "asset_id": "big-buck-bunny",
+          "t_in": 185.0,
+          "t_out": 194.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "squirrel butterfly rock"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 0,
+            "t_end": 596,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 60,
+            "t_end": 140,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 140,
+            "t_end": 260,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 200,
+            "t_end": 250,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 190,
+            "t_end": 230,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 180,
+            "t_end": 200,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 185,
+            "t_end": 197,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "big-buck-bunny",
+                "t_in": 185,
+                "t_out": 194
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-0118",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.15181818181818327,
+      "no_answer": false,
+      "query_text_sha": "b9e17cbbafd88a6a",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.15181818181818327,
+      "usage": {
+        "steps": 8,
+        "tool_calls": 6,
+        "frames": 32,
+        "input_tokens": 12,
+        "output_tokens": 2312,
+        "cache_read_tokens": 50691,
+        "cache_write_tokens": 16847
+      },
+      "cost_usd": 0.007911,
+      "latency_s": 43.66436695802258,
+      "moments": [
+        {
+          "asset_id": "big-buck-bunny",
+          "t_in": 253.0,
+          "t_out": 264.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "rabbit stake sharpen stone",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 0,
+            "t_end": 300,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 300,
+            "t_end": 596,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 235,
+            "t_end": 290,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 248,
+            "t_end": 266,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "big-buck-bunny",
+                "t_in": 253,
+                "t_out": 264
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-3002",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "no_answer": false,
+      "query_text_sha": "1b7177b418aa50d3",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 12,
+        "tool_calls": 10,
+        "frames": 54,
+        "input_tokens": 22,
+        "output_tokens": 3741,
+        "cache_read_tokens": 158669,
+        "cache_write_tokens": 27032
+      },
+      "cost_usd": 0.020442800000000004,
+      "latency_s": 70.879102625011,
+      "moments": [
+        {
+          "asset_id": "big-buck-bunny",
+          "t_in": 189.0,
+          "t_out": 198.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "big grey rabbit meadow fruit",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 0,
+            "t_end": 590,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 60,
+            "t_end": 120,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 96,
+            "t_end": 112,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 112,
+            "t_end": 135,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 135,
+            "t_end": 152,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 152,
+            "t_end": 200,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 178,
+            "t_end": 200,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 189,
+            "t_end": 199,
+            "num_frames": 4
+          },
+          "is_error": false,
+          "frames": 4
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "big-buck-bunny",
+                "t_in": 189,
+                "t_out": 198
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-1001",
+      "trial": 0,
+      "tier": 4,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "no_answer": false,
+      "query_text_sha": "7e040527c21125c0",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 15,
+        "tool_calls": 13,
+        "frames": 48,
+        "input_tokens": 24,
+        "output_tokens": 4889,
+        "cache_read_tokens": 143931,
+        "cache_write_tokens": 23498
+      },
+      "cost_usd": 0.0191898,
+      "latency_s": 111.1910872500157,
+      "moments": [
+        {
+          "asset_id": "sintel",
+          "t_in": 410.0,
+          "t_out": 436.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "spear snow"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "snow",
+            "asset_id": "sintel",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "spear",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 0,
+            "t_end": 888,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 560,
+            "t_end": 720,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "throws you into the snow",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "frozen wasteland",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 250,
+            "t_end": 400,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 395,
+            "t_end": 470,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 432,
+            "t_end": 462,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 402,
+            "t_end": 430,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 395,
+            "t_end": 445
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "sintel",
+                "t_in": 410,
+                "t_out": 436
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-1004",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "no_answer": false,
+      "query_text_sha": "a11f8df416159d79",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 23,
+        "tool_calls": 21,
+        "frames": 60,
+        "input_tokens": 28,
+        "output_tokens": 5166,
+        "cache_read_tokens": 201997,
+        "cache_write_tokens": 29380
+      },
+      "cost_usd": 0.0257235,
+      "latency_s": 128.24385429098038,
+      "moments": [
+        {
+          "asset_id": "sintel",
+          "t_in": 123.0,
+          "t_out": 130.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "bowl milk",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "drink",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "spring",
+            "t_start": 0,
+            "t_end": 464,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "cup",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "hands",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "tea",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "the",
+            "top_k": 5
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 0,
+            "t_end": 596,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "pour",
+            "top_k": 5
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "coffee",
+            "top_k": 5
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "soup",
+            "top_k": 5
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "eat",
+            "top_k": 5
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 0,
+            "t_end": 658,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 0,
+            "t_end": 730,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 0,
+            "t_end": 888,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 90,
+            "t_end": 200
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 110,
+            "t_end": 150,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 150,
+            "t_end": 200,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 128,
+            "t_end": 146,
+            "num_frames": 4
+          },
+          "is_error": false,
+          "frames": 4
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 120,
+            "t_end": 128,
+            "num_frames": 4
+          },
+          "is_error": false,
+          "frames": 4
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "sintel",
+                "t_in": 123,
+                "t_out": 130
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-1016",
+      "trial": 0,
+      "tier": 4,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.3076923076923077,
+      "no_answer": false,
+      "query_text_sha": "4df0bfed17ae1ca5",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.3076923076923077,
+      "usage": {
+        "steps": 13,
+        "tool_calls": 11,
+        "frames": 48,
+        "input_tokens": 22,
+        "output_tokens": 4257,
+        "cache_read_tokens": 119797,
+        "cache_write_tokens": 22889
+      },
+      "cost_usd": 0.016399300000000002,
+      "latency_s": 110.92387379199499,
+      "moments": [
+        {
+          "asset_id": "sintel",
+          "t_in": 265.0,
+          "t_out": 278.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "spring",
+            "t_start": 0,
+            "t_end": 464,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "market street",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "bird landed on beam",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "dragon",
+            "asset_id": "sintel",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "market",
+            "asset_id": "sintel",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 0,
+            "t_end": 200,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 140,
+            "t_end": 200,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 200,
+            "t_end": 260,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 255,
+            "t_end": 300,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 258,
+            "t_end": 280,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "sintel",
+                "t_in": 265,
+                "t_out": 278
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-1022",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.29749999999999943,
+      "no_answer": false,
+      "query_text_sha": "8b7b27c00bac5f52",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.29749999999999943,
+      "usage": {
+        "steps": 19,
+        "tool_calls": 17,
+        "frames": 64,
+        "input_tokens": 26,
+        "output_tokens": 8447,
+        "cache_read_tokens": 231981,
+        "cache_write_tokens": 32763
+      },
+      "cost_usd": 0.030700500000000002,
+      "latency_s": 141.97401537495898,
+      "moments": [
+        {
+          "asset_id": "sintel",
+          "t_in": 379.0,
+          "t_out": 387.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "bamboo red hair girl running",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "bamboo",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "spring",
+            "t_start": 0,
+            "t_end": 464,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "running through the forest",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 0,
+            "t_end": 888,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 340,
+            "t_end": 420,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 340,
+            "t_end": 420
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 420,
+            "t_end": 560,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "Sintel",
+            "asset_id": "sintel",
+            "top_k": 20
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 120,
+            "t_end": 260,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 0,
+            "t_end": 120,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 260,
+            "t_end": 340,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 378,
+            "t_end": 382,
+            "num_frames": 2
+          },
+          "is_error": false,
+          "frames": 2
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 500,
+            "t_end": 508,
+            "num_frames": 2
+          },
+          "is_error": false,
+          "frames": 2
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 380,
+            "t_end": 400,
+            "num_frames": 4
+          },
+          "is_error": false,
+          "frames": 4
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 381,
+            "t_end": 390,
+            "num_frames": 4
+          },
+          "is_error": false,
+          "frames": 4
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "sintel",
+                "t_in": 379,
+                "t_out": 387
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-1035",
+      "trial": 0,
+      "tier": 4,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.5795454545454546,
+      "no_answer": false,
+      "query_text_sha": "90903fe7595a40bb",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.5795454545454546,
+      "usage": {
+        "steps": 21,
+        "tool_calls": 19,
+        "frames": 64,
+        "input_tokens": 22,
+        "output_tokens": 5022,
+        "cache_read_tokens": 169343,
+        "cache_write_tokens": 29581
+      },
+      "cost_usd": 0.022405599999999998,
+      "latency_s": 87.39445491600782,
+      "moments": [
+        {
+          "asset_id": "tears-of-steel",
+          "t_in": 138.0,
+          "t_out": 160.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "overgrown cathedral organ"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "juice carton rifle"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "organ"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "rifle"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "juice"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 0,
+            "t_end": 888,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 0,
+            "t_end": 734,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 0,
+            "t_end": 658,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 0,
+            "t_end": 730,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 0,
+            "t_end": 231,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "spring",
+            "t_start": 0,
+            "t_end": 464,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "cathedral"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "sniper"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "church"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 90,
+            "t_end": 125,
+            "num_frames": 4
+          },
+          "is_error": false,
+          "frames": 4
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 0,
+            "t_end": 596,
+            "num_frames": 4
+          },
+          "is_error": false,
+          "frames": 4
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 100,
+            "t_end": 220
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 120,
+            "t_end": 200,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "tears-of-steel",
+                "t_in": 138,
+                "t_out": 160
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-1061",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.5205479452054997,
+      "no_answer": false,
+      "query_text_sha": "6e2eaf84642fa2b8",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.5205479452054997,
+      "usage": {
+        "steps": 10,
+        "tool_calls": 8,
+        "frames": 40,
+        "input_tokens": 16,
+        "output_tokens": 3287,
+        "cache_read_tokens": 76629,
+        "cache_write_tokens": 20056
+      },
+      "cost_usd": 0.0113136,
+      "latency_s": 57.240402875002474,
+      "moments": [
+        {
+          "asset_id": "tears-of-steel",
+          "t_in": 598.8,
+          "t_out": 602.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "director of photography",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "robot blue line art orange",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 0,
+            "t_end": 231,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 0,
+            "t_end": 658,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 600,
+            "t_end": 734,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 585,
+            "t_end": 612,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 597,
+            "t_end": 604,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "tears-of-steel",
+                "t_in": 598.8,
+                "t_out": 602
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-4014",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "no_answer": false,
+      "query_text_sha": "35ea1622074209de",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 16,
+        "tool_calls": 14,
+        "frames": 40,
+        "input_tokens": 22,
+        "output_tokens": 4373,
+        "cache_read_tokens": 109821,
+        "cache_write_tokens": 21280
+      },
+      "cost_usd": 0.0152988,
+      "latency_s": 61.749453000025824,
+      "moments": [
+        {
+          "asset_id": "tears-of-steel",
+          "t_in": 400.5,
+          "t_out": 411.5,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "red eye device glowing",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "cyborg eye implant",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 0,
+            "t_end": 231
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 0,
+            "t_end": 231,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "eye",
+            "asset_id": "tears-of-steel",
+            "top_k": 15
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "eye",
+            "asset_id": "sintel",
+            "top_k": 15
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 0,
+            "t_end": 734,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "look at me",
+            "asset_id": "tears-of-steel",
+            "top_k": 20
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "robot machine scan",
+            "asset_id": "tears-of-steel",
+            "top_k": 20
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 300,
+            "t_end": 420,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 380,
+            "t_end": 420
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 394,
+            "t_end": 412,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 399,
+            "t_end": 411,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "tears-of-steel",
+                "t_in": 400.5,
+                "t_out": 411.5
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-4017",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "no_answer": false,
+      "query_text_sha": "34ca7d5b04a73505",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 17,
+        "tool_calls": 15,
+        "frames": 56,
+        "input_tokens": 18,
+        "output_tokens": 3569,
+        "cache_read_tokens": 106366,
+        "cache_write_tokens": 26293
+      },
+      "cost_usd": 0.0150522,
+      "latency_s": 71.94900004199008,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "ERROR",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "playback",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "control panel",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "error warning red light",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "press the button",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 0,
+            "t_end": 734,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 0,
+            "t_end": 658,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 480,
+            "t_end": 560,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "alarm beep system failure",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "screen display green",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 0,
+            "t_end": 231,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 0,
+            "t_end": 730,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 0,
+            "t_end": 888,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "spring",
+            "t_start": 0,
+            "t_end": 464,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-2000",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "no_answer": false,
+      "query_text_sha": "a196606bc242c59d",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 16,
+        "tool_calls": 14,
+        "frames": 60,
+        "input_tokens": 26,
+        "output_tokens": 5435,
+        "cache_read_tokens": 199794,
+        "cache_write_tokens": 31967
+      },
+      "cost_usd": 0.0258962,
+      "latency_s": 84.17069129203446,
+      "moments": [
+        {
+          "asset_id": "elephants-dream",
+          "t_in": 455.0,
+          "t_out": 472.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "wall with bolts",
+            "top_k": 5
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 0,
+            "t_end": 734,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "Emo",
+            "asset_id": "elephants-dream",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 0,
+            "t_end": 658,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 260,
+            "t_end": 300,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 340,
+            "t_end": 400,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "I",
+            "asset_id": "tears-of-steel",
+            "top_k": 20
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "wall",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 300,
+            "t_end": 400,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 440,
+            "t_end": 490,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 452,
+            "t_end": 470,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 440,
+            "t_end": 500
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 462,
+            "t_end": 478,
+            "num_frames": 4
+          },
+          "is_error": false,
+          "frames": 4
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "elephants-dream",
+                "t_in": 455,
+                "t_out": 472
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-2002",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.8050259965337956,
+      "no_answer": false,
+      "query_text_sha": "2ca3e446aa92e263",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.8050259965337956,
+      "usage": {
+        "steps": 15,
+        "tool_calls": 13,
+        "frames": 61,
+        "input_tokens": 20,
+        "output_tokens": 4098,
+        "cache_read_tokens": 135108,
+        "cache_write_tokens": 28112
+      },
+      "cost_usd": 0.018373,
+      "latency_s": 89.95032387500396,
+      "moments": [
+        {
+          "asset_id": "elephants-dream",
+          "t_in": 69.0,
+          "t_out": 79.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "doorway",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "cables",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 0,
+            "t_end": 231,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 0,
+            "t_end": 734,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 140,
+            "t_end": 200,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 140,
+            "t_end": 200
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 0,
+            "t_end": 658,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 0,
+            "t_end": 730,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "door",
+            "asset_id": "elephants-dream",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 80,
+            "t_end": 200,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 60,
+            "t_end": 100,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 64,
+            "t_end": 80,
+            "num_frames": 5
+          },
+          "is_error": false,
+          "frames": 5
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "elephants-dream",
+                "t_in": 69,
+                "t_out": 79
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-2041",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "no_answer": false,
+      "query_text_sha": "3c553fba90116694",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 16,
+        "tool_calls": 14,
+        "frames": 48,
+        "input_tokens": 22,
+        "output_tokens": 4516,
+        "cache_read_tokens": 130743,
+        "cache_write_tokens": 24048
+      },
+      "cost_usd": 0.0177393,
+      "latency_s": 75.54843083297601,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "trapdoor barbershop",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 0,
+            "t_end": 231,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "floor",
+            "asset_id": "agent-327-operation-barbershop",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "trap door",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "hatch open basement drop down",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "barber shop chair",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 120,
+            "t_end": 200,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 140,
+            "t_end": 175,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 100,
+            "t_end": 231
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 175,
+            "t_end": 210,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 40,
+            "t_end": 120,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 0,
+            "t_end": 40,
+            "num_frames": 4
+          },
+          "is_error": false,
+          "frames": 4
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 210,
+            "t_end": 231,
+            "num_frames": 4
+          },
+          "is_error": false,
+          "frames": 4
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-5001",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.5802469135802468,
+      "no_answer": false,
+      "query_text_sha": "3d604b6e7f91d73e",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.5802469135802468,
+      "usage": {
+        "steps": 7,
+        "tool_calls": 5,
+        "frames": 14,
+        "input_tokens": 10,
+        "output_tokens": 1114,
+        "cache_read_tokens": 28252,
+        "cache_write_tokens": 9871
+      },
+      "cost_usd": 0.004370300000000001,
+      "latency_s": 20.020602458971553,
+      "moments": [
+        {
+          "asset_id": "elephants-dream",
+          "t_in": 175.0,
+          "t_out": 180.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "Emo, look, I mean listen",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 168,
+            "t_end": 190,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 165,
+            "t_end": 195
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 172,
+            "t_end": 182,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "elephants-dream",
+                "t_in": 175,
+                "t_out": 180
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-5014",
+      "trial": 0,
+      "tier": 3,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "no_answer": true,
+      "query_text_sha": "b29035660fe793a6",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 11,
+        "tool_calls": 9,
+        "frames": 48,
+        "input_tokens": 20,
+        "output_tokens": 3823,
+        "cache_read_tokens": 106288,
+        "cache_write_tokens": 22239
+      },
+      "cost_usd": 0.0147662,
+      "latency_s": 67.05195716698654,
+      "moments": [
+        {
+          "asset_id": "cosmos-laundromat",
+          "t_in": 300.0,
+          "t_out": 326.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "black sheep red lens glasses"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 170,
+            "t_end": 230,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "sheep",
+            "top_k": 20
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 230,
+            "t_end": 420,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 340,
+            "t_end": 400,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 360,
+            "t_end": 390,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 400,
+            "t_end": 480,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 288,
+            "t_end": 330,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "cosmos-laundromat",
+                "t_in": 300,
+                "t_out": 326
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-6015",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.3328530259365999,
+      "no_answer": false,
+      "query_text_sha": "50c37547ef2bbfef",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.3328530259365999,
+      "usage": {
+        "steps": 5,
+        "tool_calls": 3,
+        "frames": 8,
+        "input_tokens": 8,
+        "output_tokens": 918,
+        "cache_read_tokens": 16530,
+        "cache_write_tokens": 6986
+      },
+      "cost_usd": 0.0028114,
+      "latency_s": 20.46061520796502,
+      "moments": [
+        {
+          "asset_id": "elephants-dream",
+          "t_in": 93.5,
+          "t_out": 101.5,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "Follow me",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 88,
+            "t_end": 106,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "elephants-dream",
+                "t_in": 93.5,
+                "t_out": 101.5
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-6022",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.374666666666667,
+      "no_answer": false,
+      "query_text_sha": "cf1f6ad58d0f7b16",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.374666666666667,
+      "usage": {
+        "steps": 8,
+        "tool_calls": 6,
+        "frames": 16,
+        "input_tokens": 10,
+        "output_tokens": 1819,
+        "cache_read_tokens": 30249,
+        "cache_write_tokens": 12094
+      },
+      "cost_usd": 0.005144800000000001,
+      "latency_s": 28.329368499980774,
+      "moments": [
+        {
+          "asset_id": "elephants-dream",
+          "t_in": 395.0,
+          "t_out": 410.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "can you hear that listen",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 385,
+            "t_end": 420
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 385,
+            "t_end": 415,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 340,
+            "t_end": 400
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 360,
+            "t_end": 400,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "elephants-dream",
+                "t_in": 395,
+                "t_out": 410
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-7001",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "no_answer": false,
+      "query_text_sha": "d3f67e227b6ed714",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 13,
+        "tool_calls": 11,
+        "frames": 54,
+        "input_tokens": 22,
+        "output_tokens": 5686,
+        "cache_read_tokens": 164560,
+        "cache_write_tokens": 26716
+      },
+      "cost_usd": 0.021972800000000004,
+      "latency_s": 127.55926841596374,
+      "moments": [],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "oh",
+            "top_k": 20
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 270,
+            "t_end": 320
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "spring",
+            "t_start": 0,
+            "t_end": 464,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 280,
+            "t_end": 320,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "spring",
+            "t_start": 230,
+            "t_end": 300,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "spring",
+            "t_start": 60,
+            "t_end": 140,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 0,
+            "t_end": 120,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "spring",
+            "t_start": 320,
+            "t_end": 400,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "spring",
+            "t_start": 140,
+            "t_end": 200,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "cliff valley girl sing",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": []
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-7006",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.26666666666666666,
+      "no_answer": false,
+      "query_text_sha": "a5a2f7d95c58c88a",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.26666666666666666,
+      "usage": {
+        "steps": 6,
+        "tool_calls": 4,
+        "frames": 6,
+        "input_tokens": 8,
+        "output_tokens": 926,
+        "cache_read_tokens": 15658,
+        "cache_write_tokens": 6366
+      },
+      "cost_usd": 0.0026662,
+      "latency_s": 15.191144792013802,
+      "moments": [
+        {
+          "asset_id": "elephants-dream",
+          "t_in": 267.0,
+          "t_out": 282.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "machine is like clockwork"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 260,
+            "t_end": 285,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 255,
+            "t_end": 290
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "elephants-dream",
+                "t_in": 267,
+                "t_out": 282
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-8023",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.7800802139037437,
+      "no_answer": false,
+      "query_text_sha": "39ee829437b8740a",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.7800802139037437,
+      "usage": {
+        "steps": 15,
+        "tool_calls": 13,
+        "frames": 64,
+        "input_tokens": 28,
+        "output_tokens": 4788,
+        "cache_read_tokens": 214643,
+        "cache_write_tokens": 29928
+      },
+      "cost_usd": 0.0268539,
+      "latency_s": 195.66148016700754,
+      "moments": [
+        {
+          "asset_id": "cosmos-laundromat",
+          "t_in": 84.0,
+          "t_out": 98.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "spring",
+            "t_start": 0,
+            "t_end": 464,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "sheep",
+            "top_k": 20
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "lamb",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 0,
+            "t_end": 240,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 200,
+            "t_end": 300,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 250,
+            "t_end": 290,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 300,
+            "t_end": 400,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 170,
+            "t_end": 400
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 400,
+            "t_end": 730,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 90,
+            "t_end": 175,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 80,
+            "t_end": 110,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 84,
+            "t_end": 100,
+            "num_frames": 8
+          },
+          "is_error": true,
+          "frames": 0
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "cosmos-laundromat",
+                "t_in": 84,
+                "t_out": 98
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-8024",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "no_answer": false,
+      "query_text_sha": "dc785f450a85108b",
+      "resolved_model": "claude-haiku-5-5",
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 18,
+        "tool_calls": 16,
+        "frames": 52,
+        "input_tokens": 24,
+        "output_tokens": 4641,
+        "cache_read_tokens": 175260,
+        "cache_write_tokens": 27453
+      },
+      "cost_usd": 0.022594200000000002,
+      "latency_s": 215.38219979102723,
+      "moments": [
+        {
+          "asset_id": "cosmos-laundromat",
+          "t_in": 299.5,
+          "t_out": 311.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "spring",
+            "t_start": 0,
+            "t_end": 464,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "sheep",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "tag on its face",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "black-faced sheep",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "sheep ear tag collar device",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 170,
+            "t_end": 235,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 160,
+            "t_end": 240
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 218,
+            "t_end": 245,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 245,
+            "t_end": 290,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "Frank",
+            "asset_id": "cosmos-laundromat",
+            "top_k": 20
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 100,
+            "t_end": 170,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "sticker stuck face",
+            "asset_id": "cosmos-laundromat",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 240,
+            "t_end": 340
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 250,
+            "t_end": 300,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 292,
+            "t_end": 314,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "cosmos-laundromat",
+                "t_in": 299.5,
+                "t_out": 311
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    }
+  ]
+}

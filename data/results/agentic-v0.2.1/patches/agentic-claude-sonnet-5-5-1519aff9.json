@@ -1,0 +1,2459 @@
+{
+  "run_id": "agentic-claude-sonnet-5-5-1519aff9",
+  "track": "agentic",
+  "model_id": "claude-sonnet-5-5",
+  "effort": null,
+  "harness": "claude-code",
+  "modalities": "frames+transcripts",
+  "anonymize_titles": false,
+  "corpus_assets": 27,
+  "reportable": true,
+  "corpus_receipt": {
+    "big-buck-bunny": "b2acb9bddcb384f9762f919af8f6d8b4be781e40ad2f35a37cc12beef55b9a27",
+    "sintel": "f12c070e295b38cfc94ebd61ac3357c3bac82d1015985f1e8da93a4c6496c46d",
+    "tears-of-steel": "efa9062d9cdb7a338e40ad530dfdf234806743f29ae6a1a136b97ece4e588e8f",
+    "elephants-dream": "6fc295e0e92835316ec95929ccfc664b05ed2434f673e6f5e684f98f7558a547",
+    "cosmos-laundromat": "ed4f43b895920072f8e995520d85f8470708a2909258ab5b6d102e7a3f5fca0f",
+    "spring": "916523651f3d6a38ec98a9f35e48daf7591e21baba473e1d1cf9a7c5dac42031",
+    "agent-327-operation-barbershop": "83a28babdec6f16930232176254f8da2b4ccdd379811371dbdcf928308a6166f",
+    "nasa-artemis-ii-launch-recap": "dc8d66b5fdf2998bfef58c6044e31985104e97f8b1405607813d2ccd41149ad6",
+    "nasa-artemis-ii-welcome-home": "2583bd5b2d6782e0ec060acf5af24f3ed237eb6782c0f3fc3a6a46278a7df8e1",
+    "nasa-artemis-ii-mission-recap": "7aa1e2380756db5458bf248edfc380e9db4829febf434508d36de38d00fd58d8",
+    "nasa-artemis-i-launch-recap": "18935adac9d2a1f99894a5b3291eceaec04ac1b9f6eace01afd233f0c939c0ca",
+    "nasa-how-to-recover-a-spacecraft": "b4b43f5c48ecef9694f64036e35063b7521a061b92ba53aa4883ca80ac8ed39b",
+    "nasa-minute-2026-10-02": "e0ec6f1db55ef3e700bd368212ce253e06ffd509314323d1ba49588fba502d4a",
+    "nasa-minute-2026-09-04": "5360beae61eec38e70b7b604d840174110e7bc758ab479c8c3ea654ddd296ab8",
+    "nasa-minute-2026-08-21": "8cf0db6a14b4c7f3806a3ff9724de232fab18a2a510a68e894037eb1932cb122",
+    "nasa-minute-2026-05-08": "0897ea812952789a178acc099bc73eacd093431b70df6751b23d08a04f31bd11",
+    "nasa-minute-2026-03-13": "533322e071ba6dec48bd1b232fc08a816bc5670e6ea91cb47fc07578c8905f25",
+    "nasa-minute-2026-02-20": "8d035866757d14d436ee2d581d6e6a6c2a14b50f857b7a353e33583643113dbb",
+    "nasa-minute-2026-01-23": "46be4c783b67863119fa21e0558090bb1c91efcd019077672440a6a510cb449c",
+    "nasa-minute-2026-05-22": "26417c23b52ba05ed0f7ab3d0e4dc13d57fdf094202aadacb1eab8b7d076352d",
+    "nasa-how-perseverance-drives": "d8b3e0553b1606fdb304fcb93749cf20712627daf83e75ca215ba45eb734ea21",
+    "nasa-perseverance-twin-rover": "73555afafd411ca81c40d68fdd875f2ff59b6ddbec683357750a3ef30ee9ffb6",
+    "nasa-viper-lander-exit-test": "3ec4b3a0c3123a0823329ee8a79f53197904a3084f22cc63ad21becf92707195",
+    "nasa-viper-slope-lab-testing": "99fcfe5261632ba0f67191b57ec82e90d90b659242856639e5b03a8d05f730d7",
+    "nasa-astrobee-flying-robots": "dc37b9530d77629d93dc85344fb3718b218afd7440d53a76872f5650af9521f4",
+    "nasa-ingenuity-fourth-flight": "7bdd5ed26c99771afb33b36a1bad45fee533f6892e54c35536b7d4a6745dc6c5",
+    "nasa-viper-egress-testing": "e3373d178d24730ac7e3a57503a0f0260f101b4bb6d5c0d83e1bea0093b3440d"
+  },
+  "identity": {
+    "queries_file_sha256": "f089254ee8013250148c6d58d5a60c639482f92a3393741ccf949090724858a6",
+    "manifest_sha256": "9d133abb16f760f3ef0611882b43b604d9323702ebb0fd976b58ca6cab80b2cf",
+    "query_filter": null,
+    "provider": "claude-code",
+    "endpoint": null,
+    "pricing_as_of": "2026-10-10",
+    "git": {
+      "commit": "8058c2da1a0b05c6115b4ad3f86bee01be2e29c6",
+      "dirty": true
+    },
+    "packages": {
+      "momentbench": "0.1.0",
+      "openai": "3.28.0",
+      "google-genai": "2.29.0",
+      "claude-agent-sdk": "0.2.165",
+      "inspect-ai": "0.3.278",
+      "pillow": "12.3.0"
+    },
+    "queries_sha": "5503ccb34837ae0f",
+    "num_queries": 22,
+    "corpus_sha": "ca25d3017581a1ba",
+    "transcripts_sha": "a5fc537971ab4349",
+    "system_prompt_sha": "a1129b1fcbc1bedb",
+    "tools_sha": "c6b04aab02de6656",
+    "budget": {
+      "max_steps": 30,
+      "max_frames": 64,
+      "max_tool_calls": 60
+    },
+    "modalities": "frames+transcripts",
+    "anonymize_titles": false,
+    "compatibility_key": "cdbaf0bed57141cf",
+    "resolved_models": [
+      "claude-sonnet-5-5"
+    ]
+  },
+  "rescore_excluded": 0,
+  "budget": {
+    "max_steps": 30,
+    "max_frames": 64,
+    "max_tool_calls": 60
+  },
+  "pricing": {
+    "input_per_mtok": 2.0,
+    "output_per_mtok": 10.0,
+    "cache_read_per_mtok": 0.2,
+    "cache_write_per_mtok": null
+  },
+  "timestamp": "2026-10-14T14:22:23Z",
+  "summary": {
+    "num_queries": 22,
+    "num_trials": 1,
+    "recall_at_1": 0.2727272727272727,
+    "recall_at_1_ci95": [
+      0.09090909090909091,
+      0.5
+    ],
+    "recall_at_5": 0.2727272727272727,
+    "mean_temporal_iou": 0.34894449047600035,
+    "mean_cost_usd_per_query": 0.05433519090909091,
+    "mean_input_tokens_per_query": 13.909090909090908,
+    "mean_output_tokens_per_query": 1272.590909090909,
+    "mean_frames_per_query": 31.818181818181817,
+    "mean_steps_per_query": 7.636363636363637,
+    "failed_trials": 0,
+    "error_trials": 0,
+    "recall_at_1_by_iou": {
+      "0.3": 0.5909090909090909,
+      "0.5": 0.2727272727272727,
+      "0.7": 0.22727272727272727
+    },
+    "positive_recall_at_1": 0.2857142857142857,
+    "no_answer_accuracy": 0.0,
+    "false_positive_rate": 1.0,
+    "abstention_on_positives": 0.0,
+    "mean_tiou_positive": 0.3655608947843813,
+    "by_tier": {
+      "1": {
+        "num_queries": 12,
+        "recall_at_1": 0.08333333333333333,
+        "recall_at_1_ci95": [
+          0,
+          0.25
+        ]
+      },
+      "2": {
+        "num_queries": 5,
+        "recall_at_1": 0.6,
+        "recall_at_1_ci95": [
+          0.2,
+          1
+        ]
+      },
+      "3": {
+        "num_queries": 1,
+        "recall_at_1": 0,
+        "recall_at_1_ci95": [
+          0,
+          0
+        ]
+      },
+      "4": {
+        "num_queries": 4,
+        "recall_at_1": 0.5,
+        "recall_at_1_ci95": [
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "trials": [
+    {
+      "query_id": "q-film-0111",
+      "trial": 0,
+      "tier": 4,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.8053977272727264,
+      "no_answer": false,
+      "query_text_sha": "f037e180fe7acc47",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.8053977272727264,
+      "usage": {
+        "steps": 7,
+        "tool_calls": 5,
+        "frames": 24,
+        "input_tokens": 12,
+        "output_tokens": 1250,
+        "cache_read_tokens": 40350,
+        "cache_write_tokens": 12851
+      },
+      "cost_usd": 0.046296,
+      "latency_s": 39.417837999993935,
+      "moments": [
+        {
+          "asset_id": "big-buck-bunny",
+          "t_in": 186.5,
+          "t_out": 193.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "squirrel butterfly rock stone rabbit"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 150,
+            "t_end": 450,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 190,
+            "t_end": 240,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 183,
+            "t_end": 197,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "big-buck-bunny",
+                "t_in": 186.5,
+                "t_out": 193
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-0118",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "no_answer": false,
+      "query_text_sha": "b9e17cbbafd88a6a",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 15,
+        "tool_calls": 13,
+        "frames": 64,
+        "input_tokens": 24,
+        "output_tokens": 3160,
+        "cache_read_tokens": 191693,
+        "cache_write_tokens": 30057
+      },
+      "cost_usd": 0.1301006,
+      "latency_s": 72.02459958399413,
+      "moments": [
+        {
+          "asset_id": "big-buck-bunny",
+          "t_in": 262.0,
+          "t_out": 290.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 200,
+            "t_end": 480,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 285,
+            "t_end": 400,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 430,
+            "t_end": 596,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 340,
+            "t_end": 470,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 400,
+            "t_end": 436,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 240,
+            "t_end": 340,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 290,
+            "t_end": 335,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 160,
+            "t_end": 240,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 244,
+            "t_end": 292,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 2
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 255,
+            "t_end": 262,
+            "num_frames": 2
+          },
+          "is_error": true,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 270,
+            "t_end": 277,
+            "num_frames": 2
+          },
+          "is_error": true,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 282,
+            "t_end": 289,
+            "num_frames": 2
+          },
+          "is_error": true,
+          "frames": 0
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "big-buck-bunny",
+                "t_in": 262,
+                "t_out": 290
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-3002",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "no_answer": false,
+      "query_text_sha": "1b7177b418aa50d3",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 6,
+        "tool_calls": 4,
+        "frames": 22,
+        "input_tokens": 12,
+        "output_tokens": 912,
+        "cache_read_tokens": 38227,
+        "cache_write_tokens": 11532
+      },
+      "cost_usd": 0.039853400000000004,
+      "latency_s": 29.435154667007737,
+      "moments": [
+        {
+          "asset_id": "big-buck-bunny",
+          "t_in": 190.0,
+          "t_out": 193.5,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 60,
+            "t_end": 420,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 130,
+            "t_end": 200,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "big-buck-bunny",
+            "t_start": 190,
+            "t_end": 200,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "big-buck-bunny",
+                "t_in": 190,
+                "t_out": 193.5
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-1001",
+      "trial": 0,
+      "tier": 4,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.39769230769230784,
+      "no_answer": false,
+      "query_text_sha": "7e040527c21125c0",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.39769230769230784,
+      "usage": {
+        "steps": 5,
+        "tool_calls": 3,
+        "frames": 16,
+        "input_tokens": 10,
+        "output_tokens": 864,
+        "cache_read_tokens": 24251,
+        "cache_write_tokens": 8369
+      },
+      "cost_usd": 0.0302482,
+      "latency_s": 27.83390554203652,
+      "moments": [
+        {
+          "asset_id": "sintel",
+          "t_in": 57.0,
+          "t_out": 70.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 0,
+            "t_end": 200,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 45,
+            "t_end": 80,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "sintel",
+                "t_in": 57,
+                "t_out": 70
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-1004",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.4533333333333347,
+      "no_answer": false,
+      "query_text_sha": "a11f8df416159d79",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.4533333333333347,
+      "usage": {
+        "steps": 8,
+        "tool_calls": 6,
+        "frames": 32,
+        "input_tokens": 14,
+        "output_tokens": 1328,
+        "cache_read_tokens": 49437,
+        "cache_write_tokens": 14016
+      },
+      "cost_usd": 0.0512274,
+      "latency_s": 42.87431712500984,
+      "moments": [
+        {
+          "asset_id": "sintel",
+          "t_in": 132.0,
+          "t_out": 141.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "bowl milk drink"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 0,
+            "t_end": 888,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "spring",
+            "t_start": 0,
+            "t_end": 464,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 90,
+            "t_end": 180,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 104,
+            "t_end": 160,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "sintel",
+                "t_in": 132,
+                "t_out": 141
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-1016",
+      "trial": 0,
+      "tier": 4,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.36363636363636365,
+      "no_answer": false,
+      "query_text_sha": "4df0bfed17ae1ca5",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.36363636363636365,
+      "usage": {
+        "steps": 5,
+        "tool_calls": 3,
+        "frames": 16,
+        "input_tokens": 10,
+        "output_tokens": 704,
+        "cache_read_tokens": 23978,
+        "cache_write_tokens": 8232
+      },
+      "cost_usd": 0.028319599999999997,
+      "latency_s": 25.285566542006563,
+      "moments": [
+        {
+          "asset_id": "sintel",
+          "t_in": 267.0,
+          "t_out": 278.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 150,
+            "t_end": 450,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 240,
+            "t_end": 300,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "sintel",
+                "t_in": 267,
+                "t_out": 278
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-1022",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.4327272727272719,
+      "no_answer": false,
+      "query_text_sha": "8b7b27c00bac5f52",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.4327272727272719,
+      "usage": {
+        "steps": 7,
+        "tool_calls": 5,
+        "frames": 32,
+        "input_tokens": 12,
+        "output_tokens": 998,
+        "cache_read_tokens": 44677,
+        "cache_write_tokens": 13730
+      },
+      "cost_usd": 0.0463994,
+      "latency_s": 28.84455691697076,
+      "moments": [
+        {
+          "asset_id": "sintel",
+          "t_in": 380.0,
+          "t_out": 385.5,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 0,
+            "t_end": 888,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 0,
+            "t_end": 730,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 340,
+            "t_end": 440,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 374,
+            "t_end": 392,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "sintel",
+                "t_in": 380,
+                "t_out": 385.5
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-1035",
+      "trial": 0,
+      "tier": 4,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.7709766162310876,
+      "no_answer": false,
+      "query_text_sha": "90903fe7595a40bb",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.7709766162310876,
+      "usage": {
+        "steps": 12,
+        "tool_calls": 10,
+        "frames": 64,
+        "input_tokens": 22,
+        "output_tokens": 2374,
+        "cache_read_tokens": 144418,
+        "cache_write_tokens": 25823
+      },
+      "cost_usd": 0.1043136,
+      "latency_s": 51.34075620904332,
+      "moments": [
+        {
+          "asset_id": "tears-of-steel",
+          "t_in": 144.0,
+          "t_out": 157.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "organ cathedral"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 0,
+            "t_end": 734,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 560,
+            "t_end": 700,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 440,
+            "t_end": 580,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 20,
+            "t_end": 160,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 80,
+            "t_end": 130,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 482,
+            "t_end": 512,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 165,
+            "t_end": 440,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 128,
+            "t_end": 170,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "tears-of-steel",
+                "t_in": 144,
+                "t_out": 157
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-1061",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.28184281842819,
+      "no_answer": false,
+      "query_text_sha": "6e2eaf84642fa2b8",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.28184281842819,
+      "usage": {
+        "steps": 8,
+        "tool_calls": 6,
+        "frames": 40,
+        "input_tokens": 16,
+        "output_tokens": 1332,
+        "cache_read_tokens": 74027,
+        "cache_write_tokens": 17633
+      },
+      "cost_usd": 0.0634234,
+      "latency_s": 34.255655999993905,
+      "moments": [
+        {
+          "asset_id": "tears-of-steel",
+          "t_in": 599.0,
+          "t_out": 605.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 0,
+            "t_end": 120,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 560,
+            "t_end": 658,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 630,
+            "t_end": 734,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 540,
+            "t_end": 640,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 596,
+            "t_end": 626,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "tears-of-steel",
+                "t_in": 599,
+                "t_out": 605
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-4014",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "no_answer": false,
+      "query_text_sha": "35ea1622074209de",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 10,
+        "tool_calls": 8,
+        "frames": 48,
+        "input_tokens": 16,
+        "output_tokens": 1825,
+        "cache_read_tokens": 70695,
+        "cache_write_tokens": 19839
+      },
+      "cost_usd": 0.072099,
+      "latency_s": 41.30306958401343,
+      "moments": [
+        {
+          "asset_id": "tears-of-steel",
+          "t_in": 427.0,
+          "t_out": 433.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "eye",
+            "asset_id": "tears-of-steel"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 0,
+            "t_end": 734,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 20,
+            "t_end": 200,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 430,
+            "t_end": 620,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 405,
+            "t_end": 440,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 585,
+            "t_end": 610,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 426,
+            "t_end": 440,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "tears-of-steel",
+                "t_in": 427,
+                "t_out": 433
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-4017",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.4,
+      "no_answer": false,
+      "query_text_sha": "34ca7d5b04a73505",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.4,
+      "usage": {
+        "steps": 10,
+        "tool_calls": 8,
+        "frames": 46,
+        "input_tokens": 18,
+        "output_tokens": 1645,
+        "cache_read_tokens": 90726,
+        "cache_write_tokens": 19018
+      },
+      "cost_usd": 0.0726672,
+      "latency_s": 39.666179042018484,
+      "moments": [
+        {
+          "asset_id": "tears-of-steel",
+          "t_in": 377.5,
+          "t_out": 382.5,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "playback error"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 0,
+            "t_end": 231,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 0,
+            "t_end": 734,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 380,
+            "t_end": 500,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 300,
+            "t_end": 380,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 378,
+            "t_end": 415,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "tears-of-steel",
+            "t_start": 372,
+            "t_end": 384,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "tears-of-steel",
+                "t_in": 377.5,
+                "t_out": 382.5
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-2000",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.7199999999999999,
+      "no_answer": false,
+      "query_text_sha": "a196606bc242c59d",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.7199999999999999,
+      "usage": {
+        "steps": 10,
+        "tool_calls": 8,
+        "frames": 54,
+        "input_tokens": 16,
+        "output_tokens": 1764,
+        "cache_read_tokens": 94563,
+        "cache_write_tokens": 24555
+      },
+      "cost_usd": 0.08569460000000001,
+      "latency_s": 48.96288025000831,
+      "moments": [
+        {
+          "asset_id": "elephants-dream",
+          "t_in": 49.0,
+          "t_out": 56.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 0,
+            "t_end": 658,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 20,
+            "t_end": 160,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 190,
+            "t_end": 330,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 340,
+            "t_end": 540,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 2,
+            "t_end": 58,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 410,
+            "t_end": 466,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 45,
+            "t_end": 57,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "elephants-dream",
+                "t_in": 49,
+                "t_out": 56
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-2002",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "no_answer": false,
+      "query_text_sha": "2ca3e446aa92e263",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 7,
+        "tool_calls": 5,
+        "frames": 30,
+        "input_tokens": 14,
+        "output_tokens": 1059,
+        "cache_read_tokens": 54969,
+        "cache_write_tokens": 14723
+      },
+      "cost_usd": 0.0510578,
+      "latency_s": 28.46109337505186,
+      "moments": [
+        {
+          "asset_id": "elephants-dream",
+          "t_in": 233.0,
+          "t_out": 244.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 0,
+            "t_end": 658,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 20,
+            "t_end": 190,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 195,
+            "t_end": 370,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "elephants-dream",
+            "t_start": 236,
+            "t_end": 262,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "elephants-dream",
+                "t_in": 233,
+                "t_out": 244
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-2041",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "no_answer": false,
+      "query_text_sha": "3c553fba90116694",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 6,
+        "tool_calls": 4,
+        "frames": 24,
+        "input_tokens": 12,
+        "output_tokens": 744,
+        "cache_read_tokens": 36288,
+        "cache_write_tokens": 10932
+      },
+      "cost_usd": 0.036585599999999996,
+      "latency_s": 28.648940333980136,
+      "moments": [
+        {
+          "asset_id": "agent-327-operation-barbershop",
+          "t_in": 161.0,
+          "t_out": 167.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 0,
+            "t_end": 231,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 132,
+            "t_end": 200,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "agent-327-operation-barbershop",
+            "t_start": 150,
+            "t_end": 172,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "agent-327-operation-barbershop",
+                "t_in": 161,
+                "t_out": 167
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-5001",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.6684303350970018,
+      "no_answer": false,
+      "query_text_sha": "3d604b6e7f91d73e",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.6684303350970018,
+      "usage": {
+        "steps": 3,
+        "tool_calls": 1,
+        "frames": 0,
+        "input_tokens": 6,
+        "output_tokens": 289,
+        "cache_read_tokens": 6484,
+        "cache_write_tokens": 1373
+      },
+      "cost_usd": 0.0069448,
+      "latency_s": 8.702259042009246,
+      "moments": [
+        {
+          "asset_id": "elephants-dream",
+          "t_in": 174.5,
+          "t_out": 180.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "Emo, look, I mean listen",
+            "top_k": 5
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "elephants-dream",
+                "t_in": 174.5,
+                "t_out": 180
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-5014",
+      "trial": 0,
+      "tier": 3,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "no_answer": true,
+      "query_text_sha": "b29035660fe793a6",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 12,
+        "tool_calls": 10,
+        "frames": 64,
+        "input_tokens": 22,
+        "output_tokens": 2315,
+        "cache_read_tokens": 152204,
+        "cache_write_tokens": 25473
+      },
+      "cost_usd": 0.1045808,
+      "latency_s": 74.02649954101071,
+      "moments": [
+        {
+          "asset_id": "cosmos-laundromat",
+          "t_in": 296.0,
+          "t_out": 312.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 0,
+            "t_end": 150,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 150,
+            "t_end": 400,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 400,
+            "t_end": 600,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 290,
+            "t_end": 400,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 600,
+            "t_end": 730,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 340,
+            "t_end": 372,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 374,
+            "t_end": 400,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 322,
+            "t_end": 340,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 292,
+            "t_end": 312,
+            "num_frames": 8
+          },
+          "is_error": true,
+          "frames": 0
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "cosmos-laundromat",
+                "t_in": 296,
+                "t_out": 312
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-6015",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.34529147982062824,
+      "no_answer": false,
+      "query_text_sha": "50c37547ef2bbfef",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.34529147982062824,
+      "usage": {
+        "steps": 3,
+        "tool_calls": 1,
+        "frames": 0,
+        "input_tokens": 6,
+        "output_tokens": 293,
+        "cache_read_tokens": 6677,
+        "cache_write_tokens": 1573
+      },
+      "cost_usd": 0.007423399999999999,
+      "latency_s": 9.208538167004008,
+      "moments": [
+        {
+          "asset_id": "elephants-dream",
+          "t_in": 93.5,
+          "t_out": 101.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "Follow me!",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "elephants-dream",
+                "t_in": 93.5,
+                "t_out": 101
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-6022",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.7824858757062193,
+      "no_answer": false,
+      "query_text_sha": "cf1f6ad58d0f7b16",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.7824858757062193,
+      "usage": {
+        "steps": 3,
+        "tool_calls": 1,
+        "frames": 0,
+        "input_tokens": 6,
+        "output_tokens": 321,
+        "cache_read_tokens": 6778,
+        "cache_write_tokens": 1659
+      },
+      "cost_usd": 0.007895600000000001,
+      "latency_s": 13.515780917019583,
+      "moments": [
+        {
+          "asset_id": "elephants-dream",
+          "t_in": 398.0,
+          "t_out": 405.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "listen, can you hear that?",
+            "top_k": 10
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "elephants-dream",
+                "t_in": 398,
+                "t_out": 405
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-7001",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "best_temporal_iou": 0.7557142857142859,
+      "no_answer": false,
+      "query_text_sha": "d3f67e227b6ed714",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.7557142857142859,
+      "usage": {
+        "steps": 8,
+        "tool_calls": 6,
+        "frames": 24,
+        "input_tokens": 14,
+        "output_tokens": 1087,
+        "cache_read_tokens": 48759,
+        "cache_write_tokens": 12539
+      },
+      "cost_usd": 0.045727800000000006,
+      "latency_s": 39.23193404194899,
+      "moments": [
+        {
+          "asset_id": "sintel",
+          "t_in": 683.0,
+          "t_out": 704.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 0,
+            "t_end": 240,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 0,
+            "t_end": 240
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "read_transcript",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 700,
+            "t_end": 888
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 700,
+            "t_end": 750,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "sintel",
+            "t_start": 660,
+            "t_end": 706,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "sintel",
+                "t_in": 683,
+                "t_out": 704
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-7006",
+      "trial": 0,
+      "tier": 2,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.4992503748125901,
+      "no_answer": false,
+      "query_text_sha": "a5a2f7d95c58c88a",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.4992503748125901,
+      "usage": {
+        "steps": 3,
+        "tool_calls": 1,
+        "frames": 0,
+        "input_tokens": 6,
+        "output_tokens": 293,
+        "cache_read_tokens": 6379,
+        "cache_write_tokens": 1271
+      },
+      "cost_usd": 0.0067598,
+      "latency_s": 8.93833866697969,
+      "moments": [
+        {
+          "asset_id": "elephants-dream",
+          "t_in": 270.0,
+          "t_out": 276.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "search_transcript",
+          "arguments": {
+            "query": "like clockwork machine"
+          },
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "elephants-dream",
+                "t_in": 270,
+                "t_out": 276
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-8023",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "no_answer": false,
+      "query_text_sha": "39ee829437b8740a",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 12,
+        "tool_calls": 10,
+        "frames": 64,
+        "input_tokens": 22,
+        "output_tokens": 2100,
+        "cache_read_tokens": 148707,
+        "cache_write_tokens": 24736
+      },
+      "cost_usd": 0.1002574,
+      "latency_s": 86.46136733295862,
+      "moments": [
+        {
+          "asset_id": "cosmos-laundromat",
+          "t_in": 100.0,
+          "t_out": 125.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "spring",
+            "t_start": 0,
+            "t_end": 464,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "spring",
+            "t_start": 2,
+            "t_end": 60,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "spring",
+            "t_start": 62,
+            "t_end": 130,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "spring",
+            "t_start": 395,
+            "t_end": 462,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "spring",
+            "t_start": 330,
+            "t_end": 395,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 0,
+            "t_end": 120,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 112,
+            "t_end": 168,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 170,
+            "t_end": 260,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 92,
+            "t_end": 128,
+            "num_frames": 8
+          },
+          "is_error": true,
+          "frames": 0
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "cosmos-laundromat",
+                "t_in": 100,
+                "t_out": 125
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "query_id": "q-film-8024",
+      "trial": 0,
+      "tier": 1,
+      "vertical": "film",
+      "outcome": "submitted",
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "best_temporal_iou": 0.0,
+      "no_answer": false,
+      "query_text_sha": "dc785f450a85108b",
+      "resolved_model": "claude-sonnet-5-5",
+      "top1_iou": 0.0,
+      "usage": {
+        "steps": 8,
+        "tool_calls": 6,
+        "frames": 36,
+        "input_tokens": 16,
+        "output_tokens": 1340,
+        "cache_read_tokens": 67244,
+        "cache_write_tokens": 15309
+      },
+      "cost_usd": 0.0574988,
+      "latency_s": 51.09651795902755,
+      "moments": [
+        {
+          "asset_id": "cosmos-laundromat",
+          "t_in": 348.0,
+          "t_out": 359.0,
+          "metadata": {}
+        }
+      ],
+      "trace": [
+        {
+          "tool": "list_assets",
+          "arguments": {},
+          "is_error": false,
+          "frames": 0
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 0,
+            "t_end": 150,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 150,
+            "t_end": 330,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 325,
+            "t_end": 400,
+            "num_frames": 8
+          },
+          "is_error": false,
+          "frames": 8
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 372,
+            "t_end": 388,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "sample_frames",
+          "arguments": {
+            "asset_id": "cosmos-laundromat",
+            "t_start": 350,
+            "t_end": 366,
+            "num_frames": 6
+          },
+          "is_error": false,
+          "frames": 6
+        },
+        {
+          "tool": "submit_answer",
+          "arguments": {
+            "moments": [
+              {
+                "asset_id": "cosmos-laundromat",
+                "t_in": 348,
+                "t_out": 359
+              }
+            ]
+          }
+        }
+      ],
+      "error": null
+    }
+  ]
+}

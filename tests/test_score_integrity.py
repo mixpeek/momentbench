@@ -679,3 +679,38 @@ class TestTranscriptControl:  # audit 2: R12
         assert by_id["q1"].moments and by_id["q1"].usage.frames == 0
         assert [x["tool"] for x in by_id["q1"].trace][0] == "search_transcript"
         assert run.model_id == "baseline-transcript"
+
+
+class TestMergeRuns:  # MO-4530
+    async def test_a_rerun_of_reworded_queries_fills_the_hole(self, tmp_path):
+        import importlib.util
+
+        from momentbench.submission import agentic_entry
+        from tests.test_agentic import TRANSCRIPTS
+
+        spec = importlib.util.spec_from_file_location(
+            "merge_runs", Path(__file__).resolve().parents[1] / "scripts/merge_runs.py")
+        m = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(m)
+
+        sub = TestSubmission()
+        manifest, _ = sub._release(tmp_path)
+        abstain = [[("submit_answer", {"moments": []})]]
+        base = await run_agentic_benchmark([NO_ANSWER, make_query()], ScriptedModel(abstain),
+                                           verified_corpus(tmp_path), trials=1)
+        reworded = make_query().model_copy(update={"text": "the hearing begins"})
+        qfile = sub._file(tmp_path, [NO_ANSWER, reworded])
+        patch = await run_agentic_benchmark([reworded], ScriptedModel([[SUBMIT_GOLD]]),
+                                            verified_corpus(tmp_path), trials=1)
+        merged = m.merge(base, patch, qfile, manifest, TRANSCRIPTS)
+        assert {t.query_id for t in merged.trials} == {"na", "q1"}
+        assert merged.summary.recall_at_1 == 1.0
+        assert merged.identity["merged_from"] == [base.run_id, patch.run_id]
+        entry = agentic_entry(merged, qfile, manifest=manifest, transcripts=TRANSCRIPTS)
+        assert entry["compatibility_key"] == merged.identity["compatibility_key"]
+
+        other = await run_agentic_benchmark([reworded], ScriptedModel([[SUBMIT_GOLD]]),
+                                            verified_corpus(tmp_path), trials=1,
+                                            budget=Budget(max_frames=8))
+        with pytest.raises(SystemExit, match="budget"):
+            m.merge(base, other, qfile, manifest, TRANSCRIPTS)
