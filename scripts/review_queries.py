@@ -146,7 +146,7 @@ def apply(args: argparse.Namespace) -> None:
     for f in args.decisions:  # one file per review page; query ids are unique across them
         decisions.update(json.loads(Path(f).read_text()))
     today = datetime.date.today().isoformat()
-    now = datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+    now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     human = args.kind == "human"
     kept, counts = [], {"accept": 0, "fix": 0, "reject": 0, "unreviewed": 0}
     for q in queries:

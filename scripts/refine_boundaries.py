@@ -195,7 +195,7 @@ async def main() -> None:
         today = datetime.date.today().isoformat()
         # UTC instant, comparable with a run's timestamp: rescoring uses it to tell
         # whether a saved run saw the old wording or the new one.
-        applied_at = datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+        applied_at = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         for q in queries:
             r = proposals.get(q["query_id"])
             # Already applied on an earlier run: keep the record of what it replaced.
