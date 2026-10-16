@@ -31,7 +31,12 @@ import datetime
 import html
 import json
 import subprocess
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from momentbench.annotation import annotation_sha, invalidate_cross_check  # noqa: E402
 
 WIDTH = 256
 
@@ -163,6 +168,7 @@ def apply(args: argparse.Namespace) -> None:
             continue
         meta = q["metadata"]
         fix = d.get("fix") or {}
+        reviewed = annotation_sha(q)
         by = f"{args.reviewer} review" + ("" if human else " (model)")
         if fix.get("text") and fix["text"] != q["text"]:
             meta["text_refined"] = {"from": q["text"], "date": today, "applied_at": now,
@@ -180,8 +186,12 @@ def apply(args: argparse.Namespace) -> None:
                 "from": [g["t_in"], g["t_out"]], "to": new, "date": today, "by": by,
                 "field": "gold_moments" if q["gold_moments"] else "altered_from"}
             g["t_in"], g["t_out"] = new
+        # Bind the review to what it saw and what it left (audit 3, finding 5). A fix
+        # changes the annotation, so an earlier cross-check no longer covers it.
         record = {"reviewer": args.reviewer, "date": today, "decision": decision,
-                  "note": d.get("note", "")}
+                  "note": d.get("note", ""), "annotation_sha": reviewed,
+                  "result_sha": annotation_sha(q)}
+        invalidate_cross_check(q, f"edited by {by} on {today}", today)
         if human:
             meta["human_review"] = record
             if decision == "accept":

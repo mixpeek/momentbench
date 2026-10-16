@@ -91,3 +91,20 @@ class TestManifest:  # finding 25 (licence) and 10 (round trip)
         for e in load_manifest(MANIFEST).entries:
             if e.license_status == "pending":
                 assert e.title.split(":")[0] in attribution.split("Open licence questions")[1]
+
+
+def test_every_review_names_the_annotation_it_saw():
+    """Audit 3, finding 5: a cross-check stands for the current annotation only when it
+    checked that exact version; a review's result is the annotation that ships."""
+    from momentbench.annotation import annotation_sha
+
+    for f in sorted((ROOT / "data/queries").glob("*_v0.2.json")):
+        for q in json.loads(f.read_text()):
+            meta, sha = q["metadata"], annotation_sha(q)
+            if "cross_check" in meta:
+                assert meta["cross_check"]["annotation_sha"] == sha, q["query_id"]
+            else:
+                assert "new cross-check pending" in meta["source"], q["query_id"]
+            for field in ("model_review", "human_review"):
+                if field in meta:
+                    assert meta[field]["result_sha"] == sha, (q["query_id"], field)

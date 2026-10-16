@@ -10,7 +10,9 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import subprocess
+import uuid
 from importlib import metadata
 from pathlib import Path
 from typing import Any
@@ -22,6 +24,16 @@ PACKAGES = ("momentbench", "anthropic", "openai", "google-genai", "claude-agent-
 
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
+
+
+def new_run_id(model_id: str, prefix: str = "agentic") -> str:
+    """A filesystem-safe run ID. The verbatim model ID stays in `model_id`.
+
+    Open-weight IDs such as `Qwen/Qwen3-VL-32B-Instruct` contain a slash, which would
+    otherwise become a directory in the run file's path (audit 3, finding 1).
+    """
+    slug = re.sub(r"[^A-Za-z0-9._-]+", "-", model_id).strip("-.") or "model"
+    return f"{prefix}-{slug}-{uuid.uuid4().hex[:8]}" if prefix else f"{slug}-{uuid.uuid4().hex[:8]}"
 
 
 def text_sha(text: str) -> str:

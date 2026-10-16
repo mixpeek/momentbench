@@ -12,7 +12,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from momentbench.agentic.run import AgenticRun, rescore
+from momentbench.agentic.run import AgenticRun, rescore, resolved_models
 from momentbench.types import BenchmarkRun, Query
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -91,6 +91,24 @@ def check_trial_grid(run: AgenticRun) -> None:
                                   f"expected 0 to {n - 1}")
 
 
+def check_model_identity(run: AgenticRun) -> None:
+    """One leaderboard row is one model snapshot (audit 3, finding 3).
+
+    Every model identity the provider reported, on any turn of any trial, must be the
+    same. A run whose alias resolved to two snapshots is two systems; run each one
+    separately under its own model ID.
+    """
+    models = set(resolved_models(run.trials)) | set(run.identity.get("resolved_models") or [])
+    if len(models) > 1:
+        raise SubmissionError(f"{run.run_id}: the provider reported {len(models)} model "
+                              f"identities ({', '.join(sorted(models))}); one row is one "
+                              "snapshot. Rerun so every turn is served by the same model.")
+    changed = [t.query_id for t in run.trials if t.outcome == "model_changed"]
+    if changed:
+        raise SubmissionError(f"{run.run_id}: {len(changed)} trial(s) changed model "
+                              f"mid-trial, e.g. {changed[0]}")
+
+
 def agentic_entry(run: AgenticRun, queries_path: Path,
                   require_complete: bool = True, manifest: Path = MANIFEST,
                   transcripts: dict[str, list[dict[str, Any]]] | None = None
@@ -105,6 +123,7 @@ def agentic_entry(run: AgenticRun, queries_path: Path,
         raise SubmissionError(f"{run.run_id} is marked not reportable (a --partial run on an "
                               "incomplete corpus)")
     check_trial_grid(run)
+    check_model_identity(run)
     queries = load_queries_file(queries_path)
     if require_complete:
         # A new submission must be the current release, end to end: its receipt names
@@ -138,6 +157,7 @@ def agentic_entry(run: AgenticRun, queries_path: Path,
         "model_id": run.model_id,
         "effort": run.effort,
         "harness": run.harness,
+        "resolved_models": resolved_models(run.trials),
         "modalities": run.modalities,
         "queries_file": queries_path.name,
         "num_queries": s.num_queries,

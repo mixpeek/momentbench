@@ -9,7 +9,8 @@
   frame. Where it scores, a query can be answered from speech alone; on tier 2
   (dialogue together with the picture) that marks a shortcut (audit 2, R12). It
   abstains only when the search finds nothing, so it scores near zero on no-answer
-  queries.
+  queries. Keyword search is weak: where it fails, a stronger text method may still
+  succeed (see text_controls.py), so a miss here does not show a query needs frames.
 
 A model that does not clear both floors on a tier has learned nothing there.
 """

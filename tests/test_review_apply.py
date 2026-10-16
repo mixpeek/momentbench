@@ -43,3 +43,29 @@ def test_a_human_review_marks_accepted_queries(tmp_path):
     out = run(tmp_path, {"a": {"decision": "accept", "note": ""}}, "human")
     assert out["a"]["metadata"]["human_review"]["decision"] == "accept"
     assert "human-reviewed by R" in out["a"]["metadata"]["source"]
+
+
+def test_a_fix_supersedes_the_cross_check_and_reviews_are_bound(tmp_path):
+    sys.path.insert(0, str(SCRIPT.parents[1]))
+    from momentbench.annotation import annotation_sha
+
+    qf, df = tmp_path / "q.json", tmp_path / "d.json"
+    rows = [q("a"), q("b")]
+    for r in rows:
+        r["metadata"]["source"] += "; cross-checked by gemini"
+        r["metadata"]["cross_check"] = {"model": "gemini", "agreed": True, "picked": "gold",
+                                        "annotation_sha": annotation_sha(r)}
+    qf.write_text(json.dumps(rows))
+    df.write_text(json.dumps({"a": {"decision": "accept", "note": "ok"},
+                              "b": {"decision": "fix", "note": "late",
+                                    "fix": {"t_in": 1.5, "t_out": 5.0}}}))
+    subprocess.run([sys.executable, str(SCRIPT), "apply", str(qf), str(df),
+                    "--reviewer", "R", "--kind", "model"], check=True, capture_output=True)
+    out = {x["query_id"]: x for x in json.loads(qf.read_text())}
+    a, b = out["a"]["metadata"], out["b"]["metadata"]
+    assert a["cross_check"]["annotation_sha"] == annotation_sha(out["a"])
+    assert a["model_review"]["annotation_sha"] == a["model_review"]["result_sha"]
+    assert "cross_check" not in b and b["cross_check_history"][0]["agreed"] is True
+    assert b["model_review"]["result_sha"] == annotation_sha(out["b"])
+    assert b["model_review"]["annotation_sha"] != b["model_review"]["result_sha"]
+    assert "new cross-check pending" in b["source"]

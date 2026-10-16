@@ -1,6 +1,7 @@
 """Evaluate your own model on MomentBench's agentic track.
 
     python examples/custom_agent.py --corpus-dir corpus/ --queries data/queries/film_v0.2.json
+    python examples/custom_agent.py --corpus-dir corpus/ --limit 0   # a submission run
 
 Replace `MyModelSession.step` with a call to your model. Each step receives the
 results of the tool calls you made last turn (text, plus JPEG frames for
@@ -8,6 +9,13 @@ results of the tool calls you made last turn (text, plus JPEG frames for
 enforces the budget, scores the submission and writes a run file that
 `scripts/results_table.py` can read. This stub samples frames from the first video
 and submits a span, so the file runs end to end before you change anything.
+
+The corpus is prepared the way `momentbench agentic` prepares it: every video is
+hash-checked against the manifest and frames come only from the verified files. A
+missing or altered video stops the run, unless you pass --partial, which runs on
+what verified and marks the run not reportable. The default --limit 5 is a quick
+diagnostic. A run you can submit uses --limit 0 (every query in the file) on a fully
+verified corpus; `momentbench submit` checks both.
 
 If your model is served behind an OpenAI-compatible endpoint (vLLM, SGLang,
 Ollama), you do not need this file:
@@ -24,10 +32,11 @@ from pathlib import Path
 from typing import Any
 
 from momentbench.agentic.budget import Usage
-from momentbench.agentic.environment import LocalCorpus
+from momentbench.agentic.identity import environment_identity
 from momentbench.agentic.model import AgentModel, AgentSession, ModelTurn, ToolCall, ToolResult
+from momentbench.agentic.prepare import CorpusNotVerifiedError, prepare_corpus
 from momentbench.agentic.run import run_agentic_benchmark
-from momentbench.runner import load_corpus_assets, load_queries
+from momentbench.runner import load_queries
 
 
 class MyModelSession(AgentSession):
@@ -68,25 +77,44 @@ class MyModel(AgentModel):
         return MyModelSession(system, task, tools)
 
 
-async def main() -> None:
+async def main(argv: list[str] | None = None) -> None:
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     p.add_argument("--corpus-dir", required=True, help="directory from corpus-download")
     p.add_argument("--queries", default="data/queries/film_v0.2.json")
     p.add_argument("--manifest", default="data/corpus_manifests/sample_manifest.json")
+    p.add_argument("--transcripts-dir", default="data/transcripts")
     p.add_argument("--trials", type=int, default=1)
-    p.add_argument("--limit", type=int, default=5, help="queries to run; 0 for all")
-    args = p.parse_args()
+    p.add_argument("--limit", type=int, default=5,
+                   help="queries to run (a diagnostic); 0 runs all of them, for submission")
+    p.add_argument("--partial", action="store_true",
+                   help="run on the videos that verify; the run is not reportable")
+    p.add_argument("--output-dir", default="data/results/mine")
+    args = p.parse_args(argv)
 
     queries = load_queries(Path(args.queries))
     if args.limit:
         queries = queries[: args.limit]
-    corpus = LocalCorpus(load_corpus_assets(Path(args.manifest)), Path(args.corpus_dir),
-                         transcripts_dir=Path("data/transcripts"))
+    try:
+        corpus, failures = prepare_corpus(Path(args.manifest), Path(args.corpus_dir),
+                                          transcripts_dir=Path(args.transcripts_dir),
+                                          partial=args.partial)
+    except CorpusNotVerifiedError as e:
+        raise SystemExit(str(e).replace("prepare with partial=True", "pass --partial"))
+    identity = environment_identity(queries_path=Path(args.queries),
+                                    manifest_path=Path(args.manifest), provider="custom",
+                                    query_filter=f"first {args.limit}" if args.limit else None)
     run = await run_agentic_benchmark(queries, MyModel(), corpus, trials=args.trials,
-                                      output_dir=Path("data/results/mine"))
+                                      output_dir=Path(args.output_dir), identity=identity)
     s = run.summary
     print(f"{run.run_id}: Recall@1 {s.recall_at_1:.1%} over {s.num_queries} queries, "
           f"by tier {json.dumps({k: round(v['recall_at_1'], 3) for k, v in s.by_tier.items()})}")
+    if not run.reportable:
+        print(f"Not reportable: {len(failures)} video(s) failed verification.")
+    elif args.limit:
+        print(f"Diagnostic run on {len(queries)} queries. Use --limit 0 for a submission run.")
+    else:
+        print(f"Submit with: momentbench submit -r {args.output_dir}/{run.run_id}.json "
+              f"-q {args.queries} --model-name 'My model'")
 
 
 if __name__ == "__main__":

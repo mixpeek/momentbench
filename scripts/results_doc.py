@@ -243,24 +243,40 @@ def section(paths: list[Path]) -> str:
 
 
 def control_table(paths: list[Path]) -> str:
-    """Tier 2 split by whether the transcript-only control solved the query (audit 2, R12).
+    """Tier 2 split by whether a text-only control solved the query (audit 2 R12, audit 3).
 
-    A model's score on control-solved queries can come from speech alone; the
-    control-missed column is the part that needed the picture.
+    Two controls read only the transcript: `baseline-transcript` (the harness's keyword
+    search, a run file) and BM25 over the same cues (text_controls.py, computed here).
+    A model's score on queries either one solves can come from speech alone. The other
+    column is only "not solved by these two text methods": a stronger text method could
+    solve more, so it does not show that those queries need the picture.
     """
+    from momentbench.agentic.text_controls import bm25_control, load_transcripts
+    from momentbench.runner import load_queries
+    from momentbench.submission import find_queries_file
+
     runs = [load_run(f) for f in paths]
     control = next((r for r in runs if r.model_id == "baseline-transcript"), None)
     if control is None:
         return ""
     t2 = {t.query_id: t.hit_at_1 for t in control.trials if t.tier == 2}
-    solved = {q for q, hit in t2.items() if hit}
+    keyword = {q for q, hit in t2.items() if hit}
+    queries = [q for q in load_queries(find_queries_file(control)) if q.query_id in t2]
+    manifest = json.loads((ROOT / "data/corpus_manifests/sample_manifest.json").read_text())
+    transcripts = load_transcripts([a["asset_id"] for a in manifest], ROOT / "data/transcripts")
+    bm25 = {q for q, hit in bm25_control(queries, transcripts).items() if hit}
+    solved = keyword | bm25
     missed = set(t2) - solved
-    lines = [f"`baseline-transcript` sends the request to the keyword transcript search and "
-             f"submits the top cue, without looking at a frame. It localizes "
-             f"{len(solved)} of {len(t2)} tier-2 queries here. Tier-2 Recall@1 of each model "
-             "on those queries and on the rest:", "",
-             "| Model | Tier 2, solved by transcript alone | Tier 2, needs more than the "
-             "transcript |", "|---|---|---|"]
+    lines = [f"Two text-only controls localize tier-2 queries from the transcript without "
+             f"looking at a frame. `baseline-transcript` sends the request to the harness's "
+             f"keyword search and submits the top cue: {len(keyword)} of {len(t2)}. BM25 "
+             f"over the same cues (k1 1.2, b 0.75, top five cues; "
+             f"`momentbench/agentic/text_controls.py`): {len(bm25)} of {len(t2)}. Either: "
+             f"{len(solved)}. Tier-2 Recall@1 of each model on the queries a text control "
+             "solves and on the rest. The second column is a lower bound on what speech alone "
+             "can do; it does not show that those queries need the picture.", "",
+             "| Model | Tier 2, solved by a text-only control | Tier 2, not solved by "
+             "either text-only control |", "|---|---|---|"]
 
     def rate(run, ids):
         hits = [float(t.hit_at_1) for t in run.trials if t.query_id in ids]

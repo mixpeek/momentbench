@@ -6,7 +6,6 @@ import asyncio
 import json
 import threading
 import time
-import uuid
 from pathlib import Path
 from statistics import mean
 from typing import Any
@@ -16,7 +15,7 @@ from pydantic import BaseModel, Field
 from momentbench.agentic.budget import Budget, Pricing, Usage
 from momentbench.agentic.environment import TOOLS, LocalCorpus
 from momentbench.agentic.episode import SYSTEM_PROMPT, EpisodeError, run_episode
-from momentbench.agentic.identity import task_identity, text_sha
+from momentbench.agentic.identity import new_run_id, task_identity, text_sha
 from momentbench.agentic.model import AgentModel, ToolCall, ToolResult
 from momentbench.agentic.stats import bootstrap_ci
 from momentbench.eval.scoring import compute_temporal_iou, evaluate_prediction
@@ -55,6 +54,9 @@ class AgenticTrial(BaseModel):
     query_text_sha: str | None = None
     # Model identifier the provider reported for this trial's responses.
     resolved_model: str | None = None
+    # The model reported on each turn. More than one distinct value ends the trial with
+    # outcome "model_changed" and makes the run inadmissible.
+    turn_models: list[str | None] = Field(default_factory=list)
     # tIoU of the first submitted moment against its best gold span; 1.0 for a correct
     # abstention on a no-answer query. Drives Recall@1 at other thresholds.
     top1_iou: float = 0.0
@@ -64,6 +66,11 @@ class AgenticTrial(BaseModel):
     moments: list[Moment] = Field(default_factory=list)
     trace: list[dict[str, Any]] = Field(default_factory=list)
     error: str | None = None
+
+
+def resolved_models(trials: list[AgenticTrial]) -> list[str]:
+    """Every model identity a provider reported, over all turns of all trials."""
+    return sorted({m for t in trials for m in [t.resolved_model, *t.turn_models] if m})
 
 
 class AgenticSummary(BaseModel):
@@ -351,6 +358,7 @@ async def run_agentic_benchmark(
             start = time.perf_counter()
             error = None
             resolved = None
+            turn_models: list[str | None] = []
             try:
                 request = query.request()  # entrants never see gold, tier or negatives
                 if hasattr(model, "run_episode"):  # entrants that run their own tool loop
@@ -366,6 +374,7 @@ async def run_agentic_benchmark(
                     episode.moments, episode.usage, episode.outcome, episode.trace
                 )
                 resolved = episode.resolved_model
+                turn_models = list(getattr(episode, "turn_models", []) or [])
                 over = budget_violation(usage, budget)
                 if over:
                     moments, outcome, error = [], "budget_exceeded", over
@@ -374,6 +383,7 @@ async def run_agentic_benchmark(
                 if is_fatal_provider_error(cause):
                     raise ProviderUnavailableError(f"{type(cause).__name__}: {cause}") from e
                 usage = e.usage if isinstance(e, EpisodeError) else Usage()
+                turn_models = list(getattr(e, "turn_models", []) or [])
                 trace = e.trace if isinstance(e, EpisodeError) else []
                 moments, outcome = [], "error"
                 error = f"{type(cause).__name__}: {cause}"
@@ -387,6 +397,7 @@ async def run_agentic_benchmark(
             no_answer=query.is_no_answer,
             query_text_sha=text_sha(query.text),
             resolved_model=resolved,
+            turn_models=turn_models,
             outcome=outcome,
             hit_at_1=hit1,
             hit_at_5=hit5,
@@ -413,13 +424,13 @@ async def run_agentic_benchmark(
         done = [t for t in outcomes if isinstance(t, AgenticTrial)]
         if output_dir and done:
             output_dir.mkdir(parents=True, exist_ok=True)
-            partial = output_dir / f"agentic-{model.model_id}-{uuid.uuid4().hex[:8]}.partial.json"
+            partial = output_dir / f"{new_run_id(model.model_id)}.partial.json"
             partial.write_text(json.dumps(
                 {"model_id": model.model_id, "complete": False,
                  "trials": [t.model_dump() for t in done]}, indent=2))
         raise
     run = AgenticRun(
-        run_id=f"agentic-{model.model_id}-{uuid.uuid4().hex[:8]}",
+        run_id=new_run_id(model.model_id),
         model_id=model.model_id,
         effort=model.effort,
         harness=getattr(model, "harness", "api"),
@@ -435,8 +446,7 @@ async def run_agentic_benchmark(
                       system_prompt=SYSTEM_PROMPT, tools=TOOLS, budget=budget.model_dump(),
                       modalities="frames+transcripts" if corpus.has_transcripts() else "frames",
                       anonymize_titles=getattr(corpus, "anonymize_titles", False)),
-                  "resolved_models": sorted({t.resolved_model for t in results
-                                             if t.resolved_model})},
+                  "resolved_models": resolved_models(results)},
         budget=budget,
         pricing=pricing,
         timestamp=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),

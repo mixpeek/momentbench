@@ -714,3 +714,135 @@ class TestMergeRuns:  # MO-4530
                                             budget=Budget(max_frames=8))
         with pytest.raises(SystemExit, match="budget"):
             m.merge(base, other, qfile, manifest, TRANSCRIPTS)
+
+
+class SnapshotSession(AgentSession):
+    """Replies from a fixed list of (tool call, reported model) turns."""
+
+    def __init__(self, turns):
+        self._turns = list(turns)
+
+    async def step(self, tool_results):
+        (name, args), model = self._turns.pop(0)
+        return ModelTurn([ToolCall("c", name, args)], Usage(input_tokens=1), model=model)
+
+
+class SnapshotModel(AgentModel):
+    model_id = "Qwen/Qwen3-VL-32B-Instruct"
+
+    def __init__(self, turns):
+        self._turns = turns
+
+    def start(self, system, task, tools):
+        return SnapshotSession(self._turns)
+
+
+class TestSafeRunIds:  # audit 3, finding 1
+    async def test_a_slash_in_the_model_id_still_saves(self, tmp_path):
+        model = SnapshotModel([(SUBMIT_GOLD, "Qwen/Qwen3-VL-32B-Instruct")])
+        out = tmp_path / "runs"
+        run = await run_agentic_benchmark([make_query()], model, verified_corpus(tmp_path),
+                                          trials=1, output_dir=out)
+        assert "/" not in run.run_id and run.model_id == "Qwen/Qwen3-VL-32B-Instruct"
+        assert [p.name for p in out.iterdir()] == [f"{run.run_id}.json"]
+
+    async def test_a_provider_failure_saves_the_partial_file(self, tmp_path):
+        from momentbench.agentic.run import ProviderUnavailableError
+
+        class UnauthorizedError(Exception):
+            status_code = 401
+
+        class FailsSecond(SnapshotModel):
+            started = 0
+
+            def start(self, system, task, tools):
+                self.started += 1
+                if self.started == 2:
+                    raise UnauthorizedError("key revoked")
+                return SnapshotSession([(SUBMIT_GOLD, None)])
+
+        out = tmp_path / "runs"
+        with pytest.raises(ProviderUnavailableError):
+            await run_agentic_benchmark([make_query(), NO_ANSWER], FailsSecond([]),
+                                        verified_corpus(tmp_path), trials=1,
+                                        max_concurrency=1, output_dir=out)
+        [partial] = list(out.iterdir())
+        assert partial.name.startswith("agentic-Qwen-Qwen3-VL-32B-Instruct-")
+        assert partial.name.endswith(".partial.json")
+        assert json.loads(partial.read_text())["model_id"] == "Qwen/Qwen3-VL-32B-Instruct"
+
+
+class TestSnapshotIdentity:  # audit 3, finding 3
+    async def test_a_model_change_mid_trial_ends_it(self, tmp_path):
+        list_assets = ("list_assets", {})
+        model = SnapshotModel([(list_assets, "snapshot-A"), (SUBMIT_GOLD, "snapshot-B")])
+        run = await run_agentic_benchmark([make_query()], model, verified_corpus(tmp_path),
+                                          trials=1)
+        t = run.trials[0]
+        assert t.outcome == "model_changed" and not t.hit_at_1
+        assert t.turn_models == ["snapshot-A", "snapshot-B"]
+        assert run.identity["resolved_models"] == ["snapshot-A", "snapshot-B"]
+
+    async def test_a_run_with_two_snapshots_is_not_admitted(self, tmp_path):
+        from momentbench.submission import SubmissionError, check_model_identity
+
+        run = await run_agentic_benchmark([make_query()],
+                                          SnapshotModel([(SUBMIT_GOLD, "snapshot-A")]),
+                                          verified_corpus(tmp_path), trials=1)
+        check_model_identity(run)
+        t = run.trials[0].model_copy(update={"trial": 1, "resolved_model": "snapshot-B",
+                                             "turn_models": ["snapshot-B"]})
+        mixed = run.model_copy(update={"trials": [*run.trials, t]})
+        with pytest.raises(SubmissionError, match="2 model identities"):
+            check_model_identity(mixed)
+
+    async def test_merge_refuses_two_snapshots_and_keeps_provenance(self, tmp_path):
+        import importlib.util
+
+        from tests.test_agentic import TRANSCRIPTS
+
+        spec = importlib.util.spec_from_file_location(
+            "merge_runs", Path(__file__).resolve().parents[1] / "scripts/merge_runs.py")
+        m = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(m)
+        sub = TestSubmission()
+        manifest, _ = sub._release(tmp_path)
+        abstain = ("submit_answer", {"moments": []})
+        base = await run_agentic_benchmark(
+            [NO_ANSWER, make_query()], SnapshotModel([(abstain, "snapshot-A")] * 2),
+            verified_corpus(tmp_path), trials=1)
+        reworded = make_query().model_copy(update={"text": "the hearing begins"})
+        qfile = sub._file(tmp_path, [NO_ANSWER, reworded])
+        drifted = await run_agentic_benchmark(
+            [reworded], SnapshotModel([(SUBMIT_GOLD, "snapshot-B")]),
+            verified_corpus(tmp_path), trials=1)
+        with pytest.raises(SystemExit, match="different model snapshots"):
+            m.merge(base, drifted, qfile, manifest, TRANSCRIPTS)
+        moved = drifted.model_copy(update={"identity": {**drifted.identity,
+                                                        "endpoint": "http://other/v1"}})
+        with pytest.raises(SystemExit, match="identity.endpoint differs"):
+            m.merge(base, moved, qfile, manifest, TRANSCRIPTS)
+        same = await run_agentic_benchmark(
+            [reworded], SnapshotModel([(SUBMIT_GOLD, "snapshot-A")]),
+            verified_corpus(tmp_path), trials=1)
+        merged = m.merge(base, same, qfile, manifest, TRANSCRIPTS)
+        assert "/" not in merged.run_id
+        assert [i["run_id"] for i in merged.identity["merged_inputs"]] == [base.run_id,
+                                                                            same.run_id]
+        assert merged.identity["merged_inputs"][1]["resolved_models"] == ["snapshot-A"]
+
+
+class TestTextControls:  # audit 3, finding 4
+    def test_bm25_finds_a_cue_the_keyword_search_ranks_lower(self):
+        from momentbench.agentic.text_controls import BM25Index, bm25_control
+
+        transcripts = {"a": [{"t_in": 0.0, "t_out": 4.0, "text": "the the the launch the"},
+                             {"t_in": 10.0, "t_out": 14.0, "text": "booster separation"}],
+                       "b": [{"t_in": 0.0, "t_out": 4.0, "text": "the launch and the pad"}]}
+        index = BM25Index(transcripts)
+        assert index.search("booster separation after the launch")[0].t_in == 10.0
+        query = make_query().model_copy(update={
+            "text": "booster separation", "gold_moments": [Moment(asset_id="a", t_in=10.0,
+                                                                  t_out=14.0)]})
+        assert bm25_control([query], transcripts) == {"q1": True}
+        assert BM25Index(transcripts).search("unrelated words") == []

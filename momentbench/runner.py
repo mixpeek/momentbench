@@ -5,7 +5,6 @@ from __future__ import annotations
 import asyncio
 import json
 import time
-import uuid
 from pathlib import Path
 from typing import Any
 
@@ -13,6 +12,7 @@ from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich.table import Table
 
+from momentbench.agentic.identity import new_run_id
 from momentbench.eval.metrics import compute_aggregate, compute_by_tier, compute_by_vertical
 from momentbench.eval.scoring import evaluate_run
 from momentbench.models import get_adapter
@@ -31,7 +31,7 @@ async def run_benchmark(
 ) -> BenchmarkRun:
     """Run a full benchmark evaluation for a single model."""
     adapter = get_adapter(model_name, **model_kwargs)
-    run_id = f"{model_name}-{uuid.uuid4().hex[:8]}"
+    run_id = new_run_id(model_name, prefix="")
     predictions: list[Prediction] = []
     semaphore = asyncio.Semaphore(max_concurrency)
 

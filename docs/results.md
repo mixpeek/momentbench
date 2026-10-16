@@ -65,14 +65,14 @@ Paired differences on the same queries:
 | claude-haiku-5-5 | -29.2 (-40.3 to -18.1), n=144 |
 | claude-sonnet-5-5 | -28.5 (-37.5 to -18.8), n=144 |
 
-`baseline-transcript` sends the request to the keyword transcript search and submits the top cue, without looking at a frame. It localizes 4 of 32 tier-2 queries here. Tier-2 Recall@1 of each model on those queries and on the rest:
+Two text-only controls localize tier-2 queries from the transcript without looking at a frame. `baseline-transcript` sends the request to the harness's keyword search and submits the top cue: 4 of 32. BM25 over the same cues (k1 1.2, b 0.75, top five cues; `momentbench/agentic/text_controls.py`): 11 of 32. Either: 11. Tier-2 Recall@1 of each model on the queries a text control solves and on the rest. The second column is a lower bound on what speech alone can do; it does not show that those queries need the picture.
 
-| Model | Tier 2, solved by transcript alone | Tier 2, needs more than the transcript |
+| Model | Tier 2, solved by a text-only control | Tier 2, not solved by either text-only control |
 |---|---|---|
-| gemini-3.1-pro-preview | 100.0 (n=3) | 88.2 (n=17) |
-| claude-haiku-5-5 | 75.0 (n=4) | 50.0 (n=28) |
-| claude-opus-5-5 | 100.0 (n=4) | 78.6 (n=28) |
-| claude-sonnet-5-5 | 100.0 (n=4) | 64.3 (n=28) |
+| gemini-3.1-pro-preview | 100.0 (n=8) | 83.3 (n=12) |
+| claude-haiku-5-5 | 54.5 (n=11) | 52.4 (n=21) |
+| claude-opus-5-5 | 100.0 (n=11) | 71.4 (n=21) |
+| claude-sonnet-5-5 | 100.0 (n=11) | 52.4 (n=21) |
 
 ## Aerospace (aerospace_v0.2.json)
 
@@ -100,13 +100,13 @@ Paired differences on the same queries:
 | claude-haiku-5-5 | -24.3 (-32.7 to -16.3), n=202 |
 | claude-sonnet-5-5 | -37.6 (-44.6 to -30.7), n=202 |
 
-`baseline-transcript` sends the request to the keyword transcript search and submits the top cue, without looking at a frame. It localizes 23 of 34 tier-2 queries here. Tier-2 Recall@1 of each model on those queries and on the rest:
+Two text-only controls localize tier-2 queries from the transcript without looking at a frame. `baseline-transcript` sends the request to the harness's keyword search and submits the top cue: 23 of 34. BM25 over the same cues (k1 1.2, b 0.75, top five cues; `momentbench/agentic/text_controls.py`): 26 of 34. Either: 26. Tier-2 Recall@1 of each model on the queries a text control solves and on the rest. The second column is a lower bound on what speech alone can do; it does not show that those queries need the picture.
 
-| Model | Tier 2, solved by transcript alone | Tier 2, needs more than the transcript |
+| Model | Tier 2, solved by a text-only control | Tier 2, not solved by either text-only control |
 |---|---|---|
-| claude-haiku-5-5 | 82.6 (n=23) | 45.5 (n=11) |
-| claude-opus-5-5 | 100.0 (n=23) | 81.8 (n=11) |
-| claude-sonnet-5-5 | 73.9 (n=23) | 27.3 (n=11) |
+| claude-haiku-5-5 | 80.8 (n=26) | 37.5 (n=8) |
+| claude-opus-5-5 | 100.0 (n=26) | 75.0 (n=8) |
+| claude-sonnet-5-5 | 65.4 (n=26) | 37.5 (n=8) |
 
 ### Public vs rolling (aerospace)
 
@@ -161,9 +161,9 @@ Paired differences on the same queries:
 | claude-haiku-5-5 | -31.1 (-44.3 to -18.0), n=61 |
 | claude-sonnet-5-5 | -41.0 (-54.1 to -27.9), n=61 |
 
-`baseline-transcript` sends the request to the keyword transcript search and submits the top cue, without looking at a frame. It localizes 4 of 10 tier-2 queries here. Tier-2 Recall@1 of each model on those queries and on the rest:
+Two text-only controls localize tier-2 queries from the transcript without looking at a frame. `baseline-transcript` sends the request to the harness's keyword search and submits the top cue: 4 of 10. BM25 over the same cues (k1 1.2, b 0.75, top five cues; `momentbench/agentic/text_controls.py`): 4 of 10. Either: 4. Tier-2 Recall@1 of each model on the queries a text control solves and on the rest. The second column is a lower bound on what speech alone can do; it does not show that those queries need the picture.
 
-| Model | Tier 2, solved by transcript alone | Tier 2, needs more than the transcript |
+| Model | Tier 2, solved by a text-only control | Tier 2, not solved by either text-only control |
 |---|---|---|
 | gemini-3.1-pro-preview | 100.0 (n=4) | 100.0 (n=6) |
 | claude-haiku-5-5 | 100.0 (n=4) | 66.7 (n=6) |

@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.2.3 (2026-10-16)
+
+Fixes from the third lab audit (docs/scope.md lists each). Same queries, corpus,
+prompt, tools and budget as 0.2.2, so compatibility keys are unchanged and the 0.2.2
+record runs remain valid.
+
+- Run files are named from a filesystem-safe run ID, so model IDs with a slash
+  (`Qwen/Qwen3-VL-32B-Instruct`) save, including partial and merged files.
+- `examples/custom_agent.py` prepares and verifies the corpus like `momentbench
+  agentic`, so its full runs are reportable; the default short run says it is a
+  diagnostic.
+- Each trial keeps the model identity reported on every turn. A change mid-trial ends
+  it as `model_changed`; `momentbench submit` refuses a run with more than one
+  identity; `scripts/merge_runs.py` refuses different snapshots, providers or
+  endpoints and records each input's provenance.
+- A BM25 transcript control joins the keyword control. The tier-2 split now reads
+  "solved by a text-only control" against "not solved by either", and says that the
+  second is no evidence a query needs the picture.
+- Every query review records the hash of the annotation it saw (`annotation_sha`).
+  126 queries edited after their Gemini cross-check moved it to
+  `cross_check_history` and await a new independent check.
+- The Claude record runs were rerun on the reworded queries and merged, so the 18
+  record runs cover every public query (since 0.2.2).
+- The dataset is on Hugging Face as `Mixpeek/momentbench`, with the 25 videos whose
+  licences are confirmed.
+
 ## 0.2.2 (2026-10-14)
 
 Query review. Same harness as 0.2.1. The maintainer delegated the review of the 457

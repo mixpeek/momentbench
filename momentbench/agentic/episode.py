@@ -45,16 +45,20 @@ class Episode:
     outcome: str
     trace: list[dict[str, Any]] = field(default_factory=list)
     resolved_model: str | None = None
+    # The model the provider reported on each turn, in order (None where it reported none).
+    turn_models: list[str | None] = field(default_factory=list)
 
 
 class EpisodeError(RuntimeError):
     """A failure partway through an episode; carries what was spent and done so far."""
 
-    def __init__(self, cause: BaseException, usage: Usage, trace: list[dict[str, Any]]):
+    def __init__(self, cause: BaseException, usage: Usage, trace: list[dict[str, Any]],
+                 turn_models: list[str | None] | None = None):
         super().__init__(f"{type(cause).__name__}: {cause}")
         self.cause = cause
         self.usage = usage
         self.trace = trace
+        self.turn_models = turn_models or []
 
 
 async def run_episode(
@@ -62,28 +66,38 @@ async def run_episode(
 ) -> Episode:
     usage = Usage()
     trace: list[dict[str, Any]] = []
+    turn_models: list[str | None] = []
     try:
-        return await _episode(model, corpus, query, budget, usage, trace)
+        return await _episode(model, corpus, query, budget, usage, trace, turn_models)
     except Exception as e:
         # Keep tokens already spent and the tool trace: a failed trial is still costed
         # and inspectable (audit finding 27).
-        raise EpisodeError(e, usage, trace) from e
+        raise EpisodeError(e, usage, trace, turn_models) from e
 
 
-async def _episode(model, corpus, query, budget, usage, trace) -> Episode:
+async def _episode(model, corpus, query, budget, usage, trace, turn_models) -> Episode:
     session = model.start(SYSTEM_PROMPT, build_task(query, budget), TOOLS)
     results: list[ToolResult] | None = None
-    resolved: list[str | None] = [None]
+
+    def end(moments: list[Moment], outcome: str) -> Episode:
+        resolved = next((m for m in turn_models if m), None)
+        return Episode(query.query_id, moments, usage, outcome, trace, resolved, turn_models)
 
     while usage.steps < budget.max_steps:
         turn = await session.step(results)
         usage.steps += 1
         usage.add(turn.usage)
-        resolved[0] = turn.model or resolved[0]
+        turn_models.append(turn.model)
+        if len({m for m in turn_models if m}) > 1:
+            # The protocol's no-silent-fallback rule: a turn answered by another model
+            # ends the trial, which scores zero (audit 3, finding 3).
+            trace.append({"error": "model_changed",
+                          "models": [m for m in turn_models if m]})
+            return end([], "model_changed")
         if turn.stopped:
-            return Episode(query.query_id, [], usage, turn.stopped, trace, resolved[0])
+            return end([], turn.stopped)
         if not turn.tool_calls:
-            return Episode(query.query_id, [], usage, "no_submission", trace, resolved[0])
+            return end([], "no_submission")
 
         results = []
         for call in turn.tool_calls:
@@ -98,7 +112,7 @@ async def _episode(model, corpus, query, budget, usage, trace) -> Episode:
                                               is_error=True))
                     continue
                 trace.append({"tool": call.name, "arguments": call.arguments})
-                return Episode(query.query_id, moments, usage, "submitted", trace, resolved[0])
+                return end(moments, "submitted")
             # A worker thread, so ffmpeg in one episode does not stall the others.
             result = await asyncio.to_thread(corpus.execute, call, budget, usage)
             trace.append(
@@ -111,4 +125,4 @@ async def _episode(model, corpus, query, budget, usage, trace) -> Episode:
             )
             results.append(result)
 
-    return Episode(query.query_id, [], usage, "step_limit", trace, resolved[0])
+    return end([], "step_limit")

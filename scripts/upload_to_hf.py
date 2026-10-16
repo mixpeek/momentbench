@@ -84,7 +84,7 @@ def main() -> None:
             except OSError:
                 shutil.copy2(local, dest)
         api.upload_folder(folder_path=tmp, repo_id=REPO_ID, repo_type=REPO_TYPE,
-                          commit_message="MomentBench v0.2.2: queries, transcripts, "
+                          commit_message="MomentBench v0.2.3: queries, transcripts, "
                                          "runs and licence-confirmed videos")
     print(f"Done: https://huggingface.co/datasets/{REPO_ID}")
 

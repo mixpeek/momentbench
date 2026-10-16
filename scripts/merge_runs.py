@@ -18,14 +18,13 @@ from __future__ import annotations
 import argparse
 import sys
 import time
-import uuid
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from momentbench.agentic.identity import queries_sha, text_sha  # noqa: E402
-from momentbench.agentic.run import AgenticRun, rescore, summarize  # noqa: E402
+from momentbench.agentic.identity import new_run_id, queries_sha, text_sha  # noqa: E402
+from momentbench.agentic.run import AgenticRun, rescore, resolved_models, summarize  # noqa: E402
 from momentbench.submission import (  # noqa: E402
     MANIFEST,
     check_trial_grid,
@@ -33,8 +32,17 @@ from momentbench.submission import (  # noqa: E402
     load_queries_file,
 )
 
+SAME_SYSTEM = ("provider", "endpoint")
 SAME_TASK = ("corpus_sha", "transcripts_sha", "system_prompt_sha", "tools_sha", "budget",
              "modalities", "anonymize_titles")
+
+
+def provenance(run: AgenticRun) -> dict:
+    keep = ("git", "packages", "provider", "endpoint", "pricing_as_of", "queries_sha",
+            "compatibility_key", "num_queries")
+    return {"run_id": run.run_id, "timestamp": run.timestamp,
+            "num_trials": len(run.trials), "resolved_models": resolved_models(run.trials),
+            **{k: run.identity[k] for k in keep if k in run.identity}}
 
 
 def merge(base: AgenticRun, patch: AgenticRun, queries_path: Path,
@@ -50,6 +58,14 @@ def merge(base: AgenticRun, patch: AgenticRun, queries_path: Path,
             raise SystemExit(f"identity.{key} differs; these runs are not the same task")
     if not (base.reportable and patch.reportable):
         raise SystemExit("both runs must be reportable")
+    # One row is one system: the same snapshot, served the same way (audit 3, finding 3).
+    for key in SAME_SYSTEM:
+        if base.identity.get(key) != patch.identity.get(key):
+            raise SystemExit(f"identity.{key} differs: {base.identity.get(key)!r} vs "
+                             f"{patch.identity.get(key)!r}; these are different systems")
+    models = set(resolved_models(base.trials)) | set(resolved_models(patch.trials))
+    if len(models) > 1:
+        raise SystemExit(f"the runs report different model snapshots: {sorted(models)}")
     queries = load_queries_file(queries_path)
     current = {qid: text_sha(q.text) for qid, q in queries.items()}
     patched = {t.query_id for t in patch.trials}
@@ -60,7 +76,7 @@ def merge(base: AgenticRun, patch: AgenticRun, queries_path: Path,
         raise SystemExit("PATCH has trials whose text does not match the current file")
     n = base.summary.num_trials
     merged = base.model_copy(update={
-        "run_id": f"agentic-{base.model_id}-{uuid.uuid4().hex[:8]}",
+        "run_id": new_run_id(base.model_id),
         "timestamp": max(base.timestamp, patch.timestamp),
         "trials": kept + added,
     })
@@ -73,9 +89,10 @@ def merge(base: AgenticRun, patch: AgenticRun, queries_path: Path,
                 "compatibility_key": expected_key(merged, queries, manifest, transcripts),
                 "queries_sha": queries_sha(list(queries.values())),
                 "num_queries": len(queries),
-                "resolved_models": sorted(set(base.identity.get("resolved_models", []))
-                                          | set(patch.identity.get("resolved_models", []))),
+                "resolved_models": sorted(models),
                 "merged_from": [base.run_id, patch.run_id],
+                # Where each input came from, so the merged row stays traceable.
+                "merged_inputs": [provenance(base), provenance(patch)],
                 "merged_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
     return merged.model_copy(update={"identity": identity,
                                      "summary": summarize(merged.trials, n)})

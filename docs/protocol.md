@@ -52,7 +52,7 @@ Transcripts are the files in [`data/transcripts`](../data/transcripts), machine 
 
 **Failures count.** A refusal, a crash, hitting the turn limit or ending without `submit_answer` scores zero and stays in the denominator. A no-answer query is a hit only on an explicit empty submission, so a run that fails cannot score as a correct abstention.
 
-**No silent fallback.** If a provider refuses or routes to another model, the trial ends. A turn answered by a different model is never scored under the entrant's name.
+**No silent fallback.** If a provider refuses or routes to another model, the trial ends. A turn answered by a different model is never scored under the entrant's name. Each trial records the model identity the provider reported on every turn (`turn_models`). The model ID you pass is an alias; within a run it must resolve to one snapshot. A second identity on any turn ends that trial with outcome `model_changed` (scored zero), and `momentbench submit` refuses a run that reports more than one identity. To compare two snapshots, run each as its own entrant. `scripts/merge_runs.py` refuses to merge runs with different snapshots, providers or endpoints, and records each input's provenance in `identity.merged_inputs`.
 
 ## Metrics
 
@@ -80,7 +80,7 @@ Transcripts are the files in [`data/transcripts`](../data/transcripts), machine 
 
 **Measured quality:** a random 20-query spot check against frames found 2 wrong queries (removed) and 1 gold span that starts with about 1.8 s of a missed soft cut. Expect roughly 10% of unreviewed queries to be wrong.
 
-**Cross-check:** every kept query was then shown to a second model family (`gemini-3.5-flash`, `scripts/cross_verify.py`) against the same candidates, reshuffled. Only queries both models agree on are kept; 20 of 287 film queries were removed this way. The result is in each query's `metadata.cross_check`.
+**Cross-check:** every kept query was then shown to a second model family (`gemini-3.5-flash`, `scripts/cross_verify.py`) against the same candidates, reshuffled. Only queries both models agree on are kept; 20 of 287 film queries were removed this way. The result is in each query's `metadata.cross_check`, with `annotation_sha`: a hash of the text, tier, gold spans and (for a no-answer query) its source shot, as the checker saw them (`momentbench/annotation.py`). A later edit to any of those moves the check to `metadata.cross_check_history`, and the query waits for a new independent check; `cross_verify.py` re-checks exactly those. Model and human review records carry `annotation_sha` (what was reviewed) and `result_sha` (what the review left). In 0.2.2, 330 of 456 published queries have a cross-check of their current annotation and 126 are pending, because their span or wording was refined after the check.
 
 **Human review:** `scripts/review_queries.py build` writes a static page that shows each query with five frames (one second before the span, its start, middle and end, one second after). A reviewer marks accept, fix or reject, and `review_queries.py apply` records the decision in `metadata.human_review`, removing rejected queries. Accepted queries say `human-reviewed by <reviewer>` in `metadata.source`.
 

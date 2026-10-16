@@ -24,11 +24,15 @@ That makes a v0.2 score a measure of:
 
 ## What it does not measure
 
-- **Joint visual-language reasoning on every tier-2 query.** `baseline-transcript`
-  answers from keyword transcript search alone and localizes 23 of 34 aerospace tier-2
-  queries (4 of 32 film, 3 of 10 robotics). Those queries can be solved from speech.
-  docs/results.md splits each model's tier-2 score by whether the control solved the
-  query; read tier 2 through that split.
+- **Joint visual-language reasoning on tier-2 queries.** Two text-only controls
+  localize tier-2 queries from the transcript alone: `baseline-transcript` (keyword
+  search) and BM25 over the same cues (`momentbench/agentic/text_controls.py`).
+  Together they solve 26 of 34 aerospace, 11 of 32 film and 4 of 10 robotics tier-2
+  queries. docs/results.md splits each model's tier-2 score by whether either control
+  solved the query. The other column means only that these two text methods failed: a
+  stronger one could solve more, so it is no evidence that those queries need the
+  picture. Showing that needs matched controls (competing transcript matches,
+  mismatched narration, identical speech over different visuals), which are open.
 
 - **Archive-scale retrieval.** 27 assets, mostly short, from two source families
   (Blender open movies and NASA outreach). Query density is uneven: per video, positive
@@ -54,7 +58,9 @@ That makes a v0.2 score a measure of:
   row names its harness.
 - **Human-verified labels.** All 456 published queries were drafted and verified by
   Claude, cross-checked by Gemini, and then reviewed frame by frame by Claude on the
-  maintainer's behalf (59 corrected, 1 removed). None has a human review record yet, and
+  maintainer's behalf (59 corrected, 1 removed). Edits after the cross-check (126
+  queries) left those without a cross-check of their current annotation; a new
+  independent check is pending. None has a human review record yet, and
   a model review cannot stand in for one: the reviewers share model blind spots. Verification
   compared each candidate with three look-alike shots, which does not prove a positive
   is unique or a no-answer query has no match anywhere in the corpus.
@@ -78,7 +84,7 @@ this repository without outside input.
 | Contamination evidence (21) | Model-specific cutoff evidence, publisher release dates, temporarily sealed queries, rolling queries matched in source and difficulty. | Maintainers and new footage |
 | Harness effects and coverage (23) | Same-model crossover between the Claude Code and API loops; GPT-5.5 on v0.2; Gemini on aerospace; open-weight runs on all domains; transcript, visual-segment and hybrid baselines; several budgets. | API budget for the frontier runs; maintainers for the rest |
 | Modality controls (16, R12, R15) | Transcript-only control is built in (`baseline-transcript`). Still to add: metadata-only, masked captions, shuffled or reversed frames, mismatched speech and picture; new tier-2 queries kept only when the transcript control fails them. | Maintainers and API budget |
-| Reruns under the new contract (R10) | Rerun every record row on the full 0.2.1 release with receipts, identity and resolved model; keep the current rows as historical. The Claude reruns use the local Claude Code subscription; the Gemini rerun needs API budget, and GPT-5.5 needs an OpenAI account. | Owner decision on API spend |
+| Reruns under the new contract (R10) | Done for the three Claude models and the three baselines: 18 runs in `data/results/agentic-v0.2.1/record` cover every public query in all three domains and pass strict submission. Still historical: Gemini 3.1 Pro, the ablations and the held-out rows. The Gemini rerun needs API budget, and GPT-5.5 needs an OpenAI account. | Owner decision on API spend |
 | Indexed retrieval reference (R11) | One end-to-end indexed baseline with deterministic segments, an id map, an index receipt and measured build and query cost, wrapped as an agent. | Maintainers |
 | Untrusted entrant isolation (R4) | Custom agents now get a metered, closed corpus interface in-process. Code from outside entrants, especially on held-out queries, needs a separate process or service. | Maintainers |
 | Mixpeek workflow (8) | Expose server build, feature URI and retriever id on the CLI; persist ingestion state; map robotics; check collection readiness. | Maintainers |
@@ -139,7 +145,7 @@ Fixed means the change is on main with a test that reproduces the audit's probe.
 | R7 | Duplicate or dropped trials change scores | Fixed: complete, unique trial grid required | 359b333 |
 | R8 | Invalid first candidate promotes the second | Fixed: any invalid entry rejects the ranking | 359b333 |
 | R9 | Keys not enforced; subset shares key | Fixed: key covers the selected queries; leaderboard ranks only within a key | 359b333 |
-| R10 | Record runs predate the identity contract | Open: rows are labelled historical; reruns are on the roadmap | roadmap |
+| R10 | Record runs predate the identity contract | Fixed for Claude and the baselines (18 record runs pass strict submission); Gemini and ablation rows stay historical | 0.2.2, roadmap |
 | R11 | Retrieval-system integration incomplete | Open | roadmap |
 | R12 | Aerospace tier 2 solvable from transcripts | Measured and reported: `baseline-transcript` control and the tier-2 split in docs/results.md; new queries open | 0.2.1, roadmap |
 | R13 | No human label review | Open | roadmap |
@@ -150,3 +156,15 @@ Fixed means the change is on main with a test that reproduces the audit's probe.
 | R18 | Site overstated contamination evidence | Fixed: site and report describe the held-out comparison as limited evidence | 0.2.1 |
 | R19 | Long-run operations and serving recipes | Open | roadmap |
 | R20 | Reuse claims broader than the manifest | Fixed in README and ATTRIBUTION (exceptions named, per-asset fields); confirmation from Blender Studio still open | 0.2.1 |
+
+## Status of the third audit (2026-10-15, at 320504e)
+
+| # | Finding | Status | Where |
+|---|---|---|---|
+| 1 | Slash in a model ID breaks saving | Fixed: run IDs are filesystem-safe (`new_run_id`) for complete, partial and merged files; `model_id` stays verbatim | 0.2.3 |
+| 2 | Custom-agent example cannot produce a reportable run | Fixed: the example uses `prepare_corpus` and records identity; `--limit 0` is a submission run, the default is a labelled diagnostic, `--partial` is not reportable; tested on real ffmpeg media | 0.2.3 |
+| 3 | A trial can change models and keep only the last | Fixed: every turn's reported model is kept (`turn_models`); a change ends the trial (`model_changed`); submit refuses a run with two identities; merge refuses different snapshots, providers or endpoints and records each input in `merged_inputs` | 0.2.3 |
+| 4 | Keyword-baseline failure read as needing the picture | Fixed: BM25 text control added; the tier-2 split is "solved by a text-only control" against "not solved by either", described as a lower bound on speech alone. Matched controls (competing transcript matches, mismatched narration) remain open | 0.2.3, roadmap |
+| 5 | Cross-check does not identify the amended annotation | Fixed: every review stores `annotation_sha`; 126 queries edited after their cross-check moved it to `cross_check_history` and await a new independent check (needs API budget for a second model family) | 0.2.3, roadmap |
+| Human review | No human review records | Open (R13) | roadmap |
+| Other gaps | Corpus size, splits by source, contamination, audio and motion, physical dynamics, model coverage, indexed retrieval, Mixpeek workflow, serving and resume, perception replay, entrant isolation, pending film clearances | Open; stated above and in the roadmap | roadmap |

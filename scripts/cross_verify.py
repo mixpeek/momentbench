@@ -25,8 +25,11 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import draft_queries as dq  # noqa: E402
+
+from momentbench.annotation import annotation_sha  # noqa: E402
 
 MODEL = "gemini-3.5-flash"
 
@@ -152,11 +155,13 @@ async def main() -> None:
     for path in map(Path, args.queries):
         queries = json.loads(path.read_text())
         async def keep_or_check(q: dict):
-            # Already agreed: keep the recorded result rather than paying to check again.
+            # Already agreed on this exact annotation: keep the recorded result rather
+            # than paying to check again. An edit since then needs a new check.
             done = q["metadata"].get("cross_check") or {}
-            if done.get("agreed"):
+            if done.get("agreed") and done.get("annotation_sha") == annotation_sha(q):
                 return done
-            return await cross_check(films, drafts, q, sem, client, usage)
+            result = await cross_check(films, drafts, q, sem, client, usage)
+            return {**result, "annotation_sha": annotation_sha(q)}
 
         results = await asyncio.gather(*(keep_or_check(q) for q in queries),
                                        return_exceptions=True)
@@ -172,8 +177,11 @@ async def main() -> None:
             if not r["agreed"]:
                 rejected.append(q)
                 continue
-            if not already:
+            if not already and f"cross-checked by {MODEL}" not in q["metadata"]["source"]:
                 q["metadata"]["source"] += f"; cross-checked by {MODEL}"
+            elif not already:
+                q["metadata"]["source"] = q["metadata"]["source"].replace(
+                    " before a later edit; new cross-check pending", "")
             kept.append(q)
         path.write_text(json.dumps(kept, indent=2, ensure_ascii=False) + "\n")
         out = work / f"{path.stem}.rejected.json"

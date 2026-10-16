@@ -36,6 +36,13 @@ FILM_CREDIT = {"big-buck-bunny": "Big Buck Bunny", "elephants-dream": "Elephants
                "cosmos-laundromat": "Cosmos Laundromat", "spring": "Spring",
                "agent-327-operation-barbershop": "Agent 327"}
 CHANGELOG = [
+    ("2026-10-16", "v0.2.3: safe run file names for open-weight model IDs, a verified "
+                   "custom-agent example, per-turn model identity, a BM25 text control, "
+                   "and reviews bound to the annotation they saw."),
+    ("2026-10-14", "v0.2.2: every published query reviewed against its frames by Claude "
+                   "(59 corrected, 1 removed); Claude record runs cover every public query."),
+    ("2026-10-13", "v0.2.1: hardened harness, scoring and submission after two "
+                   "lab-readiness audits."),
     ("2026-10-11", "v0.2.0 tagged: 27 assets in film, aerospace and robotics, 620 queries, "
                    "results for three Claude models and Gemini 3.1 Pro, held-out results "
                    "in every domain."),
@@ -72,6 +79,7 @@ def stats() -> dict:
         "physical": sum(bool(q["metadata"].get("physical_event")) for q in published.values()),
         "agreement": 100 * (1 - quality["cross_check"]["disagreed_and_removed"]
                             / quality["cross_check"]["checked"]),
+        "cc_pending": sum("cross_check" not in q["metadata"] for q in published.values()),
         "held": None,
     }
 
@@ -362,7 +370,7 @@ momentbench agentic &lt;model&gt; --provider openai-compatible \\
 <section id="data"><div class="wrap two">
   <div>
     <h2>Data quality</h2>
-    <p>Gold spans are scene-cut-bounded shots. One model family drafted and verified each query against the three most similar shots in the corpus; the other family cross-checked it, and only queries both agreed on were kept ({st['agreement']:.1f}% agreement, in both directions). Spans flagged as loose were refined and re-verified. Counts and spot checks are in <a href="{REPO}/blob/main/data/quality.json">data/quality.json</a>; the method is in the <a href="{REPO}/blob/main/docs/protocol.md">protocol</a>.</p>
+    <p>Gold spans are scene-cut-bounded shots. One model family drafted and verified each query against the three most similar shots in the corpus; the other family cross-checked it, and only queries both agreed on were kept ({st['agreement']:.1f}% agreement, in both directions). Spans flagged as loose were refined and re-verified; {st['cc_pending']} queries edited after the cross-check await a new one. Counts and spot checks are in <a href="{REPO}/blob/main/data/quality.json">data/quality.json</a>; the method is in the <a href="{REPO}/blob/main/docs/protocol.md">protocol</a>.</p>
     <p>All footage is public domain (NASA) or CC BY (Blender Foundation), pinned by sha256 and fetched from its source with <code>momentbench corpus-download</code>.</p>
   </div>
   <div>
