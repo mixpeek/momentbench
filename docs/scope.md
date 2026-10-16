@@ -168,3 +168,13 @@ Fixed means the change is on main with a test that reproduces the audit's probe.
 | 5 | Cross-check does not identify the amended annotation | Fixed: every review stores `annotation_sha`; 126 queries edited after their cross-check moved it to `cross_check_history` and await a new independent check (needs API budget for a second model family) | 0.2.3, roadmap |
 | Human review | No human review records | Open (R13) | roadmap |
 | Other gaps | Corpus size, splits by source, contamination, audio and motion, physical dynamics, model coverage, indexed retrieval, Mixpeek workflow, serving and resume, perception replay, entrant isolation, pending film clearances | Open; stated above and in the roadmap | roadmap |
+
+## Status of the fourth audit (2026-10-16, at 2e40cf7)
+
+| # | Finding | Status | Where |
+|---|---|---|---|
+| 1 | Claude Code hides model changes within a trial | Fixed: the driver records every assistant message's model, stops the stream on a change and returns `model_changed` with the spent usage; the harness applies the same rule to custom loops. Tested with a simulated SDK stream (A then B) | 0.2.4 |
+| 2 | Asset titles are outside the compatibility key | Fixed: `asset_view_sha` hashes the exact `list_assets` response and is recomputed at submission; a title change alters the key, a local storage path does not. Earlier runs are admitted only on the manifest they recorded (all 18 record runs do) | 0.2.4 |
+| 3 | Rechecks can reuse frames from an old span | Fixed: cached frames carry the video sha256, timestamp and width and are re-extracted otherwise; pre-review and refinement caches are bound to `annotation_sha`; cross-checks record the media they showed and the reviewer configuration. Tested on a real red-then-blue video | 0.2.4 |
+| 4 | A no-answer check can skip the original | Fixed: the 66 no-answer queries store `altered_from.original_text`; a missing original makes the check incomplete and leaves the query unchanged | 0.2.4 |
+| Scientific and operational gaps | Annotation validity, generalization, multimodal necessity, native audio and video, physical dynamics, model comparisons, indexed retrieval, reproducible serving, replay and isolation, contamination and clearances | Open; stated above and in the roadmap | roadmap |

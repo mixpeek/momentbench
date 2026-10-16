@@ -27,7 +27,7 @@ clone a release tag and work inside it. `ffmpeg` and `ffprobe` must be on the PA
 (`brew install ffmpeg`, `apt install ffmpeg`).
 
 ```bash
-git clone --branch v0.2.3 https://github.com/mixpeek/momentbench.git
+git clone --branch v0.2.4 https://github.com/mixpeek/momentbench.git
 cd momentbench
 pip install -e ".[openai]"   # Python 3.10+; or .[gemini], .[claude-code], .[inspect]
 momentbench corpus-download -m data/corpus_manifests/sample_manifest.json --corpus-dir corpus/   # 2.6 GB

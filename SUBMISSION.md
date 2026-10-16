@@ -7,7 +7,7 @@ There is one route onto the leaderboard: an agentic-track run on a whole domain'
 ## 1. Get the corpus
 
 ```bash
-git clone --branch v0.2.3 https://github.com/mixpeek/momentbench.git
+git clone --branch v0.2.4 https://github.com/mixpeek/momentbench.git
 cd momentbench
 pip install -e ".[openai]"   # Python 3.10+; or .[gemini], .[claude-code], .[inspect]
 momentbench corpus-download -m data/corpus_manifests/sample_manifest.json --corpus-dir corpus/
@@ -53,7 +53,7 @@ momentbench leaderboard data/results/agentic/
 ## What we verify
 
 1. **Reportable and complete:** the run covers every query in the file and its corpus receipt lists every asset.
-2. **Same benchmark:** the compatibility key matches runs on the current release (same queries, corpus, transcripts, prompt, tools, budget and modalities).
+2. **Same benchmark:** the compatibility key matches runs on the current release (same queries, corpus, transcripts, prompt, tools, budget and modalities, and the same asset list as `list_assets` shows it: ids, titles, durations, transcript availability and order). Runs made before 0.2.4 do not hash the asset list; they are admitted only on the exact manifest they recorded.
 3. **Reproducibility:** we may rerun the model, so include how to call it.
 4. **No query-set overfitting:** see the held-out set below.
 

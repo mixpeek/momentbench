@@ -30,6 +30,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import draft_queries as dq  # noqa: E402
 
 from momentbench.annotation import annotation_sha  # noqa: E402
+from momentbench.corpus.frame_cache import frame_inputs  # noqa: E402
+from momentbench.corpus.verify import sha256_file  # noqa: E402
 
 MODEL = "gemini-3.5-flash"
 
@@ -69,8 +71,19 @@ async def ask_gemini(client, system: str, prompt: str, image: Path, sem, usage: 
     return dq.parse_json(r.text or "{}")
 
 
-async def judge(films, q: dict, text: str, gold_span, sem, client, usage, tag: str) -> str:
-    """Return which candidate Gemini picked for `text`: "gold", "neg", "none" or "wrong"."""
+def config_sha() -> str:
+    """The reviewer configuration: model, prompts and the sheet layout."""
+    import hashlib
+
+    blob = json.dumps([MODEL, dq.VERIFY_SYSTEM, dq.VERIFY_PROMPT, dq.TILE_W], sort_keys=True)
+    return hashlib.sha256(blob.encode()).hexdigest()[:16]
+
+
+async def judge(films, q: dict, text: str, gold_span, sem, client, usage, tag: str
+                ) -> tuple[str, dict]:
+    """Which candidate the checker picked for `text` ("gold", "neg", "none" or "wrong"),
+    and the media it was shown: each candidate's span and the source of every frame
+    (video sha256 and timestamp), the contact sheet's sha256 and the dialogue."""
     asset = q["gold_moments"][0]["asset_id"] if q["gold_moments"] else \
         q["metadata"]["altered_from"]["asset_id"]
     film = films[asset]
@@ -80,14 +93,20 @@ async def judge(films, q: dict, text: str, gold_span, sem, client, usage, tag: s
     ]
     random.Random(q["query_id"] + tag + "x").shuffle(candidates)
     labels = "ABCD"[: len(candidates)]
-    tiles, dialogue = [], []
+    tiles, dialogue, shown = [], [], []
     for label, (fid, span, ctag) in zip(labels, candidates):
         key = f"x_{q['query_id']}_{ctag}"
-        for p in films[fid].strip(span, key):
+        paths = films[fid].strip(span, key)
+        for p in paths:
             tiles.append(dq.label_tile(p, label))
+        shown.append({"label": label, "role": ctag, "asset_id": fid,
+                      "span": [float(span[0]), float(span[1])],
+                      "frames": frame_inputs(paths)})
         if q["tier"] == 2:
             dialogue.append(f"{label} dialogue: {films[fid].dialogue(*span)}")
     sheet = dq.grid(tiles, 3, film.dir / f"xverify_{q['query_id']}_{tag}.jpg")
+    media = {"candidates": shown, "sheet_sha256": sha256_file(sheet),
+             "dialogue": dialogue, "config_sha": config_sha()}
     said = "\n" + "\n".join(dialogue) + "\n" if dialogue else ""
     prompt = dq.VERIFY_PROMPT.format(sheet="attached", last_label=labels[-1], text=text,
                                      dialogue=said)
@@ -101,24 +120,32 @@ async def judge(films, q: dict, text: str, gold_span, sem, client, usage, tag: s
     picked = dict(zip(labels, (c[2] for c in candidates))).get(
         str(reply.get("answer", "")).strip().upper(), "none")
     if picked == "gold" and reply.get("wrong_details"):
-        return "wrong"
-    return "neg" if picked.startswith("neg") else picked
+        return "wrong", media
+    return ("neg" if picked.startswith("neg") else picked), media
 
 
 async def cross_check(films, drafts, q: dict, sem, client, usage) -> dict:
     if q["gold_moments"]:
         g = q["gold_moments"][0]
-        verdict = await judge(films, q, q["text"], (g["t_in"], g["t_out"]), sem, client,
-                              usage, "t")
-        return {"model": MODEL, "agreed": verdict == "gold", "picked": verdict}
+        verdict, media = await judge(films, q, q["text"], (g["t_in"], g["t_out"]), sem,
+                                     client, usage, "t")
+        return {"model": MODEL, "agreed": verdict == "gold", "picked": verdict,
+                "media": {"text": media}}
     src = q["metadata"]["altered_from"]
     span = (src["t_in"], src["t_out"])
-    altered = await judge(films, q, q["text"], span, sem, client, usage, "a")
-    original = (drafts.get((src["asset_id"], q["text"])) or {}).get("original")
-    orig_verdict = await judge(films, q, original, span, sem, client, usage, "o") \
-        if original else "unavailable"
-    agreed = altered == "none" and orig_verdict in ("gold", "unavailable")
-    return {"model": MODEL, "agreed": agreed, "picked": altered, "original_picked": orig_verdict}
+    # Both halves are required: the changed text matches nothing, and the unaltered
+    # original matches the source shot. Without the original the check is incomplete,
+    # never agreement (audit 4, finding 4).
+    original = src.get("original_text") or \
+        (drafts.get((src["asset_id"], q["text"])) or {}).get("original")
+    if not original:
+        return {"model": MODEL, "agreed": False, "complete": False,
+                "picked": None, "original_picked": "unavailable"}
+    altered, media_a = await judge(films, q, q["text"], span, sem, client, usage, "a")
+    orig_verdict, media_o = await judge(films, q, original, span, sem, client, usage, "o")
+    return {"model": MODEL, "agreed": altered == "none" and orig_verdict == "gold",
+            "picked": altered, "original_picked": orig_verdict,
+            "media": {"altered": media_a, "original": media_o}}
 
 
 async def main() -> None:
@@ -165,11 +192,17 @@ async def main() -> None:
 
         results = await asyncio.gather(*(keep_or_check(q) for q in queries),
                                        return_exceptions=True)
-        kept, rejected, failed = [], [], 0
+        kept, rejected, failed, incomplete = [], [], 0, 0
         for q, r in zip(queries, results):
             if isinstance(r, Exception):
                 # A failed call is not a verdict: keep the query, unchanged, to retry.
                 failed += 1
+                kept.append(q)
+                continue
+            if r.get("complete") is False:
+                # Not a verdict either: the no-answer original could not be checked.
+                # Keep the query, unchanged, until its original text is recorded.
+                incomplete += 1
                 kept.append(q)
                 continue
             already = q["metadata"].get("cross_check") is r
@@ -188,7 +221,8 @@ async def main() -> None:
         old = json.loads(out.read_text()) if out.exists() else []
         out.write_text(json.dumps(old + rejected, indent=2, ensure_ascii=False) + "\n")
         print(f"{path.name}: kept {len(kept)}, rejected {len(rejected)}, "
-              f"failed calls left unchanged {failed}")
+              f"failed calls left unchanged {failed}, incomplete checks left unchanged "
+              f"{incomplete}")
     print(f"tokens: {usage['in']} in, {usage['out']} out")
 
 

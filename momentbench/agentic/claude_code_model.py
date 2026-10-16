@@ -25,7 +25,7 @@ from momentbench.agentic.environment import (
     InvalidSubmissionError,
     LocalCorpus,
 )
-from momentbench.agentic.episode import SYSTEM_PROMPT, Episode, build_task
+from momentbench.agentic.episode import SYSTEM_PROMPT, Episode, EpisodeError, build_task
 from momentbench.agentic.model import AgentModel, AgentSession, ToolCall
 from momentbench.types import Query, QueryRequest
 
@@ -123,26 +123,68 @@ class ClaudeCodeAgent(AgentModel):
                 cwd=cwd,
             )
             result: ResultMessage | None = None
-            resolved: str | None = None
-            async for message in sdk_query(prompt=build_task(query, budget), options=options):
-                if isinstance(message, AssistantMessage):
-                    resolved = getattr(message, "model", None) or resolved
-                if isinstance(message, ResultMessage):
-                    result = message
+            turn_models: list[str | None] = []
+            changed = False
+            streamed = Usage()  # per-message usage, kept in case no ResultMessage arrives
+            stream = sdk_query(prompt=build_task(query, budget), options=options)
+            try:
+                async for message in stream:
+                    if isinstance(message, AssistantMessage):
+                        turn_models.append(getattr(message, "model", None))
+                        raw = getattr(message, "usage", None) or {}
+                        streamed.input_tokens += raw.get("input_tokens", 0)
+                        streamed.output_tokens += raw.get("output_tokens", 0)
+                        streamed.cache_read_tokens += raw.get("cache_read_input_tokens", 0)
+                        streamed.cache_write_tokens += raw.get(
+                            "cache_creation_input_tokens", 0)
+                        if len({m for m in turn_models if m}) > 1:
+                            # No silent fallback (protocol): a turn from another model
+                            # ends the trial, whatever it submitted (audit 4, finding 1).
+                            changed = True
+                            break
+                    if isinstance(message, ResultMessage):
+                        result = message
+                if changed and hasattr(stream, "aclose"):
+                    await stream.aclose()
+            except Exception as e:
+                raise EpisodeError(e, self._usage(usage, result, streamed, turn_models),
+                                   trace, turn_models) from e
 
+        usage = self._usage(usage, result, streamed, turn_models)
+        resolved = next((m for m in turn_models if m), None)
+
+        def end(moments: list, outcome: str) -> Episode:
+            return Episode(query.query_id, moments, usage, outcome, trace, resolved,
+                           turn_models)
+
+        if changed:
+            trace.append({"error": "model_changed", "models": [m for m in turn_models if m]})
+            return end([], "model_changed")
+        if submitted:
+            return end(submitted["moments"], "submitted")
+        if result is not None and result.subtype == "error_max_turns":
+            return end([], "step_limit")
+        if result is not None and result.is_error:
+            raise EpisodeError(
+                RuntimeError(f"claude code ended with {result.subtype}: {result.errors}"),
+                usage, trace, turn_models)
+        return end([], "no_submission")
+
+    @staticmethod
+    def _usage(usage: Usage, result: Any, streamed: Usage,
+               turn_models: list[str | None]) -> Usage:
+        """Token usage from the final ResultMessage, else what the stream reported."""
+        source = streamed
         if result is not None:
             raw = result.usage or {}
-            usage.input_tokens += raw.get("input_tokens", 0)
-            usage.output_tokens += raw.get("output_tokens", 0)
-            usage.cache_read_tokens += raw.get("cache_read_input_tokens", 0)
-            usage.cache_write_tokens += raw.get("cache_creation_input_tokens", 0)
-            usage.steps = result.num_turns
-
-        if submitted:
-            moments = submitted["moments"]
-            return Episode(query.query_id, moments, usage, "submitted", trace, resolved)
-        if result is not None and result.subtype == "error_max_turns":
-            return Episode(query.query_id, [], usage, "step_limit", trace, resolved)
-        if result is not None and result.is_error:
-            raise RuntimeError(f"claude code ended with {result.subtype}: {result.errors}")
-        return Episode(query.query_id, [], usage, "no_submission", trace, resolved)
+            source = Usage(input_tokens=raw.get("input_tokens", 0),
+                           output_tokens=raw.get("output_tokens", 0),
+                           cache_read_tokens=raw.get("cache_read_input_tokens", 0),
+                           cache_write_tokens=raw.get("cache_creation_input_tokens", 0))
+        out = usage.model_copy()
+        out.input_tokens += source.input_tokens
+        out.output_tokens += source.output_tokens
+        out.cache_read_tokens += source.cache_read_tokens
+        out.cache_write_tokens += source.cache_write_tokens
+        out.steps = result.num_turns if result is not None else len(turn_models)
+        return out

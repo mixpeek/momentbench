@@ -34,7 +34,7 @@ from momentbench.submission import (  # noqa: E402
 
 SAME_SYSTEM = ("provider", "endpoint")
 SAME_TASK = ("corpus_sha", "transcripts_sha", "system_prompt_sha", "tools_sha", "budget",
-             "modalities", "anonymize_titles")
+             "modalities", "anonymize_titles", "asset_view_sha", "manifest_sha256")
 
 
 def provenance(run: AgenticRun) -> dict:

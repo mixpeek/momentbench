@@ -41,6 +41,7 @@ sys.path.insert(0, str(ROOT))
 
 from momentbench.agentic.environment import load_transcript  # noqa: E402
 from momentbench.canary import CANARY  # noqa: E402
+from momentbench.corpus.frame_cache import extract  # noqa: E402
 
 MODEL = "claude-opus-5-5"
 SCENE_THRESHOLD = 0.3
@@ -168,16 +169,9 @@ def detect_shots(video: Path, duration: float) -> list[tuple[float, float]]:
 
 
 def frame(video: Path, t: float, out: Path) -> Path:
-    # A seek in the last fraction of a second can land past the final frame, so step back.
-    for back in (0.0, 0.5, 1.0, 2.0):
-        if out.exists():
-            break
-        subprocess.run(
-            ["ffmpeg", "-v", "error", "-y", "-ss", f"{max(0.0, t - back):.2f}", "-i", str(video),
-             "-frames:v", "1", "-vf", f"scale={TILE_W}:-2", str(out)],
-            check=False, capture_output=True,
-        )
-    if not out.exists():
+    # Reused only if the cached file came from these video bytes at this time; a name
+    # alone does not say which span it showed (audit 4, finding 3).
+    if extract(video, t, out, TILE_W, step_back=(0.0, 0.5, 1.0, 2.0)) is None:
         raise RuntimeError(f"no frame at {t:.2f}s in {video.name}")
     return out
 

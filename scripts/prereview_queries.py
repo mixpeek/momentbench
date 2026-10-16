@@ -28,6 +28,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import draft_queries as dq  # noqa: E402
 
 from momentbench.agentic.environment import load_transcript  # noqa: E402
+from momentbench.annotation import annotation_sha  # noqa: E402
 
 LABELS = ("before", "start", "middle", "end", "after")
 SYSTEM = (
@@ -79,8 +80,10 @@ async def review(q: dict, review_dir: Path, transcripts: Path, sem) -> tuple[str
     work = review_dir / "prereview"
     work.mkdir(exist_ok=True)
     cache = work / f"{qid}.json"
-    if cache.exists():
-        return qid, json.loads(cache.read_text())
+    # A cached verdict stands only for the annotation it judged (audit 4, finding 3).
+    if cache.exists() and (old := json.loads(cache.read_text())).get(
+            "annotation_sha") == annotation_sha(q):
+        return qid, old
     sheet = sheet_for(review_dir, qid, work / f"{qid}.jpg")
     if span is None or sheet is None:
         return qid, {"decision": "fix", "reason": "no frames to review"}
@@ -96,7 +99,8 @@ async def review(q: dict, review_dir: Path, transcripts: Path, sem) -> tuple[str
     try:
         verdict = dq.parse_json(await dq.ask(SYSTEM, prompt, work, sem))
         result = {"decision": str(verdict.get("decision", "fix")).lower(),
-                  "reason": str(verdict.get("reason", ""))[:300]}
+                  "reason": str(verdict.get("reason", ""))[:300],
+                  "annotation_sha": annotation_sha(q)}
     except Exception as e:  # one failure must not stop the pass, and is not cached
         return qid, {"decision": "error", "reason": f"pre-review failed: {str(e)[:120]}"}
     cache.write_text(json.dumps(result))

@@ -1132,7 +1132,8 @@
         "asset_id": "nasa-artemis-ii-welcome-home",
         "t_in": 50.87,
         "t_out": 52.43,
-        "change": "The person in the foreground was changed from a woman to a man."
+        "change": "The person in the foreground was changed from a woman to a man.",
+        "original_text": "A close-up of a woman with glasses studying a computer screen at a console, with an older man in a suit working beside her in a control room."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -1417,7 +1418,8 @@
         "asset_id": "nasa-artemis-ii-welcome-home",
         "t_in": 76.07,
         "t_out": 79.0,
-        "change": "The number of parachutes was changed from three to two."
+        "change": "The number of parachutes was changed from three to two.",
+        "original_text": "Seen from above, three red-and-white striped parachutes lower a capsule onto a deep blue ocean, and white spray rises where it touches the water."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -2303,7 +2305,8 @@
         "asset_id": "nasa-artemis-ii-mission-recap",
         "t_in": 112.27,
         "t_out": 113.27,
-        "change": "Changed the number of astronauts from four to three."
+        "change": "Changed the number of astronauts from four to three.",
+        "original_text": "Four astronauts squeeze together for a close-up selfie inside the spacecraft, all wearing colorful paper eclipse glasses."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -2516,7 +2519,8 @@
         "asset_id": "nasa-artemis-ii-mission-recap",
         "t_in": 173.7,
         "t_out": 179.9,
-        "change": "The parachutes are red and white, not green and white."
+        "change": "The parachutes are red and white, not green and white.",
+        "original_text": "Three red-and-white striped parachutes lower a capsule toward a dark blue ocean while pink text about the crew being the first humans to fly around the Moon in over 50 years is shown."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -2623,7 +2627,8 @@
         "asset_id": "nasa-artemis-ii-mission-recap",
         "t_in": 205.1,
         "t_out": 212.5,
-        "change": "The second logo is the NASA meatball logo, not the ESA logo."
+        "change": "The second logo is the NASA meatball logo, not the ESA logo.",
+        "original_text": "On a black screen, the Artemis logo appears and then gives way to the round blue NASA logo."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -2907,7 +2912,8 @@
         "asset_id": "nasa-artemis-i-launch-recap",
         "t_in": 23.97,
         "t_out": 27.7,
-        "change": "The man's sweatshirt is changed from grey to red"
+        "change": "The man's sweatshirt is changed from grey to red",
+        "original_text": "A crowd of spectators cheers at night under a 'Space Center' sign. In front, a masked man wears a grey NASA sweatshirt and people wave small American flags."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -3133,7 +3139,8 @@
         "asset_id": "nasa-artemis-i-launch-recap",
         "t_in": 96.17,
         "t_out": 110.9,
-        "change": "The backdrop was changed from a starfield to an American flag."
+        "change": "The backdrop was changed from a starfield to an American flag.",
+        "original_text": "An older man in a dark suit jacket and light blue open-collar shirt speaks at a microphone in front of a starfield backdrop."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -3955,7 +3962,8 @@
         "asset_id": "nasa-how-to-recover-a-spacecraft",
         "t_in": 82.13,
         "t_out": 84.03,
-        "change": "The text on the back of the shirt was changed from \"DEEP SEA\" to \"NAVY DIVER\"."
+        "change": "The text on the back of the shirt was changed from \"DEEP SEA\" to \"NAVY DIVER\".",
+        "original_text": "Poolside, a group of young men in navy-blue T-shirts stand around listening. One of them, in a camouflage cap, has \"DEEP SEA\" printed in yellow on the back of his shirt."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -4168,7 +4176,8 @@
         "asset_id": "nasa-how-to-recover-a-spacecraft",
         "t_in": 144.4,
         "t_out": 147.4,
-        "change": "The sky is changed from overcast gray to bright blue."
+        "change": "The sky is changed from overcast gray to bright blue.",
+        "original_text": "A rescuer in a red and black suit hangs on a cable below a helicopter against an overcast gray sky."
       },
       "text_refined": {
         "from": "A rescuer in a red and black suit is lowered on a cable from a helicopter against a bright blue sky.",
@@ -4968,7 +4977,8 @@
         "asset_id": "nasa-minute-2026-10-02",
         "t_in": 63.03,
         "t_out": 67.13,
-        "change": "The sky was changed from a purple dusk sky with headlights on to a bright blue midday sky."
+        "change": "The sky was changed from a purple dusk sky with headlights on to a bright blue midday sky.",
+        "original_text": "A white-domed space capsule rides on an orange multi-wheeled KAMAG transporter along a road under a purple dusk sky, headlights on."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -5523,7 +5533,8 @@
         "asset_id": "nasa-minute-2026-09-04",
         "t_in": 62.13,
         "t_out": 65.67,
-        "change": "The second man's shirt was changed from a red, white and blue stars-and-stripes shirt to a green Hawaiian floral shirt."
+        "change": "The second man's shirt was changed from a red, white and blue stars-and-stripes shirt to a green Hawaiian floral shirt.",
+        "original_text": "In a hangar, a man in glasses and a short-sleeve button shirt stands at a workbench next to a man in a red, white and blue stars-and-stripes shirt, and they handle equipment on the table."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -5789,7 +5800,8 @@
         "asset_id": "nasa-minute-2026-09-04",
         "t_in": 69.2,
         "t_out": 74.2,
-        "change": "The two men on the left hold clipboards instead of large professional cameras"
+        "change": "The two men on the left hold clipboards instead of large professional cameras",
+        "original_text": "Three men in dark caps sit side by side inside a white spacecraft cabin mockup. The two on the left hold large professional cameras while the man on the right smiles."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -6894,7 +6906,8 @@
         "asset_id": "nasa-minute-2026-01-23",
         "t_in": 189.7,
         "t_out": 198.13,
-        "change": "red arrow pointing at the rocket changed to a yellow circle around it"
+        "change": "red arrow pointing at the rocket changed to a yellow circle around it",
+        "original_text": "Overhead orbital photo of a launch pad on the coast, with a red arrow pointing at the rocket and its shadow."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -7067,7 +7080,8 @@
         "asset_id": "nasa-minute-2026-05-22",
         "t_in": 16.1,
         "t_out": 21.4,
-        "change": "The man's red, white and blue striped tie was changed to a solid green tie."
+        "change": "The man's red, white and blue striped tie was changed to a solid green tie.",
+        "original_text": "Studio portrait of a smiling man with short hair in a dark suit and a red, white and blue striped tie, posed in front of an American flag and a NASA seal on a blue background."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -7333,7 +7347,8 @@
         "asset_id": "nasa-minute-2026-05-22",
         "t_in": 70.13,
         "t_out": 73.3,
-        "change": "Changed the sculpture's colour from red to blue."
+        "change": "Changed the sculpture's colour from red to blue.",
+        "original_text": "A large red sculpture of the curvy NASA 'worm' logo stands on a paved plaza in front of a grey office building."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -7511,7 +7526,8 @@
         "asset_id": "nasa-artemis-ii-welcome-home",
         "t_in": 14.03,
         "t_out": 15.03,
-        "change": "chain-link fence changed to wooden picket fence"
+        "change": "chain-link fence changed to wooden picket fence",
+        "original_text": "A large crowd stands behind a chain-link fence near the water, raising phones as a rocket climbs into the sky in the distance."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -8103,7 +8119,8 @@
         "asset_id": "nasa-artemis-i-launch-recap",
         "t_in": 67.77,
         "t_out": 70.53,
-        "change": "The NASA letters were changed from white to red."
+        "change": "The NASA letters were changed from white to red.",
+        "original_text": "A seated crowd fills an indoor hall at the U.S. Space & Rocket Center, under a huge rocket stage hanging from the ceiling. Large white NASA letters stand in the foreground."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -8493,7 +8510,8 @@
         "asset_id": "nasa-how-to-recover-a-spacecraft",
         "t_in": 172.83,
         "t_out": 174.57,
-        "change": "jacket colour changed from yellow to green"
+        "change": "jacket colour changed from yellow to green",
+        "original_text": "On a ship's flight deck, a crew member in a yellow jacket raises an arm toward a distant helicopter while two others stand nearby watching."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -8706,7 +8724,8 @@
         "asset_id": "nasa-minute-2026-09-04",
         "t_in": 62.13,
         "t_out": 65.67,
-        "change": "The second man's shirt was changed from a red, white and blue stars-and-stripes shirt to a green Hawaiian shirt."
+        "change": "The second man's shirt was changed from a red, white and blue stars-and-stripes shirt to a green Hawaiian shirt.",
+        "original_text": "In a training facility, a man in a light blue short-sleeved shirt handles equipment on a table. Next to him, a man in a red, white and blue stars-and-stripes shirt smiles."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -8943,7 +8962,8 @@
         "asset_id": "nasa-minute-2026-05-08",
         "t_in": 77.6,
         "t_out": 79.93,
-        "change": "Added a red forklift parked next to the door. There is no forklift in the shot."
+        "change": "Added a red forklift parked next to the door. There is no forklift in the shot.",
+        "original_text": "A worker in a white coat stands on the floor beside a giant cream-colored vacuum chamber door with a NASA logo, which is swung open. Another person stands in the distance by a dark metal frame."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -9156,7 +9176,8 @@
         "asset_id": "nasa-minute-2026-03-13",
         "t_in": 49.7,
         "t_out": 57.57,
-        "change": "Replaced the American flag with a United Nations flag"
+        "change": "Replaced the American flag with a United Nations flag",
+        "original_text": "A man in a dark suit and red tie speaks to the camera while standing in front of an American flag and a NASA seal."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",

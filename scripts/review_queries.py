@@ -30,25 +30,19 @@ import argparse
 import datetime
 import html
 import json
-import subprocess
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from momentbench.annotation import annotation_sha, invalidate_cross_check  # noqa: E402
+from momentbench.corpus.frame_cache import extract  # noqa: E402
 
 WIDTH = 256
 
 
 def frame(video: Path, t: float, out: Path) -> str:
-    if not out.exists():
-        subprocess.run(
-            ["ffmpeg", "-v", "error", "-y", "-ss", f"{max(0.0, t):.2f}", "-i", str(video),
-             "-frames:v", "1", "-vf", f"scale={WIDTH}:-2", str(out)],
-            check=False, capture_output=True,
-        )
-    return out.name if out.exists() else ""
+    return out.name if extract(video, t, out, WIDTH) else ""
 
 
 def build(args: argparse.Namespace) -> None:

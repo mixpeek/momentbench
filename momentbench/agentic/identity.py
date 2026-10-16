@@ -79,10 +79,18 @@ def queries_sha(queries: list[Any]) -> str:
 def task_identity(*, queries: list[Any], receipt: dict[str, str],
                   transcripts: dict[str, list[dict[str, Any]]], system_prompt: str,
                   tools: list[dict[str, Any]], budget: dict[str, Any], modalities: str,
-                  anonymize_titles: bool = False) -> dict[str, Any]:
+                  anonymize_titles: bool = False,
+                  asset_view: str | None = None) -> dict[str, Any]:
     """What defines the task. Two runs with the same compatibility_key ran the same
     benchmark: the same selected queries and wording, the same verified video bytes,
-    transcripts, prompt, tools, budget and conditions."""
+    transcripts, prompt, tools, budget and conditions, and the same asset list as the
+    model saw it.
+
+    `asset_view` is the exact `list_assets` response: ids or aliases, titles, durations,
+    transcript availability and order (audit 4, finding 2). Storage paths and other
+    manifest fields the model never sees stay out of it. Runs from before 0.2.4 have no
+    `asset_view_sha`; submission admits those only on the manifest they recorded.
+    """
     task = {
         "queries_sha": queries_sha(queries),
         "num_queries": len(queries),
@@ -94,6 +102,8 @@ def task_identity(*, queries: list[Any], receipt: dict[str, str],
         "modalities": modalities,
         "anonymize_titles": anonymize_titles,
     }
+    if asset_view is not None:
+        task["asset_view_sha"] = text_sha(asset_view)
     return {**task, "compatibility_key": text_sha(json.dumps(task, sort_keys=True))}
 
 

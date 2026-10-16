@@ -218,7 +218,8 @@
         "asset_id": "nasa-how-perseverance-drives",
         "t_in": 103.03,
         "t_out": 111.0,
-        "change": "The sky colour was changed from hazy brown to clear blue."
+        "change": "The sky colour was changed from hazy brown to clear blue.",
+        "original_text": "An animated close-up from behind a rover shows its tall camera mast with reddish-brown hills under a hazy brown sky in the background."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -573,7 +574,8 @@
         "asset_id": "nasa-perseverance-twin-rover",
         "t_in": 16.5,
         "t_out": 17.97,
-        "change": "The number of technicians was changed from three to two."
+        "change": "The number of technicians was changed from three to two.",
+        "original_text": "Three technicians in full white clean-room suits with hoods bend over a table and work on small rover parts."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -857,7 +859,8 @@
         "asset_id": "nasa-perseverance-twin-rover",
         "t_in": 76.13,
         "t_out": 78.0,
-        "change": "The telehandler's colour was changed from yellow to red."
+        "change": "The telehandler's colour was changed from yellow to red.",
+        "original_text": "Outside a white industrial building under a clear blue sky, a yellow telehandler forklift sits on the pavement as a few people stand nearby, with the caption 'MOVE TO THE MARS YARD'."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -1194,7 +1197,8 @@
         "asset_id": "nasa-perseverance-twin-rover",
         "t_in": 92.57,
         "t_out": 94.23,
-        "change": "The forklift is described as red, but it is yellow."
+        "change": "The forklift is described as red, but it is yellow.",
+        "original_text": "A rover hangs in a frame from a yellow forklift boom while men in white lab coats hold its wheels steady."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -1460,7 +1464,8 @@
         "asset_id": "nasa-perseverance-twin-rover",
         "t_in": 126.33,
         "t_out": 128.2,
-        "change": "lab coat colour changed from white to bright blue"
+        "change": "lab coat colour changed from white to bright blue",
+        "original_text": "Two people in white lab coats are on the dirt beside a rover wheel. One lies flat on his stomach peering under the rover while the other kneels holding a small handheld device with a cable."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -1691,7 +1696,8 @@
         "asset_id": "nasa-viper-lander-exit-test",
         "t_in": 19.67,
         "t_out": 22.73,
-        "change": "The wheel colour was changed from gold to bright blue."
+        "change": "The wheel colour was changed from gold to bright blue.",
+        "original_text": "Seen from above, a rover prototype with gold mesh wheels is on a pair of truss ramps leading down from a lander mockup to a grey regolith floor. The caption says drivers practiced exiting a lander model."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -1864,7 +1870,8 @@
         "asset_id": "nasa-viper-slope-lab-testing",
         "t_in": 52.5,
         "t_out": 54.83,
-        "change": "The wheel hub's colour was changed from yellow to red."
+        "change": "The wheel hub's colour was changed from yellow to red.",
+        "original_text": "Close-up of a rover's gold mesh wheel with a yellow hub, sitting low in pale simulated lunar sand, with a metal arm in the background."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -2154,7 +2161,8 @@
         "asset_id": "nasa-viper-slope-lab-testing",
         "t_in": 89.93,
         "t_out": 94.67,
-        "change": "The safety railings are yellow, not red."
+        "change": "The safety railings are yellow, not red.",
+        "original_text": "Two people wearing white hooded head coverings walk a rover chassis with gold mesh wheels across a lab floor, past yellow safety railings and a long white sandbox wall."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -2618,7 +2626,8 @@
         "asset_id": "nasa-perseverance-twin-rover",
         "t_in": 92.57,
         "t_out": 94.23,
-        "change": "The telehandler's color was changed from yellow to red."
+        "change": "The telehandler's color was changed from yellow to red.",
+        "original_text": "Outdoors, a rover hangs from a lifting frame on the boom of a yellow telehandler, and a worker in a white lab coat stands beside it, holding the wheels."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -2999,7 +3008,8 @@
         "asset_id": "nasa-viper-egress-testing",
         "t_in": 100.17,
         "t_out": 103.2,
-        "change": "The cap's colour was changed from maroon to blue."
+        "change": "The cap's colour was changed from maroon to blue.",
+        "original_text": "In a control room, a man in a maroon baseball cap, a white face mask and a headset sits with his hands clasped in front of his face, watching the screens."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",

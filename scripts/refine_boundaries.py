@@ -31,6 +31,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import draft_queries as dq  # noqa: E402
 import prereview_queries as pr  # noqa: E402
 
+from momentbench.annotation import annotation_sha  # noqa: E402
+
 PICK_PROMPT = """Read the image {sheet}. Its tiles are frames from one video, left to right and
 top to bottom, each labelled with its time in seconds.
 
@@ -104,8 +106,11 @@ def five_frames(video: Path, a: float, b: float, end: float, out: Path) -> None:
     (out / "frames").mkdir(parents=True, exist_ok=True)
     for label, t in (("before", a - 1.0), ("start", a + 0.2), ("middle", (a + b) / 2),
                      ("end", b - 0.2), ("after", b + 1.0)):
+        path = out / "frames" / f"q_{label}.jpg"
         if 0 <= t < end - 0.05:
-            dq.frame(video, t, out / "frames" / f"q_{label}.jpg")
+            dq.frame(video, t, path)
+        else:  # never let an earlier span's frame stand in for one that does not exist
+            path.unlink(missing_ok=True)
 
 
 async def refine(q: dict, reason: str, corpus: Path, work: Path, sem) -> dict:
@@ -114,8 +119,9 @@ async def refine(q: dict, reason: str, corpus: Path, work: Path, sem) -> dict:
     end = video_end(video)
     qdir = work / q["query_id"]
     cache = qdir / "result.json"
-    if cache.exists():
-        return json.loads(cache.read_text())
+    if cache.exists() and (old := json.loads(cache.read_text())).get(
+            "annotation_sha") == annotation_sha(q):
+        return old
     pairs, step = frames_around(video, g["t_in"], g["t_out"], end, qdir / "dense")
     prompt = PICK_PROMPT.format(sheet=sheet(pairs, qdir / "dense.jpg"), text=q["text"],
                                 t_in=g["t_in"], t_out=g["t_out"], reason=reason)
@@ -160,7 +166,7 @@ async def refine(q: dict, reason: str, corpus: Path, work: Path, sem) -> dict:
                         result.update(status="accepted", text=new_text, check=v2,
                                       first_check=verdict)
     qdir.mkdir(parents=True, exist_ok=True)
-    cache.write_text(json.dumps(result, indent=1))
+    cache.write_text(json.dumps({**result, "annotation_sha": annotation_sha(q)}, indent=1))
     return result
 
 

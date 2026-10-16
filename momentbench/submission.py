@@ -69,10 +69,15 @@ def expected_key(run: AgenticRun, queries: dict[str, Query], manifest: Path,
     if run.modalities == "frames":
         transcripts = {}
     receipt = {a["asset_id"]: a["file"]["sha256"] for a in assets}
+    view = None
+    if "asset_view_sha" in run.identity:  # what list_assets shows on this release
+        view = LocalCorpus(assets, None, transcripts=transcripts,
+                           anonymize_titles=run.anonymize_titles).list_assets()
     return task_identity(queries=list(queries.values()), receipt=receipt,
                          transcripts=transcripts, system_prompt=SYSTEM_PROMPT, tools=TOOLS,
                          budget=run.budget.model_dump(), modalities=run.modalities,
-                         anonymize_titles=run.anonymize_titles)["compatibility_key"]
+                         anonymize_titles=run.anonymize_titles,
+                         asset_view=view)["compatibility_key"]
 
 
 def check_trial_grid(run: AgenticRun) -> None:
@@ -137,6 +142,15 @@ def agentic_entry(run: AgenticRun, queries_path: Path,
                 f"{run.run_id}: corpus receipt does not match {manifest.name} "
                 f"({len(run.corpus_receipt)} of {len(want)} assets verified; "
                 f"differs on {', '.join(bad[:3]) or 'none'}). Rerun on the verified corpus.")
+        if "asset_view_sha" not in run.identity:
+            # A run from before 0.2.4 did not hash the asset list it saw. Admit it only
+            # on the exact manifest it recorded, so titles cannot differ unseen.
+            from momentbench.agentic.identity import file_sha
+
+            if run.identity.get("manifest_sha256") != file_sha(manifest):
+                raise SubmissionError(
+                    f"{run.run_id}: predates asset-list hashing and its manifest_sha256 "
+                    f"does not match {manifest.name}; rerun on the current release.")
         key = run.identity.get("compatibility_key")
         if key != expected_key(run, queries, manifest, transcripts):
             raise SubmissionError(

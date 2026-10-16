@@ -139,7 +139,8 @@
         "asset_id": "big-buck-bunny",
         "t_in": 75.54,
         "t_out": 79.96,
-        "change": "The butterfly's colour was changed from pink to bright blue."
+        "change": "The butterfly's colour was changed from pink to bright blue.",
+        "original_text": "Seen from above, a fat white rabbit lies on its back in the grass among purple flowers while a bright pink butterfly flutters just above its face."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -519,7 +520,8 @@
         "asset_id": "big-buck-bunny",
         "t_in": 213.79,
         "t_out": 220.5,
-        "change": "The butterfly is purple and the red rodent holds it. The chinchilla does not hold a butterfly."
+        "change": "The butterfly is purple and the red rodent holds it. The chinchilla does not hold a butterfly.",
+        "original_text": "Beside a large tree, a brown squirrel holds up a spiky green chestnut while a red rodent holding a purple butterfly stands next to him, and a grey chinchilla watches from the corner."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -893,7 +895,8 @@
         "asset_id": "big-buck-bunny",
         "t_in": 295.54,
         "t_out": 297.12,
-        "change": "The stick is stuck in a tree trunk, not a gray boulder."
+        "change": "The stick is stuck in a tree trunk, not a gray boulder.",
+        "original_text": "A close-up shows a sharpened stick with leaves on it stuck in the bark of a tree trunk."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -1130,7 +1133,8 @@
         "asset_id": "big-buck-bunny",
         "t_in": 427.5,
         "t_out": 429.29,
-        "change": "The rabbit's fur is changed from grey to brown."
+        "change": "The rabbit's fur is changed from grey to brown.",
+        "original_text": "A big, chubby grey rabbit sits in tall green grass, leaning on one arm and looking off to the side with a smug half-smile."
       },
       "boundary_refined": {
         "from": [
@@ -1534,7 +1538,8 @@
         "asset_id": "spring",
         "t_in": 364.29,
         "t_out": 367.79,
-        "change": "The bright, hazy sun in daylight was changed to a full moon at night."
+        "change": "The bright, hazy sun in daylight was changed to a full moon at night.",
+        "original_text": "A bright, hazy sun shines through a tangle of bare, leafless tree branches against a pale sky."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -1773,7 +1778,8 @@
         "asset_id": "big-buck-bunny",
         "t_in": 199.83,
         "t_out": 204.17,
-        "change": "The butterfly's colour was changed from purple to bright yellow."
+        "change": "The butterfly's colour was changed from purple to bright yellow.",
+        "original_text": "Against a blue sky, a brown squirrel's paw holds up a purple butterfly by its wings. A red squirrel and a gray chinchilla watch from beside a tree."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -1986,7 +1992,8 @@
         "asset_id": "big-buck-bunny",
         "t_in": 312.5,
         "t_out": 314.42,
-        "change": "The red mushroom in the foreground was changed to a blue mushroom, and the purple flowers were changed to a white flower."
+        "change": "The red mushroom in the foreground was changed to a blue mushroom, and the purple flowers were changed to a white flower.",
+        "original_text": "A red flying squirrel, a grey chinchilla, and a brown squirrel stand together on a dirt path, with a small red mushroom and purple flowers growing beside them."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -2241,7 +2248,8 @@
         "asset_id": "spring",
         "t_in": 210.83,
         "t_out": 215.46,
-        "change": "The staff's dark, unlit top was changed to a glowing blue crystal."
+        "change": "The staff's dark, unlit top was changed to a glowing blue crystal.",
+        "original_text": "A girl in a red coat stands in front of a carved stone wall in a dark blue cave, holding a staff with a dark curled top."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -2551,7 +2559,8 @@
         "asset_id": "sintel",
         "t_in": 134.04,
         "t_out": 138.12,
-        "change": "The liquid is dark red instead of pale and milky."
+        "change": "The liquid is dark red instead of pale and milky.",
+        "original_text": "Close-up from above of two hands holding a round, carved wooden bowl full of pale, milky liquid in warm, dim light."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -2764,7 +2773,8 @@
         "asset_id": "sintel",
         "t_in": 186.71,
         "t_out": 189.79,
-        "change": "The ground was changed from grey cobblestones to a wooden plank floor."
+        "change": "The ground was changed from grey cobblestones to a wooden plank floor.",
+        "original_text": "A small injured dragon lies on grey cobblestones with one torn wing stained bright red with blood spread out beside it."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -3003,7 +3013,8 @@
         "asset_id": "sintel",
         "t_in": 710.04,
         "t_out": 744.08,
-        "change": "The flowers were changed from white to red."
+        "change": "The flowers were changed from white to red.",
+        "original_text": "Large white bell-shaped flowers hang in the foreground on the right while a girl walks away across bare rocky ground."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -3163,7 +3174,8 @@
         "asset_id": "tears-of-steel",
         "t_in": 56.67,
         "t_out": 64.46,
-        "change": "The brain on the plate was changed to a heart."
+        "change": "The brain on the plate was changed to a heart.",
+        "original_text": "A pink human brain stuck with pins sits on a plate under glowing pink holographic rings. A man wearing a mechanical lens over one eye leans in behind it."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -3495,7 +3507,8 @@
         "asset_id": "tears-of-steel",
         "t_in": 172.29,
         "t_out": 183.25,
-        "change": "The lampshade is red, not green."
+        "change": "The lampshade is red, not green.",
+        "original_text": "In a warm room with a bookshelf and a red lampshade, a bearded man in a plaid shirt stands beside a young woman in a military-style jacket."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -3974,7 +3987,8 @@
         "asset_id": "tears-of-steel",
         "t_in": 400.42,
         "t_out": 404.04,
-        "change": "The woman's hair was changed from dark hair tied back to long blonde hair."
+        "change": "The woman's hair was changed from dark hair tied back to long blonde hair.",
+        "original_text": "A bald man with a red-glowing robotic eye sits at a desk in a warm, cluttered room, and a woman with dark hair tied back stands behind him."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -4211,7 +4225,8 @@
         "asset_id": "tears-of-steel",
         "t_in": 438.58,
         "t_out": 441.21,
-        "change": "The scaffolding and machinery are yellow and gold, not red."
+        "change": "The scaffolding and machinery are yellow and gold, not red.",
+        "original_text": "Seen from below, a tall tower with yellow and gold scaffolding and machinery rises against a cloudy sky."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -4437,7 +4452,8 @@
         "asset_id": "tears-of-steel",
         "t_in": 709.5,
         "t_out": 730.33,
-        "change": "The person on the scrap heap is changed from a man to a woman."
+        "change": "The person on the scrap heap is changed from a man to a woman.",
+        "original_text": "A man sits on a huge pile of wrecked grey robot parts and looks down at a small object in his hands, with smoky ruins behind him."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -4544,7 +4560,8 @@
         "asset_id": "sintel",
         "t_in": 64.67,
         "t_out": 68.21,
-        "change": "The thin dark goatee became a bushy grey beard"
+        "change": "The thin dark goatee became a bushy grey beard",
+        "original_text": "Close-up of a bald man with a thin dark goatee and a weathered face, grimacing as he leans down toward the camera against a pale, snowy background."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -4651,7 +4668,8 @@
         "asset_id": "sintel",
         "t_in": 214.92,
         "t_out": 219.46,
-        "change": "The brown scaly baby dragon was changed to a small grey kitten."
+        "change": "The brown scaly baby dragon was changed to a small grey kitten.",
+        "original_text": "A pink-haired girl smiles softly as she cradles a small brown scaly baby dragon in her hands, close to her face."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -4705,7 +4723,8 @@
         "asset_id": "sintel",
         "t_in": 302.75,
         "t_out": 306.29,
-        "change": "both arms raised instead of one"
+        "change": "both arms raised instead of one",
+        "original_text": "A woman stands alone on top of a ruined tower and raises one arm toward the sky, while several small winged creatures fly around her at sunset."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -4831,7 +4850,8 @@
         "asset_id": "sintel",
         "t_in": 710.04,
         "t_out": 744.08,
-        "change": "The flowers were changed from white snowdrops to red tulips."
+        "change": "The flowers were changed from white snowdrops to red tulips.",
+        "original_text": "Drooping white snowdrop flowers fill the foreground on the right while a person's legs walk away across dry, rocky ground under a bright, hazy sky."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -5301,7 +5321,8 @@
         "asset_id": "tears-of-steel",
         "t_in": 369.58,
         "t_out": 371.62,
-        "change": "The graffiti on the building is pink, not blue."
+        "change": "The graffiti on the building is pink, not blue.",
+        "original_text": "A young man tilts his head back as a robotic claw grips his face, with pink graffiti lettering painted on a building behind him."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -5461,7 +5482,8 @@
         "asset_id": "tears-of-steel",
         "t_in": 404.04,
         "t_out": 409.08,
-        "change": "The neon sign's colour was changed from pink to blue."
+        "change": "The neon sign's colour was changed from pink to blue.",
+        "original_text": "A young dark-haired man with his eyes closed tilts his head back while a metal robotic hand reaches toward his mouth. Behind him is a pink neon sign in front of canal houses."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -5568,7 +5590,8 @@
         "asset_id": "tears-of-steel",
         "t_in": 556.83,
         "t_out": 564.29,
-        "change": "The red-lensed mechanical eye implant was changed to a black eye patch."
+        "change": "The red-lensed mechanical eye implant was changed to a black eye patch.",
+        "original_text": "Close-up of a heavyset man with a red-lensed mechanical implant over one eye, sitting in a warm, lamp-lit room and reaching his hand forward as he talks."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -5807,7 +5830,8 @@
         "asset_id": "elephants-dream",
         "t_in": 170.08,
         "t_out": 174.33,
-        "change": "Changed the object in the foreground from a giant black old-fashioned candlestick telephone to a brass gramophone horn."
+        "change": "Changed the object in the foreground from a giant black old-fashioned candlestick telephone to a brass gramophone horn.",
+        "original_text": "A thin young man stands on a round pinkish platform next to a huge black old-fashioned candlestick telephone, which rises in the foreground."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -5986,7 +6010,8 @@
         "asset_id": "elephants-dream",
         "t_in": 320.0,
         "t_out": 327.08,
-        "change": "ceiling lamps changed from white to red"
+        "change": "ceiling lamps changed from white to red",
+        "original_text": "Inside a dark machine room, a small white device with long curved antennae rolls across a lit tabletop surface beneath a row of white ceiling lamps."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -6146,7 +6171,8 @@
         "asset_id": "elephants-dream",
         "t_in": 496.42,
         "t_out": 501.71,
-        "change": "Added a lantern that the young man holds up; in the shot he holds nothing."
+        "change": "Added a lantern that the young man holds up; in the shot he holds nothing.",
+        "original_text": "In a room lit with glowing orange light and filled with tangled cables, a wide-eyed young man in pale clothes stands alone with the cables all around him."
       },
       "boundary_refined": {
         "from": [
@@ -6272,7 +6298,8 @@
         "asset_id": "elephants-dream",
         "t_in": 515.92,
         "t_out": 518.75,
-        "change": "Coat colour changed from green to red"
+        "change": "Coat colour changed from green to red",
+        "original_text": "Close-up of a bald old man in a green coat with a menacing grimace, against a warm orange background of twisted cables."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -6379,7 +6406,8 @@
         "asset_id": "cosmos-laundromat",
         "t_in": 72.96,
         "t_out": 86.33,
-        "change": "The woolly shapes on the hillside are dark brown, not white."
+        "change": "The woolly shapes on the hillside are dark brown, not white.",
+        "original_text": "Wide shot of a green hillside at dusk with several dark, shaggy woolly mounds spread out in a row under a cloudy sky."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -6645,7 +6673,8 @@
         "asset_id": "cosmos-laundromat",
         "t_in": 585.75,
         "t_out": 601.83,
-        "change": "The mural shows a sailboat here. In the shot it shows palm trees and a pink flamingo."
+        "change": "The mural shows a sailboat here. In the shot it shows palm trees and a pink flamingo.",
+        "original_text": "A red-haired, bearded man in a dark suit stands between rows of washing machines in a laundromat, in front of a yellow wall mural of palm trees and a pink flamingo."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -6805,7 +6834,8 @@
         "asset_id": "agent-327-operation-barbershop",
         "t_in": 46.58,
         "t_out": 48.83,
-        "change": "The bow tie is green instead of red."
+        "change": "The bow tie is green instead of red.",
+        "original_text": "A barber with slicked hair, a white coat and a red bow tie looks worried as he stares toward a customer seen from behind."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -6991,7 +7021,8 @@
         "asset_id": "agent-327-operation-barbershop",
         "t_in": 102.33,
         "t_out": 104.71,
-        "change": "The buttons inside the bust were changed from red to green."
+        "change": "The buttons inside the bust were changed from red to green.",
+        "original_text": "Close-up of a bronze bust of a head whose skull is hinged open at the top, revealing a row of red buttons inside."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -7538,7 +7569,8 @@
         "asset_id": "elephants-dream",
         "t_in": 423.29,
         "t_out": 426.58,
-        "change": "shirt colour changed from grey to red"
+        "change": "shirt colour changed from grey to red",
+        "original_text": "Close-up of a thin, smiling young man with dark hair wearing a grey shirt, standing in front of green tiled walls."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -7698,7 +7730,8 @@
         "asset_id": "cosmos-laundromat",
         "t_in": 316.71,
         "t_out": 320.25,
-        "change": "The square, metallic blue-grey device over the eye was changed to a round, glowing red lens."
+        "change": "The square, metallic blue-grey device over the eye was changed to a round, glowing red lens.",
+        "original_text": "A close-up of a shaggy black sheep with a square, metallic blue-grey device over one eye, with a dark wooden post beside it against a sunset sky."
       },
       "text_refined": {
         "from": "A close-up of a shaggy black sheep wearing a round, glowing red lens over one eye, with a dark wooden post beside it against a sunset sky.",
@@ -7837,7 +7870,8 @@
         "asset_id": "cosmos-laundromat",
         "t_in": 585.75,
         "t_out": 601.83,
-        "change": "The mural's pink flamingo was changed to a green parrot."
+        "change": "The mural's pink flamingo was changed to a green parrot.",
+        "original_text": "A red-haired, bearded man in a brown jacket stands in a laundromat holding a cigarette, in front of a beach mural that shows a pink flamingo."
       },
       "cross_check": {
         "model": "gemini-3.5-flash",
@@ -10435,7 +10469,8 @@
         "asset_id": "elephants-dream",
         "t_in": 194.42,
         "t_out": 213.08,
-        "change": "The colour of the light was changed from white to green."
+        "change": "The colour of the light was changed from white to green.",
+        "original_text": "A wide view looks up into a reddish chamber where dense bundles of cables hang from the ceiling, with one bright white light glowing among them."
       },
       "boundary_refined": {
         "from": [

@@ -542,7 +542,7 @@ class TestAdmission:  # audit 2: R3, R5, R6, R7
         with pytest.raises(SubmissionError, match="corpus receipt"):
             agentic_entry(wrong_bytes, path, **release)
         for ident in ({}, {**run.identity, "compatibility_key": "forged"}):
-            with pytest.raises(SubmissionError, match="compatibility key"):
+            with pytest.raises(SubmissionError, match="compatibility key|predates"):
                 agentic_entry(run.model_copy(update={"identity": ident}), path, **release)
 
     async def test_duplicated_or_missing_trials_are_rejected(self, tmp_path):
@@ -846,3 +846,148 @@ class TestTextControls:  # audit 3, finding 4
                                                                   t_out=14.0)]})
         assert bm25_control([query], transcripts) == {"q1": True}
         assert BM25Index(transcripts).search("unrelated words") == []
+
+
+def fake_claude_sdk(monkeypatch, models):
+    """A stand-in claude_agent_sdk: one assistant message per entry in `models`, the
+    first listing assets and the last submitting the gold answer."""
+    import sys
+    import types
+    from dataclasses import dataclass, field
+
+    sdk = types.ModuleType("claude_agent_sdk")
+
+    @dataclass
+    class AssistantMessage:
+        model: str | None
+        usage: dict = field(default_factory=dict)
+
+    @dataclass
+    class ResultMessage:
+        usage: dict
+        num_turns: int
+        subtype: str = "success"
+        is_error: bool = False
+        errors: list = field(default_factory=list)
+
+    class ClaudeAgentOptions:
+        def __init__(self, **kw):
+            self.__dict__.update(kw)
+
+    def tool(name, description, schema):
+        def wrap(fn):
+            fn.tool_name = name
+            return fn
+        return wrap
+
+    async def query(prompt, options):
+        handlers = {h.tool_name: h for h in next(iter(options.mcp_servers.values()))}
+        for i, model in enumerate(models):
+            yield AssistantMessage(model, {"input_tokens": 100, "output_tokens": 10})
+            if i < len(models) - 1:
+                await handlers["list_assets"]({})
+            else:
+                await handlers["submit_answer"](SUBMIT_GOLD[1])
+        yield ResultMessage({"input_tokens": 100 * len(models), "output_tokens": 10},
+                            len(models))
+
+    sdk.AssistantMessage, sdk.ResultMessage = AssistantMessage, ResultMessage
+    sdk.ClaudeAgentOptions, sdk.tool, sdk.query = ClaudeAgentOptions, tool, query
+    sdk.create_sdk_mcp_server = lambda name, tools: tools
+    monkeypatch.setitem(sys.modules, "claude_agent_sdk", sdk)
+
+
+class TestClaudeCodeIdentity:  # audit 4, finding 1
+    async def test_a_model_change_in_the_sdk_stream_ends_the_trial(self, tmp_path,
+                                                                  monkeypatch):
+        from momentbench.agentic.claude_code_model import ClaudeCodeAgent
+        from momentbench.submission import SubmissionError, check_model_identity
+
+        fake_claude_sdk(monkeypatch, ["snapshot-A", "snapshot-B"])
+        run = await run_agentic_benchmark([make_query(), NO_ANSWER], ClaudeCodeAgent("x"),
+                                          verified_corpus(tmp_path), trials=1)
+        for t in run.trials:
+            assert t.outcome == "model_changed" and not t.hit_at_1
+            assert t.turn_models == ["snapshot-A", "snapshot-B"]
+            assert t.usage.input_tokens == 200 and t.usage.tool_calls == 1
+        assert run.identity["resolved_models"] == ["snapshot-A", "snapshot-B"]
+        with pytest.raises(SubmissionError):
+            check_model_identity(run)
+
+    async def test_one_snapshot_scores_normally(self, tmp_path, monkeypatch):
+        from momentbench.agentic.claude_code_model import ClaudeCodeAgent
+
+        fake_claude_sdk(monkeypatch, ["snapshot-A", "snapshot-A"])
+        run = await run_agentic_benchmark([make_query()], ClaudeCodeAgent("x"),
+                                          verified_corpus(tmp_path), trials=1)
+        [t] = run.trials
+        assert t.outcome == "submitted" and t.hit_at_1
+        assert t.turn_models == ["snapshot-A", "snapshot-A"]
+
+    async def test_custom_loops_get_the_same_rule(self, tmp_path):
+        class Mixed(AgentModel):
+            model_id = "custom"
+
+            def start(self, system, task, tools):
+                raise AssertionError("runs its own loop")
+
+            async def run_episode(self, corpus, request, budget):
+                moments = corpus.parse_answer(SUBMIT_GOLD[1])
+                return Episode(request.query_id, moments, Usage(), "submitted", [],
+                               "snapshot-B", ["snapshot-A", "snapshot-B"])
+
+        run = await run_agentic_benchmark([make_query()], Mixed(),
+                                          verified_corpus(tmp_path), trials=1)
+        assert run.trials[0].outcome == "model_changed" and not run.trials[0].hit_at_1
+
+
+class TestAssetViewIdentity:  # audit 4, finding 2
+    async def test_a_title_change_changes_the_key_and_is_refused(self, tmp_path):
+        from momentbench.submission import SubmissionError, agentic_entry
+        from tests.test_agentic import ASSETS, TRANSCRIPTS
+
+        sub = TestSubmission()
+        qs = [NO_ANSWER, make_query()]
+        path, (manifest, _) = sub._file(tmp_path, qs), sub._release(tmp_path)
+        honest = await sub._run(tmp_path, qs)
+        corpus = verified_corpus(tmp_path)
+        corpus.assets["v1"] = {**corpus.assets["v1"], "title": "The hearing comes to order"}
+        retitled = await run_agentic_benchmark(
+            qs, ScriptedModel([[("submit_answer", {"moments": []})]]), corpus, trials=1)
+        assert retitled.identity["asset_view_sha"] != honest.identity["asset_view_sha"]
+        assert (retitled.identity["compatibility_key"]
+                != honest.identity["compatibility_key"])
+        release = {"manifest": manifest, "transcripts": TRANSCRIPTS}
+        agentic_entry(honest, path, **release)
+        with pytest.raises(SubmissionError, match="compatibility key"):
+            agentic_entry(retitled, path, **release)
+        # Fields the model never sees (a local storage path) leave the key alone.
+        moved = tmp_path / "moved.json"
+        moved.write_text(json.dumps([{**a, "storage_path": "/elsewhere/x.mp4",
+                                      "file": {"sha256": f"sha-{a['asset_id']}"}}
+                                     for a in ASSETS]))
+        agentic_entry(honest, path, manifest=moved, transcripts=TRANSCRIPTS)
+
+    async def test_a_legacy_run_needs_its_recorded_manifest(self, tmp_path):
+        from momentbench.agentic.identity import file_sha
+        from momentbench.submission import SubmissionError, agentic_entry
+        from tests.test_agentic import TRANSCRIPTS
+
+        sub = TestSubmission()
+        qs = [NO_ANSWER, make_query()]
+        path, (manifest, _) = sub._file(tmp_path, qs), sub._release(tmp_path)
+        run = await sub._run(tmp_path, qs)
+        legacy_identity = {k: v for k, v in run.identity.items() if k != "asset_view_sha"}
+        from momentbench.agentic.identity import text_sha
+        task = {k: legacy_identity[k] for k in (
+            "queries_sha", "num_queries", "corpus_sha", "transcripts_sha",
+            "system_prompt_sha", "tools_sha", "budget", "modalities", "anonymize_titles")}
+        legacy_identity["compatibility_key"] = text_sha(json.dumps(task, sort_keys=True))
+        legacy = run.model_copy(update={"identity": {**legacy_identity,
+                                                     "manifest_sha256": file_sha(manifest)}})
+        release = {"manifest": manifest, "transcripts": TRANSCRIPTS}
+        agentic_entry(legacy, path, **release)
+        stale = legacy.model_copy(update={"identity": {**legacy.identity,
+                                                       "manifest_sha256": "other"}})
+        with pytest.raises(SubmissionError, match="predates"):
+            agentic_entry(stale, path, **release)

@@ -5,7 +5,7 @@ Four ways in, from least to most code. All of them score the same way (see [`pro
 First get the corpus, once:
 
 ```bash
-git clone --branch v0.2.3 https://github.com/mixpeek/momentbench.git
+git clone --branch v0.2.4 https://github.com/mixpeek/momentbench.git
 cd momentbench
 pip install -e ".[openai]"   # Python 3.10+; or .[gemini], .[claude-code], .[inspect]
 momentbench corpus-download -m data/corpus_manifests/sample_manifest.json --corpus-dir corpus/

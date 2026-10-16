@@ -375,6 +375,11 @@ async def run_agentic_benchmark(
                 )
                 resolved = episode.resolved_model
                 turn_models = list(getattr(episode, "turn_models", []) or [])
+                # The same identity rule for every route, including entrants that run
+                # their own loop: two reported models end the trial (audit 4, finding 1).
+                if len({m for m in [resolved, *turn_models] if m}) > 1 \
+                        and outcome != "model_changed":
+                    moments, outcome = [], "model_changed"
                 over = budget_violation(usage, budget)
                 if over:
                     moments, outcome, error = [], "budget_exceeded", over
@@ -445,7 +450,8 @@ async def run_agentic_benchmark(
                       transcripts=getattr(corpus, "transcripts", {}),
                       system_prompt=SYSTEM_PROMPT, tools=TOOLS, budget=budget.model_dump(),
                       modalities="frames+transcripts" if corpus.has_transcripts() else "frames",
-                      anonymize_titles=getattr(corpus, "anonymize_titles", False)),
+                      anonymize_titles=getattr(corpus, "anonymize_titles", False),
+                      asset_view=corpus.list_assets()),
                   "resolved_models": resolved_models(results)},
         budget=budget,
         pricing=pricing,

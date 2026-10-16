@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.2.4 (2026-10-16)
+
+Fixes from the fourth lab audit (docs/scope.md lists each). Same queries, corpus,
+prompt, tools and budget as 0.2.3; the 0.2.3 record runs remain admissible.
+
+- The Claude Code driver records the model of every assistant message and ends a
+  trial on a change; the harness applies the same rule to entrants that run their own
+  loop.
+- The compatibility key includes `asset_view_sha`, the exact asset list the model
+  sees. Runs without it are admitted only on the manifest they recorded.
+- Review frames are cached by video bytes and timestamp, so a recheck after a span
+  edit shows the new span. Pre-review and refinement verdict caches are bound to the
+  annotation, and cross-checks record the media and reviewer configuration they used.
+- No-answer queries store their unaltered description (`altered_from.original_text`);
+  a cross-check without it is incomplete rather than agreed.
+
 ## 0.2.3 (2026-10-16)
 
 Fixes from the third lab audit (docs/scope.md lists each). Same queries, corpus,
