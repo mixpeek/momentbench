@@ -1,0 +1,84 @@
+{
+  "model_name": "bm25-transcript-robotics",
+  "model_description": "Reference text-only baseline: BM25 over the shipped transcript cues (k1 1.2, b 0.75), top five cues as ranked moments; never looks at a frame. Maintainer-submitted.",
+  "contact": "",
+  "track": "agentic",
+  "run_id": "predictions-bm25-transcript-6b03f97f",
+  "model_id": "bm25-transcript",
+  "effort": null,
+  "harness": "predictions",
+  "resolved_models": [],
+  "modalities": "predictions",
+  "queries_file": "robotics_v0.2_scored.json",
+  "num_queries": 49,
+  "queries_in_file": 49,
+  "rescore_excluded": 0,
+  "num_trials": 1,
+  "recall_at_1": 0.102,
+  "recall_at_1_ci95": [
+    0.0204,
+    0.1837
+  ],
+  "positive_recall_at_1": 0.125,
+  "no_answer_accuracy": 0.0,
+  "false_positive_rate": 1.0,
+  "net_score": -0.7959183673469388,
+  "mean_cost_usd_per_query": null,
+  "by_tier": {
+    "1": {
+      "num_queries": 26,
+      "recall_at_1": 0,
+      "recall_at_1_ci95": [
+        0,
+        0
+      ]
+    },
+    "2": {
+      "num_queries": 7,
+      "recall_at_1": 0.42857142857142855,
+      "recall_at_1_ci95": [
+        0.14285714285714285,
+        0.8571428571428571
+      ]
+    },
+    "3": {
+      "num_queries": 9,
+      "recall_at_1": 0,
+      "recall_at_1_ci95": [
+        0,
+        0
+      ]
+    },
+    "4": {
+      "num_queries": 7,
+      "recall_at_1": 0.2857142857142857,
+      "recall_at_1_ci95": [
+        0,
+        0.7142857142857143
+      ]
+    }
+  },
+  "budget": {
+    "max_steps": 30,
+    "max_frames": 64,
+    "max_tool_calls": 60
+  },
+  "corpus_assets_verified": 27,
+  "compatibility_key": "baf460bbce383443",
+  "identity": {
+    "queries_sha": "ae3b1818d5355fd8",
+    "num_queries": 49,
+    "corpus_sha": "ca25d3017581a1ba",
+    "transcripts_sha": "44136fa355b3678a",
+    "system_prompt_sha": "532d3cbcc47a6b5e",
+    "tools_sha": "4f53cda18c2baa0c",
+    "budget": {},
+    "modalities": "predictions",
+    "anonymize_titles": false,
+    "compatibility_key": "baf460bbce383443",
+    "track": "predictions",
+    "corpus_receipt": "declared",
+    "predictions_file_sha256": "5a55f8eda5ea9caf"
+  },
+  "timestamp": "2026-10-17T18:24:31Z"
+}
