@@ -3,8 +3,10 @@ name: CI
 on:
   push:
     branches: [main]
-    paths-ignore: [site/**]
   pull_request:
+  # A merge made with the workflow token does not trigger push workflows, so the
+  # submission workflow dispatches CI on the merged main itself.
+  workflow_dispatch:
 
 permissions:
   contents: read

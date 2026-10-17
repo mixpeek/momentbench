@@ -14,6 +14,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  actions: write  # dispatch CI on the merge commit
 
 jobs:
   validate:
@@ -70,5 +71,8 @@ jobs:
           gh pr edit "$PR" --add-label validated
           # Merges only the validated commit: a later push makes this fail.
           gh pr merge "$PR" --squash --delete-branch=false --match-head-commit "$HEAD_SHA"
+          # The publish loop publishes only a commit whose CI succeeded, and a merge by
+          # the workflow token triggers no push workflow, so dispatch CI on main here.
+          gh workflow run ci.yml -R "$GITHUB_REPOSITORY" --ref main
           # Publication runs from the maintainer machine's daily publish loop, which
           # rebuilds the leaderboard from validated rows and deploys momentbench.com.
