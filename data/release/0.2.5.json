@@ -1,0 +1,262 @@
+{
+ "benchmark": "momentbench",
+ "version": "0.2.5",
+ "packaging_commit": "a1ee7f43e8532b247c78c39d38830260a91f7f04",
+ "run_code_commits": [
+  "06672987bddde3c0fbef8fe4d59648312c53575f",
+  "9ff0710df33b0d7331a43c8d5bc53d530bd63752",
+  "a1ee7f43e8532b247c78c39d38830260a91f7f04",
+  "a8b89c2ec669720722186391c75f015d8ff42838",
+  "fd75d7d916f9e396e26a6eaac0b42d3b7722b131",
+  "fe62c66239afc2864f11b9a72b94348a3c9d6f87"
+ ],
+ "environment": {
+  "python": "3.11.13",
+  "ffmpeg": "ffmpeg version 8.1.2 Copyright (c) 2000-2026 the FFmpeg developers",
+  "requirements": {
+   "file": "data/release/requirements-0.2.5.txt",
+   "sha256": "2cd627b9bb4a6af1e166d876b923a7b004a8a51c57c88d761fc9f4e7d9cf46a3"
+  }
+ },
+ "corpus_manifest": {
+  "file": "data/corpus_manifests/sample_manifest.json",
+  "sha256": "9d133abb16f760f3ef0611882b43b604d9323702ebb0fd976b58ca6cab80b2cf"
+ },
+ "scored_queries": {
+  "data/queries/scored/aerospace_v0.2_scored.json": "5e639f771d3c8eed245efd701b7960cfe7f6f64fd889110eef9b60ce68573ec8",
+  "data/queries/scored/film_v0.2_scored.json": "55c77588154db39206908ec5fbdd8c00a36d21fc7fcba425b8fce1347d60f0af",
+  "data/queries/scored/robotics_v0.2_scored.json": "26cfb17382d1f3e47956021c3b25a0ce8921ae9b1002a16f3051fa3a95bd624b"
+ },
+ "label_log": {
+  "file": "data/labels/adjudication.json",
+  "sha256": "ec36da4d6c71b31ed2145a99149b5748c15c4e268aeb79b31fb9aae3bbc3abb4"
+ },
+ "leaderboard": {
+  "file": "docs/leaderboard.json",
+  "sha256": "35fa40a3ed8ead4df10763f3b15fbb7e9253e72cdabdf15036c9c5294124f3f8",
+  "primary_keys": {
+   "aerospace": "05841b8cc16d0b1b",
+   "film": "689ea1623b054aa6",
+   "robotics": "39a268172b68fe33"
+  }
+ },
+ "diagnostic": {
+  "data/diagnostic/expected.json": "40eba95396b792166c195fd808444e315c8c9f82e4c051532113a36e45558353",
+  "data/diagnostic/manifest.json": "5b99833e040faf229ee08544e4088969b0ee05aaf1cd415bc4b6428c9ee0a753",
+  "data/diagnostic/predictions.json": "9977ccc44ce2f4eebf70805f2390d37a7c7a1dceaacd06a7649600a5780fa3cf",
+  "data/diagnostic/queries.json": "601274622d92418d4f4fd4a2cab7a52f6d74ea8cf2d8cea8feb085fe4c5f13f3"
+ },
+ "heldout_commitments": {
+  "file": "data/heldout_commitments.json",
+  "sha256": "3b7c83a87805cd73b602ce743740ac4f4862906f4e4da8f9adbbbf397326fbe0"
+ },
+ "archive": {
+  "leaderboard.json": {
+   "file": "docs/releases/0.2.5/leaderboard.json",
+   "sha256": "35fa40a3ed8ead4df10763f3b15fbb7e9253e72cdabdf15036c9c5294124f3f8"
+  },
+  "report.md": {
+   "file": "docs/releases/0.2.5/report.md",
+   "sha256": "a99a99da9fa5c8eac046acd103c7cb9a2fd2a471558ae64606c5be414e783fae"
+  },
+  "labels.md": {
+   "file": "docs/releases/0.2.5/labels.md",
+   "sha256": "6b32ae01d88f044b8ff92535ec8dfc742b107aeb2c8592d350bfcd345154c0ff"
+  }
+ },
+ "runs": [
+  {
+   "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-claude-opus-5-5-4b3b3e5e.json",
+   "sha256": "c4b34062d5159d0948a5ad75d7ba57371a1d7094ce25884c7b34ece70f592c8e",
+   "group": "05841b8cc16d0b1b",
+   "model_id": "claude-opus-5-5",
+   "harness": "claude-code",
+   "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
+   "command": "momentbench agentic claude-opus-5-5 --provider claude-code -q data/queries/scored/aerospace_v0.2_scored.json -c data/corpus_manifests/sample_manifest.json --corpus-dir corpus/ --transcripts-dir data/transcripts --trials 1 --anonymize-titles",
+   "command_source": "reconstructed from the run identity",
+   "recall_at_1": 0.5779,
+   "positive_recall_at_1": 0.60431654676259
+  },
+  {
+   "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-gemini-3.8-flash-13d6c541.json",
+   "sha256": "c88861befd1699bc42b4ebc876edfae9af0cecf2955d5b2d4b383ef54c084fa8",
+   "group": "05841b8cc16d0b1b",
+   "model_id": "gemini-3.8-flash",
+   "harness": "api",
+   "code_commit": "fe62c66239afc2864f11b9a72b94348a3c9d6f87",
+   "command": "momentbench agentic gemini-3.8-flash --provider gemini -q data/queries/scored/aerospace_v0.2_scored.json -c data/corpus_manifests/sample_manifest.json --corpus-dir corpus/ --transcripts-dir data/transcripts --trials 1 --anonymize-titles",
+   "command_source": "reconstructed from the run identity",
+   "recall_at_1": 0.513,
+   "positive_recall_at_1": 0.5611510791366906
+  },
+  {
+   "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-claude-haiku-5-5-088b230c.json",
+   "sha256": "d684088d49a55e23c39667b4bdb99011ddf3a58fd12c306e25f8b53e4756c888",
+   "group": "05841b8cc16d0b1b",
+   "model_id": "claude-haiku-5-5",
+   "harness": "claude-code",
+   "code_commit": "9ff0710df33b0d7331a43c8d5bc53d530bd63752",
+   "command": "momentbench agentic claude-haiku-5-5 --provider claude-code -q data/queries/scored/aerospace_v0.2_scored.json -c data/corpus_manifests/sample_manifest.json --corpus-dir corpus/ --transcripts-dir data/transcripts --trials 1 --anonymize-titles",
+   "command_source": "reconstructed from the run identity",
+   "recall_at_1": 0.3571,
+   "positive_recall_at_1": 0.3669064748201439
+  },
+  {
+   "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-claude-sonnet-5-5-6e575333.json",
+   "sha256": "a2da68e3b13bc937d8f107967799b565028818e42c30827c078270bdc070975d",
+   "group": "05841b8cc16d0b1b",
+   "model_id": "claude-sonnet-5-5",
+   "harness": "claude-code",
+   "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
+   "command": "momentbench agentic claude-sonnet-5-5 --provider claude-code -q data/queries/scored/aerospace_v0.2_scored.json -c data/corpus_manifests/sample_manifest.json --corpus-dir corpus/ --transcripts-dir data/transcripts --trials 1 --anonymize-titles",
+   "command_source": "reconstructed from the run identity",
+   "recall_at_1": 0.3247,
+   "positive_recall_at_1": 0.33093525179856115
+  },
+  {
+   "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-claude-haiku-5-5-d6c4cdf7.json",
+   "sha256": "57eea61063213df6018d4422990a3c63a5181c85cfe043664687fe75805bc9df",
+   "group": "05841b8cc16d0b1b",
+   "model_id": "claude-haiku-5-5",
+   "harness": "api",
+   "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
+   "command": "momentbench agentic claude-haiku-5-5 --provider anthropic -q data/queries/scored/aerospace_v0.2_scored.json -c data/corpus_manifests/sample_manifest.json --corpus-dir corpus/ --transcripts-dir data/transcripts --trials 1 --anonymize-titles",
+   "command_source": "reconstructed from the run identity",
+   "recall_at_1": 0.3247,
+   "positive_recall_at_1": 0.30935251798561153
+  },
+  {
+   "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-gpt-5.4-mini-e25c7c5c.json",
+   "sha256": "efac1de54f8357725169d9865f5d729d19bfd1e018b48d208dc9a3da295283a1",
+   "group": "05841b8cc16d0b1b",
+   "model_id": "gpt-5.4-mini",
+   "harness": "api",
+   "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
+   "command": "momentbench agentic gpt-5.4-mini --provider openai -q data/queries/scored/aerospace_v0.2_scored.json -c data/corpus_manifests/sample_manifest.json --corpus-dir corpus/ --transcripts-dir data/transcripts --trials 1 --anonymize-titles",
+   "command_source": "reconstructed from the run identity",
+   "recall_at_1": 0.1169,
+   "positive_recall_at_1": 0.12949640287769784
+  },
+  {
+   "file": "submissions/bm25-transcript-aerospace/run.json",
+   "sha256": "5f1bc84f6651976fc20cb202814c42d944f2101c24abd961d54e7983f953c255",
+   "group": "603e0d07f1ecae63",
+   "model_id": "bm25-transcript",
+   "harness": "predictions",
+   "code_commit": null,
+   "command": "momentbench score-predictions -p <predictions.json> -q data/queries/scored/aerospace_v0.2_scored.json",
+   "command_source": "reconstructed",
+   "recall_at_1": 0.1558,
+   "positive_recall_at_1": 0.17266187050359713
+  },
+  {
+   "file": "data/results/agentic-v0.2.5/record/film/agentic-claude-opus-5-5-df67db36.json",
+   "sha256": "0999bedc235bd9449cd109971d969b08194bf9de9c60655212d26ba032549ae6",
+   "group": "689ea1623b054aa6",
+   "model_id": "claude-opus-5-5",
+   "harness": "claude-code",
+   "code_commit": "a1ee7f43e8532b247c78c39d38830260a91f7f04",
+   "command": "momentbench agentic claude-opus-5-5 --provider claude-code -q data/queries/scored/film_v0.2_scored.json -c data/corpus_manifests/sample_manifest.json --corpus-dir ../momentbench-corpus/v0.1/videos --transcripts-dir data/transcripts --anonymize-titles --prompt-condition standard --trials 1 --concurrency 2 -o data/results/agentic-v0.2.5/record/film",
+   "command_source": "recorded",
+   "recall_at_1": 0.5077,
+   "positive_recall_at_1": 0.5904761904761905
+  },
+  {
+   "file": "submissions/bm25-transcript-film/run.json",
+   "sha256": "3c1e3898fb0cdc7b8350dbe2892ec768387381d6c3539fbcf708e3ae0aa76f26",
+   "group": "7eb1c82e785ca0bc",
+   "model_id": "bm25-transcript",
+   "harness": "predictions",
+   "code_commit": null,
+   "command": "momentbench score-predictions -p <predictions.json> -q data/queries/scored/film_v0.2_scored.json",
+   "command_source": "reconstructed",
+   "recall_at_1": 0.0769,
+   "positive_recall_at_1": 0.09523809523809523
+  },
+  {
+   "file": "data/results/agentic-v0.2.5/record/robotics/agentic-claude-opus-5-5-2c29e220.json",
+   "sha256": "f12887ef07f0207f7fd99554889c6d221ad48aa7b0ddff2e5c20d248890c3a96",
+   "group": "39a268172b68fe33",
+   "model_id": "claude-opus-5-5",
+   "harness": "claude-code",
+   "code_commit": "06672987bddde3c0fbef8fe4d59648312c53575f",
+   "command": "momentbench agentic claude-opus-5-5 --provider claude-code -q data/queries/scored/robotics_v0.2_scored.json -c data/corpus_manifests/sample_manifest.json --corpus-dir corpus/ --transcripts-dir data/transcripts --trials 1 --anonymize-titles",
+   "command_source": "reconstructed from the run identity",
+   "recall_at_1": 0.7143,
+   "positive_recall_at_1": 0.8
+  },
+  {
+   "file": "data/results/agentic-v0.2.5/record/robotics/agentic-gemini-3.8-flash-4ee9cbab.json",
+   "sha256": "79aa47d6dc1d68545cc4d70d0082ace77503296399ff6d3212c34815889928ab",
+   "group": "39a268172b68fe33",
+   "model_id": "gemini-3.8-flash",
+   "harness": "api",
+   "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
+   "command": "momentbench agentic gemini-3.8-flash --provider gemini -q data/queries/scored/robotics_v0.2_scored.json -c data/corpus_manifests/sample_manifest.json --corpus-dir corpus/ --transcripts-dir data/transcripts --trials 1 --anonymize-titles",
+   "command_source": "reconstructed from the run identity",
+   "recall_at_1": 0.4898,
+   "positive_recall_at_1": 0.575
+  },
+  {
+   "file": "data/results/agentic-v0.2.5/record/robotics/agentic-claude-haiku-5-5-16366cbb.json",
+   "sha256": "25e34d34a1461aa6096da1d9925d5e74f6531fe1324e308967b18249ba006769",
+   "group": "39a268172b68fe33",
+   "model_id": "claude-haiku-5-5",
+   "harness": "claude-code",
+   "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
+   "command": "momentbench agentic claude-haiku-5-5 --provider claude-code -q data/queries/scored/robotics_v0.2_scored.json -c data/corpus_manifests/sample_manifest.json --corpus-dir corpus/ --transcripts-dir data/transcripts --trials 1 --anonymize-titles",
+   "command_source": "reconstructed from the run identity",
+   "recall_at_1": 0.3673,
+   "positive_recall_at_1": 0.375
+  },
+  {
+   "file": "data/results/agentic-v0.2.5/record/robotics/agentic-claude-haiku-5-5-deec2a97.json",
+   "sha256": "9ecdee908a66408564207a82363197c0d45ab890c6caad44d982c1b07e2727bb",
+   "group": "39a268172b68fe33",
+   "model_id": "claude-haiku-5-5",
+   "harness": "api",
+   "code_commit": "fd75d7d916f9e396e26a6eaac0b42d3b7722b131",
+   "command": "momentbench agentic claude-haiku-5-5 --provider anthropic -q data/queries/scored/robotics_v0.2_scored.json -c data/corpus_manifests/sample_manifest.json --corpus-dir corpus/ --transcripts-dir data/transcripts --trials 1 --anonymize-titles",
+   "command_source": "reconstructed from the run identity",
+   "recall_at_1": 0.3061,
+   "positive_recall_at_1": 0.325
+  },
+  {
+   "file": "data/results/agentic-v0.2.5/record/robotics/agentic-claude-sonnet-5-5-8b149461.json",
+   "sha256": "71f40ab51aea058a9099d5e56976bf226e09419eb6397ec5077708b9d6129004",
+   "group": "39a268172b68fe33",
+   "model_id": "claude-sonnet-5-5",
+   "harness": "claude-code",
+   "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
+   "command": "momentbench agentic claude-sonnet-5-5 --provider claude-code -q data/queries/scored/robotics_v0.2_scored.json -c data/corpus_manifests/sample_manifest.json --corpus-dir corpus/ --transcripts-dir data/transcripts --trials 1 --anonymize-titles",
+   "command_source": "reconstructed from the run identity",
+   "recall_at_1": 0.2653,
+   "positive_recall_at_1": 0.3
+  },
+  {
+   "file": "data/results/agentic-v0.2.5/record/robotics/agentic-gpt-5.4-mini-3ba26b49.json",
+   "sha256": "433a1cde3eb386e38ddd33766958c446444dd6b652dcc79e36a9864e3f2acf1e",
+   "group": "39a268172b68fe33",
+   "model_id": "gpt-5.4-mini",
+   "harness": "api",
+   "code_commit": "06672987bddde3c0fbef8fe4d59648312c53575f",
+   "command": "momentbench agentic gpt-5.4-mini --provider openai -q data/queries/scored/robotics_v0.2_scored.json -c data/corpus_manifests/sample_manifest.json --corpus-dir corpus/ --transcripts-dir data/transcripts --trials 1 --anonymize-titles",
+   "command_source": "reconstructed from the run identity",
+   "recall_at_1": 0.0816,
+   "positive_recall_at_1": 0.1
+  },
+  {
+   "file": "submissions/bm25-transcript-robotics/run.json",
+   "sha256": "74b606edaedf0a88bfffa246a6764cb77813911b98f5b31301dc364483130fa9",
+   "group": "baf460bbce383443",
+   "model_id": "bm25-transcript",
+   "harness": "predictions",
+   "code_commit": null,
+   "command": "momentbench score-predictions -p <predictions.json> -q data/queries/scored/robotics_v0.2_scored.json",
+   "command_source": "reconstructed",
+   "recall_at_1": 0.102,
+   "positive_recall_at_1": 0.125
+  }
+ ],
+ "limitations": "docs/labels.md (model adjudication, absence-screen recall 12 of 26), docs/scope.md"
+}
