@@ -59,7 +59,12 @@ momentbench submit \
 
 ## 4. Open a pull request
 
-Add the `submissions/<model-name>/` directory and say in the PR whether the entry should be public now or anonymous until the next leaderboard update. Maintainers check the compatibility key against the current release, move the run into `data/results/agentic-v0.2/record/`, and regenerate `docs/results.md` and momentbench.com.
+Add only the `submissions/<name>/` directory (`run.json` and `submission.json`, as
+written by `momentbench submit`; `<name>` lowercase letters, digits, `.`, `_`, `-`).
+A check runs the trusted validator from the main branch on your files and reports
+PASS or FAIL in the pull request's checks. A pull request that touches anything else
+is rejected. A passing submission is labelled `validated` and merged automatically,
+and the next leaderboard rebuild publishes it in its compatibility group.
 
 To see how your run ranks before submitting:
 

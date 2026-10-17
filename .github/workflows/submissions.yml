@@ -1,26 +1,61 @@
 name: Submission check
 
+# Runs the BASE branch's validator (pull_request_target) on the pull request's data
+# files only. Nothing from the pull request is executed, so a pull request that edits
+# the validator cannot certify itself. A pull request that touches anything other than
+# submissions/<name>/run.json and submission.json is rejected. A valid submission is
+# labelled "validated" and merged; the next leaderboard rebuild publishes it.
+
 on:
-  pull_request:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
     paths: ["submissions/**"]
 
 permissions:
-  contents: read
+  contents: write
+  pull-requests: write
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4  # the base branch: trusted code and query files
         with:
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - run: pip install -e .
-      - name: Validate changed submissions
-        shell: bash  # -eo pipefail, so a failed check fails the job through tee
+      - name: Collect the submission files (data only)
+        shell: bash
+        env:
+          PR: ${{ github.event.pull_request.number }}
+          BASE: ${{ github.event.pull_request.base.ref }}
         run: |
-          dirs=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD" -- submissions/ \
-                 | awk -F/ 'NF>2 {print $1"/"$2}' | sort -u)
-          python scripts/validate_submissions.py $dirs | tee -a "$GITHUB_STEP_SUMMARY"
+          git fetch origin "pull/$PR/head:pr"
+          changed=$(git diff --name-only "origin/$BASE...pr")
+          bad=$(echo "$changed" | grep -Ev '^submissions/[a-z0-9][a-z0-9._-]{0,63}/(run|submission)\.json$' || true)
+          if [ -n "$bad" ]; then
+            echo "## Submission check" >> "$GITHUB_STEP_SUMMARY"
+            echo "FAIL: a submission may only add submissions/<name>/run.json and submission.json; also changed: $bad" | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          mkdir -p "$RUNNER_TEMP/subs"
+          for f in $changed; do
+            mkdir -p "$RUNNER_TEMP/subs/$(dirname "$f")"
+            git show "pr:$f" > "$RUNNER_TEMP/subs/$f"
+          done
+          echo "$changed" | awk -F/ '{print ENVIRON["RUNNER_TEMP"]"/subs/"$1"/"$2}' | sort -u > "$RUNNER_TEMP/dirs"
+      - name: Validate with the trusted scorer
+        shell: bash  # -eo pipefail, so a failed check fails the job through tee
+        run: python scripts/validate_submissions.py $(cat "$RUNNER_TEMP/dirs") | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Accept
+        # "[dry-run]" in the title validates without merging (used to test this workflow).
+        if: ${{ !startsWith(github.event.pull_request.title, '[dry-run]') }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          gh label create validated --color 0E8A16 --description "Submission passed momentbench submit" 2>/dev/null || true
+          gh pr edit "$PR" --add-label validated
+          gh pr merge "$PR" --squash --delete-branch=false

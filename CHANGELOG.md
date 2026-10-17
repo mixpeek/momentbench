@@ -30,6 +30,9 @@
 - `momentbench bundle`: from one validated run, a result.json, a model-card block, a LaTeX
   table and a citation, all generated from the submission entry. `find_queries_file`
   also searches `data/queries/scored/` and prefers an exact query-set match.
+- Submission acceptance runs without a maintainer: the check uses pull_request_target
+  with the main branch's validator on the pull request's data files only, rejects
+  anything outside `submissions/<name>/`, and labels and merges a valid submission.
 - Submissions are validated in CI: pull requests touching `submissions/` run
   `scripts/validate_submissions.py`, which rescores each run against its query file with
   every admission check and writes the result to the job summary.
