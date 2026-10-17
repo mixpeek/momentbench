@@ -50,7 +50,7 @@ Primary group: anonymized titles, standard prompt, compatibility key `689ea1623b
 | Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | Ended without an answer | $/query |
 |---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | 59.0 (50 to 68) | 50.8 (42 to 59) | 16.0 | +0.02 | 1 budget_exceeded | $0.138* |
-| claude-sonnet-5-5 | claude-code | not run: not run yet | | | | | |
+| claude-sonnet-5-5 | claude-code | 23.8 (16 to 32) | 23.1 (16 to 31) | 20.0 | -0.48 | 0 | $0.080* |
 | claude-haiku-5-5 | claude-code | not run: not run yet | | | | | |
 | claude-haiku-5-5 (API) | api | not run: same reason | | | | | |
 | gpt-5.4-mini | api | not run: same reason | | | | | |
