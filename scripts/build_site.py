@@ -375,7 +375,11 @@ def page(results: dict, st: dict, examples: list[dict], held: str, board: dict) 
     best = {d: max((r for r in results["rows"] if r["domain"] == d
                     and not r["model"].startswith("baseline-") and r.get("standard", True)),
                    key=lambda r: r["recall_at_1"]) for d in DOMAINS}
-    headline_best = max(best.values(), key=lambda r: r["recall_at_1"])
+    # The headline comes from the release's validated primary groups, as positive-query
+    # Recall@1 on the scored set; falls back to the older results only if none exist.
+    prim = [dict(r, domain=d, model=row_name(r), recall_at_1=r["positive_recall_at_1"] or 0)
+            for d, g in primary_groups(board).items() for r in g["rows"]]
+    headline_best = max(prim or list(best.values()), key=lambda r: r["recall_at_1"])
     t3 = max((r["by_tier"]["3"]["recall_at_1"] for r in results["rows"]
               if not r["model"].startswith("baseline-") and "3" in r["by_tier"]), default=0)
     changelog = "".join(f"<li><time>{d}</time> {e(t)}</li>" for d, t in CHANGELOG)
@@ -390,7 +394,7 @@ def page(results: dict, st: dict, examples: list[dict], held: str, board: dict) 
 <title>MomentBench: find one moment in a corpus of video</title>
 <meta name="description" content="A benchmark for finding the exact moment a request describes across a whole corpus of video: {st['published']} published queries, {st['assets']} hash-verified public-domain and CC BY assets, agentic and retrieval tracks, results with 95% intervals and cost.">
 <meta property="og:title" content="MomentBench">
-<meta property="og:description" content="Find the right video and the right few seconds, across the whole corpus. Best measured Recall@1: {100 * headline_best['recall_at_1']:.0f}%.">
+<meta property="og:description" content="Find the right video and the right few seconds, across the whole corpus. Best positive-query Recall@1 on the scored set: {100 * headline_best['recall_at_1']:.0f}%.">
 <meta property="og:image" content="https://momentbench.com/assets/banner.svg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -419,7 +423,7 @@ def page(results: dict, st: dict, examples: list[dict], held: str, board: dict) 
     <div><dt>{st['assets']}</dt><dd>hash-verified assets</dd></div>
     <div><dt>{st['minutes']} min</dt><dd>film, aerospace, robotics</dd></div>
     <div><dt>{st['published']}</dt><dd>published queries, 4 tiers</dd></div>
-    <div><dt>{100 * headline_best['recall_at_1']:.0f}%</dt><dd>best Recall@1 ({e(headline_best['model'])}, {headline_best['domain']})</dd></div>
+    <div><dt>{100 * headline_best['recall_at_1']:.0f}%</dt><dd>best positive-query Recall@1 ({e(headline_best['model'])}, {headline_best['domain']})</dd></div>
     <div><dt>{100 * t3:.0f}%</dt><dd>best score on no-answer queries</dd></div>
   </dl>
 </div></header>
