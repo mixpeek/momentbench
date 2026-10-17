@@ -101,6 +101,11 @@ class AgenticSummary(BaseModel):
     false_positive_rate: float | None = None
     abstention_on_positives: float | None = None
     mean_tiou_positive: float | None = None
+    # Net score: +1 for a correct answer (a hit, or an abstention on a no-answer query),
+    # -1 for a wrong one (any submitted moment that is not a hit), 0 for abstaining or
+    # not answering. The same rule as closed-book factuality net scores (correct minus
+    # incorrect): a wrong answer costs more than saying nothing matches.
+    net_score: float | None = None
     # Per tier: number of queries, Recall@1 and its 95% CI.
     by_tier: dict[str, dict[str, Any]] = Field(default_factory=dict)
 
@@ -264,6 +269,13 @@ def rescore(run: AgenticRun, queries: dict[str, Query]) -> AgenticRun:
                                   "summary": summarize(trials, run.summary.num_trials)})
 
 
+def trial_net(t: AgenticTrial) -> int:
+    """+1 correct, -1 a submitted moment that is wrong, 0 abstained or no answer."""
+    if t.hit_at_1:
+        return 1
+    return -1 if t.moments else 0
+
+
 def _split_metrics(trials: list[AgenticTrial]) -> dict[str, float | None]:
     pos = [t for t in trials if not t.no_answer]
     neg = [t for t in trials if t.no_answer]
@@ -280,6 +292,7 @@ def _split_metrics(trials: list[AgenticTrial]) -> dict[str, float | None]:
         "false_positive_rate": rate(neg, lambda t: t.outcome == "submitted" and bool(t.moments)),
         "abstention_on_positives": rate(pos, abstained),
         "mean_tiou_positive": mean(t.best_temporal_iou for t in pos) if pos else None,
+        "net_score": mean(trial_net(t) for t in trials) if trials else None,
     }
 
 

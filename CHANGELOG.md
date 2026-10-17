@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Net score on every run, submission entry and results table: +1 for a correct
+  answer, -1 for a wrong moment, 0 for abstaining. It is the rule closed-book
+  factuality benchmarks use, so a wrong answer costs more than saying nothing
+  matches. The results tables show the never-answer floor beside it.
+- CITATION.cff names the current release and query counts; a release test keeps it so.
+
 ## 0.2.4 (2026-10-16)
 
 Fixes from the fourth lab audit (docs/scope.md lists each). Same queries, corpus,

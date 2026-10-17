@@ -102,14 +102,14 @@ Rows are computed on the 184 current queries every 0.2.1 run covered. A historic
 | baseline-transcript | api | 184 x 3 | 2.2 (0.5 to 4.3) | 3.8 / 1.6 | 0.0 (n=87) | 12.5 (n=32) | 0.0 (n=35) | 0.0 (n=30) | none (no model) | `agentic-baseline-transcript-d76a0886.json` |
 | baseline-random | api | 184 x 3 | 0.0 (0.0 to 0.0) | 0.0 / 0.0 | 0.0 (n=87) | 0.0 (n=32) | 0.0 (n=35) | 0.0 (n=30) | none (no model) | `agentic-baseline-random-ace9329b.json` |
 
-Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer):
+Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer). Net score counts +1 for a correct answer, -1 for a wrong moment and 0 for abstaining, so a wrong answer costs more than saying nothing matches; a span below tIoU 0.5 counts as wrong. Never answering scores +0.19 here (`baseline-abstain`).
 
-| Model | Positive R@1 (95% CI by video) | No-answer accuracy | False-positive rate | Abstains on positives |
-|---|---|---|---|---|
-| gemini-3.1-pro-preview | 44.5 (34.4 to 57.3), n=110 | 38.2 | 61.8 | 5.5 |
-| claude-haiku-5-5 | 26.8 (19.5 to 34.3), n=149 | 42.9 | 57.1 | 10.1 |
-| claude-opus-5-5 | 67.1 (62.7 to 72.8), n=149 | 31.4 | 68.6 | 2.0 |
-| claude-sonnet-5-5 | 32.9 (24.5 to 41.3), n=149 | 17.1 | 82.9 | 6.0 |
+| Model | Positive R@1 (95% CI by video) | No-answer accuracy | False-positive rate | Abstains on positives | Net score |
+|---|---|---|---|---|---|
+| gemini-3.1-pro-preview | 44.5 (34.4 to 57.3), n=110 | 38.2 | 61.8 | 5.5 | -0.08 |
+| claude-haiku-5-5 | 26.8 (19.5 to 34.3), n=149 | 42.9 | 57.1 | 10.1 | -0.32 |
+| claude-opus-5-5 | 67.1 (62.7 to 72.8), n=149 | 31.4 | 68.6 | 2.0 | +0.22 |
+| claude-sonnet-5-5 | 32.9 (24.5 to 41.3), n=149 | 17.1 | 82.9 | 6.0 | -0.35 |
 
 Paired differences on the same queries:
 
@@ -139,13 +139,13 @@ Two text-only controls localize tier-2 queries from the transcript without looki
 | baseline-abstain | api | 202 x 3 | 10.4 (6.4 to 14.9) | 10.4 / 10.4 | 0.0 (n=110) | 0.0 (n=34) | 100.0 (n=21) | 0.0 (n=37) | none (no model) | `agentic-baseline-abstain-983b704e.json` |
 | baseline-random | api | 202 x 3 | 0.0 (0.0 to 0.0) | 0.0 / 0.0 | 0.0 (n=110) | 0.0 (n=34) | 0.0 (n=21) | 0.0 (n=37) | none (no model) | `agentic-baseline-random-54f2fc17.json` |
 
-Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer):
+Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer). Net score counts +1 for a correct answer, -1 for a wrong moment and 0 for abstaining, so a wrong answer costs more than saying nothing matches; a span below tIoU 0.5 counts as wrong. Never answering scores +0.10 here (`baseline-abstain`).
 
-| Model | Positive R@1 (95% CI by video) | No-answer accuracy | False-positive rate | Abstains on positives |
-|---|---|---|---|---|
-| claude-haiku-5-5 | 41.4 (33.9 to 54.0), n=181 | 42.9 | 57.1 | 12.7 |
-| claude-opus-5-5 | 67.4 (56.1 to 83.7), n=181 | 52.4 | 47.6 | 0.0 |
-| claude-sonnet-5-5 | 28.2 (17.4 to 45.5), n=181 | 28.6 | 71.4 | 3.9 |
+| Model | Positive R@1 (95% CI by video) | No-answer accuracy | False-positive rate | Abstains on positives | Net score |
+|---|---|---|---|---|---|
+| claude-haiku-5-5 | 41.4 (33.9 to 54.0), n=181 | 42.9 | 57.1 | 12.7 | -0.05 |
+| claude-opus-5-5 | 67.4 (56.1 to 83.7), n=181 | 52.4 | 47.6 | 0.0 | +0.32 |
+| claude-sonnet-5-5 | 28.2 (17.4 to 45.5), n=181 | 28.6 | 71.4 | 3.9 | -0.40 |
 
 Paired differences on the same queries:
 
@@ -177,14 +177,14 @@ Rows are computed on the 70 current queries every 0.2.1 run covered. A historica
 | baseline-transcript | api | 70 x 3 | 5.7 (1.4 to 11.4) | 8.6 / 0.0 | 0.0 (n=42) | 40.0 (n=10) | 0.0 (n=10) | 0.0 (n=8) | none (no model) | `agentic-baseline-transcript-1a4783de.json` |
 | baseline-random | api | 70 x 3 | 0.0 (0.0 to 0.0) | 0.0 / 0.0 | 0.0 (n=42) | 0.0 (n=10) | 0.0 (n=10) | 0.0 (n=8) | none (no model) | `agentic-baseline-random-c07e91cf.json` |
 
-Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer):
+Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer). Net score counts +1 for a correct answer, -1 for a wrong moment and 0 for abstaining, so a wrong answer costs more than saying nothing matches; a span below tIoU 0.5 counts as wrong. Never answering scores +0.14 here (`baseline-abstain`).
 
-| Model | Positive R@1 (95% CI by video) | No-answer accuracy | False-positive rate | Abstains on positives |
-|---|---|---|---|---|
-| gemini-3.1-pro-preview | 66.7 (60.5 to 73.7), n=51 | 40.0 | 50.0 | 5.9 |
-| claude-haiku-5-5 | 48.3 (35.3 to 69.0), n=60 | 20.0 | 80.0 | 1.7 |
-| claude-opus-5-5 | 83.3 (79.8 to 90.9), n=60 | 40.0 | 50.0 | 0.0 |
-| claude-sonnet-5-5 | 40.0 (29.7 to 68.2), n=60 | 10.0 | 90.0 | 0.0 |
+| Model | Positive R@1 (95% CI by video) | No-answer accuracy | False-positive rate | Abstains on positives | Net score |
+|---|---|---|---|---|---|
+| gemini-3.1-pro-preview | 66.7 (60.5 to 73.7), n=51 | 40.0 | 50.0 | 5.9 | +0.31 |
+| claude-haiku-5-5 | 48.3 (35.3 to 69.0), n=60 | 20.0 | 80.0 | 1.7 | -0.10 |
+| claude-opus-5-5 | 83.3 (79.8 to 90.9), n=60 | 40.0 | 50.0 | 0.0 | +0.56 |
+| claude-sonnet-5-5 | 40.0 (29.7 to 68.2), n=60 | 10.0 | 90.0 | 0.0 | -0.29 |
 
 Paired differences on the same queries:
 

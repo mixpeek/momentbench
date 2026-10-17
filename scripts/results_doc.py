@@ -24,6 +24,7 @@ from results_table import (  # noqa: E402
     table,
 )
 
+from momentbench.agentic.run import trial_net  # noqa: E402
 from momentbench.agentic.stats import (  # noqa: E402
     bootstrap_ci,
     cluster_bootstrap_ci,
@@ -151,11 +152,23 @@ def source_video(query_id: str) -> str:
     return (q.metadata.get("altered_from") or {}).get("asset_id", query_id)
 
 
+def abstain_floor(paths: list[Path]) -> float | None:
+    """Net score of always abstaining on these queries: the share that are no-answer."""
+    common = keyed_common(paths)
+    for f in paths:
+        run = load_run(f)
+        if run.model_id == "baseline-abstain":
+            ts = [t for t in run.trials if t.query_id in common]
+            return sum(trial_net(t) for t in ts) / len(ts) if ts else None
+    return None
+
+
 def split_table(paths: list[Path]) -> str:
     """Localization on positive queries and abstention on no-answer queries, apart."""
     common = keyed_common(paths)
     lines = ["| Model | Positive R@1 (95% CI by video) | No-answer accuracy | "
-             "False-positive rate | Abstains on positives |", "|---|---|---|---|---|"]
+             "False-positive rate | Abstains on positives | Net score |",
+             "|---|---|---|---|---|---|"]
     for f in paths:
         run = load_run(f)
         if run.model_id.startswith("baseline-") or not is_standard(run):
@@ -178,7 +191,8 @@ def split_table(paths: list[Path]) -> str:
             f"{100 * hi:.1f}), n={len(vals)} | "
             f"{pct(neg, lambda t: t.outcome == 'submitted' and not t.moments)} | "
             f"{pct(neg, lambda t: t.outcome == 'submitted' and bool(t.moments))} | "
-            f"{pct(pos, lambda t: t.outcome == 'submitted' and not t.moments)} |")
+            f"{pct(pos, lambda t: t.outcome == 'submitted' and not t.moments)} | "
+            f"{sum(trial_net(t) for t in trials) / max(len(trials), 1):+.2f} |")
     return "\n".join(lines)
 
 
@@ -236,8 +250,13 @@ def section(paths: list[Path]) -> str:
     paired = paired_table(paths)
     return (note + table(files, only=common)
             + "\n\nLocalization and abstention, separately (positive queries have a gold "
-            "moment; no-answer queries are right only on an explicit empty answer):\n\n"
-            + split_table(paths)
+            "moment; no-answer queries are right only on an explicit empty answer). Net "
+            "score counts +1 for a correct answer, -1 for a wrong moment and 0 for "
+            "abstaining, so a wrong answer costs more than saying nothing matches; a span "
+            "below tIoU 0.5 counts as wrong."
+            + (f" Never answering scores {floor:+.2f} here (`baseline-abstain`)."
+               if (floor := abstain_floor(paths)) is not None else "")
+            + "\n\n" + split_table(paths)
             + (f"\n\nPaired differences on the same queries:\n\n{paired}" if paired else "")
             + (f"\n\n{ctrl}" if (ctrl := control_table(paths)) else ""))
 
@@ -322,6 +341,7 @@ def results_json(domains: dict[str, list[Path]]) -> dict:
                 "positive_recall_at_1": s.positive_recall_at_1,
                 "no_answer_accuracy": s.no_answer_accuracy,
                 "false_positive_rate": s.false_positive_rate,
+                "net_score": s.net_score,
                 "abstention_on_positives": s.abstention_on_positives,
                 "cost_usd_per_query": s.mean_cost_usd_per_query,
                 "error_trials": s.error_trials, "run_file": Path(f).name})

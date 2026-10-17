@@ -991,3 +991,16 @@ class TestAssetViewIdentity:  # audit 4, finding 2
                                                        "manifest_sha256": "other"}})
         with pytest.raises(SubmissionError, match="predates"):
             agentic_entry(stale, path, **release)
+
+
+class TestNetScore:  # distribution: the factuality net-score rule
+    async def test_wrong_answers_cost_more_than_abstaining(self, tmp_path):
+        wrong = ("submit_answer", {"moments": [{"asset_id": "v1", "t_in": 30, "t_out": 34}]})
+        abstain = ("submit_answer", {"moments": []})
+        cases = [(make_query(), SUBMIT_GOLD, 1.0), (make_query(), abstain, 0.0),
+                 (make_query(), wrong, -1.0), (NO_ANSWER, abstain, 1.0),
+                 (NO_ANSWER, wrong, -1.0)]
+        for query, answer, want in cases:
+            run = await run_agentic_benchmark([query], ScriptedModel([[answer]]),
+                                              verified_corpus(tmp_path), trials=1)
+            assert run.summary.net_score == want, (query.query_id, answer)

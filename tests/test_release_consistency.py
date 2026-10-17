@@ -108,3 +108,9 @@ def test_every_review_names_the_annotation_it_saw():
             for field in ("model_review", "human_review"):
                 if field in meta:
                     assert meta[field]["result_sha"] == sha, (q["query_id"], field)
+
+
+def test_citation_names_the_current_release():
+    cff = " ".join(read("CITATION.cff").split())
+    assert f'version: "{momentbench.__version__}"' in cff
+    assert f"{PUBLISHED} queries are published" in cff
