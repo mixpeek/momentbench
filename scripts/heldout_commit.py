@@ -56,7 +56,7 @@ def commit(heldout: Path) -> None:
                         for q in sorted(queries, key=lambda q: q["query_id"])},
     }
     OUT.write_text(json.dumps(out, indent=1) + "\n")
-    print(f"committed {len(queries)} held-out queries -> {OUT.relative_to(ROOT)}")
+    print(f"committed {len(queries)} held-out queries -> {OUT}")
 
 
 def verify(heldout: Path) -> int:
