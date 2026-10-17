@@ -388,20 +388,19 @@ async def run_agentic_benchmark(
     if billable and pricing is None:
         raise spend.SpendCapError(f"{model.model_id}: no pricing, so the spend ledger "
                                   "cannot enforce its cap; pass --pricing")
-    paid: list[float] = []
-    in_flight = [0]
+    # The most one trial can cost, reserved before it starts and settled after.
+    trial_max = (pricing.cost_usd(Usage(input_tokens=spend.MAX_TRIAL_INPUT_TOKENS,
+                                        output_tokens=spend.MAX_TRIAL_OUTPUT_TOKENS))
+                 if billable else 0.0)
 
     async def one(query: Query, trial: int) -> AgenticTrial:
         async with semaphore:
+            reservation = None
             if billable:
-                # Reserve this trial at the run's mean so far (a conservative default
-                # before the first one finishes), counting trials already in flight.
-                each = (sum(paid) / len(paid)) if paid else spend.TRIAL_ESTIMATE_USD
                 try:
-                    spend.reserve(each * (in_flight[0] + 1), f"agentic:{model.model_id}")
+                    reservation = spend.reserve(trial_max, f"agentic:{model.model_id}")
                 except spend.SpendCapError as e:
                     raise ProviderUnavailableError(str(e)) from e
-                in_flight[0] += 1
             start = time.perf_counter()
             error = None
             resolved = None
@@ -442,10 +441,8 @@ async def run_agentic_benchmark(
             latency = time.perf_counter() - start
         cost = pricing.cost_usd(usage) if pricing else None
         if billable:
-            in_flight[0] -= 1
-            paid.append(cost or 0.0)
-            spend.record(cost or 0.0, f"agentic:{model.model_id}", query=query.query_id,
-                         trial=trial)
+            spend.settle(reservation, cost or 0.0, f"agentic:{model.model_id}",
+                         query=query.query_id, trial=trial)
         hit1, hit5, best, top1 = score_trial(query, moments, outcome)
         return AgenticTrial(
             query_id=query.query_id,

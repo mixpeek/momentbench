@@ -180,7 +180,7 @@ class Judges:
         _, a, b = span_of(q)
         text = prompt(q, "clip", cs, ce, f" (clip time {a - cs:.2f} to {b - cs:.2f} s)",
                       self.said(q))
-        spend.reserve(spend.token_cost_usd(GEMINI, 12_000, 2_000), f"adjudicate:{GEMINI}")
+        rid = spend.reserve(spend.token_cost_usd(GEMINI, 12_000, 2_000), f"adjudicate:{GEMINI}")
         async with self.sem:
             part = types.Part(inline_data=types.Blob(data=data, mime_type="video/mp4"),
                               video_metadata=types.VideoMetadata(fps=4))
@@ -188,7 +188,7 @@ class Judges:
                 model=GEMINI, contents=[part, text],
                 config=types.GenerateContentConfig(response_mime_type="application/json"))
         u = r.usage_metadata
-        spend.record(spend.token_cost_usd(GEMINI, u.prompt_token_count or 0,
+        spend.settle(rid, spend.token_cost_usd(GEMINI, u.prompt_token_count or 0,
                                           (u.candidates_token_count or 0)
                                           + (u.thoughts_token_count or 0)),
                      f"adjudicate:{GEMINI}", query=q["query_id"])
@@ -207,13 +207,13 @@ class Judges:
             {"type": "image_url", "image_url": {
                 "url": "data:image/jpeg;base64," + base64.b64encode(f).decode()}}
             for f in frames]
-        spend.reserve(spend.token_cost_usd(GPT, 6_000, 1_500), f"adjudicate:{GPT}")
+        rid = spend.reserve(spend.token_cost_usd(GPT, 6_000, 1_500), f"adjudicate:{GPT}")
         async with self.sem:
             r = await self._gpt.chat.completions.create(
                 model=GPT, messages=[{"role": "user", "content": content}],
                 response_format={"type": "json_object"})
         u = r.usage
-        spend.record(spend.token_cost_usd(GPT, u.prompt_tokens, u.completion_tokens),
+        spend.settle(rid, spend.token_cost_usd(GPT, u.prompt_tokens, u.completion_tokens),
                      f"adjudicate:{GPT}", query=q["query_id"])
         return {**parse(r.choices[0].message.content), "model": GPT,
                 "media_sha": sha(b"".join(frames))}

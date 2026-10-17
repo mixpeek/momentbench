@@ -19,6 +19,9 @@ def ledger(tmp_path, monkeypatch):
     monkeypatch.setenv("MOMENTBENCH_SPEND_LEDGER", str(path))
     monkeypatch.setenv("MOMENTBENCH_SPEND_CAP_USD", "1.0")
     monkeypatch.setattr(spend, "TRIAL_ESTIMATE_USD", 0.2)
+    # Bound each scripted trial at $0.22 (it really costs $0.11).
+    monkeypatch.setattr(spend, "MAX_TRIAL_INPUT_TOKENS", 200)
+    monkeypatch.setattr(spend, "MAX_TRIAL_OUTPUT_TOKENS", 20)
     return path
 
 
@@ -32,7 +35,7 @@ def test_off_unless_configured(monkeypatch):
 def test_reserve_refuses_past_the_cap(ledger):
     spend.record(0.9, "x:a")
     spend.reserve(0.1, "fits")
-    with pytest.raises(spend.SpendCapError, match="already spent"):
+    with pytest.raises(spend.SpendCapError, match="spend cap"):
         spend.reserve(0.2, "too much")
     assert spend.summary()["by_item"] == {"x": 0.9}
 
@@ -86,3 +89,26 @@ def test_gemini_client_prefers_a_key_then_vertex(monkeypatch):
     monkeypatch.setattr(gemini_client.subprocess, "run", lambda *a, **k: type(
         "R", (), {"stdout": "token\n"})())
     assert gemini_client.make_client()._api_client.vertexai
+
+
+def test_reservations_are_persisted_across_callers(ledger, monkeypatch):
+    """The reviewer's reproduction: two $60 reservations against a $100 cap."""
+    monkeypatch.setenv("MOMENTBENCH_SPEND_CAP_USD", "100")
+    first = spend.reserve(60.0, "a")
+    with pytest.raises(spend.SpendCapError, match="reserved"):
+        spend.reserve(60.0, "b")
+    spend.settle(first, 12.0, "a")
+    assert spend.summary()["spent_usd"] == 12.0
+    spend.reserve(60.0, "b")  # fits once the first settled at its real cost
+
+
+def test_an_unsettled_reservation_keeps_counting(ledger):
+    spend.reserve(0.8, "crashed:call")  # never settled: billing unknown
+    with pytest.raises(spend.SpendCapError):
+        spend.reserve(0.3, "next")
+    assert spend.summary()["open_reservations"] == 1
+
+
+def test_the_cap_cannot_be_raised_past_the_hard_cap(ledger, monkeypatch):
+    monkeypatch.setenv("MOMENTBENCH_SPEND_CAP_USD", "1000")
+    assert spend.cap_usd() == spend.HARD_CAP_USD

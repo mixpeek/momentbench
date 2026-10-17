@@ -91,7 +91,7 @@ async def scan_chunk(judges: adj.Judges, asset: dict, negs: list[dict],
     duration = float(asset.get("duration_s") or 600)
     per_s = 70 if SCAN_RESOLUTION.endswith("LOW") else 260
     tokens = int(duration * SCAN_FPS * per_s) + 8_000
-    spend.reserve(spend.token_cost_usd(adj.GEMINI, tokens, 4_000),
+    rid = spend.reserve(spend.token_cost_usd(adj.GEMINI, tokens, 4_000),
                   f"absence:{adj.GEMINI}")
     async with judges.sem:
         r = await judges._gemini.aio.models.generate_content(
@@ -103,7 +103,7 @@ async def scan_chunk(judges: adj.Judges, asset: dict, negs: list[dict],
                 response_mime_type="application/json",
                 media_resolution=getattr(types.MediaResolution, SCAN_RESOLUTION)))
     u = r.usage_metadata
-    spend.record(spend.token_cost_usd(adj.GEMINI, u.prompt_token_count or 0,
+    spend.settle(rid, spend.token_cost_usd(adj.GEMINI, u.prompt_token_count or 0,
                                       (u.candidates_token_count or 0)
                                       + (u.thoughts_token_count or 0)),
                  f"absence:{adj.GEMINI}", asset=asset["asset_id"])
@@ -139,12 +139,12 @@ async def confirm(judges: adj.Judges, hit: dict, text: str, work: Path) -> dict:
     content = [{"type": "text", "text": CONFIRM.format(a=a, b=b, text=text)}] + [
         {"type": "image_url", "image_url": {
             "url": "data:image/jpeg;base64," + base64.b64encode(f).decode()}} for f in frames]
-    spend.reserve(spend.token_cost_usd(adj.GPT, 5_000, 1_000), f"absence:{adj.GPT}")
+    rid = spend.reserve(spend.token_cost_usd(adj.GPT, 5_000, 1_000), f"absence:{adj.GPT}")
     async with judges.sem:
         r = await judges._gpt.chat.completions.create(
             model=adj.GPT, messages=[{"role": "user", "content": content}],
             response_format={"type": "json_object"})
-    spend.record(spend.token_cost_usd(adj.GPT, r.usage.prompt_tokens,
+    spend.settle(rid, spend.token_cost_usd(adj.GPT, r.usage.prompt_tokens,
                                       r.usage.completion_tokens), f"absence:{adj.GPT}",
                  query=hit["query_id"])
     reply = r.choices[0].message.content or "{}"

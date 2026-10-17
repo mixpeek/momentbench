@@ -51,7 +51,7 @@ async def ask_gemini(client, system: str, prompt: str, image: Path, sem, usage: 
     from google.genai import types
 
     # Each check is one image and a short prompt; reserve a generous ceiling for it.
-    spend.reserve(spend.token_cost_usd(MODEL, 4_000, 2_000), f"cross_verify:{MODEL}")
+    rid = spend.reserve(spend.token_cost_usd(MODEL, 4_000, 2_000), f"cross_verify:{MODEL}")
     async with sem:
         for attempt in range(6):
             try:
@@ -72,7 +72,7 @@ async def ask_gemini(client, system: str, prompt: str, image: Path, sem, usage: 
     u = r.usage_metadata
     usage["in"] += u.prompt_token_count or 0
     usage["out"] += (u.candidates_token_count or 0) + (u.thoughts_token_count or 0)
-    spend.record(spend.token_cost_usd(MODEL, u.prompt_token_count or 0,
+    spend.settle(rid, spend.token_cost_usd(MODEL, u.prompt_token_count or 0,
                                       (u.candidates_token_count or 0)
                                       + (u.thoughts_token_count or 0)),
                  f"cross_verify:{MODEL}")
