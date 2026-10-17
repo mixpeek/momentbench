@@ -66,13 +66,16 @@ def make_bundle(run_path: Path, queries_path: Path | None = None,
     if cost is not None and run.harness == "claude-code":
         cost_txt += " (tokens at API list prices; run on a subscription)"
     net_txt = f"{net:+.2f}" if net is not None else "n/a"
+    pos = entry.get("positive_recall_at_1")
+    pos_txt = f"{100 * pos:.1f}%" if pos is not None else "n/a"
     (out / "model_card.md").write_text(
         f"""### MomentBench {momentbench.__version__} ({queries_path.stem})
 
 | Metric | Value |
 |---|---|
-| Recall@1 (tIoU 0.5) | {r1:.1f}% (95% CI {lo:.1f} to {hi:.1f}) |
-| Net score (+1 correct, -1 wrong moment, 0 abstain) | {net_txt} |
+| Positive-query Recall@1 (tIoU 0.5) | {pos_txt} |
+| Recall@1, all queries | {r1:.1f}% (95% CI {lo:.1f} to {hi:.1f}) |
+| Net score (+1 correct, -1 wrong moment, 0 abstain; exploratory) | {net_txt} |
 | Queries x trials | {entry['num_queries']} x {entry['num_trials']} |
 | Cost per query | {cost_txt} |
 | Track and condition | {run.harness}; {condition(run)} |

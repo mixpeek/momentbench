@@ -171,11 +171,14 @@ def leaderboard(results: dict) -> str:
 def primary_groups(board: dict) -> dict[str, dict]:
     """Per domain, the group the release leads with: agentic track, scored queries,
     anonymized titles, standard prompt."""
+    keys = board.get("primary_keys", {})
     out = {}
     for g in board["groups"]:
-        if (g["track"] == "agentic" and g["queries_file"].endswith("_scored.json")
-                and g["condition"] == "anonymized titles, standard prompt"):
+        if g["compatibility_key"] and keys.get(g["domain"]) == g["compatibility_key"]:
             out[g["domain"]] = g
+        elif (g["domain"] not in keys and g["condition"] ==
+              "anonymized titles, standard prompt" and g["track"] == "agentic"):
+            out.setdefault(g["domain"], g)  # planned, nothing run yet
     return out
 
 
@@ -213,7 +216,8 @@ def leaderboard_v2(board: dict) -> str:
             name = x["model_id"] + (" (API)" if x["model_id"].startswith("claude")
                                     and x["harness"] == "api" else "")
             body.append(f'<tr class="floor"><td class="model">{e(name)}</td>'
-                        '<td class="num" colspan="5">not run for this release</td></tr>')
+                        f'<td class="num" colspan="5" title="{e(x.get("reason", ""))}">'
+                        'not run for this release</td></tr>')
         n = (g or {}).get("rows", [{}])[0].get("num_queries", 0) if g and g["rows"] else 0
         tabs.append(f'<button role="tab" aria-selected="{str(i == 0).lower()}" '
                     f'aria-controls="lb-{d}" id="tab-{d}" data-tab="{d}">{d.title()}'

@@ -1,9 +1,41 @@
 {
  "benchmark": "momentbench",
  "release": "0.2.4",
- "generated_at_commit": "aa468b5",
+ "generated_at_commit": "7bf5d12",
  "ranking_rule": "rows are compared only within a group (one compatibility key)",
+ "primary_keys": {
+  "aerospace": "05841b8cc16d0b1b",
+  "robotics": "39a268172b68fe33"
+ },
+ "notes": {
+  "no_answer": "No-answer accuracy and net score are exploratory: the corpus-wide absence screen recovered 12 of 26 known positives (docs/labels.md)."
+ },
  "groups": [
+  {
+   "compatibility_key": null,
+   "queries_file": "aerospace_v0.2_scored.json",
+   "domain": "aerospace",
+   "track": "agentic",
+   "condition": "anonymized titles, abstain prompt",
+   "rows": [],
+   "not_run": [
+    {
+     "model_id": "claude-opus-5-5",
+     "harness": "claude-code",
+     "reason": "not run yet"
+    },
+    {
+     "model_id": "claude-sonnet-5-5",
+     "harness": "claude-code",
+     "reason": "not run yet"
+    },
+    {
+     "model_id": "claude-haiku-5-5",
+     "harness": "claude-code",
+     "reason": "not run yet"
+    }
+   ]
+  },
   {
    "compatibility_key": "05841b8cc16d0b1b",
    "queries_file": "aerospace_v0.2_scored.json",
@@ -13,6 +45,10 @@
    "condition": "anonymized titles, standard prompt",
    "rows": [
     {
+     "positive_recall_at_1_ci95": [
+      0.5179856115107914,
+      0.6834532374100719
+     ],
      "model_id": "claude-opus-5-5",
      "harness": "claude-code",
      "resolved_models": [
@@ -37,6 +73,38 @@
      "timestamp": "2026-10-17T17:13:26Z"
     },
     {
+     "positive_recall_at_1_ci95": [
+      0.2517985611510791,
+      0.4028776978417266
+     ],
+     "model_id": "claude-sonnet-5-5",
+     "harness": "claude-code",
+     "resolved_models": [
+      "claude-sonnet-5-5"
+     ],
+     "num_queries": 154,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.33093525179856115,
+     "recall_at_1": 0.3247,
+     "recall_at_1_ci95": [
+      0.2532,
+      0.3961
+     ],
+     "net_score": -0.2597402597402597,
+     "no_answer_accuracy": 0.26666666666666666,
+     "false_positive_rate": 0.6666666666666666,
+     "mean_cost_usd_per_query": 0.0875365064935065,
+     "run_id": "agentic-claude-sonnet-5-5-6e575333",
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-claude-sonnet-5-5-6e575333.json",
+     "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
+     "timestamp": "2026-10-17T17:52:03Z"
+    },
+    {
+     "positive_recall_at_1_ci95": [
+      0.2302158273381295,
+      0.38848920863309355
+     ],
      "model_id": "claude-haiku-5-5",
      "harness": "api",
      "resolved_models": [
@@ -61,6 +129,10 @@
      "timestamp": "2026-10-17T17:26:29Z"
     },
     {
+     "positive_recall_at_1_ci95": [
+      0.07194244604316546,
+      0.18705035971223022
+     ],
      "model_id": "gpt-5.4-mini",
      "harness": "api",
      "resolved_models": [
@@ -87,16 +159,104 @@
    ],
    "not_run": [
     {
-     "model_id": "claude-sonnet-5-5",
-     "harness": "claude-code"
-    },
-    {
      "model_id": "claude-haiku-5-5",
-     "harness": "claude-code"
+     "harness": "claude-code",
+     "reason": "not run yet"
     },
     {
      "model_id": "gemini-3.8-flash",
-     "harness": "api"
+     "harness": "api",
+     "reason": "not run yet"
+    }
+   ]
+  },
+  {
+   "compatibility_key": null,
+   "queries_file": "film_v0.2_scored.json",
+   "domain": "film",
+   "track": "agentic",
+   "condition": "anonymized titles, abstain prompt",
+   "rows": [],
+   "not_run": [
+    {
+     "model_id": "claude-opus-5-5",
+     "harness": "claude-code",
+     "reason": "not run yet"
+    },
+    {
+     "model_id": "claude-sonnet-5-5",
+     "harness": "claude-code",
+     "reason": "not run yet"
+    },
+    {
+     "model_id": "claude-haiku-5-5",
+     "harness": "claude-code",
+     "reason": "not run yet"
+    }
+   ]
+  },
+  {
+   "compatibility_key": null,
+   "queries_file": "film_v0.2_scored.json",
+   "domain": "film",
+   "track": "agentic",
+   "condition": "anonymized titles, standard prompt",
+   "rows": [],
+   "not_run": [
+    {
+     "model_id": "claude-opus-5-5",
+     "harness": "claude-code",
+     "reason": "not run yet"
+    },
+    {
+     "model_id": "claude-sonnet-5-5",
+     "harness": "claude-code",
+     "reason": "not run yet"
+    },
+    {
+     "model_id": "claude-haiku-5-5",
+     "harness": "claude-code",
+     "reason": "not run yet"
+    },
+    {
+     "model_id": "claude-haiku-5-5",
+     "harness": "api",
+     "reason": "same reason"
+    },
+    {
+     "model_id": "gpt-5.4-mini",
+     "harness": "api",
+     "reason": "same reason"
+    },
+    {
+     "model_id": "gemini-3.8-flash",
+     "harness": "api",
+     "reason": "paid evaluation stopped after the spend-enforcement change; a later paid run would carry a different stopping rule and key"
+    }
+   ]
+  },
+  {
+   "compatibility_key": null,
+   "queries_file": "robotics_v0.2_scored.json",
+   "domain": "robotics",
+   "track": "agentic",
+   "condition": "anonymized titles, abstain prompt",
+   "rows": [],
+   "not_run": [
+    {
+     "model_id": "claude-opus-5-5",
+     "harness": "claude-code",
+     "reason": "not run yet"
+    },
+    {
+     "model_id": "claude-sonnet-5-5",
+     "harness": "claude-code",
+     "reason": "not run yet"
+    },
+    {
+     "model_id": "claude-haiku-5-5",
+     "harness": "claude-code",
+     "reason": "not run yet"
     }
    ]
   },
@@ -109,6 +269,10 @@
    "condition": "anonymized titles, standard prompt",
    "rows": [
     {
+     "positive_recall_at_1_ci95": [
+      0.675,
+      0.925
+     ],
      "model_id": "claude-opus-5-5",
      "harness": "claude-code",
      "resolved_models": [
@@ -133,6 +297,10 @@
      "timestamp": "2026-10-17T15:53:40Z"
     },
     {
+     "positive_recall_at_1_ci95": [
+      0.425,
+      0.725
+     ],
      "model_id": "gemini-3.8-flash",
      "harness": "api",
      "resolved_models": [
@@ -157,6 +325,10 @@
      "timestamp": "2026-10-17T16:29:46Z"
     },
     {
+     "positive_recall_at_1_ci95": [
+      0.225,
+      0.525
+     ],
      "model_id": "claude-haiku-5-5",
      "harness": "claude-code",
      "resolved_models": [
@@ -181,6 +353,10 @@
      "timestamp": "2026-10-17T16:20:12Z"
     },
     {
+     "positive_recall_at_1_ci95": [
+      0.2,
+      0.475
+     ],
      "model_id": "claude-haiku-5-5",
      "harness": "api",
      "resolved_models": [
@@ -205,6 +381,10 @@
      "timestamp": "2026-10-17T15:56:15Z"
     },
     {
+     "positive_recall_at_1_ci95": [
+      0.175,
+      0.45
+     ],
      "model_id": "claude-sonnet-5-5",
      "harness": "claude-code",
      "resolved_models": [
@@ -229,6 +409,10 @@
      "timestamp": "2026-10-17T16:05:17Z"
     },
     {
+     "positive_recall_at_1_ci95": [
+      0.025,
+      0.2
+     ],
      "model_id": "gpt-5.4-mini",
      "harness": "api",
      "resolved_models": [

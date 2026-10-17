@@ -1,0 +1,22 @@
+{
+  "version": "0.2.5",
+  "primary": {"track": "agentic", "condition": "anonymized titles, standard prompt",
+              "reference_row": ["claude-opus-5-5", "claude-code"]},
+  "domains": {
+    "film": "film_v0.2_scored.json",
+    "aerospace": "aerospace_v0.2_scored.json",
+    "robotics": "robotics_v0.2_scored.json"
+  },
+  "planned": {
+    "standard": [["claude-opus-5-5", "claude-code"], ["claude-sonnet-5-5", "claude-code"],
+                 ["claude-haiku-5-5", "claude-code"], ["claude-haiku-5-5", "api"],
+                 ["gpt-5.4-mini", "api"], ["gemini-3.8-flash", "api"]],
+    "abstain": [["claude-opus-5-5", "claude-code"], ["claude-sonnet-5-5", "claude-code"],
+                ["claude-haiku-5-5", "claude-code"]]
+  },
+  "not_run": {
+    "film/gemini-3.8-flash/api": "paid evaluation stopped after the spend-enforcement change; a later paid run would carry a different stopping rule and key",
+    "film/gpt-5.4-mini/api": "same reason",
+    "film/claude-haiku-5-5/api": "same reason"
+  }
+}

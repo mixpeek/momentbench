@@ -135,7 +135,11 @@ def test_leaderboard_groups_never_mix_keys():
     lb = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(lb)
     data = lb.build()
-    keys = [g["compatibility_key"] for g in data["groups"]]
+    keys = [g["compatibility_key"] for g in data["groups"] if g["compatibility_key"]]
     assert len(keys) == len(set(keys))
     for g in data["groups"]:
-        assert {r["num_queries"] for r in g["rows"]} == {g["rows"][0]["num_queries"]}
+        if g["rows"]:
+            assert {r["num_queries"] for r in g["rows"]} == {g["rows"][0]["num_queries"]}
+        else:
+            assert g["compatibility_key"] is None and g["not_run"]
+    assert set(data["primary_keys"].values()) <= set(keys)

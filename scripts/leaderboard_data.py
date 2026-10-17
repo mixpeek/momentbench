@@ -29,18 +29,14 @@ sys.path.insert(0, str(ROOT))
 
 import momentbench  # noqa: E402
 from momentbench.agentic.run import AgenticRun  # noqa: E402
+from momentbench.agentic.stats import bootstrap_ci  # noqa: E402
 from momentbench.submission import SubmissionError, agentic_entry, find_queries_file  # noqa: E402
 
 RECORD = ROOT / "data/results/agentic-v0.2.5/record"
 OUT = ROOT / "docs/leaderboard.json"
-# Rows the 0.2.5 release planned per scored domain file (distribution plan, A6).
-EXPECTED = {
-    "standard": [("claude-opus-5-5", "claude-code"), ("claude-sonnet-5-5", "claude-code"),
-                 ("claude-haiku-5-5", "claude-code"), ("claude-haiku-5-5", "api"),
-                 ("gpt-5.4-mini", "api"), ("gemini-3.8-flash", "api")],
-    "abstain": [("claude-opus-5-5", "claude-code"), ("claude-sonnet-5-5", "claude-code"),
-                ("claude-haiku-5-5", "claude-code")],
-}
+SPEC = json.loads((ROOT / f"configs/release_{momentbench.__version__}.json").read_text()) \
+    if (ROOT / f"configs/release_{momentbench.__version__}.json").exists() else json.loads(
+        sorted((ROOT / "configs").glob("release_*.json"))[-1].read_text())
 
 
 def sha16(path: Path) -> str:
@@ -90,7 +86,14 @@ def build() -> dict:
             "domain": qfile.name.split("_")[0], "track": "predictions"
             if run.harness == "predictions" else "agentic",
             "condition": condition(run), "rows": []})
+        pos = {}
+        for t in run.trials:
+            if not t.no_answer:
+                pos.setdefault(t.query_id, []).append(float(t.hit_at_1))
+        per_q = [sum(v) / len(v) for v in pos.values()]
         g["rows"].append({
+            # Interval over queries (query sampling); run-to-run variation is separate.
+            "positive_recall_at_1_ci95": list(bootstrap_ci(per_q)) if per_q else None,
             **{k: entry.get(k) for k in (
                 "model_id", "harness", "resolved_models", "num_queries", "num_trials",
                 "positive_recall_at_1", "recall_at_1", "recall_at_1_ci95", "net_score",
@@ -99,17 +102,42 @@ def build() -> dict:
             "origin": origin, "file": rel,
             "code_commit": (run.identity.get("git") or {}).get("commit"),
             "timestamp": run.timestamp})
+    # Planned groups come from the frozen release spec, so a domain with no run of a
+    # condition still lists its planned rows as not run.
+    for domain, qname in SPEC["domains"].items():
+        for prompt in SPEC["planned"]:
+            cond = f"anonymized titles, {prompt} prompt"
+            if not any(g["queries_file"] == qname and g["condition"] == cond
+                       for g in groups.values()):
+                groups[f"planned:{domain}:{prompt}"] = {
+                    "compatibility_key": None, "queries_file": qname, "domain": domain,
+                    "track": "agentic", "condition": cond, "rows": []}
     for g in groups.values():
         g["rows"].sort(key=lambda r: -(r["positive_recall_at_1"] or 0))
         prompt = "abstain" if "abstain prompt" in g["condition"] else "standard"
-        if g["track"] == "agentic" and g["queries_file"].endswith("_scored.json") \
+        if g["track"] == "agentic" and g["queries_file"] in SPEC["domains"].values() \
                 and "anonymized" in g["condition"]:
             have = {(r["model_id"], r["harness"]) for r in g["rows"]}
-            g["not_run"] = [{"model_id": m, "harness": h} for m, h in EXPECTED[prompt]
-                            if (m, h) not in have]
+            g["not_run"] = [
+                {"model_id": m, "harness": h,
+                 "reason": SPEC["not_run"].get(f"{g['domain']}/{m}/{h}", "not run yet")}
+                for m, h in SPEC["planned"][prompt] if (m, h) not in have]
+    # The primary group per domain is pinned to the key of the release's reference row,
+    # so a submission under another condition can never replace it.
+    ref_model, ref_harness = SPEC["primary"]["reference_row"]
+    primary_keys = {}
+    for g in groups.values():
+        if g["condition"] == SPEC["primary"]["condition"] and any(
+                r["model_id"] == ref_model and r["harness"] == ref_harness and
+                r["origin"] == "record" for r in g["rows"]):
+            primary_keys[g["domain"]] = g["compatibility_key"]
     return {"benchmark": "momentbench", "release": momentbench.__version__,
             "generated_at_commit": git_head(),
             "ranking_rule": "rows are compared only within a group (one compatibility key)",
+            "primary_keys": primary_keys,
+            "notes": {"no_answer": "No-answer accuracy and net score are exploratory: the "
+                      "corpus-wide absence screen recovered 12 of 26 known positives "
+                      "(docs/labels.md)."},
             "groups": sorted(groups.values(), key=lambda g: (g["domain"], g["track"],
                                                             g["condition"])),
             "excluded": excluded}
