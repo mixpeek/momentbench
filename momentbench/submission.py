@@ -64,6 +64,11 @@ def expected_key(run: AgenticRun, queries: dict[str, Query], manifest: Path,
     from momentbench.runner import load_corpus_assets
 
     assets = load_corpus_assets(manifest)
+    if run.harness == "predictions":  # the prediction-file track has its own task identity
+        from momentbench.predictions import task
+
+        receipt = {a["asset_id"]: a["file"]["sha256"] for a in assets}
+        return task(list(queries.values()), receipt)["compatibility_key"]
     if transcripts is None:
         transcripts = LocalCorpus(assets, None, transcripts_dir=TRANSCRIPTS_DIR).transcripts
     if run.modalities == "frames":
@@ -146,7 +151,7 @@ def agentic_entry(run: AgenticRun, queries_path: Path,
                 f"{run.run_id}: corpus receipt does not match {manifest.name} "
                 f"({len(run.corpus_receipt)} of {len(want)} assets verified; "
                 f"differs on {', '.join(bad[:3]) or 'none'}). Rerun on the verified corpus.")
-        if "asset_view_sha" not in run.identity:
+        if "asset_view_sha" not in run.identity and run.harness != "predictions":
             # A run from before 0.2.4 did not hash the asset list it saw. Admit it only
             # on the exact manifest it recorded, so titles cannot differ unseen.
             from momentbench.agentic.identity import file_sha

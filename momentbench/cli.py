@@ -19,6 +19,33 @@ def main():
     pass
 
 
+@main.command("score-predictions")
+@click.option("--predictions", "-p", type=click.Path(exists=True), required=True,
+              help="JSON with a system name and ranked moments per query")
+@click.option("--queries", "-q", type=click.Path(exists=True), required=True)
+@click.option("--corpus", "-c", type=click.Path(exists=True),
+              default="data/corpus_manifests/sample_manifest.json")
+@click.option("--output", "-o", type=click.Path(), default="data/results/predictions")
+def score_predictions_cmd(predictions: str, queries: str, corpus: str, output: str):
+    """Score a prediction file (the prediction-file track; no agent loop)."""
+    from momentbench.predictions import score_predictions
+
+    try:
+        run = score_predictions(Path(predictions), Path(queries), Path(corpus), Path(output))
+    except ValueError as e:
+        raise click.ClickException(str(e)) from e
+    s = run.summary
+    lo, hi = s.recall_at_1_ci95
+    bad = sum(t.outcome != "submitted" for t in run.trials)
+    console.print(f"\n[bold]{run.model_id}[/bold] track=predictions run={run.run_id}")
+    console.print(f"  Queries: {s.num_queries}  (missing or invalid: {bad})")
+    console.print(f"  Recall@1: {s.recall_at_1:.1%} (95% CI {lo:.1%} to {hi:.1%})")
+    console.print(f"  Net score: {s.net_score:+.2f}   No-answer accuracy: "
+                  f"{(s.no_answer_accuracy or 0):.1%}")
+    console.print(f"  Saved: {output}/{run.run_id}.json  "
+                  f"(submit with: momentbench submit -r <that file> -q {queries})")
+
+
 @main.command()
 @click.argument("model", type=str)
 @click.option("--queries", "-q", type=click.Path(exists=True), required=True)

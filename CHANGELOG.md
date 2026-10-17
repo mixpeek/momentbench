@@ -24,6 +24,9 @@
 - Salted SHA-256 commitments to all 163 held-out v0.2 queries
   (`data/heldout_commitments.json`, `scripts/heldout_commit.py`), so any later change
   to a held-out query or its answer shows at reveal. A label-dispute issue template.
+- The prediction-file track (`momentbench score-predictions`, `momentbench/predictions.py`):
+  a system that already ranks moments submits one JSON file instead of running the agent
+  loop. Same scoring and submission rules, its own compatibility key.
 - A shared cash ledger for maintainers (`momentbench/spend.py`, `scripts/spend_ledger.py`).
   Off unless `MOMENTBENCH_SPEND_LEDGER` is set. When set, every paid API trial and
   every paid cross-check reserves its cost first and is refused past

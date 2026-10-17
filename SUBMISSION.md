@@ -28,6 +28,23 @@ Run every query in the file (the default). [`docs/integrating.md`](docs/integrat
 
 The run file records what it ran: repo commit, hashes of the queries, manifest, transcripts, prompt and tools, the budget, the provider and the model version it reported, and a compatibility key. A run on an incomplete corpus is refused unless you pass `--partial`, and a `--partial` run is marked not reportable and cannot be submitted.
 
+### Or: the prediction-file track (no agent loop)
+
+If your system already produces ranked moments (a retriever, a grounding model, an
+index), you do not need the agent loop. Write one JSON file with your ranked answers
+per query, an empty list where nothing matches, and score it:
+
+```bash
+momentbench score-predictions -p my_predictions.json -q data/queries/scored/film_v0.2_scored.json
+```
+
+The format is in `momentbench/predictions.py`. Scoring is the agentic track's:
+Recall@1 at tIoU 0.5, Recall@5, net score and per-tier results. A missing or invalid
+prediction scores zero. The run file it writes has its own compatibility key (the
+prediction-file track), and you package and submit it exactly like an agentic run,
+below. Because this track cannot see which video bytes your system indexed, its corpus
+receipt is the manifest you declare.
+
 ## 3. Package it
 
 ```bash
