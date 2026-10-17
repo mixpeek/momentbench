@@ -30,6 +30,20 @@ jobs:
       - name: "inspect eval with a mock model (partial: no-answer queries only, wiring check)"
         run: inspect eval momentbench/agentic/inspect_task.py --model mockllm/model --display plain -T queries=data/queries/robotics_v0.2.json -T partial=true
 
+  diagnose:
+    # A clean environment reproduces the reference: download the three-video
+    # diagnostic profile from its sources and run momentbench diagnose. No credentials.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - run: pip install -e .
+      - run: momentbench corpus-download -m data/diagnostic/manifest.json --corpus-dir diag
+      - run: momentbench diagnose --corpus-dir diag
+
   docker:
     runs-on: ubuntu-latest
     steps:

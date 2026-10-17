@@ -23,6 +23,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+import momentbench  # noqa: E402
 from momentbench.corpus.verify import resolve_video, sha256_file  # noqa: E402
 
 REPO_ID = "Mixpeek/momentbench"
@@ -36,8 +37,20 @@ def plan(args: argparse.Namespace) -> list[tuple[Path, str]]:
     uploads.append((manifest, f"corpus_manifests/{manifest.name}"))
     # Every entrant's transcript tools read these, so they ship with the queries.
     uploads += [(f, f"transcripts/{f.name}") for f in sorted((ROOT / "data/transcripts").glob("*"))]
-    uploads += [(f, f"runs/{f.name}")
-                for f in sorted((ROOT / "data/results/agentic-v0.2.1/record").glob("*.json"))]
+    # The release's record runs (validated, grouped in docs/leaderboard.json), the scored
+    # query sets, the label log, the leaderboard and the release manifest.
+    uploads += [(f, f"runs/{f.parent.name}/{f.name}")
+                for f in sorted((ROOT / "data/results/agentic-v0.2.5/record").glob("*/*.json"))
+                if not f.name.endswith(".partial.json")]
+    uploads += [(f, f"queries/scored/{f.name}")
+                for f in sorted((ROOT / "data/queries/scored").glob("*.json"))]
+    for src, dst in (("data/labels/adjudication.json", "labels/adjudication.json"),
+                     ("docs/labels.md", "labels/labels.md"),
+                     ("docs/leaderboard.json", "leaderboard.json"),
+                     ("data/heldout_commitments.json", "heldout_commitments.json")):
+        if (ROOT / src).exists():
+            uploads.append((ROOT / src, dst))
+    uploads += [(f, f"release/{f.name}") for f in sorted((ROOT / "data/release").glob("*"))]
     for name in ("ATTRIBUTION.md", "LICENSE", "GOVERNANCE.md"):
         if (ROOT / name).exists():
             uploads.append((ROOT / name, name))
@@ -84,8 +97,8 @@ def main() -> None:
             except OSError:
                 shutil.copy2(local, dest)
         api.upload_folder(folder_path=tmp, repo_id=REPO_ID, repo_type=REPO_TYPE,
-                          commit_message="MomentBench v0.2.4: queries, transcripts, "
-                                         "runs and licence-confirmed videos")
+                          commit_message=f"MomentBench v{momentbench.__version__}: queries, "
+                                         "labels, runs, leaderboard and release manifest")
     print(f"Done: https://huggingface.co/datasets/{REPO_ID}")
 
 
