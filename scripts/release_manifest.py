@@ -15,6 +15,7 @@ from __future__ import annotations
 import hashlib
 import json
 import platform
+import shlex
 import subprocess
 import sys
 from pathlib import Path
@@ -23,6 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 import momentbench  # noqa: E402
+from momentbench.agentic.budget import Budget  # noqa: E402
 from momentbench.agentic.run import AgenticRun  # noqa: E402
 
 
@@ -38,16 +40,18 @@ def command(run: AgenticRun, qfile: str) -> tuple[str, str]:
     """(command, source). A run made after 0.2.5 records its own CLI arguments
     (identity.cli), which are used as is; older runs get a reconstruction from their
     recorded identity, labelled as such."""
+    env = (f"MOMENTBENCH_SPEND_LEDGER=<ledger> MOMENTBENCH_MAX_TRIAL_INPUT_TOKENS="
+           f"{run.identity['input_token_cap']} " if run.identity.get("input_token_cap") else "")
     if run.identity.get("cli"):
-        return "momentbench " + " ".join(run.identity["cli"]), "recorded"
+        return env + shlex.join(["momentbench", *run.identity["cli"]]), "recorded"
     if run.harness == "predictions":
         return (f"momentbench score-predictions -p <predictions.json> -q {qfile}",
                 "reconstructed")
-    flags = [f"momentbench agentic {run.model_id} --provider "
-             + ({"claude-code": "claude-code"}.get(run.harness)
-                or ("anthropic" if run.model_id.startswith("claude")
-                    else "openai" if run.model_id.startswith("gpt")
-                    else "gemini")),
+    provider = run.identity.get("provider") or (
+        "claude-code" if run.harness == "claude-code" else None)
+    if provider is None:
+        return "", "unsupported: the run identity does not record its provider"
+    flags = [f"momentbench agentic {shlex.quote(run.model_id)} --provider {provider}",
              f"-q {qfile}", "-c data/corpus_manifests/sample_manifest.json",
              "--corpus-dir corpus/", "--transcripts-dir data/transcripts",
              f"--trials {run.summary.num_trials}"]
@@ -57,6 +61,11 @@ def command(run: AgenticRun, qfile: str) -> tuple[str, str]:
         flags.append(f"--prompt-condition {run.identity['prompt_condition']}")
     if run.effort:
         flags.append(f"--effort {run.effort}")
+    default = Budget()
+    for field, flag in (("max_steps", "--max-steps"), ("max_frames", "--max-frames"),
+                        ("max_tool_calls", "--max-tool-calls")):
+        if getattr(run.budget, field) != getattr(default, field):
+            flags.append(f"{flag} {getattr(run.budget, field)}")
     if run.modalities == "frames":
         flags.append("--no-transcripts")
     if run.identity.get("frames"):
@@ -66,11 +75,7 @@ def command(run: AgenticRun, qfile: str) -> tuple[str, str]:
             flags.append(f"--jpeg-quality {f['jpeg_quality']}")
     if run.identity.get("endpoint"):
         flags.append(f"--base-url {run.identity['endpoint']}")
-    cmd = " ".join(flags)
-    if run.identity.get("input_token_cap"):
-        cmd = (f"MOMENTBENCH_SPEND_LEDGER=<ledger> MOMENTBENCH_MAX_TRIAL_INPUT_TOKENS="
-               f"{run.identity['input_token_cap']} {cmd}")
-    return cmd, "reconstructed from the run identity"
+    return env + " ".join(flags), "reconstructed from the run identity"
 
 
 def main() -> None:

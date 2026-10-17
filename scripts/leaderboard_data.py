@@ -43,8 +43,14 @@ def sha16(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()[:16]
 
 
+INPUTS = ["data/results/agentic-v0.2.5", "submissions", "data/queries", "configs",
+          "scripts/leaderboard_data.py", "momentbench"]
+
+
 def git_head() -> str:
-    return subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT,
+    """The last commit that changed an input of the leaderboard. Publishing commits
+    only the outputs, so this stays fixed until the inputs change."""
+    return subprocess.run(["git", "log", "-1", "--format=%h", "--", *INPUTS], cwd=ROOT,
                           capture_output=True, text=True).stdout.strip()
 
 

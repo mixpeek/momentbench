@@ -142,6 +142,16 @@ sampled frames and transcripts, not native video or audio. `docs/scope.md` lists
 rest and the roadmap.
 """
     (ROOT / "docs/report.md").write_text(report)
+    # docs/results.md keeps the tables of 0.2.4 and earlier, below a banner that points
+    # to this release's single source.
+    banner = (f"> **Current results ({v}) are in [`report.md`](report.md) and "
+              "[`leaderboard.json`](leaderboard.json).** The tables below come from the "
+              "pipeline used up to 0.2.4 and are kept as history; they mix conditions and "
+              "query sets that the current leaderboard keeps apart.\n\n")
+    results = ROOT / "docs/results.md"
+    text = results.read_text()
+    if not text.startswith("> **Current results"):
+        results.write_text(banner + text)
     print(f"wrote docs/report.md ({len(sections)} domain sections)")
 
 
