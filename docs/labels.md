@@ -6,8 +6,9 @@ Claude drafted, verified and reviewed MomentBench's labels, so Claude does not j
 them here. Two other model families judge every published query against its current
 annotation (`scripts/adjudicate.py`):
 
-- **gemini-3.8-flash** watches the clip itself, video and audio: the gold span plus 2 s on
-  each side, or for a no-answer query the source shot it was altered from.
+- **gemini-3.8-flash** watches the clip, sampled at 4 frames a second with its audio: the
+  gold span plus 2 s on each side, or for a no-answer query the source shot it was
+  altered from. Sampling means it does not see every frame.
 - **gpt-5.4-mini** reads a five-frame sheet of the same span (before, start, middle,
   end, after), with the speech inside it for dialogue queries.
 
@@ -16,17 +17,29 @@ true of the source shot, is the altered one, and can the changed detail be seen 
 heard? It passes only when the original is true, the altered text is false and the
 detail is visible. A query is **scored** when both judges pass it and **provisional**
 otherwise. Scored files are in `data/queries/scored/`, and a run on them carries its
-own compatibility key. These are model judgements, not human review; the provisional
-share is a model estimate of label problems, and human disputes are welcome (open an
-issue). It overstates them somewhat: the frame judge sees five stills, so on
-multi-shot and fast-moving queries it can miss what happens between frames, and a
-query is provisional when either judge objects.
+own compatibility key. These are model judgements, not human review, and model
+disagreement is not an annotation-error estimate: a query is provisional when either
+judge objects, and some objections are judge errors (the frame judge sees five stills,
+so it can miss what happens between them on multi-shot and fast-moving queries).
+Selecting the scored set also changes coverage: multi-shot queries are excluded more
+often than single-shot ones, as the tier table below shows. The scored set is frozen
+for each release by the hash of its files. Human disputes are welcome
+(open an issue).
 
 | Domain | Published | Scored | Provisional | No-answer scored |
 |---|---:|---:|---:|---:|
 | film | 184 | 130 | 54 | 25 of 35 |
 | aerospace | 202 | 154 | 48 | 15 of 21 |
 | robotics | 70 | 49 | 21 | 9 of 10 |
+
+By tier, across domains:
+
+| Tier | Published | Scored | Share scored |
+|---|---:|---:|---:|
+| single shot | 239 | 179 | 75% |
+| dialogue and picture | 76 | 60 | 79% |
+| no answer | 66 | 49 | 74% |
+| multi-shot | 75 | 45 | 60% |
 
 **Corpus-wide absence check** (`scripts/absence_check.py`). A no-answer query must match nothing anywhere, which drafting only checked against three look-alike shots. gemini-3.8-flash watched all 27 videos with every no-answer description and listed any moment that fits; gpt-5.4-mini checked each hit away from the source shot on frames. 0 hits, 0 confirmed by both; 66 of 66 no-answer queries passed. A no-answer query is scored only if it also passed this check. **This check is a coarse screen, and passing it is weaker than proof of absence.** In a control, the same scan was given true descriptions from the videos it watched and found 12 of 26 (46%) near their gold spans (1 fps, 320 px, low media resolution, all descriptions in one call (the configuration used for the scan)). A finer setting (2 fps, 480 px, medium media resolution, 15 descriptions per call) found 7 of 12 (58%) on 3 videos; not adopted: about 35 USD for the full corpus at ceiling prices for a modest recall gain. Some missed descriptions are themselves provisional labels, so part of the gap may be label error. Human disputes remain the stronger check.
 

@@ -92,6 +92,13 @@ def main() -> None:
         table.append(f"| {d} | {n(d, 'scored') + n(d, 'provisional')} | {n(d, 'scored')} | "
                      f"{n(d, 'provisional')} | {n(d, 'scored', 3)} of "
                      f"{n(d, 'scored', 3) + n(d, 'provisional', 3)} |")
+    tiers = ["| Tier | Published | Scored | Share scored |", "|---|---:|---:|---:|"]
+    for t in sorted(TIER):
+        s_ = sum(n(d, "scored", t) for d in DOMAINS)
+        p_ = sum(n(d, "provisional", t) for d in DOMAINS)
+        if s_ + p_:
+            tiers.append(f"| {TIER[t]} | {s_ + p_} | {s_} | {100 * s_ / (s_ + p_):.0f}% |")
+    table += ["", "By tier, across domains:", ""] + tiers
     total_s = sum(n(d, "scored") for d in DOMAINS)
     total_p = sum(n(d, "provisional") for d in DOMAINS)
 
@@ -133,8 +140,9 @@ Claude drafted, verified and reviewed MomentBench's labels, so Claude does not j
 them here. Two other model families judge every published query against its current
 annotation (`scripts/adjudicate.py`):
 
-- **{judges[0]}** watches the clip itself, video and audio: the gold span plus 2 s on
-  each side, or for a no-answer query the source shot it was altered from.
+- **{judges[0]}** watches the clip, sampled at 4 frames a second with its audio: the
+  gold span plus 2 s on each side, or for a no-answer query the source shot it was
+  altered from. Sampling means it does not see every frame.
 - **{judges[1]}** reads a five-frame sheet of the same span (before, start, middle,
   end, after), with the speech inside it for dialogue queries.
 
@@ -143,11 +151,14 @@ true of the source shot, is the altered one, and can the changed detail be seen 
 heard? It passes only when the original is true, the altered text is false and the
 detail is visible. A query is **scored** when both judges pass it and **provisional**
 otherwise. Scored files are in `data/queries/scored/`, and a run on them carries its
-own compatibility key. These are model judgements, not human review; the provisional
-share is a model estimate of label problems, and human disputes are welcome (open an
-issue). It overstates them somewhat: the frame judge sees five stills, so on
-multi-shot and fast-moving queries it can miss what happens between frames, and a
-query is provisional when either judge objects.
+own compatibility key. These are model judgements, not human review, and model
+disagreement is not an annotation-error estimate: a query is provisional when either
+judge objects, and some objections are judge errors (the frame judge sees five stills,
+so it can miss what happens between them on multi-shot and fast-moving queries).
+Selecting the scored set also changes coverage: multi-shot queries are excluded more
+often than single-shot ones, as the tier table below shows. The scored set is frozen
+for each release by the hash of its files. Human disputes are welcome
+(open an issue).
 
 {chr(10).join(table)}{absence_text}
 

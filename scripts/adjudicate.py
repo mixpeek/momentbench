@@ -7,7 +7,7 @@
 Claude drafted, verified and reviewed these labels, so Claude does not vote here.
 Two other families each judge every published query against its current annotation:
 
-- **Gemini** watches the clip itself (native video with audio): the gold span plus 2 s
+- **Gemini** watches the clip sampled at 4 fps with audio: the gold span plus 2 s
   on each side. For a no-answer query it watches the source shot the query was
   altered from, and checks that the unaltered original matches while the altered text
   does not.
