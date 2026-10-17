@@ -35,7 +35,9 @@ momentbench diagnose --corpus-dir diag/          # 5 checks, all should read PAS
 2. **Score a retrieval system** on the prediction-file track: write ranked
    `(asset_id, t_in, t_out)` per query, then
    `momentbench score-predictions -p preds.json -q data/queries/scored/film_v0.2_scored.json`.
-   `scripts/bm25_predictions.py` is a complete example that writes such a file.
+   `scripts/bm25_predictions.py` is a complete example that writes such a file, and
+   [`docs/prediction-files.md`](docs/prediction-files.md) converts QVHighlights-style or
+   CSV output you already have.
 3. **Get a citable result**: `momentbench bundle -r <run>.json` writes JSON, a model-card
    block, a LaTeX table and a citation.
 4. **Submit** with `momentbench submit` and a pull request: a check validates it and a

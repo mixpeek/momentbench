@@ -25,7 +25,8 @@ and the prediction scorer. Every line should read PASS.
 | Ranks moments itself (an index, a retriever, a grounding model) | **Prediction file** | One JSON file: up to five ranked `(asset_id, t_in, t_out)` per query, or `[]` when nothing matches |
 | Is a model that should search with tools (list videos, read transcripts, look at frames) | **Agentic** | A model endpoint; the harness runs the loop under a fixed budget |
 
-The prediction-file format is at the top of `momentbench/predictions.py`. The agentic
+The prediction-file format, and a converter for QVHighlights-style or CSV output, are in
+[`prediction-files.md`](prediction-files.md). The agentic
 track is in `docs/protocol.md`, and `docs/input-spec.md` lists exactly what a model
 sees.
 

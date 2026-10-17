@@ -141,7 +141,7 @@ momentbench diagnose --corpus-dir diag/        # 5 checks, all PASS
 momentbench score-predictions -p preds.json -q data/queries/scored/film_v0.2_scored.json
 momentbench bundle -r &lt;run&gt;.json             # JSON, model-card block, LaTeX, citation
 momentbench submit -r &lt;run&gt;.json --model-name "Your system" -o submissions/</code></pre>
-  <p class="note">Open a pull request with the new <code>submissions/&lt;name&gt;/</code> folder: a check validates the run, merges it and publishes it here, with no maintainer in the loop. <code>scripts/bm25_predictions.py</code> is a complete example of a prediction file.</p>
+  <p class="note">Open a pull request with the new <code>submissions/&lt;name&gt;/</code> folder: a check validates the run, merges it and publishes it here, with no maintainer in the loop. <code>scripts/bm25_predictions.py</code> is a complete example of a prediction file, and <a href="https://github.com/mixpeek/momentbench/blob/main/docs/prediction-files.md">the prediction-file guide</a> converts QVHighlights-style or CSV output you already have.</p>
 </div></section>
 
 <section id="cost"><div class="wrap">

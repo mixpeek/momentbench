@@ -50,7 +50,7 @@ momentbench diagnose --corpus-dir diag/          # 5 checks, all PASS
 momentbench score-predictions -p preds.json -q data/queries/scored/film_v0.2_scored.json
 ```
 
-A prediction file lists up to five ranked `(asset_id, t_in, t_out)` per query, or an empty list to abstain. `momentbench bundle` turns a run into a citable result, and a pull request with `momentbench submit` output is validated and published to the leaderboard without a maintainer.
+A prediction file lists up to five ranked `(asset_id, t_in, t_out)` per query, or an empty list to abstain; [the prediction-file guide](https://github.com/mixpeek/momentbench/blob/main/docs/prediction-files.md) converts QVHighlights-style or CSV output. `momentbench bundle` turns a run into a citable result, and a pull request with `momentbench submit` output is validated and published to the leaderboard without a maintainer.
 
 ## Task
 
