@@ -1,0 +1,260 @@
+{
+ "benchmark": "momentbench",
+ "release": "0.2.4",
+ "generated_at_commit": "aa468b5",
+ "ranking_rule": "rows are compared only within a group (one compatibility key)",
+ "groups": [
+  {
+   "compatibility_key": "05841b8cc16d0b1b",
+   "queries_file": "aerospace_v0.2_scored.json",
+   "queries_file_sha256_16": "5e639f771d3c8eed",
+   "domain": "aerospace",
+   "track": "agentic",
+   "condition": "anonymized titles, standard prompt",
+   "rows": [
+    {
+     "model_id": "claude-opus-5-5",
+     "harness": "claude-code",
+     "resolved_models": [
+      "claude-opus-5-5"
+     ],
+     "num_queries": 154,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.60431654676259,
+     "recall_at_1": 0.5779,
+     "recall_at_1_ci95": [
+      0.5,
+      0.6558
+     ],
+     "net_score": 0.2012987012987013,
+     "no_answer_accuracy": 0.3333333333333333,
+     "false_positive_rate": 0.5333333333333333,
+     "mean_cost_usd_per_query": 0.15215211558441558,
+     "run_id": "agentic-claude-opus-5-5-4b3b3e5e",
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-claude-opus-5-5-4b3b3e5e.json",
+     "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
+     "timestamp": "2026-10-17T17:13:26Z"
+    },
+    {
+     "model_id": "claude-haiku-5-5",
+     "harness": "api",
+     "resolved_models": [
+      "claude-haiku-5-5"
+     ],
+     "num_queries": 154,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.30935251798561153,
+     "recall_at_1": 0.3247,
+     "recall_at_1_ci95": [
+      0.2532,
+      0.3961
+     ],
+     "net_score": -0.22727272727272727,
+     "no_answer_accuracy": 0.4666666666666667,
+     "false_positive_rate": 0.5333333333333333,
+     "mean_cost_usd_per_query": 0.015553594155844157,
+     "run_id": "agentic-claude-haiku-5-5-d6c4cdf7",
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-claude-haiku-5-5-d6c4cdf7.json",
+     "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
+     "timestamp": "2026-10-17T17:26:29Z"
+    },
+    {
+     "model_id": "gpt-5.4-mini",
+     "harness": "api",
+     "resolved_models": [
+      "gpt-5.4-mini-2026-03-17"
+     ],
+     "num_queries": 154,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.12949640287769784,
+     "recall_at_1": 0.1169,
+     "recall_at_1_ci95": [
+      0.0649,
+      0.1688
+     ],
+     "net_score": -0.6103896103896104,
+     "no_answer_accuracy": 0.0,
+     "false_positive_rate": 0.7333333333333333,
+     "mean_cost_usd_per_query": 0.01319111103896104,
+     "run_id": "agentic-gpt-5.4-mini-e25c7c5c",
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-gpt-5.4-mini-e25c7c5c.json",
+     "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
+     "timestamp": "2026-10-17T16:45:16Z"
+    }
+   ],
+   "not_run": [
+    {
+     "model_id": "claude-sonnet-5-5",
+     "harness": "claude-code"
+    },
+    {
+     "model_id": "claude-haiku-5-5",
+     "harness": "claude-code"
+    },
+    {
+     "model_id": "gemini-3.8-flash",
+     "harness": "api"
+    }
+   ]
+  },
+  {
+   "compatibility_key": "39a268172b68fe33",
+   "queries_file": "robotics_v0.2_scored.json",
+   "queries_file_sha256_16": "26cfb17382d1f3e4",
+   "domain": "robotics",
+   "track": "agentic",
+   "condition": "anonymized titles, standard prompt",
+   "rows": [
+    {
+     "model_id": "claude-opus-5-5",
+     "harness": "claude-code",
+     "resolved_models": [
+      "claude-opus-5-5"
+     ],
+     "num_queries": 49,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.8,
+     "recall_at_1": 0.7143,
+     "recall_at_1_ci95": [
+      0.5918,
+      0.8367
+     ],
+     "net_score": 0.46938775510204084,
+     "no_answer_accuracy": 0.3333333333333333,
+     "false_positive_rate": 0.5555555555555556,
+     "mean_cost_usd_per_query": 0.15186342857142857,
+     "run_id": "agentic-claude-opus-5-5-2c29e220",
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/robotics/agentic-claude-opus-5-5-2c29e220.json",
+     "code_commit": "06672987bddde3c0fbef8fe4d59648312c53575f",
+     "timestamp": "2026-10-17T15:53:40Z"
+    },
+    {
+     "model_id": "gemini-3.8-flash",
+     "harness": "api",
+     "resolved_models": [
+      "gemini-3.8-flash"
+     ],
+     "num_queries": 49,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.575,
+     "recall_at_1": 0.4898,
+     "recall_at_1_ci95": [
+      0.3673,
+      0.6327
+     ],
+     "net_score": 0.32653061224489793,
+     "no_answer_accuracy": 0.1111111111111111,
+     "false_positive_rate": 0.0,
+     "mean_cost_usd_per_query": 0.13893445102040816,
+     "run_id": "agentic-gemini-3.8-flash-4ee9cbab",
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/robotics/agentic-gemini-3.8-flash-4ee9cbab.json",
+     "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
+     "timestamp": "2026-10-17T16:29:46Z"
+    },
+    {
+     "model_id": "claude-haiku-5-5",
+     "harness": "claude-code",
+     "resolved_models": [
+      "claude-haiku-5-5"
+     ],
+     "num_queries": 49,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.375,
+     "recall_at_1": 0.3673,
+     "recall_at_1_ci95": [
+      0.2449,
+      0.5102
+     ],
+     "net_score": -0.08163265306122448,
+     "no_answer_accuracy": 0.3333333333333333,
+     "false_positive_rate": 0.5555555555555556,
+     "mean_cost_usd_per_query": 0.024507204081632653,
+     "run_id": "agentic-claude-haiku-5-5-16366cbb",
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/robotics/agentic-claude-haiku-5-5-16366cbb.json",
+     "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
+     "timestamp": "2026-10-17T16:20:12Z"
+    },
+    {
+     "model_id": "claude-haiku-5-5",
+     "harness": "api",
+     "resolved_models": [
+      "claude-haiku-5-5"
+     ],
+     "num_queries": 49,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.325,
+     "recall_at_1": 0.3061,
+     "recall_at_1_ci95": [
+      0.1837,
+      0.449
+     ],
+     "net_score": -0.3469387755102041,
+     "no_answer_accuracy": 0.2222222222222222,
+     "false_positive_rate": 0.7777777777777778,
+     "mean_cost_usd_per_query": 0.018055504081632655,
+     "run_id": "agentic-claude-haiku-5-5-deec2a97",
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/robotics/agentic-claude-haiku-5-5-deec2a97.json",
+     "code_commit": "fd75d7d916f9e396e26a6eaac0b42d3b7722b131",
+     "timestamp": "2026-10-17T15:56:15Z"
+    },
+    {
+     "model_id": "claude-sonnet-5-5",
+     "harness": "claude-code",
+     "resolved_models": [
+      "claude-sonnet-5-5"
+     ],
+     "num_queries": 49,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.3,
+     "recall_at_1": 0.2653,
+     "recall_at_1_ci95": [
+      0.1429,
+      0.3878
+     ],
+     "net_score": -0.40816326530612246,
+     "no_answer_accuracy": 0.1111111111111111,
+     "false_positive_rate": 0.7777777777777778,
+     "mean_cost_usd_per_query": 0.08066821224489797,
+     "run_id": "agentic-claude-sonnet-5-5-8b149461",
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/robotics/agentic-claude-sonnet-5-5-8b149461.json",
+     "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
+     "timestamp": "2026-10-17T16:05:17Z"
+    },
+    {
+     "model_id": "gpt-5.4-mini",
+     "harness": "api",
+     "resolved_models": [
+      "gpt-5.4-mini-2026-03-17"
+     ],
+     "num_queries": 49,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.1,
+     "recall_at_1": 0.0816,
+     "recall_at_1_ci95": [
+      0.0204,
+      0.1633
+     ],
+     "net_score": -0.6530612244897959,
+     "no_answer_accuracy": 0.0,
+     "false_positive_rate": 1.0,
+     "mean_cost_usd_per_query": 0.015561373469387756,
+     "run_id": "agentic-gpt-5.4-mini-3ba26b49",
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/robotics/agentic-gpt-5.4-mini-3ba26b49.json",
+     "code_commit": "06672987bddde3c0fbef8fe4d59648312c53575f",
+     "timestamp": "2026-10-17T15:44:00Z"
+    }
+   ],
+   "not_run": []
+  }
+ ],
+ "excluded": []
+}

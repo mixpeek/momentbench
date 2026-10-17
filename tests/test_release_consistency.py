@@ -125,3 +125,17 @@ def test_scored_files_match_the_label_log():
                    if q["metadata"]["adjudication"]["decision"] == "scored"}
         assert scored == decided
         assert all(log[qid]["decision"] == "scored" for qid in scored)
+
+
+def test_leaderboard_groups_never_mix_keys():
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location(
+        "leaderboard_data", ROOT / "scripts/leaderboard_data.py")
+    lb = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(lb)
+    data = lb.build()
+    keys = [g["compatibility_key"] for g in data["groups"]]
+    assert len(keys) == len(set(keys))
+    for g in data["groups"]:
+        assert {r["num_queries"] for r in g["rows"]} == {g["rows"][0]["num_queries"]}
