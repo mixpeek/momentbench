@@ -42,7 +42,8 @@ def stops(r: dict) -> str:
 
 def group_table(g: dict) -> str:
     lines = ["| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | "
-             "No-answer | Net | Ended without an answer | $/query |", "|---|---|---|---|---|---|---|---|"]
+             "No-answer | Net | Ended without an answer | $/query |",
+             "|---|---|---|---|---|---|---|---|"]
     for r in g["rows"]:
         cost = r.get("mean_cost_usd_per_query")
         lines.append(
