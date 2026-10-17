@@ -76,3 +76,32 @@ def test_a_bundle_carries_the_validated_numbers(tmp_path, release):
     assert "33.3%" in (out / "model_card.md").read_text()
     assert "\\begin{tabular}" in (out / "table.tex").read_text()
     assert (out / "citation.bib").read_text().startswith("@misc{momentbench")
+
+
+def test_the_submission_validator_passes_and_fails(tmp_path, release, monkeypatch):
+    import importlib.util
+    from pathlib import Path
+
+    from momentbench import submission as sub_mod
+
+    qfile, manifest = release
+    run = score_predictions(write(tmp_path, [{"query_id": "na", "moments": []}]),
+                            qfile, manifest)
+    spec = importlib.util.spec_from_file_location(
+        "vs", Path(__file__).resolve().parents[1] / "scripts/validate_submissions.py")
+    vs = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(vs)
+    monkeypatch.setattr(vs, "ROOT", tmp_path)
+    (tmp_path / "data/queries").mkdir(parents=True)
+    (tmp_path / "data/queries" / qfile.name).write_text(qfile.read_text())
+    monkeypatch.setattr(sub_mod, "MANIFEST", manifest)
+    monkeypatch.setattr(vs, "agentic_entry",
+                        lambda r, q: sub_mod.agentic_entry(r, q, manifest=manifest))
+    d = tmp_path / "submissions/team"
+    d.mkdir(parents=True)
+    (d / "run.json").write_text(run.model_dump_json())
+    (d / "submission.json").write_text(json.dumps({"queries_file": qfile.name}))
+    assert vs.main([str(d)]) == 0
+    bad = run.model_copy(update={"trials": run.trials[:-1]})
+    (d / "run.json").write_text(bad.model_dump_json())
+    assert vs.main([str(d)]) == 1

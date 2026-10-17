@@ -30,6 +30,9 @@
 - `momentbench bundle`: from one validated run, a result.json, a model-card block, a LaTeX
   table and a citation, all generated from the submission entry. `find_queries_file`
   also searches `data/queries/scored/` and prefers an exact query-set match.
+- Submissions are validated in CI: pull requests touching `submissions/` run
+  `scripts/validate_submissions.py`, which rescores each run against its query file with
+  every admission check and writes the result to the job summary.
 - A shared cash ledger for maintainers (`momentbench/spend.py`, `scripts/spend_ledger.py`).
   Off unless `MOMENTBENCH_SPEND_LEDGER` is set. When set, every paid API trial and
   every paid cross-check reserves its cost first and is refused past

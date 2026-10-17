@@ -1,0 +1,26 @@
+name: Submission check
+
+on:
+  pull_request:
+    paths: ["submissions/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e .
+      - name: Validate changed submissions
+        shell: bash  # -eo pipefail, so a failed check fails the job through tee
+        run: |
+          dirs=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD" -- submissions/ \
+                 | awk -F/ 'NF>2 {print $1"/"$2}' | sort -u)
+          python scripts/validate_submissions.py $dirs | tee -a "$GITHUB_STEP_SUMMARY"
