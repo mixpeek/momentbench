@@ -62,8 +62,11 @@ def _load_run(path: str) -> AgenticRun:
 
 
 def is_standard(run: AgenticRun) -> bool:
-    """Full task: frames and transcripts, real titles. Ablations and controls are not."""
-    return run.modalities != "frames" and not run.anonymize_titles
+    """Full task: frames and transcripts, the standard prompt and frame size. Anonymized
+    titles count as standard: from 0.2.5 they are the record condition."""
+    return (run.modalities != "frames"
+            and run.identity.get("prompt_condition", "standard") == "standard"
+            and not run.identity.get("frames"))
 
 
 def condition(run: AgenticRun) -> str:

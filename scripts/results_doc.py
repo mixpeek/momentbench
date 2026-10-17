@@ -34,6 +34,7 @@ from momentbench.agentic.stats import (  # noqa: E402
 ROOT = Path(__file__).resolve().parents[1]
 # Runs under the 0.2.1 contract (receipt, identity, compatibility key) come first. A
 # model with no 0.2.1 run keeps its earlier row, labelled historical.
+RECORD_025 = ROOT / "data/results/agentic-v0.2.5/record"  # scored set, anonymized titles
 RECORD_021 = ROOT / "data/results/agentic-v0.2.1/record"
 RECORD = ROOT / "data/results/agentic-v0.2/record"
 SEED = ROOT / "data/results/agentic"
@@ -78,7 +79,8 @@ def runs_for(vertical: str) -> list[Path]:
     ids = {q["query_id"] for q in json.loads((ROOT / "data/queries" / QUERY_FILES[vertical])
                                              .read_text())}
     chosen: dict[tuple, Path] = {}
-    for f in sorted(RECORD_021.glob("*.json")) + sorted(RECORD.glob("*.json")):
+    for f in (sorted(RECORD_025.glob("*/*.json")) + sorted(RECORD_021.glob("*.json"))
+              + sorted(RECORD.glob("*.json"))):
         if f.name.endswith(".partial.json"):
             continue
         run = load_run(f)
@@ -91,7 +93,9 @@ def runs_for(vertical: str) -> list[Path]:
             continue
         # One row per model and condition; the 0.2.1 directory is read first, so a
         # rerun replaces the earlier row.
-        chosen.setdefault((run.model_id, run.modalities, run.anonymize_titles), f)
+        chosen.setdefault((run.model_id, run.harness, run.modalities, run.anonymize_titles,
+                           run.identity.get("prompt_condition", "standard"),
+                           json.dumps(run.identity.get("frames"))), f)
     return sorted(chosen.values())
 
 

@@ -143,11 +143,14 @@ def leaderboard(results: dict) -> str:
                 cost = f'${r["cost_usd_per_query"]:.3f}'
             strong = (not floor and r.get("standard", True)
                       and abs(r["recall_at_1"] - best) < 1e-9)
+            net = r.get("net_score")
             body.append(
                 f'<tr class="{"floor" if floor else ""}"><td class="model">{e(name)}</td>'
                 f'<td class="num{" best" if strong else ""}">{r1:.1f}</td>'
                 f'<td class="barcell">{bar(r1, lo, hi)}<span class="cirange">{lo:.0f} to '
-                f'{hi:.0f}</span></td>{tiers}<td class="num">{cost}</td></tr>')
+                f'{hi:.0f}</span></td>{tiers}'
+                f'<td class="num">{"" if net is None else f"{net:+.2f}"}</td>'
+                f'<td class="num">{cost}</td></tr>')
         n = rows[0]["queries"] if rows else 0
         tabs.append(f'<button role="tab" aria-selected="{str(i == 0).lower()}" '
                     f'aria-controls="lb-{d}" id="tab-{d}" data-tab="{d}">{d.title()}'
@@ -158,6 +161,7 @@ def leaderboard(results: dict) -> str:
             f'<th class="num">R@1</th><th>95% interval</th>'
             + "".join(f'<th class="num" title="{TIER_NAMES[int(t)]}">T{t}</th>'
                       for t in "1234")
+            + '<th class="num" title="+1 correct, -1 wrong moment, 0 abstain">Net</th>'
             + '<th class="num">$/query</th></tr></thead><tbody>' + "".join(body)
             + "</tbody></table></div>")
     return ('<div class="tabs" role="tablist">' + "".join(tabs) + "</div>"
@@ -329,9 +333,9 @@ def page(results: dict, st: dict, examples: list[dict], held: str) -> str:
 <main>
 <section id="leaderboard"><div class="wrap">
   <h2>Leaderboard</h2>
-  <p class="sub">Recall@1 at temporal IoU 0.5: the first answer must be in the right video and overlap the true moment by at least half. Bars show the score; the light band is its 95% bootstrap interval over queries. T1 to T4 are per-tier Recall@1. Floors in grey: <code>baseline-random</code> is chance, <code>baseline-abstain</code> always answers none, <code>baseline-transcript</code> answers from the transcript search alone and never looks at a frame.</p>
+  <p class="sub">Recall@1 at temporal IoU 0.5: the first answer must be in the right video and overlap the true moment by at least half. Bars show the score; the light band is its 95% bootstrap interval over queries. T1 to T4 are per-tier Recall@1. Net is +1 for a correct answer, &minus;1 for a wrong moment and 0 for abstaining, averaged over trials; it mostly reflects search and timing errors, and is a measure of false claims only under the abstain prompt. Rows are computed on the scored queries (those two non-Claude model families both accepted; see <a href="{REPO}/blob/main/docs/labels.md">the label log</a>). Floors in grey: <code>baseline-random</code> is chance, <code>baseline-abstain</code> always answers none, <code>baseline-transcript</code> answers from the transcript search alone and never looks at a frame.</p>
   {leaderboard(results)}
-  <p class="note"><sup>*</sup> Claude runs used the Claude Code harness; their cost is what the tokens would cost at API list prices. GPT-5.5 is not evaluated on v0.2 and Gemini 3.1 Pro has no aerospace run (no API budget for either). Queries are model-annotated, cross-checked, and reviewed frame by frame by Claude on the maintainer's behalf; human review is still pending, so treat scores as provisional. Every row is generated from a run file in <a href="{REPO}/tree/main/data/results">data/results</a>; rows marked historical predate the 0.2.1 run identity.</p>
+  <p class="note"><sup>*</sup> Claude runs used the Claude Code harness; their cost is what the tokens would cost at API list prices. Rows labelled with a condition (anonymized titles, abstain prompt) ran under it; from 0.2.5 record runs use anonymized titles. Labels are model-annotated and model-adjudicated, with no human review yet, so treat small differences as provisional. Every row is generated from a run file in <a href="{REPO}/tree/main/data/results">data/results</a>; rows marked historical predate the 0.2.1 run identity.</p>
 </div></section>
 
 <section id="cost"><div class="wrap">
