@@ -1,0 +1,84 @@
+{
+  "model_name": "abstain-floor-aerospace",
+  "model_description": "Reference floor for the prediction-file track: an empty answer (abstain) on every query. Recall@1 and net score both equal the share of no-answer queries, and positive-query Recall@1 is 0. Predictions: {\"query_id\": q, \"moments\": []} for every q in the scored file. Maintainer-submitted.",
+  "contact": "",
+  "track": "agentic",
+  "run_id": "predictions-abstain-floor-4cbdcc13",
+  "model_id": "abstain-floor",
+  "effort": null,
+  "harness": "predictions",
+  "resolved_models": [],
+  "modalities": "predictions",
+  "queries_file": "aerospace_v0.2_scored.json",
+  "num_queries": 154,
+  "queries_in_file": 154,
+  "rescore_excluded": 0,
+  "num_trials": 1,
+  "recall_at_1": 0.0974,
+  "recall_at_1_ci95": [
+    0.0519,
+    0.1494
+  ],
+  "positive_recall_at_1": 0.0,
+  "no_answer_accuracy": 1.0,
+  "false_positive_rate": 0.0,
+  "net_score": 0.09740259740259741,
+  "mean_cost_usd_per_query": null,
+  "by_tier": {
+    "1": {
+      "num_queries": 89,
+      "recall_at_1": 0,
+      "recall_at_1_ci95": [
+        0,
+        0
+      ]
+    },
+    "2": {
+      "num_queries": 27,
+      "recall_at_1": 0,
+      "recall_at_1_ci95": [
+        0,
+        0
+      ]
+    },
+    "3": {
+      "num_queries": 15,
+      "recall_at_1": 1,
+      "recall_at_1_ci95": [
+        1,
+        1
+      ]
+    },
+    "4": {
+      "num_queries": 23,
+      "recall_at_1": 0,
+      "recall_at_1_ci95": [
+        0,
+        0
+      ]
+    }
+  },
+  "budget": {
+    "max_steps": 30,
+    "max_frames": 64,
+    "max_tool_calls": 60
+  },
+  "corpus_assets_verified": 27,
+  "compatibility_key": "603e0d07f1ecae63",
+  "identity": {
+    "queries_sha": "3b6020a4981e760b",
+    "num_queries": 154,
+    "corpus_sha": "ca25d3017581a1ba",
+    "transcripts_sha": "44136fa355b3678a",
+    "system_prompt_sha": "532d3cbcc47a6b5e",
+    "tools_sha": "4f53cda18c2baa0c",
+    "budget": {},
+    "modalities": "predictions",
+    "anonymize_titles": false,
+    "compatibility_key": "603e0d07f1ecae63",
+    "track": "predictions",
+    "corpus_receipt": "declared",
+    "predictions_file_sha256": "57c57680352cdd0d"
+  },
+  "timestamp": "2026-10-17T20:29:10Z"
+}
