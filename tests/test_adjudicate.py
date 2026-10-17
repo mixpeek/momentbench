@@ -28,3 +28,17 @@ def test_scored_needs_both_judges():
     assert adj.decide(yes, yes) == "scored"
     assert adj.decide(yes, no) == adj.decide(no, yes) == "provisional"
     assert adj.decide({"verdict": "error"}, yes) == "provisional"
+
+
+def test_absence_ignores_hits_on_the_source_shot():
+    import sys
+
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+    spec = importlib.util.spec_from_file_location(
+        "absence_check", Path(__file__).resolve().parents[1] / "scripts/absence_check.py")
+    ac = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(ac)
+    q = {"metadata": {"altered_from": {"asset_id": "v", "t_in": 10.0, "t_out": 14.0}}}
+    assert ac.is_source({"asset_id": "v", "t_start": 12, "t_end": 13}, q)
+    assert not ac.is_source({"asset_id": "v", "t_start": 40, "t_end": 44}, q)
+    assert not ac.is_source({"asset_id": "w", "t_start": 12, "t_end": 13}, q)

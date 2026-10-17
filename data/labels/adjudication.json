@@ -444,7 +444,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "008dabc4978bb5ac"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "eed2db53c0006bde",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0126": {
    "annotation_sha": "c86121b48690f9aa",
@@ -560,7 +567,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "d44c1381eed33518"
    },
-   "decision": "provisional"
+   "decision": "provisional",
+   "absence": {
+    "annotation_sha": "519c9cb00744f844",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0131": {
    "annotation_sha": "7246e9c0350a7294",
@@ -918,7 +932,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "0a52e8e2e41e73f6"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "5282caef6c0a67ac",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0148": {
    "annotation_sha": "e0a619d8d3197d3d",
@@ -1012,7 +1033,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "143de0a2bcae41a7"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "3d3371b8ccfdc69d",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0157": {
    "annotation_sha": "33d49737bee0e1c6",
@@ -1062,7 +1090,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "9d0a801c30d27fd5"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "e7e72bfa80500c0f",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0160": {
    "annotation_sha": "3abd6beebb9d8a37",
@@ -1178,7 +1213,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "57dbf50c5b566eac"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "8ac7fd37e1fdb4d6",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0165": {
    "annotation_sha": "98dcd95a4229adc9",
@@ -1272,7 +1314,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "88a6858100413364"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "b3a2c2aaee27d6d6",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0171": {
    "annotation_sha": "8f4d9a2b9033b4a3",
@@ -1586,7 +1635,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "ceb420d9cf1f2faa"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "5b4ed9c01758ba6a",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0190": {
    "annotation_sha": "f028cb97856d7938",
@@ -1680,7 +1736,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "b57ebd9adcdaa307"
    },
-   "decision": "provisional"
+   "decision": "provisional",
+   "absence": {
+    "annotation_sha": "8d7dc2a2a40c3bad",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0196": {
    "annotation_sha": "d4039a12af995766",
@@ -1994,7 +2057,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "95503e190bc828bd"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "40e8fa9d4d421fce",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0222": {
    "annotation_sha": "bcb93c0f92a6f306",
@@ -2220,7 +2290,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "3c8e665e65f331ab"
    },
-   "decision": "provisional"
+   "decision": "provisional",
+   "absence": {
+    "annotation_sha": "afb3e67aac53c962",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0234": {
    "annotation_sha": "7574aedbada21ced",
@@ -2336,7 +2413,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "4897ad779300324a"
    },
-   "decision": "provisional"
+   "decision": "provisional",
+   "absence": {
+    "annotation_sha": "4f5b4a7892878bec",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0239": {
    "annotation_sha": "4cdc76bf0fd236e3",
@@ -2760,7 +2844,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "ba55090dd3f62b92"
    },
-   "decision": "provisional"
+   "decision": "provisional",
+   "absence": {
+    "annotation_sha": "4e76384938dbe201",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0265": {
    "annotation_sha": "955d95aabd4b7baf",
@@ -2832,7 +2923,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "a1bf073e9359c53d"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "f39249f89a6d9026",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0269": {
    "annotation_sha": "dbf5882ebf28c812",
@@ -2948,7 +3046,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "d2dabaf0466b3a7c"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "db32a057245ee38b",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0301": {
    "annotation_sha": "01267eeb7f1d4d58",
@@ -3020,7 +3125,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "4217a3c2de05ff30"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "5903ea4e660ced0d",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0308": {
    "annotation_sha": "2a3ee7428e14e9e9",
@@ -3246,7 +3358,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "ad7c62b9e30af85c"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "c77e6a51fb844e4e",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0323": {
    "annotation_sha": "3bf3a7a9db81e787",
@@ -3406,7 +3525,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "703da79c23873590"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "90bbbb93f6cc8e1d",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0337": {
    "annotation_sha": "5ac2a5d022ffd5fe",
@@ -3500,7 +3626,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "3c8e665e65f331ab"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "63a382c124f9b8de",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0342": {
    "annotation_sha": "14ba24e2d1084106",
@@ -3594,7 +3727,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "b474d046745af42d"
    },
-   "decision": "provisional"
+   "decision": "provisional",
+   "absence": {
+    "annotation_sha": "fa2a74e296f9c8c1",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0351": {
    "annotation_sha": "f4c67faf8d3e6559",
@@ -3688,7 +3828,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "6a55ecfe0a41ab22"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "2ba4ddafd44c28d8",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-aerospace-0355": {
    "annotation_sha": "7d32440c979e96bf",
@@ -4640,7 +4787,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "0cb5094def470fbc"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "c3851054c4931df3",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-0103": {
    "annotation_sha": "7b2f4e59af11a68c",
@@ -4778,7 +4932,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "3b1f13ae28de7cca"
    },
-   "decision": "provisional"
+   "decision": "provisional",
+   "absence": {
+    "annotation_sha": "7abeb32e94138874",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-0113": {
    "annotation_sha": "9ca9b40bb3416978",
@@ -4916,7 +5077,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "7737716b2b7b7273"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "a0237b2d254d7390",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-0123": {
    "annotation_sha": "32672a0fb9608f35",
@@ -5010,7 +5178,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "0dafc7048adab279"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "8e9c477ed14b6d9e",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-0130": {
    "annotation_sha": "1c2aeb01a83c9533",
@@ -5148,7 +5323,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "d64788c4dea84850"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "7d548b1226adbf63",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-1000": {
    "annotation_sha": "d0efbeae6ca2be71",
@@ -5264,7 +5446,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "459a6138a11b0874"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "5f7b686be8bc8963",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-1008": {
    "annotation_sha": "2c0be7b873aa9d76",
@@ -5358,7 +5547,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "5be9fef433a8256c"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "3a7ea935491767c1",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-1015": {
    "annotation_sha": "ea011a6fd5c7fda2",
@@ -5452,7 +5648,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "02ec6f400b45ebc7"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "52ffeacd5c427b77",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-1026": {
    "annotation_sha": "d17d028ebd77b613",
@@ -5524,7 +5727,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "17ba326cffe35bd9"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "f87428a252236c6a",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-1031": {
    "annotation_sha": "ba1b1f32278680ed",
@@ -5662,7 +5872,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "58798c41a01d7277"
    },
-   "decision": "provisional"
+   "decision": "provisional",
+   "absence": {
+    "annotation_sha": "499c070fd7c11d6d",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-1037": {
    "annotation_sha": "63ce946d21f0e744",
@@ -5866,7 +6083,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "01bcd1542d7dc23d"
    },
-   "decision": "provisional"
+   "decision": "provisional",
+   "absence": {
+    "annotation_sha": "80628185e0936f45",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-1053": {
    "annotation_sha": "d4e7ce17f228f229",
@@ -5960,7 +6184,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "bab7d2916dcfcbb3"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "9c5319bc1732c320",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-1057": {
    "annotation_sha": "49786b00886e7243",
@@ -6054,7 +6285,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "36996037c042878c"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "0c83c7cdf7b519ce",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-2000": {
    "annotation_sha": "b1da84a567371c41",
@@ -6148,7 +6386,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "8e9bb3dab7588f6f"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "a401e01daee773d8",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-2008": {
    "annotation_sha": "b67d371190bd5d2f",
@@ -6220,7 +6465,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "eb655b90d253941d"
    },
-   "decision": "provisional"
+   "decision": "provisional",
+   "absence": {
+    "annotation_sha": "7f54eecca7e57d23",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-2013": {
    "annotation_sha": "6dbe96a93ff4e55f",
@@ -6292,7 +6544,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "9e861fd58b7ccfc4"
    },
-   "decision": "provisional"
+   "decision": "provisional",
+   "absence": {
+    "annotation_sha": "7452385f76250866",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-2023": {
    "annotation_sha": "2de3043a5f921271",
@@ -6342,7 +6601,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "25643dce332964ca"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "5ea6d43233e93179",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-2026": {
    "annotation_sha": "a0d3d7d0bb1bc43e",
@@ -6392,7 +6658,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "55e14d5150985ef6"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "e9738cbf0833d0c3",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-2028": {
    "annotation_sha": "69a31cb77382dda0",
@@ -6508,7 +6781,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "e7f14983d1ff2d71"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "5d4616d43534a11d",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-2036": {
    "annotation_sha": "42e3579adf80bb00",
@@ -6580,7 +6860,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "5c9a46392da546e3"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "11a85e2f9400df48",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-2041": {
    "annotation_sha": "cbed952f2b712bf4",
@@ -6652,7 +6939,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "7f85e44c4ae6e447"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "91dc2bb6cf98645a",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-2044": {
    "annotation_sha": "165467501df16f24",
@@ -6768,7 +7062,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "e131d96d8bd698c3"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "3826607060d18233",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-3005": {
    "annotation_sha": "f4023a73ba1850be",
@@ -6862,7 +7163,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "a33f64baf1fc9ebd"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "8570cae03f9da443",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-3011": {
    "annotation_sha": "f96d62081cc31453",
@@ -6956,7 +7264,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "9100bed7720f0019"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "835f649bb3e1e4a5",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-4001": {
    "annotation_sha": "87b3f93f975da5d6",
@@ -7006,7 +7321,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "ee76086e4e031a0c"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "882be991356e4ae2",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-4004": {
    "annotation_sha": "a00a7d403166df59",
@@ -7056,7 +7378,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "8a24be05f0a7c39d"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "6a068c58c9680183",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-4007": {
    "annotation_sha": "fa238c0ca2d5baa6",
@@ -7084,7 +7413,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "de6e419dc5544722"
    },
-   "decision": "provisional"
+   "decision": "provisional",
+   "absence": {
+    "annotation_sha": "fa238c0ca2d5baa6",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-4008": {
    "annotation_sha": "8962225e28e7e2ae",
@@ -7134,7 +7470,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "02ec6f400b45ebc7"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "47c784afb375814f",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-4010": {
    "annotation_sha": "c02e6aa40dd2d002",
@@ -7316,7 +7659,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "c7ca56ebcc2e545d"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "7414d5fe53179993",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-4021": {
    "annotation_sha": "cb5dbfcf278b226e",
@@ -7388,7 +7738,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "e3b506c961b24575"
    },
-   "decision": "provisional"
+   "decision": "provisional",
+   "absence": {
+    "annotation_sha": "fee8a78f8ca6aaf4",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-4027": {
    "annotation_sha": "f52ef412ac89ac22",
@@ -7438,7 +7795,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "a6a8da07f3f0b048"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "a44799b2e802934d",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-5000": {
    "annotation_sha": "2911a0a1561b02e1",
@@ -7620,7 +7984,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "bed6afa5d89e44f1"
    },
-   "decision": "provisional"
+   "decision": "provisional",
+   "absence": {
+    "annotation_sha": "7ff022436900a3ae",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-5012": {
    "annotation_sha": "afb19a9192ff02e5",
@@ -7692,7 +8063,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "9082ce8ace2e0d85"
    },
-   "decision": "provisional"
+   "decision": "provisional",
+   "absence": {
+    "annotation_sha": "cef85ad531e7f3bf",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-5015": {
    "annotation_sha": "598b81aa6b02662d",
@@ -7742,7 +8120,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "e7f14983d1ff2d71"
    },
-   "decision": "provisional"
+   "decision": "provisional",
+   "absence": {
+    "annotation_sha": "c4b36bab2f75ec58",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-5018": {
    "annotation_sha": "e0b85ebbadcad293",
@@ -8672,7 +9057,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "2f8cccc25cc5ba93"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "d7e129ee46431050",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-film-8016": {
    "annotation_sha": "cccd1a14ba36edb4",
@@ -8920,7 +9312,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "9427aa78aa973319"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "e613ec8e88b02267",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-robotics-0104": {
    "annotation_sha": "92d834e0fdfc6ce7",
@@ -9058,7 +9457,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "e9dac183c7a4befb"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "d28125e8b8b2e893",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-robotics-0111": {
    "annotation_sha": "9a8628052d3f6c70",
@@ -9174,7 +9580,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "70fae1509df45e30"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "c948ef24ac9f733b",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-robotics-0117": {
    "annotation_sha": "3d6b261bd46308c6",
@@ -9312,7 +9725,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "54103654c4039761"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "4d0a17ad11160d21",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-robotics-0124": {
    "annotation_sha": "b379ea29bf97df2c",
@@ -9428,7 +9848,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "bd0262359d18f4ef"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "d5a6ffa57383e539",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-robotics-0130": {
    "annotation_sha": "a17b2abedeecd269",
@@ -9522,7 +9949,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "bdbadc0b5fc0f65e"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "9d9fe3b14033c106",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-robotics-0134": {
    "annotation_sha": "be0d739d19970ffd",
@@ -9594,7 +10028,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "0e57207c3f6f128f"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "1c726c5d92a893e6",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-robotics-0138": {
    "annotation_sha": "e2648f5a95f424c3",
@@ -9710,7 +10151,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "c8b3b9098112d4be"
    },
-   "decision": "provisional"
+   "decision": "provisional",
+   "absence": {
+    "annotation_sha": "61d32cdb2b5ea07a",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-robotics-0144": {
    "annotation_sha": "4545e8bc81db2971",
@@ -9892,7 +10340,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "54103654c4039761"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "ce2e2da3eef57b1d",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-robotics-0307": {
    "annotation_sha": "cf58495b4f60a955",
@@ -10030,7 +10485,14 @@
     "model": "gpt-5.4-mini",
     "media_sha": "0a2695353d8882f3"
    },
-   "decision": "scored"
+   "decision": "scored",
+   "absence": {
+    "annotation_sha": "b02b12b613b5d847",
+    "assets_scanned": 27,
+    "confirmed_matches": [],
+    "unconfirmed_hits": [],
+    "passed": true
+   }
   },
   "q-robotics-0500": {
    "annotation_sha": "61e02614bf433127",
@@ -10437,6 +10899,31 @@
   "config_sha": "f203208e6fc9ab65",
   "queries": 456,
   "scored": 333,
-  "provisional": 123
+  "provisional": 123,
+  "absence": {
+   "queries": 66,
+   "assets": 27,
+   "hits_off_source": 0,
+   "confirmed": 0,
+   "passed": 66,
+   "controls": [
+    {
+     "config": "1 fps, 320 px, low media resolution, all descriptions in one call (the configuration used for the scan)",
+     "videos": 7,
+     "true_descriptions": 26,
+     "found": 12,
+     "recall": 0.462
+    },
+    {
+     "config": "2 fps, 480 px, medium media resolution, 15 descriptions per call",
+     "videos": 3,
+     "true_descriptions": 12,
+     "found": 7,
+     "recall": 0.583,
+     "cost_usd_ceiling": 3.95,
+     "note": "not adopted: about 35 USD for the full corpus at ceiling prices for a modest recall gain"
+    }
+   ]
+  }
  }
 }

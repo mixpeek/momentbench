@@ -28,6 +28,8 @@ query is provisional when either judge objects.
 | aerospace | 202 | 154 | 48 | 15 of 21 |
 | robotics | 70 | 49 | 21 | 9 of 10 |
 
+**Corpus-wide absence check** (`scripts/absence_check.py`). A no-answer query must match nothing anywhere, which drafting only checked against three look-alike shots. gemini-3.8-flash watched all 27 videos with every no-answer description and listed any moment that fits; gpt-5.4-mini checked each hit away from the source shot on frames. 0 hits, 0 confirmed by both; 66 of 66 no-answer queries passed. A no-answer query is scored only if it also passed this check. **This check is a coarse screen, and passing it is weaker than proof of absence.** In a control, the same scan was given true descriptions from the videos it watched and found 12 of 26 (46%) near their gold spans (1 fps, 320 px, low media resolution, all descriptions in one call (the configuration used for the scan)). A finer setting (2 fps, 480 px, medium media resolution, 15 descriptions per call) found 7 of 12 (58%) on 3 videos; not adopted: about 35 USD for the full corpus at ceiling prices for a modest recall gain. Some missed descriptions are themselves provisional labels, so part of the gap may be label error. Human disputes remain the stronger check.
+
 In total 333 scored and 123 provisional, of 456.
 
 ## Provisional queries and why

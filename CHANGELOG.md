@@ -13,6 +13,10 @@
   333 are scored (both accept) and 123 provisional; the scored files are in
   `data/queries/scored/` and the reasons in `docs/labels.md`. Model judgement, not
   human review.
+- Corpus-wide absence check for no-answer queries (`scripts/absence_check.py`): Gemini
+  scans all 27 videos for any match, GPT confirms hits. 0 hits; all 66 passed. A
+  control found 12 of 26 true descriptions (46%), so the check is reported as a coarse
+  screen, not proof of absence.
 - A shared cash ledger for maintainers (`momentbench/spend.py`, `scripts/spend_ledger.py`).
   Off unless `MOMENTBENCH_SPEND_LEDGER` is set. When set, every paid API trial and
   every paid cross-check reserves its cost first and is refused past
