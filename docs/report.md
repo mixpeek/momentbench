@@ -70,6 +70,7 @@ Other condition: prediction-file track (key `7eb1c82e785ca0bc`), ranked only wit
 | Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
 | bm25-transcript | predictions | 9.5 (4 to 15) | 7.7 (4 to 12) | 0.0 | -0.85 | 0 | n/a |
+| abstain-floor | predictions | 0.0 (0 to 0) | 19.2 (12 to 26) | 100.0 | +0.19 | 0 | n/a |
 
 ### Aerospace (aerospace_v0.2_scored.json, 154 queries)
 
@@ -97,6 +98,7 @@ Other condition: prediction-file track (key `603e0d07f1ecae63`), ranked only wit
 | Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
 | bm25-transcript | predictions | 17.3 (11 to 24) | 15.6 (10 to 22) | 0.0 | -0.69 | 0 | n/a |
+| abstain-floor | predictions | 0.0 (0 to 0) | 9.7 (5 to 15) | 100.0 | +0.10 | 0 | n/a |
 
 ### Robotics (robotics_v0.2_scored.json, 49 queries)
 
@@ -124,6 +126,7 @@ Other condition: prediction-file track (key `baf460bbce383443`), ranked only wit
 | Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
 | bm25-transcript | predictions | 12.5 (2 to 22) | 10.2 (2 to 18) | 0.0 | -0.80 | 0 | n/a |
+| abstain-floor | predictions | 0.0 (0 to 0) | 18.4 (8 to 29) | 100.0 | +0.18 | 0 | n/a |
 
 ## Reproducing a number
 
