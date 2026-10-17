@@ -21,7 +21,7 @@ def ledger(tmp_path, monkeypatch):
     monkeypatch.setattr(spend, "TRIAL_ESTIMATE_USD", 0.2)
     # Bound each scripted trial at $0.22 (it really costs $0.11).
     monkeypatch.setattr(spend, "MAX_TRIAL_INPUT_TOKENS", 200)
-    monkeypatch.setattr(spend, "MAX_TRIAL_OUTPUT_TOKENS", 20)
+    monkeypatch.setattr(spend, "MAX_OUTPUT_TOKENS_PER_TURN", 1)  # 30 turns -> 30 tokens
     return path
 
 
@@ -67,8 +67,9 @@ async def test_a_paid_run_without_pricing_is_refused(ledger, tmp_path):
                                     verified_corpus(tmp_path), trials=1)
 
 
-def test_unknown_models_are_priced_at_the_ceiling():
-    assert spend.token_cost_usd("no-such-model", 1_000_000, 0) == 5.0
+def test_unknown_models_are_refused():
+    with pytest.raises(spend.SpendCapError, match="no price"):
+        spend.token_cost_usd("no-such-model", 1_000_000, 0)
     assert spend.token_cost_usd("claude-haiku-5-5", 1_000_000, 0) == 0.1
 
 
@@ -112,3 +113,35 @@ def test_an_unsettled_reservation_keeps_counting(ledger):
 def test_the_cap_cannot_be_raised_past_the_hard_cap(ledger, monkeypatch):
     monkeypatch.setenv("MOMENTBENCH_SPEND_CAP_USD", "1000")
     assert spend.cap_usd() == spend.HARD_CAP_USD
+
+
+async def test_an_errored_trial_keeps_its_reservation_open(ledger, tmp_path):
+    from momentbench.agentic.model import AgentModel
+
+    class Broken(AgentModel):
+        model_id = "broken"
+
+        def start(self, system, task, tools):
+            raise TimeoutError("read timed out")
+
+    run = await run_agentic_benchmark([make_query()], Broken(), verified_corpus(tmp_path),
+                                      trials=1, pricing=PRICE)
+    assert run.trials[0].outcome == "error"
+    s = spend.summary()
+    assert s["open_reservations"] == 1 and s["spent_usd"] == 0.0 and s["reserved_usd"] > 0
+
+
+def test_frozen_paid_work_is_refused(ledger):
+    ledger.with_suffix(ledger.suffix + ".frozen").write_text("0.2.5 released\n")
+    with pytest.raises(spend.SpendCapError, match="frozen"):
+        spend.reserve(0.01, "anything")
+
+
+async def test_a_trial_stops_before_its_input_reservation(ledger, tmp_path, monkeypatch):
+    monkeypatch.setattr(spend, "MAX_TRIAL_INPUT_TOKENS", 250)  # stop past 200 input tokens
+    monkeypatch.setattr(spend, "MAX_OUTPUT_TOKENS_PER_TURN", 1)
+    looping = [[("list_assets", {})]] * 10 + [[SUBMIT_GOLD]]
+    run = await run_agentic_benchmark([make_query()], ScriptedModel(looping),
+                                      verified_corpus(tmp_path), trials=1, pricing=PRICE)
+    assert run.trials[0].outcome == "token_cap"
+    assert run.trials[0].usage.input_tokens <= 300

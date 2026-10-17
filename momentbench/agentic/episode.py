@@ -6,6 +6,7 @@ import asyncio
 from dataclasses import dataclass, field
 from typing import Any
 
+from momentbench import spend
 from momentbench.agentic.budget import Budget, Usage
 from momentbench.agentic.environment import (
     TOOLS,
@@ -107,6 +108,11 @@ async def _episode(model, corpus, query, budget, usage, trace, turn_models,
         usage.steps += 1
         usage.add(turn.usage)
         turn_models.append(turn.model)
+        if spend.active() and usage.input_tokens > (spend.MAX_TRIAL_INPUT_TOKENS
+                                                    * spend.TRIAL_INPUT_STOP_FRACTION):
+            # Stay inside the trial's reservation (momentbench.spend).
+            trace.append({"error": "token_cap", "input_tokens": usage.input_tokens})
+            return end([], "token_cap")
         if len({m for m in turn_models if m}) > 1:
             # The protocol's no-silent-fallback rule: a turn answered by another model
             # ends the trial, which scores zero (audit 3, finding 3).

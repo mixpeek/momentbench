@@ -56,6 +56,11 @@ detail of this description true of what the frames show?
 Reply as JSON: {{"match": true | false, "reason": "one sentence"}}"""
 
 
+class IncompleteScanError(RuntimeError):
+    """A scan reply could not be read, so absence was not checked."""
+
+
+SCAN_OUT = 4_000  # max output tokens per scan call
 SCAN_FPS = 1
 SCAN_WIDTH = 320
 SCAN_RESOLUTION = "MEDIA_RESOLUTION_LOW"
@@ -89,10 +94,12 @@ async def scan_chunk(judges: adj.Judges, asset: dict, negs: list[dict],
                       work / f"{asset['asset_id']}_{SCAN_FPS}_{SCAN_WIDTH}.mp4")
     items = "\n".join(f"{i}. {q['text']}" for i, q in enumerate(negs, 1))
     duration = float(asset.get("duration_s") or 600)
-    per_s = 70 if SCAN_RESOLUTION.endswith("LOW") else 260
-    tokens = int(duration * SCAN_FPS * per_s) + 8_000
-    rid = spend.reserve(spend.token_cost_usd(adj.GEMINI, tokens, 4_000),
-                  f"absence:{adj.GEMINI}")
+    # Video tokens per frame (low 70, medium 260, with headroom) plus 32 audio tokens a
+    # second, plus the prompt; output is capped below at SCAN_OUT tokens.
+    per_frame = 80 if SCAN_RESOLUTION.endswith("LOW") else 300
+    tokens = int(duration * (SCAN_FPS * per_frame + 40)) + 10_000
+    rid = spend.reserve(spend.token_cost_usd(adj.GEMINI, tokens, SCAN_OUT),
+                        f"absence:{adj.GEMINI}")
     async with judges.sem:
         r = await judges._gemini.aio.models.generate_content(
             model=adj.GEMINI,
@@ -100,18 +107,21 @@ async def scan_chunk(judges: adj.Judges, asset: dict, negs: list[dict],
                                  video_metadata=types.VideoMetadata(fps=SCAN_FPS)),
                       SCAN.format(duration=duration, items=items)],
             config=types.GenerateContentConfig(
-                response_mime_type="application/json",
+                response_mime_type="application/json", max_output_tokens=SCAN_OUT,
                 media_resolution=getattr(types.MediaResolution, SCAN_RESOLUTION)))
     u = r.usage_metadata
     spend.settle(rid, spend.token_cost_usd(adj.GEMINI, u.prompt_token_count or 0,
                                       (u.candidates_token_count or 0)
                                       + (u.thoughts_token_count or 0)),
                  f"absence:{adj.GEMINI}", asset=asset["asset_id"])
-    text = r.text or "{}"
+    text = r.text or ""
     try:
-        found = json.loads(text[text.find("{"):text.rfind("}") + 1]).get("matches", [])
-    except ValueError:
-        return []
+        found = json.loads(text[text.find("{"):text.rfind("}") + 1])["matches"]
+        if not isinstance(found, list):
+            raise ValueError("matches is not a list")
+    except (ValueError, KeyError, TypeError) as e:
+        # A reply we cannot read is not "no match": the check stays incomplete.
+        raise IncompleteScanError(f"{asset['asset_id']}: unreadable scan reply ({e})") from e
     out = []
     for m in found:
         try:
@@ -139,11 +149,11 @@ async def confirm(judges: adj.Judges, hit: dict, text: str, work: Path) -> dict:
     content = [{"type": "text", "text": CONFIRM.format(a=a, b=b, text=text)}] + [
         {"type": "image_url", "image_url": {
             "url": "data:image/jpeg;base64," + base64.b64encode(f).decode()}} for f in frames]
-    rid = spend.reserve(spend.token_cost_usd(adj.GPT, 5_000, 1_000), f"absence:{adj.GPT}")
+    rid = spend.reserve(spend.token_cost_usd(adj.GPT, 8_000, 1_000), f"absence:{adj.GPT}")
     async with judges.sem:
         r = await judges._gpt.chat.completions.create(
             model=adj.GPT, messages=[{"role": "user", "content": content}],
-            response_format={"type": "json_object"})
+            response_format={"type": "json_object"}, max_completion_tokens=1_000)
     spend.settle(rid, spend.token_cost_usd(adj.GPT, r.usage.prompt_tokens,
                                       r.usage.completion_tokens), f"absence:{adj.GPT}",
                  query=hit["query_id"])
@@ -204,7 +214,11 @@ async def run(args: argparse.Namespace) -> dict:
     assets = list(judges.assets.values())
     if args.limit:
         assets = assets[: args.limit]
-    scans = await asyncio.gather(*(scan(judges, a, negs, work) for a in assets))
+    spend.require_ledger("absence_check")
+    results = await asyncio.gather(*(scan(judges, a, negs, work) for a in assets),
+                                   return_exceptions=True)
+    failed = [str(r) for r in results if isinstance(r, Exception)]
+    scans = [r for r in results if not isinstance(r, Exception)]
     by_id = {q["query_id"]: q for q in negs}
     hits = [h for hs in scans for h in hs if not is_source(h, by_id[h["query_id"]])]
     checked = await asyncio.gather(*(confirm(judges, h, by_id[h["query_id"]]["text"], work)
@@ -217,7 +231,8 @@ async def run(args: argparse.Namespace) -> dict:
             "annotation_sha": annotation_sha(q), "assets_scanned": len(scanned),
             "confirmed_matches": [h for h in mine if h["confirmed"]],
             "unconfirmed_hits": [h for h in mine if not h["confirmed"]],
-            "passed": len(scanned) == len(judges.assets) and not any(
+            "incomplete": failed,
+            "passed": len(scanned) == len(judges.assets) and not failed and not any(
                 h["confirmed"] for h in mine)}
     absent = sum(1 for q in negs if log["queries"][q["query_id"]]["absence"]["passed"])
     log["summary"]["absence"] = {"queries": len(negs), "assets": len(scanned),

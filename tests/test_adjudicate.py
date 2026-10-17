@@ -61,3 +61,31 @@ def test_heldout_commitments_detect_a_changed_answer(tmp_path, monkeypatch):
     q["gold_moments"][0]["t_out"] = 4.0
     (tmp_path / "film_v0.2_held_out.json").write_text(json.dumps([q]))
     assert hc.verify(tmp_path) == 1
+
+
+def test_an_unreadable_absence_reply_is_incomplete(tmp_path, monkeypatch):
+    import asyncio
+    import sys
+    from types import SimpleNamespace
+
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+    spec = importlib.util.spec_from_file_location(
+        "absence_check2", Path(__file__).resolve().parents[1] / "scripts/absence_check.py")
+    ac = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(ac)
+    monkeypatch.setenv("MOMENTBENCH_SPEND_LEDGER", str(tmp_path / "l.jsonl"))
+    monkeypatch.setattr(ac, "small_copy", lambda v, o: b"video")
+
+    class FakeModels:
+        async def generate_content(self, **kw):
+            return SimpleNamespace(text="I could not decide", usage_metadata=SimpleNamespace(
+                prompt_token_count=10, candidates_token_count=5, thoughts_token_count=0))
+
+    judges = SimpleNamespace(_gemini=SimpleNamespace(aio=SimpleNamespace(models=FakeModels())),
+                             video=lambda aid: tmp_path / "v.mp4", sem=asyncio.Semaphore(1))
+    asset = {"asset_id": "v", "duration_s": 10}
+    try:
+        asyncio.run(ac.scan_chunk(judges, asset, [{"query_id": "na", "text": "x"}], tmp_path))
+    except ac.IncompleteScanError:
+        return
+    raise AssertionError("an unreadable reply must not count as no match")

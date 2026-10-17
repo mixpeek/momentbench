@@ -30,14 +30,18 @@ from pathlib import Path
 
 HARD_CAP_USD = 100.0
 DEFAULT_CAP_USD = HARD_CAP_USD
-# Most one agentic trial may use, in tokens, for its reservation: 30 turns with up to
-# 64 frames of context is well under this.
+# A paid agentic trial reserves MAX_TRIAL_INPUT_TOKENS of input plus one full turn of
+# output for every allowed turn. The episode loop ends the trial (outcome "token_cap")
+# once its input passes TRIAL_INPUT_STOP_FRACTION of the reserved input, leaving room
+# for the turn already in flight. Every provider path caps one turn's output at
+# MAX_OUTPUT_TOKENS_PER_TURN or less.
 MAX_TRIAL_INPUT_TOKENS = int(os.environ.get("MOMENTBENCH_MAX_TRIAL_INPUT_TOKENS", "600000"))
+MAX_OUTPUT_TOKENS_PER_TURN = 16000
+TRIAL_INPUT_STOP_FRACTION = 0.8
 MAX_TRIAL_OUTPUT_TOKENS = int(os.environ.get("MOMENTBENCH_MAX_TRIAL_OUTPUT_TOKENS", "60000"))
 # Kept for callers that predate per-trial bounds.
 TRIAL_ESTIMATE_USD = float(os.environ.get("MOMENTBENCH_TRIAL_ESTIMATE_USD", "0.5"))
-# For models with no entry in configs/pricing.json: a ceiling well above any current
-# vision model's list price, so the ledger can only over-count, never under-count.
+# Kept for reference: unknown prices are now refused (token_cost_usd raises).
 CEILING_PER_MTOK = {"input": 5.0, "output": 30.0}
 
 
@@ -105,10 +109,19 @@ def spent_usd() -> float:
     return round(settled + outstanding, 6)
 
 
+def frozen() -> bool:
+    """Paid work is frozen when `<ledger>.frozen` exists (set after a release)."""
+    path = ledger_path()
+    return bool(path) and path.with_suffix(path.suffix + ".frozen").exists()
+
+
 def reserve(max_usd: float, what: str) -> str | None:
     """Reserve the most a call can cost; returns the reservation id (None when off)."""
     if not active():
         return None
+    if frozen():
+        raise SpendCapError(f"spend cap: paid work is frozen ({ledger_path()}.frozen); "
+                            f"{what} refused")
     with _locked() as path:
         settled, outstanding = _committed(_entries(path))
         if settled + outstanding + max(0.0, max_usd) > cap_usd():
@@ -154,11 +167,19 @@ def summary() -> dict:
 
 def token_cost_usd(model: str, input_tokens: int, output_tokens: int,
                    pricing_path: Path | None = None) -> float:
-    """Cash cost of one call: the repository price when it has one, else the ceiling."""
+    """Cash cost of one call at the repository's list price. A model with no price is
+    refused (SpendCapError): the ledger cannot bound what it cannot price."""
     path = pricing_path or Path(__file__).resolve().parents[1] / "configs/pricing.json"
     price = None
     if path.exists():
         price = (json.loads(path.read_text()).get("models") or {}).get(model)
-    inp = (price or {}).get("input_per_mtok", CEILING_PER_MTOK["input"])
-    out = (price or {}).get("output_per_mtok", CEILING_PER_MTOK["output"])
-    return (input_tokens * inp + output_tokens * out) / 1_000_000
+    if not price:
+        raise SpendCapError(f"spend cap: no price for {model} in {path.name}; refused")
+    return (input_tokens * price["input_per_mtok"]
+            + output_tokens * price["output_per_mtok"]) / 1_000_000
+
+
+def require_ledger(what: str) -> None:
+    """Maintainer paid paths call this first: no ledger, no paid work."""
+    if not active():
+        raise SpendCapError(f"{what} spends money; set MOMENTBENCH_SPEND_LEDGER first")

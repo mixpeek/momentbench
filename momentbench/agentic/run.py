@@ -389,8 +389,9 @@ async def run_agentic_benchmark(
         raise spend.SpendCapError(f"{model.model_id}: no pricing, so the spend ledger "
                                   "cannot enforce its cap; pass --pricing")
     # The most one trial can cost, reserved before it starts and settled after.
-    trial_max = (pricing.cost_usd(Usage(input_tokens=spend.MAX_TRIAL_INPUT_TOKENS,
-                                        output_tokens=spend.MAX_TRIAL_OUTPUT_TOKENS))
+    trial_max = (pricing.cost_usd(Usage(
+        input_tokens=spend.MAX_TRIAL_INPUT_TOKENS,
+        output_tokens=budget.max_steps * spend.MAX_OUTPUT_TOKENS_PER_TURN))
                  if billable else 0.0)
 
     async def one(query: Query, trial: int) -> AgenticTrial:
@@ -440,9 +441,11 @@ async def run_agentic_benchmark(
                 error = f"{type(cause).__name__}: {cause}"
             latency = time.perf_counter() - start
         cost = pricing.cost_usd(usage) if pricing else None
-        if billable:
+        if billable and outcome != "error":
             spend.settle(reservation, cost or 0.0, f"agentic:{model.model_id}",
                          query=query.query_id, trial=trial)
+        # An errored trial (a timeout, a dropped connection) may have been billed for
+        # more than it reported, so its reservation stays open at the maximum.
         hit1, hit5, best, top1 = score_trial(query, moments, outcome)
         return AgenticTrial(
             query_id=query.query_id,
