@@ -1,0 +1,84 @@
+{
+  "model_name": "dry good",
+  "model_description": "",
+  "contact": "",
+  "track": "agentic",
+  "run_id": "predictions-ci-check-oracle-subset-083f7b4e",
+  "model_id": "ci-check/oracle-subset",
+  "effort": null,
+  "harness": "predictions",
+  "resolved_models": [],
+  "modalities": "predictions",
+  "queries_file": "robotics_v0.2_scored.json",
+  "num_queries": 49,
+  "queries_in_file": 49,
+  "rescore_excluded": 0,
+  "num_trials": 1,
+  "recall_at_1": 0.4082,
+  "recall_at_1_ci95": [
+    0.2653,
+    0.551
+  ],
+  "positive_recall_at_1": 0.375,
+  "no_answer_accuracy": 0.5555555555555556,
+  "false_positive_rate": 0.0,
+  "net_score": 0.40816326530612246,
+  "mean_cost_usd_per_query": null,
+  "by_tier": {
+    "1": {
+      "num_queries": 26,
+      "recall_at_1": 0.38461538461538464,
+      "recall_at_1_ci95": [
+        0.19230769230769232,
+        0.5769230769230769
+      ]
+    },
+    "2": {
+      "num_queries": 7,
+      "recall_at_1": 0.42857142857142855,
+      "recall_at_1_ci95": [
+        0.14285714285714285,
+        0.7142857142857143
+      ]
+    },
+    "3": {
+      "num_queries": 9,
+      "recall_at_1": 0.5555555555555556,
+      "recall_at_1_ci95": [
+        0.2222222222222222,
+        0.8888888888888888
+      ]
+    },
+    "4": {
+      "num_queries": 7,
+      "recall_at_1": 0.2857142857142857,
+      "recall_at_1_ci95": [
+        0,
+        0.7142857142857143
+      ]
+    }
+  },
+  "budget": {
+    "max_steps": 30,
+    "max_frames": 64,
+    "max_tool_calls": 60
+  },
+  "corpus_assets_verified": 27,
+  "compatibility_key": "baf460bbce383443",
+  "identity": {
+    "queries_sha": "ae3b1818d5355fd8",
+    "num_queries": 49,
+    "corpus_sha": "ca25d3017581a1ba",
+    "transcripts_sha": "44136fa355b3678a",
+    "system_prompt_sha": "532d3cbcc47a6b5e",
+    "tools_sha": "4f53cda18c2baa0c",
+    "budget": {},
+    "modalities": "predictions",
+    "anonymize_titles": false,
+    "compatibility_key": "baf460bbce383443",
+    "track": "predictions",
+    "corpus_receipt": "declared",
+    "predictions_file_sha256": "6887b24102dec67e"
+  },
+  "timestamp": "2026-10-17T17:38:16Z"
+}
