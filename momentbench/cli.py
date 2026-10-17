@@ -212,10 +212,15 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_
         pricing_as_of = None
     # The task identity (selected queries, verified bytes, conditions) is computed by
     # the run itself; this adds where the run came from.
+    import sys as _sys
+
+    identity_cli = list(_sys.argv[1:])
     identity = environment_identity(
         queries_path=Path(queries), manifest_path=Path(corpus), provider=provider,
         endpoint=base_url, pricing_as_of=pricing_as_of,
         query_filter="physical_only" if physical_only else None)
+    # The exact arguments, so a release manifest can reproduce this run verbatim.
+    identity["cli"] = identity_cli
 
     try:
         agent = (

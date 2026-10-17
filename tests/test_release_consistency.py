@@ -143,3 +143,20 @@ def test_leaderboard_groups_never_mix_keys():
         else:
             assert g["compatibility_key"] is None and g["not_run"]
     assert set(data["primary_keys"].values()) <= set(keys)
+
+
+def test_every_leaderboard_number_rescores_from_its_run_file():
+    """Codex round 3: rescore every packaged run and compare with the exported row."""
+    from momentbench.agentic.run import AgenticRun
+    from momentbench.submission import agentic_entry
+
+    board = json.loads(read("docs/leaderboard.json"))
+    for g in board["groups"]:
+        for row in g["rows"]:
+            run = AgenticRun.model_validate_json(read(row["file"]))
+            qfile = next(p for p in (ROOT / "data/queries/scored" / g["queries_file"],
+                                     ROOT / "data/queries" / g["queries_file"]) if p.exists())
+            entry = agentic_entry(run, qfile)
+            assert entry["compatibility_key"] == g["compatibility_key"], row["file"]
+            for k in ("recall_at_1", "positive_recall_at_1", "net_score"):
+                assert entry[k] == row[k], (row["file"], k)
