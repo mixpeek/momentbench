@@ -11,7 +11,9 @@ the source shot for the unaltered original. Queries that disagree are moved to a
 `<name>.rejected.json` file in the work directory, so the drafter's own bias cannot carry a
 query into the set on its own.
 
-Needs GEMINI_API_KEY. Costs well under a dollar for a few hundred queries on Flash.
+Needs GEMINI_API_KEY, or MOMENTBENCH_VERTEX_PROJECT for Vertex AI
+(momentbench/agentic/gemini_client.py). Costs well under a dollar for a few hundred
+queries on Flash. With MOMENTBENCH_SPEND_LEDGER set, every call counts against the cap.
 """
 
 from __future__ import annotations
@@ -19,7 +21,6 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
-import os
 import random
 import sys
 from pathlib import Path
@@ -171,9 +172,9 @@ async def main() -> None:
     global MODEL
     client = None
     if args.checker == "gemini":
-        from google import genai
+        from momentbench.agentic.gemini_client import make_client
 
-        client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+        client = make_client()
     else:
         MODEL = dq.MODEL
     assets = json.loads(Path(args.manifest).read_text())

@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import asyncio
-import os
 import re
 from typing import Any
 
@@ -116,8 +115,7 @@ class GeminiAgent(AgentModel):
 
     def start(self, system: str, task: str, tools: list[dict[str, Any]]) -> AgentSession:
         if self._client is None:
-            from google import genai
+            from momentbench.agentic.gemini_client import make_client
 
-            key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
-            self._client = genai.Client(api_key=key)
+            self._client = make_client()
         return GeminiSession(self._client, self.model_id, self.effort, system, task, tools)

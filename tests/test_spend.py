@@ -67,3 +67,22 @@ async def test_a_paid_run_without_pricing_is_refused(ledger, tmp_path):
 def test_unknown_models_are_priced_at_the_ceiling():
     assert spend.token_cost_usd("no-such-model", 1_000_000, 0) == 5.0
     assert spend.token_cost_usd("claude-haiku-5-5", 1_000_000, 0) == 0.1
+
+
+def test_gemini_client_prefers_a_key_then_vertex(monkeypatch):
+    pytest.importorskip("google.genai")
+    from momentbench.agentic import gemini_client
+
+    for var in ("GEMINI_API_KEY", "GOOGLE_API_KEY", "MOMENTBENCH_VERTEX_PROJECT",
+                "MOMENTBENCH_GCLOUD_ACCOUNT"):
+        monkeypatch.delenv(var, raising=False)
+    with pytest.raises(RuntimeError, match="MOMENTBENCH_VERTEX_PROJECT"):
+        gemini_client.make_client()
+    monkeypatch.setenv("GEMINI_API_KEY", "test-key")
+    assert not gemini_client.make_client()._api_client.vertexai
+    monkeypatch.delenv("GEMINI_API_KEY")
+    monkeypatch.setenv("MOMENTBENCH_VERTEX_PROJECT", "some-project")
+    monkeypatch.setenv("MOMENTBENCH_GCLOUD_ACCOUNT", "sa@example.iam.gserviceaccount.com")
+    monkeypatch.setattr(gemini_client.subprocess, "run", lambda *a, **k: type(
+        "R", (), {"stdout": "token\n"})())
+    assert gemini_client.make_client()._api_client.vertexai
