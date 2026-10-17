@@ -60,3 +60,19 @@ def test_unknown_or_duplicate_queries_are_errors(tmp_path, release):
     with pytest.raises(ValueError, match="more than once"):
         score_predictions(write(tmp_path, [{"query_id": "na", "moments": []}] * 2),
                           qfile, manifest)
+
+
+def test_a_bundle_carries_the_validated_numbers(tmp_path, release):
+    from momentbench.bundle import make_bundle
+
+    qfile, manifest = release
+    preds = write(tmp_path, [{"query_id": "na", "moments": []}])
+    run = score_predictions(preds, qfile, manifest, tmp_path / "out")
+    out = make_bundle(next((tmp_path / "out").glob("*.json")), qfile, tmp_path / "b",
+                      manifest)
+    result = json.loads((out / "result.json").read_text())
+    assert result["recall_at_1"] == pytest.approx(run.summary.recall_at_1, abs=1e-4)
+    assert result["compatibility_key"] == run.identity["compatibility_key"]
+    assert "33.3%" in (out / "model_card.md").read_text()
+    assert "\\begin{tabular}" in (out / "table.tex").read_text()
+    assert (out / "citation.bib").read_text().startswith("@misc{momentbench")

@@ -44,8 +44,12 @@ def find_queries_file(run: AgenticRun, search: Path | None = None) -> Path:
     """
     search = search or QUERIES_DIR
     ids = {t.query_id for t in run.trials}
+    candidates = sorted(search.glob("*_v*.json")) + sorted(search.glob("scored/*_v*.json"))
+    for path in candidates:  # an exact match wins (a run on a scored subset, for example)
+        if {q["query_id"] for q in json.loads(path.read_text())} == ids:
+            return path
     best, overlap = None, 0
-    for path in sorted(search.glob("*_v*.json")):
+    for path in candidates:
         n = len(ids & {q["query_id"] for q in json.loads(path.read_text())})
         if n > overlap:
             best, overlap = path, n

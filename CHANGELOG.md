@@ -27,6 +27,9 @@
 - The prediction-file track (`momentbench score-predictions`, `momentbench/predictions.py`):
   a system that already ranks moments submits one JSON file instead of running the agent
   loop. Same scoring and submission rules, its own compatibility key.
+- `momentbench bundle`: from one validated run, a result.json, a model-card block, a LaTeX
+  table and a citation, all generated from the submission entry. `find_queries_file`
+  also searches `data/queries/scored/` and prefers an exact query-set match.
 - A shared cash ledger for maintainers (`momentbench/spend.py`, `scripts/spend_ledger.py`).
   Off unless `MOMENTBENCH_SPEND_LEDGER` is set. When set, every paid API trial and
   every paid cross-check reserves its cost first and is refused past

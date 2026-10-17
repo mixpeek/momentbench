@@ -19,6 +19,25 @@ def main():
     pass
 
 
+@main.command("bundle")
+@click.option("--results", "-r", type=click.Path(exists=True), required=True,
+              help="A run file (agentic or prediction-file track)")
+@click.option("--queries", "-q", type=click.Path(exists=True), default=None,
+              help="Query file the run answered (found in data/queries when omitted)")
+@click.option("--output", "-o", type=click.Path(), default=None)
+def bundle_cmd(results: str, queries: str | None, output: str | None):
+    """Write a result bundle (JSON, model-card block, LaTeX table, citation) for a run."""
+    from momentbench.bundle import make_bundle
+    from momentbench.submission import SubmissionError
+
+    try:
+        out = make_bundle(Path(results), Path(queries) if queries else None,
+                          Path(output) if output else None)
+    except SubmissionError as e:
+        raise click.ClickException(f"not a valid run: {e}") from e
+    console.print(f"Wrote {out}/: result.json, model_card.md, table.tex, citation.bib")
+
+
 @main.command("score-predictions")
 @click.option("--predictions", "-p", type=click.Path(exists=True), required=True,
               help="JSON with a system name and ranked moments per query")
