@@ -29,6 +29,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import draft_queries as dq  # noqa: E402
 
+from momentbench import spend  # noqa: E402
 from momentbench.annotation import annotation_sha  # noqa: E402
 from momentbench.corpus.frame_cache import frame_inputs  # noqa: E402
 from momentbench.corpus.verify import sha256_file  # noqa: E402
@@ -48,6 +49,8 @@ def draft_index(work: Path) -> dict[tuple[str, str], dict]:
 async def ask_gemini(client, system: str, prompt: str, image: Path, sem, usage: dict) -> dict:
     from google.genai import types
 
+    # Each check is one image and a short prompt; reserve a generous ceiling for it.
+    spend.reserve(spend.token_cost_usd(MODEL, 4_000, 2_000), f"cross_verify:{MODEL}")
     async with sem:
         for attempt in range(6):
             try:
@@ -68,6 +71,10 @@ async def ask_gemini(client, system: str, prompt: str, image: Path, sem, usage: 
     u = r.usage_metadata
     usage["in"] += u.prompt_token_count or 0
     usage["out"] += (u.candidates_token_count or 0) + (u.thoughts_token_count or 0)
+    spend.record(spend.token_cost_usd(MODEL, u.prompt_token_count or 0,
+                                      (u.candidates_token_count or 0)
+                                      + (u.thoughts_token_count or 0)),
+                 f"cross_verify:{MODEL}")
     return dq.parse_json(r.text or "{}")
 
 

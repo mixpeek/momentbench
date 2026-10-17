@@ -7,6 +7,11 @@
   factuality benchmarks use, so a wrong answer costs more than saying nothing
   matches. The results tables show the never-answer floor beside it.
 - CITATION.cff names the current release and query counts; a release test keeps it so.
+- A shared cash ledger for maintainers (`momentbench/spend.py`, `scripts/spend_ledger.py`).
+  Off unless `MOMENTBENCH_SPEND_LEDGER` is set. When set, every paid API trial and
+  every paid cross-check reserves its cost first and is refused past
+  `MOMENTBENCH_SPEND_CAP_USD` (default 100); a refused run saves its finished trials
+  as a partial file. Subscription runs (Claude Code) and the floors are never charged.
 
 ## 0.2.4 (2026-10-16)
 

@@ -12,6 +12,7 @@ from typing import Any
 
 from pydantic import BaseModel, Field
 
+from momentbench import spend
 from momentbench.agentic.budget import Budget, Pricing, Usage
 from momentbench.agentic.environment import TOOLS, LocalCorpus
 from momentbench.agentic.episode import SYSTEM_PROMPT, EpisodeError, run_episode
@@ -365,9 +366,27 @@ async def run_agentic_benchmark(
     reportable = reportable and bool(getattr(corpus, "fully_verified", False))
     corpus_receipt = corpus_receipt or dict(getattr(corpus, "receipt", {}) or {})
     semaphore = asyncio.Semaphore(max_concurrency)
+    # Cash guard (momentbench.spend): only API runs spend money; the Claude Code
+    # harness runs on a subscription and the floors call nothing.
+    billable = (spend.active() and getattr(model, "harness", "api") == "api"
+                and not model.model_id.startswith("baseline-"))
+    if billable and pricing is None:
+        raise spend.SpendCapError(f"{model.model_id}: no pricing, so the spend ledger "
+                                  "cannot enforce its cap; pass --pricing")
+    paid: list[float] = []
+    in_flight = [0]
 
     async def one(query: Query, trial: int) -> AgenticTrial:
         async with semaphore:
+            if billable:
+                # Reserve this trial at the run's mean so far (a conservative default
+                # before the first one finishes), counting trials already in flight.
+                each = (sum(paid) / len(paid)) if paid else spend.TRIAL_ESTIMATE_USD
+                try:
+                    spend.reserve(each * (in_flight[0] + 1), f"agentic:{model.model_id}")
+                except spend.SpendCapError as e:
+                    raise ProviderUnavailableError(str(e)) from e
+                in_flight[0] += 1
             start = time.perf_counter()
             error = None
             resolved = None
@@ -406,6 +425,12 @@ async def run_agentic_benchmark(
                 moments, outcome = [], "error"
                 error = f"{type(cause).__name__}: {cause}"
             latency = time.perf_counter() - start
+        cost = pricing.cost_usd(usage) if pricing else None
+        if billable:
+            in_flight[0] -= 1
+            paid.append(cost or 0.0)
+            spend.record(cost or 0.0, f"agentic:{model.model_id}", query=query.query_id,
+                         trial=trial)
         hit1, hit5, best, top1 = score_trial(query, moments, outcome)
         return AgenticTrial(
             query_id=query.query_id,
@@ -422,7 +447,7 @@ async def run_agentic_benchmark(
             best_temporal_iou=best,
             top1_iou=top1,
             usage=usage,
-            cost_usd=pricing.cost_usd(usage) if pricing else None,
+            cost_usd=cost,
             latency_s=latency,
             moments=moments,
             trace=trace,
