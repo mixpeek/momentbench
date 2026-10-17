@@ -1,0 +1,107 @@
+{
+  "system": "diagnostic-reference",
+  "predictions": [
+    {
+      "query_id": "q-aerospace-0265",
+      "moments": [
+        {
+          "asset_id": "nasa-minute-2026-05-22",
+          "t_in": 45.4,
+          "t_out": 47.97
+        }
+      ]
+    },
+    {
+      "query_id": "q-aerospace-0268",
+      "moments": []
+    },
+    {
+      "query_id": "q-aerospace-0269",
+      "moments": [
+        {
+          "asset_id": "nasa-minute-2026-05-22",
+          "t_in": 64.7,
+          "t_out": 66.87
+        }
+      ]
+    },
+    {
+      "query_id": "q-aerospace-0270",
+      "moments": []
+    },
+    {
+      "query_id": "q-aerospace-0271",
+      "moments": [
+        {
+          "asset_id": "nasa-minute-2026-05-22",
+          "t_in": 60.73,
+          "t_out": 62.53
+        }
+      ]
+    },
+    {
+      "query_id": "q-aerospace-0274",
+      "moments": []
+    },
+    {
+      "query_id": "q-aerospace-0364",
+      "moments": [
+        {
+          "asset_id": "nasa-minute-2026-05-22",
+          "t_in": 79.3,
+          "t_out": 94.6
+        }
+      ]
+    },
+    {
+      "query_id": "q-robotics-0130",
+      "moments": []
+    },
+    {
+      "query_id": "q-robotics-0131",
+      "moments": [
+        {
+          "asset_id": "nasa-viper-lander-exit-test",
+          "t_in": 36.6,
+          "t_out": 41.1
+        }
+      ]
+    },
+    {
+      "query_id": "q-robotics-0132",
+      "moments": []
+    },
+    {
+      "query_id": "q-robotics-0133",
+      "moments": []
+    },
+    {
+      "query_id": "q-robotics-0146",
+      "moments": []
+    },
+    {
+      "query_id": "q-robotics-0512",
+      "moments": [
+        {
+          "asset_id": "nasa-viper-lander-exit-test",
+          "t_in": 7.37,
+          "t_out": 10.43
+        }
+      ]
+    },
+    {
+      "query_id": "q-robotics-0513",
+      "moments": []
+    },
+    {
+      "query_id": "q-robotics-0517",
+      "moments": [
+        {
+          "asset_id": "nasa-ingenuity-fourth-flight",
+          "t_in": 24.0,
+          "t_out": 30.21
+        }
+      ]
+    }
+  ]
+}

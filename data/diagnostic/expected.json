@@ -1,0 +1,189 @@
+{
+  "floors": {
+    "transcript": {
+      "q-aerospace-0265": [
+        false,
+        [
+          "nasa-minute-2026-05-22",
+          15.92,
+          21.28
+        ]
+      ],
+      "q-aerospace-0268": [
+        false,
+        [
+          "nasa-minute-2026-05-22",
+          15.92,
+          21.28
+        ]
+      ],
+      "q-aerospace-0269": [
+        false,
+        [
+          "nasa-minute-2026-05-22",
+          15.92,
+          21.28
+        ]
+      ],
+      "q-aerospace-0270": [
+        false,
+        [
+          "nasa-minute-2026-05-22",
+          7.44,
+          12.8
+        ]
+      ],
+      "q-aerospace-0271": [
+        false,
+        [
+          "nasa-minute-2026-05-22",
+          15.92,
+          21.28
+        ]
+      ],
+      "q-aerospace-0274": [
+        false,
+        [
+          "nasa-minute-2026-05-22",
+          7.44,
+          12.8
+        ]
+      ],
+      "q-aerospace-0364": [
+        false,
+        [
+          "nasa-minute-2026-05-22",
+          15.92,
+          21.28
+        ]
+      ],
+      "q-robotics-0130": [
+        false,
+        [
+          "nasa-minute-2026-05-22",
+          0.0,
+          4.32
+        ]
+      ],
+      "q-robotics-0131": [
+        false,
+        [
+          "nasa-minute-2026-05-22",
+          25.76,
+          30.08
+        ]
+      ],
+      "q-robotics-0132": [
+        false,
+        [
+          "nasa-minute-2026-05-22",
+          68.4,
+          73.28
+        ]
+      ],
+      "q-robotics-0133": [
+        false,
+        [
+          "nasa-minute-2026-05-22",
+          0.0,
+          4.32
+        ]
+      ],
+      "q-robotics-0146": [
+        false,
+        [
+          "nasa-minute-2026-05-22",
+          15.92,
+          21.28
+        ]
+      ],
+      "q-robotics-0512": [
+        false,
+        [
+          "nasa-minute-2026-05-22",
+          15.92,
+          21.28
+        ]
+      ],
+      "q-robotics-0513": [
+        false,
+        [
+          "nasa-viper-lander-exit-test",
+          0.0,
+          7.0
+        ]
+      ],
+      "q-robotics-0517": [
+        false,
+        [
+          "nasa-minute-2026-05-22",
+          15.92,
+          21.28
+        ]
+      ]
+    },
+    "abstain": {
+      "q-aerospace-0265": [
+        false,
+        null
+      ],
+      "q-aerospace-0268": [
+        true,
+        null
+      ],
+      "q-aerospace-0269": [
+        false,
+        null
+      ],
+      "q-aerospace-0270": [
+        false,
+        null
+      ],
+      "q-aerospace-0271": [
+        false,
+        null
+      ],
+      "q-aerospace-0274": [
+        true,
+        null
+      ],
+      "q-aerospace-0364": [
+        false,
+        null
+      ],
+      "q-robotics-0130": [
+        false,
+        null
+      ],
+      "q-robotics-0131": [
+        false,
+        null
+      ],
+      "q-robotics-0132": [
+        false,
+        null
+      ],
+      "q-robotics-0133": [
+        true,
+        null
+      ],
+      "q-robotics-0146": [
+        false,
+        null
+      ],
+      "q-robotics-0512": [
+        false,
+        null
+      ],
+      "q-robotics-0513": [
+        false,
+        null
+      ],
+      "q-robotics-0517": [
+        false,
+        null
+      ]
+    }
+  },
+  "predictions_recall_at_1": 0.6667
+}

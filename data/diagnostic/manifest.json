@@ -1,0 +1,83 @@
+[
+  {
+    "asset_id": "nasa-minute-2026-05-22",
+    "source_id": "nasa-image-and-video-library",
+    "title": "NASA Minute, 2026-05-22",
+    "vertical": "aerospace",
+    "license": "public_domain",
+    "license_status": "confirmed",
+    "attribution": "NASA (public domain, 17 U.S.C. \u00a7 105; NASA media usage guidelines)",
+    "duration_s": 94.6,
+    "source_url": "https://images.nasa.gov/details/NHQ_2025_0522_NASA%20Minute%20May%2022%2C%202026",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "NHQ_2025_0522_NASA Minute May 22, 2026",
+      "published": "2026-05-22",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-minute-2026-05-22.mp4",
+      "sha256": "26417c23b52ba05ed0f7ab3d0e4dc13d57fdf094202aadacb1eab8b7d076352d",
+      "bytes": 27957896,
+      "download_url": "http://images-assets.nasa.gov/video/NHQ_2025_0522_NASA%20Minute%20May%2022,%202026/NHQ_2025_0522_NASA%20Minute%20May%2022,%202026~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-viper-lander-exit-test",
+    "source_id": "nasa-image-and-video-library",
+    "title": "NASA's Moon Rover Lunar Lander Exit Test",
+    "vertical": "robotics",
+    "license": "public_domain",
+    "license_status": "confirmed",
+    "attribution": "NASA (public domain, 17 U.S.C. \u00a7 105; NASA media usage guidelines)",
+    "duration_s": 41.22,
+    "source_url": "https://images.nasa.gov/details/VIPERMoonRoverEgressTest",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "VIPERMoonRoverEgressTest",
+      "published": "2023-09-07",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-viper-lander-exit-test.mp4",
+      "sha256": "3ec4b3a0c3123a0823329ee8a79f53197904a3084f22cc63ad21becf92707195",
+      "bytes": 11325661,
+      "download_url": "http://images-assets.nasa.gov/video/VIPERMoonRoverEgressTest/VIPERMoonRoverEgressTest~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  },
+  {
+    "asset_id": "nasa-ingenuity-fourth-flight",
+    "source_id": "nasa-image-and-video-library",
+    "title": "Fourth Flight a Success for NASA's Ingenuity Mars Helicopter",
+    "vertical": "robotics",
+    "license": "public_domain",
+    "license_status": "confirmed",
+    "attribution": "NASA (public domain, 17 U.S.C. \u00a7 105; NASA media usage guidelines)",
+    "duration_s": 34.41,
+    "source_url": "https://images.nasa.gov/details/JPL-20210430-TECHs-0002-Ingenuity%204th%20Flight%20Recap",
+    "is_sellable": true,
+    "storage_path": null,
+    "mixpeek_asset_id": null,
+    "metadata": {
+      "nasa_id": "JPL-20210430-TECHs-0002-Ingenuity 4th Flight Recap",
+      "published": "2021-04-30",
+      "rolling": false
+    },
+    "file": {
+      "name": "nasa-ingenuity-fourth-flight.mp4",
+      "sha256": "7bdd5ed26c99771afb33b36a1bad45fee533f6892e54c35536b7d4a6745dc6c5",
+      "bytes": 11115737,
+      "download_url": "http://images-assets.nasa.gov/video/JPL-20210430-TECHs-0002-Ingenuity%204th%20Flight%20Recap/JPL-20210430-TECHs-0002-Ingenuity%204th%20Flight%20Recap~medium.mp4",
+      "provenance": "official",
+      "retrieved": "2026-10-10"
+    }
+  }
+]

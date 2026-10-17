@@ -33,6 +33,10 @@
 - Submissions are validated in CI: pull requests touching `submissions/` run
   `scripts/validate_submissions.py`, which rescores each run against its query file with
   every admission check and writes the result to the job summary.
+- `momentbench diagnose` and a three-video diagnostic profile (`data/diagnostic/`, about
+  50 MB): checks ffmpeg, media hashes, frame extraction, the floors' exact answers and
+  the prediction scorer against stored references. `docs/bring-your-system.md` walks
+  from install to a validated, citable result.
 - A shared cash ledger for maintainers (`momentbench/spend.py`, `scripts/spend_ledger.py`).
   Off unless `MOMENTBENCH_SPEND_LEDGER` is set. When set, every paid API trial and
   every paid cross-check reserves its cost first and is refused past

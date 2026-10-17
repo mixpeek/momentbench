@@ -19,6 +19,17 @@ def main():
     pass
 
 
+@main.command("diagnose")
+@click.option("--corpus-dir", type=click.Path(file_okay=False), required=True,
+              help="Where the diagnostic profile videos are (momentbench corpus-download "
+                   "-m data/diagnostic/manifest.json --corpus-dir DIR)")
+def diagnose_cmd(corpus_dir: str):
+    """Check in under 30 minutes that this setup reproduces the reference results."""
+    from momentbench.diagnose import main as run
+
+    raise SystemExit(run(Path(corpus_dir)))
+
+
 @main.command("bundle")
 @click.option("--results", "-r", type=click.Path(exists=True), required=True,
               help="A run file (agentic or prediction-file track)")
