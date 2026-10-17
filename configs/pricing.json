@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-10",
+  "as_of": "2026-10-17",
   "unit": "USD per million tokens",
   "note": "First-party list prices. Check the provider's pricing page before publishing a cost figure, and record the as_of date with the result. Models without cache prices are costed at the input rate for cached tokens.",
   "models": {
@@ -31,10 +31,22 @@
       "input_per_mtok": 2.5,
       "output_per_mtok": 15.0,
       "cache_read_per_mtok": 0.25
+    },
+    "gemini-3.8-flash": {
+      "input_per_mtok": 0.75,
+      "output_per_mtok": 3.75,
+      "cache_read_per_mtok": 0.075
+    },
+    "gpt-5.4-mini": {
+      "input_per_mtok": 0.75,
+      "output_per_mtok": 4.5,
+      "cache_read_per_mtok": 0.075
     }
   },
   "sources": {
     "gpt-5.5": "developers.openai.com/api/docs/models/gpt-5.5 (under 272K input tokens)",
-    "gemini-3.1-pro-preview": "third-party listings disagree (2/12 vs 2.50/15); the higher one, citing Google's page in 2026-09, is used so cost is not understated. Re-check ai.google.dev/gemini-api/docs/pricing before publishing."
+    "gemini-3.1-pro-preview": "third-party listings disagree (2/12 vs 2.50/15); the higher one, citing Google's page in 2026-09, is used so cost is not understated. Re-check ai.google.dev/gemini-api/docs/pricing before publishing.",
+    "gemini-3.8-flash": "cloud.google.com/vertex-ai/generative-ai/pricing: introductory 0.75/3.75 through 2026-12-31, then 1.50/7.50. Runs after 2026-12-31 must use the standard rate.",
+    "gpt-5.4-mini": "third-party listings citing OpenAI's pricing page (0.75/4.50, cached 0.075); OpenAI's page could not be read directly. Re-check before publishing."
   }
 }

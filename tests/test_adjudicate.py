@@ -42,3 +42,22 @@ def test_absence_ignores_hits_on_the_source_shot():
     assert ac.is_source({"asset_id": "v", "t_start": 12, "t_end": 13}, q)
     assert not ac.is_source({"asset_id": "v", "t_start": 40, "t_end": 44}, q)
     assert not ac.is_source({"asset_id": "w", "t_start": 12, "t_end": 13}, q)
+
+
+def test_heldout_commitments_detect_a_changed_answer(tmp_path, monkeypatch):
+    import json
+
+    spec = importlib.util.spec_from_file_location(
+        "heldout_commit", Path(__file__).resolve().parents[1] / "scripts/heldout_commit.py")
+    hc = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(hc)
+    monkeypatch.setattr(hc, "OUT", tmp_path / "commitments.json")
+    q = {"query_id": "h1", "text": "a red door", "tier": 1,
+         "gold_moments": [{"asset_id": "v", "t_in": 1.0, "t_out": 3.0}]}
+    for name in hc.FILES:
+        (tmp_path / name).write_text(json.dumps([q] if name.startswith("film") else []))
+    hc.commit(tmp_path)
+    assert hc.verify(tmp_path) == 0
+    q["gold_moments"][0]["t_out"] = 4.0
+    (tmp_path / "film_v0.2_held_out.json").write_text(json.dumps([q]))
+    assert hc.verify(tmp_path) == 1

@@ -1,0 +1,38 @@
+name: Label dispute
+description: A query's text, gold span or no-answer label looks wrong
+title: "Label dispute: <query_id>"
+labels: ["label-dispute"]
+body:
+  - type: input
+    id: query_id
+    attributes:
+      label: Query ID
+      description: For example q-film-1036
+    validations:
+      required: true
+  - type: dropdown
+    id: problem
+    attributes:
+      label: What is wrong
+      options:
+        - The text does not match the gold span
+        - The gold span starts or ends in the wrong place
+        - A no-answer query does have a match (give the video and time below)
+        - The query matches more than one moment
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Video, timestamps and what you see or hear there. Frames or a short clip help.
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        Disputes are judged by the same two model families as the label log
+        (docs/labels.md), and every decision is published there with its evidence.
+        Human judgement wins: if you show a label is wrong, it is fixed and every
+        leaderboard row is rescored.

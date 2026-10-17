@@ -21,6 +21,9 @@
   (the prompt says an empty answer costs nothing), and `--frame-width` /
   `--jpeg-quality` for the resolution ablation. Defaults are unchanged, so existing
   keys and runs stay valid. Record runs use anonymized titles from 0.2.5.
+- Salted SHA-256 commitments to all 163 held-out v0.2 queries
+  (`data/heldout_commitments.json`, `scripts/heldout_commit.py`), so any later change
+  to a held-out query or its answer shows at reveal. A label-dispute issue template.
 - A shared cash ledger for maintainers (`momentbench/spend.py`, `scripts/spend_ledger.py`).
   Off unless `MOMENTBENCH_SPEND_LEDGER` is set. When set, every paid API trial and
   every paid cross-check reserves its cost first and is refused past
