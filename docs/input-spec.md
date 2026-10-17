@@ -36,7 +36,7 @@ The model never sees the query's tier, gold spans, hard negatives or metadata
 frame takes the midpoint). `t_end` is clamped to 0.25 s before the end of the video
 stream (`END_MARGIN_S`). Each frame is extracted by ffmpeg as
 `-ss <t> -frames:v 1 -vf scale=512:-2 -vcodec mjpeg` (`ffmpeg_frame`), so it is a
-**512 px-wide JPEG at ffmpeg's default MJPEG quality** (no `-q:v` is set; pinning it is planned with the resolution ablation), with height following the
+**512 px-wide JPEG at ffmpeg's default MJPEG quality** (no `-q:v` is set in the standard condition; the resolution condition below sets both), with height following the
 aspect ratio (288 px for 16:9). On the Anthropic API, frames go back as `image` blocks
 inside the `tool_result`, after the JSON text.
 
@@ -48,6 +48,20 @@ or report it as a different condition.
 **Errors** go back to the model as tool results with `is_error`, and the trial
 continues: an unknown asset id, an over-budget call, or an invalid submission (any
 invalid entry rejects the whole ranking, and the model may submit again).
+
+## Conditions (each has its own compatibility key)
+
+| Condition | CLI | What changes |
+|---|---|---|
+| Standard | (default) | Everything above |
+| Abstain prompt | `--prompt-condition abstain` | The last sentence of the system prompt becomes: "A wrong moment counts against you and an empty answer does not, so submit an empty list whenever you are not confident that a moment matches." Net score is read as a measure of false claims only under this condition |
+| Frame resolution | `--frame-width 1024 --jpeg-quality 2` | Frames at the given width and ffmpeg `-q:v` |
+| Anonymized titles | `--anonymize-titles` | No titles; opaque `video-NN` ids |
+| Frames only | `--no-transcripts` | No transcript tools' content |
+
+Record runs from release 0.2.5 on use anonymized titles, because the film corpus is
+well known. A run records its condition in `identity` (`prompt_condition`, `frames`,
+`anonymize_titles`, `modalities`), and the results tables label every non-standard row.
 
 ## Budget (`budget.Budget`, part of the compatibility key)
 

@@ -17,6 +17,10 @@
   scans all 27 videos for any match, GPT confirms hits. 0 hits; all 66 passed. A
   control found 12 of 26 true descriptions (46%), so the check is reported as a coarse
   screen, not proof of absence.
+- New conditions, each with its own compatibility key: `--prompt-condition abstain`
+  (the prompt says an empty answer costs nothing), and `--frame-width` /
+  `--jpeg-quality` for the resolution ablation. Defaults are unchanged, so existing
+  keys and runs stay valid. Record runs use anonymized titles from 0.2.5.
 - A shared cash ledger for maintainers (`momentbench/spend.py`, `scripts/spend_ledger.py`).
   Off unless `MOMENTBENCH_SPEND_LEDGER` is set. When set, every paid API trial and
   every paid cross-check reserves its cost first and is refused past

@@ -59,7 +59,7 @@ def expected_key(run: AgenticRun, queries: dict[str, Query], manifest: Path,
                  transcripts: dict[str, list[dict[str, Any]]] | None = None) -> str:
     """The compatibility key a complete run on the current release must carry."""
     from momentbench.agentic.environment import TOOLS, LocalCorpus
-    from momentbench.agentic.episode import SYSTEM_PROMPT
+    from momentbench.agentic.episode import system_prompt
     from momentbench.agentic.identity import task_identity
     from momentbench.runner import load_corpus_assets
 
@@ -74,7 +74,11 @@ def expected_key(run: AgenticRun, queries: dict[str, Query], manifest: Path,
         view = LocalCorpus(assets, None, transcripts=transcripts,
                            anonymize_titles=run.anonymize_titles).list_assets()
     return task_identity(queries=list(queries.values()), receipt=receipt,
-                         transcripts=transcripts, system_prompt=SYSTEM_PROMPT, tools=TOOLS,
+                         transcripts=transcripts,
+                         system_prompt=system_prompt(run.identity.get("prompt_condition",
+                                                                      "standard")),
+                         tools=TOOLS, frames=run.identity.get("frames"),
+                         prompt_condition=run.identity.get("prompt_condition", "standard"),
                          budget=run.budget.model_dump(), modalities=run.modalities,
                          anonymize_titles=run.anonymize_titles,
                          asset_view=view)["compatibility_key"]

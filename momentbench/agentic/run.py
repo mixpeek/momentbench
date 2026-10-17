@@ -15,7 +15,7 @@ from pydantic import BaseModel, Field
 from momentbench import spend
 from momentbench.agentic.budget import Budget, Pricing, Usage
 from momentbench.agentic.environment import TOOLS, LocalCorpus
-from momentbench.agentic.episode import SYSTEM_PROMPT, EpisodeError, run_episode
+from momentbench.agentic.episode import EpisodeError, run_episode, system_prompt
 from momentbench.agentic.identity import new_run_id, task_identity, text_sha
 from momentbench.agentic.model import AgentModel, ToolCall, ToolResult
 from momentbench.agentic.stats import bootstrap_ci
@@ -67,6 +67,17 @@ class AgenticTrial(BaseModel):
     moments: list[Moment] = Field(default_factory=list)
     trace: list[dict[str, Any]] = Field(default_factory=list)
     error: str | None = None
+
+
+def frame_condition(corpus: Any) -> dict[str, Any] | None:
+    """Frame width and JPEG quality when they differ from the defaults, else None."""
+    from momentbench.agentic.environment import FRAME_WIDTH_PX
+
+    width = getattr(corpus, "frame_width", FRAME_WIDTH_PX)
+    quality = getattr(corpus, "jpeg_quality", None)
+    if (width, quality) == (FRAME_WIDTH_PX, None):
+        return None
+    return {"width": width, "jpeg_quality": quality}
 
 
 def resolved_models(trials: list[AgenticTrial]) -> list[str]:
@@ -354,6 +365,7 @@ async def run_agentic_benchmark(
     reportable: bool = True,
     corpus_receipt: dict[str, str] | None = None,
     identity: dict[str, Any] | None = None,
+    prompt_condition: str = "standard",
 ) -> AgenticRun:
     """Run every query `trials` times and score the answers.
 
@@ -363,6 +375,9 @@ async def run_agentic_benchmark(
     compatibility key are always computed here, from what the run was given.
     """
     budget = budget or Budget()
+    system = system_prompt(prompt_condition)
+    if hasattr(model, "run_episode"):  # entrants with their own loop read it from here
+        model.system_prompt = system
     reportable = reportable and bool(getattr(corpus, "fully_verified", False))
     corpus_receipt = corpus_receipt or dict(getattr(corpus, "receipt", {}) or {})
     semaphore = asyncio.Semaphore(max_concurrency)
@@ -401,7 +416,7 @@ async def run_agentic_benchmark(
                     episode.usage.tool_calls = metered.usage.tool_calls
                     episode.usage.frames = metered.usage.frames
                 else:
-                    episode = await run_episode(model, corpus, request, budget)
+                    episode = await run_episode(model, corpus, request, budget, system)
                 moments, usage, outcome, trace = (
                     episode.moments, episode.usage, episode.outcome, episode.trace
                 )
@@ -486,10 +501,11 @@ async def run_agentic_benchmark(
                   **task_identity(
                       queries=queries, receipt=corpus_receipt,
                       transcripts=getattr(corpus, "transcripts", {}),
-                      system_prompt=SYSTEM_PROMPT, tools=TOOLS, budget=budget.model_dump(),
+                      system_prompt=system, tools=TOOLS, budget=budget.model_dump(),
                       modalities="frames+transcripts" if corpus.has_transcripts() else "frames",
                       anonymize_titles=getattr(corpus, "anonymize_titles", False),
-                      asset_view=corpus.list_assets()),
+                      asset_view=corpus.list_assets(), frames=frame_condition(corpus),
+                      prompt_condition=prompt_condition),
                   "resolved_models": resolved_models(results)},
         budget=budget,
         pricing=pricing,

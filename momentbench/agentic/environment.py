@@ -147,8 +147,12 @@ def video_stream_end(video: Path) -> float | None:
     return None
 
 
-def ffmpeg_frame(video: Path, t: float) -> bytes:
-    """Extract one JPEG frame at time t, scaled to FRAME_WIDTH_PX wide.
+def ffmpeg_frame(video: Path, t: float, width: int = FRAME_WIDTH_PX,
+                 jpeg_quality: int | None = None) -> bytes:
+    """Extract one JPEG frame at time t, scaled to `width` px wide.
+
+    `jpeg_quality` is ffmpeg's `-q:v` (2 is near lossless); None keeps ffmpeg's default,
+    which is what every run before the resolution ablation used.
 
     t is clamped to just inside the end of the video stream, so a request at the
     asset's final second returns its last frame rather than an error.
@@ -159,7 +163,8 @@ def ffmpeg_frame(video: Path, t: float) -> bytes:
     proc = subprocess.run(
         [
             "ffmpeg", "-v", "error", "-ss", f"{t:.3f}", "-i", str(video),
-            "-frames:v", "1", "-vf", f"scale={FRAME_WIDTH_PX}:-2",
+            "-frames:v", "1", "-vf", f"scale={width}:-2",
+            *(["-q:v", str(jpeg_quality)] if jpeg_quality else []),
             "-f", "image2pipe", "-vcodec", "mjpeg", "-",
         ],
         capture_output=True,
@@ -223,8 +228,13 @@ class LocalCorpus:
         transcripts: dict[str, list[dict[str, Any]]] | None = None,
         transcripts_dir: Path | None = None,
         anonymize_titles: bool = False,
+        frame_width: int = FRAME_WIDTH_PX,
+        jpeg_quality: int | None = None,
     ):
         self.assets = {a["asset_id"]: a for a in assets}
+        # Frame size and JPEG quality are task conditions: a non-default value changes
+        # the compatibility key (the resolution ablation).
+        self.frame_width, self.jpeg_quality = frame_width, jpeg_quality
         # Titles and descriptive asset ids ("nasa-artemis-ii-launch-recap") name what a
         # video shows. Anonymized, the model sees "video-07" and no title; answers are
         # mapped back to the real ids before scoring. The order is a hash, not the name.
@@ -237,6 +247,10 @@ class LocalCorpus:
                        if anonymize_titles else {})
         self._real = {shown: real for real, shown in self._alias.items()}
         self.corpus_dir = corpus_dir
+        self._ffmpeg = frame_extractor is ffmpeg_frame
+        if self._ffmpeg and (frame_width, jpeg_quality) != (FRAME_WIDTH_PX, None):
+            frame_extractor = functools.partial(ffmpeg_frame, width=frame_width,
+                                                jpeg_quality=jpeg_quality)
         self._extract = frame_extractor
         self._transcripts = dict(transcripts or {})
         search = [d for d in (corpus_dir, transcripts_dir) if d]
@@ -364,7 +378,7 @@ class LocalCorpus:
         if t_end < t_start:
             raise ValueError("t_end must be >= t_start")
         ends = [float(duration)] if duration else []
-        if self._extract is ffmpeg_frame and (stream_end := video_stream_end(video)):
+        if self._ffmpeg and (stream_end := video_stream_end(video)):
             ends.append(stream_end)  # so frame_times_s reports what was decoded
         if ends:
             t_end = min(t_end, max(0.0, min(ends) - END_MARGIN_S))

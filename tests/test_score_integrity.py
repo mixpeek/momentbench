@@ -1004,3 +1004,45 @@ class TestNetScore:  # distribution: the factuality net-score rule
             run = await run_agentic_benchmark([query], ScriptedModel([[answer]]),
                                               verified_corpus(tmp_path), trials=1)
             assert run.summary.net_score == want, (query.query_id, answer)
+
+
+class TestConditions:  # distribution plan A5
+    async def test_abstain_prompt_reaches_the_model_and_has_its_own_key(self, tmp_path):
+        from momentbench.agentic.episode import ABSTAIN_PROMPT
+        from momentbench.submission import agentic_entry
+        from tests.test_agentic import TRANSCRIPTS
+
+        seen = []
+
+        class Recording(ScriptedModel):
+            def start(self, system, task, tools):
+                seen.append(system)
+                return super().start(system, task, tools)
+
+        sub = TestSubmission()
+        qs = [NO_ANSWER, make_query()]
+        path, (manifest, _) = sub._file(tmp_path, qs), sub._release(tmp_path)
+        standard = await sub._run(tmp_path, qs)
+        abstain = await run_agentic_benchmark(
+            qs, Recording([[("submit_answer", {"moments": []})]]), verified_corpus(tmp_path),
+            trials=1, prompt_condition="abstain")
+        assert seen and all(s == ABSTAIN_PROMPT for s in seen)
+        assert abstain.identity["prompt_condition"] == "abstain"
+        assert abstain.identity["compatibility_key"] != standard.identity["compatibility_key"]
+        agentic_entry(abstain, path, manifest=manifest, transcripts=TRANSCRIPTS)
+
+    async def test_frame_width_is_a_condition(self, tmp_path):
+        from momentbench.agentic.environment import LocalCorpus
+        from tests.test_agentic import ASSETS, TRANSCRIPTS
+
+        base = verified_corpus(tmp_path)
+        wide = LocalCorpus(ASSETS, tmp_path, frame_extractor=lambda v, t: b"jpeg",
+                           transcripts=TRANSCRIPTS, frame_width=1024)
+        wide.pin_files({a: tmp_path / f"{a}.mp4" for a in wide.assets},
+                       {a: f"sha-{a}" for a in wide.assets})
+        answer = [[("submit_answer", {"moments": []})]]
+        r1 = await run_agentic_benchmark([NO_ANSWER], ScriptedModel(answer), base, trials=1)
+        r2 = await run_agentic_benchmark([NO_ANSWER], ScriptedModel(answer), wide, trials=1)
+        assert "frames" not in r1.identity
+        assert r2.identity["frames"] == {"width": 1024, "jpeg_quality": None}
+        assert r1.identity["compatibility_key"] != r2.identity["compatibility_key"]

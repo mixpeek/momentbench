@@ -80,7 +80,9 @@ def task_identity(*, queries: list[Any], receipt: dict[str, str],
                   transcripts: dict[str, list[dict[str, Any]]], system_prompt: str,
                   tools: list[dict[str, Any]], budget: dict[str, Any], modalities: str,
                   anonymize_titles: bool = False,
-                  asset_view: str | None = None) -> dict[str, Any]:
+                  asset_view: str | None = None,
+                  frames: dict[str, Any] | None = None,
+                  prompt_condition: str = "standard") -> dict[str, Any]:
     """What defines the task. Two runs with the same compatibility_key ran the same
     benchmark: the same selected queries and wording, the same verified video bytes,
     transcripts, prompt, tools, budget and conditions, and the same asset list as the
@@ -104,6 +106,11 @@ def task_identity(*, queries: list[Any], receipt: dict[str, str],
     }
     if asset_view is not None:
         task["asset_view_sha"] = text_sha(asset_view)
+    # Only non-default conditions enter the key, so earlier runs keep theirs.
+    if frames:
+        task["frames"] = frames
+    if prompt_condition != "standard":
+        task["prompt_condition"] = prompt_condition
     return {**task, "compatibility_key": text_sha(json.dumps(task, sort_keys=True))}
 
 

@@ -28,6 +28,23 @@ SYSTEM_PROMPT = (
 )
 
 
+# The standard prompt asks for a best answer when the budget runs out, so a wrong
+# guess there is partly the prompt's doing. The "abstain" condition says abstaining
+# costs nothing, so its net score can be read as a measure of when a model claims a
+# match (distribution plan, audit 4 review). Each prompt has its own compatibility key.
+ABSTAIN_PROMPT = SYSTEM_PROMPT.replace(
+    "If the budget runs out, submit your best answer.",
+    "A wrong moment counts against you and an empty answer does not, so submit an "
+    "empty list whenever you are not confident that a moment matches.")
+PROMPTS = {"standard": SYSTEM_PROMPT, "abstain": ABSTAIN_PROMPT}
+
+
+def system_prompt(condition: str = "standard") -> str:
+    if condition not in PROMPTS:
+        raise ValueError(f"prompt condition must be one of {sorted(PROMPTS)}")
+    return PROMPTS[condition]
+
+
 def build_task(query: Query, budget: Budget) -> str:
     return (
         f"Find this moment: {query.text}\n\n"
@@ -62,21 +79,23 @@ class EpisodeError(RuntimeError):
 
 
 async def run_episode(
-    model: AgentModel, corpus: LocalCorpus, query: Query | QueryRequest, budget: Budget
+    model: AgentModel, corpus: LocalCorpus, query: Query | QueryRequest, budget: Budget,
+    system: str = SYSTEM_PROMPT,
 ) -> Episode:
     usage = Usage()
     trace: list[dict[str, Any]] = []
     turn_models: list[str | None] = []
     try:
-        return await _episode(model, corpus, query, budget, usage, trace, turn_models)
+        return await _episode(model, corpus, query, budget, usage, trace, turn_models, system)
     except Exception as e:
         # Keep tokens already spent and the tool trace: a failed trial is still costed
         # and inspectable (audit finding 27).
         raise EpisodeError(e, usage, trace, turn_models) from e
 
 
-async def _episode(model, corpus, query, budget, usage, trace, turn_models) -> Episode:
-    session = model.start(SYSTEM_PROMPT, build_task(query, budget), TOOLS)
+async def _episode(model, corpus, query, budget, usage, trace, turn_models,
+                   system=SYSTEM_PROMPT) -> Episode:
+    session = model.start(system, build_task(query, budget), TOOLS)
     results: list[ToolResult] | None = None
 
     def end(moments: list[Moment], outcome: str) -> Episode:

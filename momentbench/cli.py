@@ -87,12 +87,20 @@ def run(model: str, queries: str, corpus: str, output: str, concurrency: int):
 @click.option("--pricing", type=click.Path(exists=True), default="configs/pricing.json")
 @click.option("--output", "-o", type=click.Path(), default="data/results/agentic")
 @click.option("--concurrency", type=int, default=4)
+@click.option("--prompt-condition", type=click.Choice(["standard", "abstain"]),
+              default="standard",
+              help="abstain: the prompt says an empty answer costs nothing (own key)")
+@click.option("--frame-width", type=int, default=None,
+              help="Frame width in px (default 512); a different width has its own key")
+@click.option("--jpeg-quality", type=int, default=None,
+              help="ffmpeg -q:v for frames (2 is near lossless); default leaves it unset")
 def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_dir: str,
             partial: bool, physical_only: bool, no_transcripts: bool,
             anonymize_titles: bool, provider: str,
             base_url: str | None,
             effort: str | None, trials: int, max_steps: int, max_frames: int,
-            max_tool_calls: int, pricing: str, output: str, concurrency: int):
+            max_tool_calls: int, pricing: str, output: str, concurrency: int,
+            prompt_condition: str, frame_width: int | None, jpeg_quality: int | None):
     """Run the agentic track: a tool-using model searches the corpus for each moment."""
     from momentbench.agentic.anthropic_model import AnthropicAgent
     from momentbench.agentic.baselines import BaselineAgent
@@ -118,7 +126,7 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_
         local, failures = prepare_corpus(
             Path(corpus), Path(corpus_dir), transcripts_dir=Path(transcripts_dir),
             no_transcripts=no_transcripts, anonymize_titles=anonymize_titles,
-            partial=partial)
+            partial=partial, frame_width=frame_width, jpeg_quality=jpeg_quality)
     except CorpusNotVerifiedError as e:
         raise click.ClickException(
             str(e).replace("prepare with partial=True", "pass --partial")) from e
@@ -177,6 +185,7 @@ def agentic(model: str, queries: str, corpus: str, corpus_dir: str, transcripts_
                 pricing=prices,
                 max_concurrency=concurrency,
                 output_dir=Path(output),
+                prompt_condition=prompt_condition,
                 reportable=not failures,
                 identity=identity,
             )

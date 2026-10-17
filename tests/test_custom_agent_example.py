@@ -104,3 +104,17 @@ async def test_partial_and_diagnostic_runs_are_labelled(release, capsys):
          for a in json.loads(release["manifest"].read_text())]))
     await load_example().main(args(release, "--limit", "2"))
     assert "Diagnostic run on 2 queries" in capsys.readouterr().out
+
+
+def test_frame_width_and_quality_reach_ffmpeg(release):
+    import io
+
+    from PIL import Image
+
+    from momentbench.agentic.environment import ffmpeg_frame
+
+    video = release["corpus"] / "clip-a.mp4"
+    small = ffmpeg_frame(video, 5.0)
+    wide = ffmpeg_frame(video, 5.0, width=1024, jpeg_quality=2)
+    assert Image.open(io.BytesIO(small)).size[0] == 512
+    assert Image.open(io.BytesIO(wide)).size[0] == 1024

@@ -29,15 +29,19 @@ class CorpusNotVerifiedError(RuntimeError):
 def prepare_corpus(manifest: Path, corpus_dir: Path | None, *,
                    transcripts_dir: Path | None = None, no_transcripts: bool = False,
                    anonymize_titles: bool = False,
-                   partial: bool = False) -> tuple[LocalCorpus, list[AssetCheck]]:
+                   partial: bool = False, frame_width: int | None = None,
+                   jpeg_quality: int | None = None) -> tuple[LocalCorpus, list[AssetCheck]]:
     """Build a LocalCorpus pinned to its verified files. Returns (corpus, failures).
 
     Raises CorpusNotVerifiedError when any asset fails, unless partial is set; a
     partial corpus serves only its verified assets and its runs are not reportable.
     """
     assets = load_corpus_assets(Path(manifest))
+    from momentbench.agentic.environment import FRAME_WIDTH_PX
+
     corpus = LocalCorpus(assets, corpus_dir, transcripts={} if no_transcripts else None,
-                         transcripts_dir=transcripts_dir, anonymize_titles=anonymize_titles)
+                         transcripts_dir=transcripts_dir, anonymize_titles=anonymize_titles,
+                         frame_width=frame_width or FRAME_WIDTH_PX, jpeg_quality=jpeg_quality)
     if corpus_dir is None:
         failures = [AssetCheck(a["asset_id"], None, problems=("no corpus_dir given",))
                     for a in assets]

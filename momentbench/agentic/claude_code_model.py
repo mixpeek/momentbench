@@ -104,7 +104,7 @@ class ClaudeCodeAgent(AgentModel):
 
         server = create_sdk_mcp_server(SERVER, tools=[make(spec) for spec in TOOLS])
         tool_names = [f"mcp__{SERVER}__{spec['name']}" for spec in TOOLS]
-        system = SYSTEM_PROMPT + (
+        system = getattr(self, "system_prompt", SYSTEM_PROMPT) + (
             f" The tools are named with the prefix mcp__{SERVER}__, for example "
             f"mcp__{SERVER}__submit_answer."
         )
