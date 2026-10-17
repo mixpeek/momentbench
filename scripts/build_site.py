@@ -36,6 +36,9 @@ FILM_CREDIT = {"big-buck-bunny": "Big Buck Bunny", "elephants-dream": "Elephants
                "cosmos-laundromat": "Cosmos Laundromat", "spring": "Spring",
                "agent-327-operation-barbershop": "Agent 327"}
 CHANGELOG = [
+    ("2026-10-17", "v0.2.5: a scored set judged by two non-Claude model families, a "
+                   "leaderboard ranked within compatibility groups, the prediction-file track, "
+                   "a 10-minute diagnostic, result bundles and unattended submission checks."),
     ("2026-10-16", "v0.2.4: model identity enforced on the Claude Code route, the visible "
                    "asset list in the compatibility key, and review media bound to the "
                    "span it shows."),

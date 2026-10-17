@@ -8,8 +8,8 @@ authors:
 repository-code: https://github.com/mixpeek/momentbench
 url: https://github.com/mixpeek/momentbench
 license: Apache-2.0
-version: "0.2.4"
-date-released: "2026-10-16"
+version: "0.2.5"
+date-released: "2026-10-17"
 keywords:
   - video retrieval
   - temporal grounding

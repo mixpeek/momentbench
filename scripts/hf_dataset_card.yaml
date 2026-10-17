@@ -61,7 +61,12 @@ Two tracks share that scoring rule:
 - `transcripts/*.vtt`: the transcripts every entrant's tools read.
 - `corpus_manifests/sample_manifest.json`: assets with licence, licence status, attribution, duration, sha256 and download URL.
 - `videos/`: 25 of the 27 videos, each byte-identical to the sha256 in the manifest. Spring and Agent 327 are left out while their licences are pending confirmation from Blender Studio; `momentbench corpus-download` fetches them (and any other asset) from the original source and checks each hash.
-- `runs/`: the 0.2.1 record runs behind the results, one JSON file per run, with every trial's answer, usage, the corpus receipt and the run's compatibility key.
+- `queries/scored/`: the scored set for 0.2.5, the 333 published queries that two model families other than Claude both accepted; results use these files.
+- `labels/adjudication.json`, `labels/labels.md`: each judge's verdict and reason for every published query, and the method and its limits.
+- `leaderboard.json`: validated rows grouped by compatibility key (rows are compared only within a group), with provenance and the rows planned but not run.
+- `runs/<domain>/`: the 0.2.5 record runs behind the leaderboard, one JSON file per run, with every trial's answer, usage, corpus receipt and compatibility key.
+- `release/0.2.5.json`: the release manifest, with full hashes, the environment and the command for each row.
+- `heldout_commitments.json`: salted hashes of the 163 held-out queries.
 - `ATTRIBUTION.md`, `GOVERNANCE.md`: per-asset attribution and how the maintainer's own entries are handled.
 
 ## Contamination

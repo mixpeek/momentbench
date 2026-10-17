@@ -8,7 +8,7 @@ result.
 ## 1. Install and check your setup (about 10 minutes)
 
 ```bash
-git clone https://github.com/mixpeek/momentbench.git && cd momentbench
+git clone --branch v0.2.5 https://github.com/mixpeek/momentbench.git && cd momentbench
 pip install -e .                      # Python 3.10+, plus ffmpeg on your PATH
 momentbench corpus-download -m data/diagnostic/manifest.json --corpus-dir diag/
 momentbench diagnose --corpus-dir diag/

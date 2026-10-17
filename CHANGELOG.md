@@ -1,6 +1,16 @@
 # Changelog
 
-## Unreleased
+## 0.2.5 (2026-10-17)
+
+A release built to be referenced and run without an operator. Results use the
+**scored set**: the 333 of 456 published queries that two model families other than
+Claude both accepted (`docs/labels.md`). Record runs use anonymized titles; rows are
+ranked only within a compatibility group (`docs/leaderboard.json`), led by
+positive-query Recall@1. No-answer accuracy and net score are exploratory. The release
+is archived with full hashes in `data/release/0.2.5.json` and `docs/releases/0.2.5/`.
+Rows planned but not run are listed with reasons; later Claude runs appear on the
+current leaderboard without changing the archived release.
+
 
 - Net score on every run, submission entry and results table: +1 for a correct
   answer, -1 for a wrong moment, 0 for abstaining. It is the rule closed-book
