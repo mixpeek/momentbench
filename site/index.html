@@ -102,7 +102,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </div></nav>
 
 <header class="hero" id="top"><div class="wrap">
-  <p class="eyebrow">v0.2 &middot; agentic video moment retrieval</p>
+  <p class="eyebrow">v0.2.5 &middot; agentic video moment retrieval</p>
   <h1>Find one moment<br><span class="dim">in a corpus of video.</span></h1>
   <p class="lede">A request describes one moment: a rover wheel rolling through regolith, a line of dialogue over a close-up, a shot that does not exist. The system has to search the whole corpus and return the right video and the right few seconds, or say nothing matches.</p>
   <div class="cta">
@@ -117,7 +117,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div><dt>117 min</dt><dd>film, aerospace, robotics</dd></div>
     <div><dt>456</dt><dd>published queries, 4 tiers</dd></div>
     <div><dt>80%</dt><dd>best positive-query Recall@1 (claude-opus-5-5, robotics)</dd></div>
-    <div><dt>52%</dt><dd>best score on no-answer queries</dd></div>
+    <div><dt>47%</dt><dd>best no-answer accuracy, exploratory (see <a href="https://github.com/mixpeek/momentbench/blob/main/docs/labels.md">labels</a>)</dd></div>
   </dl>
 </div></header>
 
@@ -183,7 +183,7 @@ momentbench agentic &lt;model&gt; --provider openai-compatible \
   title  = {MomentBench: Corpus-Scale Video Moment Retrieval},
   author = {Mixpeek},
   year   = {2026},
-  note   = {Version 0.2.0},
+  note   = {Version 0.2.5},
   url    = {https://github.com/mixpeek/momentbench}
 }</code></pre>
   <p class="note">Maintained by Mixpeek, whose own retrieval pipeline would be one entrant among others. Scores here come only from committed run files, and anyone can reproduce them with the commands above.</p>
@@ -191,8 +191,8 @@ momentbench agentic &lt;model&gt; --provider openai-compatible \
 </main>
 
 <footer><div class="wrap">
-  <span>MomentBench v0.2.0 &middot; code Apache-2.0 &middot; footage public domain or CC BY, see <a href="https://github.com/mixpeek/momentbench/blob/main/ATTRIBUTION.md">ATTRIBUTION.md</a></span>
-  <span><a href="https://github.com/mixpeek/momentbench">GitHub</a> &middot; <a href="https://github.com/mixpeek/momentbench/blob/main/docs/report.md">Report</a> &middot; <a href="https://github.com/mixpeek/momentbench/blob/main/docs/results.json">results.json</a></span>
+  <span>MomentBench v0.2.5 &middot; code Apache-2.0 &middot; footage public domain or CC BY, see <a href="https://github.com/mixpeek/momentbench/blob/main/ATTRIBUTION.md">ATTRIBUTION.md</a></span>
+  <span><a href="https://github.com/mixpeek/momentbench">GitHub</a> &middot; <a href="https://github.com/mixpeek/momentbench/blob/main/docs/report.md">Report</a> &middot; <a href="https://github.com/mixpeek/momentbench/blob/main/docs/leaderboard.json">leaderboard.json</a> &middot; <a href="https://github.com/mixpeek/momentbench/tree/v0.2.5/docs/releases/0.2.5">release 0.2.5 archive</a></span>
 </div></footer>
 <script>document.querySelectorAll('.tabs button').forEach(function (b) {
   b.addEventListener('click', function () {

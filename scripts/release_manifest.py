@@ -37,16 +37,19 @@ def rel(path: Path) -> str:
 
 
 def command(run: AgenticRun, qfile: str) -> tuple[str, str]:
-    """(command, source). A run made after 0.2.5 records its own CLI arguments
-    (identity.cli), which are used as is; older runs get a reconstruction from their
-    recorded identity, labelled as such."""
+    """(command, source). source is "recorded" (the run's own CLI arguments,
+    identity.cli), "recipe" (a portable command that regenerates the run's inputs, such
+    as the BM25 baseline), "reconstructed from the run identity", or what is missing."""
     env = (f"MOMENTBENCH_SPEND_LEDGER=<ledger> MOMENTBENCH_MAX_TRIAL_INPUT_TOKENS="
            f"{run.identity['input_token_cap']} " if run.identity.get("input_token_cap") else "")
     if run.identity.get("cli"):
         return env + shlex.join(["momentbench", *run.identity["cli"]]), "recorded"
     if run.harness == "predictions":
+        if run.model_id == "bm25-transcript":
+            return (f"python scripts/bm25_predictions.py -q {qfile} -o bm25.json && "
+                    f"momentbench score-predictions -p bm25.json -q {qfile}", "recipe")
         return (f"momentbench score-predictions -p <predictions.json> -q {qfile}",
-                "reconstructed")
+                "needs the submitter's prediction file")
     provider = run.identity.get("provider") or (
         "claude-code" if run.harness == "claude-code" else None)
     if provider is None:

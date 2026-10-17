@@ -160,3 +160,20 @@ def test_every_leaderboard_number_rescores_from_its_run_file():
             assert entry["compatibility_key"] == g["compatibility_key"], row["file"]
             for k in ("recall_at_1", "positive_recall_at_1", "net_score"):
                 assert entry[k] == row[k], (row["file"], k)
+
+
+def test_site_headlines_come_from_the_release_primary_groups():
+    """The page's headline numbers, version and data links match docs/leaderboard.json,
+    never the legacy results tables."""
+    page = (ROOT / "site/index.html").read_text()
+    board = json.loads((ROOT / "docs/leaderboard.json").read_text())
+    rows = [r for g in board["groups"] if g["compatibility_key"] in
+            board["primary_keys"].values() for r in g["rows"]]
+    best_pos = max(r["positive_recall_at_1"] for r in rows)
+    best_na = max(r["no_answer_accuracy"] for r in rows if r["no_answer_accuracy"] is not None)
+    assert f"<dt>{100 * best_pos:.0f}%</dt><dd>best positive-query Recall@1" in page
+    assert f"<dt>{100 * best_na:.0f}%</dt><dd>best no-answer accuracy, exploratory" in page
+    assert f'content="{board["generated_at_commit"]}"' in page
+    assert f"MomentBench v{momentbench.__version__} &middot;" in page
+    assert "docs/results.json" not in page
+    assert not re.search(r"v0\.2\.0 &middot;|Version 0\.2\.0", page)

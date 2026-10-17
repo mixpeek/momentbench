@@ -33,7 +33,10 @@ Recall@1 counts a hit when the first answer is in the right video with temporal 
 at least 0.5. **Positive R@1** is Recall@1 on queries that have a gold moment, the
 headline localization number; its interval is a query bootstrap (query sampling), and
 run-to-run variation is separate (one trial per query in this release). Net score is
-+1 per correct answer, -1 per wrong moment and 0 per abstention. Rows are compared
++1 per correct answer, -1 per wrong moment and 0 per abstention. "Ended without an
+answer" counts trials stopped by the step limit (`step_limit`), the token or turn budget
+(`budget_exceeded`) or ending with no answer (`no_submission`); they score zero, so a
+row's score mixes search quality with how often its harness ran out. Rows are compared
 only within a group: a group is one compatibility key, so its rows ran the same
 queries, corpus, transcripts, prompt, tools, budget and conditions. Record runs use
 anonymized titles. `*` Claude Code runs are on a subscription; their cost is what the
@@ -44,88 +47,92 @@ tokens would cost at API list prices.
 
 Primary group: anonymized titles, standard prompt, compatibility key `689ea1623b054aa6`.
 
-| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | $/query |
-|---|---|---|---|---|---|---|
-| claude-opus-5-5 | claude-code | 59.0 (50 to 68) | 50.8 (42 to 59) | 16.0 | +0.02 | $0.138* |
-| claude-sonnet-5-5 | claude-code | not run: not run yet | | | | |
-| claude-haiku-5-5 | claude-code | not run: not run yet | | | | |
-| claude-haiku-5-5 (API) | api | not run: same reason | | | | |
-| gpt-5.4-mini | api | not run: same reason | | | | |
-| gemini-3.8-flash | api | not run: paid evaluation stopped after the spend-enforcement change; a later paid run would carry a different stopping rule and key | | | | |
+| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | Ended without an answer | $/query |
+|---|---|---|---|---|---|---|---|
+| claude-opus-5-5 | claude-code | 59.0 (50 to 68) | 50.8 (42 to 59) | 16.0 | +0.02 | 1 budget_exceeded | $0.138* |
+| claude-sonnet-5-5 | claude-code | not run: not run yet | | | | | |
+| claude-haiku-5-5 | claude-code | not run: not run yet | | | | | |
+| claude-haiku-5-5 (API) | api | not run: same reason | | | | | |
+| gpt-5.4-mini | api | not run: same reason | | | | | |
+| gemini-3.8-flash | api | not run: paid evaluation stopped after the spend-enforcement change; a later paid run would carry a different stopping rule and key | | | | | |
 
 Other condition: anonymized titles, abstain prompt (no runs yet), ranked only within itself:
 
-| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | $/query |
-|---|---|---|---|---|---|---|
-| claude-opus-5-5 | claude-code | not run: not run yet | | | | |
-| claude-sonnet-5-5 | claude-code | not run: not run yet | | | | |
-| claude-haiku-5-5 | claude-code | not run: not run yet | | | | |
+| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | Ended without an answer | $/query |
+|---|---|---|---|---|---|---|---|
+| claude-opus-5-5 | claude-code | not run: not run yet | | | | | |
+| claude-sonnet-5-5 | claude-code | not run: not run yet | | | | | |
+| claude-haiku-5-5 | claude-code | not run: not run yet | | | | | |
 
 Other condition: prediction-file track (key `7eb1c82e785ca0bc`), ranked only within itself:
 
-| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | $/query |
-|---|---|---|---|---|---|---|
-| bm25-transcript | predictions | 9.5 (4 to 15) | 7.7 (4 to 12) | 0.0 | -0.85 | n/a |
+| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | Ended without an answer | $/query |
+|---|---|---|---|---|---|---|---|
+| bm25-transcript | predictions | 9.5 (4 to 15) | 7.7 (4 to 12) | 0.0 | -0.85 | 0 | n/a |
 
 ### Aerospace (aerospace_v0.2_scored.json, 154 queries)
 
 Primary group: anonymized titles, standard prompt, compatibility key `05841b8cc16d0b1b`.
 
-| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | $/query |
-|---|---|---|---|---|---|---|
-| claude-opus-5-5 | claude-code | 60.4 (52 to 68) | 57.8 (50 to 66) | 33.3 | +0.20 | $0.152* |
-| gemini-3.8-flash | api | 56.1 (48 to 64) | 51.3 (44 to 59) | 6.7 | +0.38 | $0.135 |
-| claude-haiku-5-5 | claude-code | 36.7 (29 to 45) | 35.7 (29 to 44) | 26.7 | -0.10 | $0.022* |
-| claude-sonnet-5-5 | claude-code | 33.1 (25 to 40) | 32.5 (25 to 40) | 26.7 | -0.26 | $0.088* |
-| claude-haiku-5-5 (API) | api | 30.9 (23 to 39) | 32.5 (25 to 40) | 46.7 | -0.23 | $0.016 |
-| gpt-5.4-mini | api | 12.9 (7 to 19) | 11.7 (6 to 17) | 0.0 | -0.61 | $0.013 |
+| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | Ended without an answer | $/query |
+|---|---|---|---|---|---|---|---|
+| claude-opus-5-5 | claude-code | 60.4 (52 to 68) | 57.8 (50 to 66) | 33.3 | +0.20 | 6 budget_exceeded | $0.152* |
+| gemini-3.8-flash | api | 56.1 (48 to 64) | 51.3 (44 to 59) | 6.7 | +0.38 | 55 step_limit | $0.135 |
+| claude-haiku-5-5 | claude-code | 36.7 (29 to 45) | 35.7 (29 to 44) | 26.7 | -0.10 | 14 budget_exceeded | $0.022* |
+| claude-sonnet-5-5 | claude-code | 33.1 (25 to 40) | 32.5 (25 to 40) | 26.7 | -0.26 | 3 budget_exceeded | $0.088* |
+| claude-haiku-5-5 (API) | api | 30.9 (23 to 39) | 32.5 (25 to 40) | 46.7 | -0.23 | 0 | $0.016 |
+| gpt-5.4-mini | api | 12.9 (7 to 19) | 11.7 (6 to 17) | 0.0 | -0.61 | 24 no_submission | $0.013 |
 
 Other condition: anonymized titles, abstain prompt (no runs yet), ranked only within itself:
 
-| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | $/query |
-|---|---|---|---|---|---|---|
-| claude-opus-5-5 | claude-code | not run: not run yet | | | | |
-| claude-sonnet-5-5 | claude-code | not run: not run yet | | | | |
-| claude-haiku-5-5 | claude-code | not run: not run yet | | | | |
+| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | Ended without an answer | $/query |
+|---|---|---|---|---|---|---|---|
+| claude-opus-5-5 | claude-code | not run: not run yet | | | | | |
+| claude-sonnet-5-5 | claude-code | not run: not run yet | | | | | |
+| claude-haiku-5-5 | claude-code | not run: not run yet | | | | | |
 
 Other condition: prediction-file track (key `603e0d07f1ecae63`), ranked only within itself:
 
-| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | $/query |
-|---|---|---|---|---|---|---|
-| bm25-transcript | predictions | 17.3 (11 to 24) | 15.6 (10 to 22) | 0.0 | -0.69 | n/a |
+| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | Ended without an answer | $/query |
+|---|---|---|---|---|---|---|---|
+| bm25-transcript | predictions | 17.3 (11 to 24) | 15.6 (10 to 22) | 0.0 | -0.69 | 0 | n/a |
 
 ### Robotics (robotics_v0.2_scored.json, 49 queries)
 
 Primary group: anonymized titles, standard prompt, compatibility key `39a268172b68fe33`.
 
-| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | $/query |
-|---|---|---|---|---|---|---|
-| claude-opus-5-5 | claude-code | 80.0 (68 to 92) | 71.4 (59 to 84) | 33.3 | +0.47 | $0.152* |
-| gemini-3.8-flash | api | 57.5 (42 to 72) | 49.0 (37 to 63) | 11.1 | +0.33 | $0.139 |
-| claude-haiku-5-5 | claude-code | 37.5 (22 to 52) | 36.7 (24 to 51) | 33.3 | -0.08 | $0.025* |
-| claude-haiku-5-5 (API) | api | 32.5 (20 to 48) | 30.6 (18 to 45) | 22.2 | -0.35 | $0.018 |
-| claude-sonnet-5-5 | claude-code | 30.0 (18 to 45) | 26.5 (14 to 39) | 11.1 | -0.41 | $0.081* |
-| gpt-5.4-mini | api | 10.0 (2 to 20) | 8.2 (2 to 16) | 0.0 | -0.65 | $0.016 |
+| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | Ended without an answer | $/query |
+|---|---|---|---|---|---|---|---|
+| claude-opus-5-5 | claude-code | 80.0 (68 to 92) | 71.4 (59 to 84) | 33.3 | +0.47 | 2 budget_exceeded | $0.152* |
+| gemini-3.8-flash | api | 57.5 (42 to 72) | 49.0 (37 to 63) | 11.1 | +0.33 | 1 no_submission, 16 step_limit | $0.139 |
+| claude-haiku-5-5 | claude-code | 37.5 (22 to 52) | 36.7 (24 to 51) | 33.3 | -0.08 | 5 budget_exceeded | $0.025* |
+| claude-haiku-5-5 (API) | api | 32.5 (20 to 48) | 30.6 (18 to 45) | 22.2 | -0.35 | 0 | $0.018 |
+| claude-sonnet-5-5 | claude-code | 30.0 (18 to 45) | 26.5 (14 to 39) | 11.1 | -0.41 | 2 budget_exceeded | $0.081* |
+| gpt-5.4-mini | api | 10.0 (2 to 20) | 8.2 (2 to 16) | 0.0 | -0.65 | 9 no_submission | $0.016 |
 
 Other condition: anonymized titles, abstain prompt (no runs yet), ranked only within itself:
 
-| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | $/query |
-|---|---|---|---|---|---|---|
-| claude-opus-5-5 | claude-code | not run: not run yet | | | | |
-| claude-sonnet-5-5 | claude-code | not run: not run yet | | | | |
-| claude-haiku-5-5 | claude-code | not run: not run yet | | | | |
+| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | Ended without an answer | $/query |
+|---|---|---|---|---|---|---|---|
+| claude-opus-5-5 | claude-code | not run: not run yet | | | | | |
+| claude-sonnet-5-5 | claude-code | not run: not run yet | | | | | |
+| claude-haiku-5-5 | claude-code | not run: not run yet | | | | | |
 
 Other condition: prediction-file track (key `baf460bbce383443`), ranked only within itself:
 
-| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | $/query |
-|---|---|---|---|---|---|---|
-| bm25-transcript | predictions | 12.5 (2 to 22) | 10.2 (2 to 18) | 0.0 | -0.80 | n/a |
+| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | Ended without an answer | $/query |
+|---|---|---|---|---|---|---|---|
+| bm25-transcript | predictions | 12.5 (2 to 22) | 10.2 (2 to 18) | 0.0 | -0.80 | 0 | n/a |
 
 ## Reproducing a number
 
 `data/release/0.2.5.json` lists every run file with its hash, the code commit it was made
-with and the exact command that reproduces it, plus the environment, the corpus
-manifest, the scored query files and the label log with full hashes.
+with and a command for it, plus the environment, the corpus manifest, the scored query
+files and the label log with full hashes. Each command is labelled by where it comes
+from: `recorded` (the run's own arguments), `recipe` (a portable command, such as
+`scripts/bm25_predictions.py` for the BM25 rows), or `reconstructed` from the run's
+recorded identity. A prediction-file row from an outside system needs that system's
+prediction file.
 `momentbench diagnose` checks a setup against stored references in about 10 minutes;
 `docs/bring-your-system.md` walks from install to a validated, citable result.
 

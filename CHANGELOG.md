@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+Changes to the current leaderboard after 0.2.5; the archived release is unchanged.
+
+- The site's headline numbers, version and data links come from `docs/leaderboard.json`
+  (it showed a legacy no-answer figure and v0.2.0). A test pins the rendered values.
+- Leaderboard rows and the report count how trials ended without an answer (step
+  limit, budget, no answer), which score zero.
+- `scripts/bm25_predictions.py` regenerates the BM25 baseline's prediction files; the
+  three `submissions/bm25-transcript-*` rows reproduce from it exactly. Manifest
+  commands are labelled recorded, recipe or reconstructed.
+
 ## 0.2.5 (2026-10-17)
 
 A release built to be referenced and run without an operator. Results use the

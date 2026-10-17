@@ -22,6 +22,7 @@ import hashlib
 import json
 import subprocess
 import sys
+from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -105,6 +106,9 @@ def build() -> dict:
                 "positive_recall_at_1", "recall_at_1", "recall_at_1_ci95", "net_score",
                 "no_answer_accuracy", "false_positive_rate", "mean_cost_usd_per_query",
                 "run_id")},
+            # How trials ended: anything other than "submitted" scores zero, so a
+            # step-limit or budget stop reads differently from a wrong answer.
+            "outcomes": dict(sorted(Counter(t.outcome for t in run.trials).items())),
             "origin": origin, "file": rel,
             "code_commit": (run.identity.get("git") or {}).get("commit"),
             "timestamp": run.timestamp})

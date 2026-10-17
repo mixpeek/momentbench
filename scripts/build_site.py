@@ -18,6 +18,7 @@ import json
 import subprocess
 from pathlib import Path
 
+import momentbench
 from momentbench.agentic.stats import bootstrap_ci
 from momentbench.canary import CANARY_GUID
 
@@ -380,8 +381,11 @@ def page(results: dict, st: dict, examples: list[dict], held: str, board: dict) 
     prim = [dict(r, domain=d, model=row_name(r), recall_at_1=r["positive_recall_at_1"] or 0)
             for d, g in primary_groups(board).items() for r in g["rows"]]
     headline_best = max(prim or list(best.values()), key=lambda r: r["recall_at_1"])
-    t3 = max((r["by_tier"]["3"]["recall_at_1"] for r in results["rows"]
-              if not r["model"].startswith("baseline-") and "3" in r["by_tier"]), default=0)
+    # No-answer accuracy also comes from the primary groups, labelled exploratory as in
+    # the report (the absence screen's recall is limited, docs/labels.md).
+    t3 = max((r["no_answer_accuracy"] for g in primary_groups(board).values()
+              for r in g["rows"] if r.get("no_answer_accuracy") is not None), default=0)
+    v = momentbench.__version__
     changelog = "".join(f"<li><time>{d}</time> {e(t)}</li>" for d, t in CHANGELOG)
     css = (SITE / "style.css").read_text()
     js = (SITE / "tabs.js").read_text()
@@ -409,7 +413,7 @@ def page(results: dict, st: dict, examples: list[dict], held: str, board: dict) 
 </div></nav>
 
 <header class="hero" id="top"><div class="wrap">
-  <p class="eyebrow">v0.2 &middot; agentic video moment retrieval</p>
+  <p class="eyebrow">v{v} &middot; agentic video moment retrieval</p>
   <h1>Find one moment<br><span class="dim">in a corpus of video.</span></h1>
   <p class="lede">A request describes one moment: a rover wheel rolling through regolith, a line of dialogue over a close-up, a shot that does not exist. The system has to search the whole corpus and return the right video and the right few seconds, or say nothing matches.</p>
   <div class="cta">
@@ -424,7 +428,7 @@ def page(results: dict, st: dict, examples: list[dict], held: str, board: dict) 
     <div><dt>{st['minutes']} min</dt><dd>film, aerospace, robotics</dd></div>
     <div><dt>{st['published']}</dt><dd>published queries, 4 tiers</dd></div>
     <div><dt>{100 * headline_best['recall_at_1']:.0f}%</dt><dd>best positive-query Recall@1 ({e(headline_best['model'])}, {headline_best['domain']})</dd></div>
-    <div><dt>{100 * t3:.0f}%</dt><dd>best score on no-answer queries</dd></div>
+    <div><dt>{100 * t3:.0f}%</dt><dd>best no-answer accuracy, exploratory (see <a href="{REPO}/blob/main/docs/labels.md">labels</a>)</dd></div>
   </dl>
 </div></header>
 
@@ -490,7 +494,7 @@ momentbench agentic &lt;model&gt; --provider openai-compatible \\
   title  = {{MomentBench: Corpus-Scale Video Moment Retrieval}},
   author = {{Mixpeek}},
   year   = {{2026}},
-  note   = {{Version 0.2.0}},
+  note   = {{Version {v}}},
   url    = {{{REPO}}}
 }}</code></pre>
   <p class="note">Maintained by Mixpeek, whose own retrieval pipeline would be one entrant among others. Scores here come only from committed run files, and anyone can reproduce them with the commands above.</p>
@@ -498,8 +502,8 @@ momentbench agentic &lt;model&gt; --provider openai-compatible \\
 </main>
 
 <footer><div class="wrap">
-  <span>MomentBench v0.2.0 &middot; code Apache-2.0 &middot; footage public domain or CC BY, see <a href="{REPO}/blob/main/ATTRIBUTION.md">ATTRIBUTION.md</a></span>
-  <span><a href="{REPO}">GitHub</a> &middot; <a href="{REPO}/blob/main/docs/report.md">Report</a> &middot; <a href="{REPO}/blob/main/docs/results.json">results.json</a></span>
+  <span>MomentBench v{v} &middot; code Apache-2.0 &middot; footage public domain or CC BY, see <a href="{REPO}/blob/main/ATTRIBUTION.md">ATTRIBUTION.md</a></span>
+  <span><a href="{REPO}">GitHub</a> &middot; <a href="{REPO}/blob/main/docs/report.md">Report</a> &middot; <a href="{REPO}/blob/main/docs/leaderboard.json">leaderboard.json</a> &middot; <a href="{REPO}/tree/v{v}/docs/releases/{v}">release {v} archive</a></span>
 </div></footer>
 <script>{js}</script>
 </body>

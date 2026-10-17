@@ -68,6 +68,10 @@
      "false_positive_rate": 0.5333333333333333,
      "mean_cost_usd_per_query": 0.15215211558441558,
      "run_id": "agentic-claude-opus-5-5-4b3b3e5e",
+     "outcomes": {
+      "budget_exceeded": 6,
+      "submitted": 148
+     },
      "origin": "record",
      "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-claude-opus-5-5-4b3b3e5e.json",
      "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
@@ -96,6 +100,10 @@
      "false_positive_rate": 0.06666666666666667,
      "mean_cost_usd_per_query": 0.13495413603896103,
      "run_id": "agentic-gemini-3.8-flash-13d6c541",
+     "outcomes": {
+      "step_limit": 55,
+      "submitted": 99
+     },
      "origin": "record",
      "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-gemini-3.8-flash-13d6c541.json",
      "code_commit": "fe62c66239afc2864f11b9a72b94348a3c9d6f87",
@@ -124,6 +132,10 @@
      "false_positive_rate": 0.4,
      "mean_cost_usd_per_query": 0.022150905194805195,
      "run_id": "agentic-claude-haiku-5-5-088b230c",
+     "outcomes": {
+      "budget_exceeded": 14,
+      "submitted": 140
+     },
      "origin": "record",
      "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-claude-haiku-5-5-088b230c.json",
      "code_commit": "9ff0710df33b0d7331a43c8d5bc53d530bd63752",
@@ -152,6 +164,10 @@
      "false_positive_rate": 0.6666666666666666,
      "mean_cost_usd_per_query": 0.0875365064935065,
      "run_id": "agentic-claude-sonnet-5-5-6e575333",
+     "outcomes": {
+      "budget_exceeded": 3,
+      "submitted": 151
+     },
      "origin": "record",
      "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-claude-sonnet-5-5-6e575333.json",
      "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
@@ -180,6 +196,9 @@
      "false_positive_rate": 0.5333333333333333,
      "mean_cost_usd_per_query": 0.015553594155844157,
      "run_id": "agentic-claude-haiku-5-5-d6c4cdf7",
+     "outcomes": {
+      "submitted": 154
+     },
      "origin": "record",
      "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-claude-haiku-5-5-d6c4cdf7.json",
      "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
@@ -208,6 +227,10 @@
      "false_positive_rate": 0.7333333333333333,
      "mean_cost_usd_per_query": 0.01319111103896104,
      "run_id": "agentic-gpt-5.4-mini-e25c7c5c",
+     "outcomes": {
+      "no_submission": 24,
+      "submitted": 130
+     },
      "origin": "record",
      "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-gpt-5.4-mini-e25c7c5c.json",
      "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
@@ -245,6 +268,9 @@
      "false_positive_rate": 1.0,
      "mean_cost_usd_per_query": null,
      "run_id": "predictions-bm25-transcript-46e8419e",
+     "outcomes": {
+      "submitted": 154
+     },
      "origin": "submission",
      "file": "submissions/bm25-transcript-aerospace/run.json",
      "code_commit": null,
@@ -308,6 +334,10 @@
      "false_positive_rate": 0.8,
      "mean_cost_usd_per_query": 0.13814002615384616,
      "run_id": "agentic-claude-opus-5-5-df67db36",
+     "outcomes": {
+      "budget_exceeded": 1,
+      "submitted": 129
+     },
      "origin": "record",
      "file": "data/results/agentic-v0.2.5/record/film/agentic-claude-opus-5-5-df67db36.json",
      "code_commit": "a1ee7f43e8532b247c78c39d38830260a91f7f04",
@@ -371,6 +401,9 @@
      "false_positive_rate": 1.0,
      "mean_cost_usd_per_query": null,
      "run_id": "predictions-bm25-transcript-8ad14804",
+     "outcomes": {
+      "submitted": 130
+     },
      "origin": "submission",
      "file": "submissions/bm25-transcript-film/run.json",
      "code_commit": null,
@@ -434,6 +467,10 @@
      "false_positive_rate": 0.5555555555555556,
      "mean_cost_usd_per_query": 0.15186342857142857,
      "run_id": "agentic-claude-opus-5-5-2c29e220",
+     "outcomes": {
+      "budget_exceeded": 2,
+      "submitted": 47
+     },
      "origin": "record",
      "file": "data/results/agentic-v0.2.5/record/robotics/agentic-claude-opus-5-5-2c29e220.json",
      "code_commit": "06672987bddde3c0fbef8fe4d59648312c53575f",
@@ -462,6 +499,11 @@
      "false_positive_rate": 0.0,
      "mean_cost_usd_per_query": 0.13893445102040816,
      "run_id": "agentic-gemini-3.8-flash-4ee9cbab",
+     "outcomes": {
+      "no_submission": 1,
+      "step_limit": 16,
+      "submitted": 32
+     },
      "origin": "record",
      "file": "data/results/agentic-v0.2.5/record/robotics/agentic-gemini-3.8-flash-4ee9cbab.json",
      "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
@@ -490,6 +532,10 @@
      "false_positive_rate": 0.5555555555555556,
      "mean_cost_usd_per_query": 0.024507204081632653,
      "run_id": "agentic-claude-haiku-5-5-16366cbb",
+     "outcomes": {
+      "budget_exceeded": 5,
+      "submitted": 44
+     },
      "origin": "record",
      "file": "data/results/agentic-v0.2.5/record/robotics/agentic-claude-haiku-5-5-16366cbb.json",
      "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
@@ -518,6 +564,9 @@
      "false_positive_rate": 0.7777777777777778,
      "mean_cost_usd_per_query": 0.018055504081632655,
      "run_id": "agentic-claude-haiku-5-5-deec2a97",
+     "outcomes": {
+      "submitted": 49
+     },
      "origin": "record",
      "file": "data/results/agentic-v0.2.5/record/robotics/agentic-claude-haiku-5-5-deec2a97.json",
      "code_commit": "fd75d7d916f9e396e26a6eaac0b42d3b7722b131",
@@ -546,6 +595,10 @@
      "false_positive_rate": 0.7777777777777778,
      "mean_cost_usd_per_query": 0.08066821224489797,
      "run_id": "agentic-claude-sonnet-5-5-8b149461",
+     "outcomes": {
+      "budget_exceeded": 2,
+      "submitted": 47
+     },
      "origin": "record",
      "file": "data/results/agentic-v0.2.5/record/robotics/agentic-claude-sonnet-5-5-8b149461.json",
      "code_commit": "a8b89c2ec669720722186391c75f015d8ff42838",
@@ -574,6 +627,10 @@
      "false_positive_rate": 1.0,
      "mean_cost_usd_per_query": 0.015561373469387756,
      "run_id": "agentic-gpt-5.4-mini-3ba26b49",
+     "outcomes": {
+      "no_submission": 9,
+      "submitted": 40
+     },
      "origin": "record",
      "file": "data/results/agentic-v0.2.5/record/robotics/agentic-gpt-5.4-mini-3ba26b49.json",
      "code_commit": "06672987bddde3c0fbef8fe4d59648312c53575f",
@@ -611,6 +668,9 @@
      "false_positive_rate": 1.0,
      "mean_cost_usd_per_query": null,
      "run_id": "predictions-bm25-transcript-6b03f97f",
+     "outcomes": {
+      "submitted": 49
+     },
      "origin": "submission",
      "file": "submissions/bm25-transcript-robotics/run.json",
      "code_commit": null,

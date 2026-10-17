@@ -33,9 +33,16 @@ def name(r: dict) -> str:
                             and r["harness"] == "api" else "")
 
 
+def stops(r: dict) -> str:
+    """Trials that ended without submitting (step limit, budget, no answer), which
+    score zero: e.g. "55 step_limit"."""
+    out = {k: v for k, v in (r.get("outcomes") or {}).items() if k != "submitted"}
+    return ", ".join(f"{v} {k}" for k, v in out.items()) or "0"
+
+
 def group_table(g: dict) -> str:
     lines = ["| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | "
-             "No-answer | Net | $/query |", "|---|---|---|---|---|---|---|"]
+             "No-answer | Net | Ended without an answer | $/query |", "|---|---|---|---|---|---|---|---|"]
     for r in g["rows"]:
         cost = r.get("mean_cost_usd_per_query")
         lines.append(
@@ -43,11 +50,12 @@ def group_table(g: dict) -> str:
             f"{ci(r.get('positive_recall_at_1_ci95'))} | {pct(r['recall_at_1'])}"
             f"{ci(r['recall_at_1_ci95'])} | {pct(r.get('no_answer_accuracy'))} | "
             f"{'' if r.get('net_score') is None else format(r['net_score'], '+.2f')} | "
+            f"{stops(r)} | "
             f"{'n/a' if cost is None else f'${cost:.3f}'}"
             f"{'*' if r['harness'] == 'claude-code' and cost is not None else ''} |")
     for x in g.get("not_run", []):
         label = name({"model_id": x["model_id"], "harness": x["harness"]})
-        lines.append(f"| {label} | {x['harness']} | not run: {x.get('reason', '')} | | | | |")
+        lines.append(f"| {label} | {x['harness']} | not run: {x.get('reason', '')} | | | | | |")
     return "\n".join(lines)
 
 
@@ -117,7 +125,10 @@ Recall@1 counts a hit when the first answer is in the right video with temporal 
 at least 0.5. **Positive R@1** is Recall@1 on queries that have a gold moment, the
 headline localization number; its interval is a query bootstrap (query sampling), and
 run-to-run variation is separate (one trial per query in this release). Net score is
-+1 per correct answer, -1 per wrong moment and 0 per abstention. Rows are compared
++1 per correct answer, -1 per wrong moment and 0 per abstention. "Ended without an
+answer" counts trials stopped by the step limit (`step_limit`), the token or turn budget
+(`budget_exceeded`) or ending with no answer (`no_submission`); they score zero, so a
+row's score mixes search quality with how often its harness ran out. Rows are compared
 only within a group: a group is one compatibility key, so its rows ran the same
 queries, corpus, transcripts, prompt, tools, budget and conditions. Record runs use
 anonymized titles. `*` Claude Code runs are on a subscription; their cost is what the
@@ -128,8 +139,12 @@ tokens would cost at API list prices.
 ## Reproducing a number
 
 `data/release/{v}.json` lists every run file with its hash, the code commit it was made
-with and the exact command that reproduces it, plus the environment, the corpus
-manifest, the scored query files and the label log with full hashes.
+with and a command for it, plus the environment, the corpus manifest, the scored query
+files and the label log with full hashes. Each command is labelled by where it comes
+from: `recorded` (the run's own arguments), `recipe` (a portable command, such as
+`scripts/bm25_predictions.py` for the BM25 rows), or `reconstructed` from the run's
+recorded identity. A prediction-file row from an outside system needs that system's
+prediction file.
 `momentbench diagnose` checks a setup against stored references in about 10 minutes;
 `docs/bring-your-system.md` walks from install to a validated, citable result.
 
