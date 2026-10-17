@@ -18,6 +18,8 @@ tags:
   - moment-localization
   - benchmark
   - multimodal
+  - agentic-evaluation
+  - abstention
 task_categories:
   - video-text-to-text
 task_ids: []
@@ -25,7 +27,7 @@ task_ids: []
 
 # MomentBench
 
-**Corpus-scale video moment retrieval benchmark. Release v0.2.**
+**Corpus-scale video moment retrieval benchmark. Release v0.2.5.**
 
 v0.2 is about 117 minutes of footage and 619 queries, short of the design target of 75 hours. Read the status section before citing any number from it.
 
