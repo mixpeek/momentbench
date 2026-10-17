@@ -31,8 +31,11 @@ jobs:
         env:
           PR: ${{ github.event.pull_request.number }}
           BASE: ${{ github.event.pull_request.base.ref }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           git fetch origin "pull/$PR/head:pr"
+          # Validate exactly the commit this event is about; the merge below is pinned to it.
+          [ "$(git rev-parse pr)" = "$HEAD_SHA" ] || { echo "FAIL: head moved during the check" | tee -a "$GITHUB_STEP_SUMMARY"; exit 1; }
           changed=$(git diff --name-only "origin/$BASE...pr")
           bad=$(echo "$changed" | grep -Ev '^submissions/[a-z0-9][a-z0-9._-]{0,63}/(run|submission)\.json$' || true)
           if [ -n "$bad" ]; then
@@ -40,6 +43,12 @@ jobs:
             echo "FAIL: a submission may only add submissions/<name>/run.json and submission.json; also changed: $bad" | tee -a "$GITHUB_STEP_SUMMARY"
             exit 1
           fi
+          for d in $(echo "$changed" | awk -F/ '{print $1"/"$2}' | sort -u); do
+            if git cat-file -e "origin/$BASE:$d" 2>/dev/null; then
+              echo "FAIL: $d already exists; a submission never overwrites another" | tee -a "$GITHUB_STEP_SUMMARY"
+              exit 1
+            fi
+          done
           mkdir -p "$RUNNER_TEMP/subs"
           for f in $changed; do
             mkdir -p "$RUNNER_TEMP/subs/$(dirname "$f")"
@@ -55,7 +64,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           PR: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           gh label create validated --color 0E8A16 --description "Submission passed momentbench submit" 2>/dev/null || true
           gh pr edit "$PR" --add-label validated
-          gh pr merge "$PR" --squash --delete-branch=false
+          # Merges only the validated commit: a later push makes this fail.
+          gh pr merge "$PR" --squash --delete-branch=false --match-head-commit "$HEAD_SHA"
+          # Publication runs from the maintainer machine's daily publish loop, which
+          # rebuilds the leaderboard from validated rows and deploys momentbench.com.

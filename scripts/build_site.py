@@ -378,6 +378,7 @@ def page(results: dict, st: dict, examples: list[dict], held: str, board: dict) 
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="momentbench-leaderboard" content="{e(board.get('generated_at_commit', ''))}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MomentBench: find one moment in a corpus of video</title>
 <meta name="description" content="A benchmark for finding the exact moment a request describes across a whole corpus of video: {st['published']} published queries, {st['assets']} hash-verified public-domain and CC BY assets, agentic and retrieval tracks, results with 95% intervals and cost.">
