@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://momentbench.com/sitemap.xml

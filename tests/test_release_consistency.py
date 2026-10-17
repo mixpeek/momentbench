@@ -177,3 +177,6 @@ def test_site_headlines_come_from_the_release_primary_groups():
     assert f"MomentBench v{momentbench.__version__} &middot;" in page
     assert "docs/results.json" not in page
     assert not re.search(r"v0\.2\.0 &middot;|Version 0\.2\.0", page)
+    # The free start path is on the page, and crawlers can find it.
+    assert 'id="start"' in page and "momentbench diagnose" in page
+    assert "https://momentbench.com/" in (ROOT / "site/sitemap.xml").read_text()

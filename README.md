@@ -1,25 +1,48 @@
 <p align="center">
-  <img src="site/assets/banner.svg" alt="MomentBench — Corpus-scale video retrieval benchmark" width="100%">
+  <img src="site/assets/banner.svg" alt="MomentBench: corpus-scale video retrieval benchmark" width="100%">
 </p>
 
 # MomentBench
 
-**[momentbench.com](https://momentbench.com)** — Corpus-scale video moment retrieval benchmark.
+**[momentbench.com](https://momentbench.com)**: corpus-scale video moment retrieval benchmark.
 
 **Design target:** 75 hours of rights-cleared video, 500 queries across 4 difficulty tiers, evaluated against frontier models and retrieval pipelines.
 
-**Current release (v0.2):** 27 hash-verified assets in three domains: 7 Blender open movies (about 72 minutes), 13 NASA aerospace videos (about 32 minutes, 2022 to 2026) and 7 NASA robotics videos (about 13 minutes, 2019 to 2023), with machine transcripts in [`data/transcripts`](data/transcripts). The queries, transcripts, runs and the 25 videos with confirmed licences are also on Hugging Face at [`Mixpeek/momentbench`](https://huggingface.co/datasets/Mixpeek/momentbench). Queries:
+**Current release (v0.2.5):** 27 hash-verified assets in three domains: 7 Blender open movies (about 72 minutes), 13 NASA aerospace videos (about 32 minutes, 2022 to 2026) and 7 NASA robotics videos (about 13 minutes, 2019 to 2023), with machine transcripts in [`data/transcripts`](data/transcripts). The queries, transcripts, runs and the 25 videos with confirmed licences are also on Hugging Face at [`Mixpeek/momentbench`](https://huggingface.co/datasets/Mixpeek/momentbench). Queries:
 
 - [`data/queries/film_v0.2.json`](data/queries/film_v0.2.json): 184 public film queries across all four tiers; 82 more are held out.
 - [`data/queries/aerospace_v0.2.json`](data/queries/aerospace_v0.2.json): 202 NASA queries across all four tiers, 164 `public` and 38 `rolling` (footage published after current model training cutoffs); 65 more are held out.
 - [`data/queries/robotics_v0.2.json`](data/queries/robotics_v0.2.json): 70 public NASA robotics queries across all four tiers; 16 more are held out.
 - [`data/queries/sample.json`](data/queries/sample.json): the 4-query v0.1 seed, kept for comparison with earlier runs.
 
-In total 619 queries across film, aerospace and robotics, 456 in this repository. They were drafted and verified by Claude, then cross-checked by Gemini, and only queries both agreed on were kept (37 of 657 were dropped at that step). Every published query then had a frame-level review by Claude, delegated by the maintainer on 2026-10-14: 397 accepted, 59 corrected (wording or span), 1 removed; each carries `metadata.model_review`. The Gemini cross-check covers 330 of them as they now stand; the other 126 were edited after it (span or wording), so their earlier check is kept in `metadata.cross_check_history` and a new independent check is pending. Human review is still pending. A 20-query spot check had put the error rate before cross-checking at about 10%. The technical report is [`docs/report.md`](docs/report.md); current scores are in [`docs/results.md`](docs/results.md). [`docs/protocol.md`](docs/protocol.md) defines the task, metrics and what a reported result must state, and describes how the queries were built. [`docs/input-spec.md`](docs/input-spec.md) lists exactly what a model sees and how it is scored, for reimplementing the track in another harness. [`docs/bring-your-system.md`](docs/bring-your-system.md) takes you from install to a validated, citable result in five steps. [`docs/labels.md`](docs/labels.md) is the label log: two model families other than Claude judged every published query, and the queries both accepted form the scored set in `data/queries/scored/`. [`docs/scope.md`](docs/scope.md) states what a v0.2 score measures and what it does not, with a roadmap for each gap. PRs adding rights-cleared footage or queries are welcome (see [`SUBMISSION.md`](SUBMISSION.md)).
+In total 619 queries across film, aerospace and robotics, 456 in this repository and 163 held out (committed by hash in [`data/heldout_commitments.json`](data/heldout_commitments.json)). Claude drafted, verified and reviewed them; then two model families other than Claude judged every published query, and the 333 both accepted form the **scored set** in `data/queries/scored/` that results use ([`docs/labels.md`](docs/labels.md), the label log). The labels are model-made and model-adjudicated, with no human review yet. The technical report is [`docs/report.md`](docs/report.md) and the leaderboard is [`docs/leaderboard.json`](docs/leaderboard.json), ranked only within compatibility groups. [`docs/protocol.md`](docs/protocol.md) defines the task, metrics and what a reported result must state. [`docs/input-spec.md`](docs/input-spec.md) lists exactly what a model sees, for reimplementing the track in another harness. [`docs/scope.md`](docs/scope.md) states what a score measures and what it does not. PRs adding rights-cleared footage or queries are welcome (see [`SUBMISSION.md`](SUBMISSION.md)).
 
 Maintained by [Mixpeek](https://mixpeek.com). Mixpeek's own pipeline is one entrant on the leaderboard and follows the same rules as every other. See [`GOVERNANCE.md`](GOVERNANCE.md).
 
-## Quick Start
+## Start here: a validated result in four steps
+
+**[`docs/bring-your-system.md`](docs/bring-your-system.md)** is the shortest path, and the
+first two steps need no API key and no model:
+
+```bash
+git clone --branch v0.2.5 https://github.com/mixpeek/momentbench.git && cd momentbench
+pip install -e .
+momentbench corpus-download -m data/diagnostic/manifest.json --corpus-dir diag/
+momentbench diagnose --corpus-dir diag/          # 5 checks, all should read PASS
+```
+
+1. **Check your setup** with `diagnose` (above, a few minutes).
+2. **Score a retrieval system** on the prediction-file track: write ranked
+   `(asset_id, t_in, t_out)` per query, then
+   `momentbench score-predictions -p preds.json -q data/queries/scored/film_v0.2_scored.json`.
+   `scripts/bm25_predictions.py` is a complete example that writes such a file.
+3. **Get a citable result**: `momentbench bundle -r <run>.json` writes JSON, a model-card
+   block, a LaTeX table and a citation.
+4. **Submit** with `momentbench submit` and a pull request: a check validates it and a
+   valid run is merged and published to [momentbench.com](https://momentbench.com)
+   without a maintainer.
+
+## Quick Start: the agentic track
 
 Evaluate a model on the v0.2 agentic track from an empty directory. MomentBench is not on
 PyPI: the repository carries the queries, manifest and transcripts the commands read, so
@@ -32,10 +55,11 @@ cd momentbench
 pip install -e ".[openai]"   # Python 3.10+; or .[gemini], .[claude-code], .[inspect]
 momentbench corpus-download -m data/corpus_manifests/sample_manifest.json --corpus-dir corpus/   # 2.6 GB
 momentbench agentic <model> --provider openai-compatible --base-url http://localhost:8000/v1 \
-  -q data/queries/film_v0.2.json -c data/corpus_manifests/sample_manifest.json --corpus-dir corpus/
+  -q data/queries/scored/film_v0.2_scored.json -c data/corpus_manifests/sample_manifest.json \
+  --corpus-dir corpus/ --anonymize-titles
 ```
 
-`--provider` is one of `openai-compatible` (vLLM, SGLang, Ollama and other `/v1/chat/completions` servers), `openai`, `gemini`, `anthropic`, `claude-code` or `baseline`. [`docs/integrating.md`](docs/integrating.md) covers each route, including a runnable template for your own agent ([`examples/custom_agent.py`](examples/custom_agent.py)) and the Inspect AI task. Scores so far are in [`docs/results.md`](docs/results.md); compare yours against the `baseline-random` and `baseline-abstain` floors there.
+`--provider` is one of `openai-compatible` (vLLM, SGLang, Ollama and other `/v1/chat/completions` servers), `openai`, `gemini`, `anthropic`, `claude-code` or `baseline`. [`docs/integrating.md`](docs/integrating.md) covers each route, including a runnable template for your own agent ([`examples/custom_agent.py`](examples/custom_agent.py)) and the Inspect AI task. Current scores are in [`docs/report.md`](docs/report.md) and on [momentbench.com](https://momentbench.com); for a comparable row use the scored query files and `--anonymize-titles`, as the record runs do.
 
 ## For world-model and physical-AI teams
 

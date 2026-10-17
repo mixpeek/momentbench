@@ -32,9 +32,20 @@ sees.
 ## 3. Run on the scored set
 
 The scored set is the 333 queries two model families other than Claude accepted
-(`docs/labels.md`), split by domain in `data/queries/scored/`. Get the full corpus
-first (`momentbench corpus-download -m data/corpus_manifests/sample_manifest.json
---corpus-dir corpus/`). Then:
+(`docs/labels.md`), split by domain in `data/queries/scored/`.
+
+What you need depends on the step:
+
+- **Producing predictions** needs the media your system indexes: the full corpus
+  (`momentbench corpus-download -m data/corpus_manifests/sample_manifest.json
+  --corpus-dir corpus/`, 2.6 GB), and the transcripts in `data/transcripts/` if your
+  system reads text.
+- **Scoring predictions you already have** needs no media and no credentials: only the
+  query files and the corpus manifest in this repository. `scripts/bm25_predictions.py`
+  writes a complete prediction file from the shipped transcripts, so you can try the
+  whole path before plugging in your own system.
+
+Then:
 
 ```bash
 # prediction-file track
