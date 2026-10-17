@@ -1,7 +1,7 @@
 {
  "benchmark": "momentbench",
  "release": "0.2.5",
- "generated_at_commit": "93ce82b",
+ "generated_at_commit": "e730039",
  "ranking_rule": "rows are compared only within a group (one compatibility key)",
  "primary_keys": {
   "aerospace": "05841b8cc16d0b1b",
@@ -342,14 +342,40 @@
      "file": "data/results/agentic-v0.2.5/record/film/agentic-claude-opus-5-5-df67db36.json",
      "code_commit": "a1ee7f43e8532b247c78c39d38830260a91f7f04",
      "timestamp": "2026-10-17T19:21:02Z"
+    },
+    {
+     "positive_recall_at_1_ci95": [
+      0.1619047619047619,
+      0.3238095238095238
+     ],
+     "model_id": "claude-sonnet-5-5",
+     "harness": "claude-code",
+     "resolved_models": [
+      "claude-sonnet-5-5"
+     ],
+     "num_queries": 130,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.23809523809523808,
+     "recall_at_1": 0.2308,
+     "recall_at_1_ci95": [
+      0.1615,
+      0.3077
+     ],
+     "net_score": -0.47692307692307695,
+     "no_answer_accuracy": 0.2,
+     "false_positive_rate": 0.8,
+     "mean_cost_usd_per_query": 0.07961837538461539,
+     "run_id": "agentic-claude-sonnet-5-5-149f9e3e",
+     "outcomes": {
+      "submitted": 130
+     },
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/film/agentic-claude-sonnet-5-5-149f9e3e.json",
+     "code_commit": "a1ee7f43e8532b247c78c39d38830260a91f7f04",
+     "timestamp": "2026-10-17T19:52:21Z"
     }
    ],
    "not_run": [
-    {
-     "model_id": "claude-sonnet-5-5",
-     "harness": "claude-code",
-     "reason": "not run yet"
-    },
     {
      "model_id": "claude-haiku-5-5",
      "harness": "claude-code",
