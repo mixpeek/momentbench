@@ -77,15 +77,21 @@ def test_an_unreadable_absence_reply_is_incomplete(tmp_path, monkeypatch):
     monkeypatch.setattr(ac, "small_copy", lambda v, o: b"video")
 
     class FakeModels:
+        reply = ""
+
         async def generate_content(self, **kw):
-            return SimpleNamespace(text="I could not decide", usage_metadata=SimpleNamespace(
+            return SimpleNamespace(text=self.reply, usage_metadata=SimpleNamespace(
                 prompt_token_count=10, candidates_token_count=5, thoughts_token_count=0))
 
     judges = SimpleNamespace(_gemini=SimpleNamespace(aio=SimpleNamespace(models=FakeModels())),
                              video=lambda aid: tmp_path / "v.mp4", sem=asyncio.Semaphore(1))
     asset = {"asset_id": "v", "duration_s": 10}
-    try:
-        asyncio.run(ac.scan_chunk(judges, asset, [{"query_id": "na", "text": "x"}], tmp_path))
-    except ac.IncompleteScanError:
-        return
-    raise AssertionError("an unreadable reply must not count as no match")
+    for reply in ("I could not decide", '{"matches": [{"id": 7, "t_start": 1, "t_end": 2}]}',
+                  '{"matches": [{"id": 1, "t_start": "soon"}]}'):
+        FakeModels.reply = reply
+        try:
+            asyncio.run(ac.scan_chunk(judges, asset, [{"query_id": "na", "text": "x"}],
+                                      tmp_path))
+        except ac.IncompleteScanError:
+            continue
+        raise AssertionError(f"{reply!r} must leave the scan incomplete")

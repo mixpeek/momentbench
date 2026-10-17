@@ -82,7 +82,8 @@ def task_identity(*, queries: list[Any], receipt: dict[str, str],
                   anonymize_titles: bool = False,
                   asset_view: str | None = None,
                   frames: dict[str, Any] | None = None,
-                  prompt_condition: str = "standard") -> dict[str, Any]:
+                  prompt_condition: str = "standard",
+                  input_token_cap: int | None = None) -> dict[str, Any]:
     """What defines the task. Two runs with the same compatibility_key ran the same
     benchmark: the same selected queries and wording, the same verified video bytes,
     transcripts, prompt, tools, budget and conditions, and the same asset list as the
@@ -111,6 +112,10 @@ def task_identity(*, queries: list[Any], receipt: dict[str, str],
         task["frames"] = frames
     if prompt_condition != "standard":
         task["prompt_condition"] = prompt_condition
+    # A paid run under the spend ledger stops a trial at an input-token cap: a
+    # different stopping rule, so a different task.
+    if input_token_cap:
+        task["input_token_cap"] = input_token_cap
     return {**task, "compatibility_key": text_sha(json.dumps(task, sort_keys=True))}
 
 

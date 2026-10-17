@@ -88,6 +88,7 @@ def expected_key(run: AgenticRun, queries: dict[str, Query], manifest: Path,
                                                                       "standard")),
                          tools=TOOLS, frames=run.identity.get("frames"),
                          prompt_condition=run.identity.get("prompt_condition", "standard"),
+                         input_token_cap=run.identity.get("input_token_cap"),
                          budget=run.budget.model_dump(), modalities=run.modalities,
                          anonymize_titles=run.anonymize_titles,
                          asset_view=view)["compatibility_key"]

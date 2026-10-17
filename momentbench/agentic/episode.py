@@ -46,6 +46,17 @@ def system_prompt(condition: str = "standard") -> str:
     return PROMPTS[condition]
 
 
+def total_input(usage: Usage) -> int:
+    """Every input token billed, cached or not."""
+    return usage.input_tokens + usage.cache_read_tokens + usage.cache_write_tokens
+
+
+def projected_input(usage: Usage, last_turn_input: int) -> int:
+    """Input billed so far plus a bound on the next request: the last request again,
+    half again for growth, and 64 frames' worth of new tool results."""
+    return total_input(usage) + int(1.5 * last_turn_input) + 64 * 1_000
+
+
 def build_task(query: Query, budget: Budget) -> str:
     return (
         f"Find this moment: {query.text}\n\n"
@@ -103,15 +114,22 @@ async def _episode(model, corpus, query, budget, usage, trace, turn_models,
         resolved = next((m for m in turn_models if m), None)
         return Episode(query.query_id, moments, usage, outcome, trace, resolved, turn_models)
 
+    last_in = 0
     while usage.steps < budget.max_steps:
+        if spend.active() and usage.steps and projected_input(usage, last_in) > (
+                spend.MAX_TRIAL_INPUT_TOKENS):
+            # Checked before the request is sent: the next turn's input is at least the
+            # last turn's plus the new tool results (momentbench.spend).
+            trace.append({"error": "token_cap", "input_tokens": total_input(usage)})
+            return end([], "token_cap")
+        before = total_input(usage)
         turn = await session.step(results)
         usage.steps += 1
         usage.add(turn.usage)
+        last_in = total_input(usage) - before
         turn_models.append(turn.model)
-        if spend.active() and usage.input_tokens > (spend.MAX_TRIAL_INPUT_TOKENS
-                                                    * spend.TRIAL_INPUT_STOP_FRACTION):
-            # Stay inside the trial's reservation (momentbench.spend).
-            trace.append({"error": "token_cap", "input_tokens": usage.input_tokens})
+        if spend.active() and total_input(usage) > spend.MAX_TRIAL_INPUT_TOKENS:
+            trace.append({"error": "token_cap", "input_tokens": total_input(usage)})
             return end([], "token_cap")
         if len({m for m in turn_models if m}) > 1:
             # The protocol's no-silent-fallback rule: a turn answered by another model

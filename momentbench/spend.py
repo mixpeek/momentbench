@@ -37,7 +37,7 @@ DEFAULT_CAP_USD = HARD_CAP_USD
 # MAX_OUTPUT_TOKENS_PER_TURN or less.
 MAX_TRIAL_INPUT_TOKENS = int(os.environ.get("MOMENTBENCH_MAX_TRIAL_INPUT_TOKENS", "600000"))
 MAX_OUTPUT_TOKENS_PER_TURN = 16000
-TRIAL_INPUT_STOP_FRACTION = 0.8
+TRIAL_INPUT_STOP_FRACTION = 0.8  # superseded by the pre-request check in episode.py
 MAX_TRIAL_OUTPUT_TOKENS = int(os.environ.get("MOMENTBENCH_MAX_TRIAL_OUTPUT_TOKENS", "60000"))
 # Kept for callers that predate per-trial bounds.
 TRIAL_ESTIMATE_USD = float(os.environ.get("MOMENTBENCH_TRIAL_ESTIMATE_USD", "0.5"))

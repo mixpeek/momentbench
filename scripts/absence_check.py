@@ -123,14 +123,18 @@ async def scan_chunk(judges: adj.Judges, asset: dict, negs: list[dict],
         # A reply we cannot read is not "no match": the check stays incomplete.
         raise IncompleteScanError(f"{asset['asset_id']}: unreadable scan reply ({e})") from e
     out = []
+    duration = float(asset.get("duration_s") or 0) or float("inf")
     for m in found:
         try:
-            q = negs[int(m["id"]) - 1]
-            out.append({"query_id": q["query_id"], "asset_id": asset["asset_id"],
-                        "t_start": float(m["t_start"]), "t_end": float(m["t_end"]),
-                        "why": str(m.get("why", ""))[:300]})
-        except (KeyError, ValueError, IndexError, TypeError):
-            continue
+            i = int(m["id"])
+            a, b = float(m["t_start"]), float(m["t_end"])
+            if not (1 <= i <= len(negs) and 0 <= a <= b <= duration + 1):
+                raise ValueError(f"id {i} or span {a}-{b} out of range")
+        except (KeyError, ValueError, TypeError) as e:
+            # One malformed entry could hide a real match: the whole scan is incomplete.
+            raise IncompleteScanError(f"{asset['asset_id']}: malformed match ({e})") from e
+        out.append({"query_id": negs[i - 1]["query_id"], "asset_id": asset["asset_id"],
+                    "t_start": a, "t_end": b, "why": str(m.get("why", ""))[:300]})
     return out
 
 
@@ -144,8 +148,9 @@ async def confirm(judges: adj.Judges, hit: dict, text: str, work: Path) -> dict:
     for i, t in enumerate(times):
         p = extract(judges.video(hit["asset_id"]), t,
                     work / f"hit_{hit['query_id']}_{hit['asset_id']}_{a:.0f}_{i}.jpg", 512)
-        if p is not None:
-            frames.append(p.read_bytes())
+        if p is None:  # no frame means no confirmation: incomplete, not unconfirmed
+            return {**hit, "confirmed": None, "incomplete": "frame extraction failed"}
+        frames.append(p.read_bytes())
     content = [{"type": "text", "text": CONFIRM.format(a=a, b=b, text=text)}] + [
         {"type": "image_url", "image_url": {
             "url": "data:image/jpeg;base64," + base64.b64encode(f).decode()}} for f in frames]
@@ -157,13 +162,14 @@ async def confirm(judges: adj.Judges, hit: dict, text: str, work: Path) -> dict:
     spend.settle(rid, spend.token_cost_usd(adj.GPT, r.usage.prompt_tokens,
                                       r.usage.completion_tokens), f"absence:{adj.GPT}",
                  query=hit["query_id"])
-    reply = r.choices[0].message.content or "{}"
+    reply = r.choices[0].message.content or ""
     try:
         out = json.loads(reply[reply.find("{"):reply.rfind("}") + 1])
-    except ValueError:
-        out = {}
-    return {**hit, "confirmed": out.get("match") is True,
-            "gpt_reason": str(out.get("reason", ""))[:300]}
+        if not isinstance(out.get("match"), bool):
+            raise ValueError("no boolean match verdict")
+    except ValueError as e:
+        return {**hit, "confirmed": None, "incomplete": f"unreadable verdict ({e})"}
+    return {**hit, "confirmed": out["match"], "gpt_reason": str(out.get("reason", ""))[:300]}
 
 
 async def control(judges: adj.Judges, assets: list[dict], queries: list[dict],
@@ -229,15 +235,20 @@ async def run(args: argparse.Namespace) -> dict:
         mine = [h for h in checked if h["query_id"] == q["query_id"]]
         log["queries"].setdefault(q["query_id"], {})["absence"] = {
             "annotation_sha": annotation_sha(q), "assets_scanned": len(scanned),
-            "confirmed_matches": [h for h in mine if h["confirmed"]],
-            "unconfirmed_hits": [h for h in mine if not h["confirmed"]],
+            "confirmed_matches": [h for h in mine if h["confirmed"] is True],
+            "unconfirmed_hits": [h for h in mine if h["confirmed"] is False],
+            "incomplete_hits": [h for h in mine if h["confirmed"] is None],
             "incomplete": failed,
-            "passed": len(scanned) == len(judges.assets) and not failed and not any(
-                h["confirmed"] for h in mine)}
+            # Passed only when every video was scanned, every reply was readable and
+            # every hit got an explicit "no match" verdict.
+            "passed": len(scanned) == len(judges.assets) and not failed and all(
+                h["confirmed"] is False for h in mine)}
     absent = sum(1 for q in negs if log["queries"][q["query_id"]]["absence"]["passed"])
     log["summary"]["absence"] = {"queries": len(negs), "assets": len(scanned),
                                  "hits_off_source": len(hits),
-                                 "confirmed": sum(h["confirmed"] for h in checked),
+                                 "confirmed": sum(h["confirmed"] is True for h in checked),
+                                 "incomplete": sum(h["confirmed"] is None for h in checked)
+                                 + len(failed),
                                  "passed": absent}
     adj.LOG.write_text(json.dumps(log, indent=1, ensure_ascii=False) + "\n")
     return log["summary"]["absence"]

@@ -145,3 +145,19 @@ async def test_a_trial_stops_before_its_input_reservation(ledger, tmp_path, monk
                                       verified_corpus(tmp_path), trials=1, pricing=PRICE)
     assert run.trials[0].outcome == "token_cap"
     assert run.trials[0].usage.input_tokens <= 300
+
+
+async def test_the_bound_is_checked_before_each_request(ledger, tmp_path, monkeypatch):
+    """Codex round 2: the cap must hold before a request is sent, not after."""
+    monkeypatch.setenv("MOMENTBENCH_SPEND_CAP_USD", "100")
+    monkeypatch.setattr(spend, "MAX_TRIAL_INPUT_TOKENS", 64_300)  # stops before the 3rd request
+    monkeypatch.setattr(spend, "MAX_OUTPUT_TOKENS_PER_TURN", 1)
+    looping = [[("list_assets", {})]] * 10 + [[SUBMIT_GOLD]]
+    run = await run_agentic_benchmark([make_query()], ScriptedModel(looping),
+                                      verified_corpus(tmp_path), trials=1, pricing=PRICE)
+    t = run.trials[0]
+    assert t.outcome == "token_cap" and t.usage.input_tokens <= 64_300
+    assert run.identity["input_token_cap"] == 64_300
+    s = spend.summary()
+    assert s["spent_usd"] <= PRICE.cost_usd(type(t.usage)(input_tokens=64_300,
+                                                           output_tokens=30))
