@@ -6,7 +6,7 @@ Changes to the current leaderboard after 0.2.5; the archived release is unchange
 
 - The site's headline numbers, version and data links come from `docs/leaderboard.json`
   (it showed a legacy no-answer figure and v0.2.0). A test pins the rendered values.
-- Leaderboard rows and the report count how trials ended without an answer (step
+- Leaderboard rows and the report count trials with no admissible answer (step
   limit, budget, no answer), which score zero.
 - `scripts/bm25_predictions.py` regenerates the BM25 baseline's prediction files; the
   three `submissions/bm25-transcript-*` rows reproduce from it exactly. Manifest

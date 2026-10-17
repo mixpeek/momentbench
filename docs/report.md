@@ -33,10 +33,11 @@ Recall@1 counts a hit when the first answer is in the right video with temporal 
 at least 0.5. **Positive R@1** is Recall@1 on queries that have a gold moment, the
 headline localization number; its interval is a query bootstrap (query sampling), and
 run-to-run variation is separate (one trial per query in this release). Net score is
-+1 per correct answer, -1 per wrong moment and 0 per abstention. "Ended without an
-answer" counts trials stopped by the step limit (`step_limit`), the token or turn budget
-(`budget_exceeded`) or ending with no answer (`no_submission`); they score zero, so a
-row's score mixes search quality with how often its harness ran out. Rows are compared
++1 per correct answer, -1 per wrong moment and 0 per abstention. "No admissible
+answer" counts trials stopped by the step limit (`step_limit`) or the token or turn
+budget (`budget_exceeded`, where an answer may have been produced and then discarded),
+or that ended with no answer (`no_submission`); they score zero, so a row's score mixes
+search quality with how often its harness ran out. Rows are compared
 only within a group: a group is one compatibility key, so its rows ran the same
 queries, corpus, transcripts, prompt, tools, budget and conditions. Record runs use
 anonymized titles. `*` Claude Code runs are on a subscription; their cost is what the
@@ -47,7 +48,7 @@ tokens would cost at API list prices.
 
 Primary group: anonymized titles, standard prompt, compatibility key `689ea1623b054aa6`.
 
-| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | Ended without an answer | $/query |
+| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | 59.0 (50 to 68) | 50.8 (42 to 59) | 16.0 | +0.02 | 1 budget_exceeded | $0.138* |
 | claude-sonnet-5-5 | claude-code | 23.8 (16 to 32) | 23.1 (16 to 31) | 20.0 | -0.48 | 0 | $0.080* |
@@ -58,7 +59,7 @@ Primary group: anonymized titles, standard prompt, compatibility key `689ea1623b
 
 Other condition: anonymized titles, abstain prompt (no runs yet), ranked only within itself:
 
-| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | Ended without an answer | $/query |
+| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | not run: not run yet | | | | | |
 | claude-sonnet-5-5 | claude-code | not run: not run yet | | | | | |
@@ -66,7 +67,7 @@ Other condition: anonymized titles, abstain prompt (no runs yet), ranked only wi
 
 Other condition: prediction-file track (key `7eb1c82e785ca0bc`), ranked only within itself:
 
-| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | Ended without an answer | $/query |
+| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
 | bm25-transcript | predictions | 9.5 (4 to 15) | 7.7 (4 to 12) | 0.0 | -0.85 | 0 | n/a |
 
@@ -74,7 +75,7 @@ Other condition: prediction-file track (key `7eb1c82e785ca0bc`), ranked only wit
 
 Primary group: anonymized titles, standard prompt, compatibility key `05841b8cc16d0b1b`.
 
-| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | Ended without an answer | $/query |
+| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | 60.4 (52 to 68) | 57.8 (50 to 66) | 33.3 | +0.20 | 6 budget_exceeded | $0.152* |
 | gemini-3.8-flash | api | 56.1 (48 to 64) | 51.3 (44 to 59) | 6.7 | +0.38 | 55 step_limit | $0.135 |
@@ -85,7 +86,7 @@ Primary group: anonymized titles, standard prompt, compatibility key `05841b8cc1
 
 Other condition: anonymized titles, abstain prompt (no runs yet), ranked only within itself:
 
-| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | Ended without an answer | $/query |
+| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | not run: not run yet | | | | | |
 | claude-sonnet-5-5 | claude-code | not run: not run yet | | | | | |
@@ -93,7 +94,7 @@ Other condition: anonymized titles, abstain prompt (no runs yet), ranked only wi
 
 Other condition: prediction-file track (key `603e0d07f1ecae63`), ranked only within itself:
 
-| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | Ended without an answer | $/query |
+| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
 | bm25-transcript | predictions | 17.3 (11 to 24) | 15.6 (10 to 22) | 0.0 | -0.69 | 0 | n/a |
 
@@ -101,7 +102,7 @@ Other condition: prediction-file track (key `603e0d07f1ecae63`), ranked only wit
 
 Primary group: anonymized titles, standard prompt, compatibility key `39a268172b68fe33`.
 
-| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | Ended without an answer | $/query |
+| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | 80.0 (68 to 92) | 71.4 (59 to 84) | 33.3 | +0.47 | 2 budget_exceeded | $0.152* |
 | gemini-3.8-flash | api | 57.5 (42 to 72) | 49.0 (37 to 63) | 11.1 | +0.33 | 1 no_submission, 16 step_limit | $0.139 |
@@ -112,7 +113,7 @@ Primary group: anonymized titles, standard prompt, compatibility key `39a268172b
 
 Other condition: anonymized titles, abstain prompt (no runs yet), ranked only within itself:
 
-| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | Ended without an answer | $/query |
+| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | not run: not run yet | | | | | |
 | claude-sonnet-5-5 | claude-code | not run: not run yet | | | | | |
@@ -120,7 +121,7 @@ Other condition: anonymized titles, abstain prompt (no runs yet), ranked only wi
 
 Other condition: prediction-file track (key `baf460bbce383443`), ranked only within itself:
 
-| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | Ended without an answer | $/query |
+| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
 | bm25-transcript | predictions | 12.5 (2 to 22) | 10.2 (2 to 18) | 0.0 | -0.80 | 0 | n/a |
 

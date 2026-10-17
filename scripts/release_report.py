@@ -34,15 +34,15 @@ def name(r: dict) -> str:
 
 
 def stops(r: dict) -> str:
-    """Trials that ended without submitting (step limit, budget, no answer), which
-    score zero: e.g. "55 step_limit"."""
+    """Trials with no admissible answer (step limit, budget, no answer), which score
+    zero: e.g. "55 step_limit"."""
     out = {k: v for k, v in (r.get("outcomes") or {}).items() if k != "submitted"}
     return ", ".join(f"{v} {k}" for k, v in out.items()) or "0"
 
 
 def group_table(g: dict) -> str:
     lines = ["| Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | "
-             "No-answer | Net | Ended without an answer | $/query |",
+             "No-answer | Net | No admissible answer | $/query |",
              "|---|---|---|---|---|---|---|---|"]
     for r in g["rows"]:
         cost = r.get("mean_cost_usd_per_query")
@@ -126,10 +126,11 @@ Recall@1 counts a hit when the first answer is in the right video with temporal 
 at least 0.5. **Positive R@1** is Recall@1 on queries that have a gold moment, the
 headline localization number; its interval is a query bootstrap (query sampling), and
 run-to-run variation is separate (one trial per query in this release). Net score is
-+1 per correct answer, -1 per wrong moment and 0 per abstention. "Ended without an
-answer" counts trials stopped by the step limit (`step_limit`), the token or turn budget
-(`budget_exceeded`) or ending with no answer (`no_submission`); they score zero, so a
-row's score mixes search quality with how often its harness ran out. Rows are compared
++1 per correct answer, -1 per wrong moment and 0 per abstention. "No admissible
+answer" counts trials stopped by the step limit (`step_limit`) or the token or turn
+budget (`budget_exceeded`, where an answer may have been produced and then discarded),
+or that ended with no answer (`no_submission`); they score zero, so a row's score mixes
+search quality with how often its harness ran out. Rows are compared
 only within a group: a group is one compatibility key, so its rows ran the same
 queries, corpus, transcripts, prompt, tools, budget and conditions. Record runs use
 anonymized titles. `*` Claude Code runs are on a subscription; their cost is what the
