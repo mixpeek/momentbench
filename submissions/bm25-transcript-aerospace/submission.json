@@ -1,0 +1,84 @@
+{
+  "model_name": "bm25-transcript-aerospace",
+  "model_description": "Reference text-only baseline: BM25 over the shipped transcript cues (k1 1.2, b 0.75), top five cues as ranked moments; never looks at a frame. Maintainer-submitted.",
+  "contact": "",
+  "track": "agentic",
+  "run_id": "predictions-bm25-transcript-46e8419e",
+  "model_id": "bm25-transcript",
+  "effort": null,
+  "harness": "predictions",
+  "resolved_models": [],
+  "modalities": "predictions",
+  "queries_file": "aerospace_v0.2_scored.json",
+  "num_queries": 154,
+  "queries_in_file": 154,
+  "rescore_excluded": 0,
+  "num_trials": 1,
+  "recall_at_1": 0.1558,
+  "recall_at_1_ci95": [
+    0.1039,
+    0.2208
+  ],
+  "positive_recall_at_1": 0.17266187050359713,
+  "no_answer_accuracy": 0.0,
+  "false_positive_rate": 1.0,
+  "net_score": -0.6883116883116883,
+  "mean_cost_usd_per_query": null,
+  "by_tier": {
+    "1": {
+      "num_queries": 89,
+      "recall_at_1": 0.033707865168539325,
+      "recall_at_1_ci95": [
+        0,
+        0.07865168539325842
+      ]
+    },
+    "2": {
+      "num_queries": 27,
+      "recall_at_1": 0.7777777777777778,
+      "recall_at_1_ci95": [
+        0.5925925925925926,
+        0.9259259259259259
+      ]
+    },
+    "3": {
+      "num_queries": 15,
+      "recall_at_1": 0,
+      "recall_at_1_ci95": [
+        0,
+        0
+      ]
+    },
+    "4": {
+      "num_queries": 23,
+      "recall_at_1": 0,
+      "recall_at_1_ci95": [
+        0,
+        0
+      ]
+    }
+  },
+  "budget": {
+    "max_steps": 30,
+    "max_frames": 64,
+    "max_tool_calls": 60
+  },
+  "corpus_assets_verified": 27,
+  "compatibility_key": "603e0d07f1ecae63",
+  "identity": {
+    "queries_sha": "3b6020a4981e760b",
+    "num_queries": 154,
+    "corpus_sha": "ca25d3017581a1ba",
+    "transcripts_sha": "44136fa355b3678a",
+    "system_prompt_sha": "532d3cbcc47a6b5e",
+    "tools_sha": "4f53cda18c2baa0c",
+    "budget": {},
+    "modalities": "predictions",
+    "anonymize_titles": false,
+    "compatibility_key": "603e0d07f1ecae63",
+    "track": "predictions",
+    "corpus_receipt": "declared",
+    "predictions_file_sha256": "3707e9814611a1d1"
+  },
+  "timestamp": "2026-10-17T18:24:30Z"
+}
