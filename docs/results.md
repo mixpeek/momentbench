@@ -48,7 +48,7 @@ Rows are computed on the 184 current queries every 0.2.1 run covered. A historic
 | baseline-transcript | api | 184 x 3 | 2.2 (0.5 to 4.3) | 3.8 / 1.6 | 0.0 (n=87) | 12.5 (n=32) | 0.0 (n=35) | 0.0 (n=30) | none (no model) | `agentic-baseline-transcript-d76a0886.json` |
 | baseline-random | api | 184 x 3 | 0.0 (0.0 to 0.0) | 0.0 / 0.0 | 0.0 (n=87) | 0.0 (n=32) | 0.0 (n=35) | 0.0 (n=30) | none (no model) | `agentic-baseline-random-ace9329b.json` |
 
-Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer). Net score counts +1 for a correct answer, -1 for a wrong moment and 0 for abstaining, so a wrong answer costs more than saying nothing matches; a span below tIoU 0.5 counts as wrong. Never answering scores +0.19 here (`baseline-abstain`).
+Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer). Net score counts +1 for a correct answer, -1 for a wrong moment and 0 for abstaining, so a wrong answer costs more than saying nothing matches; a span below tIoU 0.5 counts as wrong. Most of its penalty comes from wrong answers on positive queries (search and timing errors), and the current prompt asks for a best answer when the budget runs out, so read it as a localization plus abstention summary; the no-answer columns are the abstention measure. Never answering scores +0.19 here (`baseline-abstain`).
 
 | Model | Positive R@1 (95% CI by video) | No-answer accuracy | False-positive rate | Abstains on positives | Net score |
 |---|---|---|---|---|---|
@@ -85,7 +85,7 @@ Two text-only controls localize tier-2 queries from the transcript without looki
 | baseline-abstain | api | 202 x 3 | 10.4 (6.4 to 14.9) | 10.4 / 10.4 | 0.0 (n=110) | 0.0 (n=34) | 100.0 (n=21) | 0.0 (n=37) | none (no model) | `agentic-baseline-abstain-983b704e.json` |
 | baseline-random | api | 202 x 3 | 0.0 (0.0 to 0.0) | 0.0 / 0.0 | 0.0 (n=110) | 0.0 (n=34) | 0.0 (n=21) | 0.0 (n=37) | none (no model) | `agentic-baseline-random-54f2fc17.json` |
 
-Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer). Net score counts +1 for a correct answer, -1 for a wrong moment and 0 for abstaining, so a wrong answer costs more than saying nothing matches; a span below tIoU 0.5 counts as wrong. Never answering scores +0.10 here (`baseline-abstain`).
+Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer). Net score counts +1 for a correct answer, -1 for a wrong moment and 0 for abstaining, so a wrong answer costs more than saying nothing matches; a span below tIoU 0.5 counts as wrong. Most of its penalty comes from wrong answers on positive queries (search and timing errors), and the current prompt asks for a best answer when the budget runs out, so read it as a localization plus abstention summary; the no-answer columns are the abstention measure. Never answering scores +0.10 here (`baseline-abstain`).
 
 | Model | Positive R@1 (95% CI by video) | No-answer accuracy | False-positive rate | Abstains on positives | Net score |
 |---|---|---|---|---|---|
@@ -144,7 +144,7 @@ Rows are computed on the 70 current queries every 0.2.1 run covered. A historica
 | baseline-transcript | api | 70 x 3 | 5.7 (1.4 to 11.4) | 8.6 / 0.0 | 0.0 (n=42) | 40.0 (n=10) | 0.0 (n=10) | 0.0 (n=8) | none (no model) | `agentic-baseline-transcript-1a4783de.json` |
 | baseline-random | api | 70 x 3 | 0.0 (0.0 to 0.0) | 0.0 / 0.0 | 0.0 (n=42) | 0.0 (n=10) | 0.0 (n=10) | 0.0 (n=8) | none (no model) | `agentic-baseline-random-c07e91cf.json` |
 
-Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer). Net score counts +1 for a correct answer, -1 for a wrong moment and 0 for abstaining, so a wrong answer costs more than saying nothing matches; a span below tIoU 0.5 counts as wrong. Never answering scores +0.14 here (`baseline-abstain`).
+Localization and abstention, separately (positive queries have a gold moment; no-answer queries are right only on an explicit empty answer). Net score counts +1 for a correct answer, -1 for a wrong moment and 0 for abstaining, so a wrong answer costs more than saying nothing matches; a span below tIoU 0.5 counts as wrong. Most of its penalty comes from wrong answers on positive queries (search and timing errors), and the current prompt asks for a best answer when the budget runs out, so read it as a localization plus abstention summary; the no-answer columns are the abstention measure. Never answering scores +0.14 here (`baseline-abstain`).
 
 | Model | Positive R@1 (95% CI by video) | No-answer accuracy | False-positive rate | Abstains on positives | Net score |
 |---|---|---|---|---|---|

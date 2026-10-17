@@ -253,7 +253,10 @@ def section(paths: list[Path]) -> str:
             "moment; no-answer queries are right only on an explicit empty answer). Net "
             "score counts +1 for a correct answer, -1 for a wrong moment and 0 for "
             "abstaining, so a wrong answer costs more than saying nothing matches; a span "
-            "below tIoU 0.5 counts as wrong."
+            "below tIoU 0.5 counts as wrong. Most of its penalty comes from wrong answers "
+            "on positive queries (search and timing errors), and the current prompt asks "
+            "for a best answer when the budget runs out, so read it as a localization "
+            "plus abstention summary; the no-answer columns are the abstention measure."
             + (f" Never answering scores {floor:+.2f} here (`baseline-abstain`)."
                if (floor := abstain_floor(paths)) is not None else "")
             + "\n\n" + split_table(paths)
