@@ -1,7 +1,7 @@
 {
  "benchmark": "momentbench",
  "release": "0.2.5",
- "generated_at_commit": "13aeb8e",
+ "generated_at_commit": "93ce82b",
  "ranking_rule": "rows are compared only within a group (one compatibility key)",
  "primary_keys": {
   "aerospace": "05841b8cc16d0b1b",
