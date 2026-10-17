@@ -7,6 +7,12 @@
   factuality benchmarks use, so a wrong answer costs more than saying nothing
   matches. The results tables show the never-answer floor beside it.
 - CITATION.cff names the current release and query counts; a release test keeps it so.
+- Label adjudication by two model families other than Claude (`scripts/adjudicate.py`):
+  gemini-3.8-flash watches each clip with audio, gpt-5.4-mini reads a five-frame sheet,
+  and no-answer queries are judged by three yes/no answers. Of 456 published queries,
+  333 are scored (both accept) and 123 provisional; the scored files are in
+  `data/queries/scored/` and the reasons in `docs/labels.md`. Model judgement, not
+  human review.
 - A shared cash ledger for maintainers (`momentbench/spend.py`, `scripts/spend_ledger.py`).
   Off unless `MOMENTBENCH_SPEND_LEDGER` is set. When set, every paid API trial and
   every paid cross-check reserves its cost first and is refused past

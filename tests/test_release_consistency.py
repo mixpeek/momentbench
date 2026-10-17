@@ -114,3 +114,14 @@ def test_citation_names_the_current_release():
     cff = " ".join(read("CITATION.cff").split())
     assert f'version: "{momentbench.__version__}"' in cff
     assert f"{PUBLISHED} queries are published" in cff
+
+
+def test_scored_files_match_the_label_log():
+    log = json.loads(read("data/labels/adjudication.json"))["queries"]
+    for d in DOMAINS:
+        path = f"data/queries/scored/{d}_v0.2_scored.json"
+        scored = {q["query_id"] for q in json.loads(read(path))}
+        decided = {q["query_id"] for q in queries(d)
+                   if q["metadata"]["adjudication"]["decision"] == "scored"}
+        assert scored == decided
+        assert all(log[qid]["decision"] == "scored" for qid in scored)

@@ -49,6 +49,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "4d00ee2f5f0f982e",
         "result_sha": "4d00ee2f5f0f982e"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "4d00ee2f5f0f982e"
       }
     }
   },
@@ -102,6 +111,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "6ef9c9d2de7a7e68",
         "result_sha": "6ef9c9d2de7a7e68"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "6ef9c9d2de7a7e68"
       }
     }
   },
@@ -155,6 +173,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "ab94564fdbf384f3",
         "result_sha": "ab94564fdbf384f3"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "ab94564fdbf384f3"
       }
     }
   },
@@ -221,7 +248,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "0be1c3544538a796"
+      }
     }
   },
   {
@@ -274,6 +310,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "0a4b470fd29f8055",
         "result_sha": "0a4b470fd29f8055"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "0a4b470fd29f8055"
       }
     }
   },
@@ -327,6 +372,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "225873fc00132c7a",
         "result_sha": "225873fc00132c7a"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "225873fc00132c7a"
       }
     }
   },
@@ -380,6 +434,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "6d02bfeca48baf53",
         "result_sha": "6d02bfeca48baf53"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "6d02bfeca48baf53"
       }
     }
   },
@@ -433,6 +496,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "9038086cda57fa02",
         "result_sha": "9038086cda57fa02"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "9038086cda57fa02"
       }
     }
   },
@@ -486,6 +558,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "72ed08c4d940bc2e",
         "result_sha": "72ed08c4d940bc2e"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "72ed08c4d940bc2e"
       }
     }
   },
@@ -539,6 +620,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "e26aad660c393ad2",
         "result_sha": "e26aad660c393ad2"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "e26aad660c393ad2"
       }
     }
   },
@@ -592,6 +682,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "c5405d3bc60e4720",
         "result_sha": "c5405d3bc60e4720"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "c5405d3bc60e4720"
       }
     }
   },
@@ -645,6 +744,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "4a484d90cddfe0c8",
         "result_sha": "4a484d90cddfe0c8"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "4a484d90cddfe0c8"
       }
     }
   },
@@ -722,7 +830,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "1b8aa89fecde27a3"
+      }
     }
   },
   {
@@ -793,7 +910,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "c36798155d1cdff5"
+      }
     }
   },
   {
@@ -870,7 +996,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "5182c98eedbb2e4c"
+      }
     }
   },
   {
@@ -923,6 +1058,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "1ff5226c977f8bfa",
         "result_sha": "1ff5226c977f8bfa"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "1ff5226c977f8bfa"
       }
     }
   },
@@ -976,6 +1120,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "65b430d974f122a7",
         "result_sha": "65b430d974f122a7"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "65b430d974f122a7"
       }
     }
   },
@@ -1042,7 +1195,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "3358a695bece39f7"
+      }
     }
   },
   {
@@ -1095,6 +1257,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "c4516294d046fd79",
         "result_sha": "c4516294d046fd79"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "c4516294d046fd79"
       }
     }
   },
@@ -1150,6 +1321,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "eed2db53c0006bde",
         "result_sha": "eed2db53c0006bde"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "eed2db53c0006bde"
       }
     }
   },
@@ -1203,6 +1383,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "c86121b48690f9aa",
         "result_sha": "c86121b48690f9aa"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "c86121b48690f9aa"
       }
     }
   },
@@ -1275,7 +1464,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "f3221386c4e3f5b7"
+      }
     }
   },
   {
@@ -1328,6 +1526,15 @@
         "basis": "",
         "annotation_sha": "94122a6ba25dc38c",
         "result_sha": "94122a6ba25dc38c"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "94122a6ba25dc38c"
       }
     }
   },
@@ -1381,6 +1588,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "b34306d3d0be6fe8",
         "result_sha": "b34306d3d0be6fe8"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "b34306d3d0be6fe8"
       }
     }
   },
@@ -1436,6 +1652,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "519c9cb00744f844",
         "result_sha": "519c9cb00744f844"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "519c9cb00744f844"
       }
     }
   },
@@ -1489,6 +1714,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "7246e9c0350a7294",
         "result_sha": "7246e9c0350a7294"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "7246e9c0350a7294"
       }
     }
   },
@@ -1566,7 +1800,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "cce086681da23df2"
+      }
     }
   },
   {
@@ -1619,6 +1862,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "b185012772a81d92",
         "result_sha": "b185012772a81d92"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "b185012772a81d92"
       }
     }
   },
@@ -1672,6 +1924,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "ab2591e4e2448cf0",
         "result_sha": "ab2591e4e2448cf0"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "ab2591e4e2448cf0"
       }
     }
   },
@@ -1725,6 +1986,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "f346cdb3738671f7",
         "result_sha": "f346cdb3738671f7"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "f346cdb3738671f7"
       }
     }
   },
@@ -1778,6 +2048,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "00635ba430afbee4",
         "result_sha": "00635ba430afbee4"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "00635ba430afbee4"
       }
     }
   },
@@ -1831,6 +2110,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "744226742ff3a4b8",
         "result_sha": "744226742ff3a4b8"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "744226742ff3a4b8"
       }
     }
   },
@@ -1884,6 +2172,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "65f74c1f5129c810",
         "result_sha": "65f74c1f5129c810"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "65f74c1f5129c810"
       }
     }
   },
@@ -1937,6 +2234,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "64946de1246db56c",
         "result_sha": "64946de1246db56c"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "64946de1246db56c"
       }
     }
   },
@@ -1990,6 +2296,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "127a7c314864848c",
         "result_sha": "127a7c314864848c"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "127a7c314864848c"
       }
     }
   },
@@ -2056,7 +2371,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "c114794664bc8828"
+      }
     }
   },
   {
@@ -2109,6 +2433,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "0d8a179a978c50e1",
         "result_sha": "0d8a179a978c50e1"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "0d8a179a978c50e1"
       }
     }
   },
@@ -2162,6 +2495,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "973aef4ef97852f0",
         "result_sha": "973aef4ef97852f0"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "973aef4ef97852f0"
       }
     }
   },
@@ -2215,6 +2557,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "a310657c2fc2af62",
         "result_sha": "a310657c2fc2af62"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "a310657c2fc2af62"
       }
     }
   },
@@ -2268,6 +2619,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "1c49de7f0a2b8680",
         "result_sha": "1c49de7f0a2b8680"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "1c49de7f0a2b8680"
       }
     }
   },
@@ -2323,6 +2683,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "5282caef6c0a67ac",
         "result_sha": "5282caef6c0a67ac"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "5282caef6c0a67ac"
       }
     }
   },
@@ -2376,6 +2745,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "e0a619d8d3197d3d",
         "result_sha": "e0a619d8d3197d3d"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "e0a619d8d3197d3d"
       }
     }
   },
@@ -2429,6 +2807,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "c48f2fdb64095f11",
         "result_sha": "c48f2fdb64095f11"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "c48f2fdb64095f11"
       }
     }
   },
@@ -2482,6 +2869,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "671ae5dbf07dbbd8",
         "result_sha": "671ae5dbf07dbbd8"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "671ae5dbf07dbbd8"
       }
     }
   },
@@ -2537,6 +2933,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "3d3371b8ccfdc69d",
         "result_sha": "3d3371b8ccfdc69d"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "3d3371b8ccfdc69d"
       }
     }
   },
@@ -2590,6 +2995,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "33d49737bee0e1c6",
         "result_sha": "33d49737bee0e1c6"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "33d49737bee0e1c6"
       }
     }
   },
@@ -2645,6 +3059,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "e7e72bfa80500c0f",
         "result_sha": "e7e72bfa80500c0f"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "e7e72bfa80500c0f"
       }
     }
   },
@@ -2698,6 +3121,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "3abd6beebb9d8a37",
         "result_sha": "3abd6beebb9d8a37"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "3abd6beebb9d8a37"
       }
     }
   },
@@ -2751,6 +3183,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "8d0de5059f79eb2b",
         "result_sha": "8d0de5059f79eb2b"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "8d0de5059f79eb2b"
       }
     }
   },
@@ -2804,6 +3245,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "666f83fca1212240",
         "result_sha": "666f83fca1212240"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "666f83fca1212240"
       }
     }
   },
@@ -2875,7 +3325,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "ae05f8c05107583a"
+      }
     }
   },
   {
@@ -2930,6 +3389,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "8ac7fd37e1fdb4d6",
         "result_sha": "8ac7fd37e1fdb4d6"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "8ac7fd37e1fdb4d6"
       }
     }
   },
@@ -2996,7 +3464,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "98dcd95a4229adc9"
+      }
     }
   },
   {
@@ -3049,6 +3526,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "1187cce917dad6a8",
         "result_sha": "1187cce917dad6a8"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "1187cce917dad6a8"
       }
     }
   },
@@ -3102,6 +3588,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "1f8b6ecac5dabdf5",
         "result_sha": "1f8b6ecac5dabdf5"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "1f8b6ecac5dabdf5"
       }
     }
   },
@@ -3157,6 +3652,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "b3a2c2aaee27d6d6",
         "result_sha": "b3a2c2aaee27d6d6"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "b3a2c2aaee27d6d6"
       }
     }
   },
@@ -3234,7 +3738,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "8f4d9a2b9033b4a3"
+      }
     }
   },
   {
@@ -3287,6 +3800,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "f8a0c9553430f224",
         "result_sha": "f8a0c9553430f224"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "f8a0c9553430f224"
       }
     }
   },
@@ -3358,7 +3880,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "1cf90ac337f907d5"
+      }
     }
   },
   {
@@ -3411,6 +3942,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "04ff43a3aa4e8426",
         "result_sha": "04ff43a3aa4e8426"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "04ff43a3aa4e8426"
       }
     }
   },
@@ -3464,6 +4004,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "d58c1954eb35ead6",
         "result_sha": "d58c1954eb35ead6"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "d58c1954eb35ead6"
       }
     }
   },
@@ -3530,7 +4079,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "3ea9986817167eba"
+      }
     }
   },
   {
@@ -3607,7 +4165,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "6d742dfe842153dc"
+      }
     }
   },
   {
@@ -3660,6 +4227,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "613a7112620b8b2d",
         "result_sha": "613a7112620b8b2d"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "613a7112620b8b2d"
       }
     }
   },
@@ -3713,6 +4289,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "7cbdb083034f2d73",
         "result_sha": "7cbdb083034f2d73"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "7cbdb083034f2d73"
       }
     }
   },
@@ -3766,6 +4351,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "fbd1cf8e5de16e07",
         "result_sha": "fbd1cf8e5de16e07"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "fbd1cf8e5de16e07"
       }
     }
   },
@@ -3819,6 +4413,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "c3dd33473da960b0",
         "result_sha": "c3dd33473da960b0"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "c3dd33473da960b0"
       }
     }
   },
@@ -3872,6 +4475,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "6c0bae9ace4037bf",
         "result_sha": "6c0bae9ace4037bf"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "6c0bae9ace4037bf"
       }
     }
   },
@@ -3925,6 +4537,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "0b70d502606d903f",
         "result_sha": "0b70d502606d903f"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "0b70d502606d903f"
       }
     }
   },
@@ -3980,6 +4601,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "5b4ed9c01758ba6a",
         "result_sha": "5b4ed9c01758ba6a"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "5b4ed9c01758ba6a"
       }
     }
   },
@@ -4033,6 +4663,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "f028cb97856d7938",
         "result_sha": "f028cb97856d7938"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "f028cb97856d7938"
       }
     }
   },
@@ -4086,6 +4725,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "2d517adc18eb876d",
         "result_sha": "2d517adc18eb876d"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "2d517adc18eb876d"
       }
     }
   },
@@ -4139,6 +4787,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "b10f16b1dd887409",
         "result_sha": "b10f16b1dd887409"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "b10f16b1dd887409"
       }
     }
   },
@@ -4207,7 +4864,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "8d7dc2a2a40c3bad"
+      }
     }
   },
   {
@@ -4260,6 +4926,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "d4039a12af995766",
         "result_sha": "d4039a12af995766"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "d4039a12af995766"
       }
     }
   },
@@ -4313,6 +4988,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "e4c29dc98616329f",
         "result_sha": "e4c29dc98616329f"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "e4c29dc98616329f"
       }
     }
   },
@@ -4384,7 +5068,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "ab4fbe30d2712b93"
+      }
     }
   },
   {
@@ -4450,7 +5143,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "745e79fafe5b5907"
+      }
     }
   },
   {
@@ -4503,6 +5205,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "18a54c53c558ff30",
         "result_sha": "18a54c53c558ff30"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "18a54c53c558ff30"
       }
     }
   },
@@ -4556,6 +5267,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "b18fcf3aef743d6c",
         "result_sha": "b18fcf3aef743d6c"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "b18fcf3aef743d6c"
       }
     }
   },
@@ -4609,6 +5329,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "4bec49778741d2bf",
         "result_sha": "4bec49778741d2bf"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "4bec49778741d2bf"
       }
     }
   },
@@ -4662,6 +5391,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "8a5fe5c3c6b35c4b",
         "result_sha": "8a5fe5c3c6b35c4b"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "8a5fe5c3c6b35c4b"
       }
     }
   },
@@ -4715,6 +5453,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "5a44414760830359",
         "result_sha": "5a44414760830359"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "5a44414760830359"
       }
     }
   },
@@ -4768,6 +5515,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "8262196918e591a9",
         "result_sha": "8262196918e591a9"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "8262196918e591a9"
       }
     }
   },
@@ -4834,7 +5590,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "c6d1c073c5ddec73"
+      }
     }
   },
   {
@@ -4887,6 +5652,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "d68a520d8ffd4b59",
         "result_sha": "d68a520d8ffd4b59"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "d68a520d8ffd4b59"
       }
     }
   },
@@ -4940,6 +5714,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "37a5dd64b46aa186",
         "result_sha": "37a5dd64b46aa186"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "37a5dd64b46aa186"
       }
     }
   },
@@ -4995,6 +5778,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "40e8fa9d4d421fce",
         "result_sha": "40e8fa9d4d421fce"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "40e8fa9d4d421fce"
       }
     }
   },
@@ -5048,6 +5840,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "bcb93c0f92a6f306",
         "result_sha": "bcb93c0f92a6f306"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "bcb93c0f92a6f306"
       }
     }
   },
@@ -5101,6 +5902,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "d20a7b48441122b0",
         "result_sha": "d20a7b48441122b0"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "d20a7b48441122b0"
       }
     }
   },
@@ -5154,6 +5964,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "d2297f0a0ed7b386",
         "result_sha": "d2297f0a0ed7b386"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "d2297f0a0ed7b386"
       }
     }
   },
@@ -5207,6 +6026,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "984898e8facbdd3a",
         "result_sha": "984898e8facbdd3a"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "984898e8facbdd3a"
       }
     }
   },
@@ -5260,6 +6088,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "ada3bea9d7fb53c3",
         "result_sha": "ada3bea9d7fb53c3"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "ada3bea9d7fb53c3"
       }
     }
   },
@@ -5313,6 +6150,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "68d881d07ad4962f",
         "result_sha": "68d881d07ad4962f"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "68d881d07ad4962f"
       }
     }
   },
@@ -5390,7 +6236,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "4fef2c9ae52c2d1b"
+      }
     }
   },
   {
@@ -5443,6 +6298,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "02b1f63094e52f13",
         "result_sha": "02b1f63094e52f13"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "02b1f63094e52f13"
       }
     }
   },
@@ -5496,6 +6360,15 @@
         "basis": "",
         "annotation_sha": "1473d4afae419ce0",
         "result_sha": "1473d4afae419ce0"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "1473d4afae419ce0"
       }
     }
   },
@@ -5551,6 +6424,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "afb3e67aac53c962",
         "result_sha": "afb3e67aac53c962"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "afb3e67aac53c962"
       }
     }
   },
@@ -5604,6 +6486,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "7574aedbada21ced",
         "result_sha": "7574aedbada21ced"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "7574aedbada21ced"
       }
     }
   },
@@ -5657,6 +6548,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "e7078241faf9cd05",
         "result_sha": "e7078241faf9cd05"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "e7078241faf9cd05"
       }
     }
   },
@@ -5710,6 +6610,15 @@
         "basis": "",
         "annotation_sha": "aec7b192eb1cc9cd",
         "result_sha": "aec7b192eb1cc9cd"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "aec7b192eb1cc9cd"
       }
     }
   },
@@ -5763,6 +6672,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "2f632fe0ad01d7d6",
         "result_sha": "2f632fe0ad01d7d6"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "2f632fe0ad01d7d6"
       }
     }
   },
@@ -5818,6 +6736,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "4f5b4a7892878bec",
         "result_sha": "4f5b4a7892878bec"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "4f5b4a7892878bec"
       }
     }
   },
@@ -5871,6 +6798,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "4cdc76bf0fd236e3",
         "result_sha": "4cdc76bf0fd236e3"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "4cdc76bf0fd236e3"
       }
     }
   },
@@ -5948,7 +6884,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "a1bc3a5bebf5199d"
+      }
     }
   },
   {
@@ -6001,6 +6946,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "0bffe682d7ea2313",
         "result_sha": "0bffe682d7ea2313"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "0bffe682d7ea2313"
       }
     }
   },
@@ -6054,6 +7008,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "f40abbc1ce9d407b",
         "result_sha": "f40abbc1ce9d407b"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "f40abbc1ce9d407b"
       }
     }
   },
@@ -6107,6 +7070,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "abf608e780594c88",
         "result_sha": "abf608e780594c88"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "abf608e780594c88"
       }
     }
   },
@@ -6178,7 +7150,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "e1400f6a89bbe377"
+      }
     }
   },
   {
@@ -6231,6 +7212,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "54b889d843248638",
         "result_sha": "54b889d843248638"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "54b889d843248638"
       }
     }
   },
@@ -6284,6 +7274,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "89a157b19a19803e",
         "result_sha": "89a157b19a19803e"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "89a157b19a19803e"
       }
     }
   },
@@ -6337,6 +7336,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "9995237c80877a59",
         "result_sha": "9995237c80877a59"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "9995237c80877a59"
       }
     }
   },
@@ -6390,6 +7398,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "da54a7f2c56e296e",
         "result_sha": "da54a7f2c56e296e"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "da54a7f2c56e296e"
       }
     }
   },
@@ -6443,6 +7460,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "da9349d6ed5392d2",
         "result_sha": "da9349d6ed5392d2"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "da9349d6ed5392d2"
       }
     }
   },
@@ -6496,6 +7522,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "a9a3e1c3e79fc7cf",
         "result_sha": "a9a3e1c3e79fc7cf"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "a9a3e1c3e79fc7cf"
       }
     }
   },
@@ -6549,6 +7584,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "30643baefc857eb5",
         "result_sha": "30643baefc857eb5"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "30643baefc857eb5"
       }
     }
   },
@@ -6602,6 +7646,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "8da854ef1ff8b964",
         "result_sha": "8da854ef1ff8b964"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "8da854ef1ff8b964"
       }
     }
   },
@@ -6655,6 +7708,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "1c08e4ab2ee47d74",
         "result_sha": "1c08e4ab2ee47d74"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "1c08e4ab2ee47d74"
       }
     }
   },
@@ -6721,7 +7783,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "53ac9ec7fc64956e"
+      }
     }
   },
   {
@@ -6792,7 +7863,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "1698f6dc9926c576"
+      }
     }
   },
   {
@@ -6869,7 +7949,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "a654cd467f8a009c"
+      }
     }
   },
   {
@@ -6924,6 +8013,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "4e76384938dbe201",
         "result_sha": "4e76384938dbe201"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "4e76384938dbe201"
       }
     }
   },
@@ -6990,7 +8088,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "955d95aabd4b7baf"
+      }
     }
   },
   {
@@ -7043,6 +8150,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "7e277289fa214f27",
         "result_sha": "7e277289fa214f27"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "7e277289fa214f27"
       }
     }
   },
@@ -7098,6 +8214,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "f39249f89a6d9026",
         "result_sha": "f39249f89a6d9026"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "f39249f89a6d9026"
       }
     }
   },
@@ -7151,6 +8276,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "dbf5882ebf28c812",
         "result_sha": "dbf5882ebf28c812"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "dbf5882ebf28c812"
       }
     }
   },
@@ -7204,6 +8338,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "2729e5adaeda9f75",
         "result_sha": "2729e5adaeda9f75"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "2729e5adaeda9f75"
       }
     }
   },
@@ -7257,6 +8400,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "76423f1b2065231d",
         "result_sha": "76423f1b2065231d"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "76423f1b2065231d"
       }
     }
   },
@@ -7310,6 +8462,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "8f3bb7fc83c4f123",
         "result_sha": "8f3bb7fc83c4f123"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "8f3bb7fc83c4f123"
       }
     }
   },
@@ -7365,6 +8526,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "db32a057245ee38b",
         "result_sha": "db32a057245ee38b"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "db32a057245ee38b"
       }
     }
   },
@@ -7436,7 +8606,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "01267eeb7f1d4d58"
+      }
     }
   },
   {
@@ -7489,6 +8668,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "09016ffc2f3e7290",
         "result_sha": "09016ffc2f3e7290"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "09016ffc2f3e7290"
       }
     }
   },
@@ -7544,6 +8732,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "5903ea4e660ced0d",
         "result_sha": "5903ea4e660ced0d"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "5903ea4e660ced0d"
       }
     }
   },
@@ -7621,7 +8818,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "2a3ee7428e14e9e9"
+      }
     }
   },
   {
@@ -7674,6 +8880,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "ded1480b77064940",
         "result_sha": "ded1480b77064940"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "ded1480b77064940"
       }
     }
   },
@@ -7727,6 +8942,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "b9a66c6f47e10c5b",
         "result_sha": "b9a66c6f47e10c5b"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "b9a66c6f47e10c5b"
       }
     }
   },
@@ -7780,6 +9004,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "9385a602d4338cc5",
         "result_sha": "9385a602d4338cc5"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "9385a602d4338cc5"
       }
     }
   },
@@ -7833,6 +9066,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "f011949b7dcfc98b",
         "result_sha": "f011949b7dcfc98b"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "f011949b7dcfc98b"
       }
     }
   },
@@ -7899,7 +9141,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "1d4d361891b8b072"
+      }
     }
   },
   {
@@ -7952,6 +9203,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "e413d40164200447",
         "result_sha": "e413d40164200447"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "e413d40164200447"
       }
     }
   },
@@ -8005,6 +9265,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "9d73bfede8378cdb",
         "result_sha": "9d73bfede8378cdb"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "9d73bfede8378cdb"
       }
     }
   },
@@ -8082,7 +9351,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "af92f5bbf7bb0abb"
+      }
     }
   },
   {
@@ -8137,6 +9415,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "c77e6a51fb844e4e",
         "result_sha": "c77e6a51fb844e4e"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "c77e6a51fb844e4e"
       }
     }
   },
@@ -8208,7 +9495,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "3bf3a7a9db81e787"
+      }
     }
   },
   {
@@ -8261,6 +9557,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "83832d9d6fd84cdb",
         "result_sha": "83832d9d6fd84cdb"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "83832d9d6fd84cdb"
       }
     }
   },
@@ -8314,6 +9619,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "d6a1ee9190d537a6",
         "result_sha": "d6a1ee9190d537a6"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "d6a1ee9190d537a6"
       }
     }
   },
@@ -8367,6 +9681,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "f162652642134bd9",
         "result_sha": "f162652642134bd9"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "f162652642134bd9"
       }
     }
   },
@@ -8420,6 +9743,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "416487467c8b50de",
         "result_sha": "416487467c8b50de"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "416487467c8b50de"
       }
     }
   },
@@ -8473,6 +9805,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "f851edc3cd00efb2",
         "result_sha": "f851edc3cd00efb2"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "f851edc3cd00efb2"
       }
     }
   },
@@ -8528,6 +9869,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "90bbbb93f6cc8e1d",
         "result_sha": "90bbbb93f6cc8e1d"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "90bbbb93f6cc8e1d"
       }
     }
   },
@@ -8581,6 +9931,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "5ac2a5d022ffd5fe",
         "result_sha": "5ac2a5d022ffd5fe"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "5ac2a5d022ffd5fe"
       }
     }
   },
@@ -8634,6 +9993,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "98de30964dd5bcb8",
         "result_sha": "98de30964dd5bcb8"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "98de30964dd5bcb8"
       }
     }
   },
@@ -8687,6 +10055,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "c2139dd1b254a48c",
         "result_sha": "c2139dd1b254a48c"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "c2139dd1b254a48c"
       }
     }
   },
@@ -8742,6 +10119,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "63a382c124f9b8de",
         "result_sha": "63a382c124f9b8de"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "63a382c124f9b8de"
       }
     }
   },
@@ -8819,7 +10205,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "14ba24e2d1084106"
+      }
     }
   },
   {
@@ -8872,6 +10267,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "3239c00d52dd19de",
         "result_sha": "3239c00d52dd19de"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "3239c00d52dd19de"
       }
     }
   },
@@ -8925,6 +10329,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "44f5a4accb7d4fa2",
         "result_sha": "44f5a4accb7d4fa2"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "44f5a4accb7d4fa2"
       }
     }
   },
@@ -8980,6 +10393,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "fa2a74e296f9c8c1",
         "result_sha": "fa2a74e296f9c8c1"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "fa2a74e296f9c8c1"
       }
     }
   },
@@ -9033,6 +10455,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "f4c67faf8d3e6559",
         "result_sha": "f4c67faf8d3e6559"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "f4c67faf8d3e6559"
       }
     }
   },
@@ -9086,6 +10517,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "6c2784c93bd06caf",
         "result_sha": "6c2784c93bd06caf"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "6c2784c93bd06caf"
       }
     }
   },
@@ -9139,6 +10579,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "ce1080c127f33b62",
         "result_sha": "ce1080c127f33b62"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "ce1080c127f33b62"
       }
     }
   },
@@ -9194,6 +10643,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "2ba4ddafd44c28d8",
         "result_sha": "2ba4ddafd44c28d8"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "2ba4ddafd44c28d8"
       }
     }
   },
@@ -9247,6 +10705,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "7d32440c979e96bf",
         "result_sha": "7d32440c979e96bf"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "7d32440c979e96bf"
       }
     }
   },
@@ -9313,7 +10780,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "d29915004637a11d"
+      }
     }
   },
   {
@@ -9366,6 +10842,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "1cd1756a827c7be6",
         "result_sha": "1cd1756a827c7be6"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "1cd1756a827c7be6"
       }
     }
   },
@@ -9419,6 +10904,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "59a50cd4fb8ce634",
         "result_sha": "59a50cd4fb8ce634"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "59a50cd4fb8ce634"
       }
     }
   },
@@ -9490,7 +10984,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "2784f5c568b103b4"
+      }
     }
   },
   {
@@ -9544,6 +11047,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "721666c9c0dede45",
         "result_sha": "721666c9c0dede45"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "721666c9c0dede45"
       }
     }
   },
@@ -9616,7 +11128,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "b54a35a47cb59590"
+      }
     }
   },
   {
@@ -9670,6 +11191,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "34958f2c46e1a5cd",
         "result_sha": "34958f2c46e1a5cd"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "34958f2c46e1a5cd"
       }
     }
   },
@@ -9724,6 +11254,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "f0a7fa42ccccda7f",
         "result_sha": "f0a7fa42ccccda7f"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "f0a7fa42ccccda7f"
       }
     }
   },
@@ -9796,7 +11335,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "32b8123190ff5d77"
+      }
     }
   },
   {
@@ -9850,6 +11398,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "693c7083a7eb6586",
         "result_sha": "693c7083a7eb6586"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "693c7083a7eb6586"
       }
     }
   },
@@ -9904,6 +11461,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "f3c178155dbd92c3",
         "result_sha": "f3c178155dbd92c3"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "f3c178155dbd92c3"
       }
     }
   },
@@ -9977,7 +11543,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "3e336a4b0603d1a8"
+      }
     }
   },
   {
@@ -10031,6 +11606,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "66674b9810c253cc",
         "result_sha": "66674b9810c253cc"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "66674b9810c253cc"
       }
     }
   },
@@ -10098,7 +11682,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "646d14dcffb8a3b8"
+      }
     }
   },
   {
@@ -10152,6 +11745,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "8bf7bcf628f68bcc",
         "result_sha": "8bf7bcf628f68bcc"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "8bf7bcf628f68bcc"
       }
     }
   },
@@ -10225,7 +11827,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "1274f2bb57b74660"
+      }
     }
   },
   {
@@ -10279,6 +11890,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "9033a593f2f2b8f3",
         "result_sha": "9033a593f2f2b8f3"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "9033a593f2f2b8f3"
       }
     }
   },
@@ -10333,6 +11953,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "abb0ce14066ac006",
         "result_sha": "abb0ce14066ac006"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "abb0ce14066ac006"
       }
     }
   },
@@ -10387,6 +12016,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "7cbc3e324779bbd7",
         "result_sha": "7cbc3e324779bbd7"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "7cbc3e324779bbd7"
       }
     }
   },
@@ -10465,7 +12103,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "7cac712de296b84c"
+      }
     }
   },
   {
@@ -10532,7 +12179,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "a63ab1ae68578981"
+      }
     }
   },
   {
@@ -10586,6 +12242,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "91dcbc2da408f0f1",
         "result_sha": "91dcbc2da408f0f1"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "91dcbc2da408f0f1"
       }
     }
   },
@@ -10640,6 +12305,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "1a72785fa7542137",
         "result_sha": "1a72785fa7542137"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "1a72785fa7542137"
       }
     }
   },
@@ -10694,6 +12368,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "4a56c9c4ac05c5d1",
         "result_sha": "4a56c9c4ac05c5d1"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "4a56c9c4ac05c5d1"
       }
     }
   },
@@ -10748,6 +12431,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "d8b0fb7db81087a6",
         "result_sha": "d8b0fb7db81087a6"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "d8b0fb7db81087a6"
       }
     }
   },
@@ -10802,6 +12494,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "2e1eaae28c8dfb8d",
         "result_sha": "2e1eaae28c8dfb8d"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "2e1eaae28c8dfb8d"
       }
     }
   },
@@ -10856,6 +12557,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "424aa30a9e6a9ea0",
         "result_sha": "424aa30a9e6a9ea0"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "424aa30a9e6a9ea0"
       }
     }
   },
@@ -10910,6 +12620,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "de354d50ec5e99dc",
         "result_sha": "de354d50ec5e99dc"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "de354d50ec5e99dc"
       }
     }
   },
@@ -10964,6 +12683,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "8efbc6d6b1752bf7",
         "result_sha": "8efbc6d6b1752bf7"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "8efbc6d6b1752bf7"
       }
     }
   },
@@ -11018,6 +12746,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "e05d5ee68368ed0f",
         "result_sha": "e05d5ee68368ed0f"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "e05d5ee68368ed0f"
       }
     }
   },
@@ -11096,7 +12833,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "50be312dcc783a38"
+      }
     }
   },
   {
@@ -11168,7 +12914,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "47d84d7cdfb78003"
+      }
     }
   },
   {
@@ -11222,6 +12977,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "577f6401f1b091f6",
         "result_sha": "577f6401f1b091f6"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "577f6401f1b091f6"
       }
     }
   },
@@ -11276,6 +13040,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "dea5d17addb07f92",
         "result_sha": "dea5d17addb07f92"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "dea5d17addb07f92"
       }
     }
   },
@@ -11348,7 +13121,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "ae58dcd7d83541dc"
+      }
     }
   },
   {
@@ -11402,6 +13184,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "289712498ff44444",
         "result_sha": "289712498ff44444"
+      },
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "289712498ff44444"
       }
     }
   },
@@ -11475,7 +13266,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "scored",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "0b5a28a0ef25d758"
+      }
     }
   },
   {
@@ -11529,6 +13329,15 @@
         "basis": "frame pre-review (before/start/middle/end/after frames) accepted it",
         "annotation_sha": "27d10ff6b25d0540",
         "result_sha": "27d10ff6b25d0540"
+      },
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "27d10ff6b25d0540"
       }
     }
   },
@@ -11607,7 +13416,16 @@
             "reason": "text or gold span edited after this check"
           }
         }
-      ]
+      ],
+      "adjudication": {
+        "decision": "provisional",
+        "judges": [
+          "gemini-3.8-flash",
+          "gpt-5.4-mini"
+        ],
+        "config_sha": "f203208e6fc9ab65",
+        "annotation_sha": "50214907e84c23dc"
+      }
     }
   }
 ]
