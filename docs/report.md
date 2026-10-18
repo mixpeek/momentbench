@@ -62,8 +62,8 @@ Other condition: anonymized titles, abstain prompt (key `845b739515650b94`), ran
 | Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | 61.9 (52 to 71) | 60.0 (52 to 68) | 52.0 | +0.27 | 3 budget_exceeded, 1 no_submission | $0.137* |
+| claude-sonnet-5-5 | claude-code | 29.5 (21 to 38) | 31.5 (24 to 40) | 40.0 | -0.23 | 0 | $0.078* |
 | claude-haiku-5-5 | claude-code | 27.6 (19 to 36) | 33.1 (25 to 42) | 56.0 | +0.00 | 19 budget_exceeded | $0.018* |
-| claude-sonnet-5-5 | claude-code | not run: not run yet | | | | | |
 
 Other condition: prediction-file track (key `7eb1c82e785ca0bc`), ranked only within itself:
 
