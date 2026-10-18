@@ -108,7 +108,7 @@ momentbench corpus-download -m data/corpus_manifests/sample_manifest.json --corp
 momentbench corpus-verify   -m data/corpus_manifests/sample_manifest.json --corpus-dir corpus/
 ```
 
-`corpus-download` fetches every asset whose manifest entry has a `file` block (all 20 in v0.2) and checks its sha256. `corpus-verify` checks presence, sha256 and duration for every asset and exits non-zero if any fails.
+`corpus-download` fetches every asset whose manifest entry has a `file` block (all 27 in v0.2.5) and checks its sha256. `corpus-verify` checks presence, sha256 and duration for every asset and exits non-zero if any fails.
 
 ## Agentic Track
 
@@ -116,8 +116,8 @@ The agentic track measures a tool-using model. The model cannot watch video. It 
 
 ```bash
 momentbench agentic claude-opus-5-5 \
-  -q data/queries/sample.json -c data/corpus_manifests/sample_manifest.json \
-  --corpus-dir /path/to/videos --effort high --trials 5
+  -q data/queries/scored/film_v0.2_scored.json -c data/corpus_manifests/sample_manifest.json \
+  --corpus-dir /path/to/videos --anonymize-titles --effort high --trials 5
 ```
 
 - **Corpus on disk:** `--corpus-dir` holds `<asset_id>.mp4` (or `.mov`, `.mkv`). Transcripts are read from `--transcripts-dir`, default `data/transcripts`. Queries whose gold video is missing are skipped, and the run says how many.
@@ -239,10 +239,11 @@ momentbench run mixpeek -q your_queries.json -c your_manifest.json
 ## Citation
 
 ```bibtex
-@software{momentbench2025,
+@misc{momentbench2026,
   title     = {MomentBench: Corpus-Scale Video Moment Retrieval Benchmark},
   author    = {Mixpeek},
-  year      = {2025},
+  year      = {2026},
+  version   = {0.2.5},
   url       = {https://github.com/mixpeek/momentbench},
   license   = {Apache-2.0}
 }
