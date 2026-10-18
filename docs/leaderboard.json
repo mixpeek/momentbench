@@ -1,7 +1,7 @@
 {
  "benchmark": "momentbench",
  "release": "0.2.5",
- "generated_at_commit": "d21c3c8",
+ "generated_at_commit": "341067f",
  "ranking_rule": "rows are compared only within a group (one compatibility key)",
  "primary_keys": {
   "aerospace": "05841b8cc16d0b1b",
@@ -13,29 +13,111 @@
  },
  "groups": [
   {
-   "compatibility_key": null,
+   "compatibility_key": "08cdcfff3c36b042",
    "queries_file": "aerospace_v0.2_scored.json",
+   "queries_file_sha256_16": "5e639f771d3c8eed",
    "domain": "aerospace",
    "track": "agentic",
    "condition": "anonymized titles, abstain prompt",
-   "rows": [],
-   "not_run": [
+   "rows": [
     {
+     "positive_recall_at_1_ci95": [
+      0.5683453237410072,
+      0.7266187050359713
+     ],
      "model_id": "claude-opus-5-5",
      "harness": "claude-code",
-     "reason": "not run yet"
+     "resolved_models": [
+      "claude-opus-5-5"
+     ],
+     "num_queries": 154,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.6474820143884892,
+     "recall_at_1": 0.6558,
+     "recall_at_1_ci95": [
+      0.5779,
+      0.7273
+     ],
+     "net_score": 0.4155844155844156,
+     "no_answer_accuracy": 0.7333333333333333,
+     "false_positive_rate": 0.2,
+     "mean_cost_usd_per_query": 0.14602689480519482,
+     "run_id": "agentic-claude-opus-5-5-3acb24ef",
+     "outcomes": {
+      "budget_exceeded": 2,
+      "submitted": 152
+     },
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-claude-opus-5-5-3acb24ef.json",
+     "code_commit": "68f1903d32fa88e05b3ede66062fbd5b4ce79a76",
+     "timestamp": "2026-10-17T21:57:29Z"
     },
     {
-     "model_id": "claude-sonnet-5-5",
-     "harness": "claude-code",
-     "reason": "not run yet"
-    },
-    {
+     "positive_recall_at_1_ci95": [
+      0.2949640287769784,
+      0.460431654676259
+     ],
      "model_id": "claude-haiku-5-5",
      "harness": "claude-code",
-     "reason": "not run yet"
+     "resolved_models": [
+      "claude-haiku-5-5"
+     ],
+     "num_queries": 154,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.381294964028777,
+     "recall_at_1": 0.3831,
+     "recall_at_1_ci95": [
+      0.3052,
+      0.461
+     ],
+     "net_score": 0.045454545454545456,
+     "no_answer_accuracy": 0.4,
+     "false_positive_rate": 0.2,
+     "mean_cost_usd_per_query": 0.02062904090909091,
+     "run_id": "agentic-claude-haiku-5-5-f611e97a",
+     "outcomes": {
+      "budget_exceeded": 16,
+      "submitted": 138
+     },
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-claude-haiku-5-5-f611e97a.json",
+     "code_commit": "6287b470714823b5ccdd6ed2fdebec60fff9e530",
+     "timestamp": "2026-10-17T23:23:16Z"
+    },
+    {
+     "positive_recall_at_1_ci95": [
+      0.2589928057553957,
+      0.4172661870503597
+     ],
+     "model_id": "claude-sonnet-5-5",
+     "harness": "claude-code",
+     "resolved_models": [
+      "claude-sonnet-5-5"
+     ],
+     "num_queries": 154,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.3381294964028777,
+     "recall_at_1": 0.3571,
+     "recall_at_1_ci95": [
+      0.2792,
+      0.4286
+     ],
+     "net_score": -0.12337662337662338,
+     "no_answer_accuracy": 0.5333333333333333,
+     "false_positive_rate": 0.4666666666666667,
+     "mean_cost_usd_per_query": 0.0788118974025974,
+     "run_id": "agentic-claude-sonnet-5-5-80a9ba51",
+     "outcomes": {
+      "budget_exceeded": 1,
+      "submitted": 153
+     },
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-claude-sonnet-5-5-80a9ba51.json",
+     "code_commit": "6287b470714823b5ccdd6ed2fdebec60fff9e530",
+     "timestamp": "2026-10-17T22:34:03Z"
     }
-   ]
+   ],
+   "not_run": []
   },
   {
    "compatibility_key": "05841b8cc16d0b1b",
@@ -308,25 +390,82 @@
    ]
   },
   {
-   "compatibility_key": null,
+   "compatibility_key": "845b739515650b94",
    "queries_file": "film_v0.2_scored.json",
+   "queries_file_sha256_16": "55c77588154db392",
    "domain": "film",
    "track": "agentic",
    "condition": "anonymized titles, abstain prompt",
-   "rows": [],
-   "not_run": [
+   "rows": [
     {
+     "positive_recall_at_1_ci95": [
+      0.5238095238095238,
+      0.7142857142857143
+     ],
      "model_id": "claude-opus-5-5",
      "harness": "claude-code",
-     "reason": "not run yet"
+     "resolved_models": [
+      "claude-opus-5-5"
+     ],
+     "num_queries": 130,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.6190476190476191,
+     "recall_at_1": 0.6,
+     "recall_at_1_ci95": [
+      0.5154,
+      0.6846
+     ],
+     "net_score": 0.2692307692307692,
+     "no_answer_accuracy": 0.52,
+     "false_positive_rate": 0.4,
+     "mean_cost_usd_per_query": 0.13708565692307692,
+     "run_id": "agentic-claude-opus-5-5-48b09767",
+     "outcomes": {
+      "budget_exceeded": 3,
+      "no_submission": 1,
+      "submitted": 126
+     },
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/film/agentic-claude-opus-5-5-48b09767.json",
+     "code_commit": "8b0d27188dc398b22abd66a02d3383b3035cf7b8",
+     "timestamp": "2026-10-18T00:12:16Z"
     },
+    {
+     "positive_recall_at_1_ci95": [
+      0.19047619047619047,
+      0.3619047619047619
+     ],
+     "model_id": "claude-haiku-5-5",
+     "harness": "claude-code",
+     "resolved_models": [
+      "claude-haiku-5-5"
+     ],
+     "num_queries": 130,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.2761904761904762,
+     "recall_at_1": 0.3308,
+     "recall_at_1_ci95": [
+      0.2538,
+      0.4154
+     ],
+     "net_score": 0.0,
+     "no_answer_accuracy": 0.56,
+     "false_positive_rate": 0.36,
+     "mean_cost_usd_per_query": 0.017778157692307693,
+     "run_id": "agentic-claude-haiku-5-5-8637eaea",
+     "outcomes": {
+      "budget_exceeded": 19,
+      "submitted": 111
+     },
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/film/agentic-claude-haiku-5-5-8637eaea.json",
+     "code_commit": "8b0d27188dc398b22abd66a02d3383b3035cf7b8",
+     "timestamp": "2026-10-18T01:34:39Z"
+    }
+   ],
+   "not_run": [
     {
      "model_id": "claude-sonnet-5-5",
-     "harness": "claude-code",
-     "reason": "not run yet"
-    },
-    {
-     "model_id": "claude-haiku-5-5",
      "harness": "claude-code",
      "reason": "not run yet"
     }
@@ -374,6 +513,38 @@
     },
     {
      "positive_recall_at_1_ci95": [
+      0.19047619047619047,
+      0.37142857142857144
+     ],
+     "model_id": "claude-haiku-5-5",
+     "harness": "claude-code",
+     "resolved_models": [
+      "claude-haiku-5-5"
+     ],
+     "num_queries": 130,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.2761904761904762,
+     "recall_at_1": 0.2692,
+     "recall_at_1_ci95": [
+      0.2,
+      0.3462
+     ],
+     "net_score": -0.15384615384615385,
+     "no_answer_accuracy": 0.24,
+     "false_positive_rate": 0.48,
+     "mean_cost_usd_per_query": 0.02031980153846154,
+     "run_id": "agentic-claude-haiku-5-5-597dd70d",
+     "outcomes": {
+      "budget_exceeded": 31,
+      "submitted": 99
+     },
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/film/agentic-claude-haiku-5-5-597dd70d.json",
+     "code_commit": "93ce82b01868a75d452c1cb9343f429700d9cd6c",
+     "timestamp": "2026-10-17T20:31:32Z"
+    },
+    {
+     "positive_recall_at_1_ci95": [
       0.1619047619047619,
       0.3238095238095238
      ],
@@ -405,11 +576,6 @@
     }
    ],
    "not_run": [
-    {
-     "model_id": "claude-haiku-5-5",
-     "harness": "claude-code",
-     "reason": "not run yet"
-    },
     {
      "model_id": "claude-haiku-5-5",
      "harness": "api",
@@ -496,29 +662,110 @@
    ]
   },
   {
-   "compatibility_key": null,
+   "compatibility_key": "3cf01744d206f060",
    "queries_file": "robotics_v0.2_scored.json",
+   "queries_file_sha256_16": "26cfb17382d1f3e4",
    "domain": "robotics",
    "track": "agentic",
    "condition": "anonymized titles, abstain prompt",
-   "rows": [],
-   "not_run": [
+   "rows": [
     {
+     "positive_recall_at_1_ci95": [
+      0.775,
+      0.975
+     ],
      "model_id": "claude-opus-5-5",
      "harness": "claude-code",
-     "reason": "not run yet"
+     "resolved_models": [
+      "claude-opus-5-5"
+     ],
+     "num_queries": 49,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.875,
+     "recall_at_1": 0.8163,
+     "recall_at_1_ci95": [
+      0.6939,
+      0.9184
+     ],
+     "net_score": 0.6530612244897959,
+     "no_answer_accuracy": 0.5555555555555556,
+     "false_positive_rate": 0.4444444444444444,
+     "mean_cost_usd_per_query": 0.1444559224489796,
+     "run_id": "agentic-claude-opus-5-5-5763bd5f",
+     "outcomes": {
+      "submitted": 49
+     },
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/robotics/agentic-claude-opus-5-5-5763bd5f.json",
+     "code_commit": "68f1903d32fa88e05b3ede66062fbd5b4ce79a76",
+     "timestamp": "2026-10-17T20:46:38Z"
     },
     {
-     "model_id": "claude-sonnet-5-5",
-     "harness": "claude-code",
-     "reason": "not run yet"
-    },
-    {
+     "positive_recall_at_1_ci95": [
+      0.325,
+      0.65
+     ],
      "model_id": "claude-haiku-5-5",
      "harness": "claude-code",
-     "reason": "not run yet"
+     "resolved_models": [
+      "claude-haiku-5-5"
+     ],
+     "num_queries": 49,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.5,
+     "recall_at_1": 0.4694,
+     "recall_at_1_ci95": [
+      0.3265,
+      0.5918
+     ],
+     "net_score": 0.12244897959183673,
+     "no_answer_accuracy": 0.3333333333333333,
+     "false_positive_rate": 0.5555555555555556,
+     "mean_cost_usd_per_query": 0.020241587755102042,
+     "run_id": "agentic-claude-haiku-5-5-54751a40",
+     "outcomes": {
+      "budget_exceeded": 3,
+      "submitted": 46
+     },
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/robotics/agentic-claude-haiku-5-5-54751a40.json",
+     "code_commit": "68f1903d32fa88e05b3ede66062fbd5b4ce79a76",
+     "timestamp": "2026-10-17T21:10:44Z"
+    },
+    {
+     "positive_recall_at_1_ci95": [
+      0.225,
+      0.5
+     ],
+     "model_id": "claude-sonnet-5-5",
+     "harness": "claude-code",
+     "resolved_models": [
+      "claude-sonnet-5-5"
+     ],
+     "num_queries": 49,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.35,
+     "recall_at_1": 0.3469,
+     "recall_at_1_ci95": [
+      0.2245,
+      0.4898
+     ],
+     "net_score": -0.16326530612244897,
+     "no_answer_accuracy": 0.3333333333333333,
+     "false_positive_rate": 0.5555555555555556,
+     "mean_cost_usd_per_query": 0.07740123265306123,
+     "run_id": "agentic-claude-sonnet-5-5-3cf4f0e3",
+     "outcomes": {
+      "budget_exceeded": 2,
+      "submitted": 47
+     },
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/robotics/agentic-claude-sonnet-5-5-3cf4f0e3.json",
+     "code_commit": "68f1903d32fa88e05b3ede66062fbd5b4ce79a76",
+     "timestamp": "2026-10-17T20:57:25Z"
     }
-   ]
+   ],
+   "not_run": []
   },
   {
    "compatibility_key": "39a268172b68fe33",

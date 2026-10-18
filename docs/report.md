@@ -51,19 +51,19 @@ Primary group: anonymized titles, standard prompt, compatibility key `689ea1623b
 | Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | 59.0 (50 to 68) | 50.8 (42 to 59) | 16.0 | +0.02 | 1 budget_exceeded | $0.138* |
+| claude-haiku-5-5 | claude-code | 27.6 (19 to 37) | 26.9 (20 to 35) | 24.0 | -0.15 | 31 budget_exceeded | $0.020* |
 | claude-sonnet-5-5 | claude-code | 23.8 (16 to 32) | 23.1 (16 to 31) | 20.0 | -0.48 | 0 | $0.080* |
-| claude-haiku-5-5 | claude-code | not run: not run yet | | | | | |
 | claude-haiku-5-5 (API) | api | not run: same reason | | | | | |
 | gpt-5.4-mini | api | not run: same reason | | | | | |
 | gemini-3.8-flash | api | not run: paid evaluation stopped after the spend-enforcement change; a later paid run would carry a different stopping rule and key | | | | | |
 
-Other condition: anonymized titles, abstain prompt (no runs yet), ranked only within itself:
+Other condition: anonymized titles, abstain prompt (key `845b739515650b94`), ranked only within itself:
 
 | Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
-| claude-opus-5-5 | claude-code | not run: not run yet | | | | | |
+| claude-opus-5-5 | claude-code | 61.9 (52 to 71) | 60.0 (52 to 68) | 52.0 | +0.27 | 3 budget_exceeded, 1 no_submission | $0.137* |
+| claude-haiku-5-5 | claude-code | 27.6 (19 to 36) | 33.1 (25 to 42) | 56.0 | +0.00 | 19 budget_exceeded | $0.018* |
 | claude-sonnet-5-5 | claude-code | not run: not run yet | | | | | |
-| claude-haiku-5-5 | claude-code | not run: not run yet | | | | | |
 
 Other condition: prediction-file track (key `7eb1c82e785ca0bc`), ranked only within itself:
 
@@ -85,13 +85,13 @@ Primary group: anonymized titles, standard prompt, compatibility key `05841b8cc1
 | claude-haiku-5-5 (API) | api | 30.9 (23 to 39) | 32.5 (25 to 40) | 46.7 | -0.23 | 0 | $0.016 |
 | gpt-5.4-mini | api | 12.9 (7 to 19) | 11.7 (6 to 17) | 0.0 | -0.61 | 24 no_submission | $0.013 |
 
-Other condition: anonymized titles, abstain prompt (no runs yet), ranked only within itself:
+Other condition: anonymized titles, abstain prompt (key `08cdcfff3c36b042`), ranked only within itself:
 
 | Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
-| claude-opus-5-5 | claude-code | not run: not run yet | | | | | |
-| claude-sonnet-5-5 | claude-code | not run: not run yet | | | | | |
-| claude-haiku-5-5 | claude-code | not run: not run yet | | | | | |
+| claude-opus-5-5 | claude-code | 64.7 (57 to 73) | 65.6 (58 to 73) | 73.3 | +0.42 | 2 budget_exceeded | $0.146* |
+| claude-haiku-5-5 | claude-code | 38.1 (29 to 46) | 38.3 (31 to 46) | 40.0 | +0.05 | 16 budget_exceeded | $0.021* |
+| claude-sonnet-5-5 | claude-code | 33.8 (26 to 42) | 35.7 (28 to 43) | 53.3 | -0.12 | 1 budget_exceeded | $0.079* |
 
 Other condition: prediction-file track (key `603e0d07f1ecae63`), ranked only within itself:
 
@@ -113,13 +113,13 @@ Primary group: anonymized titles, standard prompt, compatibility key `39a268172b
 | claude-sonnet-5-5 | claude-code | 30.0 (18 to 45) | 26.5 (14 to 39) | 11.1 | -0.41 | 2 budget_exceeded | $0.081* |
 | gpt-5.4-mini | api | 10.0 (2 to 20) | 8.2 (2 to 16) | 0.0 | -0.65 | 9 no_submission | $0.016 |
 
-Other condition: anonymized titles, abstain prompt (no runs yet), ranked only within itself:
+Other condition: anonymized titles, abstain prompt (key `3cf01744d206f060`), ranked only within itself:
 
 | Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
-| claude-opus-5-5 | claude-code | not run: not run yet | | | | | |
-| claude-sonnet-5-5 | claude-code | not run: not run yet | | | | | |
-| claude-haiku-5-5 | claude-code | not run: not run yet | | | | | |
+| claude-opus-5-5 | claude-code | 87.5 (78 to 98) | 81.6 (69 to 92) | 55.6 | +0.65 | 0 | $0.144* |
+| claude-haiku-5-5 | claude-code | 50.0 (32 to 65) | 46.9 (33 to 59) | 33.3 | +0.12 | 3 budget_exceeded | $0.020* |
+| claude-sonnet-5-5 | claude-code | 35.0 (22 to 50) | 34.7 (22 to 49) | 33.3 | -0.16 | 2 budget_exceeded | $0.077* |
 
 Other condition: prediction-file track (key `baf460bbce383443`), ranked only within itself:
 
