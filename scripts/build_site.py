@@ -445,7 +445,7 @@ def page(results: dict, st: dict, examples: list[dict], held: str, board: dict) 
 <section id="start"><div class="wrap">
   <h2>Run it on your system</h2>
   <p class="sub">The first two steps need no API key and no model. <a href="{REPO}/blob/main/docs/bring-your-system.md">Bring your system</a> walks through all four.</p>
-  <pre class="code"><code>git clone --branch v{v} {REPO}.git &amp;&amp; cd momentbench
+  <pre class="code"><code>git clone {REPO}.git &amp;&amp; cd momentbench
 pip install -e .
 momentbench corpus-download -m data/diagnostic/manifest.json --corpus-dir diag/
 momentbench diagnose --corpus-dir diag/        # 5 checks, all PASS
@@ -454,7 +454,7 @@ momentbench diagnose --corpus-dir diag/        # 5 checks, all PASS
 momentbench score-predictions -p preds.json -q data/queries/scored/film_v0.2_scored.json
 momentbench bundle -r &lt;run&gt;.json             # JSON, model-card block, LaTeX, citation
 momentbench submit -r &lt;run&gt;.json --model-name "Your system" -o submissions/</code></pre>
-  <p class="note">Open a pull request with the new <code>submissions/&lt;name&gt;/</code> folder: a check validates the run, merges it and publishes it here, with no maintainer in the loop. <code>scripts/bm25_predictions.py</code> is a complete example of a prediction file, and <a href="{REPO}/blob/main/docs/prediction-files.md">the prediction-file guide</a> converts QVHighlights-style or CSV output you already have.</p>
+  <p class="note"><code>main</code> carries the v{v} queries, manifests, transcripts and scorer unchanged, plus the prediction-file tools added after the tag; results cite v{v}. Open a pull request with the new <code>submissions/&lt;name&gt;/</code> folder: a check validates the run, merges it and publishes it here, with no maintainer in the loop. <code>scripts/bm25_predictions.py</code> is a complete example of a prediction file, and <a href="{REPO}/blob/main/docs/prediction-files.md">the prediction-file guide</a> converts QVHighlights-style or CSV output you already have.</p>
 </div></section>
 
 <section id="cost"><div class="wrap">

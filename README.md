@@ -22,10 +22,12 @@ Maintained by [Mixpeek](https://mixpeek.com). Mixpeek's own pipeline is one entr
 ## Start here: a validated result in four steps
 
 **[`docs/bring-your-system.md`](docs/bring-your-system.md)** is the shortest path, and the
-first two steps need no API key and no model:
+first two steps need no API key and no model. Clone `main` here: it carries the v0.2.5 queries, manifests, transcripts and scorer unchanged,
+plus the prediction-file tools added after the tag (`scripts/bm25_predictions.py`,
+`scripts/convert_predictions.py`). Results still cite v0.2.5.
 
 ```bash
-git clone --branch v0.2.5 https://github.com/mixpeek/momentbench.git && cd momentbench
+git clone https://github.com/mixpeek/momentbench.git && cd momentbench
 pip install -e .
 momentbench corpus-download -m data/diagnostic/manifest.json --corpus-dir diag/
 momentbench diagnose --corpus-dir diag/          # 5 checks, all should read PASS

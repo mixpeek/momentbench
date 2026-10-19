@@ -7,8 +7,12 @@ result.
 
 ## 1. Install and check your setup (about 10 minutes)
 
+Clone `main`: it carries the v0.2.5 queries, manifests, transcripts and scorer unchanged,
+plus the prediction-file tools added after the tag (`scripts/bm25_predictions.py`,
+`scripts/convert_predictions.py`). Results still cite v0.2.5.
+
 ```bash
-git clone --branch v0.2.5 https://github.com/mixpeek/momentbench.git && cd momentbench
+git clone https://github.com/mixpeek/momentbench.git && cd momentbench
 pip install -e .                      # Python 3.10+, plus ffmpeg on your PATH
 momentbench corpus-download -m data/diagnostic/manifest.json --corpus-dir diag/
 momentbench diagnose --corpus-dir diag/
