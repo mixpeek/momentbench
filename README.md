@@ -6,7 +6,7 @@
 
 **[momentbench.com](https://momentbench.com)**: corpus-scale video moment retrieval benchmark.
 
-**Design target:** 75 hours of rights-cleared video, 500 queries across 4 difficulty tiers, evaluated against frontier models and retrieval pipelines.
+**v0.2.5 today:** 27 videos, about 2 hours of footage, 333 scored queries.
 
 **Current release (v0.2.5):** 27 hash-verified assets in three domains: 7 Blender open movies (about 72 minutes), 13 NASA aerospace videos (about 32 minutes, 2022 to 2026) and 7 NASA robotics videos (about 13 minutes, 2019 to 2023), with machine transcripts in [`data/transcripts`](data/transcripts). The queries, transcripts, runs and the 25 videos with confirmed licences are also on Hugging Face at [`Mixpeek/momentbench`](https://huggingface.co/datasets/Mixpeek/momentbench). Queries:
 
@@ -16,6 +16,8 @@
 - [`data/queries/sample.json`](data/queries/sample.json): the 4-query v0.1 seed, kept for comparison with earlier runs.
 
 In total 619 queries across film, aerospace and robotics, 456 in this repository and 163 held out (committed by hash in [`data/heldout_commitments.json`](data/heldout_commitments.json)). Claude drafted, verified and reviewed them; then two model families other than Claude judged every published query, and the 333 both accepted form the **scored set** in `data/queries/scored/` that results use ([`docs/labels.md`](docs/labels.md), the label log). The labels are model-made and model-adjudicated, with no human review yet. The technical report is [`docs/report.md`](docs/report.md) and the leaderboard is [`docs/leaderboard.json`](docs/leaderboard.json), ranked only within compatibility groups. [`docs/protocol.md`](docs/protocol.md) defines the task, metrics and what a reported result must state. [`docs/input-spec.md`](docs/input-spec.md) lists exactly what a model sees, for reimplementing the track in another harness. [`docs/scope.md`](docs/scope.md) states what a score measures and what it does not. PRs adding rights-cleared footage or queries are welcome (see [`SUBMISSION.md`](SUBMISSION.md)).
+
+**Roadmap:** the design target is 75 hours of rights-cleared video and 500 queries across 4 difficulty tiers. v0.2.5 has not reached it, so cite the numbers above for this release. See [`docs/scope.md`](docs/scope.md).
 
 Maintained by [Mixpeek](https://mixpeek.com). Mixpeek's own pipeline is one entrant on the leaderboard and follows the same rules as every other. See [`GOVERNANCE.md`](GOVERNANCE.md).
 
