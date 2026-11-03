@@ -52,7 +52,8 @@ class BM25Index:
         n = len(self.docs)
         self.idf = {t: math.log(1 + (n - c + 0.5) / (c + 0.5)) for t, c in df.items()}
 
-    def search(self, text: str, top_k: int = TOP_K) -> list[Moment]:
+    def search(self, text: str, top_k: int = TOP_K, *,
+               abstain_below: float | None = None) -> list[Moment]:
         terms = set(tokens(text))
         scored = []
         for i, doc in enumerate(self.docs):
@@ -64,6 +65,8 @@ class BM25Index:
             if score > 0:
                 scored.append((-score, i))
         scored.sort()
+        if abstain_below is not None and scored and -scored[0][0] < abstain_below:
+            return []
         return [Moment(asset_id=self.cues[i][0], t_in=self.cues[i][1]["t_in"],
                        t_out=self.cues[i][1]["t_out"]) for _, i in scored[:top_k]]
 
