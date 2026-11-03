@@ -48,6 +48,10 @@ momentbench diagnose --corpus-dir diag/          # 5 checks, all should read PAS
    valid run is merged and published to [momentbench.com](https://momentbench.com)
    without a maintainer.
 
+## Projects and courses
+
+Want a class project or a research question? [`docs/projects.md`](docs/projects.md) has seven ideas with baselines to beat, a first score that needs no GPU or API key, and notes for instructors. To list your project, open a PR.
+
 ## Quick Start: the agentic track
 
 Evaluate a model on the v0.2 agentic track from an empty directory. MomentBench is not on

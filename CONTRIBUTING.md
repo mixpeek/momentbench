@@ -35,8 +35,10 @@ Queries go in `data/queries/` as JSON arrays. Each query needs:
 - `query_id`: unique identifier
 - `text`: natural language query
 - `tier`: 1-4 (see taxonomy)
-- `vertical`: "civic", "aerospace", or "film"
+- `vertical`: "film", "aerospace" or "robotics", or a new domain you propose
 - `gold_moments`: array of `{asset_id, t_in, t_out}`
+
+New queries go into a future release, and v0.2.5 stays frozen. For a new domain, open an issue first. Project ideas are in [`docs/projects.md`](docs/projects.md).
 
 ## Pull Requests
 
