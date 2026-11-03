@@ -50,13 +50,31 @@ so compare prediction-file results with prediction-file results.
    [`CONTRIBUTING.md`](../CONTRIBUTING.md#adding-queries). It would be scored in a future
    release; v0.2.5 stays frozen.
 
+### Systems projects
+
+These suit a performance or ML-systems course. Each names the skill it exercises.
+
+8. **Serve an open-weight model on the agentic track.** Run a model behind vLLM and
+   point `momentbench agentic --provider openai-compatible --base-url ...` at it. Report
+   Recall@1 against tokens, latency and GPU-hours per query. *Skill: batched serving,
+   prefix caching.*
+9. **Make visual search fast.** Embed sampled frames from all 27 videos, then measure
+   index build time, query latency and Recall@1 as you quantize, batch or cut the frame
+   rate. *Skill: quantization, batching, approximate nearest neighbours.*
+10. **Train against the scorer.** Wrap the agentic track's five tools as an environment
+    and fine-tune a small model with reinforcement learning (GRPO or similar), using the
+    scorer as the reward. Train on one domain and report on the others, and say which
+    queries the model saw, because training on scored queries makes them useless for
+    evaluation. *Skill: parallel rollouts, reward design.*
+
 ## Using MomentBench in a course
 
 No course has used MomentBench yet, so tell us what breaks. It suits a course project
 for these reasons:
 
 - A team can have a score on the first day, on a laptop, at no cost.
-- Each idea above fits a term and has a baseline to beat.
+- Each idea above fits a term and has a baseline to beat; ideas 8 to 10 are systems
+  projects with a measurable speed or cost target.
 - `momentbench bundle` writes the JSON, LaTeX table and citation for the final report.
 - A valid submission is checked automatically and published on
   [momentbench.com](https://momentbench.com), so students finish with a public result.
