@@ -8,6 +8,7 @@
 BM25 (k1 1.2, b 0.75) over the shipped transcript cues of every corpus video, top five
 cues as ranked moments; it never looks at a frame. This is the generator behind the
 `submissions/bm25-transcript-*` rows, so those rows reproduce from these two commands.
+Pass --abstain-below SCORE to write no moments when the best cue scores below SCORE.
 """
 
 from __future__ import annotations
@@ -24,14 +25,19 @@ from momentbench.agentic.text_controls import BM25Index, load_transcripts  # noq
 from momentbench.runner import load_corpus_assets, load_queries  # noqa: E402
 
 
-def predictions(queries_path: Path, manifest: Path, transcripts_dir: Path) -> dict:
+def predictions(queries_path: Path, manifest: Path, transcripts_dir: Path,
+                abstain_below: float | None = None) -> dict:
     assets = [a["asset_id"] for a in load_corpus_assets(manifest)]
     index = BM25Index(load_transcripts(assets, transcripts_dir))
-    return {"system": "bm25-transcript",
-            "predictions": [{"query_id": q.query_id,
-                             "moments": [m.model_dump(exclude={"metadata"})
-                                         for m in index.search(q.text)]}
-                            for q in load_queries(queries_path)]}
+    system = "bm25-transcript"
+    if abstain_below is not None:
+        system += f"-abstain-below-{abstain_below}"
+    rows = []
+    for q in load_queries(queries_path):
+        moments = index.search(q.text, abstain_below=abstain_below)
+        rows.append({"query_id": q.query_id,
+                     "moments": [m.model_dump(exclude={"metadata"}) for m in moments]})
+    return {"system": system, "predictions": rows}
 
 
 def main() -> None:
@@ -40,9 +46,11 @@ def main() -> None:
     ap.add_argument("-c", "--corpus", type=Path,
                     default=ROOT / "data/corpus_manifests/sample_manifest.json")
     ap.add_argument("--transcripts-dir", type=Path, default=ROOT / "data/transcripts")
+    ap.add_argument("--abstain-below", type=float, metavar="SCORE",
+                    help="return no moments when the top BM25 score is below SCORE")
     ap.add_argument("-o", "--output", type=Path, required=True)
     args = ap.parse_args()
-    out = predictions(args.queries, args.corpus, args.transcripts_dir)
+    out = predictions(args.queries, args.corpus, args.transcripts_dir, args.abstain_below)
     args.output.write_text(json.dumps(out, indent=1) + "\n")
     print(f"wrote {args.output}: {len(out['predictions'])} queries")
 
