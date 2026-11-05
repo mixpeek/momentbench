@@ -28,6 +28,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+dense = [
+    "sentence-transformers>=3.0",
+]
 models = [
     "openai>=1.30",
     "anthropic>=0.30",

@@ -78,6 +78,17 @@ It scores 10.2% Recall@1 on robotics, the row on the leaderboard, which never lo
 frame. The never-answer floor (an empty list everywhere) scores the share of no-answer
 queries.
 
+To compare BM25 with dense retrieval over the same transcript cues, install the dense
+extra and run the MiniLM baseline. It downloads the model on first use, then encodes
+queries and cues on CPU and ranks up to five cues across the collection by cosine
+similarity.
+
+```bash
+pip install -e ".[dense]"
+python scripts/dense_predictions.py -q data/queries/scored/robotics_v0.2_scored.json -o dense.json
+momentbench score-predictions -p dense.json -q data/queries/scored/robotics_v0.2_scored.json
+```
+
 ## Reading the result
 
 - **Positive-query Recall@1** is the localization number the leaderboard leads with.
