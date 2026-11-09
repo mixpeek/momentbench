@@ -48,6 +48,8 @@ hf = [
 ]
 inspect = [
     "inspect_ai>=0.3.100",
+    # agent-client-protocol 1.0 removed acp.helpers, which inspect_ai 0.3.288 still imports.
+    "agent-client-protocol<1.0",
 ]
 claude-code = [
     "claude-agent-sdk>=0.2",
