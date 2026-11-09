@@ -79,11 +79,11 @@ for these reasons:
 - A valid submission is checked automatically and published on
   [momentbench.com](https://momentbench.com), so students finish with a public result.
 
-Instructors can open an issue with the term dates and team count, and we will suggest
-projects and answer student questions there.
+Instructors can open an issue with the term dates and team count. A maintainer reads
+course issues and replies there.
 
 ## Report what you find
 
 Results go through [`bring-your-system.md`](bring-your-system.md). Mixpeek maintains
-MomentBench and has an entry on the leaderboard under the same rules
+MomentBench, and any entry it adds later follows the same rules
 ([`GOVERNANCE.md`](../GOVERNANCE.md)), so results that make any entry look bad are welcome.
