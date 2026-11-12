@@ -89,6 +89,26 @@ python scripts/dense_predictions.py -q data/queries/scored/robotics_v0.2_scored.
 momentbench score-predictions -p dense.json -q data/queries/scored/robotics_v0.2_scored.json
 ```
 
+`--abstain-below 10` makes BM25 return no moment when its best transcript match scores
+under 10. It lifts net score in every domain, but only by answering less: positive-query
+Recall@1 stays the same or drops, and the never-answer floor still scores higher.
+
+| Domain | Run | Answered | Positive Recall@1 | No-answer accuracy | Net score |
+|---|---|---:|---:|---:|---:|
+| Film | BM25 | 130/130 | 9.5% | 0.0% | -0.85 |
+| Film | BM25, abstain below 10 | 35/130 | 9.5% | 96.0% | +0.07 |
+| Film | Never answer | 0/130 | 0.0% | 100.0% | +0.19 |
+| Aerospace | BM25 | 154/154 | 17.3% | 0.0% | -0.69 |
+| Aerospace | BM25, abstain below 10 | 70/154 | 17.3% | 80.0% | -0.06 |
+| Aerospace | Never answer | 0/154 | 0.0% | 100.0% | +0.10 |
+| Robotics | BM25 | 49/49 | 12.5% | 0.0% | -0.80 |
+| Robotics | BM25, abstain below 10 | 21/49 | 10.0% | 77.8% | -0.12 |
+| Robotics | Never answer | 0/49 | 0.0% | 100.0% | +0.18 |
+
+The threshold of 10 was reported by its contributor as chosen on unlabeled film queries
+([#10](https://github.com/mixpeek/momentbench/pull/10)). A system worth reporting beats
+the never-answer floor on net score while keeping positive Recall@1 above zero.
+
 ## Reading the result
 
 - **Positive-query Recall@1** is the localization number the leaderboard leads with.
