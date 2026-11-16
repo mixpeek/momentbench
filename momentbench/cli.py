@@ -74,13 +74,19 @@ def score_predictions_cmd(predictions: str, queries: str, corpus: str, output: s
                   f"{(s.no_answer_accuracy or 0):.1%}")
     import shlex
 
+    from momentbench.submission import MANIFEST
+
     run_file = Path(output) / f"{run.run_id}.json"
-    name = json.loads(Path(predictions).read_text()).get("system") or run.model_id
+    argv = ["momentbench", "submit", "-r", str(run_file), "-q", queries,
+            "--model-name", run.model_id]
+    # submit validates against the repository's manifest unless told otherwise.
+    if Path(corpus).resolve() != Path(MANIFEST).resolve():
+        argv += ["-c", corpus]
     console.print(f"  Saved: {run_file}")
     # Print a complete command: a hint without the required --model-name failed as printed.
-    console.print("  Submit with: momentbench submit "
-                  f"-r {shlex.quote(str(run_file))} -q {shlex.quote(queries)} "
-                  f"--model-name {shlex.quote(name)} --contact you@your-lab.org",
+    console.print("  Submit with: " + shlex.join(argv),
+                  soft_wrap=True, markup=False, highlight=False)
+    console.print("  Add --contact <your email> so the result can be attributed to your team.",
                   soft_wrap=True, markup=False, highlight=False)
 
 

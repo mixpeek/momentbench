@@ -108,8 +108,10 @@ def test_the_submission_validator_passes_and_fails(tmp_path, release, monkeypatc
     assert vs.main([str(d)]) == 1
 
 
-def test_the_printed_submit_command_runs_as_printed(tmp_path, monkeypatch):
+@pytest.mark.parametrize("custom_manifest", [False, True])
+def test_the_printed_submit_command_runs_as_printed(tmp_path, monkeypatch, custom_manifest):
     import shlex
+    import shutil
 
     from click.testing import CliRunner
 
@@ -122,12 +124,20 @@ def test_the_printed_submit_command_runs_as_printed(tmp_path, monkeypatch):
     preds = tmp_path / "preds.json"
     preds.write_text(json.dumps({"system": "my retriever",
                                  "predictions": [{"query_id": i, "moments": []} for i in ids]}))
+    extra = []
+    if custom_manifest:
+        manifest = tmp_path / "manifest.json"
+        shutil.copy("data/corpus_manifests/sample_manifest.json", manifest)
+        extra = ["-c", str(manifest)]
     runner = CliRunner()
     scored = runner.invoke(main, ["score-predictions", "-p", str(preds), "-q", queries,
-                                  "-o", str(tmp_path / "runs")], terminal_width=80)
+                                  "-o", str(tmp_path / "runs"), *extra], terminal_width=80)
     assert scored.exit_code == 0, scored.output
     line = next(x for x in scored.output.splitlines() if "Submit with:" in x)
     argv = shlex.split(line.split("Submit with:", 1)[1])
-    assert argv[:2] == ["momentbench", "submit"] and "my retriever" in argv
+    assert argv[:2] == ["momentbench", "submit"] and "--contact" not in argv
+    assert ("-c" in argv) == custom_manifest
+    if custom_manifest:
+        assert argv[argv.index("-c") + 1] == str(tmp_path / "manifest.json")
     submitted = runner.invoke(main, argv[1:] + ["-o", str(tmp_path / "subs")])
     assert submitted.exit_code == 0, submitted.output
