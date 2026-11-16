@@ -1,6 +1,7 @@
 """The prediction-file track: same scoring rules, its own key, accepted by submit."""
 
 import json
+from pathlib import Path
 
 import pytest
 
@@ -105,3 +106,28 @@ def test_the_submission_validator_passes_and_fails(tmp_path, release, monkeypatc
     bad = run.model_copy(update={"trials": run.trials[:-1]})
     (d / "run.json").write_text(bad.model_dump_json())
     assert vs.main([str(d)]) == 1
+
+
+def test_the_printed_submit_command_runs_as_printed(tmp_path, monkeypatch):
+    import shlex
+
+    from click.testing import CliRunner
+
+    from momentbench.cli import main
+
+    repo = Path(__file__).resolve().parents[1]
+    monkeypatch.chdir(repo)
+    queries = "data/queries/scored/robotics_v0.2_scored.json"
+    ids = [q["query_id"] for q in json.loads(Path(queries).read_text())]
+    preds = tmp_path / "preds.json"
+    preds.write_text(json.dumps({"system": "my retriever",
+                                 "predictions": [{"query_id": i, "moments": []} for i in ids]}))
+    runner = CliRunner()
+    scored = runner.invoke(main, ["score-predictions", "-p", str(preds), "-q", queries,
+                                  "-o", str(tmp_path / "runs")], terminal_width=80)
+    assert scored.exit_code == 0, scored.output
+    line = next(x for x in scored.output.splitlines() if "Submit with:" in x)
+    argv = shlex.split(line.split("Submit with:", 1)[1])
+    assert argv[:2] == ["momentbench", "submit"] and "my retriever" in argv
+    submitted = runner.invoke(main, argv[1:] + ["-o", str(tmp_path / "subs")])
+    assert submitted.exit_code == 0, submitted.output

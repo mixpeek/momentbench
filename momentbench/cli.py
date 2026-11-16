@@ -72,8 +72,16 @@ def score_predictions_cmd(predictions: str, queries: str, corpus: str, output: s
     console.print(f"  Recall@1: {s.recall_at_1:.1%} (95% CI {lo:.1%} to {hi:.1%})")
     console.print(f"  Net score: {s.net_score:+.2f}   No-answer accuracy: "
                   f"{(s.no_answer_accuracy or 0):.1%}")
-    console.print(f"  Saved: {output}/{run.run_id}.json  "
-                  f"(submit with: momentbench submit -r <that file> -q {queries})")
+    import shlex
+
+    run_file = Path(output) / f"{run.run_id}.json"
+    name = json.loads(Path(predictions).read_text()).get("system") or run.model_id
+    console.print(f"  Saved: {run_file}")
+    # Print a complete command: a hint without the required --model-name failed as printed.
+    console.print("  Submit with: momentbench submit "
+                  f"-r {shlex.quote(str(run_file))} -q {shlex.quote(queries)} "
+                  f"--model-name {shlex.quote(name)} --contact you@your-lab.org",
+                  soft_wrap=True, markup=False, highlight=False)
 
 
 @main.command()
@@ -452,7 +460,7 @@ def attribution(manifest: str, output: str):
 
 @main.command()
 @click.option("--results", "-r", type=click.Path(exists=True), required=True,
-              help="An agentic run file written by `momentbench agentic`")
+              help="A run file written by `momentbench agentic` or `momentbench score-predictions`")
 @click.option("--queries", "-q", type=click.Path(exists=True), default=None,
               help="Query file the run answered (found in data/queries when omitted)")
 @click.option("--manifest", "-c", type=click.Path(exists=True), default=None,
