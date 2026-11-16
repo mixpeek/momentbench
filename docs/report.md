@@ -50,6 +50,7 @@ Primary group: anonymized titles, standard prompt, compatibility key `689ea1623b
 
 | Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
+| claude-fable-5-2 | claude-code | 72.4 (64 to 81) | 60.0 (52 to 68) | 8.0 | +0.23 | 4 budget_exceeded | n/a |
 | claude-opus-5-5 | claude-code | 59.0 (50 to 68) | 50.8 (42 to 59) | 16.0 | +0.02 | 1 budget_exceeded | $0.138* |
 | claude-haiku-5-5 | claude-code | 27.6 (19 to 37) | 26.9 (20 to 35) | 24.0 | -0.15 | 31 budget_exceeded | $0.020* |
 | claude-sonnet-5-5 | claude-code | 23.8 (16 to 32) | 23.1 (16 to 31) | 20.0 | -0.48 | 0 | $0.080* |
@@ -61,6 +62,7 @@ Other condition: anonymized titles, abstain prompt (key `845b739515650b94`), ran
 
 | Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
+| claude-fable-5-2 | claude-code | 68.6 (59 to 77) | 59.2 (52 to 68) | 20.0 | +0.22 | 4 budget_exceeded | n/a |
 | claude-opus-5-5 | claude-code | 61.9 (52 to 71) | 60.0 (52 to 68) | 52.0 | +0.27 | 3 budget_exceeded, 1 no_submission | $0.137* |
 | claude-sonnet-5-5 | claude-code | 29.5 (21 to 38) | 31.5 (24 to 40) | 40.0 | -0.23 | 0 | $0.078* |
 | claude-haiku-5-5 | claude-code | 27.6 (19 to 36) | 33.1 (25 to 42) | 56.0 | +0.00 | 19 budget_exceeded | $0.018* |
@@ -78,6 +80,7 @@ Primary group: anonymized titles, standard prompt, compatibility key `05841b8cc1
 
 | Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
+| claude-fable-5-2 | claude-code | 65.5 (58 to 73) | 62.3 (54 to 70) | 33.3 | +0.28 | 4 budget_exceeded | n/a |
 | claude-opus-5-5 | claude-code | 60.4 (52 to 68) | 57.8 (50 to 66) | 33.3 | +0.20 | 6 budget_exceeded | $0.152* |
 | gemini-3.8-flash | api | 56.1 (48 to 64) | 51.3 (44 to 59) | 6.7 | +0.38 | 55 step_limit | $0.135 |
 | claude-haiku-5-5 | claude-code | 36.7 (29 to 45) | 35.7 (29 to 44) | 26.7 | -0.10 | 14 budget_exceeded | $0.022* |
@@ -90,6 +93,7 @@ Other condition: anonymized titles, abstain prompt (key `08cdcfff3c36b042`), ran
 | Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | 64.7 (57 to 73) | 65.6 (58 to 73) | 73.3 | +0.42 | 2 budget_exceeded | $0.146* |
+| claude-fable-5-2 | claude-code | 63.3 (55 to 71) | 60.4 (53 to 68) | 33.3 | +0.27 | 6 budget_exceeded | n/a |
 | claude-haiku-5-5 | claude-code | 38.1 (29 to 46) | 38.3 (31 to 46) | 40.0 | +0.05 | 16 budget_exceeded | $0.021* |
 | claude-sonnet-5-5 | claude-code | 33.8 (26 to 42) | 35.7 (28 to 43) | 53.3 | -0.12 | 1 budget_exceeded | $0.079* |
 
@@ -107,6 +111,7 @@ Primary group: anonymized titles, standard prompt, compatibility key `39a268172b
 | Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | 80.0 (68 to 92) | 71.4 (59 to 84) | 33.3 | +0.47 | 2 budget_exceeded | $0.152* |
+| claude-fable-5-2 | claude-code | 72.5 (57 to 85) | 65.3 (53 to 78) | 33.3 | +0.43 | 6 budget_exceeded | n/a |
 | gemini-3.8-flash | api | 57.5 (42 to 72) | 49.0 (37 to 63) | 11.1 | +0.33 | 1 no_submission, 16 step_limit | $0.139 |
 | claude-haiku-5-5 | claude-code | 37.5 (22 to 52) | 36.7 (24 to 51) | 33.3 | -0.08 | 5 budget_exceeded | $0.025* |
 | claude-haiku-5-5 (API) | api | 32.5 (20 to 48) | 30.6 (18 to 45) | 22.2 | -0.35 | 0 | $0.018 |
@@ -118,6 +123,7 @@ Other condition: anonymized titles, abstain prompt (key `3cf01744d206f060`), ran
 | Model | Harness | Positive R@1 (95% CI, queries) | R@1, all (95% CI) | No-answer | Net | No admissible answer | $/query |
 |---|---|---|---|---|---|---|---|
 | claude-opus-5-5 | claude-code | 87.5 (78 to 98) | 81.6 (69 to 92) | 55.6 | +0.65 | 0 | $0.144* |
+| claude-fable-5-2 | claude-code | 77.5 (65 to 90) | 73.5 (61 to 86) | 55.6 | +0.57 | 4 budget_exceeded | n/a |
 | claude-haiku-5-5 | claude-code | 50.0 (32 to 65) | 46.9 (33 to 59) | 33.3 | +0.12 | 3 budget_exceeded | $0.020* |
 | claude-sonnet-5-5 | claude-code | 35.0 (22 to 50) | 34.7 (22 to 49) | 33.3 | -0.16 | 2 budget_exceeded | $0.077* |
 

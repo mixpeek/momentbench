@@ -1,7 +1,7 @@
 {
  "benchmark": "momentbench",
  "release": "0.2.5",
- "generated_at_commit": "a13fb3d",
+ "generated_at_commit": "ca6b021",
  "ranking_rule": "rows are compared only within a group (one compatibility key)",
  "primary_keys": {
   "aerospace": "05841b8cc16d0b1b",
@@ -51,6 +51,38 @@
      "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-claude-opus-5-5-3acb24ef.json",
      "code_commit": "68f1903d32fa88e05b3ede66062fbd5b4ce79a76",
      "timestamp": "2026-10-17T21:57:29Z"
+    },
+    {
+     "positive_recall_at_1_ci95": [
+      0.5467625899280576,
+      0.7122302158273381
+     ],
+     "model_id": "claude-fable-5-2",
+     "harness": "claude-code",
+     "resolved_models": [
+      "claude-fable-5-2"
+     ],
+     "num_queries": 154,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.6330935251798561,
+     "recall_at_1": 0.6039,
+     "recall_at_1_ci95": [
+      0.526,
+      0.6753
+     ],
+     "net_score": 0.2727272727272727,
+     "no_answer_accuracy": 0.3333333333333333,
+     "false_positive_rate": 0.4666666666666667,
+     "mean_cost_usd_per_query": null,
+     "run_id": "agentic-claude-fable-5-2-b0aa0ec8",
+     "outcomes": {
+      "budget_exceeded": 6,
+      "submitted": 148
+     },
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-claude-fable-5-2-b0aa0ec8.json",
+     "code_commit": "13041612a330d36cebc4a8119981b263f8177ea8",
+     "timestamp": "2026-11-16T22:23:36Z"
     },
     {
      "positive_recall_at_1_ci95": [
@@ -127,6 +159,38 @@
    "track": "agentic",
    "condition": "anonymized titles, standard prompt",
    "rows": [
+    {
+     "positive_recall_at_1_ci95": [
+      0.5755395683453237,
+      0.7338129496402878
+     ],
+     "model_id": "claude-fable-5-2",
+     "harness": "claude-code",
+     "resolved_models": [
+      "claude-fable-5-2"
+     ],
+     "num_queries": 154,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.6546762589928058,
+     "recall_at_1": 0.6234,
+     "recall_at_1_ci95": [
+      0.539,
+      0.7013
+     ],
+     "net_score": 0.2792207792207792,
+     "no_answer_accuracy": 0.3333333333333333,
+     "false_positive_rate": 0.6,
+     "mean_cost_usd_per_query": null,
+     "run_id": "agentic-claude-fable-5-2-1744f3be",
+     "outcomes": {
+      "budget_exceeded": 4,
+      "submitted": 150
+     },
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/aerospace/agentic-claude-fable-5-2-1744f3be.json",
+     "code_commit": "13041612a330d36cebc4a8119981b263f8177ea8",
+     "timestamp": "2026-11-16T20:56:56Z"
+    },
     {
      "positive_recall_at_1_ci95": [
       0.5179856115107914,
@@ -399,6 +463,38 @@
    "rows": [
     {
      "positive_recall_at_1_ci95": [
+      0.5904761904761905,
+      0.7714285714285715
+     ],
+     "model_id": "claude-fable-5-2",
+     "harness": "claude-code",
+     "resolved_models": [
+      "claude-fable-5-2"
+     ],
+     "num_queries": 130,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.6857142857142857,
+     "recall_at_1": 0.5923,
+     "recall_at_1_ci95": [
+      0.5154,
+      0.6769
+     ],
+     "net_score": 0.2230769230769231,
+     "no_answer_accuracy": 0.2,
+     "false_positive_rate": 0.72,
+     "mean_cost_usd_per_query": null,
+     "run_id": "agentic-claude-fable-5-2-40bf4863",
+     "outcomes": {
+      "budget_exceeded": 4,
+      "submitted": 126
+     },
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/film/agentic-claude-fable-5-2-40bf4863.json",
+     "code_commit": "13041612a330d36cebc4a8119981b263f8177ea8",
+     "timestamp": "2026-11-16T22:59:51Z"
+    },
+    {
+     "positive_recall_at_1_ci95": [
       0.5238095238095238,
       0.7142857142857143
      ],
@@ -504,6 +600,38 @@
    "track": "agentic",
    "condition": "anonymized titles, standard prompt",
    "rows": [
+    {
+     "positive_recall_at_1_ci95": [
+      0.638095238095238,
+      0.8095238095238095
+     ],
+     "model_id": "claude-fable-5-2",
+     "harness": "claude-code",
+     "resolved_models": [
+      "claude-fable-5-2"
+     ],
+     "num_queries": 130,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.7238095238095238,
+     "recall_at_1": 0.6,
+     "recall_at_1_ci95": [
+      0.5154,
+      0.6846
+     ],
+     "net_score": 0.23076923076923078,
+     "no_answer_accuracy": 0.08,
+     "false_positive_rate": 0.8,
+     "mean_cost_usd_per_query": null,
+     "run_id": "agentic-claude-fable-5-2-952ebd91",
+     "outcomes": {
+      "budget_exceeded": 4,
+      "submitted": 126
+     },
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/film/agentic-claude-fable-5-2-952ebd91.json",
+     "code_commit": "13041612a330d36cebc4a8119981b263f8177ea8",
+     "timestamp": "2026-11-16T21:30:56Z"
+    },
     {
      "positive_recall_at_1_ci95": [
       0.49523809523809526,
@@ -727,6 +855,38 @@
     },
     {
      "positive_recall_at_1_ci95": [
+      0.65,
+      0.9
+     ],
+     "model_id": "claude-fable-5-2",
+     "harness": "claude-code",
+     "resolved_models": [
+      "claude-fable-5-2"
+     ],
+     "num_queries": 49,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.775,
+     "recall_at_1": 0.7347,
+     "recall_at_1_ci95": [
+      0.6122,
+      0.8571
+     ],
+     "net_score": 0.5714285714285714,
+     "no_answer_accuracy": 0.5555555555555556,
+     "false_positive_rate": 0.3333333333333333,
+     "mean_cost_usd_per_query": null,
+     "run_id": "agentic-claude-fable-5-2-27ea260f",
+     "outcomes": {
+      "budget_exceeded": 4,
+      "submitted": 45
+     },
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/robotics/agentic-claude-fable-5-2-27ea260f.json",
+     "code_commit": "13041612a330d36cebc4a8119981b263f8177ea8",
+     "timestamp": "2026-11-16T21:43:59Z"
+    },
+    {
+     "positive_recall_at_1_ci95": [
       0.325,
       0.65
      ],
@@ -831,6 +991,38 @@
      "file": "data/results/agentic-v0.2.5/record/robotics/agentic-claude-opus-5-5-2c29e220.json",
      "code_commit": "06672987bddde3c0fbef8fe4d59648312c53575f",
      "timestamp": "2026-10-17T15:53:40Z"
+    },
+    {
+     "positive_recall_at_1_ci95": [
+      0.575,
+      0.85
+     ],
+     "model_id": "claude-fable-5-2",
+     "harness": "claude-code",
+     "resolved_models": [
+      "claude-fable-5-2"
+     ],
+     "num_queries": 49,
+     "num_trials": 1,
+     "positive_recall_at_1": 0.725,
+     "recall_at_1": 0.6531,
+     "recall_at_1_ci95": [
+      0.5306,
+      0.7755
+     ],
+     "net_score": 0.42857142857142855,
+     "no_answer_accuracy": 0.3333333333333333,
+     "false_positive_rate": 0.5555555555555556,
+     "mean_cost_usd_per_query": null,
+     "run_id": "agentic-claude-fable-5-2-61cca256",
+     "outcomes": {
+      "budget_exceeded": 6,
+      "submitted": 43
+     },
+     "origin": "record",
+     "file": "data/results/agentic-v0.2.5/record/robotics/agentic-claude-fable-5-2-61cca256.json",
+     "code_commit": "13041612a330d36cebc4a8119981b263f8177ea8",
+     "timestamp": "2026-11-16T20:19:09Z"
     },
     {
      "positive_recall_at_1_ci95": [
