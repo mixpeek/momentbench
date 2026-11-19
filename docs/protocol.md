@@ -30,7 +30,7 @@ Each query file is checked in CI (`tests/test_query_validation.py`): unique ids,
 
 ## Agentic track
 
-The model cannot watch video. It gets five tools, the same for every entrant:
+The model does not receive a continuous video stream. It gets five tools, the same for every entrant:
 
 | Tool | Returns |
 |---|---|

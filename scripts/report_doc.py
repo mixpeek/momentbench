@@ -256,7 +256,7 @@ provisional.
 
 ## 4. Protocol
 
-Summarised from [`protocol.md`](protocol.md): the model cannot watch video; it gets the
+Summarised from [`protocol.md`](protocol.md): the model does not receive a continuous video stream; it gets the
 five tools above, a budget of 30 turns, 64 frames and 60 tool calls, and a fixed system
 prompt that states the scoring rule. A trial that refuses, errors or never submits scores
 zero. A no-answer query is a hit only on an explicit empty submission. Recall@1 is also

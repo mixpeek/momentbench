@@ -159,7 +159,7 @@ momentbench submit -r &lt;run&gt;.json --model-name "Your system" -o submissions
 <section id="method"><div class="wrap two">
   <div>
     <h2>How it is measured</h2>
-    <p>The model cannot watch video. It gets five tools, the same for every entrant: list the videos, search and read transcripts, sample frames, and submit. A budget of 30 turns, 64 frames and 60 tool calls applies to every query. A refusal, a crash or no submission scores zero.</p>
+    <p>The model does not receive a continuous video stream. It gets five tools, the same for every entrant: list the videos, search and read transcripts, sample frames, and submit. A budget of 30 turns, 64 frames and 60 tool calls applies to every query. A refusal, a crash or no submission scores zero.</p>
     <ul class="ticks">
       <li><b>Four tiers.</b> Single-shot visual, dialogue plus picture, no-answer near misses (a real shot with one detail changed), and ordered events across consecutive shots.</li>
       <li><b>Physical events.</b> 53 queries in which a machine visibly moves or makes contact; run them alone with <code>--physical-only</code>.</li>

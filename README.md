@@ -120,7 +120,7 @@ momentbench corpus-verify   -m data/corpus_manifests/sample_manifest.json --corp
 
 ## Agentic Track
 
-The agentic track measures a tool-using model. The model cannot watch video. It gets five tools (`list_assets`, `search_transcript`, `read_transcript`, `sample_frames`, `submit_answer`) and a per-query budget of frames, tool calls and turns, and it must submit a video and a time span.
+The agentic track measures a tool-using model. The model does not receive a continuous video stream. It gets five tools (`list_assets`, `search_transcript`, `read_transcript`, `sample_frames`, `submit_answer`) and a per-query budget of frames, tool calls and turns, and it must submit a video and a time span.
 
 ```bash
 momentbench agentic claude-opus-5-5 \

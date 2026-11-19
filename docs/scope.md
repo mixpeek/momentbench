@@ -56,7 +56,7 @@ That makes a v0.2 score a measure of:
 - **Model differences free of harness effects.** Claude runs use the Claude Code SDK
   loop and other models the API loop; turn semantics and image transport differ. Each
   row names its harness.
-- **Human-verified labels.** All 456 published queries were drafted and verified by
+- **Human label review (none yet).** All 456 published queries were drafted and verified by
   Claude, cross-checked by Gemini, and then reviewed frame by frame by Claude on the
   maintainer's behalf (59 corrected, 1 removed). Edits after the cross-check (126
   queries) left those without a cross-check of their current annotation; a new
