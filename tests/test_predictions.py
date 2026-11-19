@@ -133,6 +133,8 @@ def test_the_printed_submit_command_runs_as_printed(tmp_path, monkeypatch, custo
     scored = runner.invoke(main, ["score-predictions", "-p", str(preds), "-q", queries,
                                   "-o", str(tmp_path / "runs"), *extra], terminal_width=80)
     assert scored.exit_code == 0, scored.output
+    saved = next(x for x in scored.output.splitlines() if "Saved:" in x)
+    assert Path(saved.split("Saved:", 1)[1].strip()).is_file()
     line = next(x for x in scored.output.splitlines() if "Submit with:" in x)
     argv = shlex.split(line.split("Submit with:", 1)[1])
     assert argv[:2] == ["momentbench", "submit"] and "--contact" not in argv

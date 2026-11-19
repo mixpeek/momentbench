@@ -82,7 +82,8 @@ def score_predictions_cmd(predictions: str, queries: str, corpus: str, output: s
     # submit validates against the repository's manifest unless told otherwise.
     if Path(corpus).resolve() != Path(MANIFEST).resolve():
         argv += ["-c", corpus]
-    console.print(f"  Saved: {run_file}")
+    # soft_wrap keeps a long path on one line, so it can be copied as printed.
+    console.print(f"  Saved: {run_file}", soft_wrap=True, markup=False, highlight=False)
     # Print a complete command: a hint without the required --model-name failed as printed.
     console.print("  Submit with: " + shlex.join(argv),
                   soft_wrap=True, markup=False, highlight=False)
