@@ -11,6 +11,11 @@ Changes to the current leaderboard after 0.2.5; the archived release is unchange
 - `scripts/bm25_predictions.py` regenerates the BM25 baseline's prediction files; the
   three `submissions/bm25-transcript-*` rows reproduce from it exactly. Manifest
   commands are labelled recorded, recipe or reconstructed.
+- `data/results/baselines-v0.2.5/` holds the prediction and run files for the transcript
+  baselines (BM25, BM25 abstaining below 10, MiniLM, never-answer) with the commands,
+  package versions and hashes that produced them. The MiniLM hit counts contributed in
+  #11 reproduce exactly.
+- `score-predictions` prints the saved run path on one line, so a long path can be copied.
 
 ## 0.2.5 (2026-10-17)
 

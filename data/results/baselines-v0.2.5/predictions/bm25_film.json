@@ -1,0 +1,3890 @@
+{
+ "system": "bm25-transcript",
+ "predictions": [
+  {
+   "query_id": "q-film-0100",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 123.0,
+     "t_out": 133.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 55.6,
+     "t_out": 59.04
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 31.0,
+     "t_out": 36.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 129.68,
+     "t_out": 131.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-0101",
+   "moments": [
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 111.8,
+     "t_out": 113.8
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 182.68,
+     "t_out": 184.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 50.0,
+     "t_out": 55.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 87.28,
+     "t_out": 89.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-0102",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 57.8,
+     "t_out": 64.8
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 64.8,
+     "t_out": 67.8
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 59.28,
+     "t_out": 63.44
+    },
+    {
+     "asset_id": "nasa-ingenuity-fourth-flight",
+     "t_in": 15.84,
+     "t_out": 17.88
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-0103",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 59.92,
+     "t_out": 63.84
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 90.0,
+     "t_out": 95.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 103.04,
+     "t_out": 106.72
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 109.0,
+     "t_out": 115.0
+    },
+    {
+     "asset_id": "nasa-perseverance-twin-rover",
+     "t_in": 46.48,
+     "t_out": 56.96
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-0110",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 227.1,
+     "t_out": 229.54
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 22.56,
+     "t_out": 26.92
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 0.0,
+     "t_out": 4.32
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 40.56,
+     "t_out": 44.24
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-0115",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 488.68,
+     "t_out": 491.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 369.68,
+     "t_out": 371.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 103.04,
+     "t_out": 106.72
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 418.68,
+     "t_out": 419.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 368.68,
+     "t_out": 369.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-0120",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 95.68,
+     "t_out": 98.08
+    },
+    {
+     "asset_id": "nasa-ingenuity-fourth-flight",
+     "t_in": 15.84,
+     "t_out": 17.88
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 61.0,
+     "t_out": 66.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 108.0,
+     "t_out": 115.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 251.0,
+     "t_out": 255.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-0122",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 488.68,
+     "t_out": 491.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 55.6,
+     "t_out": 59.04
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 31.0,
+     "t_out": 36.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 129.68,
+     "t_out": 131.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-0123",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 815.78,
+     "t_out": 817.78
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 860.1,
+     "t_out": 870.02
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 55.6,
+     "t_out": 59.04
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-0128",
+   "moments": [
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 248.08,
+     "t_out": 250.52
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 53.92,
+     "t_out": 63.44
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 488.68,
+     "t_out": 491.68
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 59.0,
+     "t_out": 61.0
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 196.76,
+     "t_out": 200.16
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-0130",
+   "moments": [
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 57.8,
+     "t_out": 64.8
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 64.8,
+     "t_out": 67.8
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 53.0,
+     "t_out": 56.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 872.1,
+     "t_out": 876.9
+    },
+    {
+     "asset_id": "nasa-ingenuity-fourth-flight",
+     "t_in": 10.76,
+     "t_out": 15.84
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-0135",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 140.0,
+     "t_out": 144.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 81.0,
+     "t_out": 84.0
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 30.0,
+     "t_out": 45.6
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 57.8,
+     "t_out": 64.8
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 76.0,
+     "t_out": 79.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-0138",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 113.76,
+     "t_out": 122.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 477.68,
+     "t_out": 481.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 237.18,
+     "t_out": 241.3
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 55.6,
+     "t_out": 59.04
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-0139",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 281.68,
+     "t_out": 283.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 270.68,
+     "t_out": 274.68
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 63.0,
+     "t_out": 70.0
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 193.64,
+     "t_out": 196.4
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-0141",
+   "moments": [
+    {
+     "asset_id": "sintel",
+     "t_in": 872.1,
+     "t_out": 876.9
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 227.5,
+     "t_out": 229.5
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 56.2,
+     "t_out": 58.28
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 46.56,
+     "t_out": 52.64
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 163.0,
+     "t_out": 171.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-3000",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 418.68,
+     "t_out": 419.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 368.68,
+     "t_out": 369.68
+    },
+    {
+     "asset_id": "nasa-ingenuity-fourth-flight",
+     "t_in": 21.88,
+     "t_out": 23.88
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 59.28,
+     "t_out": 63.44
+    },
+    {
+     "asset_id": "nasa-ingenuity-fourth-flight",
+     "t_in": 15.84,
+     "t_out": 17.88
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-3003",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 73.0,
+     "t_out": 78.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 477.68,
+     "t_out": 481.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 31.0,
+     "t_out": 36.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 129.68,
+     "t_out": 131.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 171.0,
+     "t_out": 180.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-3004",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 42.8,
+     "t_out": 46.48
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 129.68,
+     "t_out": 131.68
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 15.92,
+     "t_out": 23.48
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 0.0,
+     "t_out": 4.32
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-3009",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 61.0,
+     "t_out": 66.0
+    },
+    {
+     "asset_id": "nasa-ingenuity-fourth-flight",
+     "t_in": 10.76,
+     "t_out": 15.84
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 0.0,
+     "t_out": 4.32
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 40.56,
+     "t_out": 44.24
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-3012",
+   "moments": [
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 37.0,
+     "t_out": 39.0
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 30.0,
+     "t_out": 34.0
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 346.92,
+     "t_out": 349.88
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 103.04,
+     "t_out": 106.72
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 418.68,
+     "t_out": 419.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-3014",
+   "moments": [
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 123.0,
+     "t_out": 133.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 129.68,
+     "t_out": 131.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1000",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 55.6,
+     "t_out": 59.04
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1001",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 171.0,
+     "t_out": 180.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 92.84,
+     "t_out": 96.36
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 27.04,
+     "t_out": 30.56
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1004",
+   "moments": [
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 111.8,
+     "t_out": 113.8
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 56.2,
+     "t_out": 58.28
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 57.8,
+     "t_out": 64.8
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 64.8,
+     "t_out": 67.8
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1006",
+   "moments": [
+    {
+     "asset_id": "sintel",
+     "t_in": 142.82,
+     "t_out": 144.82
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 227.1,
+     "t_out": 229.54
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 132.46,
+     "t_out": 136.46
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1007",
+   "moments": [
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 111.8,
+     "t_out": 113.8
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 57.8,
+     "t_out": 64.8
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 64.8,
+     "t_out": 67.8
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1009",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 108.8,
+     "t_out": 111.8
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 128.0,
+     "t_out": 133.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 227.1,
+     "t_out": 229.54
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1011",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 142.82,
+     "t_out": 144.82
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 50.0,
+     "t_out": 55.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 133.0,
+     "t_out": 139.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 0.0,
+     "t_out": 4.32
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1012",
+   "moments": [
+    {
+     "asset_id": "sintel",
+     "t_in": 142.82,
+     "t_out": 144.82
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 274.68,
+     "t_out": 280.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 210.0,
+     "t_out": 216.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 132.46,
+     "t_out": 136.46
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1016",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 173.0,
+     "t_out": 177.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 227.1,
+     "t_out": 229.54
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 24.76,
+     "t_out": 29.4
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 132.46,
+     "t_out": 136.46
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1022",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 174.9,
+     "t_out": 177.66
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 0.0,
+     "t_out": 4.32
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 40.56,
+     "t_out": 44.24
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 64.0,
+     "t_out": 68.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1025",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 466.68,
+     "t_out": 468.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 418.68,
+     "t_out": 419.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 368.68,
+     "t_out": 369.68
+    },
+    {
+     "asset_id": "nasa-ingenuity-fourth-flight",
+     "t_in": 21.88,
+     "t_out": 23.88
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 152.02,
+     "t_out": 155.9
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1026",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 32.72,
+     "t_out": 35.92
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 34.0,
+     "t_out": 39.0
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 210.0,
+     "t_out": 212.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1030",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 32.72,
+     "t_out": 35.92
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 34.0,
+     "t_out": 39.0
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 210.0,
+     "t_out": 212.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1031",
+   "moments": [
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 111.8,
+     "t_out": 113.8
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 57.8,
+     "t_out": 64.8
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 64.8,
+     "t_out": 67.8
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 31.0,
+     "t_out": 36.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1033",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 132.46,
+     "t_out": 136.46
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 88.0,
+     "t_out": 93.0
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 150.0,
+     "t_out": 158.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1038",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-perseverance-twin-rover",
+     "t_in": 106.24,
+     "t_out": 110.24
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 196.76,
+     "t_out": 200.16
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1041",
+   "moments": [
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 24.0,
+     "t_out": 27.0
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 315.8,
+     "t_out": 322.52
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 94.68,
+     "t_out": 95.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 98.68,
+     "t_out": 100.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1043",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 22.56,
+     "t_out": 26.92
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 81.0,
+     "t_out": 84.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 76.0,
+     "t_out": 79.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 38.0,
+     "t_out": 41.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1049",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 47.0,
+     "t_out": 53.0
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 17.0,
+     "t_out": 22.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 108.0,
+     "t_out": 112.0
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 503.88,
+     "t_out": 508.2
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1050",
+   "moments": [
+    {
+     "asset_id": "nasa-ingenuity-fourth-flight",
+     "t_in": 15.84,
+     "t_out": 17.88
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 32.0,
+     "t_out": 38.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 50.0,
+     "t_out": 54.0
+    },
+    {
+     "asset_id": "nasa-ingenuity-fourth-flight",
+     "t_in": 10.76,
+     "t_out": 15.84
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1053",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 355.64,
+     "t_out": 362.76
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 0.0,
+     "t_out": 4.84
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 10.4,
+     "t_out": 14.96
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1055",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 92.84,
+     "t_out": 96.36
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 27.04,
+     "t_out": 30.56
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 0.0,
+     "t_out": 6.72
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1056",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 0.0,
+     "t_out": 4.32
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 40.56,
+     "t_out": 44.24
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1057",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 177.0,
+     "t_out": 187.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1058",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 488.68,
+     "t_out": 491.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 369.68,
+     "t_out": 371.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 50.0,
+     "t_out": 54.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 418.68,
+     "t_out": 419.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1061",
+   "moments": [
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 30.0,
+     "t_out": 47.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 16.72,
+     "t_out": 19.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 53.2,
+     "t_out": 57.84
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 339.0,
+     "t_out": 341.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-1062",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 173.0,
+     "t_out": 177.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 227.1,
+     "t_out": 229.54
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 24.76,
+     "t_out": 29.4
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 132.46,
+     "t_out": 136.46
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-4001",
+   "moments": [
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 248.08,
+     "t_out": 250.52
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 57.8,
+     "t_out": 64.8
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 815.78,
+     "t_out": 817.78
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 860.1,
+     "t_out": 870.02
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-4003",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 92.84,
+     "t_out": 96.36
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 27.04,
+     "t_out": 30.56
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 227.1,
+     "t_out": 229.54
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-4004",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 81.0,
+     "t_out": 84.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 76.0,
+     "t_out": 79.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 38.0,
+     "t_out": 41.0
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 173.0,
+     "t_out": 177.0
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 53.0,
+     "t_out": 56.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-4006",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 132.46,
+     "t_out": 136.46
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 55.6,
+     "t_out": 59.04
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 88.0,
+     "t_out": 93.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-4008",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 55.6,
+     "t_out": 59.04
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 68.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 84.52,
+     "t_out": 89.64
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-4009",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 466.68,
+     "t_out": 468.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 418.68,
+     "t_out": 419.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 368.68,
+     "t_out": 369.68
+    },
+    {
+     "asset_id": "nasa-ingenuity-fourth-flight",
+     "t_in": 21.88,
+     "t_out": 23.88
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 34.0,
+     "t_out": 39.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-4012",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 81.0,
+     "t_out": 84.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 76.0,
+     "t_out": 79.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 38.0,
+     "t_out": 41.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 124.0,
+     "t_out": 127.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-4013",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 59.28,
+     "t_out": 63.44
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 17.0,
+     "t_out": 22.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-4014",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 287.0,
+     "t_out": 293.0
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 73.0,
+     "t_out": 77.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 136.46,
+     "t_out": 140.06
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-4016",
+   "moments": [
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 63.0,
+     "t_out": 70.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 136.46,
+     "t_out": 140.06
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 53.2,
+     "t_out": 57.84
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-4017",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 0.0,
+     "t_out": 6.72
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 89.0,
+     "t_out": 95.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 55.6,
+     "t_out": 59.04
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-4020",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 355.64,
+     "t_out": 362.76
+    },
+    {
+     "asset_id": "nasa-ingenuity-fourth-flight",
+     "t_in": 15.84,
+     "t_out": 17.88
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 61.0,
+     "t_out": 66.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-4021",
+   "moments": [
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 313.36,
+     "t_out": 316.44
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 237.18,
+     "t_out": 241.3
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 872.1,
+     "t_out": 876.9
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 10.88,
+     "t_out": 15.92
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 186.7,
+     "t_out": 190.86
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-4022",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 177.0,
+     "t_out": 187.0
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 210.0,
+     "t_out": 212.0
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 202.6,
+     "t_out": 204.6
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 780.58,
+     "t_out": 782.82
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-4027",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 0.0,
+     "t_out": 4.32
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 177.0,
+     "t_out": 187.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-4030",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 177.0,
+     "t_out": 187.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 55.6,
+     "t_out": 59.04
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 129.68,
+     "t_out": 131.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2002",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 38.72,
+     "t_out": 43.08
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 88.26,
+     "t_out": 90.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 477.68,
+     "t_out": 481.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2005",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 82.92,
+     "t_out": 84.28
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 159.0,
+     "t_out": 162.0
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 355.64,
+     "t_out": 362.76
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2007",
+   "moments": [
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 111.8,
+     "t_out": 113.8
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 355.64,
+     "t_out": 362.76
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 108.0,
+     "t_out": 112.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 45.0,
+     "t_out": 49.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2008",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 46.56,
+     "t_out": 52.64
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 0.0,
+     "t_out": 4.32
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 40.56,
+     "t_out": 44.24
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 64.0,
+     "t_out": 68.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2009",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 355.64,
+     "t_out": 362.76
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 132.46,
+     "t_out": 136.46
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 36.0,
+     "t_out": 41.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 55.0,
+     "t_out": 59.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2013",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 66.0,
+     "t_out": 71.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 132.46,
+     "t_out": 136.46
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 123.0,
+     "t_out": 133.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2018",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 177.0,
+     "t_out": 187.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 53.0,
+     "t_out": 55.0
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 198.32,
+     "t_out": 201.64
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2023",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 237.18,
+     "t_out": 241.3
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 132.46,
+     "t_out": 136.46
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2025",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 55.6,
+     "t_out": 59.04
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 129.68,
+     "t_out": 131.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2026",
+   "moments": [
+    {
+     "asset_id": "sintel",
+     "t_in": 148.54,
+     "t_out": 150.86
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 193.64,
+     "t_out": 196.4
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 87.28,
+     "t_out": 89.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 67.0,
+     "t_out": 72.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2027",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 34.0,
+     "t_out": 39.0
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 180.36,
+     "t_out": 185.16
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 218.2,
+     "t_out": 225.16
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 105.0,
+     "t_out": 108.0
+    },
+    {
+     "asset_id": "nasa-ingenuity-fourth-flight",
+     "t_in": 15.84,
+     "t_out": 17.88
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2028",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 55.6,
+     "t_out": 59.04
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 129.68,
+     "t_out": 131.68
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 107.0,
+     "t_out": 109.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 216.0,
+     "t_out": 223.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2029",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 42.8,
+     "t_out": 46.48
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2034",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 47.0,
+     "t_out": 53.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 0.0,
+     "t_out": 6.72
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 227.5,
+     "t_out": 229.5
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 92.84,
+     "t_out": 96.36
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2035",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 53.2,
+     "t_out": 57.84
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2036",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 81.0,
+     "t_out": 84.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 76.0,
+     "t_out": 79.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 38.0,
+     "t_out": 41.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 47.0,
+     "t_out": 64.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2037",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 297.24,
+     "t_out": 303.6
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 173.0,
+     "t_out": 177.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2039",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 297.24,
+     "t_out": 303.6
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 173.0,
+     "t_out": 177.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 24.76,
+     "t_out": 29.4
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2041",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 177.0,
+     "t_out": 187.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 47.0,
+     "t_out": 64.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 872.1,
+     "t_out": 876.9
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2042",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 793.38,
+     "t_out": 795.38
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 173.0,
+     "t_out": 177.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 24.76,
+     "t_out": 29.4
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2043",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 174.9,
+     "t_out": 177.66
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 128.0,
+     "t_out": 133.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 55.6,
+     "t_out": 59.04
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 129.68,
+     "t_out": 131.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-2044",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 128.0,
+     "t_out": 133.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 177.66,
+     "t_out": 183.1
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 108.0,
+     "t_out": 112.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 68.0,
+     "t_out": 73.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-5001",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 174.68,
+     "t_out": 179.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 135.68,
+     "t_out": 142.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 105.58,
+     "t_out": 109.86
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 355.64,
+     "t_out": 362.76
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-5004",
+   "moments": [
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 227.1,
+     "t_out": 229.54
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 196.76,
+     "t_out": 200.16
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 177.66,
+     "t_out": 183.1
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-5006",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 210.0,
+     "t_out": 216.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 30.0,
+     "t_out": 34.0
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 346.92,
+     "t_out": 349.88
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 466.68,
+     "t_out": 468.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-5008",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 270.68,
+     "t_out": 274.68
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 111.8,
+     "t_out": 113.8
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 63.0,
+     "t_out": 70.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 189.68,
+     "t_out": 194.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-5009",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 113.76,
+     "t_out": 122.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-5010",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 440.68,
+     "t_out": 443.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 169.74,
+     "t_out": 174.9
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 177.0,
+     "t_out": 187.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-5013",
+   "moments": [
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 297.24,
+     "t_out": 303.6
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 269.68,
+     "t_out": 270.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 287.0,
+     "t_out": 293.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 352.68,
+     "t_out": 354.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-6000",
+   "moments": [
+    {
+     "asset_id": "sintel",
+     "t_in": 134.58,
+     "t_out": 136.58
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 137.5,
+     "t_out": 139.5
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 56.2,
+     "t_out": 58.28
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 173.0,
+     "t_out": 177.0
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 355.64,
+     "t_out": 362.76
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-6002",
+   "moments": [
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 39.0,
+     "t_out": 42.0
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 30.0,
+     "t_out": 34.0
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 346.92,
+     "t_out": 349.88
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 34.0,
+     "t_out": 36.0
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 37.0,
+     "t_out": 39.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-6003",
+   "moments": [
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 57.0,
+     "t_out": 62.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 32.72,
+     "t_out": 35.92
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 129.68,
+     "t_out": 131.68
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 107.0,
+     "t_out": 109.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-6004",
+   "moments": [
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 201.4,
+     "t_out": 206.92
+    },
+    {
+     "asset_id": "nasa-ingenuity-fourth-flight",
+     "t_in": 15.84,
+     "t_out": 17.88
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 78.0,
+     "t_out": 87.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 338.16,
+     "t_out": 340.16
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-6006",
+   "moments": [
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 292.76,
+     "t_out": 294.76
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 0.0,
+     "t_out": 4.32
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-6007",
+   "moments": [
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 325.08,
+     "t_out": 327.56
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 27.0,
+     "t_out": 30.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-6008",
+   "moments": [
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 339.0,
+     "t_out": 341.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 136.46,
+     "t_out": 140.06
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 404.68,
+     "t_out": 405.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-6009",
+   "moments": [
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 355.64,
+     "t_out": 362.76
+    },
+    {
+     "asset_id": "nasa-ingenuity-fourth-flight",
+     "t_in": 15.84,
+     "t_out": 17.88
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 338.16,
+     "t_out": 340.16
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 30.0,
+     "t_out": 45.6
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-6011",
+   "moments": [
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 17.0,
+     "t_out": 22.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 140.0,
+     "t_out": 144.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 78.0,
+     "t_out": 87.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-6014",
+   "moments": [
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 559.08,
+     "t_out": 561.08
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 186.36,
+     "t_out": 188.36
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 383.48,
+     "t_out": 391.96
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 127.0,
+     "t_out": 132.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-6015",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 94.68,
+     "t_out": 95.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 98.68,
+     "t_out": 100.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 872.1,
+     "t_out": 876.9
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 159.0,
+     "t_out": 162.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 32.0,
+     "t_out": 38.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-6020",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 358.68,
+     "t_out": 361.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 369.68,
+     "t_out": 371.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 365.68,
+     "t_out": 367.68
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 339.0,
+     "t_out": 341.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 477.68,
+     "t_out": 481.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-6021",
+   "moments": [
+    {
+     "asset_id": "sintel",
+     "t_in": 134.58,
+     "t_out": 136.58
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 137.5,
+     "t_out": 139.5
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 352.68,
+     "t_out": 354.68
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 81.0,
+     "t_out": 84.0
+    },
+    {
+     "asset_id": "nasa-ingenuity-fourth-flight",
+     "t_in": 25.88,
+     "t_out": 27.88
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-6022",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 399.68,
+     "t_out": 402.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 135.68,
+     "t_out": 142.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 488.68,
+     "t_out": 491.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 189.68,
+     "t_out": 194.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-6023",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 184.68,
+     "t_out": 189.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 412.68,
+     "t_out": 414.68
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 355.64,
+     "t_out": 362.76
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-6025",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 433.68,
+     "t_out": 438.68
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 111.8,
+     "t_out": 113.8
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 251.0,
+     "t_out": 255.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 177.0,
+     "t_out": 187.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-6030",
+   "moments": [
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 27.0,
+     "t_out": 33.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 134.58,
+     "t_out": 136.58
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 137.5,
+     "t_out": 139.5
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 148.54,
+     "t_out": 150.86
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 193.64,
+     "t_out": 196.4
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-6031",
+   "moments": [
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 0.0,
+     "t_out": 7.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 0.0,
+     "t_out": 6.72
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 84.52,
+     "t_out": 89.64
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 872.1,
+     "t_out": 876.9
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-7002",
+   "moments": [
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 383.48,
+     "t_out": 391.96
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 523.68,
+     "t_out": 526.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 32.0,
+     "t_out": 38.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 134.58,
+     "t_out": 136.58
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 137.5,
+     "t_out": 139.5
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-7008",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 446.68,
+     "t_out": 450.68
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 355.64,
+     "t_out": 362.76
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 445.68,
+     "t_out": 446.68
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 111.8,
+     "t_out": 113.8
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-7009",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 496.68,
+     "t_out": 499.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 492.68,
+     "t_out": 494.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 551.68,
+     "t_out": 564.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 581.68,
+     "t_out": 591.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-7011",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 872.1,
+     "t_out": 876.9
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 59.28,
+     "t_out": 63.44
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-8001",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 815.78,
+     "t_out": 817.78
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 860.1,
+     "t_out": 870.02
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 55.6,
+     "t_out": 59.04
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 14.22,
+     "t_out": 17.84
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-8002",
+   "moments": [
+    {
+     "asset_id": "sintel",
+     "t_in": 142.82,
+     "t_out": 144.82
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 177.0,
+     "t_out": 187.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 55.6,
+     "t_out": 59.04
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-8003",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 4.84,
+     "t_out": 6.96
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 28.0,
+     "t_out": 32.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 59.28,
+     "t_out": 63.44
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 73.28,
+     "t_out": 78.16
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-8004",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 30.0,
+     "t_out": 34.0
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 346.92,
+     "t_out": 349.88
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 815.78,
+     "t_out": 817.78
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-8006",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 32.0,
+     "t_out": 38.0
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 27.0,
+     "t_out": 33.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 142.82,
+     "t_out": 144.82
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 216.0,
+     "t_out": 223.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 42.8,
+     "t_out": 46.48
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-8007",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 0.0,
+     "t_out": 4.32
+    },
+    {
+     "asset_id": "nasa-ingenuity-fourth-flight",
+     "t_in": 10.76,
+     "t_out": 15.84
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 142.82,
+     "t_out": 144.82
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 30.0,
+     "t_out": 34.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-8009",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 355.64,
+     "t_out": 362.76
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-8011",
+   "moments": [
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 383.48,
+     "t_out": 391.96
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 32.0,
+     "t_out": 38.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 251.0,
+     "t_out": 255.0
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 218.2,
+     "t_out": 225.16
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 450.68,
+     "t_out": 454.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-8012",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 56.2,
+     "t_out": 58.28
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 46.56,
+     "t_out": 52.64
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 24.0,
+     "t_out": 27.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 15.92,
+     "t_out": 23.48
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-8013",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 160.0,
+     "t_out": 172.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 95.68,
+     "t_out": 98.08
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 81.0,
+     "t_out": 84.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 76.0,
+     "t_out": 79.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 38.0,
+     "t_out": 41.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-8015",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 81.0,
+     "t_out": 84.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 0.0,
+     "t_out": 6.72
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 76.0,
+     "t_out": 79.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 38.0,
+     "t_out": 41.0
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 173.0,
+     "t_out": 177.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-8016",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 132.46,
+     "t_out": 136.46
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 177.66,
+     "t_out": 183.1
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 88.0,
+     "t_out": 93.0
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 150.0,
+     "t_out": 158.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-8020",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 177.0,
+     "t_out": 187.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 488.68,
+     "t_out": 491.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-8024",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 418.68,
+     "t_out": 419.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    }
+   ]
+  },
+  {
+   "query_id": "q-film-8027",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 815.78,
+     "t_out": 817.78
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 860.1,
+     "t_out": 870.02
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    }
+   ]
+  }
+ ]
+}

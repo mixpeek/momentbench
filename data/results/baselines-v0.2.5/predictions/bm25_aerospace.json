@@ -1,0 +1,4625 @@
+{
+ "system": "bm25-transcript",
+ "predictions": [
+  {
+   "query_id": "q-aerospace-0100",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 9.28,
+     "t_out": 12.96
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 477.68,
+     "t_out": 481.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 34.0,
+     "t_out": 39.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 59.28,
+     "t_out": 63.44
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0101",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 177.66,
+     "t_out": 183.1
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 31.0,
+     "t_out": 36.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 10.88,
+     "t_out": 15.92
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 22.56,
+     "t_out": 26.92
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0102",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 62.0,
+     "t_out": 70.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 20.0,
+     "t_out": 22.56
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 62.24,
+     "t_out": 66.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 52.32,
+     "t_out": 56.2
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 15.56,
+     "t_out": 20.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0103",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 27.04,
+     "t_out": 30.56
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 0.0,
+     "t_out": 6.72
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 110.86,
+     "t_out": 114.74
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 134.58,
+     "t_out": 136.58
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 137.5,
+     "t_out": 139.5
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0104",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 146.0,
+     "t_out": 154.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 78.12,
+     "t_out": 82.92
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 0.0,
+     "t_out": 6.72
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 171.0,
+     "t_out": 180.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 202.42,
+     "t_out": 211.58
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0109",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 35.92,
+     "t_out": 40.96
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 270.28,
+     "t_out": 274.32
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 84.32,
+     "t_out": 87.28
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 280.68,
+     "t_out": 281.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 21.28,
+     "t_out": 25.76
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0110",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 0.0,
+     "t_out": 6.72
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 210.0,
+     "t_out": 216.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 34.0,
+     "t_out": 39.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 53.0,
+     "t_out": 55.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 186.0,
+     "t_out": 198.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0112",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 164.78,
+     "t_out": 169.74
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 210.0,
+     "t_out": 216.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 177.66,
+     "t_out": 183.1
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 82.0,
+     "t_out": 89.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0113",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 47.0,
+     "t_out": 53.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 93.0,
+     "t_out": 97.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 48.32,
+     "t_out": 53.04
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 173.0,
+     "t_out": 177.0
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 53.0,
+     "t_out": 56.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0114",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 66.24,
+     "t_out": 76.24
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 31.0,
+     "t_out": 36.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 117.2,
+     "t_out": 123.04
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 22.56,
+     "t_out": 26.92
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0115",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 93.0,
+     "t_out": 97.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 67.0,
+     "t_out": 72.0
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 61.0,
+     "t_out": 63.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 466.68,
+     "t_out": 468.68
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 81.0,
+     "t_out": 84.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0116",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 123.68,
+     "t_out": 128.08
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 33.6,
+     "t_out": 37.6
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 0.0,
+     "t_out": 5.28
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 79.0,
+     "t_out": 83.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 87.28,
+     "t_out": 89.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0117",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 98.08,
+     "t_out": 102.32
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 19.68,
+     "t_out": 22.08
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 55.6,
+     "t_out": 59.04
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 79.0,
+     "t_out": 83.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 205.34,
+     "t_out": 210.42
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0121",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 55.0,
+     "t_out": 59.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 76.0,
+     "t_out": 79.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 36.0,
+     "t_out": 41.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0122",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 75.0,
+     "t_out": 79.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 128.9,
+     "t_out": 132.46
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 44.24,
+     "t_out": 46.8
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 79.0,
+     "t_out": 83.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 182.0,
+     "t_out": 198.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0123",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 0.0,
+     "t_out": 6.72
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 92.84,
+     "t_out": 96.36
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 27.04,
+     "t_out": 30.56
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0124",
+   "moments": [
+    {
+     "asset_id": "sintel",
+     "t_in": 872.1,
+     "t_out": 876.9
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 177.66,
+     "t_out": 183.1
+    },
+    {
+     "asset_id": "nasa-artemis-ii-welcome-home",
+     "t_in": 58.58,
+     "t_out": 88.58
+    },
+    {
+     "asset_id": "nasa-artemis-ii-welcome-home",
+     "t_in": 88.58,
+     "t_out": 99.91
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0125",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 0.0,
+     "t_out": 6.72
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 177.0,
+     "t_out": 187.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 47.0,
+     "t_out": 53.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0126",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 156.0,
+     "t_out": 158.0
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 57.8,
+     "t_out": 64.8
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 64.8,
+     "t_out": 67.8
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0127",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 139.0,
+     "t_out": 145.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 2.88,
+     "t_out": 6.32
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 78.0,
+     "t_out": 87.0
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 37.0,
+     "t_out": 39.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 109.0,
+     "t_out": 115.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0132",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 21.0,
+     "t_out": 23.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 872.1,
+     "t_out": 876.9
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 30.8,
+     "t_out": 34.88
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 0.0,
+     "t_out": 7.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 79.44,
+     "t_out": 84.52
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0133",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 0.0,
+     "t_out": 6.72
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 747.22,
+     "t_out": 749.22
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 216.0,
+     "t_out": 223.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 210.0,
+     "t_out": 216.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 787.18,
+     "t_out": 792.34
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0136",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 171.0,
+     "t_out": 180.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 20.0,
+     "t_out": 22.56
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 113.76,
+     "t_out": 122.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 70.0,
+     "t_out": 81.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 68.0,
+     "t_out": 73.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0138",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 68.0,
+     "t_out": 72.28
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 84.32,
+     "t_out": 87.28
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 45.44,
+     "t_out": 51.68
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 25.0,
+     "t_out": 32.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0139",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 159.0,
+     "t_out": 162.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 101.0,
+     "t_out": 108.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 32.0,
+     "t_out": 38.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 82.92,
+     "t_out": 84.28
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 128.9,
+     "t_out": 132.46
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0143",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 98.08,
+     "t_out": 102.32
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 52.32,
+     "t_out": 56.2
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 75.0,
+     "t_out": 79.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 50.0,
+     "t_out": 62.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0145",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 104.0,
+     "t_out": 106.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 174.9,
+     "t_out": 177.66
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 58.28,
+     "t_out": 62.24
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 872.1,
+     "t_out": 876.9
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 186.0,
+     "t_out": 198.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0146",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 22.08,
+     "t_out": 26.8
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 0.0,
+     "t_out": 6.72
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 58.28,
+     "t_out": 62.24
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 0.0,
+     "t_out": 9.56
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 53.0,
+     "t_out": 55.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0147",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 116.0,
+     "t_out": 124.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 68.0,
+     "t_out": 72.28
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 183.0,
+     "t_out": 193.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 174.9,
+     "t_out": 177.66
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0148",
+   "moments": [
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 248.08,
+     "t_out": 250.52
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 0.0,
+     "t_out": 23.68
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 149.0,
+     "t_out": 156.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 28.0,
+     "t_out": 33.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 406.68,
+     "t_out": 409.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0149",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 198.0,
+     "t_out": 205.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 202.42,
+     "t_out": 211.58
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 186.0,
+     "t_out": 198.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 4.84,
+     "t_out": 6.96
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0153",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 40.96,
+     "t_out": 46.56
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 0.0,
+     "t_out": 9.56
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 156.0,
+     "t_out": 158.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 68.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 53.92,
+     "t_out": 63.44
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0157",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 183.0,
+     "t_out": 193.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 70.4,
+     "t_out": 74.48
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 30.8,
+     "t_out": 34.88
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 48.32,
+     "t_out": 53.04
+    },
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 198.0,
+     "t_out": 202.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0159",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 0.0,
+     "t_out": 4.84
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 68.68,
+     "t_out": 77.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 438.68,
+     "t_out": 440.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 88.26,
+     "t_out": 90.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 47.0,
+     "t_out": 53.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0160",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 56.2,
+     "t_out": 58.28
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 46.56,
+     "t_out": 52.64
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 227.5,
+     "t_out": 229.5
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 9.28,
+     "t_out": 12.96
+    },
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 50.0,
+     "t_out": 62.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0161",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 21.6,
+     "t_out": 24.76
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 227.5,
+     "t_out": 229.5
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 88.0,
+     "t_out": 93.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 872.1,
+     "t_out": 876.9
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0162",
+   "moments": [
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 177.0,
+     "t_out": 187.0
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 17.0,
+     "t_out": 22.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 82.92,
+     "t_out": 84.28
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 56.2,
+     "t_out": 58.28
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 51.68,
+     "t_out": 54.32
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0163",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 45.0,
+     "t_out": 53.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 46.56,
+     "t_out": 52.64
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 38.0,
+     "t_out": 40.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 59.0,
+     "t_out": 61.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 33.0,
+     "t_out": 36.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0164",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 21.6,
+     "t_out": 24.76
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 227.5,
+     "t_out": 229.5
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 88.0,
+     "t_out": 93.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 872.1,
+     "t_out": 876.9
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0165",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 47.0,
+     "t_out": 53.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 21.6,
+     "t_out": 24.76
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 77.12,
+     "t_out": 78.12
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 38.72,
+     "t_out": 43.08
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0167",
+   "moments": [
+    {
+     "asset_id": "sintel",
+     "t_in": 202.42,
+     "t_out": 211.58
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 110.86,
+     "t_out": 114.74
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 207.0,
+     "t_out": 227.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 81.0,
+     "t_out": 84.0
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 177.0,
+     "t_out": 187.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0168",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 79.0,
+     "t_out": 81.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 81.0,
+     "t_out": 84.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 0.0,
+     "t_out": 6.72
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 76.0,
+     "t_out": 79.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 38.0,
+     "t_out": 41.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0169",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 21.6,
+     "t_out": 24.76
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 84.32,
+     "t_out": 87.28
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 177.66,
+     "t_out": 183.1
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0173",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 88.0,
+     "t_out": 93.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 132.46,
+     "t_out": 136.46
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 53.12,
+     "t_out": 59.28
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 16.0,
+     "t_out": 21.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0174",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 198.0,
+     "t_out": 205.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 78.0,
+     "t_out": 87.0
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 57.8,
+     "t_out": 64.8
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0175",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 41.0,
+     "t_out": 46.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 186.0,
+     "t_out": 198.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 123.0,
+     "t_out": 133.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 46.0,
+     "t_out": 50.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0176",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 16.08,
+     "t_out": 18.6
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 101.16,
+     "t_out": 105.58
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 174.9,
+     "t_out": 177.66
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0181",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 58.0,
+     "t_out": 64.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 58.84,
+     "t_out": 63.92
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 21.28,
+     "t_out": 25.76
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 46.0,
+     "t_out": 50.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0182",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 15.56,
+     "t_out": 20.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 47.0,
+     "t_out": 53.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 67.0,
+     "t_out": 72.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 154.0,
+     "t_out": 160.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0184",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 69.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 102.0,
+     "t_out": 113.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 186.0,
+     "t_out": 198.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0185",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 180.0,
+     "t_out": 186.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 44.24,
+     "t_out": 46.8
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 69.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 355.64,
+     "t_out": 362.76
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 198.0,
+     "t_out": 205.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0186",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 180.0,
+     "t_out": 186.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 186.0,
+     "t_out": 198.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 113.0,
+     "t_out": 119.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 69.0,
+     "t_out": 73.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0188",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 186.0,
+     "t_out": 198.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 62.24,
+     "t_out": 66.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 133.0,
+     "t_out": 139.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 50.0,
+     "t_out": 55.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0189",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 41.0,
+     "t_out": 46.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 44.24,
+     "t_out": 46.8
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 69.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 355.64,
+     "t_out": 362.76
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 198.0,
+     "t_out": 205.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0190",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 69.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 139.0,
+     "t_out": 145.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 117.2,
+     "t_out": 123.04
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 32.0,
+     "t_out": 38.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 34.0,
+     "t_out": 39.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0192",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 113.0,
+     "t_out": 119.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 186.0,
+     "t_out": 198.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 119.0,
+     "t_out": 123.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0193",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 186.0,
+     "t_out": 198.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 9.0,
+     "t_out": 16.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 418.68,
+     "t_out": 419.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0196",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 69.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 41.0,
+     "t_out": 46.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 133.0,
+     "t_out": 139.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 87.28,
+     "t_out": 89.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0198",
+   "moments": [
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 111.8,
+     "t_out": 113.8
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 0.0,
+     "t_out": 6.72
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 38.72,
+     "t_out": 43.08
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 21.6,
+     "t_out": 24.76
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0201",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 69.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 87.28,
+     "t_out": 89.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 180.0,
+     "t_out": 186.0
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 503.88,
+     "t_out": 508.2
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0202",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 139.0,
+     "t_out": 145.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 16.08,
+     "t_out": 18.6
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 45.44,
+     "t_out": 51.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 466.68,
+     "t_out": 468.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 69.0,
+     "t_out": 73.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0203",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 210.0,
+     "t_out": 216.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 154.0,
+     "t_out": 160.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 198.0,
+     "t_out": 205.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 286.68,
+     "t_out": 289.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0204",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 186.0,
+     "t_out": 198.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 69.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 36.0,
+     "t_out": 41.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 41.0,
+     "t_out": 46.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0205",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 139.0,
+     "t_out": 145.0
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 57.8,
+     "t_out": 64.8
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 64.8,
+     "t_out": 67.8
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 49.0,
+     "t_out": 54.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0207",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 44.24,
+     "t_out": 46.8
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "agent-327-operation-barbershop",
+     "t_in": 173.0,
+     "t_out": 177.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 69.0,
+     "t_out": 73.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0213",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 44.24,
+     "t_out": 46.8
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 73.0,
+     "t_out": 82.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 154.0,
+     "t_out": 160.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 41.0,
+     "t_out": 50.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0216",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 75.0,
+     "t_out": 79.0
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 53.0,
+     "t_out": 56.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 34.0,
+     "t_out": 39.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 66.68,
+     "t_out": 71.52
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 73.0,
+     "t_out": 82.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0217",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 62.0,
+     "t_out": 70.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 98.96,
+     "t_out": 103.04
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 103.04,
+     "t_out": 106.72
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 9.28,
+     "t_out": 12.96
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 0.0,
+     "t_out": 3.44
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0219",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 79.52,
+     "t_out": 84.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 70.4,
+     "t_out": 74.48
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 30.8,
+     "t_out": 34.88
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 0.0,
+     "t_out": 4.84
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 79.44,
+     "t_out": 84.52
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0221",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 75.0,
+     "t_out": 79.0
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 53.0,
+     "t_out": 56.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 34.0,
+     "t_out": 39.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 66.68,
+     "t_out": 71.52
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 73.0,
+     "t_out": 82.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0222",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 103.04,
+     "t_out": 106.72
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 55.0,
+     "t_out": 59.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 98.96,
+     "t_out": 103.04
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 9.28,
+     "t_out": 12.96
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 48.12,
+     "t_out": 53.2
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0223",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 49.0,
+     "t_out": 54.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 113.76,
+     "t_out": 122.0
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 57.8,
+     "t_out": 64.8
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 64.8,
+     "t_out": 67.8
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0224",
+   "moments": [
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 111.8,
+     "t_out": 113.8
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 68.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 297.24,
+     "t_out": 303.6
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0225",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 117.2,
+     "t_out": 123.04
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 128.0,
+     "t_out": 133.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 113.84,
+     "t_out": 117.2
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 70.0,
+     "t_out": 74.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 49.0,
+     "t_out": 54.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0226",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 49.0,
+     "t_out": 54.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 2.88,
+     "t_out": 6.32
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 92.84,
+     "t_out": 96.36
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 27.04,
+     "t_out": 30.56
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0230",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 22.56,
+     "t_out": 26.92
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 9.72,
+     "t_out": 14.22
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 110.86,
+     "t_out": 114.74
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 197.26,
+     "t_out": 201.14
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 0.0,
+     "t_out": 4.84
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0231",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 44.64,
+     "t_out": 48.12
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 90.4,
+     "t_out": 93.92
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 30.0,
+     "t_out": 34.0
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 0.0,
+     "t_out": 12.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 58.84,
+     "t_out": 63.92
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0234",
+   "moments": [
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 77.0,
+     "t_out": 83.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 488.68,
+     "t_out": 491.68
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 339.0,
+     "t_out": 341.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 55.0,
+     "t_out": 59.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 358.68,
+     "t_out": 361.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0235",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 81.0,
+     "t_out": 84.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 76.0,
+     "t_out": 79.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 38.0,
+     "t_out": 41.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0236",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 57.84,
+     "t_out": 58.84
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 59.28,
+     "t_out": 63.44
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 14.96,
+     "t_out": 17.2
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 438.68,
+     "t_out": 440.68
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 0.0,
+     "t_out": 6.72
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0239",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 62.0,
+     "t_out": 70.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 20.0,
+     "t_out": 22.56
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 62.24,
+     "t_out": 66.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 52.32,
+     "t_out": 56.2
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0240",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 12.96,
+     "t_out": 16.72
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 108.0,
+     "t_out": 111.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 19.68,
+     "t_out": 22.08
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 202.6,
+     "t_out": 204.6
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0243",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 46.48,
+     "t_out": 50.4
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 54.0,
+     "t_out": 58.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 55.0,
+     "t_out": 59.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 32.0,
+     "t_out": 38.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0246",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 21.6,
+     "t_out": 24.76
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 42.72,
+     "t_out": 47.16
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 198.32,
+     "t_out": 201.64
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 152.66,
+     "t_out": 154.86
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0247",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 109.0,
+     "t_out": 115.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 59.92,
+     "t_out": 63.84
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 95.0,
+     "t_out": 101.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 16.08,
+     "t_out": 18.6
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 241.3,
+     "t_out": 243.58
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0249",
+   "moments": [
+    {
+     "asset_id": "nasa-perseverance-twin-rover",
+     "t_in": 34.08,
+     "t_out": 39.04
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 81.0,
+     "t_out": 84.0
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 27.0,
+     "t_out": 33.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 76.0,
+     "t_out": 79.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 38.0,
+     "t_out": 41.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0250",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 0.0,
+     "t_out": 4.32
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 40.56,
+     "t_out": 44.24
+    },
+    {
+     "asset_id": "tears-of-steel",
+     "t_in": 177.0,
+     "t_out": 194.36
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 103.2,
+     "t_out": 108.4
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0251",
+   "moments": [
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 111.8,
+     "t_out": 113.8
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 297.24,
+     "t_out": 303.6
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 53.2,
+     "t_out": 57.84
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0255",
+   "moments": [
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 111.8,
+     "t_out": 113.8
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 75.0,
+     "t_out": 79.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 36.0,
+     "t_out": 41.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 55.6,
+     "t_out": 59.04
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0257",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 182.0,
+     "t_out": 198.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 9.0,
+     "t_out": 13.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 0.0,
+     "t_out": 4.84
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 76.72,
+     "t_out": 89.92
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 103.2,
+     "t_out": 108.4
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0259",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 0.0,
+     "t_out": 6.72
+    },
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 50.0,
+     "t_out": 62.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 62.0,
+     "t_out": 70.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 93.0,
+     "t_out": 97.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 20.0,
+     "t_out": 22.56
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0260",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 21.6,
+     "t_out": 24.76
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 69.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 84.32,
+     "t_out": 87.28
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0261",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 182.0,
+     "t_out": 198.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 50.0,
+     "t_out": 62.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 62.0,
+     "t_out": 70.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 9.0,
+     "t_out": 13.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 52.32,
+     "t_out": 56.2
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0262",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 198.0,
+     "t_out": 202.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 78.0,
+     "t_out": 81.0
+    },
+    {
+     "asset_id": "nasa-viper-lander-exit-test",
+     "t_in": 30.0,
+     "t_out": 37.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 241.3,
+     "t_out": 243.58
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 115.0,
+     "t_out": 117.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0263",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 182.0,
+     "t_out": 198.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 79.0,
+     "t_out": 81.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 140.0,
+     "t_out": 144.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 70.0,
+     "t_out": 74.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 0.0,
+     "t_out": 6.72
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0265",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 44.24,
+     "t_out": 46.8
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 31.04,
+     "t_out": 36.08
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 81.0,
+     "t_out": 84.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 16.72,
+     "t_out": 19.68
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 76.0,
+     "t_out": 79.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0268",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 21.6,
+     "t_out": 24.76
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 68.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 297.24,
+     "t_out": 303.6
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0269",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 14.96,
+     "t_out": 17.2
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 466.68,
+     "t_out": 468.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 28.0,
+     "t_out": 32.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 67.0,
+     "t_out": 72.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 26.88,
+     "t_out": 30.8
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0270",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 31.0,
+     "t_out": 36.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 25.0,
+     "t_out": 29.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 0.0,
+     "t_out": 4.32
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0271",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 14.96,
+     "t_out": 17.2
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 28.0,
+     "t_out": 32.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 174.9,
+     "t_out": 177.66
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0274",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 68.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 31.0,
+     "t_out": 36.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 25.0,
+     "t_out": 29.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 72.0,
+     "t_out": 78.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0301",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 15.92,
+     "t_out": 23.48
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 76.0,
+     "t_out": 79.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 466.68,
+     "t_out": 468.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 50.0,
+     "t_out": 55.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 70.0,
+     "t_out": 81.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0307",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 59.92,
+     "t_out": 63.84
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 31.0,
+     "t_out": 36.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 63.92,
+     "t_out": 68.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 109.0,
+     "t_out": 115.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0314",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 91.0,
+     "t_out": 101.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 47.0,
+     "t_out": 53.0
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 57.8,
+     "t_out": 64.8
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 28.0,
+     "t_out": 33.0
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 64.8,
+     "t_out": 67.8
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0315",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 88.0,
+     "t_out": 93.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 84.32,
+     "t_out": 87.28
+    },
+    {
+     "asset_id": "nasa-perseverance-twin-rover",
+     "t_in": 34.08,
+     "t_out": 39.04
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 21.6,
+     "t_out": 24.76
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 847.14,
+     "t_out": 849.14
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0316",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 22.56,
+     "t_out": 26.92
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 63.0,
+     "t_out": 70.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 81.0,
+     "t_out": 84.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 76.0,
+     "t_out": 79.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0318",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 181.0,
+     "t_out": 183.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 174.9,
+     "t_out": 177.66
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 78.16,
+     "t_out": 79.16
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 20.4,
+     "t_out": 26.48
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0319",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 9.28,
+     "t_out": 12.96
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 15.92,
+     "t_out": 21.28
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 12.8,
+     "t_out": 15.92
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 48.12,
+     "t_out": 53.2
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 25.0,
+     "t_out": 29.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0322",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 9.28,
+     "t_out": 12.96
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 15.92,
+     "t_out": 21.28
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 12.8,
+     "t_out": 15.92
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 48.12,
+     "t_out": 53.2
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 25.0,
+     "t_out": 29.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0323",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 96.0,
+     "t_out": 105.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 105.0,
+     "t_out": 108.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 446.68,
+     "t_out": 450.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 9.72,
+     "t_out": 14.22
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 67.0,
+     "t_out": 72.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0327",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 154.0,
+     "t_out": 160.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 186.0,
+     "t_out": 198.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 198.0,
+     "t_out": 205.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0330",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 186.0,
+     "t_out": 198.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 15.92,
+     "t_out": 23.48
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 154.0,
+     "t_out": 160.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 50.0,
+     "t_out": 55.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 160.0,
+     "t_out": 172.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0335",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 198.0,
+     "t_out": 205.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 57.8,
+     "t_out": 64.8
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 73.0,
+     "t_out": 82.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0336",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 32.0,
+     "t_out": 38.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 139.0,
+     "t_out": 145.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 64.0,
+     "t_out": 68.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 16.08,
+     "t_out": 18.6
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 54.0,
+     "t_out": 58.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0337",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 128.0,
+     "t_out": 133.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 152.66,
+     "t_out": 154.86
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 68.0,
+     "t_out": 73.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0340",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 34.04,
+     "t_out": 38.72
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 154.0,
+     "t_out": 160.0
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 227.5,
+     "t_out": 229.5
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 186.0,
+     "t_out": 198.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0341",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "nasa-perseverance-twin-rover",
+     "t_in": 67.92,
+     "t_out": 78.24
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 177.66,
+     "t_out": 183.1
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 102.0,
+     "t_out": 113.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 69.0,
+     "t_out": 73.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0342",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 21.6,
+     "t_out": 24.76
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 42.72,
+     "t_out": 47.16
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 68.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0344",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 75.0,
+     "t_out": 79.0
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 111.8,
+     "t_out": 113.8
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 174.9,
+     "t_out": 177.66
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 177.66,
+     "t_out": 183.1
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 79.0,
+     "t_out": 83.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0352",
+   "moments": [
+    {
+     "asset_id": "sintel",
+     "t_in": 227.5,
+     "t_out": 229.5
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 872.1,
+     "t_out": 876.9
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 488.68,
+     "t_out": 491.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 87.28,
+     "t_out": 89.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0353",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 58.0,
+     "t_out": 62.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 62.0,
+     "t_out": 67.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 67.0,
+     "t_out": 72.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 19.68,
+     "t_out": 22.08
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 79.12,
+     "t_out": 82.48
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0354",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    },
+    {
+     "asset_id": "cosmos-laundromat",
+     "t_in": 297.24,
+     "t_out": 303.6
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 106.54,
+     "t_out": 113.86
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0355",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 32.0,
+     "t_out": 38.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 84.32,
+     "t_out": 87.28
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 97.78,
+     "t_out": 101.16
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 21.6,
+     "t_out": 24.76
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 463.68,
+     "t_out": 466.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0357",
+   "moments": [
+    {
+     "asset_id": "sintel",
+     "t_in": 847.14,
+     "t_out": 849.14
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 136.46,
+     "t_out": 140.06
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 63.92,
+     "t_out": 68.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 34.0,
+     "t_out": 39.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0358",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 215.06,
+     "t_out": 219.7
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 19.68,
+     "t_out": 22.08
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 59.92,
+     "t_out": 63.84
+    },
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 172.0,
+     "t_out": 181.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-03-13",
+     "t_in": 67.0,
+     "t_out": 72.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0360",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 0.0,
+     "t_out": 4.32
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 103.2,
+     "t_out": 108.4
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 215.06,
+     "t_out": 219.7
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 233.78,
+     "t_out": 237.18
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 31.0,
+     "t_out": 36.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0364",
+   "moments": [
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 111.8,
+     "t_out": 113.8
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 164.78,
+     "t_out": 169.74
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 21.6,
+     "t_out": 24.76
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 42.72,
+     "t_out": 47.16
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0900",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 55.0,
+     "t_out": 59.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 25.0,
+     "t_out": 32.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 103.04,
+     "t_out": 106.72
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 98.96,
+     "t_out": 103.04
+    },
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 62.0,
+     "t_out": 70.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0901",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 62.0,
+     "t_out": 70.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 274.68,
+     "t_out": 280.68
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 20.0,
+     "t_out": 22.56
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 62.24,
+     "t_out": 66.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 52.32,
+     "t_out": 56.2
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0905",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 113.84,
+     "t_out": 117.2
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 156.0,
+     "t_out": 158.0
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 57.8,
+     "t_out": 64.8
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 64.8,
+     "t_out": 67.8
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 477.68,
+     "t_out": 481.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0907",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 488.68,
+     "t_out": 491.68
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 369.68,
+     "t_out": 371.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 62.0,
+     "t_out": 70.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 20.0,
+     "t_out": 22.56
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 62.24,
+     "t_out": 66.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0908",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 114.0,
+     "t_out": 120.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 101.16,
+     "t_out": 105.58
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 466.68,
+     "t_out": 468.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 53.2,
+     "t_out": 57.84
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0910",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 53.0,
+     "t_out": 55.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 55.0,
+     "t_out": 59.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 53.2,
+     "t_out": 57.84
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 25.0,
+     "t_out": 32.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 103.04,
+     "t_out": 106.72
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0911",
+   "moments": [
+    {
+     "asset_id": "sintel",
+     "t_in": 227.5,
+     "t_out": 229.5
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 63.44,
+     "t_out": 66.24
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 52.32,
+     "t_out": 56.2
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 15.56,
+     "t_out": 20.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 61.0,
+     "t_out": 66.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0912",
+   "moments": [
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 274.68,
+     "t_out": 280.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 62.0,
+     "t_out": 70.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 20.0,
+     "t_out": 22.56
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 466.68,
+     "t_out": 468.68
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 227.5,
+     "t_out": 229.5
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0913",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 54.32,
+     "t_out": 58.64
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 129.68,
+     "t_out": 131.68
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 107.0,
+     "t_out": 109.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 198.0,
+     "t_out": 205.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0914",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 132.46,
+     "t_out": 136.46
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 46.0,
+     "t_out": 50.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 41.0,
+     "t_out": 46.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 58.0,
+     "t_out": 64.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0917",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 69.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 57.8,
+     "t_out": 64.8
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 64.8,
+     "t_out": 67.8
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 87.28,
+     "t_out": 89.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 0.0,
+     "t_out": 3.44
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0918",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 36.0,
+     "t_out": 41.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 160.0,
+     "t_out": 172.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-08-21",
+     "t_in": 2.88,
+     "t_out": 6.32
+    },
+    {
+     "asset_id": "sintel",
+     "t_in": 202.42,
+     "t_out": 211.58
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 168.0,
+     "t_out": 170.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0919",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 69.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 205.0,
+     "t_out": 210.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 216.0,
+     "t_out": 223.0
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 57.8,
+     "t_out": 64.8
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 64.8,
+     "t_out": 67.8
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0921",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 69.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 140.0,
+     "t_out": 144.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 139.0,
+     "t_out": 145.0
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 57.8,
+     "t_out": 64.8
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 64.8,
+     "t_out": 67.8
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0922",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 186.0,
+     "t_out": 198.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 123.0,
+     "t_out": 133.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 15.92,
+     "t_out": 23.48
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 82.0,
+     "t_out": 89.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 9.0,
+     "t_out": 16.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0923",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 169.74,
+     "t_out": 174.9
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 168.0,
+     "t_out": 170.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 133.0,
+     "t_out": 139.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 69.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 34.0,
+     "t_out": 39.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0925",
+   "moments": [
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 21.0,
+     "t_out": 24.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 123.0,
+     "t_out": 133.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 57.8,
+     "t_out": 64.8
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 198.0,
+     "t_out": 205.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0926",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 59.0,
+     "t_out": 61.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 32.0,
+     "t_out": 38.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 123.0,
+     "t_out": 133.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 46.0,
+     "t_out": 50.0
+    },
+    {
+     "asset_id": "nasa-how-to-recover-a-spacecraft",
+     "t_in": 41.0,
+     "t_out": 46.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0928",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 62.0,
+     "t_out": 70.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 20.0,
+     "t_out": 22.56
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 466.68,
+     "t_out": 468.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 62.24,
+     "t_out": 66.68
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0929",
+   "moments": [
+    {
+     "asset_id": "sintel",
+     "t_in": 142.82,
+     "t_out": 144.82
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 0.0,
+     "t_out": 4.32
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 38.72,
+     "t_out": 43.08
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 48.32,
+     "t_out": 53.04
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-22",
+     "t_in": 44.24,
+     "t_out": 46.8
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0930",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 87.28,
+     "t_out": 89.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 34.0,
+     "t_out": 39.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 227.1,
+     "t_out": 229.54
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 66.68,
+     "t_out": 71.52
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 17.2,
+     "t_out": 20.4
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0932",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 20.0,
+     "t_out": 22.56
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 466.68,
+     "t_out": 468.68
+    },
+    {
+     "asset_id": "nasa-viper-slope-lab-testing",
+     "t_in": 59.96,
+     "t_out": 69.96
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    },
+    {
+     "asset_id": "elephants-dream",
+     "t_in": 319.68,
+     "t_out": 343.68
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0933",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 103.04,
+     "t_out": 106.72
+    },
+    {
+     "asset_id": "nasa-minute-2026-10-02",
+     "t_in": 98.96,
+     "t_out": 103.04
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 53.0,
+     "t_out": 55.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-09-04",
+     "t_in": 48.12,
+     "t_out": 53.2
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 55.0,
+     "t_out": 59.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0934",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 49.0,
+     "t_out": 54.0
+    },
+    {
+     "asset_id": "nasa-minute-2026-05-08",
+     "t_in": 64.0,
+     "t_out": 68.0
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 27.0,
+     "t_out": 33.0
+    },
+    {
+     "asset_id": "nasa-how-perseverance-drives",
+     "t_in": 103.0,
+     "t_out": 108.0
+    },
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 71.0,
+     "t_out": 73.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0937",
+   "moments": [
+    {
+     "asset_id": "nasa-artemis-ii-mission-recap",
+     "t_in": 25.0,
+     "t_out": 32.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 20.0,
+     "t_out": 22.56
+    },
+    {
+     "asset_id": "nasa-viper-egress-testing",
+     "t_in": 57.8,
+     "t_out": 64.8
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 53.0,
+     "t_out": 55.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 59.0,
+     "t_out": 61.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0938",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 62.0,
+     "t_out": 70.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 20.0,
+     "t_out": 22.56
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 62.24,
+     "t_out": 66.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 52.32,
+     "t_out": 56.2
+    },
+    {
+     "asset_id": "nasa-artemis-ii-launch-recap",
+     "t_in": 113.76,
+     "t_out": 122.0
+    }
+   ]
+  },
+  {
+   "query_id": "q-aerospace-0939",
+   "moments": [
+    {
+     "asset_id": "nasa-minute-2026-01-23",
+     "t_in": 62.0,
+     "t_out": 70.0
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 20.0,
+     "t_out": 22.56
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 62.24,
+     "t_out": 66.68
+    },
+    {
+     "asset_id": "nasa-minute-2026-02-20",
+     "t_in": 52.32,
+     "t_out": 56.2
+    },
+    {
+     "asset_id": "nasa-artemis-i-launch-recap",
+     "t_in": 15.56,
+     "t_out": 20.0
+    }
+   ]
+  }
+ ]
+}
